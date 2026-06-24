@@ -84,12 +84,14 @@ class ProcessUploadedFileJob < ApplicationJob
   private
 
   def unzip_into_model(model, file)
+    Rails.logger.debug { "Starting ProcessUploadedFileJob#unzip_into_model" }
     new_files = []
     ModelFileUploader.with_file(file) do |archive|
       dirname = SecureRandom.uuid
       tmpdir = ModelFileUploader.find_storage(:cache).directory.join(dirname)
       tmpdir.mkdir
       strip = count_common_path_components(archive)
+      Rails.logger.debug { "Opening archive" }
       Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
         reader.each_entry do |entry|
           next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
@@ -99,6 +101,7 @@ class ProcessUploadedFileJob < ApplicationJob
             entry.pathname.force_encoding(Encoding::UTF_8).scrub
           end
           next if SiteSettings.ignored_file?(filename)
+          Rails.logger.debug { "Extracting #{filename} from archive" }
           reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir.to_s)
           new_files << model.model_files.create(filename: filename, attachment: ModelFileUploader.uploaded_file(
             storage: :cache,
@@ -107,23 +110,29 @@ class ProcessUploadedFileJob < ApplicationJob
           ))
         end
       end
+      Rails.logger.debug { "Closing archive" }
     end
+    Rails.logger.debug { "Starting ProcessUploadedFileJob#unzip_into_model" }
     new_files
   end
 
   def count_common_path_components(archive)
+    Rails.logger.debug { "Starting ProcessUploadedFileJob#count_common_path_components" }
     # Generate full list of directories in the archive
     paths = []
     files_in_root = false
+    Rails.logger.debug { "Opening archive" }
     Archive::Reader.open_filename(archive.path) do |reader|
       reader.each_entry do |entry|
         paths << entry.pathname if entry.directory?
         files_in_root = true if entry.file? && entry.pathname.exclude?(File::SEPARATOR)
       end
     end
+    Rails.logger.debug { "Closing archive" }
     return 0 if files_in_root
     paths = paths.map { |path| path.split(File::SEPARATOR) }
     # Count the common elements in the paths
+    Rails.logger.debug { "Finishing ProcessUploadedFileJob#count_common_path_components" }
     count_common_elements(paths)
   end
 
