@@ -20,6 +20,16 @@ require "rack/contrib"
 # you've limited to :test, :development, or :production.
 Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
+# Require any engines inside plugins folder
+Dir.glob(File.expand_path("../plugins/*", __dir__))
+  .select { FileTest.directory? it }
+  .map { File.split(it).last }
+  .each do |plugin|
+  $: << File.expand_path("../plugins/#{plugin}", __dir__)
+  $: << File.expand_path("../plugins/#{plugin}/lib", __dir__)
+  require plugin
+end
+
 module Manyfold
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
