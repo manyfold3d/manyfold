@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :model_file do
     model
-    filename { Faker::File.file_name(ext: "stl") }
+    filename { Faker::File.unique.file_name(ext: "stl") }
     attachment { filename ? Rack::Test::UploadedFile.new(StringIO.new, original_filename: filename) : nil }
 
     after :create do |file, context|
