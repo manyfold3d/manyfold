@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe SupportedMimeTypes do
+RSpec.describe MediaType do
   it "includes STL files in model list" do # rubocop:todo RSpec/MultipleExpectations
     expect(described_class.model_types.map(&:to_s)).to include("model/stl")
     expect(described_class.model_extensions).to include("stl")

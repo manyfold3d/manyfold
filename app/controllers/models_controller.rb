@@ -82,7 +82,7 @@ class ModelsController < ApplicationController
     authorize :model
     p = upload_params
     # First, is this a single or multi-model event?
-    multiple = p[:file]&.values&.all? { SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+    multiple = p[:file]&.values&.all? { MediaType.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
     # Then run validations on a dummy object
     common_args = {
       name: multiple ? nil : p[:name],

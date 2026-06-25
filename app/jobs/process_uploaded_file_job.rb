@@ -45,7 +45,7 @@ class ProcessUploadedFileJob < ApplicationJob
   end
 
   def is_archive?(file)
-    SupportedMimeTypes.archive_extensions.include? File.extname(file.original_filename).delete(".").downcase
+    MediaType.archive_extensions.include? File.extname(file.original_filename).delete(".").downcase
   end
 
   def create_new_model(library, name: nil, owner: nil, creator_id: nil, collection_ids: [], tag_list: nil, license: nil, sensitive: nil, permission_preset: nil)
@@ -69,7 +69,7 @@ class ProcessUploadedFileJob < ApplicationJob
   def add_single_file_to_model(model, file)
     # Handle different file types
     case File.extname(file.original_filename).delete(".").downcase
-    when *SupportedMimeTypes.indexable_extensions
+    when *MediaType.indexable_extensions
       if (existing_file = model.model_files.where(filename: file.original_filename).first)
         existing_file.update(attachment: file)
         existing_file
