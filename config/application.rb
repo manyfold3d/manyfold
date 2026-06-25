@@ -20,6 +20,17 @@ require "rack/contrib"
 # you've limited to :test, :development, or :production.
 Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
+# Require any engines inside plugins folder
+PLUGINS = Dir.glob(File.expand_path("../plugins/*", __dir__))
+  .select { FileTest.directory? it }
+  .map { File.split(it).last }.freeze
+
+PLUGINS.each do |plugin|
+  $: << File.expand_path("../plugins/#{plugin}", __dir__)
+  $: << File.expand_path("../plugins/#{plugin}/lib", __dir__)
+  require plugin
+end
+
 module Manyfold
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -39,6 +50,14 @@ module Manyfold
     config.eager_load_paths << config.root.join("app/uploaders")
 
     config.autoload_once_paths << "#{root}/app/lib"
+
+    PLUGINS.each do |plugin|
+      initializer "#{plugin}.add_routing_paths" do |app|
+        app.routes.append do
+          mount Object.const_get("#{plugin.classify}::Engine") => "/#{plugin}"
+        end
+      end
+    end
 
     # Load locale files in nested folders as well as locale root
     config.i18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
