@@ -27,7 +27,7 @@
     "driver.js": "^1.5.0",
     "i18n-js": "^4.5.3",
     "masonry-layout": "^4.2.2",
-    "three": "^0.184.0",
+    "three": "^0.185.0",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader",
     "tom-select": "^2.6.1"
   },
