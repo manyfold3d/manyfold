@@ -36,6 +36,11 @@
             </li>
           <% end %>
         <% end %>
+        <% PluginHooks.instance.components_for(:navbar).each do %>
+          <li class="nav-item" role="presentation">
+            <%= render it.new %>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav col-auto pe-4 align-self-start justify-content-end" role="presentation">
         <li class="nav-item" role="presentation">
