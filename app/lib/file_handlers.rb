@@ -1,5 +1,5 @@
 module FileHandlers
-  ALL_HANDLERS = FileHandlers.constants.without(:Base, :Slic3rFamily).map { FileHandlers.const_get("FileHandlers::#{it}") }.freeze
+  ALL_HANDLERS = []
 
   def self.handlers_for(environment:, mime_type:)
     Rails.cache.fetch("FileHandlers_handlers_for_#{environment}_#{mime_type}", expires_in: 1.hour) do
