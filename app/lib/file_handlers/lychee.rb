@@ -13,4 +13,8 @@ class FileHandlers::Lychee < FileHandlers::Base
       nil, nil
     ).to_s
   end
+
+  def self.icon
+    "images/external-icons/lychee.png"
+  end
 end

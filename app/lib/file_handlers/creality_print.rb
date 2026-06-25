@@ -7,4 +7,8 @@ class FileHandlers::CrealityPrint < FileHandlers::Slic3rFamily
   def self.scheme
     "crealityprintlink"
   end
+
+  def self.icon
+    "images/external-icons/creality_print.png"
+  end
 end

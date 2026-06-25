@@ -7,4 +7,8 @@ class FileHandlers::OrcaSlicer < FileHandlers::Slic3rFamily
   def self.scheme
     "orcaslicer"
   end
+
+  def self.icon
+    "images/external-icons/orca_slicer.png"
+  end
 end

@@ -6,4 +6,8 @@ class FileHandlers::ElegooSlicer < FileHandlers::Slic3rFamily
   def self.scheme
     "elegooslicer"
   end
+
+  def self.icon
+    "images/external-icons/elegoo_slicer.png"
+  end
 end

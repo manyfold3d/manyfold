@@ -6,4 +6,8 @@ class FileHandlers::Cura < FileHandlers::Slic3rFamily
   def self.scheme
     "cura"
   end
+
+  def self.icon
+    "images/external-icons/cura.png"
+  end
 end

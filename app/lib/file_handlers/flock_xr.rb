@@ -11,4 +11,8 @@ class FileHandlers::FlockXr < FileHandlers::Base
       {project: target}.to_query, nil
     ).to_s
   end
+
+  def self.icon
+    "images/external-icons/flock_xr.png"
+  end
 end
