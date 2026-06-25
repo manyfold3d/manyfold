@@ -3,64 +3,52 @@ module SupportedMimeTypes
     prepend MemoWise
 
     def image_types
-      Mime::LOOKUP.filter { |k, v| is_in_category?(v, :image) }.values
+      category_types :image
     end
-    memo_wise :image_types
 
     def image_extensions
-      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, :image) }.keys
+      category_extensions :image
     end
-    memo_wise :image_extensions
 
     def video_types
-      Mime::LOOKUP.filter { |k, v| is_in_category?(v, :video) }.values
+      category_types :video
     end
-    memo_wise :video_types
 
     def video_extensions
-      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, :video) }.keys
+      category_extensions :video
     end
-    memo_wise :video_extensions
 
     def document_types
-      Mime::LOOKUP.filter { |k, v| is_in_category?(v, :document) }.values
+      category_types :document
     end
-    memo_wise :document_types
 
     def document_extensions
-      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, :document) }.keys
+      category_extensions :document
     end
-    memo_wise :document_extensions
 
     def archive_types
-      Mime::LOOKUP.filter { |k, v| is_in_category?(v, :archive) }.values
+      category_types :archive
     end
-    memo_wise :archive_types
 
     def archive_extensions
-      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, :archive) }.keys
+      category_extensions :archive
     end
-    memo_wise :archive_extensions
 
     def model_types
-      Mime::LOOKUP.filter { |k, v| is_in_category?(v, :model) }.values
+      category_types :model
     end
-    memo_wise :model_types
 
     def model_extensions
-      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, :model) }.keys
+      category_extensions :model
     end
-    memo_wise :model_extensions
 
     def slicer_types
-      Mime::LOOKUP.filter { |k, v| is_in_category?(v, :slicer) }.values
+      category_types :slicer
     end
-    memo_wise :slicer_types
 
     def slicer_extensions
-      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, :slicer) }.keys
+      category_extensions :slicer
     end
-    memo_wise :slicer_extensions
 
     def indexable_types
       image_types + model_types + video_types + document_types + archive_types + slicer_types
@@ -73,6 +61,16 @@ module SupportedMimeTypes
     memo_wise :indexable_extensions
 
     private
+
+    def category_types(category)
+      Mime::LOOKUP.filter { |k, v| is_in_category?(v, category) }.values
+    end
+    memo_wise :category_types
+
+    def category_extensions(category)
+      Mime::EXTENSION_LOOKUP.filter { |k, v| is_in_category?(v, category) }.keys
+    end
+    memo_wise :category_extensions
 
     def is_in_category?(type, category)
       type.to_sym.in? MediaType::CATEGORIES.fetch(category, [])
