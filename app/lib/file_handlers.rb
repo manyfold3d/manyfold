@@ -1,5 +1,3 @@
-Rails.root.glob("lib/file_handlers/*.rb") { require it }
-
 module FileHandlers
   ALL_HANDLERS = FileHandlers.constants.without(:Base, :Slic3rFamily).map { FileHandlers.const_get("FileHandlers::#{it}") }.freeze
 
