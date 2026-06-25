@@ -33,7 +33,7 @@
           action: "turbo:morph@window->upload#reconnect",
           max_file_size: SiteSettings.max_file_upload_size,
           allowed_file_types: input_accept_string,
-          archive_extensions: SupportedMimeTypes.archive_extensions.join(","),
+          archive_extensions: MediaType.archive_extensions.join(","),
           upload_endpoint: upload_path
         } %>
 

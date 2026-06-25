@@ -10,7 +10,7 @@ module UploadsHelper
   end
 
   def uploadable_file_extensions
-    SupportedMimeTypes.indexable_extensions
+    MediaType.indexable_extensions
   end
 
   def input_accept_string

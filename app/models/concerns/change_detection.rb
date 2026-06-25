@@ -16,9 +16,9 @@ module ChangeDetection
     # Double-check that we only consider indexable files in the changelist
     # This is because some non-indexable files might have been added by uploading
     # (that might be a bug - or a feature)
-    changes.select! { |f| SupportedMimeTypes.indexable_extensions.include? File.extname(f).tr(".", "") }
+    changes.select! { |f| MediaType.indexable_extensions.include? File.extname(f).tr(".", "") }
     # Discard thingiverse false-positives - sometimes they add images that have model extensions.
-    patterns = SupportedMimeTypes.model_extensions.map { %r{images/[^/]*\.#{it}} }
+    patterns = MediaType.model_extensions.map { %r{images/[^/]*\.#{it}} }
     changes = changes.reject { |f| patterns.any? { f =~ it } }
     # Make a list of library-relative folders with changed files
     folders_with_changes = changes.map { |f| File.dirname(f) }.uniq

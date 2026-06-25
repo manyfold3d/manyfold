@@ -14,11 +14,11 @@ module FileMatcher
   end
 
   def self.image_pattern
-    extension_glob(SupportedMimeTypes.image_extensions)
+    extension_glob(MediaType.image_extensions)
   end
 
   def self.file_pattern
-    extension_glob(SupportedMimeTypes.indexable_extensions)
+    extension_glob(MediaType.indexable_extensions)
   end
 
   def self.common_subfolders

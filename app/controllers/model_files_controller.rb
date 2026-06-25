@@ -26,7 +26,7 @@ class ModelFilesController < ApplicationController
       respond_to do |format|
         format.html
         format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize }
-        format.any(*SupportedMimeTypes.indexable_types.map(&:to_sym)) do
+        format.any(*MediaType.indexable_types.map(&:to_sym)) do
           attachment = @file.attachment(params[:derivative]) || @file.attachment
           send_file_content attachment, derivative: params[:derivative], disposition: (params[:download] == "true") ? :attachment : :inline
         end
