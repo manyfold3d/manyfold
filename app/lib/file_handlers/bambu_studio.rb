@@ -8,6 +8,10 @@ class FileHandlers::BambuStudio < FileHandlers::Slic3rFamily
     "bambustudio"
   end
 
+  def self.icon
+    "images/external-icons/bambu_studio.png"
+  end
+
   def self.open_url_for(target, client_os: nil)
     os = client_os&.call
     if os&.family == "Mac OS X"

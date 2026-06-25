@@ -20,6 +20,10 @@ class FileHandlers::Base
       0
     end
 
+    def icon
+      nil
+    end
+
     # For test mocking only
     def input_types
       self::INPUT_TYPES

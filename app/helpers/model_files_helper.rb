@@ -40,7 +40,7 @@ module ModelFilesHelper
         content_tag(:li, role: "presentation") {
           link_to safe_join(
             [
-              app_icon_tag(name, alt: t("model_files.download.%{name}" % {name: name})),
+              app_icon_tag(handler),
               t("model_files.download.%{name}" % {name: name})
             ].compact,
             " "
@@ -56,8 +56,10 @@ module ModelFilesHelper
     handler.open_url_for(signed_url, client_os: -> { client_os })
   end
 
-  def app_icon_tag(app, alt:)
-    vite_image_tag("images/external-icons/#{app}.png", class: "app-icon", alt: alt)
+  def app_icon_tag(handler)
+    handler.icon ?
+      vite_image_tag(handler.icon, class: "app-icon", role: "presentation") :
+      Icon(icon: "window", role: "presentation")
   end
 
   def tab_title(file)

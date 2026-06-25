@@ -7,4 +7,8 @@ class FileHandlers::SuperSlicer < FileHandlers::Slic3rFamily
   def self.scheme
     "prusaslicer"
   end
+
+  def self.icon
+    "images/external-icons/super_slicer.png"
+  end
 end
