@@ -2694,10 +2694,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"driver.js@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "driver.js@npm:1.5.0"
-  checksum: b7805cab89c41d96661c394e7af8811b14bdb0a4275073fb0cc9cd15d15f7188d80898eb16e4b97d4d6e59a02b154266bf4357464449fe4cb82d90d2196f3607
+"driver.js@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "driver.js@npm:1.6.0"
+  checksum: ec0e015308c83394d8a43550ae0b2580c36a85346be1eeb4170e9dea8bea9c712c3dadbe558ccdce8ce61597acbecd6e7d6cbbc13caa07bc83e398d7fd6d3125
   languageName: node
   linkType: hard
 
@@ -4733,7 +4733,7 @@ __metadata:
     bootstrap-icons: ^1.13.1
     bootswatch: ^5.3.8
     comlink: ^4.4.2
-    driver.js: ^1.5.0
+    driver.js: ^1.6.0
     eslint: ^10.5.0
     husky: ^9.1.7
     i18n-js: ^4.5.3
