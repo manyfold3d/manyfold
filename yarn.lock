@@ -2915,15 +2915,16 @@ __metadata:
   linkType: hard
 
 "es-to-primitive@npm:^1.3.0":
-  version: 1.3.1
-  resolution: "es-to-primitive@npm:1.3.1"
+  version: 1.3.4
+  resolution: "es-to-primitive@npm:1.3.4"
   dependencies:
     es-abstract-get: ^1.0.0
+    es-define-property: ^1.0.1
     es-errors: ^1.3.0
     is-callable: ^1.2.7
     is-date-object: ^1.1.0
     is-symbol: ^1.1.1
-  checksum: 60de686fcad3169be681968f661c75f7efe7932fb01bd81ff62e53f4854b8885a067fcaa239db342a858606dae456c2d42bf255cf4f76e4f2dd1ea76161cd5ca
+  checksum: b152ec48ee2f962760751c1c181ef09d2c4483af50fbdd08c0d41004d71014c90ad4339b14d0328a14209d9ee638d13b4190aadc066f19466071cf2af5785d05
   languageName: node
   linkType: hard
 
