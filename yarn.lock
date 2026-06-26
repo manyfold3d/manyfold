@@ -29,6 +29,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/color-helpers@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "@csstools/color-helpers@npm:6.1.0"
+  checksum: a4bf332d3e661e00c6da5bdf9ee8bcd83ec7309334a766e8e40f0ad4bf39cbebe8146b6e06263ef974dfc3e577a0d1c3b4c41902da909f042937b6b7b2837786
+  languageName: node
+  linkType: hard
+
 "@csstools/css-calc@npm:^3.2.1":
   version: 3.2.1
   resolution: "@csstools/css-calc@npm:3.2.1"
@@ -595,14 +602,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-text-decoration-shorthand@npm:^5.0.3":
-  version: 5.0.3
-  resolution: "@csstools/postcss-text-decoration-shorthand@npm:5.0.3"
+  version: 5.0.4
+  resolution: "@csstools/postcss-text-decoration-shorthand@npm:5.0.4"
   dependencies:
-    "@csstools/color-helpers": ^6.0.2
+    "@csstools/color-helpers": ^6.1.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: fc07c97a698e9988f8683daef343f816a132bd672a7b633cd3c7b29c1711e6edf9d03075b944ecb2c48ce934ec7bf52a83091f4631269f2bc13ac2991e6c028e
+  checksum: 8b4e7d90a5f9ca1f37c330a47793ac023cdecc5e218ed258b89eb186eb027d2ede08c844050f1ca9b78329b1dbd670b74451dd86b7f054efdafbc2317e911b6a
   languageName: node
   linkType: hard
 
