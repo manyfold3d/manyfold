@@ -22,20 +22,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/color-helpers@npm:^6.0.2":
-  version: 6.1.0
-  resolution: "@csstools/color-helpers@npm:6.1.0"
-  checksum: a4bf332d3e661e00c6da5bdf9ee8bcd83ec7309334a766e8e40f0ad4bf39cbebe8146b6e06263ef974dfc3e577a0d1c3b4c41902da909f042937b6b7b2837786
-  languageName: node
-  linkType: hard
-
-"@csstools/color-helpers@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@csstools/color-helpers@npm:6.1.0"
-  checksum: a4bf332d3e661e00c6da5bdf9ee8bcd83ec7309334a766e8e40f0ad4bf39cbebe8146b6e06263ef974dfc3e577a0d1c3b4c41902da909f042937b6b7b2837786
-  languageName: node
-  linkType: hard
-
 "@csstools/color-helpers@npm:^6.1.0":
   version: 6.1.0
   resolution: "@csstools/color-helpers@npm:6.1.0"

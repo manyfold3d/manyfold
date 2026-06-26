@@ -72,6 +72,12 @@ group :development, :test do
   gem "capybara"
   gem "capybara-screenshot", github: "el-cms/capybara-screenshot", branch: "custom-prefixes"
   gem "selenium-webdriver"
+
+  # Documentation
+  gem "yard-activerecord", "~> 0.0.17"
+  gem "yard-activesupport-concern", "~> 0.0.1"
+  gem "yard-lint", "~> 1.8"
+  gem "rubocop-yard", "~> 1.2"
 end
 
 group :development do
@@ -218,8 +224,6 @@ gem "csv", "~> 3.3"
 gem "arel_extensions", "~> 2.4"
 
 gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
-
-gem "yard-lint", "~> 1.8", group: :development
 
 gem "zaru", "~> 1.1"
 
