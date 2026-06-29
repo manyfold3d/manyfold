@@ -5551,15 +5551,15 @@ __metadata:
   linkType: hard
 
 "postcss-double-position-gradients@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "postcss-double-position-gradients@npm:7.0.1"
+  version: 7.0.2
+  resolution: "postcss-double-position-gradients@npm:7.0.2"
   dependencies:
-    "@csstools/postcss-progressive-custom-properties": ^5.1.0
+    "@csstools/postcss-progressive-custom-properties": ^5.1.1
     "@csstools/utilities": ^3.0.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 60649fbfb68547000908257a8e7c98c77faafd3b50c77972df24205167e21aa110f2ae27e92a1b76d914d19cb5487fff57f76cc7fe4070875f2e0a7df33ac1b7
+  checksum: e08d438c6f85c5dc89d4a1187634bbce87e103f6a73d3ade127037919ce525eeb96d9a336b34f842850bba9372da58e60bede23bbdf86783f2a77658d6c6e79f
   languageName: node
   linkType: hard
 
