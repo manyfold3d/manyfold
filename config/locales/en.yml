@@ -1093,6 +1093,8 @@ en:
           links: Links
           name: Name
           version: Version
+        removal_instructions: At the moment, plugin removal is manual. To remove a plugin, delete the plugin folder from the plugins directory and restart Manyfold.
+        remove: Remove a plugin
         title: Plugins
     print_hosts:
       edit:

@@ -28,6 +28,8 @@ ja:
           links:
           name:
           version:
+        removal_instructions:
+        remove:
         title:
     print_hosts:
       form:

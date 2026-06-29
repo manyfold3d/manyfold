@@ -10,6 +10,7 @@ module Views::Plugins
       h3 { t("views.plugins.index.title") }
       p { t("views.plugins.index.description_html", url: "https://manyfold.app/technology/plugins") }
       plugin_table
+      remove_plugin
     end
 
     private
@@ -42,6 +43,12 @@ module Views::Plugins
           end
         end
       end
+    end
+
+    def remove_plugin
+      hr
+      h4 { t("views.plugins.index.remove") }s
+      p { t("views.plugins.index.removal_instructions") }
     end
   end
 end
