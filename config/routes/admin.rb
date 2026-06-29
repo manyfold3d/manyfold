@@ -10,6 +10,7 @@ authenticate :user, lambda { |u| u.is_administrator? } do
       get :integrations
     end
     resources :libraries, only: [:index]
+    resources :plugins, only: [:index]
   end
   mount Sidekiq::Web => "/admin/sidekiq"
   mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?

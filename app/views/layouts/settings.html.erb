@@ -26,6 +26,9 @@
         <li class="nav-item">
           <%= link_to t("settings.multiuser.heading"), multiuser_settings_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to t("views.plugins.index.title"), settings_plugins_path, class: "nav-link" %>
+        </li>
       <% end %>
     </ul>
     <% if SiteSettings.multiuser_enabled? %>
