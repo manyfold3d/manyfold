@@ -15,7 +15,7 @@ Rails.autoloaders.main.push_dir(
   Rails.root.join("app/components"), namespace: Components
 )
 
-PLUGINS.each do
+PLUGINS.keys.each do
   plugin_component_dir = Rails.root.join("plugins/#{it}/app/components")
   Rails.autoloaders.main.push_dir(plugin_component_dir, namespace: Components) if plugin_component_dir.exist?
   plugin_view_dir = Rails.root.join("plugins/#{it}/app/views")

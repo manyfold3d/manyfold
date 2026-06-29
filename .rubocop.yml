@@ -34,6 +34,7 @@ I18n/RailsI18n:
   Exclude:
     - "spec/**/*"
     - "app/lib/cli/**/*"
+    - "**/*.gemspec"
 Rails/Output:
   Exclude:
     - "app/lib/cli/**/*"

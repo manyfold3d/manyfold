@@ -1081,6 +1081,19 @@ en:
       next: Next ›
       previous: "‹ Prev"
       truncate: "…"
+    plugins:
+      index:
+        description_html: Plugins are optional components that allow you to add additional features to Manyfold. See the <a href="%{url}">documentation</a> for details.
+        homepage: Homepage
+        no_plugins: No plugins installed!
+        plugin:
+          active: Active
+          authors: Authors
+          description: Description
+          links: Links
+          name: Name
+          version: Version
+        title: Plugins
     print_hosts:
       edit:
         title: Edit Printer
