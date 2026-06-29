@@ -299,16 +299,16 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-image-function@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@csstools/postcss-image-function@npm:1.0.0"
+  version: 1.0.1
+  resolution: "@csstools/postcss-image-function@npm:1.0.1"
   dependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.0
+    "@csstools/postcss-progressive-custom-properties": ^5.1.1
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: eb87af1b3157c9eaf312a7cd0d9165b28f9af4d46c77cb8886c5ac4e5949cfb12e47286dfd1a18920513a5d0a6cb8fdb95475da38882b5423180da333bb769d2
+  checksum: 3c02b5d75cc62422bfe76568f0aec33859bb77598ee37cc72d3836575334a38e5a4ddcb84d3ebb9f31390afc71c99d4155b5e1b075154c4abc735236c54e091a
   languageName: node
   linkType: hard
 
