@@ -77,7 +77,7 @@ group :development, :test do
   gem "yard-activerecord", "~> 0.0.17"
   gem "yard-activesupport-concern", "~> 0.0.1"
   gem "yard-lint", "~> 1.8"
-  gem "rubocop-yard", "~> 1.2"
+  gem "rubocop-yard", "~> 1.3"
 end
 
 group :development do
