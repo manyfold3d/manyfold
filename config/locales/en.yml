@@ -944,6 +944,7 @@ en:
       organization: Organization
       performance: Performance Dashboard
       pghero: PgHero
+      restart_required: Server restart required in order to apply configuration changes!
       search_heading: Search & Discovery
       sidekiq: Sidekiq
       site_settings_title: Site Settings

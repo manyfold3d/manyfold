@@ -11,6 +11,9 @@ de:
         one:
         other:
       weak_password:
+  layouts:
+    settings:
+      restart_required:
   print_hosts:
     protocols:
       odyssey: Odyssee
