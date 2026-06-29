@@ -10,6 +10,7 @@ module Views::Plugins
       h3 { t("views.plugins.index.title") }
       p { t("views.plugins.index.description_html", url: "https://manyfold.app/technology/plugins") }
       plugin_table
+      add_plugin
       remove_plugin
     end
 
@@ -42,6 +43,15 @@ module Views::Plugins
             td { a(href: plugin.homepage) { Icon(icon: "house-fill", label: t("views.plugins.index.homepage")) } }
           end
         end
+      end
+    end
+
+    def add_plugin
+      hr
+      if PluginManager.can_install_plugins?
+        h4 { t("views.plugins.index.install") }
+      else
+        div(class: "alert alert-warning") { t("views.plugins.index.can_not_install_html", url: "https://manyfold.app/sysadmin/plugins") }
       end
     end
 

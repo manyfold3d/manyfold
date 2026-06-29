@@ -18,8 +18,10 @@ de:
   views:
     plugins:
       index:
+        can_not_install_html:
         description_html:
         homepage:
+        install:
         no_plugins:
         plugin:
           active:

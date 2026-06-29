@@ -1083,8 +1083,10 @@ en:
       truncate: "…"
     plugins:
       index:
+        can_not_install_html: Plugin folder is not writable; can't install plugins! See the <a href="%{url}">plugin installation guide</a> for instructions.
         description_html: Plugins are optional components that allow you to add additional features to Manyfold. See the <a href="%{url}">documentation</a> for details.
         homepage: Homepage
+        install: Install a new plugin
         no_plugins: No plugins installed!
         plugin:
           active: Active
