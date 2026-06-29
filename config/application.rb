@@ -21,20 +21,19 @@ require "rack/contrib"
 Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
 # Require any engines inside plugins folder
-plugin_folders = Dir.glob(File.expand_path("../plugins/*", __dir__))
-  .select { FileTest.directory? it }
-  .map { File.split(it).last }.freeze
-
 PLUGINS = {}
+Dir.glob(File.expand_path("../plugins/*/*.gemspec", __dir__)).each do |gemspec|
+  directory = File.dirname(gemspec)
+  plugin_key = File.basename(gemspec, ".*")
 
-plugin_folders.each do |plugin|
   # Load metadata
-  PLUGINS[plugin] = Gem::Specification.load(File.expand_path("../plugins/#{plugin}/#{plugin}.gemspec", __dir__).to_s)
+  PLUGINS[plugin_key] = Gem::Specification.load(gemspec.to_s)
+  PLUGINS[plugin_key].metadata = {path: directory}
   # Add to load path
-  $: << File.expand_path("../plugins/#{plugin}", __dir__)
-  $: << File.expand_path("../plugins/#{plugin}/lib", __dir__)
+  $: << directory
+  $: << File.join(directory, "lib")
   # Require the actual plugin
-  require plugin
+  require plugin_key
 end
 
 module Manyfold

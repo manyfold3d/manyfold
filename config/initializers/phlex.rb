@@ -15,9 +15,9 @@ Rails.autoloaders.main.push_dir(
   Rails.root.join("app/components"), namespace: Components
 )
 
-PLUGINS.keys.each do
-  plugin_component_dir = Rails.root.join("plugins/#{it}/app/components")
-  Rails.autoloaders.main.push_dir(plugin_component_dir, namespace: Components) if plugin_component_dir.exist?
-  plugin_view_dir = Rails.root.join("plugins/#{it}/app/views")
-  Rails.autoloaders.main.push_dir(plugin_view_dir, namespace: Views) if plugin_view_dir.exist?
+PLUGINS.each do |key, gemspec|
+  plugin_component_dir = "#{gemspec.metadata[:path]}/app/components"
+  Rails.autoloaders.main.push_dir(plugin_component_dir, namespace: Components) if Dir.exist?(plugin_component_dir)
+  plugin_view_dir = "#{gemspec.metadata[:path]}/app/views"
+  Rails.autoloaders.main.push_dir(plugin_view_dir, namespace: Views) if Dir.exist?(plugin_view_dir)
 end
