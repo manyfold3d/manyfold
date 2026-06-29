@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.1.7":
+"@csstools/css-color-parser@npm:^4.1.7, @csstools/css-color-parser@npm:^4.1.9":
   version: 4.1.9
   resolution: "@csstools/css-color-parser@npm:4.1.9"
   dependencies:
@@ -491,6 +491,17 @@ __metadata:
   peerDependencies:
     postcss: ^8.4
   checksum: 683290ea46e82994599016867b1e5d4b032f26c226a02bc0abbf441b45336e20ef579c803873d76dd42d7b71afcd8250f1d7cac78b54733e773ebfd64813fba5
+  languageName: node
+  linkType: hard
+
+"@csstools/postcss-progressive-custom-properties@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "@csstools/postcss-progressive-custom-properties@npm:5.1.1"
+  dependencies:
+    postcss-value-parser: ^4.2.0
+  peerDependencies:
+    postcss: ^8.4
+  checksum: d7dd81374b1a6272b64cdd2a2b011ee0ad30a33b95ff3e723b1ad97e141432dc8ff7ae40f7a431496718a7b62fa15fdf7f8e359c9e822867f97661ae64c27a03
   languageName: node
   linkType: hard
 
@@ -5447,17 +5458,17 @@ __metadata:
   linkType: hard
 
 "postcss-color-functional-notation@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "postcss-color-functional-notation@npm:8.0.5"
+  version: 8.0.6
+  resolution: "postcss-color-functional-notation@npm:8.0.6"
   dependencies:
-    "@csstools/css-color-parser": ^4.1.7
+    "@csstools/css-color-parser": ^4.1.9
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.0
+    "@csstools/postcss-progressive-custom-properties": ^5.1.1
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 29d278c620337053cc81a038e62d636396334b115ad518eb7122123009409f9bb65aa834c6fb4c9b03e0b41ae5cd03aaae839ae3612d2b404caebea1bb50fe35
+  checksum: 11df05d62b13f918f849eb1a3cf36c0e2082198ee5b21a2bea941e764751a2ab6f6bbef605655831cd0b1cb97dad13766b506bd7257b5416b61ba6efa2106aef
   languageName: node
   linkType: hard
 
