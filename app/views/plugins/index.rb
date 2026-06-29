@@ -48,16 +48,24 @@ module Views::Plugins
 
     def add_plugin
       hr
+      h4 { t("views.plugins.index.install.title") }
+      p { t("views.plugins.index.install.instructions") }
       if PluginManager.can_install_plugins?
-        h4 { t("views.plugins.index.install") }
+        div(class: "alert alert-warning") { t("views.plugins.index.install.warning") }
+        form action: settings_plugins_path, method: :post do
+          div class: "input-group" do
+            input name: "file", type: :file, class: "form-control", accept: ".zip,application/zip"
+            input type: :submit, class: "btn btn-secondary", value: translate("views.plugins.index.install.button")
+          end
+        end
       else
-        div(class: "alert alert-warning") { t("views.plugins.index.can_not_install_html", url: "https://manyfold.app/sysadmin/plugins") }
+        div(class: "alert alert-danger") { t("views.plugins.index.install.error_html", url: "https://manyfold.app/sysadmin/plugins") }
       end
     end
 
     def remove_plugin
       hr
-      h4 { t("views.plugins.index.remove") }s
+      h4 { t("views.plugins.index.remove") }
       p { t("views.plugins.index.removal_instructions") }
     end
   end

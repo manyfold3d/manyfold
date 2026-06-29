@@ -18,10 +18,14 @@ zh-CN:
   views:
     plugins:
       index:
-        can_not_install_html:
         description_html:
         homepage:
         install:
+          button:
+          error_html:
+          instructions:
+          title:
+          warning:
         no_plugins:
         plugin:
           active:

@@ -1083,10 +1083,14 @@ en:
       truncate: "…"
     plugins:
       index:
-        can_not_install_html: Plugin folder is not writable; can't install plugins! See the <a href="%{url}">plugin installation guide</a> for instructions.
         description_html: Plugins are optional components that allow you to add additional features to Manyfold. See the <a href="%{url}">documentation</a> for details.
         homepage: Homepage
-        install: Install a new plugin
+        install:
+          button: Install
+          error_html: Plugin folder is not writable; can't install plugins! See the <a href="%{url}">plugin installation guide</a> for details of how to fix this.
+          instructions: Install a new plugin by downloading the plugin zipfile, and uploading it here. You will need to restart your Manyfold server after uploading for installation to be completed.
+          title: Install a new plugin
+          warning: Plugins can access your entire Manyfold instance and all its data! Make sure you trust what you're installing!
         no_plugins: No plugins installed!
         plugin:
           active: Active
