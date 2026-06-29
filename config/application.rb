@@ -21,13 +21,19 @@ require "rack/contrib"
 Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
 # Require any engines inside plugins folder
-PLUGINS = Dir.glob(File.expand_path("../plugins/*", __dir__))
+plugin_folders = Dir.glob(File.expand_path("../plugins/*", __dir__))
   .select { FileTest.directory? it }
   .map { File.split(it).last }.freeze
 
-PLUGINS.each do |plugin|
+PLUGINS = {}
+
+plugin_folders.each do |plugin|
+  # Load metadata
+  PLUGINS[plugin] = Gem::Specification.load(File.expand_path("../plugins/#{plugin}/#{plugin}.gemspec", __dir__).to_s)
+  # Add to load path
   $: << File.expand_path("../plugins/#{plugin}", __dir__)
   $: << File.expand_path("../plugins/#{plugin}/lib", __dir__)
+  # Require the actual plugin
   require plugin
 end
 
@@ -51,7 +57,7 @@ module Manyfold
 
     config.autoload_once_paths << "#{root}/app/lib"
 
-    PLUGINS.each do |plugin|
+    PLUGINS.keys.each do |plugin|
       initializer "#{plugin}.add_routing_paths" do |app|
         app.routes.append do
           mount Object.const_get("#{plugin.classify}::Engine") => "/#{plugin}"
