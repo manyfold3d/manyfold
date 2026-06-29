@@ -13,7 +13,7 @@
           <code><%= sanitize file.filename %></code>
           <%- alts = file.alternative_formats %>
           <% if alts.any? %> +
-            <%= safe_join(alts.map(&:extension).map { content_tag(:code) { it.upcase } }, ", ") %>
+            <%= safe_join(alts.filter_map(&:extension).uniq.map { content_tag(:code) { it.upcase } }, ", ") %>
           <% end %>
         </small>
       </div>
