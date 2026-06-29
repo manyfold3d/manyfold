@@ -272,7 +272,7 @@ class Model < ApplicationRecord
   end
 
   def file_extensions
-    model_files.map(&:extension).uniq
+    model_files.map(&:extension).uniq.compact
   end
 
   def size_on_disk
