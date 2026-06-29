@@ -36,7 +36,7 @@
             </li>
           <% end %>
         <% end %>
-        <% PluginHooks.components_for(:navbar).each do %>
+        <% PluginManager.components_for(:navbar).each do %>
           <li class="nav-item" role="presentation">
             <%= render it.new %>
           </li>

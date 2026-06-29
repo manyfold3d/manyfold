@@ -1,4 +1,4 @@
-class PluginHooks
+class PluginManager
   include Singleton
 
   def initialize
@@ -17,6 +17,11 @@ class PluginHooks
   # @param hook [Symbol] The name of the hook
   def self.components_for(hook)
     instance.send(:components_for, hook)
+  end
+
+  # Check whether we can self-install plugins
+  def self.can_install_plugins?
+    Rails.root.join("plugins").writable?
   end
 
   private
