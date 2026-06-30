@@ -37,7 +37,7 @@ de:
       edit: Dateiinformationen bearbeiten
     print:
       confirm: Bist du sicher, dass diese Datei korrekt für deinen Drucker eingerichtet ist? Manyfold überprüft nicht, was du sendest!
-      link: Drucken mit %{print_host_name}
+      link: An %{print_host_name} senden
     relationship_fields:
       delete: Beziehung entfernen
       edit_related: Zugehörige Datei bearbeiten

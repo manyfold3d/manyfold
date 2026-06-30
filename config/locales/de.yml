@@ -1005,10 +1005,10 @@ de:
     print:
       sent: Datei an den Drucker gesendet
     protocols:
-      moonraker: Moonraker / Klipper
+      moonraker: Klipper (Moonraker)
       octoprint: Octoprint
       odyssey: Odyssee
-      prusalink:
+      prusalink: PrusaLink
     update:
       success: Drucker wurde erfolgreich angelegt
   renderer:
@@ -1088,25 +1088,25 @@ de:
       truncate: "…"
     plugins:
       index:
-        description_html:
-        homepage:
+        description_html: Plugins sind optionale Komponenten, mit denen du Manyfold um zusätzliche Funktionen erweitern kannst. Weitere Informationen findest du in der <a href="%{url}">Dokumentation</a>.
+        homepage: Homepage
         install:
           button:
           error_html:
           instructions:
           title:
           warning:
-        no_plugins:
+        no_plugins: Es sind keine Plugins installiert!
         plugin:
-          active:
-          authors:
-          description:
-          links:
-          name:
-          version:
+          active: Aktiv
+          authors: Autoren
+          description: Beschreibung
+          links: URLs
+          name: Name
+          version: Version
         removal_instructions:
         remove:
-        title:
+        title: Plugins
     print_hosts:
       edit:
         title: Drucker bearbeiten
