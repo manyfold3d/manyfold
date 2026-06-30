@@ -1085,7 +1085,7 @@ nl:
     plugins:
       index:
         description_html:
-        homepage:
+        homepage: Startpagina
         install:
           button:
           error_html:
@@ -1096,10 +1096,10 @@ nl:
         plugin:
           active:
           authors:
-          description:
-          links:
-          name:
-          version:
+          description: Beschrijving
+          links: Links
+          name: Naam
+          version: Versie
         removal_instructions:
         remove:
         title:
