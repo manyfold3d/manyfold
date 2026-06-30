@@ -12,7 +12,7 @@ module Views::Plugins
 
     def view_template
       h3 { t("views.plugins.index.title") }
-      p { t("views.plugins.index.description_html", url: "https://manyfold.app/technology/plugins") }
+      p { t("views.plugins.index.description_html", url: "https://manyfold.app/sysadmin/plugins") }
       plugin_table
       add_plugin
       remove_plugin
