@@ -1084,25 +1084,25 @@ es:
       truncate: "…"
     plugins:
       index:
-        description_html:
-        homepage:
+        description_html: Los complementos son componentes opcionales que te permiten añadir funciones adicionales a Manyfold. Consulta la <a href="%{url}">documentación</a> para obtener más información.
+        homepage: Inicio
         install:
           button:
           error_html:
           instructions:
           title:
           warning:
-        no_plugins:
+        no_plugins: "¡No hay complementos instalados!"
         plugin:
-          active:
-          authors:
-          description:
-          links:
-          name:
-          version:
+          active: Activo
+          authors: Autores
+          description: Descripción
+          links: Enlaces
+          name: Nombre
+          version: Versión
         removal_instructions:
         remove:
-        title:
+        title: Complementos
     print_hosts:
       edit:
         title: Editar impresora
