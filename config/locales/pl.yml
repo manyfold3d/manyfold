@@ -1085,7 +1085,7 @@ pl:
     plugins:
       index:
         description_html:
-        homepage:
+        homepage: Strona główna
         install:
           button:
           error_html:
@@ -1096,10 +1096,10 @@ pl:
         plugin:
           active:
           authors:
-          description:
-          links:
-          name:
-          version:
+          description: Opis
+          links: Linki
+          name: Nazwa
+          version: Wersja
         removal_instructions:
         remove:
         title:
