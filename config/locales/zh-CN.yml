@@ -1085,7 +1085,7 @@ zh-CN:
     plugins:
       index:
         description_html:
-        homepage:
+        homepage: 主页
         install:
           button:
           error_html:
@@ -1096,10 +1096,10 @@ zh-CN:
         plugin:
           active:
           authors:
-          description:
-          links:
-          name:
-          version:
+          description: 说明
+          links: 链接
+          name: 名称
+          version: 版本
         removal_instructions:
         remove:
         title:
