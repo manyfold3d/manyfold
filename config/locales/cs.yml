@@ -1085,7 +1085,7 @@ cs:
     plugins:
       index:
         description_html:
-        homepage:
+        homepage: Domovská stránka
         install:
           button:
           error_html:
@@ -1096,10 +1096,10 @@ cs:
         plugin:
           active:
           authors:
-          description:
-          links:
-          name:
-          version:
+          description: Popis
+          links: Odkazy
+          name: Jméno
+          version: Verze
         removal_instructions:
         remove:
         title:
