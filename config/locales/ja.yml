@@ -1085,7 +1085,7 @@ ja:
     plugins:
       index:
         description_html:
-        homepage:
+        homepage: ホームページ
         install:
           button:
           error_html:
@@ -1096,10 +1096,10 @@ ja:
         plugin:
           active:
           authors:
-          description:
-          links:
-          name:
-          version:
+          description: ノート
+          links: リンク
+          name: 名前
+          version: バージョン
         removal_instructions:
         remove:
         title:
