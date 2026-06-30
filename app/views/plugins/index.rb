@@ -2,6 +2,10 @@
 
 module Views::Plugins
   class Index < Views::Base
+    include Phlex::Rails::Helpers::FormTag
+    include Phlex::Rails::Helpers::FileFieldTag
+    include Phlex::Rails::Helpers::SubmitTag
+
     def initialize(plugins:)
       @plugins = plugins
     end
@@ -52,10 +56,10 @@ module Views::Plugins
       p { t("views.plugins.index.install.instructions") }
       if PluginManager.can_install_plugins?
         div(class: "alert alert-warning") { t("views.plugins.index.install.warning") }
-        form action: settings_plugins_path, method: :post do
+        form_tag(settings_plugins_path, multipart: true) do |f|
           div class: "input-group" do
-            input name: "file", type: :file, class: "form-control", accept: ".zip,application/zip"
-            input type: :submit, class: "btn btn-secondary", value: translate("views.plugins.index.install.button")
+            f.file_field_tag "plugin_file", class: "form-control", accept: ".zip,application/zip"
+            f.submit_tag translate("views.plugins.index.install.button"), class: "btn btn-secondary"
           end
         end
       else
