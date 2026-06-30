@@ -139,6 +139,11 @@
           <%= DropdownDivider() %>
           <%= DropdownItem(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>
           <%= DropdownItem(icon: "radar", label: t(".rescan"), path: scan_model_path(@model), method: :post) if policy(@model).scan? %>
+          <% PluginManager.components_for(:model_menu).each do %>
+            <li role="presentation">
+              <%= render it.new(model: @model) %>
+            </li>
+          <% end %>
           <%= DropdownDivider() %>
           <%= DropdownItem(icon: "flag", label: translate("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled? %>
         <% end %>
