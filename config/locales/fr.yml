@@ -1087,7 +1087,7 @@ fr:
     plugins:
       index:
         description_html:
-        homepage:
+        homepage: Page d'accueil
         install:
           button:
           error_html:
@@ -1096,12 +1096,12 @@ fr:
           warning:
         no_plugins:
         plugin:
-          active:
+          active: Actif
           authors:
-          description:
-          links:
-          name:
-          version:
+          description: Description
+          links: Liens
+          name: Nom
+          version: Version
         removal_instructions:
         remove:
         title:
