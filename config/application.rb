@@ -59,7 +59,7 @@ module Manyfold
     PLUGINS.keys.each do |plugin|
       initializer "#{plugin}.add_routing_paths" do |app|
         app.routes.append do
-          mount Object.const_get("#{plugin.classify}::Engine") => "/#{plugin}"
+          mount Object.const_get("#{plugin.camelize}::Engine") => "/#{plugin}"
         end
       end
     end
