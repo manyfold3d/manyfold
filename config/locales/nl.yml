@@ -11,6 +11,9 @@ nl:
         one: '1 fout verhinderde dat deze %{resource} werd opgeslagen:'
         other: "%{count} fouten verhinderden dat deze %{resource} werd opgeslagen:"
       weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
+  layouts:
+    settings:
+      restart_required:
   print_hosts:
     protocols:
       odyssey:
@@ -20,6 +23,12 @@ nl:
       index:
         description_html:
         homepage:
+        install:
+          button:
+          error_html:
+          instructions:
+          title:
+          warning:
         no_plugins:
         plugin:
           active:
@@ -28,6 +37,8 @@ nl:
           links:
           name:
           version:
+        removal_instructions:
+        remove:
         title:
     print_hosts:
       form:

@@ -11,6 +11,9 @@ cs:
         one:
         other:
       weak_password:
+  layouts:
+    settings:
+      restart_required:
   print_hosts:
     protocols:
       odyssey:
@@ -20,6 +23,12 @@ cs:
       index:
         description_html:
         homepage:
+        install:
+          button:
+          error_html:
+          instructions:
+          title:
+          warning:
         no_plugins:
         plugin:
           active:
@@ -28,6 +37,8 @@ cs:
           links:
           name:
           version:
+        removal_instructions:
+        remove:
         title:
     print_hosts:
       form:

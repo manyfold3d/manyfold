@@ -4,6 +4,11 @@
 <% elsif policy(:user).index? %>
   <%= PageTitle title: t(".moderation_settings_title") %>
 <% end %>
+<% if Rails.cache.read("restart_required") %>
+  <div class="alert alert-danger">
+    <%= t(".restart_required") %>
+  </div>
+<% end %>
 <div class="row mt-2 flex-nowrap">
   <div class="col col-auto border-end" id="sidebar">
     <ul class="nav flex-column">
