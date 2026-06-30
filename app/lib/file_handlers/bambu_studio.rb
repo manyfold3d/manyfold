@@ -12,12 +12,12 @@ class FileHandlers::BambuStudio < FileHandlers::Slic3rFamily
     "images/external-icons/bambu_studio.png"
   end
 
-  def self.open_url_for(target, client_os: nil)
+  def self.open_url_for(file, client_os: nil)
     os = client_os&.call
     if os&.family == "Mac OS X"
       URI::Generic.new(
         "bambustudioopen", nil,
-        CGI.escapeURIComponent(target), nil, nil, nil, nil,
+        CGI.escapeURIComponent(signed_url_for(file)), nil, nil, nil, nil,
         nil, nil
       ).to_s
     else
