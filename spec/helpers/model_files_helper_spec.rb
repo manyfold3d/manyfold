@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ModelFilesHelper do
   describe "#app_url" do
     let(:file) { create(:model_file, filename: "model.stl") }
-    let(:slic3r_family_regex) { "://open\\?file=http%3A%2F%2Ftest.host%2Fmodels%2F#{file.model.to_param}%2Fmodel_files%2Fsigned%2Fey[0-9a-zA-Z-]+%2F#{file.filename}" }
+    let(:slic3r_family_regex) { "://open\\?file=http%3A%2F%2Flocalhost%3A3214%2Fmodels%2F#{file.model.to_param}%2Fmodel_files%2Fsigned%2Fey[0-9a-zA-Z-]+%2F#{file.filename}" }
 
     it "generates orcaslicer links" do
       url = helper.app_url(FileHandlers::OrcaSlicer, file)
@@ -38,7 +38,7 @@ RSpec.describe ModelFilesHelper do
 
     it "generates lychee links" do
       url = helper.app_url(FileHandlers::Lychee, file)
-      expect(url).to match(/lycheeslicer:\/\/open\/http%3A%2F%2Ftest.host%2Fmodels%2F#{file.model.to_param}%2Fmodel_files%2Fsigned%2Fey[0-9a-zA-Z-]+%2F#{file.filename}/)
+      expect(url).to match(/lycheeslicer:\/\/open\/http%3A%2F%2Flocalhost%3A3214%2Fmodels%2F#{file.model.to_param}%2Fmodel_files%2Fsigned%2Fey[0-9a-zA-Z-]+%2F#{file.filename}/)
     end
   end
 end
