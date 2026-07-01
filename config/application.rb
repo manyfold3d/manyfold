@@ -38,8 +38,8 @@ module Manyfold
         # Load metadata
         spec = Gem::Specification.load(gemspec.to_s)
         if spec.metadata["manyfold_version"]
-          PluginManager::PLUGINS[plugin_key] = spec
-          PluginManager::PLUGINS[plugin_key].metadata[:path] = directory
+          spec.metadata[:path] = directory
+          PluginManager.add(plugin_key, spec)
           # Add to load path
           $: << directory
           $: << File.join(directory, "lib")

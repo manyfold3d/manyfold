@@ -1,5 +1,5 @@
 Rails.application.config.before_initialize do
-  PluginManager::PLUGINS.each_pair do |key, gemspec|
+  PluginManager.all.each_pair do |key, gemspec|
     plugin_component_dir = "#{gemspec.metadata[:path]}/app/components"
     Rails.autoloaders.main.push_dir(plugin_component_dir, namespace: Components) if Dir.exist?(plugin_component_dir)
     plugin_view_dir = "#{gemspec.metadata[:path]}/app/views"

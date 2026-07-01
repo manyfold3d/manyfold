@@ -7,6 +7,14 @@ class PluginManager
     @hooks = {}
   end
 
+  def self.add(key, spec)
+    PLUGINS[key] = spec
+  end
+
+  def self.all
+    PLUGINS
+  end
+
   # Register a plugin to a specific hook
   # When the hook is called in the main application IO, the component will be rendered.
   # @param hook [Symbol] The name of the hook to attach the component to
