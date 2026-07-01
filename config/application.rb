@@ -29,24 +29,8 @@ module Manyfold
     config.load_defaults 8.0
 
     config.before_configuration do
-      # Require any engines inside plugins folder
-      plugins_path = ENV.fetch("PLUGINS_PATH", File.expand_path("../plugins", __dir__))
-      Dir.glob(File.join(plugins_path, "*/*.gemspec")).each do |gemspec|
-        directory = File.dirname(gemspec)
-        plugin_key = File.basename(gemspec, ".*")
-
-        # Load metadata
-        spec = Gem::Specification.load(gemspec.to_s)
-        if spec.metadata["manyfold_version"]
-          spec.metadata[:path] = directory
-          PluginManager.add(plugin_key, spec)
-          # Add to load path
-          $: << directory
-          $: << File.join(directory, "lib")
-          # Require the actual plugin
-          require plugin_key
-        end
-      end
+      PluginManager.load!
+      PluginManager.require!
     end
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
