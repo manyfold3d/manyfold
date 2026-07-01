@@ -27,13 +27,16 @@ Dir.glob(File.expand_path("../plugins/*/*.gemspec", __dir__)).each do |gemspec|
   plugin_key = File.basename(gemspec, ".*")
 
   # Load metadata
-  PLUGINS[plugin_key] = Gem::Specification.load(gemspec.to_s)
-  PLUGINS[plugin_key].metadata = {path: directory}
-  # Add to load path
-  $: << directory
-  $: << File.join(directory, "lib")
-  # Require the actual plugin
-  require plugin_key
+  spec = Gem::Specification.load(gemspec.to_s)
+  if spec.metadata["manyfold_version"]
+    PLUGINS[plugin_key] = spec
+    PLUGINS[plugin_key].metadata[:path] = directory
+    # Add to load path
+    $: << directory
+    $: << File.join(directory, "lib")
+    # Require the actual plugin
+    require plugin_key
+  end
 end
 
 module Manyfold
