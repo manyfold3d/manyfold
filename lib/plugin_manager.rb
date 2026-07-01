@@ -12,6 +12,12 @@ class PluginManager
     instance.plugins[key] = spec
   end
 
+  def self.each
+    instance.plugins.each_pair do |name, metadata|
+      yield name, metadata
+    end
+  end
+
   def self.all
     instance.plugins
   end
