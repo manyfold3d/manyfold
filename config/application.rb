@@ -22,7 +22,8 @@ Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
 # Require any engines inside plugins folder
 PLUGINS = {}
-Dir.glob(File.expand_path("../plugins/*/*.gemspec", __dir__)).each do |gemspec|
+plugins_path = ENV.fetch("PLUGINS_PATH", File.expand_path("../plugins", __dir__))
+Dir.glob(File.join(plugins_path, "*/*.gemspec")).each do |gemspec|
   directory = File.dirname(gemspec)
   plugin_key = File.basename(gemspec, ".*")
 
