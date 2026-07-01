@@ -1,18 +1,19 @@
 class PluginManager
   include Singleton
 
-  PLUGINS = {}
+  attr_accessor :plugins
 
   def initialize
+    @plugins = {}
     @hooks = {}
   end
 
   def self.add(key, spec)
-    PLUGINS[key] = spec
+    instance.plugins[key] = spec
   end
 
   def self.all
-    PLUGINS
+    instance.plugins
   end
 
   # Register a plugin to a specific hook
