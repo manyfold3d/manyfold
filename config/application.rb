@@ -60,14 +60,6 @@ module Manyfold
 
     config.autoload_once_paths << "#{root}/app/lib"
 
-    PLUGINS.keys.each do |plugin|
-      initializer "#{plugin}.add_routing_paths" do |app|
-        app.routes.append do
-          mount Object.const_get("#{plugin.camelize}::Engine") => "/#{plugin}"
-        end
-      end
-    end
-
     # Load locale files in nested folders as well as locale root
     config.i18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
     config.i18n.fallbacks = true

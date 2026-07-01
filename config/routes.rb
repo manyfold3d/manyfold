@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   draw(:upload)
   draw(:print)
   draw(:api)
+  draw(:plugins)
 
   resources :libraries, except: [:index] do
     collection do
