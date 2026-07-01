@@ -1,8 +1,31 @@
 class PluginManager
   include Singleton
 
+  attr_accessor :plugins
+
   def initialize
+    @plugins = {}
     @hooks = {}
+  end
+
+  def self.load!
+    instance.send :load!
+  end
+
+  def self.require!
+    each do |name, metadata|
+      require name
+    end
+  end
+
+  def self.each
+    instance.plugins.each_pair do |name, metadata|
+      yield name, metadata
+    end
+  end
+
+  def self.all
+    instance.plugins
   end
 
   # Register a plugin to a specific hook
@@ -25,6 +48,25 @@ class PluginManager
   end
 
   private
+
+  def load!
+    # Require any engines inside plugins folder
+    plugins_path = ENV.fetch("PLUGINS_PATH", File.expand_path("../plugins", __dir__))
+    Dir.glob(File.join(plugins_path, "*/*.gemspec")).each do |gemspec|
+      directory = File.dirname(gemspec)
+      plugin_key = File.basename(gemspec, ".*")
+
+      # Load metadata
+      spec = Gem::Specification.load(gemspec.to_s)
+      if spec.metadata["manyfold_version"]
+        spec.metadata[:path] = directory
+        @plugins[plugin_key] = spec
+        # Add to load path
+        $: << directory
+        $: << File.join(directory, "lib")
+      end
+    end
+  end
 
   def register(hook, component)
     @hooks[hook] ||= []

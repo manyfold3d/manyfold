@@ -20,30 +20,18 @@ require "rack/contrib"
 # you've limited to :test, :development, or :production.
 Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
-# Require any engines inside plugins folder
-PLUGINS = {}
-plugins_path = ENV.fetch("PLUGINS_PATH", File.expand_path("../plugins", __dir__))
-Dir.glob(File.join(plugins_path, "*/*.gemspec")).each do |gemspec|
-  directory = File.dirname(gemspec)
-  plugin_key = File.basename(gemspec, ".*")
-
-  # Load metadata
-  spec = Gem::Specification.load(gemspec.to_s)
-  if spec.metadata["manyfold_version"]
-    PLUGINS[plugin_key] = spec
-    PLUGINS[plugin_key].metadata[:path] = directory
-    # Add to load path
-    $: << directory
-    $: << File.join(directory, "lib")
-    # Require the actual plugin
-    require plugin_key
-  end
-end
+# Manually pull in the plugin manager for early initialization
+require "./lib/plugin_manager"
 
 module Manyfold
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
+
+    config.before_configuration do
+      PluginManager.load!
+      PluginManager.require!
+    end
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -59,14 +47,6 @@ module Manyfold
     config.eager_load_paths << config.root.join("app/uploaders")
 
     config.autoload_once_paths << "#{root}/app/lib"
-
-    PLUGINS.keys.each do |plugin|
-      initializer "#{plugin}.add_routing_paths" do |app|
-        app.routes.append do
-          mount Object.const_get("#{plugin.camelize}::Engine") => "/#{plugin}"
-        end
-      end
-    end
 
     # Load locale files in nested folders as well as locale root
     config.i18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
