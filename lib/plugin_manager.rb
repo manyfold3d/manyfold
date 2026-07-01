@@ -1,6 +1,8 @@
 class PluginManager
   include Singleton
 
+  PLUGINS = {}
+
   def initialize
     @hooks = {}
   end

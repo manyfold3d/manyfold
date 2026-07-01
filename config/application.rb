@@ -20,7 +20,8 @@ require "rack/contrib"
 # you've limited to :test, :development, or :production.
 Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
-PLUGINS = {}
+# Manually pull in the plugin manager for early initialization
+require "./lib/plugin_manager"
 
 module Manyfold
   class Application < Rails::Application
@@ -37,8 +38,8 @@ module Manyfold
         # Load metadata
         spec = Gem::Specification.load(gemspec.to_s)
         if spec.metadata["manyfold_version"]
-          PLUGINS[plugin_key] = spec
-          PLUGINS[plugin_key].metadata[:path] = directory
+          PluginManager::PLUGINS[plugin_key] = spec
+          PluginManager::PLUGINS[plugin_key].metadata[:path] = directory
           # Add to load path
           $: << directory
           $: << File.join(directory, "lib")

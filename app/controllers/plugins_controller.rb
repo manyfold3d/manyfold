@@ -3,7 +3,7 @@ class PluginsController < ApplicationController
 
   def index
     skip_policy_scope
-    @plugins = PLUGINS.values
+    @plugins = PluginManager::PLUGINS.values
     respond_to do |format|
       format.html { render Views::Plugins::Index.new(plugins: @plugins) }
     end
