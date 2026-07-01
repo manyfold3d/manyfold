@@ -16,6 +16,9 @@ bundle exec rake tmp:cache:clear
 echo "Setting temporary directory permissions..."
 chown -R $PUID:$PGID tmp log
 
+echo "Setting plugin directory permissions..."
+chown -R $PUID:$PGID plugins
+
 echo "Launching application..."
 export RAILS_PORT=$PORT
 export RAILS_LOG_TO_STDOUT=true
