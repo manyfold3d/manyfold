@@ -16,8 +16,12 @@ bundle exec rake tmp:cache:clear
 echo "Setting temporary directory permissions..."
 chown -R $PUID:$PGID tmp log
 
-echo "Setting plugin directory permissions..."
-chown -R $PUID:$PGID plugins
+if [ ! -d $PLUGINS_PATH ]; then
+  echo "Creating plugin directory..."
+  mkdir -p "$PLUGINS_PATH"
+fi
+echo "Setting plugin directory owner..."
+chown $PUID:$PGID "$PLUGINS_PATH"
 
 echo "Launching application..."
 export RAILS_PORT=$PORT

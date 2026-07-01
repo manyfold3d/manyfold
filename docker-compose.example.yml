@@ -13,6 +13,10 @@ services:
       # will scan and import them, or it could be empty.
       # The container path can be anything; you will need to enter it in the "new library" form.
       # - /local/path/to/your/models:/models
+      # If you want to use any plugins, you will also need a persistent plugins folder
+      # /usr/src/app/plugins is the default, but you can set a different path using the
+      # PLUGINS_PATH environment variable.
+      # - /local/path/to/plugins:/usr/src/app/plugins
     environment:
       PUID: 1000 # The ID of the user the app will run as
       PGID: 1000 # The ID of the group the app will run as

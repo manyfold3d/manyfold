@@ -46,6 +46,8 @@ ENV AWS_REQUEST_CHECKSUM_CALCULATION=when_required
 # else at runtime, and this default will be removed in future.
 ENV PUID=0
 ENV PGID=0
+# Default plugin folder
+ENV PLUGINS_PATH=/usr/src/app/plugins
 
 RUN gem install foreman
 
