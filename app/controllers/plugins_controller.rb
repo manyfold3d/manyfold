@@ -3,7 +3,7 @@ class PluginsController < ApplicationController
 
   def index
     skip_policy_scope
-    @plugins = PluginManager.all.values
+    @plugins = PluginManager.all.values # rubocop:disable Pundit/UsePolicyScope
     respond_to do |format|
       format.html { render Views::Plugins::Index.new(plugins: @plugins) }
     end
