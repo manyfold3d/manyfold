@@ -37,7 +37,7 @@
     "@types/i18n-js": "^4.0.1",
     "@types/jquery": "^4.0.1",
     "@types/lodash": "^4.17.24",
-    "@types/node": "~24.13",
+    "@types/node": "~26.1",
     "@types/three": "^0.185.0",
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.24",
