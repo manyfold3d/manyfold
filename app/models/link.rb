@@ -10,7 +10,7 @@ class Link < ApplicationRecord
   after_commit -> { linkable.try(:write_datapackage_later) }
 
   def host
-    URI.parse(url).host || url
+    URI.parse(url).host.presence || "link"
   rescue URI::InvalidURIError, URI::InvalidComponentError
     url
   end
