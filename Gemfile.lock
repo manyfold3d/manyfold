@@ -980,7 +980,7 @@ GEM
       yard (>= 0.8.3)
     yard-activesupport-concern (0.0.1)
       yard (>= 0.8)
-    yard-lint (1.8.0)
+    yard-lint (1.9.0)
       yard (~> 0.9)
       zeitwerk (~> 2.6)
     zaru (1.1)
@@ -1127,7 +1127,7 @@ DEPENDENCIES
   with_model (~> 2.2)
   yard-activerecord (~> 0.0.17)
   yard-activesupport-concern (~> 0.0.1)
-  yard-lint (~> 1.8)
+  yard-lint (~> 1.9)
   zaru (~> 1.1)
 
 CHECKSUMS
@@ -1501,7 +1501,7 @@ CHECKSUMS
   yard (0.9.44) sha256=eb087e9b631ccd887b049f303d489963945452d5e2a7eb49a5a74a7cf6887f28
   yard-activerecord (0.0.17) sha256=ba485dbf789795c2e9c296ffe6e5902ddb28fb50a6eef70e970746199134e055
   yard-activesupport-concern (0.0.1) sha256=be790cb0efc23e2e87677063598ac8b743586154657bbd9655a7f03ce78390ef
-  yard-lint (1.8.0) sha256=d3f8b2f63c2a7f42b1b65247e508fa121a043148f063a1f17d139febf38737e5
+  yard-lint (1.9.0) sha256=201ffa7b3a2b4238b419e3bb00442aa4773025f964de5915b970eee8659db052
   zaru (1.1) sha256=5c2f8b83d9598da062ed146bd464d00d5f1f53bc80d4abf8c5aeacd6f1a4406a
   zeitwerk (2.8.2) sha256=7212a61311083c604184b1ea2574b9aa05cd14f855a0841c06985cabe9181d12
   zxcvbn (0.1.10) sha256=46e49a7cadcaab543b0073715341607ed99ffcacfc96d6f883bf1bfefaf0aaa5
