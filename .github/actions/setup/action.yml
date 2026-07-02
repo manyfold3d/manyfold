@@ -9,7 +9,7 @@ runs:
       with:
         packages: libassimp-dev f3d
     - name: Install imagemagick
-      uses: mfinelli/setup-imagemagick@e5a049b136cb833d5c0474b38d166f0bdb0e4497
+      uses: Haerezis/setup-imagemagick@236c0697dd7233bedfdc007308e6566c1eb83cdb # temporarily using fork until https://github.com/mfinelli/setup-imagemagick/issues/571 is fixed
     - name: Set up Ruby and install gems
       uses: ruby/setup-ruby@v1
       with:
