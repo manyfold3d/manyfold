@@ -24,10 +24,12 @@ class ProcessUploadedFileJob < ApplicationJob
       model ||= create_new_model(library, name: name, owner: owner, creator_id: creator_id, collection_ids: collection_ids, tag_list: tag_list, license: license, sensitive: sensitive, permission_preset: permission_preset)
 
       attachers.each do
-        new_files << if new_model && (attachers.length == 1) && is_archive?(it.file)
-          unzip_into_model(model, it.file)
+        if new_model && (attachers.length == 1) && is_archive?(it.file)
+          # This is a single zipfile going into a new model, so automatically run extract job
+          f = add_single_file_to_model(model, it.file)
+          ExtractArchiveJob.perform_later(f.id, remove_when_complete: true) if f&.valid?
         else
-          add_single_file_to_model(model, it.file)
+          new_files << add_single_file_to_model(model, it.file)
         end
       end
     end
