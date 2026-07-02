@@ -20,8 +20,10 @@ if [ ! -d $PLUGINS_PATH ]; then
   echo "Creating plugin directory..."
   mkdir -p "$PLUGINS_PATH"
 fi
-echo "Setting plugin directory owner..."
-chown $PUID:$PGID "$PLUGINS_PATH"
+if [ -w $PLUGINS_PATH ]; then
+  echo "Setting plugin directory owner..."
+  chown $PUID:$PGID "$PLUGINS_PATH"
+fi
 
 echo "Launching application..."
 export RAILS_PORT=$PORT
