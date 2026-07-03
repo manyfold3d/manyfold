@@ -62,4 +62,16 @@ RSpec.describe ExtractArchiveJob do
       expect(model.model_files.map(&:filename)).to contain_exactly("subfolder/more.stl", "test.stl")
     end
   end
+
+  it "overwrites existing files that are a different size" do # rubocop:todo RSpec/ExampleLength
+    Tempfile.create(%w[test .zip]) do |file|
+      Zip::File.open(file, create: true) do |zipfile|
+        zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
+      end
+      model_file = create(:model_file, model: model, filename: "test.stl")
+      zip = model.model_files.create(filename: "test.zip", attachment: Rack::Test::UploadedFile.new(file))
+      expect { described_class.perform_now(zip.id, remove_when_complete: true) }
+        .to change { model_file.reload.size }
+    end
+  end
 end

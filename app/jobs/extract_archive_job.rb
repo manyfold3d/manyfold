@@ -37,8 +37,17 @@ class ExtractArchiveJob < ApplicationJob
     end
     return if SiteSettings.ignored_file?(filename)
 
-    reader.extract(entry, Archive::EXTRACT_SECURE, destination: File.join(model.library.path, model.path))
-    new_file = ApplicationRecord.suppressing_turbo_broadcasts { model.model_files.find_or_create_by(filename: filename) }
-    new_file.parse_metadata_later
+    # Find if file exists already
+    if (existing_file = model.model_files.find_by(filename: filename))
+      # If the existing file is not the same as the one in the archive, overwrite it
+      if existing_file.size != entry.size
+        reader.extract(entry, Archive::EXTRACT_SECURE_WITH_OVERWRITE, destination: File.join(model.library.path, model.path))
+        existing_file.refresh_metadata!
+      end
+    else
+      reader.extract(entry, Archive::EXTRACT_SECURE, destination: File.join(model.library.path, model.path))
+      new_file = ApplicationRecord.suppressing_turbo_broadcasts { model.model_files.find_or_create_by(filename: filename) }
+      new_file.parse_metadata_later
+    end
   end
 end
