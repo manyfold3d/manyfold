@@ -30,14 +30,10 @@ class PluginsController < ApplicationController
     rescue Errno::EEXIST
       Rails.logger.warn("Plugin path #{plugin_path} exists, files will be overwritten")
     end
-    flags = [
-      Archive::EXTRACT_TIME,
-      Archive::EXTRACT_SECURE_NODOTDOT
-    ].reduce(:|).to_i
     strip = count_common_path_components(archive)
     Archive::Reader.open_filename(archive.tempfile.path, strip_components: strip) do |reader|
       reader.each_entry do |entry|
-        reader.extract(entry, flags, destination: plugin_path.to_s)
+        reader.extract(entry, Archive::EXTRACT_SECURE_WITH_OVERWRITE, destination: plugin_path.to_s)
       end
     end
     # Set the flag that a restart is now needed
