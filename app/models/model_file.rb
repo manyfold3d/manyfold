@@ -76,6 +76,10 @@ class ModelFile < ApplicationRecord
     MediaType.model_extensions.include? extension
   end
 
+  def is_archive?
+    MediaType.archive_extensions.include? extension
+  end
+
   def has_render?
     is_3d_model? && attachment_attacher.derivatives.key?(:render)
   end
