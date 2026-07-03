@@ -2993,14 +2993,14 @@ __metadata:
   linkType: hard
 
 "eslint-module-utils@npm:^2.12.1":
-  version: 2.13.0
-  resolution: "eslint-module-utils@npm:2.13.0"
+  version: 2.14.0
+  resolution: "eslint-module-utils@npm:2.14.0"
   dependencies:
     debug: ^3.2.7
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: fb319d38827611a64fca8f79b86cc61617e1cd9d3e548418ea23c301fb597fd8b31a3eca31d79a533503780588bf6bd6282f0fb30e125f6e92926f343fdcecaf
+  checksum: 0347e6f34cae106a29ca2fad582b5daeeab5a9bf0f7e5372ecd8827e151f42f217920ba545b34e83dcd1e841541c36422fc97422244d689f78779b29c6ecd472
   languageName: node
   linkType: hard
 
