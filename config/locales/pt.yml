@@ -876,6 +876,7 @@ pt:
       import_capabilities:
       import_type_html:
       integration_settings:
+      metadata_only:
       placeholder:
       submit:
       supported_sites:

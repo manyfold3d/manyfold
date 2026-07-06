@@ -878,6 +878,7 @@ de:
       import_capabilities: Wir können Modelle, Ersteller und Sammlungen von verschiedenen anderen Hosting-Sites importieren. Was genau wir für deine URL importieren können, wird angezeigt, nachdem Du sie eingegeben hast.
       import_type_html: "<code>%{url}</code> wird als neue %{object_type} hinzugefügt. Die folgenden Daten können automatisch importiert werden:"
       integration_settings: Integrationseinstellungen bearbeiten
+      metadata_only:
       placeholder: Füge die Adresse des Inhalts ein, den du importieren möchtest (z. B. https://thingiverse.com/thing:1234)
       submit: Importieren
       supported_sites: Unterstützte Seiten

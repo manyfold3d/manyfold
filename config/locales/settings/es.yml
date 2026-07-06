@@ -105,6 +105,9 @@ es:
       myminifactory_api_key:
         help_html: Cree una aplicación en la <a href="https://www.myminifactory.com/settings/developer">configuración de desarrollador de MyMiniFactory</a> y pegue la clave de API generada.
         label: Clave API
+      makerworld_bambu_token:
+        help_html:
+        label:
       thingiverse_api_key:
         help_html: Cree una "aplicación web" en la <a href="https://www.thingiverse.com/developers/my-apps">consola de desarrollador de Thingiverse</a> y pegue aquí el "token de aplicación".
         label: Clave API

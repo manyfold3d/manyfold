@@ -34,6 +34,7 @@
             <h5><%= t ".supported_sites" %></h5>
             <ul class="list-unstyled">
               <li><%= ((SiteSettings.cults3d_api_key.present? && SiteSettings.cults3d_api_username.present?) ? "✅" : "❌") %> <%= t "sites.cults3d" %></li>
+              <li>✅ <%= t "sites.makerworld" %> <%= SiteSettings.makerworld_bambu_token.present? ? "" : t(".metadata_only") %></li>
               <li><%= (SiteSettings.myminifactory_api_key.present? ? "✅" : "❌") %> <%= t "sites.myminifactory" %></li>
               <li><%= (SiteSettings.thingiverse_api_key.present? ? "✅" : "❌") %> <%= t "sites.thingiverse" %></li>
             </ul>

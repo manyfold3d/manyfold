@@ -41,6 +41,7 @@ class Link < ApplicationRecord
     [
       Integrations::Cults3d::CreatorDeserializer,
       Integrations::Cults3d::ModelDeserializer,
+      Integrations::MakerWorld::ModelDeserializer,
       Integrations::MyMiniFactory::CreatorDeserializer,
       Integrations::MyMiniFactory::CollectionDeserializer,
       Integrations::MyMiniFactory::ModelDeserializer,
