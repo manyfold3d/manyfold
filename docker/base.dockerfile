@@ -1,6 +1,6 @@
 ## COMMON BASE ##########################################
 
-FROM ruby:3.4.9-alpine3.23 AS base
+FROM ruby:3.4.9-alpine3.24 AS base
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
@@ -11,8 +11,8 @@ RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'development test'
 
 RUN apk add --no-cache \
-  file=5.46-r2 \
-  s6-overlay=3.2.0.3-r0 \
+  file=5.47-r2 \
+  s6-overlay=3.2.3.0-r0 \
   gcompat=1.1.0-r4 \
   jemalloc=5.3.0-r6 \
   imagemagick=7.1.2.24-r0 \
@@ -20,15 +20,9 @@ RUN apk add --no-cache \
   imagemagick-webp=7.1.2.24-r0 \
   imagemagick-heic=7.1.2.24-r0 \
   assimp-dev=6.0.4-r0 \
-  mesa-egl=25.2.7-r1
-
-# Install latest VTK and OpenCascade from Alpine edge
-RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+  mesa-egl=26.1.1-r1 \
   vtk=9.5.2-r2 \
-  opencascade=7.9.3-r2 \
-  imath=3.2.2-r1 \
-  alembic-libs=1.8.11-r0 \
-  openexr-libopenexr=3.4.11-r0
+  opencascade=7.9.3-r2
 
 # Scripts for cross-platform architecture detection
 COPY --from=tonistiigi/xx / /
