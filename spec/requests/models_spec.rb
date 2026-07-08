@@ -609,6 +609,10 @@ RSpec.describe "Models", :after_first_run do
       end
 
       describe "POST /models" do
+        before do
+          allow(SiteSettings).to receive(:show_libraries).and_return(true)
+        end
+
         let(:creator) { create(:creator) }
         let(:collection) { create(:collection) }
         let(:post_models) {
@@ -638,30 +642,36 @@ RSpec.describe "Models", :after_first_run do
             }
           }
 
-          it "enqueues processing job with all parameters" do # rubocop:disable RSpec/ExampleLength
-            expect { post_models }
-              .to have_enqueued_job(ProcessUploadedFileJob)
-              .with(Library.first.id,
-                [{
-                  id: "upload_key",
-                  storage: "cache",
-                  metadata: {
-                    filename: "test.stl"
-                  }
-                }],
-                owner: current_user,
-                creator_id: creator.id.to_s,
-                collection_ids: [collection.id],
-                license: "MIT",
-                sensitive: true,
-                permission_preset: "public",
-                tag_list: ["tag1", "tag2"],
-                name: "Only used for single model upload").once
+          it "creates model with all the right details" do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
+            post_models
+            model = Model.find_by(name: "Only used for single model upload")
+            expect(model.library).to eq library
+            expect(model.creator).to eq creator
+            expect(model.collections).to include collection
+            expect(model.license).to eq "MIT"
+            expect(model.sensitive).to be true
+            expect(model.public?).to be true
+            expect(model.tag_list).to eq ["tag1", "tag2"]
+            expect(model.name).to eq "Only used for single model upload"
+            expect(model.owners).to include current_user
+            expect(model.path).to eq "tag1/tag2/only-used-for-single-model-upload##{model.id}"
           end
 
-          it "redirect back to index after upload" do
+          it "enqueues processing job to add file parameters" do # rubocop:disable RSpec/ExampleLength
             post_models
-            expect(response).to redirect_to("/models")
+            expect(ProcessUploadedFileJob).to have_been_enqueued.with(Model.last.id,
+              {
+                id: "upload_key",
+                storage: "cache",
+                metadata: {
+                  filename: "test.stl"
+                }
+              }).once
+          end
+
+          it "redirect to model after upload" do
+            post_models
+            expect(response).to redirect_to("/models/#{Model.last.to_param}")
           end
 
           it "rate limits model uploads" do
@@ -684,9 +694,8 @@ RSpec.describe "Models", :after_first_run do
           it "sanitizes filename" do
             post_models
             expect(ProcessUploadedFileJob).to have_been_enqueued
-              .with(Library.first.id,
-                array_including(hash_including({metadata: {filename: "test.stl"}})),
-                hash_including({})).once
+              .with(Model.last.id,
+                hash_including({metadata: {filename: "test.stl"}})).once
           end
         end
 
@@ -704,18 +713,28 @@ RSpec.describe "Models", :after_first_run do
             }
           }
 
-          it "enqueues separate archive processing jobs" do # rubocop:disable RSpec/ExampleLength
-            post_models
-            expect(ProcessUploadedFileJob).to have_been_enqueued
-              .with(Library.first.id, hash_including({metadata: {filename: "test.zip"}}), hash_including({})).once
-              .and have_been_enqueued
-              .with(Library.first.id, hash_including({metadata: {filename: "example.zip"}}), hash_including({})).once
+          it "creates two models" do
+            expect { post_models }.to change(Model, :count).by(2)
           end
 
-          it "does not provide model name field" do # rubocop:disable RSpec/ExampleLength
+          it "creates model named for first zip" do
             post_models
+            expect(Model.find_by(name: "Example")).to be_valid
+          end
+
+          it "creates model named for second zip" do
+            post_models
+            expect(Model.find_by(name: "Test")).to be_valid
+          end
+
+          it "enqueues separate jobs to add files to models" do # rubocop:disable RSpec/ExampleLength
+            post_models
+            example_model = Model.find_by(name: "Example")
+            test_model = Model.find_by(name: "Test")
             expect(ProcessUploadedFileJob).to have_been_enqueued
-              .with(Library.first.id, hash_including({}), hash_not_including({name: "Only for single model upload"})).twice
+              .with(test_model.id, hash_including({metadata: {filename: "test.zip"}})).once
+              .and have_been_enqueued
+              .with(example_model.id, hash_including({metadata: {filename: "example.zip"}})).once
           end
         end
 
@@ -733,21 +752,16 @@ RSpec.describe "Models", :after_first_run do
             }
           }
 
-          it "enqueues a single processing job for all files combined" do # rubocop:disable RSpec/ExampleLength
-            post_models
-            expect(ProcessUploadedFileJob).to have_been_enqueued
-              .with(Library.first.id,
-                array_including(
-                  hash_including({metadata: {filename: "test.stl"}}),
-                  hash_including({metadata: {filename: "readme.txt"}})
-                ),
-                hash_including({})).once
+          it "creates one model" do
+            expect { post_models }.to change(Model, :count).by(1)
           end
 
-          it "provides model name field" do # rubocop:disable RSpec/ExampleLength
+          it "enqueues a processing job for each file" do # rubocop:disable RSpec/ExampleLength
             post_models
             expect(ProcessUploadedFileJob).to have_been_enqueued
-              .with(Library.first.id, array_including, hash_including({name: "Only used for single model upload"}))
+              .with(Model.last.id, hash_including({metadata: {filename: "test.stl"}})).once
+              .and have_been_enqueued
+              .with(Model.last.id, hash_including({metadata: {filename: "readme.txt"}})).once
           end
         end
 
@@ -765,15 +779,12 @@ RSpec.describe "Models", :after_first_run do
             }
           }
 
-          it "enqueues one processing job for all files combined" do # rubocop:disable RSpec/ExampleLength
+          it "enqueues jobs to add all files to the same model" do # rubocop:disable RSpec/ExampleLength
             post_models
             expect(ProcessUploadedFileJob).to have_been_enqueued
-              .with(Library.first.id,
-                array_including(
-                  hash_including({metadata: {filename: "test.zip"}}),
-                  hash_including({metadata: {filename: "model.stl"}})
-                ),
-                hash_including({})).once
+              .with(Model.last.id, hash_including({metadata: {filename: "test.zip"}})).once
+              .and have_been_enqueued
+              .with(Model.last.id, hash_including({metadata: {filename: "model.stl"}})).once
           end
         end
 
