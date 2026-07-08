@@ -25,6 +25,7 @@
     "bootswatch": "^5.3.8",
     "comlink": "^4.4.2",
     "driver.js": "^1.6.0",
+    "f3d": "^3.5.0",
     "i18n-js": "^4.5.3",
     "masonry-layout": "^4.2.2",
     "three": "^0.185.1",

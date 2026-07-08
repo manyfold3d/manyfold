@@ -108,7 +108,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.img_src(*img_src)
     content_security_policy.worker_src :self, :blob
     content_security_policy.object_src :none
-    content_security_policy.script_src :self
+    content_security_policy.script_src :self, :unsafe_eval
     content_security_policy.style_src :self
     content_security_policy.style_src_attr :unsafe_inline
     content_security_policy.style_src_elem :self, "https://fonts.googleapis.com"
