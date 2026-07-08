@@ -2409,14 +2409,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001799":
-  version: 1.0.30001803
-  resolution: "caniuse-lite@npm:1.0.30001803"
-  checksum: 157764969d198bdd4dff3221d6204158fa2917c0f0ca2df5ec71f856e7f94937d1209677656155365bd5b2da160f663adeabf5b50b08dc4b3bee838248dfaf6c
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001800":
+"caniuse-lite@npm:^1.0.30001799, caniuse-lite@npm:^1.0.30001800":
   version: 1.0.30001803
   resolution: "caniuse-lite@npm:1.0.30001803"
   checksum: 157764969d198bdd4dff3221d6204158fa2917c0f0ca2df5ec71f856e7f94937d1209677656155365bd5b2da160f663adeabf5b50b08dc4b3bee838248dfaf6c
@@ -4753,7 +4746,7 @@ __metadata:
     sass-embedded: ^1.100.0
     three: ^0.185.1
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
-    tom-select: ^2.6.1
+    tom-select: ^2.6.2
     ts-standard: ^12.0.2
     typescript: ~5.9.3
     vite: ^8.1.3
@@ -6983,13 +6976,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tom-select@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "tom-select@npm:2.6.1"
+"tom-select@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "tom-select@npm:2.6.2"
   dependencies:
     "@orchidjs/sifter": ^1.1.0
     "@orchidjs/unicode-variants": ^1.1.2
-  checksum: f091130264138a9df8590156204a0ca6c6bcc22ead4b1173155a6c26bc61272f6a4f016ff26d6c4ea8ac5badbf302a1a349a35ffdc5a0000cc5ecb45f476641e
+  checksum: 700fae75c964f8c870e9c56f70c80e54404ae5bd4dd4e675e8d5b7c08e37e12e45294668476cf66d8e53e46eef4169242730d4615b794cbbb2c7dca69ee99fac
   languageName: node
   linkType: hard
 
