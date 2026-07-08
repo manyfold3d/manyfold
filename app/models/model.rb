@@ -177,6 +177,7 @@ class Model < ApplicationRecord
     file.update_from_url!(url: uri.to_s)
     file
   rescue URI::InvalidURIError
+    Rails.logger.info("invalid file import URI: #{url}")
   end
 
   def delete_from_disk_and_destroy
