@@ -103,7 +103,7 @@ class ModelsController < ApplicationController
       p[:file]&.values&.each do
         # If @model is nil, this will create a model for each file
         # otherwise they get added to the passed model
-        add_upload_to_model(upload: it, model: single_model, attributes: common_attributes)
+        add_upload_to_model(upload: it, model: single_model, attributes: common_attributes, auto_extract: multiple)
       end
       respond_to do |format|
         format.html do
@@ -303,13 +303,13 @@ class ModelsController < ApplicationController
     model
   end
 
-  def add_upload_to_model(upload:, model: nil, attributes: {})
+  def add_upload_to_model(upload:, model: nil, attributes: {}, auto_extract: false)
     # Create a model for this file if we've not been given one
     model ||= create_model!(
       attributes,
       name: File.basename(upload["name"], ".*").careful_titleize
     )
     # Add file to model
-    AddUploadedFileToModelJob.perform_later(model.id, cached_file_data(upload)) if model.persisted?
+    AddUploadedFileToModelJob.perform_later(model.id, cached_file_data(upload), auto_extract: auto_extract) if model.persisted?
   end
 end

@@ -666,7 +666,8 @@ RSpec.describe "Models", :after_first_run do
                 metadata: {
                   filename: "test.stl"
                 }
-              }).once
+              },
+              auto_extract: false).once
           end
 
           it "redirect to model after upload" do
@@ -695,7 +696,8 @@ RSpec.describe "Models", :after_first_run do
             post_models
             expect(AddUploadedFileToModelJob).to have_been_enqueued
               .with(Model.last.id,
-                hash_including({metadata: {filename: "test.stl"}})).once
+                hash_including({metadata: {filename: "test.stl"}}),
+                auto_extract: false).once
           end
         end
 
@@ -732,9 +734,9 @@ RSpec.describe "Models", :after_first_run do
             example_model = Model.find_by(name: "Example")
             test_model = Model.find_by(name: "Test")
             expect(AddUploadedFileToModelJob).to have_been_enqueued
-              .with(test_model.id, hash_including({metadata: {filename: "test.zip"}})).once
+              .with(test_model.id, hash_including({metadata: {filename: "test.zip"}}), auto_extract: true).once
               .and have_been_enqueued
-              .with(example_model.id, hash_including({metadata: {filename: "example.zip"}})).once
+              .with(example_model.id, hash_including({metadata: {filename: "example.zip"}}), auto_extract: true).once
           end
         end
 
@@ -759,9 +761,9 @@ RSpec.describe "Models", :after_first_run do
           it "enqueues a processing job for each file" do # rubocop:disable RSpec/ExampleLength
             post_models
             expect(AddUploadedFileToModelJob).to have_been_enqueued
-              .with(Model.last.id, hash_including({metadata: {filename: "test.stl"}})).once
+              .with(Model.last.id, hash_including({metadata: {filename: "test.stl"}}), auto_extract: false).once
               .and have_been_enqueued
-              .with(Model.last.id, hash_including({metadata: {filename: "readme.txt"}})).once
+              .with(Model.last.id, hash_including({metadata: {filename: "readme.txt"}}), auto_extract: false).once
           end
         end
 
@@ -782,9 +784,9 @@ RSpec.describe "Models", :after_first_run do
           it "enqueues jobs to add all files to the same model" do # rubocop:disable RSpec/ExampleLength
             post_models
             expect(AddUploadedFileToModelJob).to have_been_enqueued
-              .with(Model.last.id, hash_including({metadata: {filename: "test.zip"}})).once
+              .with(Model.last.id, hash_including({metadata: {filename: "test.zip"}}), auto_extract: false).once
               .and have_been_enqueued
-              .with(Model.last.id, hash_including({metadata: {filename: "model.stl"}})).once
+              .with(Model.last.id, hash_including({metadata: {filename: "model.stl"}}), auto_extract: false).once
           end
         end
 

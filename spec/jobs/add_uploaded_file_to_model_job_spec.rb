@@ -40,8 +40,12 @@ RSpec.describe AddUploadedFileToModelJob do
       expect { job.perform(model.id, upload) }.to change(ModelFile, :count).by(1)
     end
 
-    it "queues up extraction job" do
-      expect { job.perform(model.id, upload) }.to have_enqueued_job(ExtractArchiveJob).once
+    it "queues up extraction job if told to" do
+      expect { job.perform(model.id, upload, auto_extract: true) }.to have_enqueued_job(ExtractArchiveJob).once
+    end
+
+    it "skips extraction job by default" do
+      expect { job.perform(model.id, upload) }.not_to have_enqueued_job(ExtractArchiveJob)
     end
   end
 end
