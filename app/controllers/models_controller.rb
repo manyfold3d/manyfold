@@ -86,7 +86,7 @@ class ModelsController < ApplicationController
     multi_model = (num_files > 1) && p[:file]&.values&.all? { is_archive?(it) }
     # Then run validations on a dummy object
     common_attributes = {
-      name: multi_model ? nil : (p[:name]&.presence || File.basename(p.dig(:file, 0, :name), ".*").careful_titleize),
+      name: multi_model ? nil : (p[:name]&.presence || File.basename(p.dig(:file, "0", :name), ".*").careful_titleize),
       owner: current_user,
       creator_id: p[:creator_id],
       collection_ids: p[:collections]&.map(&:id),
