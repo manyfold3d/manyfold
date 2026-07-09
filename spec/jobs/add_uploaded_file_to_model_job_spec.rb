@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ProcessUploadedFileJob do
+RSpec.describe AddUploadedFileToModelJob do
   subject(:job) { described_class.new }
 
   context "when uploading a file" do

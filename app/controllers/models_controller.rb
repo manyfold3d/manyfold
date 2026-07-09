@@ -310,6 +310,6 @@ class ModelsController < ApplicationController
       name: File.basename(upload["name"], ".*").careful_titleize
     )
     # Add file to model
-    ProcessUploadedFileJob.perform_later(model.id, cached_file_data(upload)) if model.persisted?
+    AddUploadedFileToModelJob.perform_later(model.id, cached_file_data(upload)) if model.persisted?
   end
 end

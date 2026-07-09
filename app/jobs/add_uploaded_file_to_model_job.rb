@@ -1,4 +1,4 @@
-class ProcessUploadedFileJob < ApplicationJob
+class AddUploadedFileToModelJob < ApplicationJob
   include ArchiveHelpers
 
   queue_as :critical

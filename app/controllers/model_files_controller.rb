@@ -60,7 +60,7 @@ class ModelFilesController < ApplicationController
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif !(p = upload_params).empty?
       p.dig(:model, :file).each_pair do |_id, file|
-        ProcessUploadedFileJob.perform_later(
+        AddUploadedFileToModelJob.perform_later(
           @model.library.id,
           {
             id: file[:id],

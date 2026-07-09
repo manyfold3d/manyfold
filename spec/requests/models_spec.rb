@@ -659,7 +659,7 @@ RSpec.describe "Models", :after_first_run do
 
           it "enqueues processing job to add file parameters" do # rubocop:disable RSpec/ExampleLength
             post_models
-            expect(ProcessUploadedFileJob).to have_been_enqueued.with(Model.last.id,
+            expect(AddUploadedFileToModelJob).to have_been_enqueued.with(Model.last.id,
               {
                 id: "upload_key",
                 storage: "cache",
@@ -693,7 +693,7 @@ RSpec.describe "Models", :after_first_run do
 
           it "sanitizes filename" do
             post_models
-            expect(ProcessUploadedFileJob).to have_been_enqueued
+            expect(AddUploadedFileToModelJob).to have_been_enqueued
               .with(Model.last.id,
                 hash_including({metadata: {filename: "test.stl"}})).once
           end
@@ -731,7 +731,7 @@ RSpec.describe "Models", :after_first_run do
             post_models
             example_model = Model.find_by(name: "Example")
             test_model = Model.find_by(name: "Test")
-            expect(ProcessUploadedFileJob).to have_been_enqueued
+            expect(AddUploadedFileToModelJob).to have_been_enqueued
               .with(test_model.id, hash_including({metadata: {filename: "test.zip"}})).once
               .and have_been_enqueued
               .with(example_model.id, hash_including({metadata: {filename: "example.zip"}})).once
@@ -758,7 +758,7 @@ RSpec.describe "Models", :after_first_run do
 
           it "enqueues a processing job for each file" do # rubocop:disable RSpec/ExampleLength
             post_models
-            expect(ProcessUploadedFileJob).to have_been_enqueued
+            expect(AddUploadedFileToModelJob).to have_been_enqueued
               .with(Model.last.id, hash_including({metadata: {filename: "test.stl"}})).once
               .and have_been_enqueued
               .with(Model.last.id, hash_including({metadata: {filename: "readme.txt"}})).once
@@ -781,7 +781,7 @@ RSpec.describe "Models", :after_first_run do
 
           it "enqueues jobs to add all files to the same model" do # rubocop:disable RSpec/ExampleLength
             post_models
-            expect(ProcessUploadedFileJob).to have_been_enqueued
+            expect(AddUploadedFileToModelJob).to have_been_enqueued
               .with(Model.last.id, hash_including({metadata: {filename: "test.zip"}})).once
               .and have_been_enqueued
               .with(Model.last.id, hash_including({metadata: {filename: "model.stl"}})).once

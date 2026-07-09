@@ -13,7 +13,7 @@ flowchart TD
     CA[Scan::CheckAllJob]
     CM[Scan::CheckModelJob]
     OM[OrganizeModelJob]
-    PUF[ProcessUploadedFileJob]
+    PUF[AddUploadedFileToModelJob]
     AMF[Analysis::AnalyseModelFileJob]
     FC[Analysis::FileConversionJob]
     GA[Analysis::GeometricAnalysisJob]
