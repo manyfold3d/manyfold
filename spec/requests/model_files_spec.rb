@@ -214,7 +214,7 @@ RSpec.describe "Model Files" do
         it "queues post-upload job" do # rubocop:disable RSpec/ExampleLength
           expect { post model_model_files_path(model, params: params) }
             .to have_enqueued_job(AddUploadedFileToModelJob)
-            .with(Library.first.id, {
+            .with(model.id, {
               id: "upload_key",
               storage: "cache",
               metadata: {

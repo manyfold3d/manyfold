@@ -61,7 +61,7 @@ class ModelFilesController < ApplicationController
     elsif !(p = upload_params).empty?
       p.dig(:model, :file).each_pair do |_id, file|
         AddUploadedFileToModelJob.perform_later(
-          @model.library.id,
+          @model.id,
           {
             id: file[:id],
             storage: "cache",
