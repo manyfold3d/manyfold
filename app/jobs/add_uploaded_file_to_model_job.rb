@@ -21,7 +21,7 @@ class AddUploadedFileToModelJob < ApplicationJob
   end
 
   def add_single_file_to_model(model, tus_upload)
-    filename = tus_upload[:name]
+    filename = sanitized_filename(tus_upload)
     # Handle different file types
     case extension(tus_upload)
     when *MediaType.indexable_extensions
@@ -36,12 +36,16 @@ class AddUploadedFileToModelJob < ApplicationJob
     end
   end
 
+  def sanitized_filename(tus_upload)
+    Zaru.sanitize!(File.basename(tus_upload[:name]))
+  end
+
   def attachment(tus_upload)
     {
       id: tus_upload[:id],
       storage: "cache",
       metadata: {
-        filename: tus_upload[:name]
+        filename: sanitized_filename(tus_upload)
       }
     }
   end

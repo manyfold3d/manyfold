@@ -70,6 +70,18 @@ RSpec.describe AddUploadedFileToModelJob do
       end
     end
   end
+
+  context "when uploading a file with attempted path traversal" do
+    let(:upload) {
+      {
+        id: ModelFileUploader.upload(StringIO.new("solid\n"), "cache").id,
+        name: "../test.stl"
+      }
+    }
+
+    it "sanitizes path" do # rubocop:disable RSpec/ExampleLength
+      job.perform(model.id, upload)
+      expect(model.model_files.last.filename).to eq "test.stl"
     end
   end
 end

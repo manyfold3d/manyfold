@@ -674,25 +674,6 @@ RSpec.describe "Models", :after_first_run do
           end
         end
 
-        context "with a filename including path traversal", :as_contributor do
-          let(:files) {
-            {
-              "0" => {
-                id: "upload_key",
-                name: "../test.stl"
-              }
-            }
-          }
-
-          it "sanitizes filename" do
-            post_models
-            expect(AddUploadedFileToModelJob).to have_been_enqueued
-              .with(Model.last.id,
-                hash_including({metadata: {filename: "test.stl"}}),
-                auto_extract: false).once
-          end
-        end
-
         context "with multiple compressed files", :as_contributor do
           let(:files) {
             {
