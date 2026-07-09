@@ -4,7 +4,7 @@ module ManyfoldApi::V0
       return unless @object
       {
         model: {
-          file: @object.dig("files")&.each_with_index.to_h.invert
+          file: @object.expect("files" => [["id", "name"]])&.each_with_index.to_h.invert
         }
       }.compact
     end

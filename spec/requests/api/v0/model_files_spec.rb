@@ -27,13 +27,10 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
         }
 
         run_test! do # rubocop:disable RSpec/ExampleLength
-          expect(AddUploadedFileToModelJob).to have_been_enqueued.with(Library.default.id, {
+          expect(AddUploadedFileToModelJob).to have_been_enqueued.with(model.id, {
             id: "https://example.com/uploads/tus_id",
-            storage: "cache",
-            metadata: {
-              filename: "test.stl"
-            }
-          }, model: model).once
+            name: "test.stl"
+          }).once
         end
       end
 
