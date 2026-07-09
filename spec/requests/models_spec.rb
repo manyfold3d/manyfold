@@ -657,7 +657,7 @@ RSpec.describe "Models", :after_first_run do
             expect(model.path).to eq "tag1/tag2/only-used-for-single-model-upload##{model.id}"
           end
 
-          it "enqueues processing job to add file parameters" do # rubocop:disable RSpec/ExampleLength
+          it "enqueues processing job to add file" do # rubocop:disable RSpec/ExampleLength
             post_models
             expect(AddUploadedFileToModelJob).to have_been_enqueued.with(Model.last.id, {id: "upload_key", name: "test.stl"}, auto_extract: false).once
           end
@@ -710,6 +710,36 @@ RSpec.describe "Models", :after_first_run do
               .with(test_model.id, hash_including({name: "test.zip"}), auto_extract: true).once
               .and have_been_enqueued
               .with(example_model.id, hash_including({name: "example.zip"}), auto_extract: true).once
+          end
+
+          it "redirect to models list after upload" do
+            post_models
+            expect(response).to redirect_to("/models")
+          end
+        end
+
+        context "with a single compressed file", :as_contributor do
+          let(:files) {
+            {
+              "0" => {
+                id: "upload_1",
+                name: "test.zip"
+              }
+            }
+          }
+
+          it "creates one model" do
+            expect { post_models }.to change(Model, :count).by(1)
+          end
+
+          it "redirect to model after upload" do
+            post_models
+            expect(response).to redirect_to("/models/#{Model.last.to_param}")
+          end
+
+          it "enqueues processing job to add file" do # rubocop:disable RSpec/ExampleLength
+            post_models
+            expect(AddUploadedFileToModelJob).to have_been_enqueued.with(Model.last.id, {id: "upload_1", name: "test.zip"}, auto_extract: true).once
           end
         end
 

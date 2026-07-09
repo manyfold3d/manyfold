@@ -82,10 +82,11 @@ class ModelsController < ApplicationController
     authorize :model
     p = upload_params
     # First, is this a single or multi-model event?
-    multiple = p[:file]&.values&.all? { MediaType.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+    num_files = p[:file].keys.count
+    multi_model = (num_files > 1) && p[:file]&.values&.all? { is_archive?(it) }
     # Then run validations on a dummy object
     common_attributes = {
-      name: multiple ? nil : p[:name],
+      name: multi_model ? nil : (p[:name]&.presence || File.basename(p.dig(:file, 0, :name), ".*").careful_titleize),
       owner: current_user,
       creator_id: p[:creator_id],
       collection_ids: p[:collections]&.map(&:id),
@@ -96,25 +97,30 @@ class ModelsController < ApplicationController
       library: SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
     }
     @model = Model.new(common_attributes) # dummy model object
-    if @model.valid?(multiple ? :multi_upload : :single_upload)
+    if @model.valid?(multi_model ? :multi_upload : :single_upload)
       # Create model if there's just one
-      single_model = create_model!(common_attributes) unless multiple
+      single_model = create_model!(common_attributes) unless multi_model
       # Add files
       p[:file]&.values&.each do
-        # If @model is nil, this will create a model for each file
+        # If single_model is nil, this will create a model for each file
         # otherwise they get added to the passed model
-        add_upload_to_model(tus_upload: it, model: single_model, attributes: common_attributes, auto_extract: multiple)
+        add_upload_to_model(
+          tus_upload: it,
+          model: single_model,
+          attributes: common_attributes,
+          auto_extract: multi_model || (num_files == 1 && is_archive?(it))
+        )
       end
       respond_to do |format|
         format.html do
-          if multiple
+          if multi_model
             redirect_to models_path, notice: t(".success")
           else
             redirect_to single_model, notice: t(".success")
           end
         end
         format.manyfold_api_v0 {
-          if multiple
+          if multi_model
             head :accepted
           else
             head :created, location: model_path(single_model)
@@ -306,6 +312,10 @@ class ModelsController < ApplicationController
       name: File.basename(tus_upload[:name], ".*").careful_titleize
     )
     # Add file to model
-    AddUploadedFileToModelJob.perform_later(model.id, tus_upload, auto_extract: auto_extract) if model.persisted?
+    AddUploadedFileToModelJob.perform_later(model.id, tus_upload.to_h.symbolize_keys, auto_extract: auto_extract) if model.persisted?
+  end
+
+  def is_archive?(tus_upload)
+    MediaType.archive_extensions.include? File.extname(tus_upload[:name]).delete(".").downcase
   end
 end
