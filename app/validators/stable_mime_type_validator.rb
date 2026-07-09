@@ -2,7 +2,8 @@ class StableMimeTypeValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return if !record.persisted? || record.attachment.nil? || value.nil?
     # i18n-tasks-use t("activerecord.errors.models.model_file.attributes.filename.cannot_change_type")
-    record.errors.add attribute, :cannot_change_type if mime(value) != mime(record.attachment.id)
+    new_filename = (record.attachment.storage_key == :cache) ? record.attachment.metadata["filename"] : record.attachment.id
+    record.errors.add attribute, :cannot_change_type if mime(value) != mime(new_filename)
   end
 
   def mime(value)
