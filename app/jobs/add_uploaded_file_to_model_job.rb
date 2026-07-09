@@ -9,10 +9,11 @@ class AddUploadedFileToModelJob < ApplicationJob
     file = add_single_file_to_model(model, uploaded_file)
 
     if file&.valid?
-      file.parse_metadata_later
       if auto_extract && file.is_archive?
         # Automatically run extract job
         ExtractArchiveJob.perform_later(file.id, remove_when_complete: true)
+      else
+        file.parse_metadata_later
       end
     end
 

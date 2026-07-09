@@ -40,12 +40,26 @@ RSpec.describe AddUploadedFileToModelJob do
       expect { job.perform(model.id, upload) }.to change(ModelFile, :count).by(1)
     end
 
-    it "queues up extraction job if told to" do
-      expect { job.perform(model.id, upload, auto_extract: true) }.to have_enqueued_job(ExtractArchiveJob).once
+    context "when autoextracting" do
+      it "queues up extraction job" do
+        expect { job.perform(model.id, upload, auto_extract: true) }.to have_enqueued_job(ExtractArchiveJob).once
+      end
+
+      it "skips file metadata parsing" do
+        expect { job.perform(model.id, upload, auto_extract: true) }.not_to have_enqueued_job(Scan::ModelFile::ParseMetadataJob)
+      end
     end
 
-    it "skips extraction job by default" do
-      expect { job.perform(model.id, upload) }.not_to have_enqueued_job(ExtractArchiveJob)
+    context "when not autoextracting" do
+      it "queues up file metadata parsing" do
+        expect { job.perform(model.id, upload) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).once
+      end
+
+      it "skips extraction job by default" do
+        expect { job.perform(model.id, upload) }.not_to have_enqueued_job(ExtractArchiveJob)
+      end
+    end
+  end
     end
   end
 end
