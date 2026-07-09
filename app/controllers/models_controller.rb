@@ -84,7 +84,7 @@ class ModelsController < ApplicationController
     # First, is this a single or multi-model event?
     multiple = p[:file]&.values&.all? { MediaType.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
     # Then run validations on a dummy object
-    common_args = {
+    common_attributes = {
       name: multiple ? nil : p[:name],
       owner: current_user,
       creator_id: p[:creator_id],
@@ -92,24 +92,27 @@ class ModelsController < ApplicationController
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
-      permission_preset: p[:permission_preset]
+      permission_preset: p[:permission_preset],
+      library: SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
     }
-    library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    @model = Model.new(common_args.merge(library: library)) # dummy model object
+    @model = Model.new(common_attributes) # dummy model object
     if @model.valid?(multiple ? :multi_upload : :single_upload)
-      # Handle actual files
-      jobs = if multiple
-        # If this is all separate archives, enqueue separate jobs for each
-        p[:file]&.values&.map { cached_file_data(it) }
-      else
-        # Otherwise, enqueue one job for all files and add name to args
-        [p[:file]&.values&.map { cached_file_data(it) }]
-      end
-      jobs&.each do
-        ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
+      # Create model if there's just one
+      single_model = create_model!(common_attributes) unless multiple
+      # Add files
+      p[:file]&.values&.each do
+        # If @model is nil, this will create a model for each file
+        # otherwise they get added to the passed model
+        add_upload_to_model(upload: it, model: single_model, attributes: common_attributes)
       end
       respond_to do |format|
-        format.html { redirect_to models_path, notice: t(".success") }
+        format.html do
+          if multiple
+            redirect_to models_path, notice: t(".success")
+          else
+            redirect_to single_model, notice: t(".success")
+          end
+        end
         format.manyfold_api_v0 { head :accepted }
       end
     else
@@ -292,5 +295,21 @@ class ModelsController < ApplicationController
         filename: Zaru.sanitize!(File.basename(file[:name]))
       }
     }
+  end
+
+  def create_model!(attributes, name: nil)
+    model = Model.create(attributes.merge({name: name, path: SecureRandom.uuid}.compact))
+    Model.suppressing_turbo_broadcasts { model.organize! } if model
+    model
+  end
+
+  def add_upload_to_model(upload:, model: nil, attributes: {})
+    # Create a model for this file if we've not been given one
+    model ||= create_model!(
+      attributes,
+      name: File.basename(upload["name"], ".*").careful_titleize
+    )
+    # Add file to model
+    ProcessUploadedFileJob.perform_later(model.id, cached_file_data(upload)) if model.persisted?
   end
 end
