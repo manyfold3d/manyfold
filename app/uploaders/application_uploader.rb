@@ -65,7 +65,7 @@ class ApplicationUploader < Shrine
   end
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
-    ".manyfold/#{super}"
+    (storage_key == :cache) ? super : ".manyfold/#{super}"
   end
 
   add_metadata :ctime do |io|

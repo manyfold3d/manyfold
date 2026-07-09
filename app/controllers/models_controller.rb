@@ -82,35 +82,50 @@ class ModelsController < ApplicationController
     authorize :model
     p = upload_params
     # First, is this a single or multi-model event?
-    multiple = p[:file]&.values&.all? { MediaType.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+    num_files = p[:file].keys.count
+    multi_model = (num_files > 1) && p[:file]&.values&.all? { is_archive?(it) }
     # Then run validations on a dummy object
-    common_args = {
-      name: multiple ? nil : p[:name],
+    common_attributes = {
+      name: multi_model ? nil : (p[:name]&.presence || File.basename(p.dig(:file, "0", :name), ".*").careful_titleize),
       owner: current_user,
       creator_id: p[:creator_id],
       collection_ids: p[:collections]&.map(&:id),
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
-      permission_preset: p[:permission_preset]
+      permission_preset: p[:permission_preset],
+      library: SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
     }
-    library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    @model = Model.new(common_args.merge(library: library)) # dummy model object
-    if @model.valid?(multiple ? :multi_upload : :single_upload)
-      # Handle actual files
-      jobs = if multiple
-        # If this is all separate archives, enqueue separate jobs for each
-        p[:file]&.values&.map { cached_file_data(it) }
-      else
-        # Otherwise, enqueue one job for all files and add name to args
-        [p[:file]&.values&.map { cached_file_data(it) }]
-      end
-      jobs&.each do
-        ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
+    @model = Model.new(common_attributes) # dummy model object
+    if @model.valid?(multi_model ? :multi_upload : :single_upload)
+      # Create model if there's just one
+      single_model = create_model!(common_attributes) unless multi_model
+      # Add files
+      p[:file]&.values&.each do
+        # If single_model is nil, this will create a model for each file
+        # otherwise they get added to the passed model
+        add_upload_to_model(
+          tus_upload: it,
+          model: single_model,
+          attributes: common_attributes,
+          auto_extract: multi_model || (num_files == 1 && is_archive?(it))
+        )
       end
       respond_to do |format|
-        format.html { redirect_to models_path, notice: t(".success") }
-        format.manyfold_api_v0 { head :accepted }
+        format.html do
+          if multi_model
+            redirect_to models_path, notice: t(".success")
+          else
+            redirect_to single_model, notice: t(".success")
+          end
+        end
+        format.manyfold_api_v0 {
+          if multi_model
+            head :accepted
+          else
+            head :created, location: model_path(single_model)
+          end
+        }
       end
     else
       get_creators_and_collections
@@ -284,13 +299,23 @@ class ModelsController < ApplicationController
     end
   end
 
-  def cached_file_data(file)
-    {
-      id: file[:id],
-      storage: "cache",
-      metadata: {
-        filename: Zaru.sanitize!(File.basename(file[:name]))
-      }
-    }
+  def create_model!(attributes, name: nil)
+    model = Model.create(attributes.merge({name: name, path: SecureRandom.uuid}.compact))
+    Model.suppressing_turbo_broadcasts { model.organize! } if model
+    model
+  end
+
+  def add_upload_to_model(tus_upload:, model: nil, attributes: {}, auto_extract: false)
+    # Create a model for this file if we've not been given one
+    model ||= create_model!(
+      attributes,
+      name: File.basename(tus_upload[:name], ".*").careful_titleize
+    )
+    # Add file to model
+    AddUploadedFileToModelJob.perform_later(model.id, tus_upload.to_h.symbolize_keys, auto_extract: auto_extract) if model.persisted?
+  end
+
+  def is_archive?(tus_upload)
+    MediaType.archive_extensions.include? File.extname(tus_upload[:name]).delete(".").downcase
   end
 end

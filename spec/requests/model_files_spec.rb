@@ -213,47 +213,17 @@ RSpec.describe "Model Files" do
 
         it "queues post-upload job" do # rubocop:disable RSpec/ExampleLength
           expect { post model_model_files_path(model, params: params) }
-            .to have_enqueued_job(ProcessUploadedFileJob)
-            .with(Library.first.id, {
+            .to have_enqueued_job(AddUploadedFileToModelJob)
+            .with(model.id, {
               id: "upload_key",
-              storage: "cache",
-              metadata: {
-                filename: "test.stl"
-              }
-            }, model: model).once
+              name: "test.stl"
+            }).once
         end
 
         it "rate limits file uploads" do
           Rails.cache.increment("rate-limit:model_files:127.0.0.1", 10, expires_in: 1.minute)
           post model_model_files_path(model, params: params)
           expect(response).to have_http_status :too_many_requests
-        end
-      end
-
-      context "when uploading a file with attempted path traversal" do
-        let(:params) {
-          {
-            model: {
-              file: {
-                "0" => {
-                  id: "upload_key",
-                  name: "../test.stl"
-                }
-              }
-            }
-          }
-        }
-
-        it "queues post-upload job with sanitized path" do # rubocop:disable RSpec/ExampleLength
-          expect { post model_model_files_path(model, params: params) }
-            .to have_enqueued_job(ProcessUploadedFileJob)
-            .with(Library.first.id, {
-              id: "upload_key",
-              storage: "cache",
-              metadata: {
-                filename: "test.stl"
-              }
-            }, model: model).once
         end
       end
 

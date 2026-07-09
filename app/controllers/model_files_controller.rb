@@ -59,18 +59,8 @@ class ModelFilesController < ApplicationController
       file.convert_later params[:convert][:to]
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif !(p = upload_params).empty?
-      p.dig(:model, :file).each_pair do |_id, file|
-        ProcessUploadedFileJob.perform_later(
-          @model.library.id,
-          {
-            id: file[:id],
-            storage: "cache",
-            metadata: {
-              filename: Zaru.sanitize!(File.basename(file[:name]))
-            }
-          },
-          model: @model
-        )
+      p.dig(:model, :file).each_pair do |_id, tus_upload|
+        AddUploadedFileToModelJob.perform_later(@model.id, tus_upload)
       end
       respond_to do |format|
         format.html { redirect_to @model, notice: t(".success") }
