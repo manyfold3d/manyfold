@@ -113,7 +113,13 @@ class ModelsController < ApplicationController
             redirect_to single_model, notice: t(".success")
           end
         end
-        format.manyfold_api_v0 { head :accepted }
+        format.manyfold_api_v0 {
+          if multiple
+            head :accepted
+          else
+            head :created, location: model_path(single_model)
+          end
+        }
       end
     else
       get_creators_and_collections

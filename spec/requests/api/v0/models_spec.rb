@@ -86,67 +86,85 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       end
     end
 
-    path "/models" do
-      post "Create new models from uploaded files" do
-        tags "Models"
-        consumes Mime[:manyfold_api_v0].to_s
-        produces Mime[:manyfold_api_v0].to_s
-        security [client_credentials: ["write"]]
+    post "Create new models from uploaded files" do
+      tags "Models"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
 
-        parameter name: :body, in: :body, schema: ManyfoldApi::V0::UploadedModelDeserializer.schema_ref
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::UploadedModelDeserializer.schema_ref
 
-        before { create(:library) }
+      before { create(:library) }
 
-        response "202", "Accepted; the files will be processed and turned into new models" do
-          let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
-          let(:body) {
-            {
-              files: [
-                id: "https://example.com/uploads/tus_id",
-                name: "test.stl"
-              ],
-              "spdx:license": {
-                licenseId: "MIT"
-              },
-              name: "My New Model",
-              sensitive: true,
-              keywords: ["tag1", "tag2"]
-            }
+      response "201", "Created; a single model was created and the files will be added into it shortly" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) {
+          {
+            files: [{
+              id: "https://example.com/uploads/tus_id",
+              name: "test.stl"
+            }],
+            "spdx:license": {
+              licenseId: "MIT"
+            },
+            name: "My New Model",
+            sensitive: true,
+            keywords: ["tag1", "tag2"]
           }
+        }
 
-          run_test! do # rubocop:disable RSpec/ExampleLength
-            expect(AddUploadedFileToModelJob).to have_been_enqueued.with(
-              Library.first.id,
-              [{
-                id: "https://example.com/uploads/tus_id",
-                storage: "cache",
-                metadata: {
-                  filename: "test.stl"
-                }
-              }],
-              name: "My New Model",
-              owner: User.last,
-              creator_id: nil,
-              collection_ids: nil,
-              license: "MIT",
-              sensitive: true,
-              permission_preset: nil,
-              tag_list: ["tag1", "tag2"]
-            ).once
-          end
+        run_test! do # rubocop:disable RSpec/ExampleLength
+          expect(AddUploadedFileToModelJob).to have_been_enqueued.with(
+            Model.last.id,
+            {
+              id: "https://example.com/uploads/tus_id",
+              name: "test.stl"
+            },
+            auto_extract: false
+          ).once
         end
+      end
 
-        response "401", "Unauthorized; the request did not provide valid authentication details" do
-          let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+      response "202", "Accepted; multiple models were created, one for each archive, and the files will be extracted into them shortly" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) {
+          {
+            files: [{
+              id: "https://example.com/uploads/tus_id",
+              name: "test.zip"
+            }, {
+              id: "https://example.com/uploads/tus_id2",
+              name: "example.zip"
+            }],
+            "spdx:license": {
+              licenseId: "MIT"
+            },
+            sensitive: true,
+            keywords: ["tag1", "tag2"]
+          }
+        }
 
-          run_test!
+        run_test! do # rubocop:disable RSpec/ExampleLength
+          example_model = Model.find_by(name: "Example")
+          test_model = Model.find_by(name: "Test")
+          expect(AddUploadedFileToModelJob).to have_been_enqueued.with(
+            test_model.id, {id: "https://example.com/uploads/tus_id", name: "test.zip"}, auto_extract: true
+          ).and have_been_enqueued.with(
+            example_model.id, {id: "https://example.com/uploads/tus_id2", name: "example.zip"}, auto_extract: true
+          ).once
         end
+      end
 
-        response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
-          let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
-          run_test!
-        end
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
       end
     end
   end
