@@ -3,9 +3,10 @@ require "rails_helper"
 RSpec.describe AddUploadedFileToModelJob do
   subject(:job) { described_class.new }
 
+  let(:uploader) { create(:contributor) }
+  let(:model) { create(:model) }
+
   context "when uploading a file" do
-    let(:uploader) { create(:contributor) }
-    let(:model) { create(:model) }
     let(:file) { Rack::Test::UploadedFile.new(StringIO.new("solid\n"), original_filename: "test.stl") }
 
     it "adds the file to the model" do
@@ -34,7 +35,6 @@ RSpec.describe AddUploadedFileToModelJob do
 
   context "when extracting a zip file" do
     let(:upload) { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "test.zip") }
-    let(:model) { create(:model) }
 
     it "adds file to model" do
       expect { job.perform(model.id, upload) }.to change(ModelFile, :count).by(1)
