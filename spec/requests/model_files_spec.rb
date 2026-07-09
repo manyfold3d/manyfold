@@ -216,11 +216,8 @@ RSpec.describe "Model Files" do
             .to have_enqueued_job(AddUploadedFileToModelJob)
             .with(model.id, {
               id: "upload_key",
-              storage: "cache",
-              metadata: {
-                filename: "test.stl"
-              }
-            }, model: model).once
+              name: "test.stl"
+            }).once
         end
 
         it "rate limits file uploads" do

@@ -7,34 +7,44 @@ RSpec.describe AddUploadedFileToModelJob do
   let(:model) { create(:model) }
 
   context "when uploading a file" do
-    let(:file) { Rack::Test::UploadedFile.new(StringIO.new("solid\n"), original_filename: "test.stl") }
+    let(:upload) {
+      {
+        id: ModelFileUploader.upload(StringIO.new("solid\n"), "cache").id,
+        name: "test.stl"
+      }
+    }
 
     it "adds the file to the model" do
-      expect { job.perform(model.id, file) }.to change(model.model_files, :count).by(1)
+      expect { job.perform(model.id, upload) }.to change(model.model_files, :count).by(1)
     end
 
     it "doesn't increase model count if uploading the same filename" do
       create(:model_file, model: model, filename: "test.stl")
-      expect { job.perform(model.id, file) }.not_to change(model.model_files, :count)
+      expect { job.perform(model.id, upload) }.not_to change { model.model_files.count }
     end
 
     it "overwrites existing file with the same filename" do
       create(:model_file, model: model, filename: "test.stl")
-      expect { job.perform(model.id, file) }.to change { model.model_files.first.attachment.read }.to("solid\n")
+      expect { job.perform(model.id, upload) }.to change { model.model_files.first.attachment.read }.to("solid\n")
     end
 
     it "promotes the file to proper storage" do
-      job.perform(model.id, file)
+      job.perform(model.id, upload)
       expect(model.model_files.last.attachment.storage_key).to eq :library_1
     end
 
     it "queues up file metadata parsing" do
-      expect { job.perform(model.id, file) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).once
+      expect { job.perform(model.id, upload) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).once
     end
   end
 
   context "when extracting a zip file" do
-    let(:upload) { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "test.zip") }
+    let(:upload) {
+      {
+        id: ModelFileUploader.upload(StringIO.new, "cache").id,
+        name: "test.zip"
+      }
+    }
 
     it "adds file to model" do
       expect { job.perform(model.id, upload) }.to change(ModelFile, :count).by(1)
