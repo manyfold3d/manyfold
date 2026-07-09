@@ -20,10 +20,6 @@ class AddUploadedFileToModelJob < ApplicationJob
     model.check_for_problems_later
   end
 
-  def is_archive?(file)
-    MediaType.archive_extensions.include? File.extname(file.original_filename).delete(".").downcase
-  end
-
   def add_single_file_to_model(model, file)
     # Handle different file types
     case File.extname(file.original_filename).delete(".").downcase
