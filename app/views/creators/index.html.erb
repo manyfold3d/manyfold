@@ -3,6 +3,7 @@
 <% end %>
 
 <% content_for :items do %>
+  <%= turbo_stream_from Creator.model_name.plural %>
   <div class="skip-link-container">
     <%= skip_link "sidebar", t(".skip_creators") %>
     <div class="row">

@@ -1,4 +1,5 @@
 <div class="col mb-4">
+  <%= turbo_stream_from file %>
   <div class="card preview-card <%= (file === @model.preview_file) ? "border-primary" : "" %>">
     <%= PreviewFrame(object: file) %>
     <div class="card-body">

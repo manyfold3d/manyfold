@@ -1,4 +1,6 @@
 <% content_for :items do %>
+  <%= turbo_stream_from Model.model_name.plural %>
+
   <% if @models.empty? %>
     <div class="alert alert-info">
       <%= Icon icon: "person-arms-up", label: "" %>
