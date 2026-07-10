@@ -1674,8 +1674,11 @@
         ],
         "parameters": [],
         "responses": {
+          "201": {
+            "description": "Created; a single model was created and the files will be added into it shortly"
+          },
           "202": {
-            "description": "Accepted; the files will be processed and turned into new models"
+            "description": "Accepted; multiple models were created, one for each archive, and the files will be extracted into them shortly"
           },
           "401": {
             "description": "Unauthorized; the request did not provide valid authentication details"
