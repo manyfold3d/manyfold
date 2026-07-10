@@ -109,7 +109,7 @@ gem "rails-settings-cached", "~> 2.9"
 
 gem "kaminari", "~> 1.2"
 
-gem "lograge", "~> 0.14"
+gem "lograge", "~> 0.15"
 
 gem "acts_as_favoritor", "~> 6.0"
 
