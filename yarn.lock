@@ -1835,9 +1835,9 @@ __metadata:
   linkType: hard
 
 "@ungap/structured-clone@npm:^1.2.0":
-  version: 1.3.2
-  resolution: "@ungap/structured-clone@npm:1.3.2"
-  checksum: 5502f0ee4bcc839e9cc1ef146b7db8d605fae32925c6e121beaf568bec0affff2db4bea618167891f450527412efc1adf081e6a6935b9257ef75ccc61dfce2e7
+  version: 1.3.3
+  resolution: "@ungap/structured-clone@npm:1.3.3"
+  checksum: b9ce345899e75b5d31d46d8b44b1686b1a2615f9dccc0aa3f8ef0a3fdc966dbcd1bdc97050f4d569364edb2cda2fafd86e7672580f9b37953dc6c9dfdcde5e07
   languageName: node
   linkType: hard
 
