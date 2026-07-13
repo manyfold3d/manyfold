@@ -2320,17 +2320,17 @@ __metadata:
   linkType: hard
 
 "browserslist@npm:^4.28.1, browserslist@npm:^4.28.4":
-  version: 4.28.5
-  resolution: "browserslist@npm:4.28.5"
+  version: 4.28.6
+  resolution: "browserslist@npm:4.28.6"
   dependencies:
     baseline-browser-mapping: ^2.10.42
-    caniuse-lite: ^1.0.30001800
-    electron-to-chromium: ^1.5.387
-    node-releases: ^2.0.50
+    caniuse-lite: ^1.0.30001803
+    electron-to-chromium: ^1.5.389
+    node-releases: ^2.0.51
     update-browserslist-db: ^1.2.3
   bin:
     browserslist: cli.js
-  checksum: 682e763eba0bc0aeaae45b4427f3cc00109e6fb8ecff6cbe6e5f13fe377e2b25b673e872b45170398e634b7cdb6a15e37b27fecce383169c06b16eb50f191270
+  checksum: 0a42bac1bdc8ed471bc34dd1fb9d40f2c76049ce6d8a867f98bd10189d150662e1611b5b95886a171a0135e9e16f2aebf3beb62ebe5c3f90f66c3c49ccef4201
   languageName: node
   linkType: hard
 
@@ -2409,10 +2409,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001799, caniuse-lite@npm:^1.0.30001800":
+"caniuse-lite@npm:^1.0.30001799":
   version: 1.0.30001803
   resolution: "caniuse-lite@npm:1.0.30001803"
   checksum: 157764969d198bdd4dff3221d6204158fa2917c0f0ca2df5ec71f856e7f94937d1209677656155365bd5b2da160f663adeabf5b50b08dc4b3bee838248dfaf6c
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001803":
+  version: 1.0.30001805
+  resolution: "caniuse-lite@npm:1.0.30001805"
+  checksum: 04dbcfd6689585af38a7b48f1d2bc6b55d4e81aef5792ca8504634ec949a585db67ef03bbf2299a692319a7680d6d8b2fc46f9833bed714a50e380edd43fa7b9
   languageName: node
   linkType: hard
 
@@ -2719,7 +2726,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.5.387":
+"electron-to-chromium@npm:^1.5.389":
   version: 1.5.389
   resolution: "electron-to-chromium@npm:1.5.389"
   checksum: 7f708839659cc3769f20298c09f863e4ed337e73ac9dff384cff0fb491e80d9161954a7d10bfdde84bbff018a954500e9e943f76aa058831e21618123605e811
@@ -5027,7 +5034,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.50":
+"node-releases@npm:^2.0.51":
   version: 2.0.51
   resolution: "node-releases@npm:2.0.51"
   checksum: 0d607ebc5c1aa94ef110e6ab926ec51fca55b8534a889a42ffeda1575af00b3bf2e2473898fa45213a3dfedde5f2cedfc4dee2060967e97d6b9518531e388710
