@@ -42,7 +42,7 @@
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.24",
     "@typescript-eslint/parser": "^8.63.0",
-    "eslint": "^10.6.0",
+    "eslint": "^10.7.0",
     "husky": "^9.1.7",
     "postcss": "^8.5.16",
     "postcss-flexbugs-fixes": "^5.0.2",
