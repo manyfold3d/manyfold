@@ -44,7 +44,7 @@
     "@typescript-eslint/parser": "^8.63.0",
     "eslint": "^10.7.0",
     "husky": "^9.1.7",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.18",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^16.1.1",
     "postcss-preset-env": "^11.3.2",
