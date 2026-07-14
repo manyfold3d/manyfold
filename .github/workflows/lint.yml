@@ -18,6 +18,6 @@ jobs:
       - name: Lint ERB templates
         run: bundle exec erb_lint --lint-all
       - name: Lint Typescript code
-        run: yarn run lint:ts
+        run: yarn run lint
       - name: Check typescript
         run: yarn typecheck
