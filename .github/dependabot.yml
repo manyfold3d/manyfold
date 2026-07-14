@@ -4,12 +4,17 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 20
+  groups:
+    shrine:
+      patterns:
+        - "shrine*"
+        - "tus-server"
 - package-ecosystem: npm
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 20
   allow:
     - dependency-type: "all"
   ignore:
