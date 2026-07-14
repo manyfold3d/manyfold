@@ -5,7 +5,8 @@ export default [
     ts: true,
     ignores: [
       'public/vite*/*',
-      'coverage/*'
+      'coverage/*',
+      'vendor/bundle/*'
     ]
   }),
   {
