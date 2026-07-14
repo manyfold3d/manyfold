@@ -16,6 +16,7 @@ jobs:
           - es
           - fr
           - ja
+          - lt
           - nl
           - pl
           - pt
