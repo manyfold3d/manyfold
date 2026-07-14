@@ -4738,7 +4738,7 @@ __metadata:
     husky: ^9.1.7
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
-    postcss: ^8.5.18
+    postcss: ^8.5.19
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^16.1.1
     postcss-preset-env: ^11.3.2
@@ -5838,7 +5838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.16, postcss@npm:^8.5.18":
+"postcss@npm:^8.5.16":
   version: 8.5.18
   resolution: "postcss@npm:8.5.18"
   dependencies:
@@ -5846,6 +5846,17 @@ __metadata:
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
   checksum: 924b71b066ada1909b741970b53529b95a6589106302a154cd14b2fae0c8186144be2bb1e0c45e0f3e530474cf92afa01d790afa8b71dcd60c98ca8ee42f66c1
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.19":
+  version: 8.5.19
+  resolution: "postcss@npm:8.5.19"
+  dependencies:
+    nanoid: ^3.3.12
+    picocolors: ^1.1.1
+    source-map-js: ^1.2.1
+  checksum: c977ac0c159f7833ceb212c9cb2c1b75845703a2e620f2eb1cd719ee91290a830acf0385f8695f56470560e501e619ef1518a9e7ee2f54bde935484cc73b624c
   languageName: node
   linkType: hard
 
