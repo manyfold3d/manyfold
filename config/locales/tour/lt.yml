@@ -1,0 +1,20 @@
+---
+lt:
+  tour:
+    libraries:
+      new:
+        description:
+    navbar:
+      account:
+        description:
+      add_models:
+        description:
+      collections:
+        description:
+      creators:
+        description:
+      main:
+        description:
+        title:
+      models:
+        description:
