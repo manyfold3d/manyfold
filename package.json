@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint:ts": "ts-standard --fix",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
@@ -41,16 +42,15 @@
     "@types/three": "^0.185.1",
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.24",
-    "@typescript-eslint/parser": "^8.64.0",
-    "eslint": "^10.7.0",
+    "eslint": "^9.0.0",
     "husky": "^9.1.7",
+    "neostandard": "^0.13.0",
     "postcss": "^8.5.19",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^16.1.1",
     "postcss-preset-env": "^11.3.2",
     "rollup": "^4.62.2",
     "sass-embedded": "^1.100.0",
-    "ts-standard": "^12.0.2",
     "typescript": "~5.9.3",
     "vite": "^8.1.4",
     "vite-plugin-rails": "^0.6.0",
