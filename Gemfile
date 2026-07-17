@@ -155,7 +155,7 @@ gem "climate_control", "~> 1.2", group: :test
 gem "sys-filesystem", "~> 1.6"
 gem "shrine", "~> 3.9"
 gem "tus-server", "~> 2.3"
-gem "shrine-tus", "~> 2.1"
+gem "shrine-tus", "~> 3.0"
 
 gem "aws-sdk-s3", "< 1.229"
 

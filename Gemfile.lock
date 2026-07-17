@@ -294,9 +294,6 @@ GEM
     ffi (1.17.4-x86_64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
     ffi (1.17.4-x86_64-linux-musl)
-    ffi-compiler (1.3.2)
-      ffi (>= 1.15.5)
-      rake
     ffi-libarchive (1.1.14)
       ffi (~> 1.0)
     fiber-storage (1.0.1)
@@ -369,14 +366,11 @@ GEM
     highline (3.1.2)
       reline
     htmlentities (4.4.2)
-    http (5.3.1)
-      addressable (~> 2.8)
+    http (6.0.4)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.5.0)
-    http-cookie (1.1.0)
+      llhttp (~> 0.6.1)
+    http-cookie (1.1.6)
       domain_name (~> 0.5)
-    http-form_data (2.3.0)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-js (4.2.4)
@@ -471,9 +465,7 @@ GEM
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp-ffi (0.5.1)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
+    llhttp (0.6.2)
     locale (2.1.4)
     logger (1.7.0)
     lograge (0.15.0)
@@ -729,7 +721,7 @@ GEM
     reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
-    roda (3.98.0)
+    roda (3.106.0)
       rack
     rolify (6.0.1)
     rouge (5.0.0)
@@ -832,14 +824,13 @@ GEM
     shrine (3.9.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
-    shrine-tus (2.1.1)
+    shrine-tus (3.0.0)
       shrine (~> 3.2)
       shrine-url (~> 2.4)
-      tus-server (~> 2.0)
-    shrine-url (2.4.1)
+    shrine-url (2.4.2)
       down (~> 5.0)
-      http (>= 3.2, < 6)
-      shrine (>= 3.0.0.rc, < 4)
+      http (>= 3.2)
+      shrine (~> 3.0)
     sidekiq (8.0.10)
       connection_pool (>= 2.5.0)
       json (>= 2.9.0)
@@ -1095,7 +1086,7 @@ DEPENDENCIES
   scout_apm
   selenium-webdriver
   shrine (~> 3.9)
-  shrine-tus (~> 2.1)
+  shrine-tus (~> 3.0)
   sidekiq (~> 8.0)
   sidekiq-cron (~> 2.4)
   simplecov (~> 1.0)
@@ -1227,7 +1218,6 @@ CHECKSUMS
   ffi (1.17.4-x86_64-darwin) sha256=aa70390523cf3235096cf64962b709b4cfbd5c082a2cb2ae714eb0fe2ccda496
   ffi (1.17.4-x86_64-linux-gnu) sha256=9d3db14c2eae074b382fa9c083fe95aec6e0a1451da249eab096c34002bc752d
   ffi (1.17.4-x86_64-linux-musl) sha256=3fdf9888483de005f8ef8d1cf2d3b20d86626af206cbf780f6a6a12439a9c49e
-  ffi-compiler (1.3.2) sha256=a94f3d81d12caf5c5d4ecf13980a70d0aeaa72268f3b9cc13358bcc6509184a0
   ffi-libarchive (1.1.14) sha256=a3e4ca9484ee4ad754ad04fcc14a12686d48d1463c264173d6f8ff0a4df816a6
   fiber-storage (1.0.1) sha256=f48e5b6d8b0be96dac486332b55cee82240057065dc761c1ea692b2e719240e1
   formatador (1.2.3) sha256=19fa898133c2c26cdbb5d09f6998c1e137ad9427a046663e55adfe18b950d894
@@ -1254,9 +1244,8 @@ CHECKSUMS
   hashie (5.0.0) sha256=9d6c4e51f2a36d4616cbc8a322d619a162d8f42815a792596039fc95595603da
   highline (3.1.2) sha256=67cbd34d19f6ef11a7ee1d82ffab5d36dfd5b3be861f450fc1716c7125f4bb4a
   htmlentities (4.4.2) sha256=bbafbdf69f2eca9262be4efef7e43e6a1de54c95eb600f26984f71d2fe96c5c3
-  http (5.3.1) sha256=c50802d8e9be3926cb84ac3b36d1a31fbbac383bc4cbecdce9053cb604231d7d
-  http-cookie (1.1.0) sha256=38a5e60d1527eebc396831b8c4b9455440509881219273a6c99943d29eadbb19
-  http-form_data (2.3.0) sha256=cc4eeb1361d9876821e31d7b1cf0b68f1cf874b201d27903480479d86448a5f3
+  http (6.0.4) sha256=3768f902489ea8309424f1881c668af8d3ca73675648a755dfe2cb0030d42d26
+  http-cookie (1.1.6) sha256=ba4b82be64de61dc281243dac70e3c382c45142f20268ed9276a3670c93feaa9
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   i18n-js (4.2.4) sha256=61390d372f8fa68c495c5907d577657e8cc3a7031f4945db1e91f935e1391355
   i18n-tasks (1.1.2) sha256=4dcfba49e52a623f30661cb316cb80d84fbba5cb8c6d88ef5e02545fffa3637a
@@ -1286,7 +1275,7 @@ CHECKSUMS
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   linzer (0.7.7) sha256=b2e4165d533961f2cb4ead07a0ba649665c29d038e3008b8d21d2a5babee3227
   listen (3.10.0) sha256=c6e182db62143aeccc2e1960033bebe7445309c7272061979bb098d03760c9d2
-  llhttp-ffi (0.5.1) sha256=9a25a7fc19311f691a78c9c0ac0fbf4675adbd0cca74310228fdf841018fa7bc
+  llhttp (0.6.2) sha256=3c3c59aafb1e1594ab2f45293478f697458f5a91eb0f0db4b27f61a064024982
   locale (2.1.4) sha256=522f9973ef3eee64aac9bca06d21db2fba675fa3d2cf61d21f42d1ca18a9f780
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   lograge (0.15.0) sha256=34072c1f50b95019dc185137f5fec1a6759f5a1b6d55c28163d0cba204e6df16
@@ -1393,7 +1382,7 @@ CHECKSUMS
   responders (3.2.0) sha256=89c2d6ac0ae16f6458a11524cae4a8efdceba1a3baea164d28ee9046bd3df55a
   reverse_markdown (3.0.2) sha256=818ebb92ce39dbb1a291690dd1ec9a6d62530d4725296b17e9c8f668f9a5b8af
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
-  roda (3.98.0) sha256=c1147d42322305168df91f9a13b7dcadf4b1fe7171fb9598ca444e7618362428
+  roda (3.106.0) sha256=1a1cfb13c6690db158a3929e9c9ece88e697fb23b05baae63f07b0773e3bbade
   rolify (6.0.1) sha256=fe45fbf70c4033ccada6f9ccc02b946eeaad044ea5d3e38546ae408d3adeb5b6
   rouge (5.0.0) sha256=e2de9bba2f9cb88f8a73bca3643b560b2b398f32f91bf716f584477bc0175ebc
   rspec (3.13.2) sha256=206284a08ad798e61f86d7ca3e376718d52c0bc944626b2349266f239f820587
@@ -1425,8 +1414,8 @@ CHECKSUMS
   selenium-webdriver (4.46.0) sha256=cb6cfa6f79eac041749df0b14cdcb0e9fe5df3715a64c77bfaa56b345b99f957
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
   shrine (3.9.0) sha256=3ccc2dd1cff89efc034449675f6524017084485b8b387059d68b4f303c848aa7
-  shrine-tus (2.1.1) sha256=fc16e11b7f806963b0ba8d61271bb5fbae24d8065aa8eed889abc9f46e841f99
-  shrine-url (2.4.1) sha256=e086a9c3017b881483a8aaa516b369cfc3bc6dcbbe2bff55a26c8ace08634429
+  shrine-tus (3.0.0) sha256=932344c54569eb260d9533edeb0cbb72cdfd5955d0ec861ea08dda024c6f486d
+  shrine-url (2.4.2) sha256=7900500b41c42b68d420cab173cb351775fda0381661d6ac13305c45576d01a0
   sidekiq (8.0.10) sha256=37ccd8da8d46f6779b8655cb30c1bfcb0decd57e890ff56d8b8252a5d9a84cd6
   sidekiq-cron (2.4.0) sha256=25595c5aee0c16d13a89466e5108af047fa4cfbf388199b39e1a600ca39472d4
   simple_po_parser (1.1.6) sha256=122687d44d3de516a0e69e2f383a4180f5015e8c5ed5a7f2258f2b376f64cbf3
