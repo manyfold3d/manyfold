@@ -4511,9 +4511,9 @@ __metadata:
   linkType: hard
 
 "obug@npm:^2.0":
-  version: 2.1.3
-  resolution: "obug@npm:2.1.3"
-  checksum: e177b2ce8e2215b602fdc5206a717027ad6dba6c7c7a783f90ad4c5b601d2cd630c80a15b15123ceb218fbb3cfdca58005daaadbe60a9c9e3e9de8923dc4ba54
+  version: 2.1.4
+  resolution: "obug@npm:2.1.4"
+  checksum: 2a70ee823423b1092881473cf4283a503e8bcbf5e4bd4be7856949af9ec3eb75fec1033caac97578ab723546273ba66d7b2b074e75ea02c226a549f7d7bdd7e7
   languageName: node
   linkType: hard
 
