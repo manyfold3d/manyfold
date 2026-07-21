@@ -4133,7 +4133,7 @@ __metadata:
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
     neostandard: ^0.13.0
-    postcss: ^8.5.20
+    postcss: ^8.5.21
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^16.1.1
     postcss-preset-env: ^11.3.2
@@ -5130,14 +5130,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.20":
-  version: 8.5.20
-  resolution: "postcss@npm:8.5.20"
+"postcss@npm:^8.5.21":
+  version: 8.5.21
+  resolution: "postcss@npm:8.5.21"
   dependencies:
     nanoid: ^3.3.16
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
-  checksum: 0dd2c0eb3ab98237ef6b9e016d36f02c416b6ce7794b07a62625c89d0b1ff07e0301ecc32f3292ac843bd2b588a05536a7682f3e592027e503cf596723ccaca0
+  checksum: 6c07be5f24b0710d1fdd484fe2da20f37e28c2e12f1bc8ad801cfa521e7d15a22bd0c64957e7677aad7fccc02310dc9a024a8a6ebb7ebe78c44b1a8b585a2c50
   languageName: node
   linkType: hard
 
