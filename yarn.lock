@@ -5120,18 +5120,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.17":
-  version: 8.5.21
-  resolution: "postcss@npm:8.5.21"
-  dependencies:
-    nanoid: ^3.3.16
-    picocolors: ^1.1.1
-    source-map-js: ^1.2.1
-  checksum: 6c07be5f24b0710d1fdd484fe2da20f37e28c2e12f1bc8ad801cfa521e7d15a22bd0c64957e7677aad7fccc02310dc9a024a8a6ebb7ebe78c44b1a8b585a2c50
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.5.22":
+"postcss@npm:^8.5.17, postcss@npm:^8.5.22":
   version: 8.5.22
   resolution: "postcss@npm:8.5.22"
   dependencies:
