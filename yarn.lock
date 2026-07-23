@@ -39,6 +39,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/css-calc@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@csstools/css-calc@npm:3.3.0"
+  peerDependencies:
+    "@csstools/css-parser-algorithms": ^4.0.0
+    "@csstools/css-tokenizer": ^4.0.0
+  checksum: 77bac1965896a983d927d4f39c51018bdfd80a33fe7ed6f2ab8fb60c450ce26543ec9b5f35c4c06802c3818c0a60acb312d9e81e2d18239dc2cc5814d22147cd
+  languageName: node
+  linkType: hard
+
+"@csstools/css-color-parser@npm:^4.1.10":
+  version: 4.1.10
+  resolution: "@csstools/css-color-parser@npm:4.1.10"
+  dependencies:
+    "@csstools/color-helpers": ^6.1.0
+    "@csstools/css-calc": ^3.3.0
+  peerDependencies:
+    "@csstools/css-parser-algorithms": ^4.0.0
+    "@csstools/css-tokenizer": ^4.0.0
+  checksum: 43f63f41b182c7af344279835fd0628e1c9403182c8000a5520645c3bf44fd90564a89b34b9a1500425500e9ec68f5cca0e8dbdce775cd6bbc3bb6939214b5e1
+  languageName: node
+  linkType: hard
+
 "@csstools/css-color-parser@npm:^4.1.9":
   version: 4.1.9
   resolution: "@csstools/css-color-parser@npm:4.1.9"
@@ -151,17 +174,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-mix-variadic-function-arguments@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "@csstools/postcss-color-mix-variadic-function-arguments@npm:2.0.6"
+  version: 2.0.7
+  resolution: "@csstools/postcss-color-mix-variadic-function-arguments@npm:2.0.7"
   dependencies:
-    "@csstools/css-color-parser": ^4.1.9
+    "@csstools/css-color-parser": ^4.1.10
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.1
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 851d83555dc50d1e1ed6d722f154c9ee891cb570b4916912e19428b85ae758e05658e990849c36f4907e3adf1ec9e57211a39c38ea9092ce3534b752040bb395
+  checksum: 30469a0dd6d4e1eb16d921674937b626f261582b6eb33ec8649364f1c0266007cb0c7ecc165c878b101eb731dad83120104628c3ed6f85970e42ddd6f52d2a73
   languageName: node
   linkType: hard
 
