@@ -7,6 +7,7 @@ require "image_processing/mini_magick"
 class ApplicationUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
+  plugin :backgrounding
   plugin :refresh_metadata
   plugin :metadata_attributes, size: "size"
   plugin :restore_cached_data
