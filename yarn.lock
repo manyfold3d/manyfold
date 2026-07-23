@@ -2315,13 +2315,13 @@ __metadata:
   linkType: hard
 
 "css-blank-pseudo@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "css-blank-pseudo@npm:8.0.1"
+  version: 8.0.2
+  resolution: "css-blank-pseudo@npm:8.0.2"
   dependencies:
     postcss-selector-parser: ^7.1.1
   peerDependencies:
     postcss: ^8.4
-  checksum: a0f2647cdfca697752b4b88e97d9afe91cc13681447a796bc7ed2c16128fddec5cb0bb812d4368fec46d7e514cb1664e1bc0e1876f6a6cc37f217b57baae5633
+  checksum: e7e08a097dae8189ba64e6e1ec4f6efc9fb6c58ea5a2f2d96d8ecc2b93cd7d3281de8099376b151693d93f51df0968da8549a642b31846c56c36ac2998000440
   languageName: node
   linkType: hard
 
