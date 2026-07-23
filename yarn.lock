@@ -2316,11 +2316,11 @@ __metadata:
   linkType: hard
 
 "css-prefers-color-scheme@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "css-prefers-color-scheme@npm:11.0.0"
+  version: 11.0.1
+  resolution: "css-prefers-color-scheme@npm:11.0.1"
   peerDependencies:
     postcss: ^8.4
-  checksum: f3ddd3a674b264eae25fcee8259dd1f24fdbe4dfc4c79171d33ba89b8d776db0b1d8c60faae2eec2ab8175e6de9630e9cf4acf56b94a86325c41ed1806c03ccc
+  checksum: 68a5e8effcbc1b9d42ce82f141b1e12274654c7f48c1eccc9c7960d8c9dc74fd5b73914926fc50d47e8f3fb74530a61113a287a955332385e1893ce9eaf6a7de
   languageName: node
   linkType: hard
 
