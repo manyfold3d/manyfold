@@ -1,7 +1,7 @@
 class ExtractArchiveJob < ApplicationJob
   include ArchiveHelpers
 
-  queue_as :high
+  queue_as :default
 
   def perform(file_id, remove_when_complete: false)
     file = ModelFile.find(file_id)
