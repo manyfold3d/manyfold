@@ -39,6 +39,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/css-calc@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@csstools/css-calc@npm:3.3.0"
+  peerDependencies:
+    "@csstools/css-parser-algorithms": ^4.0.0
+    "@csstools/css-tokenizer": ^4.0.0
+  checksum: 77bac1965896a983d927d4f39c51018bdfd80a33fe7ed6f2ab8fb60c450ce26543ec9b5f35c4c06802c3818c0a60acb312d9e81e2d18239dc2cc5814d22147cd
+  languageName: node
+  linkType: hard
+
+"@csstools/css-color-parser@npm:^4.1.10":
+  version: 4.1.10
+  resolution: "@csstools/css-color-parser@npm:4.1.10"
+  dependencies:
+    "@csstools/color-helpers": ^6.1.0
+    "@csstools/css-calc": ^3.3.0
+  peerDependencies:
+    "@csstools/css-parser-algorithms": ^4.0.0
+    "@csstools/css-tokenizer": ^4.0.0
+  checksum: 43f63f41b182c7af344279835fd0628e1c9403182c8000a5520645c3bf44fd90564a89b34b9a1500425500e9ec68f5cca0e8dbdce775cd6bbc3bb6939214b5e1
+  languageName: node
+  linkType: hard
+
 "@csstools/css-color-parser@npm:^4.1.9":
   version: 4.1.9
   resolution: "@csstools/css-color-parser@npm:4.1.9"
@@ -256,17 +279,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-gradients-interpolation-method@npm:^6.0.6":
-  version: 6.0.6
-  resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.6"
+  version: 6.0.7
+  resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.7"
   dependencies:
-    "@csstools/css-color-parser": ^4.1.9
+    "@csstools/css-color-parser": ^4.1.10
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.1
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: fa889b3b97b0c9610ec4fe46c101a03790441f5bbf43619a2805514d76f6a7e87c46a8b263cbcddbc422b498e78ec9a5f311d03ea5c86fc1e99be1b635bc2fa4
+  checksum: 96f09236cdcdc2fb26e682dcedfb608464547201ee8009ef77179c6850a3cf567f070736dc069e1c64fc4b8312e9d55a7e7d342f6ad630140029ede576d1056b
   languageName: node
   linkType: hard
 
