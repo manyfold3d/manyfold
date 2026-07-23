@@ -4855,13 +4855,13 @@ __metadata:
   linkType: hard
 
 "postcss-focus-within@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "postcss-focus-within@npm:10.0.0"
+  version: 10.0.1
+  resolution: "postcss-focus-within@npm:10.0.1"
   dependencies:
     postcss-selector-parser: ^7.1.1
   peerDependencies:
     postcss: ^8.4
-  checksum: b88bfb6c240c5fbf826d084525e636ae71ab395c30999f3297c159997b49de7ac248d60919b351cdc4286fc5f243e7ab62d9749e4151035256543edf4f3e577b
+  checksum: cba7be1aa0a1a16245219301544100651aa804fa8166cd2f630aff5e11b822b0b03114bc1d31eeec32381c9e16339eb0d3f808107e472ea6697abf1f9fb8cc69
   languageName: node
   linkType: hard
 
