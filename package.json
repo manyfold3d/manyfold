@@ -29,7 +29,7 @@
     "i18n-js": "^4.5.3",
     "masonry-layout": "^4.2.2",
     "three": "^0.185.1",
-    "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader",
+    "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=d65e59e7e3955912efcd96576382ee736a62a36f",
     "tom-select": "^2.6.2"
   },
   "version": "0.1.0",
