@@ -607,15 +607,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-trigonometric-functions@npm:^5.0.3":
-  version: 5.0.3
-  resolution: "@csstools/postcss-trigonometric-functions@npm:5.0.3"
+  version: 5.0.4
+  resolution: "@csstools/postcss-trigonometric-functions@npm:5.0.4"
   dependencies:
-    "@csstools/css-calc": ^3.2.1
+    "@csstools/css-calc": ^3.3.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 209158aa643f96ec098329877a9f747a8d768996bb1b417907fabc2f6922a7b81e48f1b4032a901dbdb07c8ddb5e8dabd62a399cb80e4f05dc7dd93f9dd76288
+  checksum: edbe29abe083b8a9b974309a035754362fcf77149929e7eecc6f3ddef005c9dbf2d54c24b87bb5f4466c989907eac89abc554c9b58662c850db9e313377d5248
   languageName: node
   linkType: hard
 
