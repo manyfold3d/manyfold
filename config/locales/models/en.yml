@@ -60,7 +60,7 @@ en:
     merge:
       success: Models merged successfully.
     new:
-      archives-only: Upload only compressed archives (ZIP, RAR, etc), and each file will be extracted and become a separate model.
+      archives-only: Upload only compressed archives (ZIP, RAR, etc), and each archive will be extracted into a separate model.
       description: 'Add new models by uploading files! The models that are created depend on what you upload:'
       files:
         label: Select Files
