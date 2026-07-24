@@ -133,6 +133,10 @@ class ApplicationUploader < Shrine
       Shrine.with_file(original) do
         {render: GcodeThumbnailExtractorService.new(file: it).call}.compact
       end
+    elsif SiteSettings.generate_model_renders && FileHandlers::FreecadThumbnailExtractor.can_load?(context[:record].mime_type)
+      Shrine.with_file(original) do
+        {render: FreecadThumbnailExtractorService.new(file: it).call}.compact
+      end
     elsif SiteSettings.generate_model_renders && FileHandlers::F3d.can_load?(context[:record].mime_type) && context[:record]&.is_3d_model?
       Shrine.with_file(original) do
         up = context[:record]&.up_direction
