@@ -3,257 +3,257 @@ lt:
   activerecord:
     attributes:
       collection:
-        ai_indexable:
-        caption:
+        ai_indexable: Leisti naudoti dirbtinio intelekto mokymui
+        caption: Antraštė
         collection_id:
-        cover:
+        cover: Viršelis
         creator_id:
-          few:
-          many:
-          one:
-          other:
-          two:
-          zero:
-        indexable:
-        name:
-        notes:
-        preview_model_id:
+          few: Autoriai
+          many: Autorių
+          one: Autorius
+          other: Autoriai
+          two: Autoriai
+          zero: Autorių
+        indexable: Leisti indeksavimą paieškos tikslais
+        name: Pavadinimas
+        notes: Aprašymas
+        preview_model_id: Modelio peržiūra
       creator:
-        ai_indexable:
+        ai_indexable: Leisti naudoti dirbtinio intelekto mokymui
         avatar:
         banner:
         caption:
-        indexable:
-        name:
-        notes:
+        indexable: Leisti indeksavimą paieškos tikslais
+        name: Autoriaus vardas
+        notes: Aprašymas
         slug:
       doorkeeper/access_token:
-        active:
-        created_at:
-        expires_in:
-        fingerprint:
+        active: Aktyvus
+        created_at: Sukurta
+        expires_in: Galioja iki
+        fingerprint: Piršto atspaudas
         scopes:
-        token:
+        token: Prieigos žetonas
       doorkeeper/application:
-        confidential:
-        created_at:
-        name:
-        owner:
-        redirect_uri:
+        confidential: Konfidencialu
+        created_at: Sukurta
+        name: Pavadinimas
+        owner: Savininkas
+        redirect_uri: Peradresavimo URI
         scopes:
         secret:
-        uid:
+        uid: Kliento ID
       fasp_client_backfill_request:
-        category:
-        created_at:
-        max_count:
+        category: Kategorija
+        created_at: Sukurta
+        max_count: Maksimalus skaičius
       fasp_client_event_subscription:
-        category:
-        created_at:
-        subscription_type:
+        category: Kategorija
+        created_at: Sukurta
+        subscription_type: Prenumeratos tipas
       fasp_client_provider:
-        base_url:
-        contact_email:
-        created_at:
+        base_url: URL
+        contact_email: El. paštas
+        created_at: Įregistruota adresu
         fediverse_account:
-        fingerprint:
-        privacy_policy:
-        sign_in_url:
-        status:
+        fingerprint: Piršto atspaudas
+        privacy_policy: Privatumo politika
+        sign_in_url: Prisijungti
+        status: Būklė
       federails/moderation/domain_block:
-        created_at:
-        domain:
+        created_at: Sukurta
+        domain: Domenas
       federails/moderation/report:
-        content:
-        created_at:
-        federails_actor:
-        object:
+        content: Komentaras
+        created_at: Gauta
+        federails_actor: Pranešė
+        object: Objektas
       group:
-        description:
-        invitations:
-        memberships:
-        name:
-        typed_id:
+        description: Aprašymas
+        invitations: Kvietimai
+        memberships: Narystė
+        name: Pavadinimas
+        typed_id: Leidimo ID
       library:
-        caption:
-        create_path_if_not_on_disk:
-        default:
-        icon:
-        name:
-        notes:
-        parse_metadata_from_path:
-        path:
-        path_template:
-        s3_access_key_id:
+        caption: Antraštė
+        create_path_if_not_on_disk: Automatiškai sukurti aplanką
+        default: Numatytasis
+        icon: Piktograma
+        name: Pavadinimas
+        notes: Pastabos
+        parse_metadata_from_path: Nustatyti metaduomenis pagal kelią
+        path: Kelias
+        path_template: Aplanko pavadinimo šablonas
+        s3_access_key_id: Prieigos raktų ID
         s3_bucket:
-        s3_endpoint:
-        s3_path_style:
-        s3_region:
-        s3_secret_access_key:
-        safe_folder_names:
-        storage_service:
-        tag_regex:
+        s3_endpoint: Galutinio taško URL
+        s3_path_style: Naudoti „path“ stiliaus URL adresus
+        s3_region: Regionas
+        s3_secret_access_key: Slaptas prieigos raktas
+        safe_folder_names: Naudoti saugius aplankų pavadinimus
+        storage_service: Saugojimo įrenginys
+        tag_regex: Privalomos žymės
       link:
-        url:
+        url: Nuoroda
       list:
         list_items:
-        name:
+        name: Pavadinimas
       list_item:
-        created_at:
+        created_at: Pridėta
       model:
-        ai_indexable:
-        caption:
-        creator_id:
-        entrypoint:
+        ai_indexable: Leisti naudoti dirbtinio intelekto mokymui
+        caption: Antraštė
+        creator_id: Autorius
+        entrypoint: Pradžios taškas
         entrypoint_fragment:
-        indexable:
-        library_id:
-        license:
-        name:
-        notes:
-        path:
-        preview_file:
-        relationships:
-        sensitive:
+        indexable: Leisti indeksavimą paieškos tikslais
+        library_id: Biblioteka
+        license: Licencija
+        name: Pavadinimas
+        notes: Aprašymas
+        path: Kelias
+        preview_file: Modelio peržiūra
+        relationships: Sąryšiai
+        sensitive: Jautrus turinys
       model_file:
-        caption:
-        digest:
-        dimensions:
-        filename:
-        notes:
-        presupported:
-        previewable:
-        printed:
-        relationships:
-        size:
-        y_up:
+        caption: Antraštė
+        digest: Santrauka
+        dimensions: Matmenys
+        filename: Failo pavadinimas
+        notes: Pastabos
+        presupported: Iš anksto palaikoma
+        previewable: Galima peržiūrėti
+        printed: Išspausdinta
+        relationships: Sąryšiai
+        size: Failo dydis
+        y_up: Y Aukštyn
       print_host:
-        credentials:
-        endpoint:
-        name:
-        protocol:
+        credentials: Kredencialai
+        endpoint: Galinis taškas
+        name: Pavadinimas
+        protocol: Protokolas
       problem:
-        category:
-        ignored:
-        note:
-        problematic_type:
+        category: Kategorija
+        ignored: Paslėptas
+        note: Pastaba
+        problematic_type: Objekto tipas
         severity:
       user:
-        approved:
+        approved: Patvirtinta?
         auth_uid:
-        confirmation_sent_at:
-        confirmation_token:
-        confirmed_at:
-        created_at:
-        current_password:
-        current_sign_in_at:
-        current_sign_in_ip:
-        email:
-        encrypted_password:
-        failed_attempts:
-        interface_language:
+        confirmation_sent_at: Patvirtinimas išsiųstas
+        confirmation_token: Patvirtinimo kodas
+        confirmed_at: Patvirtinta
+        created_at: Sukurta
+        current_password: Dabartinis slaptažodis
+        current_sign_in_at: Dabartinis prisijungimas
+        current_sign_in_ip: Dabartinio prisijungimo IP
+        email: El. paštas
+        encrypted_password: Užšifruotas slaptažodis
+        failed_attempts: Nesėkmingi bandymai
+        interface_language: Sąsajos kalba
         landing_page:
-        last_sign_in_at:
-        last_sign_in_ip:
-        locked_at:
-        password:
-        password_confirmation:
-        quota:
-        quota_use_site_default:
-        remember_created_at:
-        remember_me:
+        last_sign_in_at: 'Paskutinis prisijungimas:'
+        last_sign_in_ip: Paskutinis prisijungimas iš IP
+        locked_at: Užrakinta
+        password: Slaptažodis
+        password_confirmation: Patvirtinkite slaptažodį
+        quota: Dabartinis failų saugojimo limitas (MB)
+        quota_use_site_default: Naudojate svetainės numatytą failų saugojimo ribą?
+        remember_created_at: Įsiminiti sukurta
+        remember_me: Įsiminti mane
         reset_password_sent_at:
         reset_password_token:
-        sensitive_content_handling:
-        sign_in_count:
-        sort_order:
-        unconfirmed_email:
+        sensitive_content_handling: Jautrus turinys
+        sign_in_count: Prisijungimų skaičius
+        sort_order: Rūšiuoti pagal
+        unconfirmed_email: Nepatvirtintas el. paštas
         unlock_token:
-        updated_at:
-        username:
+        updated_at: Atnaujinta
+        username: Paskyros pavadinimas
     errors:
       models:
         collection:
           attributes:
             collection:
-              private:
+              private: turi būti viešai prieinama
             creator:
-              private:
+              private: turi būti viešai prieinama
         doorkeeper/application:
           attributes:
             redirect_uri:
-              forbidden_uri:
-              fragment_present:
-              invalid_uri:
-              relative_uri:
-              secured_uri:
-              unspecified_scheme:
+              forbidden_uri: yra draudžiama serverio.
+              fragment_present: negali būti fragmentas.
+              invalid_uri: turi būti galiojantis URI.
+              relative_uri: turi būti absoliutus URI.
+              secured_uri: turi būti HTTPS/SSL URI.
+              unspecified_scheme: būtina nurodyti schemą.
             scopes:
-              not_match_configured:
+              not_match_configured: neatitinka serverio nustatymų.
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
-              non_readable:
-              non_readable_subfolder:
-              non_writable:
-              non_writable_subfolder:
-              not_a_directory:
-              not_found:
-              unsafe:
+              cannot_be_contained: negali būti kitos bibliotekos viduje
+              cannot_contain: negali apimti kitų bibliotekų
+              non_readable: turi būti skaitoma
+              non_readable_subfolder: apima neperskaitomus pakatalogius
+              non_writable: turi būti įrašoma
+              non_writable_subfolder: apima pakatalogius, į kuriuos negalima rašyti
+              not_a_directory: tai nėra katalogas
+              not_found: nebuvo rasta diske
+              unsafe: negali būti privilegijuotas sistemos kelias
         model:
           attributes:
             creator:
-              private:
+              private: turi būti viešai prieinama
             library:
-              nested:
+              nested: negali būti keičiamas, modelis apima kitus modelius
             license:
-              invalid_spdx:
+              invalid_spdx: tai nėra galiojanti licencija
             path:
-              destination_exists:
-              nested:
+              destination_exists: jau egzistuoja
+              nested: negali būti keičiamas, modelis apima kitus modelius
         model_file:
           attributes:
             filename:
               cannot_change_type:
-              case_change_only:
+              case_change_only: tai negali būti tik atvejo pakeitimas
     models:
       acts_as_taggable_on/tag:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Žymės
+        many: Žymių
+        one: Žymė
+        other: Žymės
+        two: Žymės
+        zero: Žymių
       collection:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Kolekcijos
+        many: Kolekcijų
+        one: Kolekcija
+        other: Kolekcijos
+        two: Kolekcijos
+        zero: Kolekcijų
       comment:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Komentarai
+        many: Komentarų
+        one: Komentaras
+        other: Komentarai
+        two: Komentarai
+        zero: Komentarų
       creator:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Autoriai
+        many: Autorių
+        one: Autorius
+        other: Autoriai
+        two: Autoriai
+        zero: Autorių
       doorkeeper/access_token:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Prieigos žetonai
+        many: Prieigos žetonų
+        one: Prieigos žetonas
+        other: Prieigos žetonai
+        two: Prieigos žetonai
+        zero: Prieigos žetonų
       doorkeeper/application:
         few:
         many:
