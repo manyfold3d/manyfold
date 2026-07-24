@@ -2303,15 +2303,15 @@ __metadata:
   linkType: hard
 
 "css-has-pseudo@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "css-has-pseudo@npm:8.0.0"
+  version: 8.0.1
+  resolution: "css-has-pseudo@npm:8.0.1"
   dependencies:
     "@csstools/selector-specificity": ^6.0.0
     postcss-selector-parser: ^7.1.1
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 6a3ad5484b0a4a8b3446dae7e4880cf727cdc428be2d78193b9c89b9bf820bbba69422540d824807281731c5ba97d8141cc03910b48fe7adce3193cd2019ed7c
+  checksum: a990785ef9dd493da37187b2ee16187af9a0e031982fe4bbd8ba4c7c52395eac427f26c7589516f6e983b5dcfa4dfee515efb7f777134f9dd0c39f10cf60ebc9
   languageName: node
   linkType: hard
 
