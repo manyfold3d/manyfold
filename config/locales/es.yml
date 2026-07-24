@@ -944,7 +944,7 @@ es:
       organization: Organización
       performance: Panel de rendimiento
       pghero: PgHero
-      restart_required:
+      restart_required: "¡Es necesario reiniciar el servidor para que se apliquen los cambios de configuración!"
       search_heading: Busca y Descubre
       sidekiq: Sidekiq
       site_settings_title: Ajustes
@@ -1087,11 +1087,11 @@ es:
         description_html: Los complementos son componentes opcionales que te permiten añadir funciones adicionales a Manyfold. Consulta la <a href="%{url}">documentación</a> para obtener más información.
         homepage: Inicio
         install:
-          button:
-          error_html:
-          instructions:
-          title:
-          warning:
+          button: Instalar
+          error_html: La carpeta de complementos no es de escritura y no se pueden instalar complementos. Consulta la <a href="%{url}">guía de instalación de complementos</a> para obtener más información sobre cómo solucionar este problema.
+          instructions: Para instalar un nuevo complemento, descarga el archivo ZIP del complemento y súbelo aquí. Tendrás que reiniciar el servidor de Manyfold tras subirlo para que se complete la instalación.
+          title: Instalar un nuevo complemento
+          warning: "¡Los complementos pueden acceder a toda tu instancia de Manyfold y a todos sus datos! ¡Asegúrate de que confías en lo que estás instalando!"
         no_plugins: "¡No hay complementos instalados!"
         plugin:
           active: Activo
@@ -1100,8 +1100,8 @@ es:
           links: Enlaces
           name: Nombre
           version: Versión
-        removal_instructions:
-        remove:
+        removal_instructions: Por el momento, la eliminación de complementos se realiza de forma manual. Para eliminar un complemento, borra la carpeta del complemento del directorio «plugins» y reinicia Manyfold.
+        remove: Desinstalar un complemento
         title: Complementos
     print_hosts:
       edit:
