@@ -33,8 +33,16 @@ class ReportsController < ApplicationController
   end
 
   def get_reportable
-    reportable = params[:reportable_class].constantize
-    reportable_param = params[:reportable_class].parameterize + "_id"
+    # Allowlist for reportable class param.
+    # This isn't actually supplied by the user, it comes from the router, but best to be double safe.
+    reportable, reportable_param = {
+      "Model" => [Model, "model_id"],
+      "Creator" => [Creator, "creator_id"],
+      "Collection" => [Collection, "collection_id"],
+      "Comment" => [Comment, "comment_id"]
+    }[params[:reportable_class]]
+    raise ActionController::BadRequest unless reportable
+
     id = params[reportable_param]
     @reportable = policy_scope(reportable).find_param(id)
     authorize :"federails/moderation/report"
