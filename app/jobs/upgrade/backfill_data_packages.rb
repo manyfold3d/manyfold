@@ -6,7 +6,7 @@ class Upgrade::BackfillDataPackages < Upgrade::IterationJob
 
   def build_enumerator(cursor:)
     enumerator_builder.active_record_on_records(Model.where.not(
-      id: ModelFile.where(filename: "datapackage.json").pluck(:model_id)
+      id: ModelFile.where(filename: "datapackage.json").select(:model_id)
     ), cursor: cursor)
   end
 
