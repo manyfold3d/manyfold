@@ -3,8 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 8.0.5"
+gem "railties", "~> 8.0.5"
+gem "actioncable", "~> 8.0.5"
+gem "actionmailer", "~> 8.0.5"
+gem "actionpack", "~> 8.0.5"
+gem "actionview", "~> 8.0.5"
+gem "activejob", "~> 8.0.5"
+gem "activemodel", "~> 8.0.5"
+gem "activerecord", "~> 8.0.5"
+
 # Use Puma as the app server
 gem "puma", "~> 8.0"
 # Bundle and deliver assets
