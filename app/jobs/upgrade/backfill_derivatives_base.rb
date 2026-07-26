@@ -12,6 +12,6 @@ class Upgrade::BackfillDerivativesBase < Upgrade::FileTypeIterationJob
   end
 
   def apply(modelfile)
-    modelfile.check_derivatives!
+    ModelFile.suppressing_turbo_broadcasts { modelfile.check_derivatives! }
   end
 end
