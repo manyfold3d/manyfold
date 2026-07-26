@@ -104,8 +104,15 @@ class FollowsController < ApplicationController
   end
 
   def get_target
-    followable = params[:followable_class].constantize
-    followable_param = params[:followable_class].parameterize + "_id"
+    # Allowlist for followable class param.
+    # This isn't actually supplied by the user, it comes from the router, but best to be double safe.
+    followable, followable_param = {
+      "Model" => [Model, "model_id"],
+      "Creator" => [Creator, "creator_id"],
+      "Collection" => [Collection, "collection_id"]
+    }[params[:followable_class]]
+    raise ActionController::BadRequest unless followable
+
     id = params[followable_param]
     @target = policy_scope(followable).find_param(id)
   end

@@ -49,15 +49,14 @@ class CommentsController < ApplicationController
   def get_commentable
     # Allowlist for commentable class param.
     # This isn't actually supplied by the user, it comes from the router, but best to be double safe.
-    commentables = {
-      "Model" => Model,
-      "Creator" => Creator,
-      "Collection" => Collection
-    }
-    commentable = commentables[params[:commentable_class]]
-    raise ActionController::BadRequest if commentable.nil?
+    commentable, commentable_param = {
+      "Model" => [Model, "model_id"],
+      "Creator" => [Creator, "creator_id"],
+      "Collection" => [Collection, "collection_id"]
+    }[params[:commentable_class]]
+    raise ActionController::BadRequest unless commentable
+
     # Get the actual item
-    commentable_param = params[:commentable_class].parameterize + "_id"
     id = params[commentable_param]
     @commentable = policy_scope(commentable).find_param(id)
     authorize @commentable, :show?
