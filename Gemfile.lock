@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/DocSpring/sidekiq-reliable-fetch.git
+  revision: c83c089b3e18ff14322b92b7c0fba0cf3bc8e538
+  specs:
+    gitlab-sidekiq-fetcher (0.9.0)
+      json (>= 2.5)
+      sidekiq (>= 6.1)
+
+GIT
   remote: https://github.com/Kerilk/assimp-ruby.git
   revision: a36639b60556dcd9982e6305089fe32e6d716d6a
   specs:
@@ -1032,6 +1040,7 @@ DEPENDENCIES
   federails-moderation (~> 0.4)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
+  gitlab-sidekiq-fetcher!
   graphlient (~> 0.8.0)
   guard (~> 2.20)
   guard-rspec (~> 4.7)
@@ -1235,6 +1244,7 @@ CHECKSUMS
   fugit (1.12.1) sha256=5898f478ede9b415f0804e42b8f3fd53f814bd85eebffceebdbc34e1107aaf68
   get_process_mem (1.0.0) sha256=d54024f3bcbf776a4d6e0155ec2b21bc3ba44e2fd158c4c00c80aa8a36e0b4aa
   gettext (3.4.9) sha256=292864fe6a15c224cee4125a4a72fab426fdbb280e4cff3cfe44935f549b009a
+  gitlab-sidekiq-fetcher (0.9.0)
   glob (0.4.1) sha256=e68e50419ffb7f896b39a483c1a37e7a1aa8f1a8c8ea13961f8cd1b50f40715d
   globalid (1.4.0) sha256=037f12fbf1d9d7a014d501c2d5c77356fd4ddd96d7a7991d6700bba96706f427
   google-protobuf (4.33.4-aarch64-linux-gnu) sha256=7b091ec8a80520738a4dbff59458e2a7ed4304d7fc20fd779b3d019ff52fbead
