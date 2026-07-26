@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-class Upgrade::BackfillDataPackages < ApplicationJob
+class Upgrade::BackfillDataPackages < Upgrade::IterationJob
   queue_as :low
   unique :until_executed
 
-  def perform
-    # Find models that don't have a datapackage and enqueue their generation
-    Model.where.not(
+  def build_enumerator(cursor:)
+    enumerator_builder.active_record_on_records(Model.where.not(
       id: ModelFile.where(filename: "datapackage.json").select(:model_id)
-    ).each do |model|
-      model.write_datapackage_later
-    end
+    ), cursor: cursor)
+  end
+
+  def each_iteration(model)
+    Model.suppressing_turbo_broadcasts { model.write_datapackage_later }
   end
 end
