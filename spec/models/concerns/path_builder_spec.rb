@@ -126,6 +126,27 @@ RSpec.describe PathBuilder do
     end
   end
 
+  context "when generating safe folder names" do
+    {
+      "Squirtle Don't Feel So Good" => "squirtle-don-t-feel-so-good",
+      "Liadan, Oracle of the Varan´az ghar" => "liadan-oracle-of-the-varan-az-ghar",
+      "Catbus (My Neighbor Totoro)" => "catbus-my-neighbor-totoro",
+      "Arugês - The Cursed" => "aruges-the-cursed",
+      "Kor’garal Bodoluk" => "kor-garal-bodoluk",
+      "Daram, the Sullen Knight" => "daram-the-sullen-knight",
+      "Apex Predator & Artemis Predators" => "apex-predator-artemis-predators",
+      "Cyberpunk - Traffic Police - Police Highway Patrol" => "cyberpunk-traffic-police-police-highway-patrol"
+    }.each_pair do |name, path|
+      context "with \"#{name}\"" do
+        let(:model) { create(:model, name: name) }
+
+        it "generates correct safe version" do
+          expect(model.formatted_path).to eq "new/#{path}##{model.id}"
+        end
+      end
+    end
+  end
+
   context "with a model in multiple collections" do
     it "uses the oldest collection with singular {collection} token" do
       c1 = create(:collection, name: "Newer Collection", created_at: 1.hour.ago)

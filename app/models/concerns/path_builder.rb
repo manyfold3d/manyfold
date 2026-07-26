@@ -35,7 +35,7 @@ module PathBuilder
     return nil if object.nil?
     (
       library.safe_folder_names ?
-      Zaru.sanitize!(object.name).downcase.tr(" ", "-") :
+      Zaru.sanitize!(object.slug) :
       Zaru.sanitize!(object.name)
     ).first(ApplicationRecord::SAFE_NAME_LENGTH[:maximum])
   end
