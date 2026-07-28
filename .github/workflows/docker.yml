@@ -27,7 +27,7 @@ jobs:
         variant:
           - manyfold
           - manyfold-solo
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       contents: read # for checkout
       id-token: write # for OIDC token, used for Depot
@@ -86,7 +86,7 @@ jobs:
   smoke-test:
     if: github.triggering_actor != 'allcontributors[bot]'
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Smoke test
         run: curl http://localhost:3214/health --fail-with-body

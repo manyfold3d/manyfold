@@ -9,7 +9,7 @@ on:
 jobs:
   lint:
     if: github.triggering_actor != 'allcontributors[bot]'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup

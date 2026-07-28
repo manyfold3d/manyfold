@@ -16,7 +16,7 @@ jobs:
           - postgresql://manyfold:manyfold@localhost:5432/manyfold
           - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
           - sqlite3:/tmp/test.db
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     env:
       RAILS_ENV: test
       DATABASE_URL: ${{ matrix.database_url }}
