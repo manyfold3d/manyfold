@@ -89,34 +89,38 @@ class ApplicationUploader < Shrine
   rescue NoMethodError
   end
 
-  add_metadata :object do |io|
-    Shrine.with_file(io) do
-      scene = Assimp.import_file(it.path)
-      scene.apply_post_processing(
-        0x80000000 # GenBoundingBox step, currently missing from assimp-ffi
-      )
-      bboxes = scene.meshes.map(&:aabb)
-      {
-        "bounding_box" => {
-          "minimum" => {
-            "x" => bboxes.map { it.min.x }.min,
-            "y" => bboxes.map { it.min.y }.min,
-            "z" => bboxes.map { it.min.z }.min
-          },
-          "maximum" => {
-            "x" => bboxes.map { it.max.x }.max,
-            "y" => bboxes.map { it.max.y }.max,
-            "z" => bboxes.map { it.max.z }.max
+  add_metadata :object do |io, context|
+    if context[:record]&.try(:is_3d_model?) && FileHandlers::F3d.can_load?(context[:record].mime_type)
+      bounds = Shrine.with_file(io) do |file|
+        if file.path
+          options = {
+            "verbose" => "debug",
+            "no-render" => "1",
+            "no-config" => "1"
+          }
+          output, _err = Open3.capture3("f3d", file.path, *options.map { |k, v| "--#{k}=#{v}" })
+          output.match(/Scene bounding box: (?<min_x>.*) ≤ x ≤ (?<max_x>.*), (?<min_y>.*) ≤ y ≤ (?<max_y>.*), (?<min_z>.*) ≤ z ≤ (?<max_z>.*)/)
+        end
+      rescue NoMethodError # To handle failures during tests
+      end
+      if bounds.nil?
+        {}
+      else
+        {
+          "bounding_box" => {
+            "minimum" => {
+              "x" => bounds[:min_x].to_f,
+              "y" => bounds[:min_y].to_f,
+              "z" => bounds[:min_z].to_f
+            },
+            "maximum" => {
+              "x" => bounds[:max_x].to_f,
+              "y" => bounds[:max_y].to_f,
+              "z" => bounds[:max_z].to_f
+            }
           }
         }
-      }
-    rescue SystemStackError, StandardError => ex
-      # Assimp doesn't raise a specific error for failed load,
-      # just throws a string, so we have to catch all and absorb.
-      # We catch SystemStackError specifically because of a 3MF
-      # bug, and because it's not a child of StandardError.
-      Rails.logger.debug { "Load error: '#{ex.message}'" }
-      nil
+      end
     end
   end
 
