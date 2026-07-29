@@ -4,7 +4,7 @@ FROM ruby:3.4.9-alpine3.24 AS base
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
-  tzdata=2026b-r0
+  tzdata=2026c-r0
 
 RUN gem install bundler -v 2.5.23
 RUN bundle config set --local deployment 'true'
