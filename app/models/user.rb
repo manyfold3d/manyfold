@@ -24,7 +24,7 @@ class User < ApplicationRecord
   before_validation :set_json_field_defaults
   before_save :set_quota
 
-  acts_as_federails_actor(
+  acts_as_fedipub_actor(
     username_field: :username,
     name_field: :username,
     user_count_method: :user_count
@@ -45,7 +45,7 @@ class User < ApplicationRecord
       presence: true,
       uniqueness: {case_sensitive: false},
       format: {with: /\A[[:alnum:].\-_;]+\z/},
-      multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES},
+      multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FedipubCommon::FEDIVERSE_USERNAMES},
       length: SAFE_NAME_LENGTH
     validates :email,
       presence: true,
@@ -97,7 +97,7 @@ class User < ApplicationRecord
   scope :active, -> { where(invitation_token: nil) }
   scope :invited, -> { where.not(invitation_token: nil) }
 
-  def federails_name
+  def fedipub_name
     username
   end
 
@@ -243,7 +243,7 @@ class User < ApplicationRecord
       {email: identifier}
     when /\A(acct:|@)([a-z0-9\-_.]+)(@(.*))?\z/io
       if SiteSettings.federation_enabled?
-        actor = Federails::Actor.find_by_account(identifier) # rubocop:disable Rails/DynamicFindBy
+        actor = Fedipub::Actor.find_by_account(identifier) # rubocop:disable Rails/DynamicFindBy
         {id: actor&.entity&.id}
       else
         scope = scope.none

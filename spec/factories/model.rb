@@ -54,7 +54,7 @@ FactoryBot.define do
 
     trait :remote do
       after(:create) do |model|
-        model.federails_actor.update_attribute(:local, false) # rubocop:disable Rails/SkipsModelValidations
+        model.fedipub_actor.update_attribute(:local, false) # rubocop:disable Rails/SkipsModelValidations
       end
     end
   end

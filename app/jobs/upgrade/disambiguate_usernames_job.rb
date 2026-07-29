@@ -8,7 +8,7 @@ class Upgrade::DisambiguateUsernamesJob < ApplicationJob
     duplicates = duplicated_usernames
     return if duplicates.empty?
     suffix = 0
-    FederailsCommon::FEDIVERSE_USERNAMES.each_pair do |model_name, attr|
+    FedipubCommon::FEDIVERSE_USERNAMES.each_pair do |model_name, attr|
       finder_scope(model_name).where(attr => duplicates).find_each do
         it.validate
         if it.errors.of_kind?(attr, :taken)
@@ -23,7 +23,7 @@ class Upgrade::DisambiguateUsernamesJob < ApplicationJob
   private
 
   def duplicated_usernames
-    FederailsCommon::FEDIVERSE_USERNAMES
+    FedipubCommon::FEDIVERSE_USERNAMES
       .map { |model_name, attr| finder_scope(model_name).pluck(attr) }
       .flatten.tally
       .select { |k, v| k if v > 1 }

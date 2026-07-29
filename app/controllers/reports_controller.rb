@@ -6,15 +6,15 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = if @reportable.is_a? Federails::DataEntity
+    @report = if @reportable.is_a? Fedipub::DataEntity
       Federails::Moderation::Report.create report_params.merge({
-        federails_actor: current_user&.federails_actor,
+        federails_actor: current_user&.fedipub_actor,
         object: @reportable
       })
     else
       Federails::Moderation::Report.create report_params.merge({
-        federails_actor: current_user&.federails_actor,
-        object: @reportable.federails_actor
+        federails_actor: current_user&.fedipub_actor,
+        object: @reportable.fedipub_actor
       })
     end
     if @reportable.is_a? Comment

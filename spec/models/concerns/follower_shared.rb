@@ -17,7 +17,7 @@ shared_examples "Follower" do
 
   it "creates a following activity" do # rubocop:todo RSpec/MultipleExpectations
     activity = follower.activities.where(action: "Follow").first
-    expect(activity.actor).to eq follower.federails_actor
-    expect(activity.entity).to eq target.federails_actor
+    expect(activity.actor).to eq follower.fedipub_actor
+    expect(activity.entity).to eq target.fedipub_actor
   end
 end

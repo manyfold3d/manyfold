@@ -18,7 +18,7 @@ class Model < ApplicationRecord
 
   broadcasts_refreshes
 
-  acts_as_federails_actor(
+  acts_as_fedipub_actor(
     username_field: :public_id,
     name_field: :name,
     profile_url_method: :url_for,
@@ -32,7 +32,7 @@ class Model < ApplicationRecord
   fasp_share_lifecycle category: "account", uri_method: :fasp_uri, only_if: :public_and_indexable?
 
   def fasp_uri
-    federails_actor&.federated_url
+    fedipub_actor&.federated_url
   end
 
   scope :recent, -> { order(created_at: :desc) }
@@ -78,7 +78,7 @@ class Model < ApplicationRecord
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true, if: -> { respond_to? :license }
-  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, if: -> { respond_to? :public_id }, on: [:create, :update]
+  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FedipubCommon::FEDIVERSE_USERNAMES}, if: -> { respond_to? :public_id }, on: [:create, :update]
 
   validate :validate_publishable
 

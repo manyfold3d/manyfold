@@ -1,11 +1,11 @@
-class Federails::QuoteAuthorization < ApplicationRecord
+class Fedipub::QuoteAuthorization < ApplicationRecord
   def self.table_name_prefix
-    "federails_"
+    "fedipub_"
   end
 
   belongs_to :interaction_target, polymorphic: true
-  belongs_to :federails_actor, class_name: "Federails::Actor"
-  belongs_to :quoting_actor, class_name: "Federails::Actor"
+  belongs_to :fedipub_actor, class_name: "Fedipub::Actor"
+  belongs_to :quoting_actor, class_name: "Fedipub::Actor"
 
   before_create :generate_uuid
 
@@ -36,12 +36,12 @@ class Federails::QuoteAuthorization < ApplicationRecord
   private
 
   def create_response_activity
-    Federails::Activity.create!(
-      actor: federails_actor,
+    Fedipub::Activity.create!(
+      actor: fedipub_actor,
       action: (state == "accepted") ? "Accept" : "Reject",
       entity: self,
       to: quoting_actor.federated_url,
-      result: (state == "accepted") ? Rails.application.routes.url_helpers.federails_server_quote_authorization_url(self) : nil
+      result: (state == "accepted") ? Rails.application.routes.url_helpers.fedipub_server_quote_authorization_url(self) : nil
     )
   end
 

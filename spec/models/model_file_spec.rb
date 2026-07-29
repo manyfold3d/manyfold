@@ -365,7 +365,7 @@ RSpec.describe ModelFile do
     end
 
     it "does not create federated activites for change to owning model", :federation do
-      expect { file.check_derivatives! }.not_to change(Federails::Activity, :count)
+      expect { file.check_derivatives! }.not_to change(Fedipub::Activity, :count)
     end
   end
 end

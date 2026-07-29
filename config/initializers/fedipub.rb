@@ -2,7 +2,7 @@
 
 require "fediverse/inbox"
 
-Federails.configure do |conf|
+Fedipub.configure do |conf|
   conf.app_name = "manyfold"
   conf.app_version = Rails.application.config.app_version
 

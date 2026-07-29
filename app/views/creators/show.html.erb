@@ -27,10 +27,10 @@
           <% if SiteSettings.federation_enabled? %>
             <p>
               <% if @creator.remote? %>
-                <small class="text-secondary"><%= link_to @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
+                <small class="text-secondary"><%= link_to @creator.fedipub_actor.at_address, @creator.fedipub_actor.profile_url, target: "new" %></small>
               <% elsif SiteSettings.federation_enabled? %>
                 <small class="text-secondary">
-                  <%= CopyableText(text: @creator.federails_actor.at_address, label: t("general.copy_fediverse_handle")) %>
+                  <%= CopyableText(text: @creator.fedipub_actor.at_address, label: t("general.copy_fediverse_handle")) %>
                 </small>
               <% end %>
             </p>

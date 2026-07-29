@@ -14,7 +14,7 @@ class Collection < ApplicationRecord
 
   broadcasts_refreshes
 
-  acts_as_federails_actor(
+  acts_as_fedipub_actor(
     username_field: :public_id,
     name_field: :name,
     profile_url_method: :url_for,
@@ -35,7 +35,7 @@ class Collection < ApplicationRecord
   belongs_to :preview_model, class_name: "Model", optional: true
 
   validates :name, uniqueness: {case_sensitive: false}, length: SAFE_NAME_LENGTH
-  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FedipubCommon::FEDIVERSE_USERNAMES}
   validates :collection_id, exclusion: {in: -> { Array(it.id) }}
   validates :preview_model, inclusion: {in: :models, allow_nil: true}
 
@@ -51,11 +51,11 @@ class Collection < ApplicationRecord
   serialize :cover_data, coder: CrossDbJsonSerializer
 
   def fasp_uri
-    federails_actor&.federated_url
+    fedipub_actor&.federated_url
   end
 
   def name_with_domain
-    remote? ? name + " (#{federails_actor.server})" : name
+    remote? ? name + " (#{fedipub_actor.server})" : name
   end
 
   # returns all collections at and below given ids

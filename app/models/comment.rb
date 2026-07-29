@@ -1,17 +1,17 @@
-require "federails/data_transformer/note"
+require "fedipub/data_transformer/note"
 
 class Comment < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.comment")
 
   include PublicIDable
-  include Federails::DataEntity
+  include Fedipub::DataEntity
   include Reportable
 
   belongs_to :commenter, polymorphic: true, optional: true
   belongs_to :commentable, polymorphic: true
 
-  acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?, route_path_segment: :comments
-  on_federails_delete_requested :federated_delete
+  acts_as_fedipub_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?, route_path_segment: :comments
+  on_fedipub_delete_requested :federated_delete
 
   def to_activitypub_object
     ActivityPub::CommentSerializer.new(self).serialize

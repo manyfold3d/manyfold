@@ -10,8 +10,8 @@ class Activity::ModelPublishedJob < ApplicationJob
       commenter: model.creator || model,
       comment: I18n.t("jobs.activity.model_published.comment",
         name: model.name,
-        url: model.federails_actor.profile_url,
-        creator_handle: model.creator.federails_actor.at_address,
+        url: model.fedipub_actor.profile_url,
+        creator_handle: model.creator.fedipub_actor.at_address,
         creator_name: model.creator.name),
       sensitive: model.sensitive
     )

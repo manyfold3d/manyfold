@@ -10,8 +10,8 @@ class ListItem < ApplicationRecord
 
   def update_likes
     if SiteSettings.federation_enabled? && listable.public?
-      if (actor = list.owners&.first&.federails_actor)
-        listable.federails_actor.like! actor: actor
+      if (actor = list.owners&.first&.fedipub_actor)
+        listable.fedipub_actor.like! actor: actor
         listable.creation_comment.try(:like!, actor: actor)
       end
     end

@@ -4,9 +4,9 @@ class FollowsController < ApplicationController
   skip_after_action :verify_authorized, only: [:new, :remote_follow, :perform_remote_follow]
 
   def index
-    authorize Federails::Following
-    @followings = current_user&.federails_actor&.follows
-    @followers = current_user&.federails_actor&.followers
+    authorize Fedipub::Following
+    @followings = current_user&.fedipub_actor&.follows
+    @followers = current_user&.fedipub_actor&.followers
   end
 
   # Incoming remote follow
@@ -18,11 +18,11 @@ class FollowsController < ApplicationController
         actor_uri = if @query.starts_with?(%r{https?://})
           @query
         elsif @query.include?("@")
-          Federails::Actor.find_by_account(@query)&.federated_url # rubocop:disable Rails/DynamicFindBy
+          Fedipub::Actor.find_by_account(@query)&.federated_url # rubocop:disable Rails/DynamicFindBy
         else
           nil
         end
-        @actor = Federails::Actor.find_or_create_by_federation_url actor_uri if actor_uri # rubocop:disable Rails/DynamicFindBy
+        @actor = Fedipub::Actor.find_or_create_by_federation_url actor_uri if actor_uri # rubocop:disable Rails/DynamicFindBy
         # Ignore local users
         @actor = nil if @actor&.local? && @actor.entity.is_a?(User)
         # If this is a local actor, go to the real thing
@@ -64,27 +64,27 @@ class FollowsController < ApplicationController
   end
 
   def follow_remote_actor
-    authorize Federails::Following, :create?
-    @actor = Federails::Actor.find_param(params[:id])
+    authorize Fedipub::Following, :create?
+    @actor = Fedipub::Actor.find_param(params[:id])
     current_user.follow(@actor)
     redirect_back_or_to helpers.landing_page_path, notice: t(".followed", actor: @actor.at_address)
   end
 
   def unfollow_remote_actor
-    authorize Federails::Following, :destroy?
-    @actor = Federails::Actor.find_param(params[:id])
+    authorize Fedipub::Following, :destroy?
+    @actor = Fedipub::Actor.find_param(params[:id])
     current_user.unfollow(@actor)
     redirect_back_or_to helpers.landing_page_path, notice: t(".unfollowed", actor: @actor.at_address)
   end
 
   def create
-    authorize Federails::Following
+    authorize Fedipub::Following
     current_user.follow @target
     redirect_to @target
   end
 
   def destroy
-    authorize Federails::Following
+    authorize Fedipub::Following
     current_user.unfollow @target
     redirect_to @target
   end
@@ -93,14 +93,14 @@ class FollowsController < ApplicationController
 
   def get_recommended_accounts
     @recommended = FaspClient::Provider.find_each.map do |provider|
-      provider.follow_recommendation(current_user.federails_actor.federated_url)
-    end.flatten.uniq.map { Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
+      provider.follow_recommendation(current_user.fedipub_actor.federated_url)
+    end.flatten.uniq.map { Fedipub::Actor.find_or_create_by_federation_url it }.reject(&:local)
   end
 
   def search(query)
     FaspClient::Provider.find_each.map do |provider|
       provider.account_search(query)
-    end.flatten.uniq.map { Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
+    end.flatten.uniq.map { Fedipub::Actor.find_or_create_by_federation_url it }.reject(&:local)
   end
 
   def get_target

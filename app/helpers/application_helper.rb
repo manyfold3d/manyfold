@@ -273,7 +273,7 @@ module ApplicationHelper
   end
 
   def server_indicator(object, full_address: false)
-    actor = object.respond_to?(:federails_actor) ? object.federails_actor : object
+    actor = object.respond_to?(:fedipub_actor) ? object.fedipub_actor : object
     return if !SiteSettings.federation_enabled? || actor.local?
     link_to sanitize(actor.profile_url), class: "link-primary link-underline-opacity-0 link-underline-opacity-100-hover" do
       safe_join([

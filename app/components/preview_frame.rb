@@ -40,7 +40,7 @@ class Components::PreviewFrame < Components::Base
   end
 
   def remote?
-    @object.is_a?(Federails::Actor) ? !@object.local : @object.try(:remote?)
+    @object.is_a?(Fedipub::Actor) ? !@object.local : @object.try(:remote?)
   end
 
   def render_local
@@ -68,7 +68,7 @@ class Components::PreviewFrame < Components::Base
   end
 
   def render_remote
-    actor = @object.is_a?(Federails::Actor) ? @object : @object.federails_actor
+    actor = @object.is_a?(Fedipub::Actor) ? @object : @object.fedipub_actor
     preview_data = actor&.extensions&.dig("preview")
     case preview_data&.dig("type")
     when "Image"
