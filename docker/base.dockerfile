@@ -15,10 +15,10 @@ RUN apk add --no-cache \
   s6-overlay=3.2.3.0-r0 \
   gcompat=1.1.0-r4 \
   jemalloc=5.3.0-r6 \
-  imagemagick=7.1.2.24-r0 \
-  imagemagick-jpeg=7.1.2.24-r0 \
-  imagemagick-webp=7.1.2.24-r0 \
-  imagemagick-heic=7.1.2.24-r0 \
+  imagemagick=7.1.2.27-r0 \
+  imagemagick-jpeg=7.1.2.27-r0 \
+  imagemagick-webp=7.1.2.27-r0 \
+  imagemagick-heic=7.1.2.27-r0 \
   assimp-dev=6.0.4-r0 \
   mesa-egl=26.1.1-r1 \
   vtk=9.5.2-r2 \
