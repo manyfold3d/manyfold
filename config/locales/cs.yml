@@ -60,13 +60,13 @@ cs:
         privacy_policy:
         sign_in_url: Přihlásit se
         status:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Vytvořeno
         domain: Doména
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: Komentář
         created_at: Přijato
-        federails_actor: Nahlášeno
+        fedipub_actor: Nahlášeno
         object: Objekt
       group:
         description: Popis
@@ -282,14 +282,14 @@ cs:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few: Blokování domén
         many: Blokování domén
         one: Blokování domény
         other: Blokování domén
         two: Blokování domén
         zero: Blokování domén
-      federails/moderation/report:
+      fedipub/moderation/report:
         few: Hlášení
         many: Hlášení
         one: Hlášení

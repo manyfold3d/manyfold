@@ -4,9 +4,9 @@
 
 <table class="table table-striped">
   <tr>
-    <th colspan="2"><%= Federails::Moderation::Report.human_attribute_name(:object) %></th>
-    <th colspan="2"><%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %></th>
-    <th><%= Federails::Moderation::Report.human_attribute_name(:created_at) %></th>
+    <th colspan="2"><%= Fedipub::Moderation::Report.human_attribute_name(:object) %></th>
+    <th colspan="2"><%= Fedipub::Moderation::Report.human_attribute_name(:fedipub_actor) %></th>
+    <th><%= Fedipub::Moderation::Report.human_attribute_name(:created_at) %></th>
     <th></th>
   </tr>
   <% @reports.each do |report|

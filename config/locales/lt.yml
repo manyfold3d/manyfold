@@ -60,13 +60,13 @@ lt:
         privacy_policy: Privatumo politika
         sign_in_url: Prisijungti
         status: Būklė
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Sukurta
         domain: Domenas
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: Komentaras
         created_at: Gauta
-        federails_actor: Pranešė
+        fedipub_actor: Pranešė
         object: Objektas
       group:
         description: Aprašymas
@@ -282,14 +282,14 @@ lt:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few:
         many:
         one:
         other:
         two:
         zero:
-      federails/moderation/report:
+      fedipub/moderation/report:
         few:
         many:
         one:

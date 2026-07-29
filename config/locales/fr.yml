@@ -62,13 +62,13 @@ fr:
         privacy_policy:
         sign_in_url: Se connecter
         status: Statut
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Enregistré à
         domain: Domaine
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: Commentaire
         created_at: Reçu le
-        federails_actor: Rapporté par
+        fedipub_actor: Rapporté par
         object: Objet
       group:
         description: Description
@@ -284,14 +284,14 @@ fr:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few: Blocages de domaines
         many: Blocages de domaines
         one: Blocage de domaines
         other: Blocages de domaines
         two: Blocages de domaines
         zero: Blocages de domaines
-      federails/moderation/report:
+      fedipub/moderation/report:
         few: Rapports
         many: Rapports
         one: Rapport

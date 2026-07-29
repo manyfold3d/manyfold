@@ -60,13 +60,13 @@ ja:
         privacy_policy:
         sign_in_url: ログイン
         status:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: 作成日時
         domain: ドメイン
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: コメント
         created_at: 受け取り作成日時
-        federails_actor: 報告者
+        fedipub_actor: 報告者
         object:
       group:
         description: ノート
@@ -282,14 +282,14 @@ ja:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few: ドメインブロック
         many: ドメインブロック
         one: ドメインブロック
         other: ドメインブロック
         two: ドメインブロック
         zero: ドメインブロック
-      federails/moderation/report:
+      fedipub/moderation/report:
         few: レポート
         many: レポート
         one: レポート

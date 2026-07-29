@@ -60,13 +60,13 @@ es:
         privacy_policy: Política de privacidad
         sign_in_url: Iniciar sesión
         status: Estado
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Creado el
         domain: Dominio
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: Comentario
         created_at: Recibido el
-        federails_actor: Reportado por
+        fedipub_actor: Reportado por
         object: Objeto
       group:
         description: Descripción
@@ -282,14 +282,14 @@ es:
         other: Proveedores FASP
         two: Proveedores FASP
         zero: Proveedores FASP
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few: Bloqueo de dominios
         many: Bloqueo de dominios
         one: Dominio Bloqueado
         other: Bloqueo de dominios
         two: Bloqueo de dominios
         zero: Bloqueo de dominios
-      federails/moderation/report:
+      fedipub/moderation/report:
         few: Informes
         many: Informes
         one: Informe

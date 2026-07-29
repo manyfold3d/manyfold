@@ -60,13 +60,13 @@ pt:
         privacy_policy:
         sign_in_url: Entrar
         status:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Criado em
         domain:
-      federails/moderation/report:
+      fedipub/moderation/report:
         content:
         created_at:
-        federails_actor:
+        fedipub_actor:
         object:
       group:
         description:
@@ -282,14 +282,14 @@ pt:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few:
         many:
         one:
         other:
         two:
         zero:
-      federails/moderation/report:
+      fedipub/moderation/report:
         few:
         many:
         one:

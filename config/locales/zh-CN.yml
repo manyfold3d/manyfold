@@ -60,13 +60,13 @@ zh-CN:
         privacy_policy: 隐私政策
         sign_in_url: 登录
         status:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: 创建于
         domain:
-      federails/moderation/report:
+      fedipub/moderation/report:
         content:
         created_at: 接收于
-        federails_actor: 报告人
+        fedipub_actor: 报告人
         object:
       group:
         description: 说明
@@ -282,14 +282,14 @@ zh-CN:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few:
         many:
         one:
         other:
         two:
         zero:
-      federails/moderation/report:
+      fedipub/moderation/report:
         few:
         many:
         one:

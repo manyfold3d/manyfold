@@ -1,24 +1,24 @@
-<h3><%= Federails::Moderation::Report.model_name.human %> #<%= @report.id %></h3>
+<h3><%= Fedipub::Moderation::Report.model_name.human %> #<%= @report.id %></h3>
 
 <ul>
   <li>
-    <%= Federails::Moderation::Report.human_attribute_name(:created_at) %>:
+    <%= Fedipub::Moderation::Report.human_attribute_name(:created_at) %>:
     <%= @report.created_at %>
   </li>
   <li>
-    <%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %>:
+    <%= Fedipub::Moderation::Report.human_attribute_name(:fedipub_actor) %>:
     <%= @report.reporter_address %>
   </li>
 </ul>
 
 <% if @report.content.present? %>
-  <h4><%= Federails::Moderation::Report.human_attribute_name(:content) %>:</h4>
+  <h4><%= Fedipub::Moderation::Report.human_attribute_name(:content) %>:</h4>
   <div class="alert alert-warning">
     <%= @report.content %>
   </div>
 <% end %>
 
-<h4><%= Federails::Moderation::Report.human_attribute_name(:object) %></h4>
+<h4><%= Fedipub::Moderation::Report.human_attribute_name(:object) %></h4>
 <table class="table table-striped">
   <% Array(@report.object).each do |object| %>
     <tr>

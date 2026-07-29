@@ -60,13 +60,13 @@ en:
         privacy_policy: Privacy policy
         sign_in_url: Sign in
         status: Status
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Created at
         domain: Domain
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: Comment
         created_at: Received at
-        federails_actor: Reported by
+        fedipub_actor: Reported by
         object: Object
       group:
         description: Description
@@ -282,14 +282,14 @@ en:
         other: FASP Providers
         two: FASP Providers
         zero: FASP Providers
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few: Domain Blocks
         many: Domain Blocks
         one: Domain Block
         other: Domain Blocks
         two: Domain Blocks
         zero: Domain Blocks
-      federails/moderation/report:
+      fedipub/moderation/report:
         few: Reports
         many: Reports
         one: Report

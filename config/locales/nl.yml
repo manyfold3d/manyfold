@@ -60,13 +60,13 @@ nl:
         privacy_policy:
         sign_in_url: Inloggen
         status:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         created_at: Aangemaakt op
         domain: Domein
-      federails/moderation/report:
+      fedipub/moderation/report:
         content: Opmerking
         created_at: Ontvangen op
-        federails_actor: Gerapporteerd door
+        fedipub_actor: Gerapporteerd door
         object: Object
       group:
         description: Beschrijving
@@ -282,14 +282,14 @@ nl:
         other:
         two:
         zero:
-      federails/moderation/domain_block:
+      fedipub/moderation/domain_block:
         few: Domeinblokkeringen
         many: Domeinblokkeringen
         one: Domeinblokkering
         other: Domeinblokkeringen
         two: Domeinblokkeringen
         zero: Domeinblokkeringen
-      federails/moderation/report:
+      fedipub/moderation/report:
         few: Meldingen
         many: Meldingen
         one: Melding
