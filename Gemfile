@@ -164,8 +164,8 @@ gem "better_content_security_policy", "~> 0.1"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "main"
-gem "federails-moderation", "~> 0.4"
+gem "fedipub", git: "https://gitlab.com/fedipub/fedipub.git", branch: "manu/rename-to-fedipub"
+#gem "fedipub-moderation", "~> 0.4"
 gem "caber", github: "manyfold3d/caber"
 gem "fasp_client", "~> 0.6"
 
