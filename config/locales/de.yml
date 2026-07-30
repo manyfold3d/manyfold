@@ -946,7 +946,7 @@ de:
       organization: Organisation
       performance: Leistungs-Dashboard
       pghero: PgHero
-      restart_required:
+      restart_required: Um die Konfigurationsänderungen zu übernehmen, muss der Server neu gestartet werden!
       search_heading: Suchen & Entdecken
       sidekiq: Sidekiq
       site_settings_title: Admin-Einstellungen
@@ -1091,11 +1091,11 @@ de:
         description_html: Plugins sind optionale Komponenten, mit denen du Manyfold um zusätzliche Funktionen erweitern kannst. Weitere Informationen findest du in der <a href="%{url}">Dokumentation</a>.
         homepage: Homepage
         install:
-          button:
-          error_html:
-          instructions:
-          title:
-          warning:
+          button: Installieren
+          error_html: Der Plugin-Ordner ist nicht beschreibbar; Plugins können nicht installiert werden! Weitere Informationen zur Behebung dieses Problems findest du in der <a href="%{url}">Anleitung zur Plugin-Installation</a>.
+          instructions: Um ein neues Plugin zu installieren, lade die ZIP-Datei des Plugins herunter und lade sie hier hoch. Nach dem Hochladen müsst du deinen Manyfold-Server neu starten, damit die Installation abgeschlossen wird.
+          title: Ein neues Plugin installieren
+          warning: Plugins haben Zugriff auf Ihre gesamte Manyfold-Instanz und alle darin enthaltenen Daten! Vergewissere dich, dass du deinen installierten Plugins vertrauen kannst!
         no_plugins: Es sind keine Plugins installiert!
         plugin:
           active: Aktiv
@@ -1104,8 +1104,8 @@ de:
           links: URLs
           name: Name
           version: Version
-        removal_instructions:
-        remove:
+        removal_instructions: Derzeit erfolgt das Entfernen von Plugins manuell. Um ein Plugin zu entfernen, lösche den entsprechenden Plugin-Ordner aus dem Verzeichnis „plugins“ und starte Manyfold neu.
+        remove: Ein Plugin entfernen
         title: Plugins
     print_hosts:
       edit:
