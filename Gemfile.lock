@@ -38,8 +38,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/fedipub/fedipub-moderation.git
-  revision: 0cb0cf8ed13b2615e5c985da355d22f85131a3aa
-  branch: rename
+  revision: 66b2df81627d7a8fab2c2a03d311274d065c483a
+  branch: main
   specs:
     fedipub-moderation (0.4.0)
       fedipub (~> 0.8)
@@ -49,7 +49,7 @@ GIT
 GIT
   remote: https://gitlab.com/fedipub/fedipub.git
   revision: b84ff11dfa1202e2a31f34cd8450e23689bb0d6f
-  branch: manu/rename-to-fedipub
+  branch: main
   specs:
     fedipub (0.8.0)
       faraday
