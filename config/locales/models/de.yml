@@ -60,7 +60,7 @@ de:
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
-      archives-only: Lade nur komprimierte Archive (ZIP, RAR usw.) hoch, und jede Datei wird extrahiert und zu einem eigenen Modell.
+      archives-only: Lade nur komprimierte Archive (ZIP, RAR usw.) hoch, und jedes Archiv wird extrahiert und zu einem eigenen Modell.
       description: 'Lade neue Modelle hoch. Die Modelle, die erstellt werden, hängen davon ab, was du hochlädst:'
       files:
         label: Dateien auswählen
