@@ -10,14 +10,14 @@ module Talkative
 
   def owning_actor
     return nil unless caber_ready?
-    owners.first&.federails_actor || federails_actor
+    owners.first&.fedipub_actor || fedipub_actor
   end
 
   private
 
   def recently_posted?
-    return false unless DatabaseDetector.table_ready? "federails_activities"
-    Federails::Activity.exists?(action: ["Create", "Update"], entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
+    return false unless DatabaseDetector.table_ready? "fedipub_activities"
+    Fedipub::Activity.exists?(action: ["Create", "Update"], entity: fedipub_actor, created_at: TIMEOUT.minutes.ago..)
   end
 
   def followable_post_creation_activity
@@ -32,16 +32,16 @@ module Talkative
 
   def followable_post_activity(action)
     return unless owning_actor
-    Federails::Activity.create!(
+    Fedipub::Activity.create!(
       actor: owning_actor,
       action: action,
-      entity: federails_actor,
+      entity: fedipub_actor,
       created_at: updated_at
     )
   end
 
   def auto_accept(follow)
-    return unless federails_actor.local?
+    return unless fedipub_actor.local?
     follow.accept!
   end
 end

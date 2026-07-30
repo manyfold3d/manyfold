@@ -13,10 +13,10 @@ module ActivityPub
     def short_creator(creator)
       return nil unless creator
       {
-        "@id": creator.federails_actor.federated_url,
+        "@id": creator.fedipub_actor.federated_url,
         type: "Person",
         name: creator.name,
-        url: creator.federails_actor.profile_url,
+        url: creator.fedipub_actor.profile_url,
         "f3di:concreteType": "Creator"
       }
     end
@@ -24,10 +24,10 @@ module ActivityPub
     def short_collection(collection)
       return nil unless collection
       {
-        "@id": collection.federails_actor.federated_url,
+        "@id": collection.fedipub_actor.federated_url,
         type: "Group",
         name: collection.name,
-        url: collection.federails_actor.profile_url,
+        url: collection.fedipub_actor.profile_url,
         "f3di:concreteType": "Collection"
       }
     end

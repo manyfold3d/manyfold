@@ -2,8 +2,8 @@ if SiteSettings.federation_enabled? || Rails.env.test?
 
   # Core federation capability
 
-  mount Federails::Engine => "/"
-  scope Federails.configuration.server_routes_path, module: "federails/server", as: "federails_server", defaults: {format: :activitypub} do
+  mount Fedipub::Engine => "/"
+  scope Fedipub.configuration.server_routes_path, module: "fedipub/server", as: "fedipub_server", defaults: {format: :activitypub} do
     resources :quote_authorizations, only: [:show]
   end
 

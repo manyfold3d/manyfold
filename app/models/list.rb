@@ -12,7 +12,7 @@ class List < ApplicationRecord
   accepts_nested_attributes_for :list_items, allow_destroy: true, reject_if: :reject_list_items_attributes
 
   validates :name, presence: true, length: {maximum: 255}
-  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FedipubCommon::FEDIVERSE_USERNAMES}
   validates :special, inclusion: {in: %w[liked], allow_nil: true}
 
   scope :special, -> { where.not(special: nil) }

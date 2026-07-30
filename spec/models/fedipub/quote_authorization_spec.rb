@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe Federails::QuoteAuthorization do
+RSpec.describe Fedipub::QuoteAuthorization do
   let(:model) { create(:model, :public) }
-  let(:comment) { create(:comment, federails_actor: model.federails_actor, commentable: model) }
+  let(:comment) { create(:comment, fedipub_actor: model.fedipub_actor, commentable: model) }
   let(:auth) {
     described_class.create(
-      federails_actor: model.federails_actor,
+      fedipub_actor: model.fedipub_actor,
       quoting_actor: create(:actor, :distant),
       interaction_target: comment,
       interacting_object_url: "https://example.org/statuses/1",
@@ -23,7 +23,7 @@ RSpec.describe Federails::QuoteAuthorization do
     end
 
     it "creates activity" do
-      expect { auth.accept! }.to change(Federails::Activity.where(action: "Accept"), :count).by(1)
+      expect { auth.accept! }.to change(Fedipub::Activity.where(action: "Accept"), :count).by(1)
     end
 
     it "sets result field pointing to approval stamp" do
@@ -38,7 +38,7 @@ RSpec.describe Federails::QuoteAuthorization do
     end
 
     it "creates activity" do
-      expect { auth.reject! }.to change(Federails::Activity.where(action: "Reject"), :count).by(1)
+      expect { auth.reject! }.to change(Fedipub::Activity.where(action: "Reject"), :count).by(1)
     end
 
     it "does not set result field" do

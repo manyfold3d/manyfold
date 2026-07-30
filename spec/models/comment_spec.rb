@@ -6,17 +6,17 @@ RSpec.describe Comment do
     let(:commentable) { create(:model, :public, creator: commenter, tag_list: "tag one, tag2") }
     let!(:comment) { create(:comment, commenter: commenter, commentable: commentable, sensitive: true) }
 
-    it "posts a Federails Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
-      expect { create(:comment, commenter: commenter, commentable: commentable) }.to change(Federails::Activity, :count).by(1)
-      activity = Federails::Activity.last
+    it "posts a Fedipub Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
+      expect { create(:comment, commenter: commenter, commentable: commentable) }.to change(Fedipub::Activity, :count).by(1)
+      activity = Fedipub::Activity.last
       expect(activity.action).to eq "Create"
-      expect(activity.actor).to eq commenter.federails_actor
+      expect(activity.actor).to eq commenter.fedipub_actor
       expect(activity.entity.commentable).to eq commentable
     end
 
-    it "posts a Federails Activity on update" do # rubocop:disable RSpec/MultipleExpectations
-      expect { comment.update(comment: "test") }.to change(Federails::Activity, :count).by(1)
-      expect(Federails::Activity.last.action).to eq "Update"
+    it "posts a Fedipub Activity on update" do # rubocop:disable RSpec/MultipleExpectations
+      expect { comment.update(comment: "test") }.to change(Fedipub::Activity, :count).by(1)
+      expect(Fedipub::Activity.last.action).to eq "Update"
     end
 
     it "has a federated_url method" do
@@ -51,7 +51,7 @@ RSpec.describe Comment do
       end
 
       it "includes attribution" do
-        expect(ap_object["attributedTo"]).to eq commenter.federails_actor.federated_url
+        expect(ap_object["attributedTo"]).to eq commenter.fedipub_actor.federated_url
       end
 
       it "includes to field" do
@@ -59,7 +59,7 @@ RSpec.describe Comment do
       end
 
       it "includes cc field" do
-        expect(ap_object["cc"]).to include commenter.federails_actor.followers_url
+        expect(ap_object["cc"]).to include commenter.fedipub_actor.followers_url
       end
 
       context "with a system comment" do
@@ -82,10 +82,10 @@ RSpec.describe Comment do
     let(:commenter) { create(:creator) }
     let(:commentable) { create(:model, :public) }
 
-    it "does not post a Federails Activity on creation" do
+    it "does not post a Fedipub Activity on creation" do
       expect {
         create(:comment, commenter: commenter, commentable: commentable)
-      }.not_to change(Federails::Activity.where(actor: commenter.federails_actor), :count)
+      }.not_to change(Fedipub::Activity.where(actor: commenter.fedipub_actor), :count)
     end
 
     it "does not have a federated_url" do
@@ -98,10 +98,10 @@ RSpec.describe Comment do
     let(:commenter) { create(:creator, :public) }
     let(:commentable) { create(:model, creator: commenter) }
 
-    it "does not post a Federails Activity on creation" do
+    it "does not post a Fedipub Activity on creation" do
       expect {
         create(:comment, commenter: commenter, commentable: commentable)
-      }.not_to change(Federails::Activity.where(actor: commenter.federails_actor), :count)
+      }.not_to change(Fedipub::Activity.where(actor: commenter.fedipub_actor), :count)
     end
 
     it "does not have a federated_url" do

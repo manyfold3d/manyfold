@@ -1,7 +1,7 @@
 module ActivityPub
   class ModelSerializer < ApplicationSerializer
     def serialize
-      raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
+      raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Fedipub::ActorEntity objects
       {
         "@context": [
           "https://purl.archive.org/miscellany",
@@ -33,9 +33,9 @@ module ActivityPub
 
     def cc
       [
-        @object.federails_actor.followers_url,
-        @object.creator&.federails_actor&.followers_url,
-        @object.collections.map { |c| c.federails_actor&.followers_url }
+        @object.fedipub_actor.followers_url,
+        @object.creator&.fedipub_actor&.followers_url,
+        @object.collections.map { |c| c.fedipub_actor&.followers_url }
       ].flatten.compact
     end
 
@@ -63,7 +63,7 @@ module ActivityPub
 
     def likes
       {
-        id: @object.federails_actor.federated_url + "#likes",
+        id: @object.fedipub_actor.federated_url + "#likes",
         type: "Collection",
         totalItems: @object.like_count
       }

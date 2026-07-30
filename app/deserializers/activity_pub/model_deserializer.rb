@@ -2,7 +2,7 @@ module ActivityPub
   class ModelDeserializer < ApplicationDeserializer
     def create!
       options = deserialize.merge(
-        federails_actor: @object,
+        fedipub_actor: @object,
         library: Library.first, # TODO: This is not ideal
         path: SecureRandom.uuid
       )
@@ -12,7 +12,7 @@ module ActivityPub
     private
 
     def deserialize
-      raise ArgumentError unless @object.is_a?(Federails::Actor)
+      raise ArgumentError unless @object.is_a?(Fedipub::Actor)
       {
         name: @object.name,
         slug: @object.username,

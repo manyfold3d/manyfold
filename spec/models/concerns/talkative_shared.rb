@@ -4,7 +4,7 @@ shared_examples "Talkative" do
       it "posts an activity" do
         expect {
           create(described_class.to_s.underscore.to_sym)
-        }.not_to change(Federails::Activity, :count)
+        }.not_to change(Fedipub::Activity, :count)
       end
     end
 
@@ -14,7 +14,7 @@ shared_examples "Talkative" do
       it "posts an activity after update" do
         expect {
           entity.update caption: "test"
-        }.not_to change(Federails::Activity, :count)
+        }.not_to change(Fedipub::Activity, :count)
       end
     end
   end
@@ -24,12 +24,12 @@ shared_examples "Talkative" do
       it "posts an activity" do
         expect {
           create(described_class.to_s.underscore.to_sym)
-        }.to change { Federails::Activity.where(action: "Create").count }.from(0).to(1)
+        }.to change { Fedipub::Activity.where(action: "Create").count }.from(0).to(1)
       end
 
       it "posts activity for the correct actor" do
         entity = create(described_class.to_s.underscore.to_sym)
-        expect(Federails::Activity.where(action: "Create").last.entity).to eq entity.federails_actor
+        expect(Fedipub::Activity.where(action: "Create").last.entity).to eq entity.fedipub_actor
       end
     end
 
@@ -39,14 +39,14 @@ shared_examples "Talkative" do
       it "posts an activity after update" do
         expect {
           entity.update caption: "test"
-        }.to change { Federails::Activity.where(entity: entity.federails_actor, action: "Update").count }.from(0).to(1)
+        }.to change { Fedipub::Activity.where(entity: entity.fedipub_actor, action: "Update").count }.from(0).to(1)
       end
 
       it "doesn't post an activity after update if there's already been one recently" do
         entity.update caption: "change"
         expect {
           entity.update caption: "change again"
-        }.not_to change { Federails::Activity.where(entity: entity.federails_actor, action: "Update").count }
+        }.not_to change { Fedipub::Activity.where(entity: entity.fedipub_actor, action: "Update").count }
       end
     end
 
@@ -56,7 +56,7 @@ shared_examples "Talkative" do
       it "doesn't post an activity after update" do
         expect {
           entity.update caption: "test"
-        }.not_to change { Federails::Activity.where(entity: entity.federails_actor, action: "Update").count }
+        }.not_to change { Fedipub::Activity.where(entity: entity.fedipub_actor, action: "Update").count }
       end
     end
   end

@@ -2,7 +2,7 @@ module ActivityPub
   class CommentSerializer < ApplicationSerializer
     def serialize
       {
-        "@context" => Federails::Utils::Context.generate(additional: [
+        "@context" => Fedipub::Utils::Context.generate(additional: [
           "https://purl.archive.org/miscellany",
           {
             f3di: "http://purl.org/f3di/ns#",
@@ -25,7 +25,7 @@ module ActivityPub
         ]),
         "id" => @object.federated_url,
         "type" => "Note",
-        "attributedTo" => @object.federails_actor.federated_url,
+        "attributedTo" => @object.fedipub_actor.federated_url,
         "published" => @object.created_at,
         "updated" => @object.updated_at,
         "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
@@ -47,11 +47,11 @@ module ActivityPub
 
     def cc
       [
-        @object.commentable&.federails_actor&.followers_url,
-        @object.commenter&.federails_actor&.followers_url,
-        (@object.commentable&.creator&.federails_actor&.followers_url if @object.commentable.respond_to?(:creator)),
-        (@object.commentable&.collection&.federails_actor&.followers_url if @object.commentable.respond_to?(:collection)),
-        (@object.commentable&.collections&.map { |c| c.federails_actor&.followers_url } if @object.commentable.respond_to?(:collections))
+        @object.commentable&.fedipub_actor&.followers_url,
+        @object.commenter&.fedipub_actor&.followers_url,
+        (@object.commentable&.creator&.fedipub_actor&.followers_url if @object.commentable.respond_to?(:creator)),
+        (@object.commentable&.collection&.fedipub_actor&.followers_url if @object.commentable.respond_to?(:collection)),
+        (@object.commentable&.collections&.map { |c| c.fedipub_actor&.followers_url } if @object.commentable.respond_to?(:collections))
       ].flatten.compact
     end
 
@@ -82,13 +82,13 @@ module ActivityPub
       # system notes aren't in reply to anything
       return nil if @object.system
       # Otherwise, find the system note or just use the actor URL if unavailable
-      @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.federails_actor&.federated_url
+      @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.fedipub_actor&.federated_url
     end
 
     def likes
       return nil unless @object.system
       {
-        id: @object.commentable.federails_actor.federated_url + "#likes",
+        id: @object.commentable.fedipub_actor.federated_url + "#likes",
         type: "Collection",
         totalItems: @object.commentable.like_count
       }

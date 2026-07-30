@@ -25,7 +25,7 @@ class Components::FollowButton < Components::Base
 
   def render?
     SiteSettings.social_enabled? && (
-      Pundit::PolicyFinder.new(Federails::Following).policy.new(current_user, nil).create? ||
+      Pundit::PolicyFinder.new(Fedipub::Following).policy.new(current_user, nil).create? ||
       remote_follow_allowed?
     )
   end
@@ -45,12 +45,12 @@ class Components::FollowButton < Components::Base
       @icon = "person-plus-fill"
     end
     if @signed_out
-      @path = @target.is_a?(Federails::Actor) ?
+      @path = @target.is_a?(Fedipub::Actor) ?
         follow_remote_actor_path(@target) :
-        remote_follow_path(uri: @target.federails_actor.federated_url, name: @target.name)
+        remote_follow_path(uri: @target.fedipub_actor.federated_url, name: @target.name)
       @method = :post
     else
-      @path = @target.is_a?(Federails::Actor) ?
+      @path = @target.is_a?(Fedipub::Actor) ?
         unfollow_remote_actor_path(@target) :
         url_for(@target) + "/follows"
       @method = @following ? :delete : :post

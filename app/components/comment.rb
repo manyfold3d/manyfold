@@ -30,7 +30,7 @@ class Components::Comment < Components::Base
           end
           whitespace
           span do
-            if @comment.commenter.is_a?(Federails::Actor)
+            if @comment.commenter.is_a?(Fedipub::Actor)
               link_to @comment.commenter.name, @comment.commenter.profile_url, title: @comment.commenter.at_address
             else
               @comment.commenter.try(:name) || @comment.commenter.try(:username)

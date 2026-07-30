@@ -15,7 +15,7 @@ class Creator < ApplicationRecord
 
   broadcasts_refreshes
 
-  acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for
+  acts_as_fedipub_actor username_field: :slug, name_field: :name, profile_url_method: :url_for
   fasp_share_lifecycle category: "account", uri_method: :fasp_uri, only_if: :public_and_indexable?
 
   has_many :models, dependent: :nullify
@@ -23,18 +23,18 @@ class Creator < ApplicationRecord
   has_many :groups, dependent: :destroy
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}, length: SAFE_NAME_LENGTH
-  validates :slug, presence: true, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, format: {with: /\A[[:alnum:]\-_]+\z/}, length: SAFE_NAME_LENGTH
+  validates :slug, presence: true, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FedipubCommon::FEDIVERSE_USERNAMES}, format: {with: /\A[[:alnum:]\-_]+\z/}, length: SAFE_NAME_LENGTH
 
   # Explicitly explain serialization for MariaDB
   serialize :avatar_data, coder: CrossDbJsonSerializer
   serialize :banner_data, coder: CrossDbJsonSerializer
 
   def fasp_uri
-    federails_actor&.federated_url
+    fedipub_actor&.federated_url
   end
 
   def name_with_domain
-    remote? ? name + " (#{federails_actor.server})" : name
+    remote? ? name + " (#{fedipub_actor.server})" : name
   end
 
   def to_param

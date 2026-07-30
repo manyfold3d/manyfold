@@ -3,7 +3,7 @@ class Settings::ReportsController < ApplicationController
   respond_to :html
 
   def index
-    @reports = policy_scope(Federails::Moderation::Report).where(resolution: nil)
+    @reports = policy_scope(Fedipub::Moderation::Report).where(resolution: nil)
     render layout: "settings"
   end
 
@@ -26,7 +26,7 @@ class Settings::ReportsController < ApplicationController
   private
 
   def get_report
-    @report = policy_scope(Federails::Moderation::Report).find(params[:id])
+    @report = policy_scope(Fedipub::Moderation::Report).find(params[:id])
     authorize @report
   end
 end

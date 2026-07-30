@@ -34,7 +34,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
 
       it "parses correct commenter" do
         comment = deserializer.create!
-        expect(comment.federails_actor.name).to eq "Manyfold"
+        expect(comment.fedipub_actor.name).to eq "Manyfold"
       end
 
       it "parses correct commentable item" do
@@ -49,7 +49,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
     end
 
     context "with a Note from another server replying to a known model URL", vcr: {cassette_name: "ActivityPub_CreatorDeserializer/success"} do
-      let(:object) { build(:note, inReplyTo: model.federails_actor.federated_url) }
+      let(:object) { build(:note, inReplyTo: model.fedipub_actor.federated_url) }
 
       it "is handled" do
         expect(described_class.can_handle?(object)).to be true

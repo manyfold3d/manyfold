@@ -1,7 +1,7 @@
 module ActivityPub
   class CollectionSerializer < ApplicationSerializer
     def serialize
-      raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
+      raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Fedipub::ActorEntity objects
       {
         "@context": [
           {
@@ -25,9 +25,9 @@ module ActivityPub
 
     def cc
       [
-        @object.federails_actor.followers_url,
-        @object.creator&.federails_actor&.followers_url,
-        @object.collection&.federails_actor&.followers_url
+        @object.fedipub_actor.followers_url,
+        @object.creator&.fedipub_actor&.followers_url,
+        @object.collection&.fedipub_actor&.followers_url
       ].compact
     end
   end

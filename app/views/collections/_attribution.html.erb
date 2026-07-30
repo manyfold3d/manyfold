@@ -1,12 +1,12 @@
 <ul class="list-unstyled">
   <% if collection.remote? %>
-    <% if (creator = collection.federails_actor.extensions["attributedTo"]) %>
+    <% if (creator = collection.fedipub_actor.extensions["attributedTo"]) %>
       <li>
         <%= Icon icon: "person", label: Creator.model_name.human %>
         <%= link_to creator["name"], creator["url"] %><br>
       </li>
     <% end %>
-    <%- collections = Array.new(collection.federails_actor.extensions["context"] || []) %>
+    <%- collections = Array.new(collection.fedipub_actor.extensions["context"] || []) %>
     <% if (collections.any?) %>
       <li>
         <%= Icon icon: "collection", label: Collection.model_name.human %>

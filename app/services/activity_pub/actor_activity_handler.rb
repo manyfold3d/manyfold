@@ -13,7 +13,7 @@ class ActivityPub::ActorActivityHandler
     # Get object attributes and update object
     attributes = actor_object_attributes(activity)
     return unless attributes
-    object = Federails::Actor.find_or_create_by_federation_url(attributes[:federated_url]) # rubocop:disable Rails/DynamicFindBy
+    object = Fedipub::Actor.find_or_create_by_federation_url(attributes[:federated_url]) # rubocop:disable Rails/DynamicFindBy
     return if object.local? # Don't update local objects, they must have already been done
     object&.update!(attributes)
 
@@ -25,7 +25,7 @@ class ActivityPub::ActorActivityHandler
   end
 
   def self.get_actor(activity)
-    Federails::Actor.find_or_create_by_federation_url(
+    Fedipub::Actor.find_or_create_by_federation_url(
       activity["actor"].is_a?(Hash) ?
         activity.dig("actor", "id") :
         activity["actor"]

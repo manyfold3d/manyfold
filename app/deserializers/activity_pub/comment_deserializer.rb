@@ -19,13 +19,13 @@ module ActivityPub
     private
 
     def get_actor
-      Federails::Actor.find_or_create_by_federation_url @object["attributedTo"]
+      Fedipub::Actor.find_or_create_by_federation_url @object["attributedTo"]
     end
 
     def commentable
       public_id = @object["inReplyTo"]&.split("/")&.last
       return nil if public_id.nil?
-      Comment.find_by(public_id: public_id)&.commentable || Federails::Actor.find_by(uuid: public_id)&.entity
+      Comment.find_by(public_id: public_id)&.commentable || Fedipub::Actor.find_by(uuid: public_id)&.entity
     end
 
     def content
@@ -36,7 +36,7 @@ module ActivityPub
       commenter = get_actor
       {
         federated_url: @object["id"],
-        federails_actor: commenter,
+        fedipub_actor: commenter,
         commenter: commenter.entity || commenter,
         commentable: commentable,
         comment: content

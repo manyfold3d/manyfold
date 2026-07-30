@@ -10,7 +10,7 @@ class Activity::CollectionPublishedJob < ApplicationJob
       commenter: model.creator,
       comment: I18n.t("jobs.activity.collection_published.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
         name: collection.name,
-        url: collection.federails_actor.profile_url)
+        url: collection.fedipub_actor.profile_url)
     )
   end
 end

@@ -58,7 +58,7 @@ shared_examples "Permittable" do |object_class|
         allow(SiteSettings).to receive(:federation_enabled?).and_return(true)
         u = create(:user)
         expect {
-          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.federails_actor.at_address, permission: "view"}}}}
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.fedipub_actor.at_address, permission: "view"}}}}
         }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
         expect(object.reload).not_to be_public
       end

@@ -10,14 +10,14 @@ shared_examples "Likeable" do
     let(:actor) { create(:actor, :distant) }
 
     it "posts a like activity when added to liked list" do
-      expect { user.liked_list.models << thing }.to change { Federails::Activity.where(action: "Like").count }.by(1)
+      expect { user.liked_list.models << thing }.to change { Fedipub::Activity.where(action: "Like").count }.by(1)
     end
 
     it "includes remote Like activities in count" do # rubocop:todo RSpec/ExampleLength
       activity = {
         "action" => "Like",
         "actor" => actor.federated_url,
-        "object" => thing.to_activitypub_object.merge("id" => thing.federails_actor.federated_url)
+        "object" => thing.to_activitypub_object.merge("id" => thing.fedipub_actor.federated_url)
       }
       expect {
         ActivityPub::LikeActivityHandler.handle_like_activity(activity)
@@ -51,8 +51,8 @@ shared_examples "Likeable" do
     it "ignores local Like activities in count" do # rubocop:todo RSpec/ExampleLength
       activity = {
         "action" => "Like",
-        "actor" => user.federails_actor.federated_url,
-        "object" => thing.to_activitypub_object.merge("id" => thing.federails_actor.federated_url)
+        "actor" => user.fedipub_actor.federated_url,
+        "object" => thing.to_activitypub_object.merge("id" => thing.fedipub_actor.federated_url)
       }
       expect {
         ActivityPub::LikeActivityHandler.handle_like_activity(activity)

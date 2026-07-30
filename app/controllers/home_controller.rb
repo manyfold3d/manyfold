@@ -19,7 +19,7 @@ class HomeController < ApplicationController
   def local_timeline
     [Model, Creator, Collection].map do |model|
       query = policy_scope(model)
-      query = query.includes(:federails_actor) if SiteSettings.federation_enabled?
+      query = query.includes(:fedipub_actor) if SiteSettings.federation_enabled?
       query.order(updated_at: :desc).limit(20)
     end.flatten.sort_by(&:updated_at).last(20).reverse
   end

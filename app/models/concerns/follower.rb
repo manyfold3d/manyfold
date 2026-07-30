@@ -1,29 +1,29 @@
 module Follower
   extend ActiveSupport::Concern
-  include FederailsCommon
+  include FedipubCommon
 
   included do
-    delegate :activities, to: :federails_actor
-    delegate :following_follows, to: :federails_actor
+    delegate :activities, to: :fedipub_actor
+    delegate :following_follows, to: :fedipub_actor
 
     after_follow_accepted :after_accept
   end
 
   def follow(target)
-    following_follows.create(target_actor: target.is_a?(Federails::Actor) ? target : target.federails_actor)
+    following_follows.create(target_actor: target.is_a?(Fedipub::Actor) ? target : target.fedipub_actor)
   end
 
   def unfollow(target)
-    f = federails_actor.follows?(target.is_a?(Federails::Actor) ? target : target.federails_actor)
+    f = fedipub_actor.follows?(target.is_a?(Fedipub::Actor) ? target : target.fedipub_actor)
     f&.destroy unless f == false
   end
 
   def following?(target)
     # follows? gives us the relationship or false if it doesn't exist,
     # we turn that into the pendingstatus (or false if not)
-    tgt = target.is_a?(Federails::Actor) ? target : target.federails_actor
-    f = federails_actor&.follows?(tgt)
-    f&.is_a?(Federails::Following) ? f.status.to_sym : false
+    tgt = target.is_a?(Fedipub::Actor) ? target : target.fedipub_actor
+    f = fedipub_actor&.follows?(tgt)
+    f&.is_a?(Fedipub::Following) ? f.status.to_sym : false
   end
 
   private

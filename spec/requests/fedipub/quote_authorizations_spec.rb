@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Federails::QuoteAuthorizations", :after_first_run, :federated, :multiuser do
+RSpec.describe "Fedipub::QuoteAuthorizations", :after_first_run, :federated, :multiuser do
   describe "GET /federation/quote_authorizations/:id" do
     it "returns not found with bad UUID" do
       get "/federation/quote_authorizations/#{SecureRandom.uuid}", headers: {accept: "application/activity+json"}
@@ -9,10 +9,10 @@ RSpec.describe "Federails::QuoteAuthorizations", :after_first_run, :federated, :
 
     describe "with a valid quoted object" do
       let(:model) { create(:model, :public) }
-      let(:comment) { create(:comment, federails_actor: model.federails_actor, commentable: model) }
+      let(:comment) { create(:comment, fedipub_actor: model.fedipub_actor, commentable: model) }
       let(:auth) {
-        Federails::QuoteAuthorization.create(
-          federails_actor: model.federails_actor,
+        Fedipub::QuoteAuthorization.create(
+          fedipub_actor: model.fedipub_actor,
           quoting_actor: create(:actor, :distant),
           interaction_target: comment,
           interacting_object_url: "https://example.org/statuses/1",

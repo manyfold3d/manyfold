@@ -4,8 +4,8 @@
 
 <table class="table table-striped">
   <tr>
-    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:domain) %></th>
-    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:created_at) %></th>
+    <th><%= Fedipub::Moderation::DomainBlock.human_attribute_name(:domain) %></th>
+    <th><%= Fedipub::Moderation::DomainBlock.human_attribute_name(:created_at) %></th>
     <th></th>
   </tr>
   <% @blocks.each do |block| %>
@@ -17,4 +17,4 @@
   <% end %>
 </table>
 
-<%= link_to t(".new"), new_settings_domain_block_path, class: "btn btn-primary" if policy(Federails::Moderation::DomainBlock).new? %>
+<%= link_to t(".new"), new_settings_domain_block_path, class: "btn btn-primary" if policy(Fedipub::Moderation::DomainBlock).new? %>

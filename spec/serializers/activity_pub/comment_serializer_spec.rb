@@ -15,11 +15,11 @@ RSpec.describe ActivityPub::CommentSerializer do
     end
 
     it "is posted as a reply to the model" do
-      expect(ap["inReplyTo"]).to include model.federails_actor.federated_url
+      expect(ap["inReplyTo"]).to include model.fedipub_actor.federated_url
     end
 
     it "has user's actor URL in atributedTo" do
-      expect(ap["attributedTo"]).to eq user.federails_actor.federated_url
+      expect(ap["attributedTo"]).to eq user.fedipub_actor.federated_url
     end
 
     it "is a Note" do
@@ -52,7 +52,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     end
 
     it "has model's actor URL in atributedTo" do
-      expect(ap["attributedTo"]).to eq model.federails_actor.federated_url
+      expect(ap["attributedTo"]).to eq model.fedipub_actor.federated_url
     end
 
     it "is sent as a Note" do
@@ -69,7 +69,7 @@ RSpec.describe ActivityPub::CommentSerializer do
 
     it "includes a likes collection" do
       expect(ap["likes"]).to include({
-        id: model.federails_actor.federated_url + "#likes",
+        id: model.fedipub_actor.federated_url + "#likes",
         type: "Collection",
         totalItems: 0
       })
@@ -109,11 +109,11 @@ RSpec.describe ActivityPub::CommentSerializer do
     end
 
     it "includes model followers collection in cc" do
-      expect(serializer.cc).to include model.federails_actor.followers_url
+      expect(serializer.cc).to include model.fedipub_actor.followers_url
     end
 
     it "includes creator followers collection in cc" do
-      expect(serializer.cc).to include creator.federails_actor.followers_url
+      expect(serializer.cc).to include creator.fedipub_actor.followers_url
     end
   end
 
@@ -124,7 +124,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:comment) { create(:comment, commenter: creator, commentable: model) }
 
     it "includes collection followers collection in cc" do
-      expect(serializer.cc).to include collection.federails_actor.followers_url
+      expect(serializer.cc).to include collection.fedipub_actor.followers_url
     end
   end
 
@@ -134,7 +134,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:comment) { create(:comment, commenter: creator, commentable: collection) }
 
     it "includes collection followers collection in cc" do
-      expect(serializer.cc).to include collection.federails_actor.followers_url
+      expect(serializer.cc).to include collection.fedipub_actor.followers_url
     end
   end
 
@@ -144,7 +144,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:comment) { create(:comment, commenter: collection, commentable: collection) }
 
     it "includes creator followers collection in cc" do
-      expect(serializer.cc).to include creator.federails_actor.followers_url
+      expect(serializer.cc).to include creator.fedipub_actor.followers_url
     end
   end
 
@@ -155,7 +155,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:comment) { create(:comment, commenter: creator, commentable: collection) }
 
     it "includes parent collection followers collection in cc" do
-      expect(serializer.cc).to include parent_collection.federails_actor.followers_url
+      expect(serializer.cc).to include parent_collection.fedipub_actor.followers_url
     end
   end
 

@@ -2,7 +2,7 @@
 
 require "fediverse/inbox"
 
-Federails.configure do |conf|
+Fedipub.configure do |conf|
   conf.app_name = "manyfold"
   conf.app_version = Rails.application.config.app_version
 
@@ -25,7 +25,7 @@ Federails.configure do |conf|
   conf.job_queue = :federation
 end
 
-Federails::Moderation.configure do |conf|
+Fedipub::Moderation.configure do |conf|
   conf.after_report_created = ->(report) { ReportHandler.call(report) }
 end
 
@@ -36,11 +36,11 @@ Rails.application.config.after_initialize do
   Fediverse::Inbox.register_handler("QuoteRequest", "*", ActivityPub::QuoteRequestHandler, :handle_quote_request)
 end
 
-# i18n-tasks-use t("activerecord.models.federails/moderation/domain_block")
-# i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.created_at")
-# i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.domain")
+# i18n-tasks-use t("activerecord.models.fedipub/moderation/domain_block")
+# i18n-tasks-use t("activerecord.attributes.fedipub/moderation/domain_block.created_at")
+# i18n-tasks-use t("activerecord.attributes.fedipub/moderation/domain_block.domain")
 
-# i18n-tasks-use t("activerecord.models.federails/moderation/report")
-# i18n-tasks-use t("activerecord.attributes.federails/moderation/report.created_at")
-# i18n-tasks-use t("activerecord.attributes.federails/moderation/report.federails_actor")
-# i18n-tasks-use t("activerecord.attributes.federails/moderation/report.object")
+# i18n-tasks-use t("activerecord.models.fedipub/moderation/report")
+# i18n-tasks-use t("activerecord.attributes.fedipub/moderation/report.created_at")
+# i18n-tasks-use t("activerecord.attributes.fedipub/moderation/report.fedipub_actor")
+# i18n-tasks-use t("activerecord.attributes.fedipub/moderation/report.object")

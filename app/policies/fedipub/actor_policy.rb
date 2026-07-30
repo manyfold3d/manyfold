@@ -1,4 +1,4 @@
-class Federails::ActorPolicy < ApplicationPolicy
+class Fedipub::ActorPolicy < ApplicationPolicy
   def index?
     all_of(
       SiteSettings.multiuser_enabled?,
