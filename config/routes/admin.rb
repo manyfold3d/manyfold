@@ -13,7 +13,7 @@ authenticate :user, lambda { |u| u.is_administrator? } do
     resources :plugins, only: [:index, :create]
   end
   mount Sidekiq::Web => "/admin/sidekiq"
-  mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?
+  mount RailsPerformance::Engine => "/admin/performance" unless Amiko.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?
   mount PgHero::Engine => "/admin/pghero" if defined?(PgHero)
   get "/activity" => "activity#index", :as => :activity
 end

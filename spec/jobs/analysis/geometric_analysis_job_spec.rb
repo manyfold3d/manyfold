@@ -2,7 +2,7 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Analysis::GeometricAnalysisJob do
-  let(:library) { create(:library, path: Rails.root.join("spec/fixtures")) }
+  let(:library) { create(:library, path: Amiko.root.join("spec/fixtures")) }
   let(:model) { create(:model, library: library, path: "geometric_analysis_job_spec") }
   let(:manifold_mesh) {
     create(:model_file, model: model, filename: "manifold.stl",

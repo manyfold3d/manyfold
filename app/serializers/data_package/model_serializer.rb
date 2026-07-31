@@ -7,7 +7,7 @@ module DataPackage
         title: @object.name,
         caption: @object.caption,
         description: @object.notes,
-        homepage: Rails.application.routes.url_helpers.url_for(@object),
+        homepage: Amiko.application.routes.url_helpers.url_for(@object),
         image: @object.preview_file&.is_image? ? @object.preview_file.filename : nil,
         keywords: @object.tag_list,
         licenses: (@object.license ? [

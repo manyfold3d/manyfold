@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require "thor"
 require File.expand_path("../../config/environment", __FILE__)
-Rails.root.glob("app/lib/cli/**/*.rb").sort.each { |f| require f }
+Amiko.root.glob("app/lib/cli/**/*.rb").sort.each { |f| require f }
 
 class ManyfoldCLI < Thor
   namespace :manyfold

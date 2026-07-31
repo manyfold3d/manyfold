@@ -1,3 +1,3 @@
-Rails.application.config.after_initialize do
-  Rails.cache.delete("restart_required")
+Amiko.application.config.after_initialize do
+  Amiko.cache.delete("restart_required")
 end

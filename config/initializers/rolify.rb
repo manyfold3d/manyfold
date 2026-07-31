@@ -6,7 +6,7 @@ Rolify.configure do |config|
   # config.remove_role_if_empty = false
 end
 
-Rails.application.config.after_initialize do
+Amiko.application.config.after_initialize do
   Role::ROLES.each do |r|
     Role.find_or_create_by name: r
   end

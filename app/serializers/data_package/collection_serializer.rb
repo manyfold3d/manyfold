@@ -3,7 +3,7 @@ module DataPackage
     def serialize
       {
         title: @object.name,
-        path: Rails.application.routes.url_helpers.url_for(@object),
+        path: Amiko.application.routes.url_helpers.url_for(@object),
         caption: @object.caption,
         description: @object.notes,
         links: @object.links.map { LinkSerializer.new(it).serialize }

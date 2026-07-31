@@ -1,5 +1,5 @@
-Rails.application.config.after_initialize do
-  if Rails.env.development?
+Amiko.application.config.after_initialize do
+  if Amiko.env.development?
     Bullet.enable = true
     Bullet.rails_logger = true
 

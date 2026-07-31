@@ -9,7 +9,7 @@ class UsageReportingJob < ApplicationJob
     # Prepare the report
     data = UsageReport.generate
     # Tell the user what we're doing
-    Rails.logger.info("Sending anonymous usage report to #{uri}: #{data}")
+    Amiko.logger.info("Sending anonymous usage report to #{uri}: #{data}")
     # Send
     headers = {
       "Content-Type": "application/json",

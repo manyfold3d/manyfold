@@ -32,7 +32,7 @@ class AddUploadedFileToModelJob < ApplicationJob
         model.model_files.create(filename: filename, attachment: attachment(tus_upload))
       end
     else
-      Rails.logger.warn("Ignoring #{tus_upload.inspect}")
+      Amiko.logger.warn("Ignoring #{tus_upload.inspect}")
     end
   end
 

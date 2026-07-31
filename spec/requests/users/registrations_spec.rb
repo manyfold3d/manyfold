@@ -315,7 +315,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "rate limits login attempts" do
-          Rails.cache.increment("rate-limit:users/registrations:127.0.0.1", 3, expires_in: 1.minute)
+          Amiko.cache.increment("rate-limit:users/registrations:127.0.0.1", 3, expires_in: 1.minute)
           post "/users", params: post_options
           expect(response).to have_http_status :too_many_requests
         end
