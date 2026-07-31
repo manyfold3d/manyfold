@@ -41,7 +41,7 @@ class Fedipub::QuoteAuthorization < ApplicationRecord
       action: (state == "accepted") ? "Accept" : "Reject",
       entity: self,
       to: quoting_actor.federated_url,
-      result: (state == "accepted") ? Rails.application.routes.url_helpers.fedipub_server_quote_authorization_url(self) : nil
+      result: (state == "accepted") ? Amiko.application.routes.url_helpers.fedipub_server_quote_authorization_url(self) : nil
     )
   end
 

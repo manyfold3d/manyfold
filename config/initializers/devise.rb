@@ -123,7 +123,7 @@ Devise.setup do |config|
   # a value less than 10 in other environments. Note that, for bcrypt (the default
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 12
+  config.stretches = Amiko.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = '50a9e0d37397e03a118db4c94a6eca69cd193ed63d69942fa6a13e1b44edd39eb8d41fe69668b1a2722ba7cadaf839e363c06f85d48c909d896e2ab41e9dff56'
@@ -225,7 +225,7 @@ Devise.setup do |config|
   # secure: true in order to force SSL only cookies.
   config.rememberable_options = {
     same_site: :lax,
-    secure: Rails.application.config.force_ssl
+    secure: Amiko.application.config.force_ssl
   }
 
   # ==> Configuration for :timeoutable
@@ -322,8 +322,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  if Rails.application.config.manyfold_features[:oidc]
-    scheme = Rails.application.config.force_ssl ? "https" : "http"
+  if Amiko.application.config.manyfold_features[:oidc]
+    scheme = Amiko.application.config.force_ssl ? "https" : "http"
     issuer_uri = URI.parse(ENV.fetch("OIDC_ISSUER"))
     config.omniauth :openid_connect, {
       name: :openid_connect,
@@ -338,8 +338,8 @@ Devise.setup do |config|
         identifier: ENV.fetch("OIDC_CLIENT_ID"),
         secret: ENV.fetch("OIDC_CLIENT_SECRET"),
         redirect_uri: [
-          "#{scheme}://#{[Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")}",
-          Rails.application.config.relative_url_root&.delete_prefix("/")&.delete_suffix("/"),
+          "#{scheme}://#{[Amiko.application.default_url_options[:host], Amiko.application.default_url_options[:port]].compact.join(":")}",
+          Amiko.application.config.relative_url_root&.delete_prefix("/")&.delete_suffix("/"),
           "users/auth/openid_connect/callback"
         ].compact.join("/") # This code is horrible, there must be a better way??
       }

@@ -1,4 +1,4 @@
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
+Amiko.application.config.middleware.insert_before 0, Rack::Cors do
   # Allow cross-origin requests for API content types
   allow do
     origins "*"

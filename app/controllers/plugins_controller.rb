@@ -24,11 +24,11 @@ class PluginsController < ApplicationController
 
   def extract_plugin(archive)
     # Extract the file synchronously rather than in a background job. This is intentional!
-    plugin_path = Rails.root.join("plugins", File.basename(archive.original_filename, ".*"))
+    plugin_path = Amiko.root.join("plugins", File.basename(archive.original_filename, ".*"))
     begin
       plugin_path.mkdir
     rescue Errno::EEXIST
-      Rails.logger.warn("Plugin path #{plugin_path} exists, files will be overwritten")
+      Amiko.logger.warn("Plugin path #{plugin_path} exists, files will be overwritten")
     end
     strip = count_common_path_components(archive)
     Archive::Reader.open_filename(archive.tempfile.path, strip_components: strip) do |reader|
@@ -37,6 +37,6 @@ class PluginsController < ApplicationController
       end
     end
     # Set the flag that a restart is now needed
-    Rails.cache.write("restart_required", true)
+    Amiko.cache.write("restart_required", true)
   end
 end

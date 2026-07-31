@@ -6,7 +6,7 @@ class Scan::CheckAllJob < Upgrade::IterationJob
       ModelPolicy::UpdateScope.new(instigator, Model).resolve :
       Model.all
     scope = Search::FilterService.new(filter_params).models(scope)
-    Rails.logger.info "queueing rescan for #{scope.count} models"
+    Amiko.logger.info "queueing rescan for #{scope.count} models"
     enumerator_builder.active_record_on_records(scope, cursor: cursor)
   end
 

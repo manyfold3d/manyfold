@@ -2,8 +2,8 @@ module FileHandlers
   ALL_HANDLERS = []
 
   def self.handlers_for(environment:, mime_type:)
-    Rails.cache.fetch("FileHandlers_handlers_for_#{environment}_#{mime_type}", expires_in: 1.hour) do
-      Rails.logger.debug { "CACHE MISS for FileHandlers_handlers_for_#{environment}_#{mime_type}" }
+    Amiko.cache.fetch("FileHandlers_handlers_for_#{environment}_#{mime_type}", expires_in: 1.hour) do
+      Amiko.logger.debug { "CACHE MISS for FileHandlers_handlers_for_#{environment}_#{mime_type}" }
       ALL_HANDLERS # rubocop:disable Pundit/UsePolicyScope
         .select { it.const_get(:ENVIRONMENTS).include? environment }
         .select { it.can_load? mime_type }

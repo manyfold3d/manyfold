@@ -56,7 +56,7 @@ module ActivityPub
         {
           type: "Hashtag",
           name: tag,
-          href: Rails.application.routes.url_helpers.models_url(tag: tag)
+          href: Amiko.application.routes.url_helpers.models_url(tag: tag)
         }
       end
     end

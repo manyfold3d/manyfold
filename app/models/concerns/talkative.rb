@@ -1,7 +1,7 @@
 module Talkative
   extend ActiveSupport::Concern
 
-  TIMEOUT = Rails.env.development? ? 1 : 15
+  TIMEOUT = Amiko.env.development? ? 1 : 15
 
   included do
     after_commit :followable_post_creation_activity, on: :create

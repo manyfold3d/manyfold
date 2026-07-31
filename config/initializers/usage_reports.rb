@@ -1,4 +1,4 @@
-Rails.application.config.after_initialize do
+Amiko.application.config.after_initialize do
   # Make sure the schedule is loaded correctly
   UsageReport.set_schedule!
 rescue RedisClient::CannotConnectError

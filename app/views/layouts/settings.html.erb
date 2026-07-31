@@ -4,7 +4,7 @@
 <% elsif policy(:user).index? %>
   <%= PageTitle title: t(".moderation_settings_title") %>
 <% end %>
-<% if Rails.cache.read("restart_required") %>
+<% if Amiko.cache.read("restart_required") %>
   <div class="alert alert-danger">
     <%= t(".restart_required") %>
   </div>
@@ -90,7 +90,7 @@
           <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to t(".performance"), rails_performance_path, class: "nav-link" unless Rails.env.test? %>
+          <%= link_to t(".performance"), rails_performance_path, class: "nav-link" unless Amiko.env.test? %>
         </li>
         <li class="nav-item">
           <%= link_to t(".sidekiq"), sidekiq_web_path, class: "nav-link" %>
