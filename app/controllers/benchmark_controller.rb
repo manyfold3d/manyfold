@@ -35,7 +35,7 @@ class BenchmarkController < ApplicationController
     # This should never be used in production, and routes.rb
     # should stop it happening, but *just in case* we'll check
     # here as well and explode if we're in prod.
-    raise ActionController::BadRequest if Rails.env.production?
+    raise ActionController::BadRequest if Amiko.env.production?
     sign_in(:user, User.with_role(:administrator).first)
   end
 

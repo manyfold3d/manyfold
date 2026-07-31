@@ -11,16 +11,16 @@ end
 
 require File.expand_path("../config/environment", __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort("The Rails environment is running in production mode!") if Amiko.env.production?
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require "rake"
-Rails.application.load_tasks
+Amiko.application.load_tasks
 
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
-Rails.root.glob("spec/support/**/*.rb").sort.each { |f| require f }
+Amiko.root.glob("spec/support/**/*.rb").sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -32,7 +32,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_paths = [Rails.root.join("spec/fixtures")]
+  config.fixture_paths = [Amiko.root.join("spec/fixtures")]
 
   # Let database cleaner handle transactions and cleanup
   config.use_transactional_fixtures = false

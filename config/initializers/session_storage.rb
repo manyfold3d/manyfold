@@ -1,5 +1,5 @@
-Rails.application.config.session_store :cookie_store,
+Amiko.application.config.session_store :cookie_store,
   expire_after: 14.days,
   key: "_manyfold_session",
   same_site: :lax,
-  secure: Rails.application.config.force_ssl
+  secure: Amiko.application.config.force_ssl

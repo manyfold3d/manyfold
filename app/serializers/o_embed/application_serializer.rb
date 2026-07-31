@@ -10,7 +10,7 @@ module OEmbed
       {
         version: "1.0",
         provider_name: ENV.fetch("SITE_NAME", "Manyfold"),
-        provider_url: Rails.application.routes.url_helpers.root_url,
+        provider_url: Amiko.application.routes.url_helpers.root_url,
         cache_age: 86400
       }
     end
@@ -19,7 +19,7 @@ module OEmbed
       return {} if creator.nil?
       {
         author_name: creator.name,
-        author_url: Rails.application.routes.url_helpers.creator_url(creator)
+        author_url: Amiko.application.routes.url_helpers.creator_url(creator)
       }
     end
 
@@ -50,7 +50,7 @@ module OEmbed
       height = @maxheight || 512
       {
         type: "photo",
-        url: Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
+        url: Amiko.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
         width: width,
         height: height,
         mediaType: model_file.mime_type.to_s
@@ -63,14 +63,14 @@ module OEmbed
       html = <<~EOF
         <video controls width="#{width}" height="#{height}">
           <source
-            src="#{Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension)}"
+            src="#{Amiko.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension)}"
             type="#{model_file.mime_type}"
           />
         </video>
       EOF
       {
         type: "video",
-        url: Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
+        url: Amiko.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
         html: html,
         width: width,
         height: height,
@@ -83,7 +83,7 @@ module OEmbed
       height = @maxheight || 512
       html = <<~EOF
         <iframe
-          src="#{Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, embed: true)}"
+          src="#{Amiko.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, embed: true)}"
           width="#{width}" height="#{height}" loading="lazy" referrerpolicy="no-referrer" scrolling="no"
           style="overflow:hidden; border: none" sandbox="allow-scripts allow-pointer-lock allow-same-origin">
         </iframe>

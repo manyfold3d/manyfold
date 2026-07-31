@@ -668,7 +668,7 @@ RSpec.describe "Models", :after_first_run do
           end
 
           it "rate limits model uploads" do
-            Rails.cache.increment("rate-limit:models:127.0.0.1", 10, expires_in: 1.minute)
+            Amiko.cache.increment("rate-limit:models:127.0.0.1", 10, expires_in: 1.minute)
             post_models
             expect(response).to have_http_status :too_many_requests
           end

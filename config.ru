@@ -3,6 +3,6 @@
 require_relative "config/environment"
 
 map ActionController::Base.config.relative_url_root || "/" do
-  run Rails.application
-  Rails.application.load_server
+  run Amiko.application
+  Amiko.application.load_server
 end

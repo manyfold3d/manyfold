@@ -10,6 +10,6 @@ shared_examples "Linkable" do
   end
 
   it "rejects self-referential links" do
-    expect { thing.update! links_attributes: [{url: Rails.application.routes.url_helpers.url_for(thing)}] }.not_to change(Link, :count)
+    expect { thing.update! links_attributes: [{url: Amiko.application.routes.url_helpers.url_for(thing)}] }.not_to change(Link, :count)
   end
 end

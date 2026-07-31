@@ -26,7 +26,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     link.update!(synced_at: Time.now.utc)
     Problem.create_or_clear(link, :http_error, false)
   rescue Faraday::Error => err
-    Rails.logger.error err
+    Amiko.logger.error err
     Problem.create_or_clear(link, :http_error, true, note: err.to_s)
   end
 
@@ -35,7 +35,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
       file = model.create_or_update_file_from_url(url: it[:url], filename: it[:filename])
       ExtractArchiveJob.perform_later(file.id, remove_when_complete: true) if file&.is_archive?
     rescue ActiveRecord::RecordInvalid
-      Rails.logger.info("Couldn't add file #{it[:url]} to model #{model.to_param}")
+      Amiko.logger.info("Couldn't add file #{it[:url]} to model #{model.to_param}")
     end
     # Select preview file
     model.update!(preview_file: model.model_files.find_by(filename: data[:preview_filename])) if data[:preview_filename].present?

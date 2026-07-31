@@ -11,7 +11,7 @@ module Components
     register_value_helper :current_user
     register_value_helper :policy
 
-    if Rails.env.development?
+    if Amiko.env.development?
       def before_template
         comment { "Before #{self.class.name}" }
         super

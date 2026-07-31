@@ -1,9 +1,9 @@
-Rails.application.config.after_initialize do
+Amiko.application.config.after_initialize do
   # Update site settings from old values
   SiteSettings.default_viewer_role = "private" if SiteSettings.default_viewer_role == ""
 
   # Transfer path data from settings to libraries
-  if Rails.const_defined?(:Server)
+  if Amiko.const_defined?(:Server)
     deprecated_folder_settings = {
       path_template: SiteSettings.remove_field("model_path_template"),
       parse_metadata_from_path: SiteSettings.remove_field("parse_metadata_from_path"),
@@ -19,7 +19,7 @@ Rails.application.config.after_initialize do
   Sidekiq.redis { |conn| conn.info }
   # Queue upgrade jobs if Redis is good to go
   # and if in server mode
-  if Rails.const_defined?(:Server)
+  if Amiko.const_defined?(:Server)
     Upgrade::GenerateSlugsJob.set(queue: :high).perform_later(Model)
     Upgrade::GenerateSlugsJob.set(queue: :high).perform_later(Creator)
     Upgrade::GenerateSlugsJob.set(queue: :high).perform_later(Collection)

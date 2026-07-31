@@ -9,7 +9,7 @@ module DataPackage
         links_attributes: []
       }
       begin
-        route_options = Rails.application.routes.recognize_path(@object["path"])
+        route_options = Amiko.application.routes.recognize_path(@object["path"])
         if route_options[:controller] == "collections"
           attributes[:id] = Collection.find_param(route_options[:id])&.id
         end

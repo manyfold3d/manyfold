@@ -7,12 +7,12 @@ module Components
   extend Phlex::Kit
 end
 
-Rails.application.config.before_initialize do
-  Rails.autoloaders.main.push_dir(
-    Rails.root.join("app/views"), namespace: Views
+Amiko.application.config.before_initialize do
+  Amiko.autoloaders.main.push_dir(
+    Amiko.root.join("app/views"), namespace: Views
   )
 
-  Rails.autoloaders.main.push_dir(
-    Rails.root.join("app/components"), namespace: Components
+  Amiko.autoloaders.main.push_dir(
+    Amiko.root.join("app/components"), namespace: Components
   )
 end

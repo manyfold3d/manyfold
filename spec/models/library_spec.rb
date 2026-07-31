@@ -19,7 +19,7 @@ RSpec.describe Library do
 
     it "removes whitespace from paths" do
       library = create(:library, path: " storage ")
-      expect(library.path).to eq Rails.root.join("storage").to_s
+      expect(library.path).to eq Amiko.root.join("storage").to_s
     end
 
     it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
@@ -128,9 +128,9 @@ RSpec.describe Library do
     end
 
     it "normalizes paths" do
-      path = Rails.root + "tmp/../app"
+      path = Amiko.root + "tmp/../app"
       library = build(:library, path: path)
-      expect(library.path).to eq (Rails.root + "app").to_s
+      expect(library.path).to eq (Amiko.root + "app").to_s
     end
 
     it "is invalid without a path template" do # rubocop:todo RSpec/MultipleExpectations

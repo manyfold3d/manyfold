@@ -5,7 +5,7 @@ development:
 
 test:
   adapter: redis
-  url: <%= Rails.application.credentials.redis_url %>
+  url: <%= Amiko.application.credentials.redis_url %>
   channel_prefix: manyfold_test
 
 production:

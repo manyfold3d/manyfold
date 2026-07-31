@@ -4,7 +4,7 @@ RSpec.describe UsageReport do
   context "when generating a usage report" do
     before do
       allow(SiteSettings).to receive(:anonymous_usage_id).and_return("guid-goes-here")
-      allow(Rails.application.config).to receive_messages(
+      allow(Amiko.application.config).to receive_messages(
         app_version: "v0.89.0",
         git_sha: "deadbeef"
       )
