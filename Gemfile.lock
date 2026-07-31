@@ -36,8 +36,33 @@ GIT
     rubocop-pundit (0.1.0)
       rubocop
 
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://gitlab.com/fedipub/fedipub-moderation.git
+  revision: 66b2df81627d7a8fab2c2a03d311274d065c483a
+  branch: main
+  specs:
+    fedipub-moderation (0.4.0)
+      fedipub (~> 0.8)
+      public_suffix (>= 6, < 8)
+      rails (>= 7.2.2)
+
+GIT
+  remote: https://gitlab.com/fedipub/fedipub.git
+  revision: b84ff11dfa1202e2a31f34cd8450e23689bb0d6f
+  branch: main
+  specs:
+    fedipub (0.8.0)
+      faraday
+      faraday-follow_redirects
+      jbuilder (~> 2.7)
+      json-ld (>= 3.2.0)
+      json-ld-preloaded (>= 3.2.0)
+      kaminari (>= 1.2.0)
+      pundit (>= 2.3.0)
+      rails (>= 7.0.4)
+
+PATH
+  remote: ../../rails/rails
   specs:
     action_text-trix (2.1.19)
       railties
@@ -88,28 +113,17 @@ GEM
     activejob (8.1.4)
       activesupport (= 8.1.4)
       globalid (>= 0.3.6)
-    activejob-status (1.0.2)
-      activejob (>= 6.0)
-      activesupport (>= 6.0)
-    activejob-unique (0.5.1)
-      activejob (>= 7.1, < 8.2)
-      redlock (>= 2.0, < 3)
-    activemodel (8.1.4)
-      activesupport (= 8.1.4)
-    activerecord (8.1.4)
-      activemodel (= 8.1.4)
-      activesupport (= 8.1.4)
+    activemodel (8.0.5.1)
+      activesupport (= 8.0.5.1)
+    activerecord (8.0.5.1)
+      activemodel (= 8.0.5.1)
+      activesupport (= 8.0.5.1)
       timeout (>= 0.4.0)
-    activerecord-enhancedsqlite3-adapter (0.8.0)
-      activerecord (>= 7.1)
-      sqlite3 (>= 1.6)
-    activerecord-nulldb-adapter (1.2.2)
-      activerecord (>= 6.1, < 8.2)
-    activestorage (8.1.4)
-      actionpack (= 8.1.4)
-      activejob (= 8.1.4)
-      activerecord (= 8.1.4)
-      activesupport (= 8.1.4)
+    activestorage (8.0.5.1)
+      actionpack (= 8.0.5.1)
+      activejob (= 8.0.5.1)
+      activerecord (= 8.0.5.1)
+      activesupport (= 8.0.5.1)
       marcel (~> 1.0)
     activesupport (8.1.4)
       base64
@@ -124,6 +138,49 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
+    amiko (8.0.5.1)
+      actioncable (= 8.0.5.1)
+      actionmailbox (= 8.0.5.1)
+      actionmailer (= 8.0.5.1)
+      actionpack (= 8.0.5.1)
+      actiontext (= 8.0.5.1)
+      actionview (= 8.0.5.1)
+      activejob (= 8.0.5.1)
+      activemodel (= 8.0.5.1)
+      activerecord (= 8.0.5.1)
+      activestorage (= 8.0.5.1)
+      activesupport (= 8.0.5.1)
+      bundler (>= 1.15.0)
+      railties (= 8.0.5.1)
+    railties (8.0.5.1)
+      actionpack (= 8.0.5.1)
+      activesupport (= 8.0.5.1)
+      irb (~> 1.13)
+      rackup (>= 1.0.0)
+      rake (>= 12.2)
+      thor (~> 1.0, >= 1.2.2)
+      tsort (>= 0.2)
+      zeitwerk (~> 2.6)
+
+PATH
+  remote: .gemaliases
+  specs:
+    rails (8.0.5.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activejob-status (1.0.2)
+      activejob (>= 6.0)
+      activesupport (>= 6.0)
+    activejob-uniqueness (0.4.0)
+      activejob (>= 4.2, < 8.1)
+      redlock (>= 2.0, < 3)
+    activerecord-enhancedsqlite3-adapter (0.8.0)
+      activerecord (>= 7.1)
+      sqlite3 (>= 1.6)
+    activerecord-nulldb-adapter (1.2.2)
+      activerecord (>= 6.1, < 8.2)
     acts-as-taggable-on (13.0.0)
       activerecord (>= 7.1, < 8.2)
       zeitwerk (>= 2.4, < 3.0)
@@ -639,20 +696,6 @@ GEM
       rack (>= 1.3)
     rackup (2.3.1)
       rack (>= 3)
-    rails (8.1.4)
-      actioncable (= 8.1.4)
-      actionmailbox (= 8.1.4)
-      actionmailer (= 8.1.4)
-      actionpack (= 8.1.4)
-      actiontext (= 8.1.4)
-      actionview (= 8.1.4)
-      activejob (= 8.1.4)
-      activemodel (= 8.1.4)
-      activerecord (= 8.1.4)
-      activestorage (= 8.1.4)
-      activesupport (= 8.1.4)
-      bundler (>= 1.15.0)
-      railties (= 8.1.4)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
@@ -674,15 +717,6 @@ GEM
       browser
       railties
       redis
-    railties (8.1.4)
-      actionpack (= 8.1.4)
-      activesupport (= 8.1.4)
-      irb (~> 1.13)
-      rackup (>= 1.0.0)
-      rake (>= 12.2)
-      thor (~> 1.0, >= 1.2.2)
-      tsort (>= 0.2)
-      zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
     rb-fsevent (0.11.2)
@@ -997,7 +1031,8 @@ DEPENDENCIES
   acts-as-taggable-on (~> 13.0)
   acts_as_favoritor (~> 6.0)
   altcha-rails (~> 0.1.0)
-  arel_extensions (~> 2.5)
+  amiko!
+  arel_extensions (~> 2.4)
   assimp-ffi!
   aws-sdk-s3 (< 1.234)
   better_content_security_policy (~> 0.1)
@@ -1067,7 +1102,7 @@ DEPENDENCIES
   pundit (~> 2.5)
   rack-contrib (~> 2.5)
   rack-cors (~> 3.0)
-  rails (= 8.1.4)
+  rails!
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 8.0.0)
   rails-settings-cached (~> 2.10)
@@ -1125,28 +1160,31 @@ DEPENDENCIES
   zaru (~> 1.1)
 
 CHECKSUMS
-  action_text-trix (2.1.19) sha256=7012f59421009cf284aa651294896414d653a61a2417c9b8714c8476d2f74009
-  actioncable (8.1.4) sha256=cfcd72f8c861e01ccdc96d772ad8c5ad6ed0ea7c571aef81a794b6027eaa7f11
-  actionmailbox (8.1.4) sha256=9c4525e577ebb671ce558f3ea78b8a634f64e56a0e6e8d105b28b873793a06eb
-  actionmailer (8.1.4) sha256=f82d95d6762ae46ea38f221d3363639266af4f8e56d50e2bd367558674baf093
-  actionpack (8.1.4) sha256=245493cc51be195a7645e6fc184880fa7e5b32ff1a08e053ee31f58c76e30ea4
-  actiontext (8.1.4) sha256=33ee99bea7da6af911fc7d98b17013a8e1ec62aa01b20b20e9a5366f40dbf644
-  actionview (8.1.4) sha256=eff1efd07c4d969abad288322b423bcb67fdbab5e324c91ca37352b80f226076
-  activejob (8.1.4) sha256=4ed5b2ed8d4cc5c8f5f09becfef8346f202a4884eee0c8c73cae5ac378824099
+  actioncable (8.0.5.1)
+  actionmailbox (8.0.5.1)
+  actionmailer (8.0.5.1)
+  actionpack (8.0.5.1)
+  actiontext (8.0.5.1)
+  actionview (8.0.5.1)
+  activejob (8.0.5.1)
   activejob-status (1.0.2) sha256=e333a8d3335c8bf24ee0f1c308e6cef6fa9d344f11f71d3863c2a771e693d861
+<<<<<<< HEAD
   activejob-unique (0.5.1) sha256=758271a050f0c9423fbc61c9b1fd4fedb71734b8ce254c9371c42219c15313e5
-  activemodel (8.1.4) sha256=9a0906c127bd118aa5f06157db12b8f750da83dccee72db2f658547a0ae7a0e8
-  activerecord (8.1.4) sha256=3b4957ea7f246c9231bd7faa909312eac03a9101aaf87977b6c52733ff00b04f
+  activejob-uniqueness (0.4.0) sha256=d39228f03a0bae895460a2a6d285071939a1fcc7f675d0c0c90651a8dd25828f
+  activemodel (8.0.5.1)
+  activerecord (8.0.5.1)
   activerecord-enhancedsqlite3-adapter (0.8.0) sha256=5cf9a4a42104c4792f4a8808008c0ec8ad1b9a86b08ad7aa0107cb456256f329
   activerecord-nulldb-adapter (1.2.2) sha256=01e0b2e49af11ad56a92e274a3d8c9fb3c50a12a5460218c4c4b45355d9ef968
-  activestorage (8.1.4) sha256=f4956f3ec9ee63e5e0b332b57c877cb627f82b56f4cc902279310d2aa285c7a8
-  activesupport (8.1.4) sha256=891dd3fe43c4fc8391934b237b1189bb1f661c932a84a840043db9d46a4e80df
+  activestorage (8.0.5.1)
+  activesupport (8.0.5.1)
+>>>>>>> 01a684e20 (Replace rails package with amiko)
   acts-as-taggable-on (13.0.0) sha256=dca776c6ddebc458d175b57554ad692488e283f27047117e01ed871f1cba6135
   acts_as_favoritor (6.0.2) sha256=8aa14accb36232d350e9e11153ffbfae4d956917d0c8c9d86e3e405b3025f93e
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
   aes_key_wrap (1.1.0) sha256=b935f4756b37375895db45669e79dfcdc0f7901e12d4e08974d5540c8e0776a5
   altcha-rails (0.1.0) sha256=e3362fa1a07f3d3951a118f9beffd42a4959a7b64fe396ad4d65aa5cc6f22ee4
-  arel_extensions (2.5.0) sha256=ce0f71ce1c2e955caf80b14fcb37138c7f30531d3b712d1a90ae6463ae2db450
+  amiko (8.0.5.1)
+  arel_extensions (2.4.0) sha256=62d25fc118f600e56d9d735547986eb6640893401521669339b108a47565eb67
   assimp-ffi (0.1.8)
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   attr_required (1.0.2) sha256=f0ebfc56b35e874f4d0ae799066dbc1f81efefe2364ca3803dc9ea6a4de6cb99
@@ -1363,14 +1401,14 @@ CHECKSUMS
   rack-session (2.1.2) sha256=595434f8c0c3473ae7d7ac56ecda6cc6dfd9d37c0b2b5255330aa1576967ffe8
   rack-test (2.2.0) sha256=005a36692c306ac0b4a9350355ee080fd09ddef1148a5f8b2ac636c720f5c463
   rackup (2.3.1) sha256=6c79c26753778e90983761d677a48937ee3192b3ffef6bc963c0950f94688868
-  rails (8.1.4) sha256=5f3ecdf9a2a3b79b2e31b8fee3b64a00f7284d76e5631f87d0e58e665911a33b
+  rails (8.0.5.1)
   rails-controller-testing (1.0.5) sha256=741448db59366073e86fc965ba403f881c636b79a2c39a48d0486f2607182e94
   rails-dom-testing (2.3.0) sha256=8acc7953a7b911ca44588bf08737bc16719f431a1cc3091a292bca7317925c1d
   rails-html-sanitizer (1.7.1) sha256=e797a7c9b01e567307e317c576b49ab4168017e63eea4dba9ce3cb587e2f22c2
   rails-i18n (8.0.1) sha256=15303195450bdac9a80636cf14c7e5ada2f43907cc60fcd19bbb3f81ab45be0d
   rails-settings-cached (2.10.0) sha256=22fcf0b0d645f20139f55fb07410e621370208c0c8f51de992566f3700301793
   rails_performance (1.6.0) sha256=712029a95c051ba98da362da98307a855bbf37f458e3cf186425bfea1ee37c48
-  railties (8.1.4) sha256=b5e7a8e8984e33114d68af62227971960aae1e6c02bd7c9d826ffad97fff583c
+  railties (8.0.5.1)
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
   rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
   rb-fsevent (0.11.2) sha256=43900b972e7301d6570f64b850a5aa67833ee7d87b458ee92805d56b7318aefe
