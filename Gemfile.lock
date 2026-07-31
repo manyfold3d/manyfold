@@ -66,8 +66,9 @@ PATH
   specs:
     rails (8.0.5.1)
 
-PATH
-  remote: vendor/gems/amiko
+GIT
+  remote: ssh://git@codeberg.org/amiko/amiko-metapackage.git
+  revision: a1204bc822bf0e713911db11d6fad47f5e2420a8
   specs:
     amiko (8.0.5.1)
       actioncable (= 8.0.5.1)

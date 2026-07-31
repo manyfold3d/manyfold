@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-gem "amiko", path: "vendor/gems/amiko"
+gem "amiko", git: "ssh://git@codeberg.org/amiko/amiko-metapackage.git"
 
 # Alias forked gems for compatibility
 gem "rails", path: "./.gemaliases"
