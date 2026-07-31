@@ -1,4 +1,23 @@
 GIT
+  remote: https://codeberg.org/amiko/amiko-metapackage.git
+  revision: a1204bc822bf0e713911db11d6fad47f5e2420a8
+  specs:
+    amiko (8.0.5.1)
+      actioncable (= 8.0.5.1)
+      actionmailbox (= 8.0.5.1)
+      actionmailer (= 8.0.5.1)
+      actionpack (= 8.0.5.1)
+      actiontext (= 8.0.5.1)
+      actionview (= 8.0.5.1)
+      activejob (= 8.0.5.1)
+      activemodel (= 8.0.5.1)
+      activerecord (= 8.0.5.1)
+      activestorage (= 8.0.5.1)
+      activesupport (= 8.0.5.1)
+      bundler (>= 1.15.0)
+      railties (= 8.0.5.1)
+
+GIT
   remote: https://github.com/DocSpring/sidekiq-reliable-fetch.git
   revision: c83c089b3e18ff14322b92b7c0fba0cf3bc8e538
   specs:
@@ -65,25 +84,6 @@ PATH
   remote: .gemaliases
   specs:
     rails (8.0.5.1)
-
-GIT
-  remote: ssh://git@codeberg.org/amiko/amiko-metapackage.git
-  revision: a1204bc822bf0e713911db11d6fad47f5e2420a8
-  specs:
-    amiko (8.0.5.1)
-      actioncable (= 8.0.5.1)
-      actionmailbox (= 8.0.5.1)
-      actionmailer (= 8.0.5.1)
-      actionpack (= 8.0.5.1)
-      actiontext (= 8.0.5.1)
-      actionview (= 8.0.5.1)
-      activejob (= 8.0.5.1)
-      activemodel (= 8.0.5.1)
-      activerecord (= 8.0.5.1)
-      activestorage (= 8.0.5.1)
-      activesupport (= 8.0.5.1)
-      bundler (>= 1.15.0)
-      railties (= 8.0.5.1)
 
 GEM
   remote: https://rubygems.org/
