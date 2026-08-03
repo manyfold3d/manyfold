@@ -1,6 +1,6 @@
 require_relative "boot"
 
-require "rails"
+require "amiko"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
