@@ -1,6 +1,7 @@
 ## BUILD STAGE ##########################################
 
 FROM base AS build
+WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
   alpine-sdk \
