@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-gem "amiko", git: "https://codeberg.org/amiko/amiko-metapackage.git"
+gem "amiko", git: "https://codeberg.org/amiko/experimental-amiko-metapackage"
+gem "amiko-core", git: "https://codeberg.org/amiko/experimental-amiko-core"
 
 # Enable Amiko / Rails compatibility for gem resolution
 eval_gemfile(".amiko-compat/Gemfile")

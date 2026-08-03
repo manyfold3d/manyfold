@@ -1,6 +1,20 @@
 GIT
-  remote: https://codeberg.org/amiko/amiko-metapackage.git
-  revision: a1204bc822bf0e713911db11d6fad47f5e2420a8
+  remote: https://codeberg.org/amiko/experimental-amiko-core
+  revision: fa62790ff5fdf18ef0f5ef972bec80277c81b72c
+  specs:
+    amiko-core (8.0.5.1)
+      actionpack (= 8.0.5.1)
+      activesupport (= 8.0.5.1)
+      irb (~> 1.13)
+      rackup (>= 1.0.0)
+      rake (>= 12.2)
+      thor (~> 1.0, >= 1.2.2)
+      tsort (>= 0.2)
+      zeitwerk (~> 2.6)
+
+GIT
+  remote: https://codeberg.org/amiko/experimental-amiko-metapackage
+  revision: c2d4b849d0524ca8d6df239519ba319f612e4699
   specs:
     amiko (8.0.5.1)
       actioncable (= 8.0.5.1)
@@ -14,8 +28,8 @@ GIT
       activerecord (= 8.0.5.1)
       activestorage (= 8.0.5.1)
       activesupport (= 8.0.5.1)
+      amiko-core (= 8.0.5.1)
       bundler (>= 1.15.0)
-      railties (= 8.0.5.1)
 
 GIT
   remote: https://github.com/DocSpring/sidekiq-reliable-fetch.git
@@ -81,9 +95,10 @@ GIT
       rails (>= 7.0.4)
 
 PATH
-  remote: .gemaliases
+  remote: .amiko-compat
   specs:
     rails (8.0.5.1)
+    railties (8.0.5.1)
 
 GEM
   remote: https://rubygems.org/
@@ -699,15 +714,6 @@ GEM
       browser
       railties
       redis
-    railties (8.0.5.1)
-      actionpack (= 8.0.5.1)
-      activesupport (= 8.0.5.1)
-      irb (~> 1.13)
-      rackup (>= 1.0.0)
-      rake (>= 12.2)
-      thor (~> 1.0, >= 1.2.2)
-      tsort (>= 0.2)
-      zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
     rb-fsevent (0.11.2)
@@ -1025,6 +1031,7 @@ DEPENDENCIES
   acts_as_favoritor (~> 6.0)
   altcha-rails (~> 0.1.0)
   amiko!
+  amiko-core!
   arel_extensions (~> 2.4)
   assimp-ffi!
   aws-sdk-s3 (< 1.229)
@@ -1100,6 +1107,7 @@ DEPENDENCIES
   rails-i18n (~> 8.0.0)
   rails-settings-cached (~> 2.9)
   rails_performance (~> 1.6)
+  railties!
   redis (~> 5.4)
   redis-namespace
   reverse_markdown (~> 3.0)
@@ -1174,6 +1182,7 @@ CHECKSUMS
   aes_key_wrap (1.1.0) sha256=b935f4756b37375895db45669e79dfcdc0f7901e12d4e08974d5540c8e0776a5
   altcha-rails (0.1.0) sha256=e3362fa1a07f3d3951a118f9beffd42a4959a7b64fe396ad4d65aa5cc6f22ee4
   amiko (8.0.5.1)
+  amiko-core (8.0.5.1)
   arel_extensions (2.4.0) sha256=62d25fc118f600e56d9d735547986eb6640893401521669339b108a47565eb67
   assimp-ffi (0.1.8)
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
@@ -1401,7 +1410,7 @@ CHECKSUMS
   rails-i18n (8.0.1) sha256=15303195450bdac9a80636cf14c7e5ada2f43907cc60fcd19bbb3f81ab45be0d
   rails-settings-cached (2.9.6) sha256=761d6128221f1a162950b8b3911e233f3a49c6ecfd8b421110ed060e8c58a9b8
   rails_performance (1.6.0) sha256=712029a95c051ba98da362da98307a855bbf37f458e3cf186425bfea1ee37c48
-  railties (8.0.5.1) sha256=da1958e1d9dab04691a2f8721b3ff7fab323715d37f103c19972dedfd644d5c7
+  railties (8.0.5.1)
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
   rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
   rb-fsevent (0.11.2) sha256=43900b972e7301d6570f64b850a5aa67833ee7d87b458ee92805d56b7318aefe
