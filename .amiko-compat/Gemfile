@@ -1,4 +1,5 @@
 # Alias forked gems for compatibility
 path "." do
   gem "rails"
+  gem "railties"
 end
