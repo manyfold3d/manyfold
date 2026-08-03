@@ -721,9 +721,9 @@ GEM
       tsort
     readline (0.0.4)
       reline
-    redis (5.4.1)
-      redis-client (>= 0.22.0)
-    redis-client (0.28.0)
+    redis (6.0.0)
+      redis-client (= 0.30.1)
+    redis-client (0.30.1)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
@@ -1089,7 +1089,7 @@ DEPENDENCIES
   rails-i18n (~> 8.0.0)
   rails-settings-cached (~> 2.9)
   rails_performance (~> 1.6)
-  redis (~> 5.4)
+  redis (~> 6.0)
   redis-namespace
   reverse_markdown (~> 3.0)
   rolify (~> 6.0)
@@ -1398,8 +1398,8 @@ CHECKSUMS
   rdf (3.3.4) sha256=a77fa0821e5b4e2bea9fdbb7c9d980564c89d27e81979690ce5c9e6bc80859c1
   rdoc (8.0.0) sha256=03bf8c08a9639658855a0cfd77c0abca8325c227693f7f33f82957811348c469
   readline (0.0.4) sha256=6138eef17be2b98298b672c3ea63bf9cb5158d401324f26e1e84f235879c1d6a
-  redis (5.4.1) sha256=b5e675b57ad22b15c9bcc765d5ac26f60b675408af916d31527af9bd5a81faae
-  redis-client (0.28.0) sha256=888892f9cd8787a41c0ece00bdf5f556dfff7770326ce40bb2bc11f1bfec824b
+  redis (6.0.0) sha256=de71c10edd106986b759ec7ecdd08b63b9c0ee7414a0d0c1da73d31ba2bccda6
+  redis-client (0.30.1) sha256=5151bc5c7bbfe48623732cdae3b900d8a22dc691cc7cdfacfb351ac55116522d
   redis-namespace (1.11.0) sha256=e91a1aa2b2d888b6dea1d4ab8d39e1ae6fac3426161feb9d91dd5cca598a2239
   redlock (2.0.6) sha256=de262f7d7c78112435b6b356766b7733e05c452f25cf66c23b0eec1dc2893dde
   refract (1.1.0) sha256=ee3b9627e39f7692831101e2fedd73e0d09a592ff5d5c05f171d14211fc7a9c7
