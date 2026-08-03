@@ -17,5 +17,5 @@ import 'altcha/i18n/pl'
 
 document.addEventListener('DOMContentLoaded', () => {
   // Legacy Rails UJS
-  Amiko.start()
+  Rails.start()
 })
