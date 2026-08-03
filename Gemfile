@@ -5,8 +5,8 @@ ruby file: ".ruby-version"
 
 gem "amiko", git: "https://codeberg.org/amiko/amiko-metapackage.git"
 
-# Alias forked gems for compatibility
-gem "rails", path: "./.gemaliases"
+# Enable Amiko / Rails compatibility for gem resolution
+eval_gemfile(".amiko-compat/Gemfile")
 
 # Use Puma as the app server
 gem "puma", "~> 8.0"
