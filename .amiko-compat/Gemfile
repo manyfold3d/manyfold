@@ -1,0 +1,4 @@
+# Alias forked gems for compatibility
+path "." do
+  gem "rails"
+end
