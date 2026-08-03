@@ -12,7 +12,7 @@ RUN apk add --no-cache \
   procps \
   yaml-dev \
   zlib-dev \
-  nodejs=~24.17.0 \
+  nodejs=~24.18.1 \
   npm \
   postgresql-dev \
   mariadb-dev \
