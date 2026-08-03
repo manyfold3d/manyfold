@@ -5,7 +5,7 @@ if [ -f tmp/pids/server.pid ]; then
 fi
 
 echo "Preparing database..."
-bundle exec rails db:prepare:with_data
+bundle exec amiko db:prepare:with_data
 
 echo "Setting database file ownership (SQLite3 only)..."
 bundle exec rake db:chown
