@@ -26,6 +26,7 @@ RUN yarn install
 
 COPY .ruby-version .
 COPY Gemfile* ./
+COPY .amiko-compat ./.amiko-compat
 RUN bundle install
 
 COPY . .
