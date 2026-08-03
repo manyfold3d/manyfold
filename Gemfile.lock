@@ -1,6 +1,6 @@
 GIT
   remote: https://codeberg.org/amiko/experimental-amiko-core
-  revision: fa62790ff5fdf18ef0f5ef972bec80277c81b72c
+  revision: 80fe97c5807d9397220ac55d27548009a8c2b48f
   specs:
     amiko-core (8.0.5.1)
       actionpack (= 8.0.5.1)
