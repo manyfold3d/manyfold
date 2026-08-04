@@ -2,7 +2,7 @@ require "sidekiq/web"
 require "sidekiq/cron/web"
 require "fedipub"
 
-Rails.application.routes.draw do
+Amiko.application.routes.draw do
   draw(:auth)
   draw(:meta)
   draw(:admin)

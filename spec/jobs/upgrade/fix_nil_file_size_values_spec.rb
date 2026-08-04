@@ -4,7 +4,7 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Upgrade::FixNilFileSizeValues do
-  let(:library) { create(:library, path: Rails.root.join("spec/fixtures")) }
+  let(:library) { create(:library, path: Amiko.root.join("spec/fixtures")) }
   let(:model1) { create(:model, library: library, path: "fix_nil_file_size_values_spec") }
   let(:part) { create(:model_file, model: model1, filename: "example.obj", size: 284) }
 

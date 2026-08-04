@@ -56,7 +56,7 @@ RSpec.describe ModelFile do
   end
 
   context "with a real model" do
-    let(:library) { create(:library, path: Rails.root.join("spec/fixtures")) }
+    let(:library) { create(:library, path: Amiko.root.join("spec/fixtures")) }
     let(:model) { create(:model, library: library, path: "model_file_spec") }
     let(:part) {
       create(
@@ -98,7 +98,7 @@ RSpec.describe ModelFile do
   end
 
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-    library = create(:library, path: Rails.root.join("storage"))
+    library = create(:library, path: Amiko.root.join("storage"))
     model = create(:model, library: library, path: "model")
     part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
     part2 = create(:model_file, model: model, filename: "same.stl", digest: "1234")
@@ -109,7 +109,7 @@ RSpec.describe ModelFile do
   end
 
   it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength
-    library = create(:library, path: Rails.root.join("storage"))
+    library = create(:library, path: Amiko.root.join("storage"))
     model = create(:model, library: library, path: "model1")
     part1 = create(:model_file, model: model, filename: "nil.obj", digest: nil)
     create(:model_file, model: model, filename: "nil.stl", digest: nil)
@@ -117,7 +117,7 @@ RSpec.describe ModelFile do
   end
 
   it "does not flag duplicates for zero-length files" do # rubocop:todo RSpec/ExampleLength
-    library = create(:library, path: Rails.root.join("storage"))
+    library = create(:library, path: Amiko.root.join("storage"))
     model = create(:model, library: library, path: "model1")
     part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
     create(:model_file, model: model, filename: "same.stl", digest: "1234")
@@ -286,7 +286,7 @@ RSpec.describe ModelFile do
     let(:file) {
       create(:model_file, model: model, filename: "logo.png",
         attachment: ModelFileUploader.upload(
-          File.open(Rails.root.join("logo.png")),
+          File.open(Amiko.root.join("logo.png")),
           :cache
         ))
     }
@@ -310,7 +310,7 @@ RSpec.describe ModelFile do
     let(:file) {
       create(:model_file, model: model, filename: "test.gcode",
         attachment: ModelFileUploader.upload(
-          File.open(Rails.root.join("spec/fixtures/model_file_spec/test.gcode")),
+          File.open(Amiko.root.join("spec/fixtures/model_file_spec/test.gcode")),
           :cache
         ))
     }
@@ -330,7 +330,7 @@ RSpec.describe ModelFile do
     let(:file) {
       create(:model_file, model: model, filename: "logo.png",
         attachment: ModelFileUploader.upload(
-          File.open(Rails.root.join("logo.png")),
+          File.open(Amiko.root.join("logo.png")),
           :cache
         ))
     }

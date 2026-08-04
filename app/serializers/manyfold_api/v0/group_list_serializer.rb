@@ -6,7 +6,7 @@ module ManyfoldApi::V0
     end
 
     def groups_path(options = {})
-      Rails.application.routes.url_helpers.creator_groups_path(@creator, options)
+      Amiko.application.routes.url_helpers.creator_groups_path(@creator, options)
     end
 
     def serialize
@@ -17,7 +17,7 @@ module ManyfoldApi::V0
         totalItems: @object.total_count,
         member: @object.map { |group|
           {
-            "@id": Rails.application.routes.url_helpers.creator_group_path(@creator, group),
+            "@id": Amiko.application.routes.url_helpers.creator_group_path(@creator, group),
             name: group.name
           }
         },

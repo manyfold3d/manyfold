@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - name: Set up database with prepare command so we catch any migration explosions
-        run: bundle exec rails db:prepare:with_data
+        run: bundle exec amiko db:prepare:with_data
       - name: Run tests
         run: bundle exec rspec --fail-fast
       - name: Upload Coverage

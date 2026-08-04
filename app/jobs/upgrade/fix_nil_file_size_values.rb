@@ -8,10 +8,10 @@ class Upgrade::FixNilFileSizeValues < Upgrade::IterationJob
   def each_iteration(modelfile)
     modelfile.refresh_metadata!
   rescue Errno::EACCES => ex
-    Rails.logger.error ex.message
+    Amiko.logger.error ex.message
   rescue Shrine::FileNotFound
-    Rails.logger.error("File not found: #{modelfile.path_within_library}")
+    Amiko.logger.error("File not found: #{modelfile.path_within_library}")
   rescue Shrine::Error => ex
-    Rails.logger.error("File error: #{ex.message} #{modelfile.path_within_library}")
+    Amiko.logger.error("File error: #{ex.message} #{modelfile.path_within_library}")
   end
 end

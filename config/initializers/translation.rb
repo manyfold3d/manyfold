@@ -1,4 +1,4 @@
-if Rails.env.development?
+if Amiko.env.development?
   TranslationIO.configure do |config|
     config.api_key = ENV["TRANSLATION_IO_API_KEY"]
     config.disable_gettext = true
@@ -24,6 +24,6 @@ if Rails.env.development?
       "doorkeeper.pre_authorization"
     ]
     config.source_locale = "en"
-    config.target_locales = YAML.load_file(Rails.root.join("config/locales.yml")).values.flatten.without(config.source_locale)
+    config.target_locales = YAML.load_file(Amiko.root.join("config/locales.yml")).values.flatten.without(config.source_locale)
   end
 end

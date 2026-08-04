@@ -1,4 +1,4 @@
-Rails.application.configure do
+Amiko.application.configure do
   config.lograge.enabled = true
-  config.lograge.formatter = Lograge::Formatters::Logstash.new if Rails.env.production?
+  config.lograge.formatter = Lograge::Formatters::Logstash.new if Amiko.env.production?
 end

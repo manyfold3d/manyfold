@@ -1,6 +1,7 @@
 ## BUILD STAGE ##########################################
 
 FROM base AS build
+WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
   alpine-sdk \
@@ -26,6 +27,7 @@ RUN yarn install
 
 COPY .ruby-version .
 COPY Gemfile* ./
+COPY .amiko-compat ./.amiko-compat
 RUN bundle install
 
 COPY . .

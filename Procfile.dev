@@ -1,4 +1,4 @@
-rails: SCOUT_DEV_TRACE=false bin/rails server -p $PORT -b [::]
+web: SCOUT_DEV_TRACE=false bin/amiko server -p $PORT -b [::]
 default_worker: bundle exec sidekiq -C config/workers/default.yml
 performance_worker: bundle exec sidekiq -C config/workers/performance.yml
 vite: bin/vite dev

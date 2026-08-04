@@ -14,10 +14,10 @@ module Print
 
     def ok?
       response = connection.get(info_uri, {}, headers)
-      Rails.logger.warn(response.inspect) unless response.success?
+      Amiko.logger.warn(response.inspect) unless response.success?
       response.success?
     rescue => ex
-      Rails.logger.warn(ex.message)
+      Amiko.logger.warn(ex.message)
       false
     end
 
@@ -25,7 +25,7 @@ module Print
       raise ArgumentError unless file.mime_type.in? INPUT_TYPES
       raise PrintHost::NotReady unless ok?
       response = v1_upload(file: file)
-      Rails.logger.warn(response.inspect) unless response.success?
+      Amiko.logger.warn(response.inspect) unless response.success?
       response.success?
     end
 

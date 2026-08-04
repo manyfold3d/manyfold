@@ -35,7 +35,7 @@ RSpec.configure do |config|
   config.include_context "with migration helpers", :migration
   config.around(:each, :migration) do |example|
     # Setup
-    FileUtils.rm(Rails.root.glob(database + "*"), force: true)
+    FileUtils.rm(Amiko.root.glob(database + "*"), force: true)
     ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: database)
     ActiveRecord::Base.descendants.each(&:reset_column_information)
     DataMigrate::DataMigrator.create_data_schema_table

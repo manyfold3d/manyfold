@@ -1,10 +1,10 @@
-Rails.application.config.after_initialize do
+Amiko.application.config.after_initialize do
   # Clear handler caches
   begin
     [
       "FileHandlers_handlers_for_*"
     ].each do
-      Rails.cache.delete_matched it
+      Amiko.cache.delete_matched it
     end
   rescue
   end

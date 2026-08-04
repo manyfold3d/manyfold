@@ -24,7 +24,7 @@ module ManyfoldApi
       end
 
       def dereference(id, type)
-        route_options = Rails.application.routes.recognize_path(id)
+        route_options = Amiko.application.routes.recognize_path(id)
         if route_options[:controller] == type.name.underscore.pluralize
           type.find_param(route_options[:id])
         end

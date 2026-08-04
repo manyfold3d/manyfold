@@ -3,8 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 8.0.5"
+gem "amiko", git: "https://codeberg.org/amiko/experimental-amiko-metapackage"
+gem "amiko-core", git: "https://codeberg.org/amiko/experimental-amiko-core"
+
+# Enable Amiko / Rails compatibility for gem resolution
+eval_gemfile(".amiko-compat/Gemfile")
+
 # Use Puma as the app server
 gem "puma", "~> 8.0"
 # Bundle and deliver assets

@@ -2,7 +2,7 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative "config/application"
-Rails.application.load_tasks
+Amiko.application.load_tasks
 
 unless ENV["RACK_ENV"] === "production"
   require "rubocop/rake_task"
@@ -60,14 +60,14 @@ namespace :themes do
         @import '~/stylesheets/application';
         @import "bootswatch/dist/#{name}/bootswatch";
       EOF
-      Rails.root.join("app/frontend/entrypoints/themes/#{name}.scss").write(contents)
+      Amiko.root.join("app/frontend/entrypoints/themes/#{name}.scss").write(contents)
     end
   end
 end
 
 namespace :i18n_js do
   task export: :environment do
-    I18nJS.call(config_file: Rails.root.join("config/i18n-js.yml"))
+    I18nJS.call(config_file: Amiko.root.join("config/i18n-js.yml"))
   end
 end
 
