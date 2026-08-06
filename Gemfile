@@ -213,7 +213,7 @@ gem "altcha-rails", "~> 0.1.0"
 
 gem "reverse_markdown", "~> 3.0"
 
-gem "graphlient", "~> 0.8.0"
+gem "graphlient", "~> 0.9.0"
 
 gem "webmock", "~> 3.26", group: :test
 
