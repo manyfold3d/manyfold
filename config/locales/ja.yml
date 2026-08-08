@@ -61,7 +61,7 @@ ja:
         sign_in_url: ログイン
         status:
       fedipub/moderation/domain_block:
-        created_at: 作成日時
+        created_at: 作成日
         domain: ドメイン
       fedipub/moderation/report:
         content: コメント
