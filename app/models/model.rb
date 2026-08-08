@@ -213,7 +213,7 @@ class Model < ApplicationRecord
   end
 
   def valid_preview_files
-    model_files.select { it.is_image? || it.is_video? || it.has_render? || FileHandlers::Three.can_load?(it.mime_type) }
+    model_files.select { it.is_image? || it.is_video? || it.has_render? || FileHandlers::Three.can_load?(it.mime_type) || FileHandlers.handlers_for(environment: :preview_frame, mime_type: it.mime_type).any? }
   end
 
   def image_files
