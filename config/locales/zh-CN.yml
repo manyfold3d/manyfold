@@ -290,12 +290,12 @@ zh-CN:
         two:
         zero:
       fedipub/moderation/report:
-        few:
-        many:
+        few: 报告
+        many: 报告
         one:
-        other:
-        two:
-        zero:
+        other: 报告
+        two: 报告
+        zero: 报告
       group:
         few:
         many:
