@@ -1,0 +1,92 @@
+# Depot CI Migration
+# Source: .github/workflows/docker.yml
+#
+# Changes made:
+# - Changed GitHub runs-on labels to their Depot equivalents
+
+name: Docker
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+    tags:
+      - v*
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Docker tag for build results'
+        type: string
+        default: manual
+        required: true
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  build:
+    if: github.triggering_actor != 'allcontributors[bot]'
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        variant:
+          - manyfold
+          - manyfold-solo
+    runs-on: depot-ubuntu-latest # was: ubuntu-latest. Mapped standard GitHub runner to Depot equivalent.
+    permissions:
+      contents: read # for checkout
+      id-token: write # for OIDC token, used for Depot
+      packages: write # to upload build to GHCR
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Work out Docker tags
+        id: docker_meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/${{ matrix.variant }}
+          tags: |
+            type=raw,value=${{ inputs.tag }},event=workflow_dispatch
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=ref,event=pr
+            type=sha,format=long
+            type=edge
+      - name: Depot setup
+        uses: depot/setup-action@v1
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        id: depot
+        uses: depot/build-push-action@v1
+        with:
+          project: bsbhgkfhgc
+          context: .
+          file: ./docker/${{ matrix.variant }}.dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          build-args: |
+            APP_VERSION=${{ steps.docker_meta.outputs.version }}
+            GIT_SHA=${{ github.sha }}
+            DOCKER_TAG=${{ steps.docker_meta.outputs.tags }}
+  smoke-test:
+    if: github.triggering_actor != 'allcontributors[bot]'
+    needs: build
+    runs-on: depot-ubuntu-latest # was: ubuntu-latest. Mapped standard GitHub runner to Depot equivalent.
+    steps:
+      - name: Smoke test
+        run: curl http://localhost:3214/health --fail-with-body
+    services:
+      manyfold:
+        image: ghcr.io/${{ github.repository_owner }}/manyfold-solo:sha-${{ github.sha }}
+        env:
+          SECRET_KEY_BASE: abc123
+        options: >-
+          --health-cmd "cat tmp/pids/server.pid" --health-start-period	1m --health-interval 30s --health-timeout 10s --health-retries 6
+        ports:
+          - 3214:3214
