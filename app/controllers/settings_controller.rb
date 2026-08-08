@@ -100,6 +100,7 @@ class SettingsController < ApplicationController
     return unless settings
     SiteSettings.cults3d_api_username = settings[:cults3d_api_username]
     SiteSettings.cults3d_api_key = settings[:cults3d_api_key]
+    SiteSettings.makerworld_bambu_token = settings[:makerworld_bambu_token]
     SiteSettings.myminifactory_api_key = settings[:myminifactory_api_key]
     SiteSettings.thingiverse_api_key = settings[:thingiverse_api_key]
   end

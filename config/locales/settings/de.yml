@@ -109,6 +109,9 @@ de:
       myminifactory_api_key:
         help_html: Erstelle eine Anwendung in den <a href="https://www.myminifactory.com/settings/developer">Entwicklereinstellungen von MyMiniFactory</a>und füge den erzeugten API-Schlüssel hier ein.
         label: API-Schlüssel
+      makerworld_bambu_token:
+        help_html:
+        label:
       thingiverse_api_key:
         help_html: Erstelle eine "Web App" in der <a href="https://www.thingiverse.com/developers/my-apps">Entwicklerkonsole von Thingiverse</a>und füge den App Token hier ein.
         label: API-Schlüssel

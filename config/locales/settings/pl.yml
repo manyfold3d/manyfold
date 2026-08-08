@@ -105,6 +105,9 @@ pl:
       myminifactory_api_key:
         help_html:
         label:
+      makerworld_bambu_token:
+        help_html:
+        label:
       thingiverse_api_key:
         help_html:
         label:

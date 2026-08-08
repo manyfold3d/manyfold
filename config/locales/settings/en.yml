@@ -105,6 +105,9 @@ en:
       myminifactory_api_key:
         help_html: Create an application in the <a href="https://www.myminifactory.com/settings/developer">MyMiniFactory developer settings</a>, and paste in the generated API key.
         label: API key
+      makerworld_bambu_token:
+        help_html: Paste a Bambu Cloud bearer token. MakerWorld metadata works without this, but downloading 3MF files requires it. To get a token, sign in to MakerWorld in your browser, open developer tools, go to Application/Storage, then Cookies for <code>makerworld.com</code>, and copy the value of the <code>token</code> cookie. Treat this token like a password.
+        label: Bambu Cloud token
       thingiverse_api_key:
         help_html: Create a "web app" in the <a href="https://www.thingiverse.com/developers/my-apps">Thingiverse developer console</a>, and paste the "app token" here.
         label: API key

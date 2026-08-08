@@ -876,6 +876,7 @@ zh-CN:
       import_capabilities: 我们可以从其它托管网站导入模型、创建者和收藏。您输入网址后，将显示可以导入的内容。
       import_type_html: "<code>%{url}</code> 将被添加为新的 %{object_type}。可自动导入以下数据："
       integration_settings: 编辑集成设置
+      metadata_only:
       placeholder: 粘贴要导入内容的地址（如 https://thingiverse.com/thing:1234）
       submit: 导入
       supported_sites: 支持的网站

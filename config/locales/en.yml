@@ -876,7 +876,8 @@ en:
       import_capabilities: We can import models, creators and collections from various other hosting sites. Exactly what we can import for your URL will be displayed after you enter it.
       import_type_html: "<code>%{url}</code> will be added as a new %{object_type}. The following data can be imported automatically:"
       integration_settings: Edit integration settings
-      placeholder: Paste the address of the content you want to import (e.g. https://thingiverse.com/thing:1234)
+      metadata_only: (metadata only)
+      placeholder: Paste the address of the content you want to import (e.g. https://makerworld.com/models/1234)
       submit: Import
       supported_sites: Supported sites
   jobs:

@@ -56,6 +56,7 @@ class SiteSettings < RailsSettings::Base
   field :thingiverse_api_key, type: :string
   field :cults3d_api_key, type: :string
   field :cults3d_api_username, type: :string
+  field :makerworld_bambu_token, type: :string
 
   validates :model_ignored_files, regex_array: {strict: true}
 

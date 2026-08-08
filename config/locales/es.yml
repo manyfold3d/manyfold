@@ -876,6 +876,7 @@ es:
       import_capabilities: Podemos importar modelos, creadores y colecciones de MyMiniFactory, Thingiverse y Cults3D. Lo que podemos importar exactamente para tu URL se mostrará después de que la introduzcas.
       import_type_html: "[<code>%{url}]</code> se añadirá como un nuevo %{object_type}. Los siguientes datos pueden importarse automáticamente:"
       integration_settings: Editar los ajustes de integración
+      metadata_only:
       placeholder: Pegue la dirección del contenido que desea importar (por ejemplo, https://thingiverse.com/thing:1234)
       submit: Importar
       supported_sites: Sitios compatibles

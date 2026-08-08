@@ -105,6 +105,9 @@ zh-CN:
       myminifactory_api_key:
         help_html: 在 <a href="https://www.myminifactory.com/settings/developer">MyMiniFactory 开发人员设置</a> 中创建应用程序，并粘贴生成的 API 密钥。
         label: API 密钥
+      makerworld_bambu_token:
+        help_html:
+        label:
       thingiverse_api_key:
         help_html: 在 <a href="https://www.thingiverse.com/developers/my-apps">Thingiverse 开发者控制台</a> 创建一个 "网络应用程序"，并在此粘贴 "应用程序令牌"。
         label: API 密钥

@@ -15,6 +15,11 @@
       <%= text_input_row form, "integrations[myminifactory_api_key]", label: t(".myminifactory_api_key.label"), value: SiteSettings.myminifactory_api_key, help: t(".myminifactory_api_key.help_html") %>
     </div>
   <% end %>
+  <%= Accordion(title: [t("sites.makerworld"), (SiteSettings.makerworld_bambu_token.present? ? "✅" : "⚠️")].join(" "), id: "makerworld-integration") do %>
+    <div class="tabular-form">
+      <%= text_input_row form, "integrations[makerworld_bambu_token]", label: t(".makerworld_bambu_token.label"), value: SiteSettings.makerworld_bambu_token, help: t(".makerworld_bambu_token.help_html") %>
+    </div>
+  <% end %>
   <%= Accordion(title: [t("sites.thingiverse"), (SiteSettings.thingiverse_api_key.present? ? "✅" : "❌")].join(" "), id: "thingiverse-integration") do %>
     <div class="tabular-form">
       <%= text_input_row form, "integrations[thingiverse_api_key]", label: t(".thingiverse_api_key.label"), value: SiteSettings.thingiverse_api_key, help: t(".thingiverse_api_key.help_html") %>
