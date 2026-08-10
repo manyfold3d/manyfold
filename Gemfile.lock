@@ -820,8 +820,8 @@ GEM
       yard
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
-    scoped_search (4.3.1)
-      activerecord (>= 4.2.0)
+    scoped_search (5.0.0)
+      activerecord (>= 6.0)
     scout_apm (6.2.1)
       parser
     securerandom (0.4.1)
@@ -1095,7 +1095,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubocop-yard (~> 1.3)
   rubyzip (~> 2.4)
-  scoped_search (~> 4.3)
+  scoped_search (~> 5.0)
   scout_apm
   selenium-webdriver
   shrine (~> 3.9)
@@ -1424,7 +1424,7 @@ CHECKSUMS
   rubocop-yard (1.3.0) sha256=29bc44274e0b10d7db60655e84089328c0aceadd246d24f8e963c67949a60269
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   rubyzip (2.4.1) sha256=8577c88edc1fde8935eb91064c5cb1aef9ad5494b940cf19c775ee833e075615
-  scoped_search (4.3.1) sha256=0b013af6576d7393813e65a6c6971a60bfa6188cc95ac8702f06dfa3e4f64940
+  scoped_search (5.0.0) sha256=eb797af7bb9e51d1e6256b5d2b88214fb4ec9277b298939831697352dc12aeb2
   scout_apm (6.2.1) sha256=c3a81e51938e8a1b38f0bfbd841845b052ea8d3b000b3fff6f5f99c9cabc3ba5
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.46.0) sha256=cb6cfa6f79eac041749df0b14cdcb0e9fe5df3715a64c77bfaa56b345b99f957
