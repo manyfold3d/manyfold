@@ -895,10 +895,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oxc-project/types@npm:=0.142.0":
-  version: 0.142.0
-  resolution: "@oxc-project/types@npm:0.142.0"
-  checksum: fce9f5785f92d22826721e87aeb4169fd04995df467403bb02dfa1b76371a9ad1d2332a5429a1b140665c6c6527e074dc00665569659dbabad1bd92713f91dc9
+"@oxc-project/types@npm:=0.143.0":
+  version: 0.143.0
+  resolution: "@oxc-project/types@npm:0.143.0"
+  checksum: fe1ddda89c900222021756e6d8f0ffda574e65716e5e5446b2fb110ad9a1f8749399f783e02e950e1c4bf11f7040db5195db3d4b45a27f1567f059b1a97abae0
   languageName: node
   linkType: hard
 
@@ -1064,100 +1064,100 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rolldown/binding-android-arm64@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-android-arm64@npm:1.2.2"
+"@rolldown/binding-android-arm64@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-android-arm64@npm:1.2.3"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rolldown/binding-darwin-arm64@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-darwin-arm64@npm:1.2.2"
+"@rolldown/binding-darwin-arm64@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-darwin-arm64@npm:1.2.3"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rolldown/binding-darwin-x64@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-darwin-x64@npm:1.2.2"
+"@rolldown/binding-darwin-x64@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-darwin-x64@npm:1.2.3"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@rolldown/binding-freebsd-x64@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-freebsd-x64@npm:1.2.2"
+"@rolldown/binding-freebsd-x64@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-freebsd-x64@npm:1.2.3"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-arm-gnueabihf@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-arm-gnueabihf@npm:1.2.2"
+"@rolldown/binding-linux-arm-gnueabihf@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-arm-gnueabihf@npm:1.2.3"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-arm64-gnu@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-arm64-gnu@npm:1.2.2"
+"@rolldown/binding-linux-arm64-gnu@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-arm64-gnu@npm:1.2.3"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-arm64-musl@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-arm64-musl@npm:1.2.2"
+"@rolldown/binding-linux-arm64-musl@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-arm64-musl@npm:1.2.3"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-ppc64-gnu@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-ppc64-gnu@npm:1.2.2"
+"@rolldown/binding-linux-ppc64-gnu@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-ppc64-gnu@npm:1.2.3"
   conditions: os=linux & cpu=ppc64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-s390x-gnu@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-s390x-gnu@npm:1.2.2"
+"@rolldown/binding-linux-s390x-gnu@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-s390x-gnu@npm:1.2.3"
   conditions: os=linux & cpu=s390x & libc=glibc
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-x64-gnu@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-x64-gnu@npm:1.2.2"
+"@rolldown/binding-linux-x64-gnu@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-x64-gnu@npm:1.2.3"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rolldown/binding-linux-x64-musl@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-linux-x64-musl@npm:1.2.2"
+"@rolldown/binding-linux-x64-musl@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-linux-x64-musl@npm:1.2.3"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rolldown/binding-openharmony-arm64@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-openharmony-arm64@npm:1.2.2"
+"@rolldown/binding-openharmony-arm64@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-openharmony-arm64@npm:1.2.3"
   conditions: os=openharmony & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rolldown/binding-win32-arm64-msvc@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-win32-arm64-msvc@npm:1.2.2"
+"@rolldown/binding-win32-arm64-msvc@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-win32-arm64-msvc@npm:1.2.3"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rolldown/binding-win32-x64-msvc@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@rolldown/binding-win32-x64-msvc@npm:1.2.2"
+"@rolldown/binding-win32-x64-msvc@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@rolldown/binding-win32-x64-msvc@npm:1.2.3"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -5299,24 +5299,24 @@ __metadata:
   linkType: hard
 
 "rolldown@npm:~1.2.0":
-  version: 1.2.2
-  resolution: "rolldown@npm:1.2.2"
+  version: 1.2.3
+  resolution: "rolldown@npm:1.2.3"
   dependencies:
-    "@oxc-project/types": =0.142.0
-    "@rolldown/binding-android-arm64": 1.2.2
-    "@rolldown/binding-darwin-arm64": 1.2.2
-    "@rolldown/binding-darwin-x64": 1.2.2
-    "@rolldown/binding-freebsd-x64": 1.2.2
-    "@rolldown/binding-linux-arm-gnueabihf": 1.2.2
-    "@rolldown/binding-linux-arm64-gnu": 1.2.2
-    "@rolldown/binding-linux-arm64-musl": 1.2.2
-    "@rolldown/binding-linux-ppc64-gnu": 1.2.2
-    "@rolldown/binding-linux-s390x-gnu": 1.2.2
-    "@rolldown/binding-linux-x64-gnu": 1.2.2
-    "@rolldown/binding-linux-x64-musl": 1.2.2
-    "@rolldown/binding-openharmony-arm64": 1.2.2
-    "@rolldown/binding-win32-arm64-msvc": 1.2.2
-    "@rolldown/binding-win32-x64-msvc": 1.2.2
+    "@oxc-project/types": =0.143.0
+    "@rolldown/binding-android-arm64": 1.2.3
+    "@rolldown/binding-darwin-arm64": 1.2.3
+    "@rolldown/binding-darwin-x64": 1.2.3
+    "@rolldown/binding-freebsd-x64": 1.2.3
+    "@rolldown/binding-linux-arm-gnueabihf": 1.2.3
+    "@rolldown/binding-linux-arm64-gnu": 1.2.3
+    "@rolldown/binding-linux-arm64-musl": 1.2.3
+    "@rolldown/binding-linux-ppc64-gnu": 1.2.3
+    "@rolldown/binding-linux-s390x-gnu": 1.2.3
+    "@rolldown/binding-linux-x64-gnu": 1.2.3
+    "@rolldown/binding-linux-x64-musl": 1.2.3
+    "@rolldown/binding-openharmony-arm64": 1.2.3
+    "@rolldown/binding-win32-arm64-msvc": 1.2.3
+    "@rolldown/binding-win32-x64-msvc": 1.2.3
     "@rolldown/pluginutils": ^1.0.0
   dependenciesMeta:
     "@rolldown/binding-android-arm64":
@@ -5349,7 +5349,7 @@ __metadata:
       optional: true
   bin:
     rolldown: ./bin/cli.mjs
-  checksum: 8502bb38a4ceb3eb15ba3568be70fcda3f61fe63911e57237765d2ca3d24c8748a28a1677d5d4b3af9f9b42d5435f3b267ae3e606b2f9518b2c2927f851e9aa2
+  checksum: 6cf43304c68747d1d666e089c9c6acfd40d1f7ce397db2076e9e1502ef0f76f85194a70de57ccd6423f271c893e19ef2a9fb049bfa3ab62c63e9d307cd0123b4
   languageName: node
   linkType: hard
 
