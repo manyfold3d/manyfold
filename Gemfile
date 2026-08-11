@@ -25,7 +25,7 @@ gem "acts-as-taggable-on", "~> 13.0"
 gem "ffi-libarchive", "~> 1.1"
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.24", require: false
+gem "bootsnap", "~> 1.25", require: false
 
 # Database adapters
 # All are installed by default, but you can exclude ones you don't want with bundler.
