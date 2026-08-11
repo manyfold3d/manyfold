@@ -1985,12 +1985,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"baseline-browser-mapping@npm:^2.10.44":
-  version: 2.11.12
-  resolution: "baseline-browser-mapping@npm:2.11.12"
+"baseline-browser-mapping@npm:^2.11.12":
+  version: 2.11.13
+  resolution: "baseline-browser-mapping@npm:2.11.13"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: e154d9b239a282018e47a059626841052ed1dd89af2d57409169cb45bffce5a3f22bba84b56a630004d59d0e71cc7460980c40ed537662415fe13b8b87bcf0cd
+  checksum: 564e2501cc37a760902e9155e1e570b83bfce98701fd869391625a7c8c45bfbdbaa3019e95e2c21a98e01c07a50b6af64daa351bdc41963482e81cdd51298ca6
   languageName: node
   linkType: hard
 
@@ -2053,17 +2053,17 @@ __metadata:
   linkType: hard
 
 "browserslist@npm:^4.28.1, browserslist@npm:^4.28.6":
-  version: 4.28.7
-  resolution: "browserslist@npm:4.28.7"
+  version: 4.28.8
+  resolution: "browserslist@npm:4.28.8"
   dependencies:
-    baseline-browser-mapping: ^2.10.44
-    caniuse-lite: ^1.0.30001806
-    electron-to-chromium: ^1.5.393
-    node-releases: ^2.0.51
-    update-browserslist-db: ^1.2.3
+    baseline-browser-mapping: ^2.11.12
+    caniuse-lite: ^1.0.30001809
+    electron-to-chromium: ^1.5.402
+    node-releases: ^2.0.53
+    update-browserslist-db: ^1.3.0
   bin:
     browserslist: cli.js
-  checksum: 81093d27f0b0c9207e42af04655607ea870d6eb9c04b38106ffcf36e05f436747caf250604abd5471eab55b16eb2be305d8e5a7c61a5636df34a7b9397737756
+  checksum: cf6e9dd104a26ba88c2a56d319f7f659c4ee1384960f601331cfb75bb05826033245587026a25903d4745cbaac251203dcfc6e3a869e60f359686138bd551554
   languageName: node
   linkType: hard
 
@@ -2133,7 +2133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001806":
+"caniuse-lite@npm:^1.0.30001806, caniuse-lite@npm:^1.0.30001809":
   version: 1.0.30001809
   resolution: "caniuse-lite@npm:1.0.30001809"
   checksum: 848f2e481da9e7da0327e351bfcfdcf610058c756ceb9daa0f0a12090f84dd31962da33e62a2d8bc3774eb2ca255bdca1026431c3f47333af62f5d4e3bc71056
@@ -2416,10 +2416,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.5.393":
-  version: 1.5.402
-  resolution: "electron-to-chromium@npm:1.5.402"
-  checksum: edf1beacd35c66cb50406e55a16604ef38fa7308def8efb29bf09f7e3ed2ccff2641e73442035a6ba5fad0bec8163b28a59e8ecd00bf54863c25423bd3c73a85
+"electron-to-chromium@npm:^1.5.402":
+  version: 1.5.404
+  resolution: "electron-to-chromium@npm:1.5.404"
+  checksum: 08f1473d8cbe3b94a11e71bb464b8736d06e31c914c0ff25b7068d3d4c1648dfa0df58a9bccb8bd5aa35871b032fc7db6ddd62a7eb046b323e7fe57575c57406
   languageName: node
   linkType: hard
 
@@ -4358,7 +4358,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.51":
+"node-releases@npm:^2.0.53":
   version: 2.0.53
   resolution: "node-releases@npm:2.0.53"
   checksum: 39e306de65dbc2b95bf18b11786844bb47e2c4e73dfd6cfb679c6b427acb0f360c862680e9437325ab0866b7dd357188c65f12205a73433f2dc783cea13bb985
@@ -6327,9 +6327,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"update-browserslist-db@npm:^1.2.3":
-  version: 1.3.0
-  resolution: "update-browserslist-db@npm:1.3.0"
+"update-browserslist-db@npm:^1.3.0":
+  version: 1.3.1
+  resolution: "update-browserslist-db@npm:1.3.1"
   dependencies:
     escalade: ^3.2.0
     picocolors: ^1.1.1
@@ -6337,7 +6337,7 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     update-browserslist-db: cli.js
-  checksum: 4db43c885efc5c66b48fd316ce6ed396c6c0c92c0ec102f11309e3a09d4532f9ea427f46b72523fee85dfb0fa072c70d3c25ad27ac1bca6c5fda0b12774ae381
+  checksum: 24fc1471ada17371fe5ad89dd59b0c4546a4ff74a979b6168e1cd3fe38333a65ca23ae3cea0d268ad08f8ffdd8c16ccd1b365147ad24ff19a14eda735445fda4
   languageName: node
   linkType: hard
 
