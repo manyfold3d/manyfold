@@ -623,6 +623,7 @@ en:
         invalid_request:
           invalid_code_challenge: Code challenge is required.
           missing_param: 'Missing required parameter: %{value}.'
+          multiple_client_auth_methods: The request utilizes more than one mechanism for authenticating the client.
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.
         invalid_scope: The requested scope is invalid, unknown, or malformed.
