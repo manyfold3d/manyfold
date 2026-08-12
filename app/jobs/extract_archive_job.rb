@@ -10,7 +10,7 @@ class ExtractArchiveJob < ApplicationJob
     unzip_into_model(file)
 
     if remove_when_complete
-      file.destroy
+      file.delete_from_disk_and_destroy
     end
   end
 
