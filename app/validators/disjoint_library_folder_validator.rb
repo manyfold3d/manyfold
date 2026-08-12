@@ -1,6 +1,6 @@
 class DisjointLibraryFolderValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    return if value.nil?
+    return if value.nil? || record.storage_service == :filesystem
     value.chomp!(File::SEPARATOR)
     # i18n-tasks-use t("activerecord.errors.models.library.attributes.path.cannot_contain")
     record.errors.add attribute, :cannot_contain if library_paths.any? { it.starts_with?(value + File::SEPARATOR) }
@@ -11,6 +11,6 @@ class DisjointLibraryFolderValidator < ActiveModel::EachValidator
   private
 
   def library_paths
-    Library.pluck(:path) # rubocop:disable Pundit/UsePolicyScope
+    Library.where(storage_service: :filesystem).pluck(:path) # rubocop:disable Pundit/UsePolicyScope
   end
 end
