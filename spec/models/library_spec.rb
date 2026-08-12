@@ -333,6 +333,7 @@ RSpec.describe Library do
     let(:library) {
       create(
         :library,
+        path: "",
         storage_service: "s3",
         s3_bucket: "test",
         s3_region: "eu",
@@ -348,6 +349,10 @@ RSpec.describe Library do
         OpenStruct.new(key: "model/.manyfold/derivatives/test.png/carousel.png"),
         OpenStruct.new(key: "model/nope.nope")
       ])
+    end
+
+    it "can create a filesystem library without a disjoint path error" do
+      expect(create(:library)).to be_valid
     end
 
     it "mocks object list correctly" do
