@@ -35,13 +35,13 @@ class Components::FollowButton < Components::Base
   def before_template
     case @following
     when :pending
-      @i18n_key = ".pending" # i18n-tasks-use t('components.follow_button.pending')
+      @i18n_key = "components.follow_button.pending" # i18n-tasks-use t('components.follow_button.pending')
       @icon = "hourglass-split"
     when :accepted
-      @i18n_key = ".unfollow" # i18n-tasks-use t('components.follow_button.unfollow')
+      @i18n_key = "components.follow_button.unfollow" # i18n-tasks-use t('components.follow_button.unfollow')
       @icon = "person-x-fill"
     else
-      @i18n_key = ".follow" # i18n-tasks-use t('components.follow_button.follow')
+      @i18n_key = "components.follow_button.follow" # i18n-tasks-use t('components.follow_button.follow')
       @icon = "person-plus-fill"
     end
     if @signed_out
