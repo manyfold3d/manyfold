@@ -20,6 +20,7 @@ Rails.application.config.after_initialize do
   # Queue upgrade jobs if Redis is good to go
   # and if in server mode
   if Rails.const_defined?(:Server)
+    Upgrade::UpdateFedipubTypeFieldsJob.set(queue: :critical).perform_later
     Upgrade::GenerateSlugsJob.set(queue: :high).perform_later(Model)
     Upgrade::GenerateSlugsJob.set(queue: :high).perform_later(Creator)
     Upgrade::GenerateSlugsJob.set(queue: :high).perform_later(Collection)
