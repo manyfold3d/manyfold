@@ -290,12 +290,12 @@ zh-CN:
         two:
         zero:
       fedipub/moderation/report:
-        few:
-        many:
+        few: 报告
+        many: 报告
         one:
-        other:
-        two:
-        zero:
+        other: 报告
+        two: 报告
+        zero: 报告
       group:
         few:
         many:
@@ -623,6 +623,7 @@ zh-CN:
         invalid_request:
           invalid_code_challenge:
           missing_param: 'Missing required parameter: %{value}.'
+          multiple_client_auth_methods:
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: 请求缺少必要的参数，或者参数值、格式不正确。
         invalid_scope: 请求的权限范围无效、未知或格式不正确。
