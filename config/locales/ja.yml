@@ -61,7 +61,7 @@ ja:
         sign_in_url: ログイン
         status:
       fedipub/moderation/domain_block:
-        created_at: 作成日時
+        created_at: 作成日
         domain: ドメイン
       fedipub/moderation/report:
         content: コメント
@@ -623,6 +623,7 @@ ja:
         invalid_request:
           invalid_code_challenge:
           missing_param: '必須パラメーターが不足しています: %{value}'
+          multiple_client_auth_methods:
           request_not_authorized: リクエストは認可が必要です。リクエストを認可するための必須パラメータが不足しているか無効です。
           unknown: 必須パラメータが不足しているか、サポートされていないパラメータが含まれているか、もしくはパラメータが無効であるため、リクエストを処理できませんでした。
         invalid_scope: 指定されたスコープが無効か、不明か、もしくは正しくありません。
