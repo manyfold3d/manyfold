@@ -623,6 +623,7 @@ nl:
         invalid_request:
           invalid_code_challenge:
           missing_param: 'Ontbrekende vereiste parameter: %{value}.'
+          multiple_client_auth_methods:
           request_not_authorized: Verzoek moet worden geautoriseerd. Vereiste parameter voor het autoriseren van de aanvraag ontbreekt of is ongeldig.
           unknown: Het verzoek mist een vereiste parameter, bevat een niet-ondersteunde parameter waarde of is anderszins onjuist.
         invalid_scope: De opgevraagde scope is niet geldig, onbekend of onjuist.
