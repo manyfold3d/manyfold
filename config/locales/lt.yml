@@ -623,6 +623,7 @@ lt:
         invalid_request:
           invalid_code_challenge:
           missing_param:
+          multiple_client_auth_methods:
           request_not_authorized:
           unknown:
         invalid_scope:
