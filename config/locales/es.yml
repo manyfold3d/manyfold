@@ -623,6 +623,7 @@ es:
         invalid_request:
           invalid_code_challenge: Es necesario impugnar el código.
           missing_param: 'Missing required parameter: %{value}.'
+          multiple_client_auth_methods: La solicitud utiliza más de un mecanismo para autenticar al cliente.
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: La petición no tiene un parámetro obligatorio, incluye un valor de parámetro incompatible, o tiene un formato incorrecto.
         invalid_scope: El scope solicitado no es válido, es desconocido, o tiene un formato incorrecto.
