@@ -623,6 +623,7 @@ ru:
         invalid_request:
           invalid_code_challenge:
           missing_param: 'Отсутствует обязательный параметр: %{value}.'
+          multiple_client_auth_methods:
           request_not_authorized: Запрос должен быть авторизован. Необходимый параметр для авторизации отсутствует или неверный.
           unknown: В запросе отсутствуют необходимые параметры или они некорректны.
         invalid_scope: Неверный скоуп
