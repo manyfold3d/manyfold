@@ -625,6 +625,7 @@ de:
         invalid_request:
           invalid_code_challenge: Code Challenge ist erforderlich.
           missing_param: 'Erforderlicher Parameter fehlt: %{value}.'
+          multiple_client_auth_methods: Die Anfrage nutzt mehrere Mechanismen zur Authentifizierung des Clients.
           request_not_authorized: Die Anfrage muss autorisiert werden. Der erforderliche Parameter für die Autorisierung der Anfrage fehlt oder ist ungültig.
           unknown: Der Anfrage fehlt ein erforderlicher Parameter, sie enthält einen nicht unterstützten Parameterwert oder ist anderweitig fehlerhaft formatiert.
         invalid_scope: Der angeforderte Scope ist inkorrekt, unbekannt oder fehlerhaft.
