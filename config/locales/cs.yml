@@ -283,12 +283,12 @@ cs:
         two:
         zero:
       fedipub/moderation/domain_block:
-        few: Blokování domén
-        many: Blokování domén
+        few: Bloky domén
+        many: Bloky domén
         one: Blokování domény
-        other: Blokování domén
-        two: Blokování domén
-        zero: Blokování domén
+        other: Bloky domén
+        two: Bloky domén
+        zero: Bloky domén
       fedipub/moderation/report:
         few: Hlášení
         many: Hlášení
@@ -623,6 +623,7 @@ cs:
         invalid_request:
           invalid_code_challenge: Je vyžadována výzva ke kódu.
           missing_param: 'Missing required parameter: %{value}.'
+          multiple_client_auth_methods:
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: Požadavku chybí požadovaný parametr, obsahuje nepodporovanou hodnotu parametru, nebo je jinak poškozen.
         invalid_scope: Požadovaný rozsah je neplatný, neznámý nebo poškozený.
