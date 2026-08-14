@@ -151,7 +151,7 @@ class Model < ApplicationRecord
       # Work out path to the other target from here
       relative_path = contains?(other) ? Pathname.new(other.path).relative_path_from(Pathname.new(path)) : nil
       # Remove datapackage
-      other.datapackage&.destroy
+      other.datapackage&.delete_from_disk_and_destroy
       # Move files
       other.model_files.each { adopt_file(it, path_prefix: relative_path) }
       check_for_problems_later
