@@ -138,7 +138,7 @@ gem "rolify", "~> 6.0"
 
 gem "letter_opener", "~> 1.10", group: :development
 
-gem "sidekiq", "~> 8.0"
+gem "sidekiq", "~> 8.1"
 gem "gitlab-sidekiq-fetcher", require: "sidekiq-reliable-fetch", git: "https://github.com/DocSpring/sidekiq-reliable-fetch.git"
 
 # gem "sidekiq-failures", "~> 1.0"
@@ -229,7 +229,7 @@ gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
 gem "zaru", "~> 1.1"
 
 # v3 causes us problems
-gem "connection_pool", ">= 2.2.5", "< 3.0"
+gem "connection_pool", ">= 2.2.5", "< 4.0"
 
 gem "noticed", "~> 3.0"
 
