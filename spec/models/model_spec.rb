@@ -168,15 +168,13 @@ RSpec.describe Model do
     context "when merging into a new parent model" do # rubocop:disable RSpec/MultipleMemoizedHelpers
       let!(:new_model) { create(:model, library: library, path: "common/root") }
 
-      before do
-        new_model.merge! model_one, model_two
-      end
-
       it "moves files" do
+        new_model.merge! model_one, model_two
         expect(new_model.model_files.count).to eq 2
       end
 
       it "preserves subfolder paths within model" do # rubocop:disable RSpec/MultipleExpectations
+        new_model.merge! model_one, model_two
         expect(new_model.model_files.exists?(filename: "model_one/part_one.stl")).to be true
         expect(new_model.model_files.exists?(filename: "model_two/part_two.stl")).to be true
       end
@@ -184,8 +182,14 @@ RSpec.describe Model do
       it "handles filename clashes"
 
       it "removes old models" do # rubocop:disable RSpec/MultipleExpectations
+        new_model.merge! model_one, model_two
         expect { model_one.reload }.to raise_error(ActiveRecord::RecordNotFound)
         expect { model_two.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "removes old datapackages" do # rubocop:disable RSpec/MultipleExpectations
+        UpdateDatapackageJob.perform_now(model_one.id)
+        expect { new_model.merge! model_one }.to change { library.has_file?("common/root/model_one/datapackage.json") }.from(true).to(false)
       end
     end
   end
