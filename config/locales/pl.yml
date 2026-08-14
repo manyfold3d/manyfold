@@ -284,18 +284,18 @@ pl:
         zero:
       fedipub/moderation/domain_block:
         few: Bloki domen
-        many: Bloków domen
+        many: Bloki domen
         one: Blok domeny
         other: Bloki domen
-        two:
-        zero:
+        two: Bloki domen
+        zero: Bloki domen
       fedipub/moderation/report:
         few: Zgłoszenia
-        many: Zgłoszeń
+        many: Zgłoszenia
         one: Zgłoszenie
         other: Zgłoszenia
-        two:
-        zero:
+        two: Zgłoszenia
+        zero: Zgłoszenia
       group:
         few:
         many:
@@ -623,6 +623,7 @@ pl:
         invalid_request:
           invalid_code_challenge:
           missing_param:
+          multiple_client_auth_methods:
           request_not_authorized:
           unknown:
         invalid_scope:
