@@ -42,7 +42,7 @@
                 <%= print_links(file) %>
                 <%= DropdownDivider() %>
               <% end %>
-              <%= DropdownItem icon: "file-zip-fill", label: t(".extract"), path: extract_model_model_file_path(@model, file), method: :post if policy(file).extract? %>
+              <%= DropdownItem icon: "file-zip-fill", label: t("model_files.show.extract"), path: extract_model_model_file_path(@model, file), method: :post if policy(file).extract? %>
               <%= DropdownItem icon: "pencil-fill", label: t(".edit"), path: edit_model_model_file_path(@model, file) if policy(file).edit? %>
               <%= DropdownItem icon: "image", label: t(".set_as_preview"), path: model_path(@model, "model[preview_file_id]": file.id), method: :patch if policy(@model).edit? && (Components::Renderers::Three.supports?(file) || file.is_image? || FileHandlers.handlers_for(environment: :preview_frame, mime_type: file.mime_type).any?) %>
               <%= DropdownItem icon: "trash", label: t(".delete"), path: model_model_file_path(@model, file), method: :delete, confirm: translate("model_files.destroy.confirm") if policy(file).destroy? %>

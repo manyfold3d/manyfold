@@ -51,6 +51,7 @@ nl:
       details_heading: Details
       download:
         menu_header:
+      extract:
       notes_heading: Notities
       print_card:
         heading:

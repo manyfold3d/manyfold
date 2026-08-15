@@ -33,7 +33,6 @@ cs:
     file:
       delete: Smazat soubor
       edit: Upravit soubor
-      extract:
       open_button:
         label: Zobrazit podrobnosti pro %{name}
         text: Otevřít

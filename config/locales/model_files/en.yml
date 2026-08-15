@@ -51,6 +51,7 @@ en:
       details_heading: File Details
       download:
         menu_header: Download options
+      extract: Extract here
       notes_heading: Notes
       print_card:
         heading: Print

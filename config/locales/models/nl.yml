@@ -33,7 +33,6 @@ nl:
     file:
       delete:
       edit:
-      extract:
       open_button:
         label: Bekijk details voor %{name}
         text: Openen

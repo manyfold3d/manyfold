@@ -51,6 +51,7 @@ cs:
       details_heading: Detaily
       download:
         menu_header: Možnosti stahování
+      extract:
       notes_heading: Poznámky
       print_card:
         heading:
