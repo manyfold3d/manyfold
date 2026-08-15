@@ -33,6 +33,7 @@ zh-CN:
     file:
       delete: 删除文件
       edit: 编辑文件
+      extract:
       open_button:
         label: 查看 %{name} 的详细信息
         text: 打开

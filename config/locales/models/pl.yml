@@ -33,6 +33,7 @@ pl:
     file:
       delete: Usuń plik
       edit: Edytuj plik
+      extract:
       open_button:
         label: Wyświetl szczegóły %{name}
         text: Otwórz

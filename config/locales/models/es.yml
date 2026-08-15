@@ -33,6 +33,7 @@ es:
     file:
       delete: Eliminar fichero
       edit: Editar fichero
+      extract:
       open_button:
         label: Ver detalles de %{name}
         text: Abrir

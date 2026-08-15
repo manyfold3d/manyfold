@@ -30,6 +30,8 @@ ja:
       orca_slicer: OrcaSlicerにオープン
       prusa_slicer: PrusaSlicerにオープン
       super_slicer: SuperSlicerにオープン
+    extract:
+      extraction_started:
     form:
       notes:
         help_html:

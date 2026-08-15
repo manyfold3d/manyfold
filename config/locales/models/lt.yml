@@ -33,6 +33,7 @@ lt:
     file:
       delete:
       edit:
+      extract:
       open_button:
         label:
         text:

@@ -30,6 +30,8 @@ es:
       orca_slicer: Abrir en OrcaSlicer
       prusa_slicer: Abrir en PrusaSlicer
       super_slicer: Abrir en SuperSlicer
+    extract:
+      extraction_started:
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

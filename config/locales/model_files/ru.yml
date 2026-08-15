@@ -30,6 +30,8 @@ ru:
       orca_slicer: Открыть в OrcaSlicer
       prusa_slicer: Открыть в PrusaSlicer
       super_slicer: Открыть в SuperSlicer
+    extract:
+      extraction_started:
     form:
       notes:
         help_html:
