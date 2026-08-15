@@ -29,6 +29,10 @@ class ModelFilePolicy < ApplicationPolicy
     can_update_model?
   end
 
+  def extract?
+    @record&.is_archive? && can_update_model?
+  end
+
   def destroy?
     can_update_model?
   end
