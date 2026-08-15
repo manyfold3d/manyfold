@@ -30,6 +30,8 @@ zh-CN:
       orca_slicer: 在 OrcaSlicer 中打开
       prusa_slicer: 在 PrusaSlicer 中打开
       super_slicer: 在 SuperSlicer 中打开
+    extract:
+      extraction_started:
     form:
       notes:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
@@ -49,6 +51,7 @@ zh-CN:
       details_heading: 详细信息
       download:
         menu_header: 下载选项
+      extract:
       notes_heading: 说明
       print_card:
         heading:

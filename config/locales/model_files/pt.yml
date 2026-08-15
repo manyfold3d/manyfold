@@ -30,6 +30,8 @@ pt:
       orca_slicer:
       prusa_slicer:
       super_slicer:
+    extract:
+      extraction_started:
     form:
       notes:
         help_html:
@@ -49,6 +51,7 @@ pt:
       details_heading:
       download:
         menu_header:
+      extract:
       notes_heading:
       print_card:
         heading:

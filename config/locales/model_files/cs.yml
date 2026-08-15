@@ -30,6 +30,8 @@ cs:
       orca_slicer: Otevřít v OrcaSlicer
       prusa_slicer: Otevřít v PrusaSlicer
       super_slicer: Otevřít v SuperSlicer
+    extract:
+      extraction_started:
     form:
       notes:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -49,6 +51,7 @@ cs:
       details_heading: Detaily
       download:
         menu_header: Možnosti stahování
+      extract:
       notes_heading: Poznámky
       print_card:
         heading:

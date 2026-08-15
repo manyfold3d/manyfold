@@ -64,6 +64,9 @@ Rails.application.routes.draw do
       patch "/update", action: "bulk_update"
     end
     resources :model_files, except: [:index, :new] do
+      member do
+        post "extract"
+      end
       collection do
         get "bulk_edit"
         patch "bulk_update"

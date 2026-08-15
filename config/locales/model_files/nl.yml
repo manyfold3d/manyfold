@@ -30,6 +30,8 @@ nl:
       orca_slicer:
       prusa_slicer:
       super_slicer:
+    extract:
+      extraction_started:
     form:
       notes:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
@@ -49,6 +51,7 @@ nl:
       details_heading: Details
       download:
         menu_header:
+      extract:
       notes_heading: Notities
       print_card:
         heading:

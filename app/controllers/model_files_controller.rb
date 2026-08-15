@@ -92,6 +92,15 @@ class ModelFilesController < ApplicationController
     end
   end
 
+  def extract
+    ExtractArchiveJob.perform_later(@file.id)
+    respond_to do |format|
+      format.html do
+        redirect_back_or_to [@model, @file], notice: t(".extraction_started")
+      end
+    end
+  end
+
   def bulk_edit
     authorize @model, :edit?
     @files = policy_scope(@model.model_files.without_special)
