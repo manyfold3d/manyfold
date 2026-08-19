@@ -23,9 +23,9 @@ __metadata:
   linkType: hard
 
 "@csstools/color-helpers@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@csstools/color-helpers@npm:6.1.0"
-  checksum: a4bf332d3e661e00c6da5bdf9ee8bcd83ec7309334a766e8e40f0ad4bf39cbebe8146b6e06263ef974dfc3e577a0d1c3b4c41902da909f042937b6b7b2837786
+  version: 6.1.1
+  resolution: "@csstools/color-helpers@npm:6.1.1"
+  checksum: a1a076a0f8d564e491102e7e79a64da56853044243cae9171545f62cccb7fb2c365d5597f955c3b20ece723732361a552fe146d2d8d75a89a81363450e49a607
   languageName: node
   linkType: hard
 
