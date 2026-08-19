@@ -178,16 +178,16 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-content-alt-text@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@csstools/postcss-content-alt-text@npm:3.0.2"
+  version: 3.0.3
+  resolution: "@csstools/postcss-content-alt-text@npm:3.0.3"
   dependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.1
+    "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 0a6b60c7f6d158e13e26aa81f307071c98c9ee419033fd96543743d81c16a8e6e397f0c25ed8da2cc61e10b5cb2d2baa6456c9fd9122def6c1669f3098915e40
+  checksum: 315b1df1d32bc24b40e2132d0d9f85d41df9496948140b7df01407a5bec252e74176bd58601fae501d992490e89f7cb7db8ff8462b10a788d21490c631210e01
   languageName: node
   linkType: hard
 
@@ -483,14 +483,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-progressive-custom-properties@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@csstools/postcss-progressive-custom-properties@npm:5.1.1"
+"@csstools/postcss-progressive-custom-properties@npm:^5.1.1, @csstools/postcss-progressive-custom-properties@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "@csstools/postcss-progressive-custom-properties@npm:5.1.2"
   dependencies:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: d7dd81374b1a6272b64cdd2a2b011ee0ad30a33b95ff3e723b1ad97e141432dc8ff7ae40f7a431496718a7b62fa15fdf7f8e359c9e822867f97661ae64c27a03
+  checksum: ed01aa3184e5c3bca834a7d2097ec0119d5a9c4581da1e738a681dea591f8b6f7e42d69801b818abea5ddd126d0f864247d3f8086ab7f9817eaad819334fb659
   languageName: node
   linkType: hard
 
