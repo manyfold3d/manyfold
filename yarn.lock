@@ -136,17 +136,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-mix-function@npm:^4.0.6":
-  version: 4.0.7
-  resolution: "@csstools/postcss-color-mix-function@npm:4.0.7"
+  version: 4.0.8
+  resolution: "@csstools/postcss-color-mix-function@npm:4.0.8"
   dependencies:
-    "@csstools/css-color-parser": ^4.1.10
+    "@csstools/css-color-parser": ^4.2.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.1
+    "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: fdae9fff6587b035a6a766375fc93af2a69c90127c4a99c9e0f105c168babdb74195eedd20fe939688cef850a169713d0013d9728c7396bb448107ae6ca84001
+  checksum: a0baf9d9e955eecd4874b997538d2d0bb8c79403f4562a3feadcb88b12b1181b40d1d09c136b6b9fbbefe0774464394e1df3887055fc3b3a6c421bb778a6fb5e
   languageName: node
   linkType: hard
 
