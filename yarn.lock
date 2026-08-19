@@ -4856,17 +4856,17 @@ __metadata:
   linkType: hard
 
 "postcss-lab-function@npm:^8.0.6":
-  version: 8.0.7
-  resolution: "postcss-lab-function@npm:8.0.7"
+  version: 8.0.8
+  resolution: "postcss-lab-function@npm:8.0.8"
   dependencies:
-    "@csstools/css-color-parser": ^4.1.10
+    "@csstools/css-color-parser": ^4.2.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.1
+    "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 908ca5bbdf0decfcd867b12f461cb20b982d9e4a43311b0d26a4f19fc895fa58c89fe536078300dbd259e9ffde1a1c8df1bb195773f42058ad169f63b7a195dd
+  checksum: 7dac37318bb6ff382888c21937bfd3dc3f88f03ad88be774a69892dc66eba511741d728adb23124073448d116d15407b0d1fb6b7af3165edb88f98c83f7fd708
   languageName: node
   linkType: hard
 
