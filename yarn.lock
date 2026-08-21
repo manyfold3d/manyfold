@@ -3126,11 +3126,11 @@ __metadata:
   linkType: hard
 
 "get-tsconfig@npm:^4.8.1":
-  version: 4.14.2
-  resolution: "get-tsconfig@npm:4.14.2"
+  version: 4.14.3
+  resolution: "get-tsconfig@npm:4.14.3"
   dependencies:
     resolve-pkg-maps: ^1.0.0
-  checksum: 522be44f011c3c4bb7688e28c89248e999ef3f010fef46be7747ad9bc99fe43a6434bbc2aa16b2a4b9d731cb8376138075c966c40e4c77ec76a6dbfaaf521914
+  checksum: 0b8d0fda38f893f780cf879db927b324b7983d493bfecd71d26fddef2b4e70e87f7739103803269f6fd9ba9f65bdde3a76b14f56f469497d97e884e9acb06344
   languageName: node
   linkType: hard
 
