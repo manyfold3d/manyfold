@@ -47,7 +47,7 @@
     "neostandard": "^0.13.0",
     "postcss": "^8.5.26",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-import": "^16.1.1",
+    "postcss-import": "^17.0.0",
     "postcss-preset-env": "^11.4.0",
     "rollup": "^4.62.4",
     "sass-embedded": "^1.102.0",
