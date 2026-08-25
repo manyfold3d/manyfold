@@ -256,7 +256,8 @@ class Model < ApplicationRecord
   def split!(files: [])
     preview_file_will_move = files.include?(preview_file)
     entrypoint_will_move = files.include?(entrypoint)
-    new_model = Model.create_from(self, link_preview_file: preview_file_will_move, link_entrypoint: entrypoint_will_move)
+    new_model = Model.create_from(self, link_preview_file: preview_file_will_move, link_entrypoint: entrypoint_will_move, name: "Split from #{name}")
+    new_model.organize!
     # Clear preview file if it was moved
     update!(preview_file: nil) if preview_file_will_move
     # Clear entrypoint file if it was moved
