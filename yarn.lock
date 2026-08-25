@@ -1993,11 +1993,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.11.12":
-  version: 2.11.16
-  resolution: "baseline-browser-mapping@npm:2.11.16"
+  version: 2.11.19
+  resolution: "baseline-browser-mapping@npm:2.11.19"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: d6c9f23d425636fff371e2cb925ea9aff9ebcc92a1a021966f21732818c328e55f58ca28871e76054dd9b4520a88c651bd6c337e8ad6e2f6aa9be0da4939c74c
+  checksum: cb4f6c93f25737b2212d3941a3af7458ee58045291a338db32b00aab0322c7672f57509a75a2bc0dcd82c55b63bb55f98d3b82f43a342537f5f7e0a6ba709945
   languageName: node
   linkType: hard
 
