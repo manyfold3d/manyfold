@@ -522,23 +522,30 @@ RSpec.describe Model do
   context "when splitting" do
     subject!(:model) {
       create(:admin) # We need a user for permission setting
-      m = create(:model, :with_collection, creator: create(:creator), license: "CC-BY-4.0", caption: "test", notes: "note")
-      m.tag_list << "tag1"
-      m.tag_list << "tag2"
+      m = create(:model,
+        :with_collection,
+        creator: create(:creator),
+        license: "CC-BY-4.0",
+        caption: "test",
+        notes: "note",
+        library: library,
+        tag_list: ["tag"])
       create(:model_file, model: m)
       create(:model_file, model: m)
+      m.organize!
       m
     }
 
+    let(:library) { create(:library, path_template: "{creator}/{collections}/{tags}/{modelName}{modelId}") }
     let(:owner) { create(:user) }
 
     it "creates a new model" do
       expect { model.split! }.to change(described_class, :count).by(1)
     end
 
-    it "prepends 'Copy of' to name" do
+    it "prepends 'Split from' to name" do
       new_model = model.split!
-      expect(new_model.name).to eq "Copy of #{model.name}"
+      expect(new_model.name).to eq "Split from #{model.name}"
     end
 
     [:notes, :caption, :collections, :creator, :license, :tags].each do |field|
@@ -604,6 +611,17 @@ RSpec.describe Model do
       model.caber_relations.each do |relation|
         expect(new_model.grants_permission_to?(relation.permission, relation.subject)).to be true
       end
+    end
+
+    it "creates correct path for split model" do
+      new_model = model.split!
+      expect(new_model.path).to eq model.path.gsub(model.slug, new_model.slug).gsub("##{model.id}", "##{new_model.id}")
+    end
+
+    it "can split model twice without conflict" do
+      model.split!
+      newer_model = model.split!
+      expect(newer_model).to be_valid
     end
   end
 
