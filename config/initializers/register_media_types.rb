@@ -92,6 +92,7 @@ MediaType.register "application/x-nanodlp", :nanodlp, category: :slicer
 
 # Images
 MediaType.register "image/webp", :webp, category: :image
+MediaType.register "image/avif", :avif, category: :image
 
 # Archive formats
 MediaType.register "application/vnd.rar", :rar, category: :archive
