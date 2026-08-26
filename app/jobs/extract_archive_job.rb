@@ -49,6 +49,10 @@ class ExtractArchiveJob < ApplicationJob
       reader.extract(entry, Archive::EXTRACT_SECURE, destination: File.join(model.library.path, model.path))
       new_file = ApplicationRecord.suppressing_turbo_broadcasts { model.model_files.find_or_create_by(filename: filename) }
       new_file.parse_metadata_later
+      # If there's no preview yet, and the new file is previewable, set it so we see something as soon as possible. Proper preview will be selected later.
+      if model.preview_file.blank?
+        model.update preview_file: new_file if FileHandlers.handlers_for(environment: :preview_frame, mime_type: new_file.mime_type).any?
+      end
     end
   end
 end
