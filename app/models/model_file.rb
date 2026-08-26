@@ -297,6 +297,10 @@ class ModelFile < ApplicationRecord
     end
   end
 
+  def media_category
+    MediaType::CATEGORIES.find { |category, list| mime_type.to_sym.in? list }&.first # rubocop:disable Pundit/UsePolicyScope
+  end
+
   private
 
   def rescan_duplicates
