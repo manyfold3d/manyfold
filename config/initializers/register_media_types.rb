@@ -77,11 +77,12 @@ MediaType.register "application/vnd.mhd", :mha, additional_extensions: ["mhd"], 
 MediaType.register "application/vnd.nrrd", :nrrd, additional_extensions: ["nhdr"], category: :model # NRRD ("nearly raw raster data")
 MediaType.register "application/vnd.splat", :splat, category: :model # 3D Gaussian Splatting
 MediaType.register "application/vnd.spz", :spz, category: :model # Compressed 3D Gaussian Splatting
+MediaType.register "model/x-lychee", :lychee, additional_extensions: ["lys", "lyt"], category: :model
+MediaType.register "model/x-chitubox", :chitubox, category: :model
 
 # Slicer formats
 MediaType.register "text/x-gcode", :gcode, additional_extensions: ["bgcode"], category: :slicer
-MediaType.register "model/x-lychee", :lychee, additional_extensions: ["lys", "lyt"], category: :model
-MediaType.register "application/x-chitubox", :chitubox, additional_extensions: ["ctb", "cbddlp"], category: :slicer
+MediaType.register "application/x-chitu-slices", :ctb, additional_extensions: ["cbddlp"], category: :slicer
 MediaType.register "application/x-prusa-sl1", :sl1, additional_extensions: ["sl1s"], category: :slicer
 MediaType.register "application/x-phrozen", :prz, additional_extensions: ["phz"], category: :slicer
 MediaType.register "application/x-photon", :photon, additional_extensions: ["photons"], category: :slicer

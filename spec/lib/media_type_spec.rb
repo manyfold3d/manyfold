@@ -71,8 +71,8 @@ RSpec.describe MediaType do
   end
 
   context "when indexing slicer files" do
-    it "includes Chitubox files" do # rubocop:todo RSpec/MultipleExpectations
-      expect(described_class.indexable_types).to include("application/x-chitubox")
+    it "includes sliced Chitu files" do # rubocop:todo RSpec/MultipleExpectations
+      expect(described_class.indexable_types).to include("application/x-chitu-slices")
       expect(described_class.indexable_extensions).to include("cbddlp")
     end
 
