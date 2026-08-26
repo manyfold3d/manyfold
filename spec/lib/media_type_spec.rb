@@ -64,11 +64,6 @@ RSpec.describe MediaType do
       expect(described_class.model_extensions).to include("scad")
     end
 
-    it "includes GCode" do # rubocop:todo RSpec/MultipleExpectations
-      expect(described_class.model_types).to include("text/x-gcode")
-      expect(described_class.model_extensions).to include("gcode")
-    end
-
     it "includes DXF" do # rubocop:todo RSpec/MultipleExpectations
       expect(described_class.model_types).to include("image/vnd.dxf")
       expect(described_class.model_extensions).to include("dxf")
@@ -79,6 +74,11 @@ RSpec.describe MediaType do
     it "includes Chitubox files" do # rubocop:todo RSpec/MultipleExpectations
       expect(described_class.indexable_types).to include("application/x-chitubox")
       expect(described_class.indexable_extensions).to include("cbddlp")
+    end
+
+    it "includes GCode" do # rubocop:todo RSpec/MultipleExpectations
+      expect(described_class.indexable_types).to include("text/x-gcode")
+      expect(described_class.indexable_extensions).to include("gcode")
     end
 
     it "includes Lumen files" do # rubocop:todo RSpec/MultipleExpectations

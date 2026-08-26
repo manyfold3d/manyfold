@@ -79,7 +79,7 @@ MediaType.register "application/vnd.splat", :splat, category: :model # 3D Gaussi
 MediaType.register "application/vnd.spz", :spz, category: :model # Compressed 3D Gaussian Splatting
 
 # Slicer formats
-MediaType.register "text/x-gcode", :gcode, additional_extensions: ["bgcode"], category: :model
+MediaType.register "text/x-gcode", :gcode, additional_extensions: ["bgcode"], category: :slicer
 MediaType.register "model/x-lychee", :lychee, additional_extensions: ["lys", "lyt"], category: :model
 MediaType.register "application/x-chitubox", :chitubox, additional_extensions: ["ctb", "cbddlp"], category: :slicer
 MediaType.register "application/x-prusa-sl1", :sl1, additional_extensions: ["sl1s"], category: :slicer
