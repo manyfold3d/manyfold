@@ -216,12 +216,21 @@ class Model < ApplicationRecord
     model_files.select { it.has_render? || FileHandlers.handlers_for(environment: :preview_frame, mime_type: it.mime_type).any? }
   end
 
+  def files_in_media_category(category)
+    model_files.without_special.where(
+      ModelFile.arel_table[:filename].matches_any(
+        MediaType.category_extensions(category).map { "%\\.#{Model.sanitize_sql_like(it)}" },
+        "\\"
+      )
+    )
+  end
+
   def image_files
-    model_files.select(&:is_image?)
+    files_in_media_category(:image)
   end
 
   def three_d_files
-    model_files.select(&:is_3d_model?)
+    files_in_media_category(:model)
   end
 
   def exists_on_storage?

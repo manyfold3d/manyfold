@@ -72,6 +72,10 @@ RSpec.describe ModelFile do
       expect(part.dimensions).to eq(Mittsu::Vector3.new(10, 15, 20))
     end
 
+    it "works out media category" do
+      expect(part.media_category).to eq :model
+    end
+
     it "calculates file size when attached" do
       expect(part.size).to eq(284)
     end

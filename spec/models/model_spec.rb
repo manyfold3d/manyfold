@@ -772,6 +772,28 @@ RSpec.describe Model do
     expect(model.file_extensions).to contain_exactly("obj", "stl")
   end
 
+  context "with files in various categories" do
+    subject(:model) { create(:model) }
+
+    before do
+      create(:model_file, model: model, filename: "model.stl")
+      create(:model_file, model: model, filename: "doc.txt")
+      create(:model_file, model: model, filename: "image.png")
+    end
+
+    it "generates list of files in model category" do
+      expect(model.files_in_media_category(:model).map(&:filename)).to contain_exactly("model.stl")
+    end
+
+    it "generates list of files in image category" do
+      expect(model.files_in_media_category(:image).map(&:filename)).to contain_exactly("image.png")
+    end
+
+    it "generates list of files in document category" do
+      expect(model.files_in_media_category(:document).map(&:filename)).to contain_exactly("doc.txt")
+    end
+  end
+
   context "when adding links" do
     let(:url) { "https://example.com" }
     let(:model) { create(:model, links_attributes: [{url: url}]) }

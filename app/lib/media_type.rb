@@ -72,8 +72,6 @@ module MediaType
     end
     memo_wise :indexable_extensions
 
-    private
-
     def category_types(category)
       Mime::LOOKUP.filter { |k, v| is_in_category?(v, category) }.values
     end
