@@ -97,9 +97,8 @@ RSpec.describe ArchiveEntryService do
 
     def stub_node_thumbnail_on(service, success: true, stderr: "render failed")
       status = instance_double(Process::Status, success?: success, exitstatus: success ? 0 : 1)
-      allow(service).to receive(:system)
-        .with("command", "-v", "node", out: File::NULL, err: File::NULL)
-        .and_return(true)
+      allow(File).to receive(:executable?).and_call_original
+      allow(File).to receive(:executable?).with("/usr/bin/node").and_return(true)
       allow(Open3).to receive(:capture3) do |_bin, _script, mesh_path, preview_path|
         expect(File.extname(mesh_path).downcase).to eq(".stl")
         if success
@@ -140,8 +139,28 @@ RSpec.describe ArchiveEntryService do
       @file.attach_existing_file!(refresh: true)
     end
 
+    it "passes the node check when /usr/bin/node is executable" do
+      service = described_class.new(@file)
+      allow(File).to receive(:executable?).and_call_original
+      allow(File).to receive(:executable?).with("/usr/bin/node").and_return(true)
+      expect(service.send(:node_executable?)).to be true
+    end
+
+    it "reports node not available when no executable node is found" do
+      service = described_class.new(@file)
+      allow(File).to receive(:executable?).and_return(false)
+      expect(service.send(:node_executable?)).to be false
+
+      service.list!
+      entry = @file.archive_entries.find_by!(pathname: "parts/widget.stl")
+      service.extract_mesh_and_preview!(entry)
+      expect(entry.reload.status).to eq("preview_failed")
+      expect(entry.error_message).to eq("node not available")
+    end
+
     it "writes a real PNG thumbnail for an STL when node is available" do
-      skip "node not on PATH" unless system("command", "-v", "node", out: File::NULL, err: File::NULL)
+      skip "node not on PATH" unless File.executable?("/usr/bin/node") ||
+        ENV.fetch("PATH", "").split(File::PATH_SEPARATOR).any? { |d| File.executable?(File.join(d, "node")) }
 
       # Replace empty STL with a small cube so the rasterizer has triangles
       Zip::File.open(@zip_path) do |zip|
