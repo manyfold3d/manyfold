@@ -30,8 +30,8 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
   private
 
   def valid_path?(path)
-    match = /\A\/users\/(#{USERNAME_PATTERN})\Z/o.match(CGI.unescape(path))
-    @username = match[1] if match.present?
+    match = /\A\/(users|profile)\/(?<username>#{USERNAME_PATTERN})(\/store)?\/?\Z/o.match(CGI.unescape(path))
+    @username = match[:username] if match.present?
     match.present?
   end
 end
