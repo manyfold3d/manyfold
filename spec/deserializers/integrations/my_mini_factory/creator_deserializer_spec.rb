@@ -7,6 +7,16 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer, :mmf_api_key do
       expect(deserializer).to be_valid
     end
 
+    it "accepts profile URIs" do
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/profile/example")
+      expect(deserializer).to be_valid
+    end
+
+    it "accepts store URIs" do
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/profile/example/store")
+      expect(deserializer).to be_valid
+    end
+
     it "rejects non-user URIs" do
       deserializer = described_class.new(uri: "https://www.myminifactory.com/objects/example")
       expect(deserializer).not_to be_valid
