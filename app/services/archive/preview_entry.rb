@@ -152,10 +152,21 @@ module Archive
       text.to_s.gsub("\\", "\\\\").gsub("'", "\\'")
     end
 
+    # INIT-004/SPEC-001: Alpine has no argv `command`; detect via executable path / PATH.
+    def node_executable?
+      return true if File.executable?("/usr/bin/node")
+
+      ENV.fetch("PATH", "").split(File::PATH_SEPARATOR).any? do |dir|
+        next if dir.blank?
+
+        File.executable?(File.join(dir, "node"))
+      end
+    end
+
     def run_mesh_thumbnail_script(mesh_path, preview_path)
       script = Rails.root.join("scripts/mesh_thumbnail.mjs")
       return [false, "mesh_thumbnail script missing"] unless script.file?
-      return [false, "node not available"] unless system("command", "-v", "node", out: File::NULL, err: File::NULL)
+      return [false, "node not available"] unless node_executable?
       return [false, "mesh_thumbnail requires an STL path"] unless stl_file?(mesh_path)
 
       require "open3"
