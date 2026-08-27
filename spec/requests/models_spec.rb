@@ -512,6 +512,23 @@ RSpec.describe "Models" do
           end
         end
 
+        context "when uniqueness Redlock would raise", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+
+          it "redirects and persists MergeHistory" do
+            stub_unique_enqueue_redlock_error
+            post "/models/merge", params: {
+              models: [model_one.to_param, model_two.to_param],
+              target: model_one.to_param
+            }
+            expect(response).to redirect_to("/models/#{model_one.to_param}")
+            expect(response).not_to have_http_status(:internal_server_error)
+            expect(MergeHistory.where(target_model: model_one).count).to eq 1
+            expect(Model.where(id: model_two.id)).not_to exist
+          end
+        end
+
         context "when merging to a completely new model", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
           let(:model_one) { create(:model) }
           let(:model_two) { create(:model) }

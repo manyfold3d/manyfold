@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Application-layer merge of one or more source models into a target.
+# INIT-002/SPEC-002: ScanContext flags; no unique enqueue on merge HTTP.
 class Model::Merge
   def self.call(target, *sources)
     new(target).call(*sources)
@@ -12,6 +13,9 @@ class Model::Merge
 
   def call(*models)
     models = models[0] if models.length == 1 && models[0].is_a?(Enumerable)
+
+    stamp_scan_context!(models)
+    Rails.logger.info("[Model::Merge] target_id=#{@target.id} source_ids=#{models.map(&:id).join(",")}")
 
     models.each do |other|
       ActiveRecord::Base.transaction do
@@ -63,9 +67,25 @@ class Model::Merge
         @target.save!
 
         other.reload
+        # reload drops in-memory skip flags; restamp so destroy callbacks stay quiet
+        stamp_scan_context_for!(other)
         other.destroy!
       end
-      @target.check_for_problems_later
     end
+  end
+
+  private
+
+  def stamp_scan_context!(models)
+    ScanContext.apply!(
+      @target,
+      *models,
+      *@target.model_files.to_a,
+      *models.flat_map { |model| model.model_files.to_a }
+    )
+  end
+
+  def stamp_scan_context_for!(record)
+    ScanContext.apply!(record, *record.model_files.to_a)
   end
 end

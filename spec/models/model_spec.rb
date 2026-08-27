@@ -416,11 +416,12 @@ RSpec.describe Model do
     end
   end
 
-  context "when merge transaction rolls back" do
+  context "when adopting files across models" do # INIT-002/SPEC-003
     around do |ex|
       MockDirectory.create([
-        "root/target/part.stl",
-        "root/source/part.stl"
+        "root/target/keep.stl",
+        "root/source/part.stl",
+        "root/source/other.stl"
       ]) do |path|
         @library_path = path
         ex.run
@@ -431,12 +432,100 @@ RSpec.describe Model do
     let!(:target) { create(:model, library: library, path: "root/target") }
     let!(:source) { create(:model, library: library, path: "root/source") }
     let!(:source_file) { create(:model_file, model: source, filename: "part.stl") } # rubocop:disable RSpec/LetSetup
+    let!(:other_file) { create(:model_file, model: source, filename: "other.stl") } # rubocop:disable RSpec/LetSetup
 
-    it "does not leave partial state when reattach! raises" do
-      allow_any_instance_of(ModelFile).to receive(:reattach!).and_raise("simulated failure")
-      expect { target.merge!(source) }.to raise_error("simulated failure")
-      expect(source.reload.model_files.count).to eq 1
+    def reattach_called_in_open_transaction?
+      in_open_txn = false
+      allow_any_instance_of(ModelFile).to receive(:reattach!).and_wrap_original do |orig, *args| # rubocop:disable RSpec/AnyInstance
+        in_open_txn = true if ActiveRecord::Base.connection.transaction_open?
+        orig.call(*args)
+      end
+      yield
+      in_open_txn
+    end
+
+    it "does not call reattach! while a write transaction is open" do
+      called_in_txn = reattach_called_in_open_transaction? do
+        ActiveRecord::Base.transaction do
+          target.adopt_file(source_file, path_prefix: "source")
+        end
+      end
+      expect(called_in_txn).to be false
+    end
+
+    it "reattaches after commit so storage matches path_within_library" do # rubocop:todo RSpec/MultipleExpectations
+      target.adopt_file(source_file, path_prefix: "source")
+      source_file.reload
+      expect(source_file.model_id).to eq target.id
+      expect(source_file.filename).to eq "source/part.stl"
+      expect(source_file.attachment.id).to eq source_file.path_within_library
+      expect(source_file.exists_on_storage?).to be true
+    end
+
+    it "reattaches after commit when only model_id changes" do # rubocop:todo RSpec/MultipleExpectations
+      original_filename = source_file.filename
+      target.adopt_file(source_file)
+      source_file.reload
+      expect(source_file.filename).to eq original_filename
+      expect(source_file.model_id).to eq target.id
+      expect(source_file.attachment.id).to eq source_file.path_within_library
+      expect(source_file.exists_on_storage?).to be true
+    end
+
+    it "leaves source storage at the old path when the outer transaction rolls back after adopt" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      old_path = source_file.path_within_library
+      old_attachment_id = source_file.attachment.id
+      expect(library.has_file?(old_path)).to be true
+
+      expect {
+        ActiveRecord::Base.transaction do
+          target.adopt_file(source_file, path_prefix: "source")
+          raise "forced rollback"
+        end
+      }.to raise_error("forced rollback")
+
+      source_file.reload
+      expect(source_file.model_id).to eq source.id
+      expect(source_file.filename).to eq "part.stl"
+      expect(source_file.attachment.id).to eq old_attachment_id
+      expect(library.has_file?(old_path)).to be true
+      expect(source_file.exists_on_storage?).to be true
+    end
+
+    it "leaves source rows and storage when merge raises after the first of N files is adopted" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      old_paths = [source_file, other_file].map(&:path_within_library)
+      seen = 0
+      allow(target).to receive(:adopt_file).and_wrap_original do |orig, file, **kwargs|
+        seen += 1
+        result = orig.call(file, **kwargs)
+        raise "after first adopt" if seen == 1
+        result
+      end
+
+      expect { target.merge!(source) }.to raise_error("after first adopt")
+
+      expect(source.reload.model_files.count).to eq 2
       expect(MergeHistory.where(target_model: target).count).to eq 0
+      old_paths.each { |path| expect(library.has_file?(path)).to be true }
+      expect(source_file.reload.exists_on_storage?).to be true
+      expect(other_file.reload.exists_on_storage?).to be true
+    end
+
+    it "does not move bytes on the deduplicated branch" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      create(:model_file, model: target, filename: "source/part.stl", digest: "same-digest")
+      source_file.update!(digest: "same-digest")
+      reattached_ids = []
+      allow_any_instance_of(ModelFile).to receive(:reattach!).and_wrap_original do |orig, *args| # rubocop:disable RSpec/AnyInstance
+        reattached_ids << orig.receiver.id
+        orig.call(*args)
+      end
+
+      result = target.adopt_file(source_file, path_prefix: "source")
+
+      expect(result).to include(status: :deduplicated)
+      expect(reattached_ids).not_to include(source_file.id)
+      expect(source_file.reload.model_id).to eq source.id
+      expect(source_file.exists_on_storage?).to be true
     end
   end
 
@@ -869,10 +958,17 @@ RSpec.describe Model do
   end
 
   context "when problem check cascade" do
-    it "does not enqueue CheckForProblemsJob when skip_problem_checks is set" do
+    it "does not enqueue CheckForProblemsJob when ScanContext suppress flags are set" do
+      model = create(:model)
+      ScanContext.apply!(model)
+      expect { model.check_for_problems_later }.not_to have_enqueued_job(Scan::Model::CheckForProblemsJob)
+    end
+
+    it "does not treat Current.skip_problem_checks as a skip" do
       model = create(:model)
       Current.set(skip_problem_checks: true) do
-        expect { model.update!(name: "Changed") }.not_to have_enqueued_job(Scan::Model::CheckForProblemsJob)
+        expect(model.suppress_problem_checks?).to be(false)
+        expect { model.check_for_problems_later }.to have_enqueued_job(Scan::Model::CheckForProblemsJob)
       end
     end
   end

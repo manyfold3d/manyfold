@@ -141,8 +141,9 @@ class Model < ApplicationRecord
       end
     end
 
+    # INIT-002/SPEC-003: persist SQL only. NFS reattach is ModelFile after_commit
+    # so a ROLLBACK cannot leave bytes at the new prefix.
     file.update!(filename: new_filename, model: self)
-    file.reattach!
     {status: :adopted}
   end
 

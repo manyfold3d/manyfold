@@ -139,5 +139,18 @@ RSpec.describe Problem do
       expect(result[:removed_ids]).to be_empty
       expect(problem.reload.ignored).to be true
     end
+
+    it "does not unique-enqueue FileConversionJob while the batch transaction is open" do
+      file = create(:model_file)
+      problem = create(:problem, category: :inefficient, problematic: file)
+      enqueued_in_open_txn = nil
+      allow_any_instance_of(ModelFile).to receive(:convert_later) do
+        enqueued_in_open_txn = ActiveRecord::Base.connection.transaction_open?
+      end
+
+      described_class.resolve_batch([problem])
+
+      expect(enqueued_in_open_txn).to be(false)
+    end
   end
 end

@@ -246,18 +246,18 @@ RSpec.describe "Problems category classes" do
       klass: described_class,
       problem_factory: -> { create_problem(category: :nesting, problematic: create(:model)) }
 
-    it "marks resolving/in_progress, triggers merge, and returns { removed: true }" do
+    it "triggers merge, destroys the problem, and returns { removed: true }" do
       model = create(:model)
       allow(model).to receive(:contained_models).and_return([])
       allow(model).to receive(:merge!)
 
       problem = create_problem(category: :nesting, problematic: model)
+      problem_id = problem.id
 
       result = described_class.new.resolve!(problem, action: :merge)
 
       expect(result).to eq(removed: true)
-      expect(problem.reload).to be_resolving
-      expect(problem.in_progress).to be(true)
+      expect(Problem.unscoped.where(id: problem_id)).not_to exist
       expect(model).to have_received(:merge!).with([])
     end
   end

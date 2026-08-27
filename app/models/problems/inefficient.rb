@@ -16,7 +16,11 @@ module Problems
       case action
       when :convert
         problem.update!(state: :resolving, in_progress: true)
-        problem.problematic.convert_later :threemf
+        file = problem.problematic
+        # Unique FileConversionJob must not lock inside resolve_batch's write txn.
+        ActiveRecord.after_all_transactions_commit do
+          file.convert_later :threemf
+        end
         {in_progress: true}
       when :ignore
         problem.update!(ignored: true)

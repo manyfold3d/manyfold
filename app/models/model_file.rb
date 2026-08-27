@@ -19,7 +19,8 @@ class ModelFile < ApplicationRecord
   after_create :attach_existing_file_on_create!
 
   before_destroy :rescan_duplicates
-  after_commit :reattach!, on: :update, if: :filename_previously_changed?
+  # INIT-002/SPEC-003: storage key is filename + parent model path, not filename alone.
+  after_commit :reattach!, on: :update, if: :needs_storage_reattach?
   after_commit :check_parent_model_for_problems_later, on: [:create, :destroy]
 
   belongs_to :presupported_version, class_name: "ModelFile", optional: true
@@ -206,12 +207,11 @@ class ModelFile < ApplicationRecord
   end
 
   def reattach!
+    return if attachment.blank?
     if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
       old_path = attachment.id
       old_storage = attachment.storage
-      # Reattach
       attachment_attacher.attach attachment, storage: model.library.storage_key
-      # Remove previous file
       old_storage.delete old_path
       save!
     end
@@ -274,6 +274,10 @@ class ModelFile < ApplicationRecord
   end
 
   private
+
+  def needs_storage_reattach?
+    filename_previously_changed? || model_id_previously_changed?
+  end
 
   def check_parent_model_for_problems_later
     return if suppress_problem_checks?

@@ -1,4 +1,5 @@
 require "rails_helper"
+require "support/mock_directory"
 
 # problems GET    /problems(.:format)                                                     problems#index
 #  problem PATCH  /problems/:id(.:format)                                                 problems#update
@@ -113,6 +114,37 @@ RSpec.describe "Problems" do
         end
         post resolve_problem_path(problem), params: {resolve: "1"}
         expect(response).to have_http_status(:redirect)
+      end
+    end
+
+    describe "POST /problems/:id/resolve nesting merge", :as_moderator do
+      around do |ex|
+        MockDirectory.create([
+          "parent/parent_part.stl",
+          "parent/child/child_part.stl"
+        ]) do |path|
+          @library_path = path
+          ex.run
+        end
+      end
+
+      it "persists merge and destroys the problem when uniqueness Redlock would raise" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+        library = create(:library, path: @library_path) # rubocop:todo RSpec/InstanceVariable
+        parent = create(:model, library: library, path: "parent")
+        child = create(:model, library: library, path: "parent/child")
+        create(:model_file, model: parent, filename: "parent_part.stl")
+        create(:model_file, model: child, filename: "child_part.stl")
+        problem = create(:problem_on_model, category: :nesting, problematic: parent)
+        problem_id = problem.id
+        stub_unique_enqueue_redlock_error
+
+        post resolve_problem_path(problem), params: {resolve: "1"}
+
+        expect(response).to have_http_status(:redirect)
+        expect(response).not_to have_http_status(:internal_server_error)
+        expect(Problem.unscoped.where(id: problem_id)).not_to exist
+        expect(MergeHistory.where(target_model: parent).count).to eq 1
+        expect(Model.where(id: child.id)).not_to exist
       end
     end
   end

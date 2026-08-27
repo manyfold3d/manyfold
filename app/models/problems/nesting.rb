@@ -15,6 +15,7 @@ module Problems
       when :merge
         problem.update!(state: :resolving, in_progress: true)
         problem.problematic.merge!(problem.problematic.contained_models)
+        problem.destroy!
         {removed: true}
       when :ignore
         problem.update!(ignored: true)

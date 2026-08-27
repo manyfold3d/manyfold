@@ -113,6 +113,19 @@ RSpec.describe ModelFile do
     end
   end
 
+  it "reattach! is a no-op when the attachment already matches path_within_library" do
+    file = create(:model_file)
+    file.attachment_attacher.set ModelFileUploader.uploaded_file(
+      storage: file.model.library.storage_key,
+      id: file.path_within_library,
+      metadata: {filename: file.basename(include_extension: true)}
+    )
+    file.save!
+    before = file.reload.attachment.id
+    file.reattach!
+    expect(file.reload.attachment.id).to eq before
+  end
+
   it "mtime reports attachment modified time" do
     file = create(:model_file)
     expect(file.mtime).to be_present
