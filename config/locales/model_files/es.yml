@@ -31,7 +31,7 @@ es:
       prusa_slicer: Abrir en PrusaSlicer
       super_slicer: Abrir en SuperSlicer
     extract:
-      extraction_started:
+      extraction_started: Se ha iniciado la extracción del archivo.
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -51,7 +51,7 @@ es:
       details_heading: Detalles
       download:
         menu_header: Opciones de Descarga
-      extract:
+      extract: Extraer aquí
       notes_heading: Notas
       print_card:
         heading: Imprimir
