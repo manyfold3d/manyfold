@@ -12,6 +12,9 @@ en:
       download: Download
       load_more: Load more entries
       showing_chunk: Showing %{shown} of %{total} entries
+    card:
+      preview_loading: Generating object preview
+      preview_failed: Preview failed
     show:
       details: Entry details
       path: Path
