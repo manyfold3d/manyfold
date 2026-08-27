@@ -52,6 +52,7 @@ module Archive
       relative
     end
 
+    # INIT-003/SPEC-002: real mesh_thumbnail PNG is preview_ready; placeholder is not.
     def extract_mesh_and_preview!(entry)
       cache_rel = extract_to_cache!(entry)
       cache_abs = File.join(@library.path, cache_rel)
@@ -61,13 +62,19 @@ module Archive
 
       stl_path = mesh_path_for_thumbnail(cache_abs, entry)
       begin
-        if run_mesh_thumbnail_script(stl_path, preview_abs) || write_mesh_placeholder_preview!(entry, preview_abs)
+        unless stl_file?(stl_path)
+          mark_mesh_preview_failed!(entry, preview_abs, "unable to convert mesh to STL")
+          return
+        end
+
+        ok, error = run_mesh_thumbnail_script(stl_path, preview_abs)
+        if ok
           entry.update!(preview_path: preview_rel, status: "preview_ready", error_message: nil)
         else
-          entry.update!(status: "preview_failed", error_message: "thumbnail generation failed")
+          mark_mesh_preview_failed!(entry, preview_abs, error)
         end
       ensure
-        if stl_path != cache_abs && stl_path.present? && File.exist?(stl_path)
+        if stl_path.present? && stl_path != cache_abs && File.exist?(stl_path)
           FileUtils.rm_f(stl_path)
         end
       end
@@ -83,6 +90,7 @@ module Archive
         .call(destination: dest_path)
     end
 
+    # Filename/draw-text PNG is a fallback visual only — never preview_ready (INIT-003/SPEC-002).
     def write_mesh_placeholder_preview!(entry, dest_path)
       label = entry.extension.upcase.presence || "MESH"
       size_label = entry.size.to_i.positive? ? ActiveSupport::NumberHelper.number_to_human_size(entry.size) : "?"
@@ -146,29 +154,56 @@ module Archive
 
     def run_mesh_thumbnail_script(mesh_path, preview_path)
       script = Rails.root.join("scripts/mesh_thumbnail.mjs")
-      return false unless script.file?
-      return false unless system("command", "-v", "node", out: File::NULL, err: File::NULL)
+      return [false, "mesh_thumbnail script missing"] unless script.file?
+      return [false, "node not available"] unless system("command", "-v", "node", out: File::NULL, err: File::NULL)
+      return [false, "mesh_thumbnail requires an STL path"] unless stl_file?(mesh_path)
 
       require "open3"
       stdout, stderr, status = Open3.capture3("node", script.to_s, mesh_path, preview_path)
       ok = status.success? && File.file?(preview_path) && File.size(preview_path).positive?
       unless ok
+        detail = [stderr, stdout].map { |s| s.to_s.strip }.reject(&:blank?).join(" ")
         Rails.logger.warn(
           "[ArchiveEntryService] mesh_thumbnail failed status=#{status.exitstatus} " \
           "mesh=#{mesh_path} out=#{stdout.to_s.truncate(200)} err=#{stderr.to_s.truncate(400)}"
         )
+        return [false, (detail.presence || "thumbnail generation failed").truncate(500)]
       end
-      ok
+      [true, nil]
     rescue => e
       Rails.logger.warn("[ArchiveEntryService] mesh_thumbnail error: #{e.class}: #{e.message}")
-      false
+      [false, "#{e.class}: #{e.message}".truncate(500)]
     end
 
     def mesh_path_for_thumbnail(cache_abs, entry)
-      return cache_abs if entry.extension == "stl"
-      return cache_abs unless defined?(Assimp)
+      return cache_abs if entry.extension == "stl" || stl_file?(cache_abs)
 
-      convert_mesh_to_stl_tempfile!(cache_abs) || cache_abs
+      unless load_assimp!
+        Rails.logger.warn("[ArchiveEntryService] Assimp unavailable; refusing non-STL thumbnail")
+        return nil
+      end
+
+      convert_mesh_to_stl_tempfile!(cache_abs)
+    end
+
+    def load_assimp!
+      require "assimp-ffi" unless defined?(Assimp)
+      defined?(Assimp)
+    rescue LoadError, ScriptError => e
+      Rails.logger.warn("[ArchiveEntryService] assimp-ffi load failed: #{e.class}: #{e.message}")
+      false
+    end
+
+    def stl_file?(path)
+      path.present? && File.extname(path.to_s).downcase == ".stl"
+    end
+
+    def mark_mesh_preview_failed!(entry, preview_abs, error)
+      write_mesh_placeholder_preview!(entry, preview_abs) unless File.file?(preview_abs)
+      entry.update!(
+        status: "preview_failed",
+        error_message: error.to_s.truncate(500)
+      )
     end
 
     def convert_mesh_to_stl_tempfile!(source_path)
