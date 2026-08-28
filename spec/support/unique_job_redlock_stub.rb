@@ -2,7 +2,7 @@
 
 require "redlock/client"
 
-# INIT-002/SPEC-002: simulate uniqueness Redlock failure without a live Redis.
+# INIT-002/SPEC-002 + INIT-005/SPEC-002: simulate uniqueness Redlock failure without a live Redis.
 module UniqueJobRedlockStub
   UNIQUE_JOB_CLASSES = [
     Scan::Model::CheckForProblemsJob,

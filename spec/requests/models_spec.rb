@@ -129,6 +129,18 @@ RSpec.describe "Models" do
           expect(library.models.first.tag_list).to include("a", "b", "c")
         end
 
+        # INIT-005/SPEC-002: update HTTP must not 500 when uniqueness Redlock raises (ADR 0004).
+        context "when uniqueness Redlock would raise", :as_moderator do
+          it "returns success and persists model attributes" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+            model = library.models.first
+            stub_unique_enqueue_redlock_error
+            put "/models/#{model.to_param}", params: {model: {notes: "soft-fail update note"}}
+            expect(response).to have_http_status(:redirect)
+            expect(response).not_to have_http_status(:internal_server_error)
+            expect(model.reload.notes).to eq "soft-fail update note"
+          end
+        end
+
         it "clears returnable session param", :as_moderator do
           put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "c"]}}
           expect(session[:return_after_new]).to be_nil
