@@ -1,0 +1,19 @@
+<%# locals: (print_host:) %>
+<%= form_with model: [:settings, print_host], class: "tabular-form space-y-4 max-w-xl" do |form| %>
+  <% if print_host.errors.any? %>
+    <div class="rounded-lg border border-danger/40 bg-danger/10 p-3 text-sm text-danger">
+      <ul class="list-disc pl-5">
+        <% print_host.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= text_input_row form, :name %>
+  <%= text_input_row form, :endpoint, help: t(".endpoint_help") %>
+  <%= text_input_row form, :mainboard_id, help: t(".mainboard_help") %>
+  <p class="text-sm text-secondary-500"><%= t(".protocol_note") %></p>
+
+  <%= form.submit class: "inline-flex items-center px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700" %>
+<% end %>

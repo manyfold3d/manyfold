@@ -27,6 +27,7 @@ import TagInputController from './tag_input_controller'
 import TagSectionController from './tag_section_controller'
 import TourController from './tour_controller'
 import UploadController from './upload_controller'
+import PrintHostMonitorController from './print_host_monitor_controller'
 
 application.register('bulk-edit', BulkEditController)
 application.register('caber-advanced', CaberAdvancedController)
@@ -51,3 +52,4 @@ application.register('tag-input', TagInputController)
 application.register('tag-section', TagSectionController)
 application.register('tour', TourController)
 application.register('upload', UploadController)
+application.register('print-host-monitor', PrintHostMonitorController)

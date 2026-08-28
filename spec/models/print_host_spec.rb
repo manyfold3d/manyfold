@@ -36,6 +36,10 @@ RSpec.describe PrintHost do
       expect(described_class.create(attributes.merge(endpoint: "rtsp://10.0.0.199:554/video"))).not_to be_valid
     end
 
+    it "rejects public IP endpoints" do
+      expect(described_class.create(attributes.merge(endpoint: "http://8.8.8.8:3030"))).not_to be_valid
+    end
+
     it "rejects malformed mainboard_id" do
       expect(described_class.create(attributes.merge(mainboard_id: "not-hex!"))).not_to be_valid
     end

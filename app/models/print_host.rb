@@ -16,6 +16,7 @@ class PrintHost < ApplicationRecord
   validates :endpoint, presence: true
   validates :protocol, presence: true, inclusion: {in: PROTOCOLS.keys}
   validate :endpoint_must_be_http_url
+  validate :endpoint_must_be_private_lan
   validate :mainboard_id_format
 
   def service
@@ -41,6 +42,18 @@ class PrintHost < ApplicationRecord
     end
   rescue URI::InvalidURIError
     errors.add(:endpoint, :invalid)
+  end
+
+  def endpoint_must_be_private_lan
+    return if endpoint.blank?
+    return if errors[:endpoint].present?
+
+    uri = URI.parse(endpoint)
+    unless Print::EndpointAllowlist.allowed?(uri.host)
+      errors.add(:endpoint, :not_private_lan)
+    end
+  rescue URI::InvalidURIError
+    # covered by endpoint_must_be_http_url
   end
 
   def mainboard_id_format

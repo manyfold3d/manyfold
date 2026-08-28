@@ -40,6 +40,16 @@ Rails.application.routes.draw do
         get :integrations
       end
       resources :libraries, only: [:index]
+      resources :print_hosts do
+        member do
+          get :status
+          get :snapshot
+          post :pause
+          post :stop
+          post :continue
+          post :upload_slice
+        end
+      end
     end
     mount Sidekiq::Web => "/admin/sidekiq"
     mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?

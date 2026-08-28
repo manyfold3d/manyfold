@@ -1,0 +1,61 @@
+<div class="space-y-6"
+     data-controller="print-host-monitor"
+     data-print-host-monitor-status-url-value="<%= status_settings_print_host_path(@print_host) %>"
+     data-print-host-monitor-snapshot-url-value="<%= snapshot_settings_print_host_path(@print_host) %>"
+     data-print-host-monitor-interval-value="5000">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h3 class="text-xl font-semibold text-secondary-900 dark:text-secondary-100"><%= @print_host.name %></h3>
+      <p class="text-sm text-secondary-500 font-mono"><%= @print_host.endpoint %> · SDCP</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <%= link_to t("general.edit"), edit_settings_print_host_path(@print_host), class: "inline-flex items-center px-3 py-1.5 rounded-lg border border-secondary-300 text-sm no-underline" if policy(@print_host).update? %>
+      <%= link_to t(".back_list"), settings_print_hosts_path, class: "inline-flex items-center px-3 py-1.5 rounded-lg border border-secondary-300 text-sm no-underline" %>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <section class="rounded-xl border border-secondary-200 dark:border-secondary-600 p-4">
+      <h4 class="text-sm font-semibold uppercase tracking-wide text-secondary-500 mb-3"><%= t(".camera") %></h4>
+      <img data-print-host-monitor-target="snapshot"
+           src="<%= snapshot_settings_print_host_path(@print_host) %>"
+           alt="<%= t(".camera_alt") %>"
+           class="w-full max-h-[28rem] object-contain bg-black rounded-lg" />
+      <p class="text-xs text-secondary-500 mt-2"><%= t(".camera_note") %></p>
+    </section>
+
+    <section class="rounded-xl border border-secondary-200 dark:border-secondary-600 p-4 space-y-4">
+      <h4 class="text-sm font-semibold uppercase tracking-wide text-secondary-500"><%= t(".status") %></h4>
+      <pre data-print-host-monitor-target="status"
+           class="text-xs font-mono whitespace-pre-wrap break-all bg-secondary-50 dark:bg-secondary-900/40 rounded-lg p-3 min-h-[8rem]"><%= (@status || {}).to_json %></pre>
+
+      <% if policy(@print_host).control? %>
+        <div class="flex flex-wrap gap-2">
+          <%= button_to t(".pause"), pause_settings_print_host_path(@print_host), method: :post, class: "inline-flex px-3 py-1.5 rounded-lg border border-secondary-300 text-sm" %>
+          <%= button_to t(".continue"), continue_settings_print_host_path(@print_host), method: :post, class: "inline-flex px-3 py-1.5 rounded-lg border border-secondary-300 text-sm" %>
+          <%= button_to t(".stop"), stop_settings_print_host_path(@print_host), method: :post, class: "inline-flex px-3 py-1.5 rounded-lg border border-danger text-danger text-sm", data: {confirm: t(".confirm_stop")} %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+
+  <% if policy(@print_host).control? %>
+    <section class="rounded-xl border border-secondary-200 dark:border-secondary-600 p-4">
+      <h4 class="text-sm font-semibold uppercase tracking-wide text-secondary-500 mb-3"><%= t(".send_title") %></h4>
+      <p class="text-sm text-secondary-600 dark:text-secondary-400 mb-3"><%= t(".send_help") %></p>
+      <%= form_with url: upload_slice_settings_print_host_path(@print_host), method: :post, multipart: true, class: "flex flex-wrap items-end gap-3" do %>
+        <div>
+          <label class="block text-sm mb-1"><%= t(".file_label") %></label>
+          <input type="file" name="print[file]" accept=".ctb,.jxs,model/x-chitubox,model/x-uniformation-jxs" required class="block text-sm" />
+        </div>
+        <label class="inline-flex items-center gap-2 text-sm">
+          <input type="checkbox" name="print[start]" value="1" checked />
+          <%= t(".start_after_upload") %>
+        </label>
+        <button type="submit" class="inline-flex items-center px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 text-sm">
+          <%= t(".send_submit") %>
+        </button>
+      <% end %>
+    </section>
+  <% end %>
+</div>

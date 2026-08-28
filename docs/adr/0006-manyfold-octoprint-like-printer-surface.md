@@ -74,7 +74,7 @@ not connect to OctoPrint.**
 | `Print::SdcpService` + job + policy | `INIT-007/SPEC-003` |
 | UI (camera, status, control, send) | `INIT-007/SPEC-004` |
 | go2rtc + NetworkPolicy + pin | `INIT-007/SPEC-005` |
-| Security / diagrams | `INIT-007/SPEC-006`, `SPEC-007` |
+| Security / diagrams | `INIT-007/SPEC-006`, `SPEC-007` — see `home_k3/sdd/initiatives/INIT-007-…/design/architecture.md` |
 
 ## Consequences
 

@@ -2,6 +2,11 @@
 en:
   activerecord:
     attributes:
+      print_host:
+        endpoint: Endpoint
+        mainboard_id: Mainboard ID
+        name: Name
+        protocol: Protocol
       collection:
         ai_indexable: Allow use for AI training
         caption: Caption
@@ -133,6 +138,10 @@ en:
         username: Account name
     errors:
       models:
+      print_host:
+        attributes:
+          endpoint:
+            not_private_lan: must resolve to a private LAN address (RFC1918)
         collection:
           attributes:
             collection:
@@ -1023,3 +1032,7 @@ en:
       next: Next ›
       previous: "‹ Prev"
       truncate: "…"
+
+  print_hosts:
+    protocols:
+      sdcp: SDCP (UniFormation / ChituManager)
