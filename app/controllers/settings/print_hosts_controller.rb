@@ -62,15 +62,15 @@ module Settings
     end
 
     def pause
-      control! { @print_host.service.pause_print }
+      control!("pause") { @print_host.service.pause_print }
     end
 
     def stop
-      control! { @print_host.service.stop_print }
+      control!("stop") { @print_host.service.stop_print }
     end
 
     def continue
-      control! { @print_host.service.continue_print }
+      control!("continue") { @print_host.service.continue_print }
     end
 
     def status
@@ -125,10 +125,10 @@ module Settings
       params.expect(print_host: [:name, :endpoint, :mainboard_id])
     end
 
-    def control!
+    def control!(action)
       authorize @print_host, :control?
       yield
-      redirect_to settings_print_host_path(@print_host), notice: t(".success")
+      redirect_to settings_print_host_path(@print_host), notice: t("settings.print_hosts.#{action}.success")
     rescue Print::SdcpService::Error => e
       redirect_to settings_print_host_path(@print_host), alert: e.message
     end

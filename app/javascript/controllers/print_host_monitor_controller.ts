@@ -33,7 +33,7 @@ export default class extends Controller {
   }
 
   async refreshStatus (): Promise<void> {
-    if (!this.hasStatusTarget || !this.statusUrlValue) return
+    if (!this.hasStatusTarget || this.statusUrlValue === '') return
     try {
       const response = await fetch(this.statusUrlValue, {
         headers: { Accept: 'application/json' },
@@ -48,7 +48,7 @@ export default class extends Controller {
   }
 
   async refreshSnapshot (): Promise<void> {
-    if (!this.hasSnapshotTarget || !this.snapshotUrlValue) return
+    if (!this.hasSnapshotTarget || this.snapshotUrlValue === '') return
     const url = `${this.snapshotUrlValue}${this.snapshotUrlValue.includes('?') ? '&' : '?'}t=${Date.now()}`
     this.snapshotTarget.src = url
   }

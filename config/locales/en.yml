@@ -138,10 +138,10 @@ en:
         username: Account name
     errors:
       models:
-      print_host:
-        attributes:
-          endpoint:
-            not_private_lan: must resolve to a private LAN address (RFC1918)
+        print_host:
+          attributes:
+            endpoint:
+              not_private_lan: must resolve to a private LAN address (RFC1918)
         collection:
           attributes:
             collection:
@@ -191,6 +191,13 @@ en:
               already_presupported: cannot be set on a presupported file
               not_supported: is not a presupported file
     models:
+      print_host:
+        few: Printers
+        many: Printers
+        one: Printer
+        other: Printers
+        two: Printers
+        zero: Printers
       acts_as_taggable_on/tag:
         few: Tags
         many: Tags
@@ -733,6 +740,7 @@ en:
       unfollowed: Unfollowed %{actor}
   general:
     are_you_sure: Are you sure?
+    back: Back
     collapse: Collapse
     copy_fediverse_handle: Copy Fediverse handle to clipboard
     delete: Delete
