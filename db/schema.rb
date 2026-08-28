@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_23_020000) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
   enable_extension "pg_catalog.plpgsql"
@@ -472,6 +472,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_23_020000) do
     t.string "owner_type"
     t.index ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
+  end
+
+  create_table "print_hosts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "protocol", null: false
+    t.string "endpoint", null: false
+    t.string "credentials"
+    t.string "mainboard_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mainboard_id"], name: "index_print_hosts_on_mainboard_id"
+    t.index ["protocol"], name: "index_print_hosts_on_protocol"
   end
 
   create_table "problems", force: :cascade do |t|

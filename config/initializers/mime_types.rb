@@ -44,6 +44,8 @@ Mime::Type.register "model/x3d", :x3d, ["model/x3d+xml", "model/x3d-vrml", "mode
 Mime::Type.register "text/x-gcode", :gcode, [], ["bgcode"]
 Mime::Type.register "model/x-lychee", :lychee, [], ["lys", "lyt"]
 Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
+# UniFormation / SDCP sliced job format (GK3 Pro SupportFileType includes JXS)
+Mime::Type.register "model/x-uniformation-jxs", :jxs, [], ["jxs"]
 
 # Images
 Mime::Type.register "image/webp", :webp
