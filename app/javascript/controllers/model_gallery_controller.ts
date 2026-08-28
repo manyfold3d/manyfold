@@ -99,6 +99,8 @@ export default class extends Controller {
     return Array.from(this.dialogTarget.querySelectorAll<HTMLElement>(sel))
   }
 
+  // INIT-006/SPEC-002: Escape closes; Tab focus trap. Arrow flip lives on carousel
+  // (browse interval 0) so it connects after turbo-frame load without double-firing.
   private trapKeydown (event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       this.close(event)

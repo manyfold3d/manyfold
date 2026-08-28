@@ -45,8 +45,11 @@ class Components::PreviewFrame < Components::Base
     end
   end
 
+  # INIT-006/SPEC-002: lite (browse/grid) and remote Image use contain so the
+  # full preview is visible in the reserved 4:3 slot; non-lite keeps cover.
   def image_class
-    "absolute inset-0 w-full h-full object-cover" + (needs_hiding? ? " sensitive" : "")
+    fit = @lite ? "object-contain" : "object-cover"
+    "absolute inset-0 w-full h-full #{fit}" + (needs_hiding? ? " sensitive" : "")
   end
 
   def render_local

@@ -22,14 +22,34 @@ export default class extends Controller {
 
   private timer: ReturnType<typeof setInterval> | null = null
   private manual = false
+  // INIT-006/SPEC-002: browse mode (interval 0) listens for arrows after turbo-frame connect.
+  private readonly boundBrowseKeydown = (e: KeyboardEvent): void => this.onBrowseKeydown(e)
 
   connect (): void {
     this.syncSlide()
     this.startTimer()
+    if (this.intervalValue <= 0) {
+      this.element.ownerDocument.addEventListener('keydown', this.boundBrowseKeydown)
+    }
   }
 
   disconnect (): void {
     this.stopTimer()
+    if (this.intervalValue <= 0) {
+      this.element.ownerDocument.removeEventListener('keydown', this.boundBrowseKeydown)
+    }
+  }
+
+  private onBrowseKeydown (event: KeyboardEvent): void {
+    const dialog = this.element.closest('dialog')
+    if (dialog != null && !dialog.open) return
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      this.prev()
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      this.next()
+    }
   }
 
   next (): void {

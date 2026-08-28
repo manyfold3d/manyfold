@@ -59,5 +59,4 @@ class Components::ModelCardPreview < Components::Base
       i(class: "bi bi-check-lg model-card-selection-check text-white text-xs opacity-0 transition-opacity pointer-events-none font-bold", "aria-hidden": "true")
     end
   end
-
 end
