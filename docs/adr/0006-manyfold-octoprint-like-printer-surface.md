@@ -1,129 +1,112 @@
-# ADR 0006: Manyfold as OctoPrint-like printer surface (GK3 Pro Phase 1)
+# ADR 0006: Manyfold as OctoPrint-like printer surface via SDCP (GK3 Pro)
 
-**Status:** Accepted  
+**Status:** Accepted (amended 2026-08-28)  
 **Date:** 2026-08-28  
-**Provenance:** `INIT-007/SPEC-001`
+**Provenance:** `INIT-007/SPEC-001`  
+**Amendment source:** `RSCH-002`
 
-> This ADR is home_k3 SDD `INIT-007-manyfold-uniformation-print-monitor`.
-> It does **not** adopt “Manyfold connects to an external OctoPrint” as the
-> product for the operator’s UniFormation GK3 Pro. Upstream PrintHost’s
-> OctoPrint/Moonraker *clients* remain useful for *other* hosts later; they are
-> not the Phase 1 story for this printer.
+> Product: Manyfold **is** the OctoPrint-*like* surface. Control plane for UniFormation
+> GK3 Pro is **SDCP 3.0**, not an external OctoPrint. Upstream OctoPrint/Moonraker
+> clients may exist later for *other* hosts; they are not Phase 1 for this printer.
 
 ---
 
 ## Context
 
-Operators want Manyfold to feel like **opening OctoPrint**: see the live camera,
-know the printer is registered, and (when a LAN protocol exists) start work from
-files already in the library — **without** installing or pointing Manyfold at a
-separate OctoPrint instance for this machine.
+Operators want Manyfold to feel like opening OctoPrint: live camera, status,
+pause/stop, and send a sliced file — without installing OctoPrint.
 
-Live facts (operator probe, 2026-08-28):
+**Live prove (`RSCH-002`, 2026-08-28) on `10.0.0.199`:**
 
 | Fact | Detail |
 | --- | --- |
-| Device | UniFormation **GK3 Pro** @ `10.0.0.199` |
-| Open | TCP **554 RTSP** (`ireader/media-server`); SDP H.264 `RTP/AVP 96` |
-| Canonical URL | `rtsp://10.0.0.199:554/` (path-agnostic) |
-| Closed | 80, 443, 3000, 3031, 8080, 8081, 8554, 5000 — no HTTP print UI |
-| Control today | UniFormation App / CHITUBOX remote (proprietary) |
+| Protocol | CBD-Tech **SDCP V3.0.0** (ChituManager family) |
+| Discover | UDP `:3000` payload `M99999` → UniFormation / GK3 GK3Pro / `MainboardID=d307202d8c1e0100` |
+| Control | `ws://10.0.0.199:3030/websocket` — Cmd 0 status, Cmd 1 attributes |
+| Caps | `FILE_TRANSFER`, `PRINT_CONTROL`, `VIDEO_STREAM` |
+| Files | `CTB`, `JXS` |
+| Video | Cmd 386 → `rtsp://10.0.0.199:554/video` |
+| Upload HTTP | `http://10.0.0.199:3030/uploadFile/upload` |
 
-Research (`RSCH-001`) correctly recommended not greenfielding a full OctoPrint
-clone for FDM hosts that already run OctoPrint. That advice does **not** mean
-this initiative’s UX is “configure OctoPrint URL.” For GK3 Pro there **is** no
-OctoPrint to connect to.
-
-Browsers cannot play RTSP natively. In-app live view requires a **cluster
-restreamer** (e.g. go2rtc) that pulls RTSP and offers WebRTC and/or HLS behind
+Browsers cannot play RTSP. Live view uses a **cluster restreamer** (go2rtc) behind
 Manyfold authz.
+
+Early TCP-only scans that reported “no print API” are **superseded** by SDCP prove.
 
 ## Decision
 
-**Phase 1 product: Manyfold *is* the OctoPrint-like surface for this printer —
-live camera + printer registry + honest control UX — not an OctoPrint client.**
+**Phase 1: Manyfold talks SDCP to the GK3 Pro and restreams its camera — it does
+not connect to OctoPrint.**
 
-1. **Product framing — “like OctoPrint,” not “to OctoPrint.”** User-facing copy,
-   settings, and ADRs describe a **printer monitor/control surface inside
-   Manyfold**. Forbidden: primary CTA or settings that imply the operator must
-   run OctoPrint (or Moonraker) for *this* GK3 Pro. Covered: REQ-001 reframed,
-   operator clarification 2026-08-28.
+1. **Product framing — “like OctoPrint,” not “to OctoPrint.”** No primary CTA that
+   requires an OctoPrint install for this machine.
 
-2. **Printer registry (data shape).** Persist a first-class printer/host record
-   (name, endpoint/source, credentials if any, camera/stream association). Prefer
-   upstream `PrintHost` table/model **shape** from Manyfold ≥ v0.145 /
-   `upstream-v0.146` so we do not invent a second registry — but Phase 1 AC for
-   GK3 does **not** require enabling OctoPrint/Moonraker/PrusaLink/Odyssey
-   “Print with…” against this device. Covered: REQ-002, REQ-003, GR-001.
+2. **Control plane = SDCP.** Implement `Print::SdcpService` (discover, `ok?`,
+   attributes, status, video enable/URL, HTTP upload, start/pause/stop/continue).
+   Spec: [SDCP 3.0](https://github.com/cbd-tech/SDCP-Smart-Device-Control-Protocol-V3.0.0).
 
-3. **Live camera is P0.** Authenticated Manyfold UI shows the GK3 stream via a
-   **cluster restreamer** (RTSP → WebRTC and/or HLS). Source of truth:
-   `rtsp://10.0.0.199:554/`. Never claim native browser RTSP. Covered: REQ-004,
-   GR-004. SPEC-004 + SPEC-005 own implementation.
+3. **Printer registry.** Upstream `PrintHost` **shape**; `protocol: "sdcp"`;
+   persist endpoint base (`http://IP:3030`) and `mainboard_id`. Do not invent a
+   second registry.
 
-4. **Print start/cancel Phase 1 honesty.** Until a documented or reverse-engineered
-   UniFormation LAN print API is proven, start/cancel remains the **vendor app**,
-   with clear in-app copy and optional docs link — **not** a fake OctoPrint upload
-   success. In-app pause/temps/HMI is out of scope for Phase 1. Covered: REQ-007,
-   REQ-008, REQ-010, REQ-011, GR-002, GR-005.
+4. **Live camera.** Restream `rtsp://10.0.0.199:554/video` (or URL from Cmd 386)
+   via go2rtc → WebRTC/HLS; never native browser RTSP.
 
-5. **Upstream protocol clients are deferred for this printer.** Porting
-   `Print::OctoprintService` / Moonraker / etc. is allowed as scaffolding for
-   *future other hosts*, but must be **gated** so unsupported protocols cannot
-   report success against GK3. This initiative’s Phase 1 acceptance is camera +
-   registry + authz + network prove — not “send GCODE to OctoPrint.” Covered:
-   GR-002, GR-005.
+5. **Send-from-library.** Phase 1 sends **already-sliced** `CTB`/`JXS` only.
+   Upload via SDCP HTTP then Cmd `128`. Fail loud on format/encryption rejection —
+   no silent success. Auto-slice STL/3MF is out of scope.
 
-6. **Secrets and exposure.** No RTSP passwords, printer tokens, or API keys in
-   Git. Restreamer is cluster-internal; Manyfold authz is the front door. Vault /
-   ESO / Rails encrypted credentials only. Covered: REQ-006, GR-003.
+6. **Reject for this printer:** OctoPrint, Moonraker, PrusaLink, and Odyssey as
+   the GK3 path (wrong stack / unproven on stock UniFormation).
 
-7. **Cluster reachability.** Restreamer (and Manyfold if needed) must reach
-   `10.0.0.199:554` via NetworkPolicy / routing; fail loud if unreachable.
-   Covered: REQ-005.
+7. **Secrets / exposure.** Cluster-internal go2rtc; Manyfold session auth front
+   door; NetworkPolicy egress to printer CIDR for **3000/udp, 3030/tcp, 554/tcp**;
+   no secrets in Git.
+
+8. **Cluster reachability.** Fail loud if SDCP or RTSP unreachable from pods.
 
 ## Ownership
 
 | Concern | Owner |
 | --- | --- |
-| Invariant (OctoPrint-*like* surface, not OctoPrint client) | This ADR (`INIT-007/SPEC-001`) |
-| Printer registry schema | `INIT-007/SPEC-002` |
-| Service/policy scaffold | `INIT-007/SPEC-003` |
-| Settings + camera UI | `INIT-007/SPEC-004` |
-| Restreamer + NetworkPolicy + pin | `INIT-007/SPEC-005` |
-| Security review / diagrams | `INIT-007/SPEC-006`, `SPEC-007` |
+| Invariant (SDCP surface, not OctoPrint client) | This ADR |
+| Registry schema | `INIT-007/SPEC-002` |
+| `Print::SdcpService` + job + policy | `INIT-007/SPEC-003` |
+| UI (camera, status, control, send) | `INIT-007/SPEC-004` |
+| go2rtc + NetworkPolicy + pin | `INIT-007/SPEC-005` |
+| Security / diagrams | `INIT-007/SPEC-006`, `SPEC-007` |
 
 ## Consequences
 
-- Operators get live camera in Manyfold without installing OctoPrint.
-- Job push from library waits on UniFormation protocol research (parked).
-- Authors must not ship “Print with OctoPrint” against GK3 without a live `ok?`.
-- Future FDM users who *do* run OctoPrint can reuse PrintHost clients later under
-  a separate prove — outside Phase 1 AC for this initiative.
+- Operators get camera + status + control + (when format works) send-to-print in
+  Manyfold without OctoPrint.
+- ChituManager / UniFormation App remain valid alternate clients on the same SDCP.
+- Authors must not ship “Print with OctoPrint” against GK3.
 
 ## Rejected approaches
 
 | Approach | Why rejected |
 | --- | --- |
-| Primary path = configure Manyfold → external OctoPrint for GK3 | No OctoPrint on device; wrong operator ask |
-| Greenfield full OctoPrint HMI (temps, plugins, GCODE terminal) | Out of scope; vendor app owns control today |
-| Native `<video src="rtsp://…">` in browser | Browsers do not speak RTSP |
-| Public LoadBalancer for raw RTSP | Security; GR-003 |
-| Claim Odyssey/Moonraker works on stock UniFormation | Unproven; GR-005 |
-| Second parallel “camera device” table beside PrintHost | GR-001 — one registry |
+| Connect Manyfold → external OctoPrint for GK3 | No OctoPrint; wrong ask |
+| Vendor-app-only Phase 1 (camera only) | Superseded — SDCP proven (`RSCH-002`) |
+| Odyssey `:12357` client | Wrong engine for stock UniFormation |
+| Native browser RTSP | Unsupported |
+| Public LB for RTSP/SDCP | Security |
+| Second camera-only table | One PrintHost registry |
 
 ## Forbidden
 
 | Claim / pattern | Forbidden because |
 | --- | --- |
-| “Connect your OctoPrint” as the GK3 setup story | Operator ask is Manyfold *as* the surface |
-| Silent success on print upload when protocol unsupported | Honesty / GR-002 |
-| World-readable stream URL without session authz | REQ-006 |
-| `??` inventing camera URL or inventing OctoPrint base URL | Fail loud |
+| “Connect your OctoPrint” as GK3 setup | Operator ask + wrong stack |
+| Silent upload/start success when SDCP Nacks | Honesty |
+| World-readable stream or unauthenticated print cmds | Authz |
+| Advertising send for GCODE/STL without slice | GR-006 |
 | Secrets in GitOps plaintext | GR-003 |
 
 ## References
 
-- `RSCH-001` + addendum (operator RTSP/SDP probe)
-- Upstream PrintHost (Manyfold ≥ v0.145) — shape only for Phase 1
+- `RSCH-002` — how-to + live SDCP prove  
+- `RSCH-001` — PrintHost shape (partially superseded on live API)  
+- SDCP 3.0 MIT spec — cbd-tech/SDCP-Smart-Device-Control-Protocol-V3.0.0  
 - Initiative: `INIT-007-manyfold-uniformation-print-monitor`
