@@ -971,6 +971,23 @@ RSpec.describe Model do
         expect { model.check_for_problems_later }.to have_enqueued_job(Scan::Model::CheckForProblemsJob)
       end
     end
+
+    # INIT-005/SPEC-002: soft-fail uniqueness Redlock on interactive enqueue (ADR 0004).
+    it "does not raise when uniqueness Redlock fails" do
+      model = create(:model)
+      stub_unique_enqueue_redlock_error
+      expect { model.check_for_problems_later(delay: 0.seconds) }.not_to raise_error
+    end
+
+    it "leaves global uniqueness on_redis_connection_error unset" do
+      initializer = File.read(Rails.root.join("config/initializers/active_job_uniqueness.rb"))
+      expect(initializer).not_to match(/^\s*config\.on_redis_connection_error\s*=/)
+    end
+
+    it "keeps CheckForProblemsJob unique until_executed" do
+      source = File.read(Rails.root.join("app/jobs/scan/model/check_for_problems_job.rb"))
+      expect(source).to match(/unique\s+:until_executed/)
+    end
   end
 
   it "detects if a model has both supported and unsupported files" do

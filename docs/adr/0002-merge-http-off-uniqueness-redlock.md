@@ -76,6 +76,9 @@ Spark `ApplySparkMergePlanJob` inherits flag-stamping; HTTP acceptance does not 
   Redis PVC as the merge-500 fix.
 - Deploy of the app-layer fix requires a new pinned fork image (SPEC-004). Redis YAML changes
   damp descheduler bounce; they are not sufficient-alone.
+- Related: interactive **model update** is the same uniqueness-Redlock HTTP class on a
+  different surface — see ADR 0004 (`INIT-005`). Merge/resolve ownership in this ADR is
+  unchanged.
 
 ## Rejected approaches
 
@@ -106,6 +109,7 @@ Spark `ApplySparkMergePlanJob` inherits flag-stamping; HTTP acceptance does not 
 - Initiative: `INIT-002-manyfold-merge-http-off-redlock`
 - Implements: SPEC-002 (flags / no unique enqueue / destroy row), SPEC-003 (defer `reattach!`),
   SPEC-004 (Redis anti-evict + readiness + fork pin; no PVC)
+- Related: `docs/adr/0004-model-update-http-off-redlock-raise.md` (`INIT-005`) — model-update HTTP
 
 ---
 

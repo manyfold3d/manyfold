@@ -313,7 +313,15 @@ class Model < ApplicationRecord
       # Cache store doesn't support `unless_exist`; fall back to job uniqueness.
     end
 
-    Scan::Model::CheckForProblemsJob.set(wait: delay).perform_later(id)
+    # INIT-005/SPEC-002: uniqueness Redlock must not fail interactive update HTTP (ADR 0004).
+    begin
+      Scan::Model::CheckForProblemsJob.set(wait: delay).perform_later(id)
+    rescue Redlock::LockAcquisitionError, RedisClient::ConnectionError, RedisClient::CannotConnectError => e
+      Rails.logger.warn(
+        "[Model#check_for_problems_later] skipped uniqueness lock failure " \
+        "model_id=#{id} error_class=#{e.class.name}"
+      )
+    end
   end
 
   def organize_later(delay: 5.seconds)
