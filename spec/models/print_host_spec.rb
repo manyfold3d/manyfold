@@ -55,5 +55,12 @@ RSpec.describe PrintHost do
     it "returns an SdcpService" do
       expect(print_host.service).to be_a(Print::SdcpService)
     end
+
+    it "enqueues SendFileToPrintHostJob" do
+      file = instance_double(ModelFile)
+      expect {
+        print_host.print_later(file: file)
+      }.to have_enqueued_job(SendFileToPrintHostJob).with(print_host, file)
+    end
   end
 end

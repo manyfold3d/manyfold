@@ -27,7 +27,7 @@ class PrintHost < ApplicationRecord
   end
 
   def print_later(file:)
-    raise NotImplementedError, "SendFileToPrintHostJob lands in INIT-007/SPEC-003"
+    SendFileToPrintHostJob.perform_later(self, file)
   end
 
   private

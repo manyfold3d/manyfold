@@ -200,6 +200,9 @@ gem "reverse_markdown", "~> 3.0"
 
 gem "graphlient", "~> 0.8.0"
 
+# SDCP WebSocket framing (Print::SdcpService) — also pulled by selenium; declare direct use.
+gem "websocket", "~> 1.2"
+
 gem "webmock", "~> 3.26", group: :test
 
 gem "image_processing"
