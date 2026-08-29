@@ -58,6 +58,9 @@ class Model < ApplicationRecord
   has_many :model_files, dependent: :destroy
   has_many :archive_entries, through: :model_files
   has_many :merge_histories, foreign_key: :target_model_id, dependent: :destroy, inverse_of: :target_model
+  has_many :sliced_artifacts, dependent: :destroy
+  has_many :print_jobs, dependent: :nullify
+  has_many :print_curation_notes, dependent: :destroy
   acts_as_taggable_on :tags
 
   accepts_nested_attributes_for :creator

@@ -98,11 +98,69 @@ en:
         size: File Size
         unsupported_version: Unsupported version
         y_up: Y Up
+      print_curation_note:
+        body: Note
+        model: Model
+        user: Author
       print_host:
+        brand: Brand
+        build_x_mm: Build X (mm)
+        build_y_mm: Build Y (mm)
+        build_z_mm: Build Z (mm)
         endpoint: Endpoint
+        fep_cycles: FEP cycles
+        firmware: Firmware
+        lcd_hours: LCD hours
+        mac_address: MAC address
         mainboard_id: Mainboard ID
+        machine_model: Machine model
         name: Name
+        native_formats: Native formats
         protocol: Protocol
+        resolution_h: Resolution height
+        resolution_w: Resolution width
+        storage_bytes_total: Storage total (bytes)
+        storage_bytes_used: Storage used (bytes)
+      print_job:
+        actual_duration_seconds: Actual duration (s)
+        actual_resin_ml: Actual resin (ml)
+        current_layer: Current layer
+        estimated_duration_seconds: Estimated duration (s)
+        estimated_resin_ml: Estimated resin (ml)
+        failure_note: Failure note
+        finished_at: Finished at
+        layer_count: Layers
+        model: Model
+        model_file: Model file
+        outcome: Outcome
+        plate_cleared_at: Plate cleared at
+        print_host: Printer
+        resin_profile: Resin profile
+        sliced_artifact: Sliced artifact
+        started_at: Started at
+        state: State
+        user: User
+      print_vat:
+        fep_cycles: FEP cycles
+        identity: Vat identity
+        print_host: Printer
+        resin_bottle: Resin bottle
+        status: Status
+      resin_bottle:
+        brand: Brand
+        capacity_ml: Capacity (ml)
+        color: Color
+        opened_on: Opened on
+        print_host: Printer
+        remaining_ml: Remaining (ml)
+      sliced_artifact:
+        estimated_duration_seconds: Estimated duration (s)
+        estimated_layers: Estimated layers
+        estimated_resin_ml: Estimated resin (ml)
+        format: Format
+        model: Model
+        model_file: Model file
+        print_host: Target printer
       problem:
         category: Category
         ignored: Hidden
@@ -190,6 +248,10 @@ en:
           attributes:
             endpoint:
               not_private_lan: must resolve to a private LAN address (RFC1918)
+        print_job:
+          attributes:
+            state:
+              one_printing_per_host: already has a job printing on this printer
     models:
       acts_as_taggable_on/tag:
         few: Tags
@@ -254,6 +316,13 @@ en:
         other: Files
         two: Files
         zero: Files
+      print_curation_note:
+        few: Curation Notes
+        many: Curation Notes
+        one: Curation Note
+        other: Curation Notes
+        two: Curation Notes
+        zero: Curation Notes
       print_host:
         few: Printers
         many: Printers
@@ -261,6 +330,34 @@ en:
         other: Printers
         two: Printers
         zero: Printers
+      print_job:
+        few: Print Jobs
+        many: Print Jobs
+        one: Print Job
+        other: Print Jobs
+        two: Print Jobs
+        zero: Print Jobs
+      print_vat:
+        few: Vats
+        many: Vats
+        one: Vat
+        other: Vats
+        two: Vats
+        zero: Vats
+      resin_bottle:
+        few: Resin Bottles
+        many: Resin Bottles
+        one: Resin Bottle
+        other: Resin Bottles
+        two: Resin Bottles
+        zero: Resin Bottles
+      sliced_artifact:
+        few: Sliced Artifacts
+        many: Sliced Artifacts
+        one: Sliced Artifact
+        other: Sliced Artifacts
+        two: Sliced Artifacts
+        zero: Sliced Artifacts
       problem:
         few: Problems
         many: Problems

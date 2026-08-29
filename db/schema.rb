@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_29_153100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "altcha_solutions", force: :cascade do |t|
+    t.string "algorithm"
+    t.string "challenge"
+    t.string "salt"
+    t.string "signature"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["algorithm", "challenge", "salt", "signature", "number"], name: "index_altcha_solutions", unique: true
+  end
 
   create_table "archive_entries", force: :cascade do |t|
     t.bigint "model_file_id", null: false
@@ -35,17 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.index ["model_file_id"], name: "index_archive_entries_on_model_file_id"
     t.index ["pathname"], name: "index_archive_entries_on_pathname_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["public_id"], name: "index_archive_entries_on_public_id", unique: true
-  end
-
-  create_table "altcha_solutions", force: :cascade do |t|
-    t.string "algorithm"
-    t.string "challenge"
-    t.string "salt"
-    t.string "signature"
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["algorithm", "challenge", "salt", "signature", "number"], name: "index_altcha_solutions", unique: true
   end
 
   create_table "caber_relations", force: :cascade do |t|
@@ -397,8 +397,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["name"], name: "index_models_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["name_lower"], name: "index_models_on_name_lower"
-    t.index ["path"], name: "index_models_on_path_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["path", "library_id"], name: "index_models_on_path_and_library_id", unique: true
+    t.index ["path"], name: "index_models_on_path_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
     t.index ["public_id"], name: "index_models_on_public_id"
     t.index ["slug"], name: "index_models_on_slug"
@@ -474,6 +474,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "print_curation_notes", force: :cascade do |t|
+    t.bigint "model_id", null: false
+    t.bigint "user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["model_id"], name: "index_print_curation_notes_on_model_id"
+    t.index ["user_id"], name: "index_print_curation_notes_on_user_id"
+  end
+
   create_table "print_hosts", force: :cascade do |t|
     t.string "name", null: false
     t.string "protocol", null: false
@@ -482,8 +492,66 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.string "mainboard_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "brand"
+    t.string "machine_model"
+    t.string "firmware"
+    t.string "mac_address"
+    t.integer "resolution_w"
+    t.integer "resolution_h"
+    t.decimal "build_x_mm", precision: 8, scale: 2
+    t.decimal "build_y_mm", precision: 8, scale: 2
+    t.decimal "build_z_mm", precision: 8, scale: 2
+    t.json "native_formats", default: [], null: false
+    t.integer "fep_cycles", default: 0, null: false
+    t.decimal "lcd_hours", precision: 10, scale: 2, default: "0.0", null: false
+    t.bigint "storage_bytes_used"
+    t.bigint "storage_bytes_total"
     t.index ["mainboard_id"], name: "index_print_hosts_on_mainboard_id"
     t.index ["protocol"], name: "index_print_hosts_on_protocol"
+  end
+
+  create_table "print_jobs", force: :cascade do |t|
+    t.bigint "print_host_id", null: false
+    t.bigint "model_id"
+    t.bigint "model_file_id"
+    t.bigint "user_id"
+    t.bigint "sliced_artifact_id"
+    t.string "state", default: "queued", null: false
+    t.datetime "plate_cleared_at"
+    t.string "resin_profile"
+    t.integer "layer_count"
+    t.integer "current_layer"
+    t.integer "estimated_duration_seconds"
+    t.integer "actual_duration_seconds"
+    t.decimal "estimated_resin_ml", precision: 10, scale: 2
+    t.decimal "actual_resin_ml", precision: 10, scale: 2
+    t.string "outcome"
+    t.text "failure_note"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["model_file_id"], name: "index_print_jobs_on_model_file_id"
+    t.index ["model_id"], name: "index_print_jobs_on_model_id"
+    t.index ["print_host_id", "state"], name: "index_print_jobs_on_print_host_id_and_state"
+    t.index ["print_host_id"], name: "index_print_jobs_on_print_host_id"
+    t.index ["print_host_id"], name: "index_print_jobs_one_printing_per_host", unique: true, where: "((state)::text = 'printing'::text)"
+    t.index ["sliced_artifact_id"], name: "index_print_jobs_on_sliced_artifact_id"
+    t.index ["state"], name: "index_print_jobs_on_state"
+    t.index ["user_id"], name: "index_print_jobs_on_user_id"
+  end
+
+  create_table "print_vats", force: :cascade do |t|
+    t.string "identity", null: false
+    t.integer "fep_cycles", default: 0, null: false
+    t.bigint "print_host_id", null: false
+    t.bigint "resin_bottle_id"
+    t.string "status", default: "ready", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["print_host_id", "identity"], name: "index_print_vats_on_print_host_id_and_identity", unique: true
+    t.index ["print_host_id"], name: "index_print_vats_on_print_host_id"
+    t.index ["resin_bottle_id"], name: "index_print_vats_on_resin_bottle_id"
   end
 
   create_table "problems", force: :cascade do |t|
@@ -503,6 +571,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.index ["state"], name: "index_problems_on_state"
   end
 
+  create_table "resin_bottles", force: :cascade do |t|
+    t.string "brand", null: false
+    t.string "color"
+    t.decimal "remaining_ml", precision: 10, scale: 2, null: false
+    t.decimal "capacity_ml", precision: 10, scale: 2, null: false
+    t.date "opened_on"
+    t.bigint "print_host_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["print_host_id"], name: "index_resin_bottles_on_print_host_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -519,6 +599,22 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["var"], name: "index_settings_on_var", unique: true
+  end
+
+  create_table "sliced_artifacts", force: :cascade do |t|
+    t.bigint "model_id", null: false
+    t.bigint "print_host_id", null: false
+    t.bigint "model_file_id"
+    t.string "format", null: false
+    t.integer "estimated_layers"
+    t.integer "estimated_duration_seconds"
+    t.decimal "estimated_resin_ml", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["model_file_id"], name: "index_sliced_artifacts_on_model_file_id"
+    t.index ["model_id", "print_host_id"], name: "index_sliced_artifacts_on_model_id_and_print_host_id"
+    t.index ["model_id"], name: "index_sliced_artifacts_on_model_id"
+    t.index ["print_host_id"], name: "index_sliced_artifacts_on_print_host_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -596,6 +692,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
   end
 
+  add_foreign_key "archive_entries", "model_files", on_delete: :cascade
   add_foreign_key "collections", "collections"
   add_foreign_key "collections", "creators"
   add_foreign_key "comments", "federails_actors"
@@ -610,7 +707,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
   add_foreign_key "memberships", "users", on_delete: :cascade
   add_foreign_key "merge_histories", "libraries", column: "source_library_id", on_delete: :nullify
   add_foreign_key "merge_histories", "models", column: "target_model_id"
-  add_foreign_key "archive_entries", "model_files", on_delete: :cascade
   add_foreign_key "model_files", "model_files", column: "presupported_version_id"
   add_foreign_key "model_files", "models"
   add_foreign_key "models", "collections"
@@ -621,7 +717,20 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_28_210000) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
+  add_foreign_key "print_curation_notes", "models"
+  add_foreign_key "print_curation_notes", "users"
+  add_foreign_key "print_jobs", "model_files"
+  add_foreign_key "print_jobs", "models"
+  add_foreign_key "print_jobs", "print_hosts"
+  add_foreign_key "print_jobs", "sliced_artifacts"
+  add_foreign_key "print_jobs", "users"
+  add_foreign_key "print_vats", "print_hosts"
+  add_foreign_key "print_vats", "resin_bottles"
+  add_foreign_key "resin_bottles", "print_hosts"
+  add_foreign_key "sliced_artifacts", "model_files"
+  add_foreign_key "sliced_artifacts", "models"
+  add_foreign_key "sliced_artifacts", "print_hosts"
   add_foreign_key "taggings", "tags"
-  add_foreign_key "users_roles", "roles", column: "role_id", on_delete: :cascade
-  add_foreign_key "users_roles", "users", column: "user_id", on_delete: :cascade
+  add_foreign_key "users_roles", "roles", on_delete: :cascade
+  add_foreign_key "users_roles", "users", on_delete: :cascade
 end
