@@ -15,8 +15,7 @@ RSpec.describe TagListable, type: :controller do
   before do
     allow(controller).to receive(:policy_scope) { |scope| scope }
     allow(controller).to receive(:helpers).and_return(
-      instance_double(
-        ApplicationController.helpers.class,
+      double( # ApplicationHelper is mixed into view context; ActionView::Base won't verify
         tag_cloud_settings: {"threshold" => 1, "sorting" => "frequency", "keypair" => false}
       )
     )
