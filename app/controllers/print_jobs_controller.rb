@@ -1,30 +1,43 @@
 # frozen_string_literal: true
 
-# Queue board + job control (REQ-006, REQ-009).
+# Queue board + job control (REQ-006, REQ-009). HTML kanban + JSON API.
 class PrintJobsController < ApplicationController
   include PrintApi
 
-  respond_to :json
+  respond_to :html, :json
 
   before_action :load_print_job, only: [:show, :start, :pause, :resume, :cancel, :confirm_plate_cleared]
 
   def index
     authorize PrintJob
-    jobs = policy_scope(PrintJob).includes(:print_host, :model, :sliced_artifact)
+    jobs = policy_scope(PrintJob).includes(:print_host, :model, :model_file, :sliced_artifact, :user)
     jobs = jobs.where(print_host_id: params[:print_host_id]) if params[:print_host_id].present?
 
-    render json: {
-      queue: {
-        queued: jobs.where(state: %w[queued waiting_plate]).order(:created_at).map { |j| serialize_print_job(j) },
-        printing: jobs.where(state: %w[printing paused]).order(:started_at).map { |j| serialize_print_job(j) },
-        completed: jobs.where(state: PrintJob::TERMINAL_STATES).order(finished_at: :desc).limit(50).map { |j| serialize_print_job(j) }
+    @queued = jobs.where(state: %w[queued waiting_plate]).order(:created_at)
+    @printing = jobs.where(state: %w[printing paused]).order(:started_at)
+    @completed = jobs.where(state: PrintJob::TERMINAL_STATES).order(finished_at: :desc).limit(50)
+    @fleet = policy_scope(PrintHost).order(:name)
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: {
+          queue: {
+            queued: @queued.map { |j| serialize_print_job(j) },
+            printing: @printing.map { |j| serialize_print_job(j) },
+            completed: @completed.map { |j| serialize_print_job(j) }
+          }
+        }
       }
-    }
+    end
   end
 
   def show
     authorize @print_job
-    render json: {print_job: serialize_print_job(@print_job)}
+    respond_to do |format|
+      format.html { redirect_to print_jobs_path }
+      format.json { render json: {print_job: serialize_print_job(@print_job)} }
+    end
   end
 
   def create
@@ -63,33 +76,33 @@ class PrintJobsController < ApplicationController
   def pause
     authorize @print_job, :pause?
     job_service_for(@print_job.print_host).pause!(@print_job)
-    render json: {print_job: serialize_print_job(@print_job.reload)}
+    respond_with_job_mutation
   rescue Print::JobService::InvalidState, Print::JobService::Error, Print::SdcpService::Error => e
-    render_print_error(e)
+    respond_with_job_error(e)
   end
 
   def resume
     authorize @print_job, :resume?
     job_service_for(@print_job.print_host).resume!(@print_job)
-    render json: {print_job: serialize_print_job(@print_job.reload)}
+    respond_with_job_mutation
   rescue Print::JobService::Busy, Print::JobService::InvalidState, Print::JobService::Error, Print::SdcpService::Error => e
-    render_print_error(e)
+    respond_with_job_error(e)
   end
 
   def cancel
     authorize @print_job, :cancel?
     job_service_for(@print_job.print_host).cancel!(@print_job, note: params[:note])
-    render json: {print_job: serialize_print_job(@print_job.reload)}
+    respond_with_job_mutation(notice_key: "print_jobs.cancel.success")
   rescue Print::JobService::InvalidState, Print::JobService::Error, Print::SdcpService::Error => e
-    render_print_error(e)
+    respond_with_job_error(e)
   end
 
   def confirm_plate_cleared
     authorize @print_job, :confirm_plate_cleared?
     job_service_for(@print_job.print_host).confirm_plate_cleared!(@print_job)
-    render json: {print_job: serialize_print_job(@print_job.reload)}
+    respond_with_job_mutation(notice_key: "print_jobs.confirm_plate_cleared.success")
   rescue Print::JobService::InvalidState, Print::JobService::Error => e
-    render_print_error(e)
+    respond_with_job_error(e)
   end
 
   private
@@ -121,5 +134,23 @@ class PrintJobsController < ApplicationController
       attrs[:model_file] = ModelFile.find_param(attrs.delete(:model_file_id))
     end
     attrs
+  end
+
+  def respond_with_job_mutation(notice_key: nil)
+    respond_to do |format|
+      format.html {
+        redirect_to print_jobs_path, notice: (notice_key ? t(notice_key) : nil)
+      }
+      format.json { render json: {print_job: serialize_print_job(@print_job.reload)} }
+    end
+  end
+
+  def respond_with_job_error(error)
+    respond_to do |format|
+      format.html {
+        redirect_to print_jobs_path, alert: error.message
+      }
+      format.json { render_print_error(error) }
+    end
   end
 end

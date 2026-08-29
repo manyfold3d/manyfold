@@ -21,6 +21,11 @@ RSpec.describe "Print Studio smoke", type: :request do
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Printers")
       expect(response.body).to include("GK3 Pro — garage")
+      expect(response.body).to include(print_jobs_path)
+
+      get print_jobs_path
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Job Queue")
 
       get new_printer_path
       expect(response).to have_http_status(:success)

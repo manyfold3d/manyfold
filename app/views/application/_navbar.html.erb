@@ -24,8 +24,13 @@
         </li>
         <%- if current_user %>
           <li class="flex" role="presentation">
-            <%= nav_link "bookmark", t(".queue"), models_path(list: "queue"), text_style: "md:hidden lg:inline", id: "nav-link-queue",
-                  active: params[:list].to_s == "queue" %>
+            <% if policy(PrintJob).index? %>
+              <%= nav_link "list-task", t(".queue"), print_jobs_path, text_style: "md:hidden lg:inline", id: "nav-link-queue",
+                    active: controller_name == "print_jobs" || controller_name == "print_histories" %>
+            <% else %>
+              <%= nav_link "bookmark", t(".queue"), models_path(list: "queue"), text_style: "md:hidden lg:inline", id: "nav-link-queue",
+                    active: params[:list].to_s == "queue" %>
+            <% end %>
           </li>
           <% if policy(PrintHost).index? %>
             <li class="flex" role="presentation">

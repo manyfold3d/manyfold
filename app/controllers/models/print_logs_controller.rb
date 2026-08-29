@@ -5,7 +5,7 @@ module Models
   class PrintLogsController < ApplicationController
     include PrintApi
 
-    respond_to :json
+    respond_to :html, :json
 
     before_action :load_model
     skip_after_action :verify_policy_scoped
@@ -14,21 +14,30 @@ module Models
       authorize PrintJob, :index?
       authorize @model, :show?
 
-      artifacts = @model.sliced_artifacts.includes(:print_host, :model_file).order(created_at: :desc)
-      jobs = policy_scope(@model.print_jobs).history.includes(:print_host).order(finished_at: :desc)
-      succeeded = jobs.where(state: :succeeded).count
-      total = jobs.count
-
-      render json: {
-        model_id: @model.to_param,
-        sliced_artifacts: artifacts.map { |a| serialize_artifact(a) },
-        histories: jobs.limit(50).map { |j| serialize_print_job(j) },
-        success_widget: {
-          succeeded: succeeded,
-          total: total,
-          success_rate: total.zero? ? 0.0 : (succeeded.to_f / total).round(4)
-        }
+      @artifacts = @model.sliced_artifacts.includes(:print_host, :model_file).order(created_at: :desc)
+      history_scope = policy_scope(@model.print_jobs).history
+      @histories = history_scope.includes(:print_host).order(finished_at: :desc).limit(50)
+      total = history_scope.count
+      succeeded = history_scope.where(state: :succeeded).count
+      @success_widget = {
+        succeeded: succeeded,
+        total: total,
+        success_rate: total.zero? ? 0.0 : (succeeded.to_f / total).round(4)
       }
+      @send_file = @model.model_files.find { |f| f.sliced_for_print? }
+      @printers = policy_scope(PrintHost).order(:name) if @send_file && policy(PrintHost).control?
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render json: {
+            model_id: @model.to_param,
+            sliced_artifacts: @artifacts.map { |a| serialize_artifact(a) },
+            histories: @histories.map { |j| serialize_print_job(j) },
+            success_widget: @success_widget
+          }
+        }
+      end
     end
 
     private

@@ -4,18 +4,36 @@
 class PrintHistoriesController < ApplicationController
   include PrintApi
 
-  respond_to :json
+  respond_to :html, :json
 
   def index
     authorize PrintJob
-    jobs = policy_scope(PrintJob).history.includes(:print_host, :model)
+    jobs = policy_scope(PrintJob).history.includes(:print_host, :model, :model_file)
     jobs = jobs.where(print_host_id: params[:print_host_id]) if params[:print_host_id].present?
+    jobs = apply_outcome_filter(jobs)
     jobs = apply_date_filter(jobs)
 
-    render json: {
-      histories: jobs.limit(params.fetch(:limit, 100).to_i).map { |j| serialize_print_job(j) },
-      kpis: build_kpis(jobs)
-    }
+    @kpis = build_kpis(jobs)
+    @histories = jobs.limit(params.fetch(:limit, 100).to_i)
+    @print_hosts = policy_scope(PrintHost).order(:name)
+    @from = params[:from].presence || params[:start_date]
+    @to = params[:to].presence || params[:end_date]
+    @outcome = params[:outcome].presence || params[:result]
+    @print_host_id = params[:print_host_id]
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: {
+          histories: @histories.map { |j| serialize_print_job(j) },
+          kpis: @kpis
+        }
+      }
+      format.csv {
+        # Export CSV stub — full CSV lands with analytics follow-up.
+        head :not_implemented
+      }
+    end
   end
 
   private
@@ -26,6 +44,22 @@ class PrintHistoriesController < ApplicationController
     scope = scope.where(finished_at: from.beginning_of_day..) if from
     scope = scope.where(finished_at: ..to.end_of_day) if to
     scope
+  end
+
+  def apply_outcome_filter(scope)
+    outcome = params[:outcome].presence || params[:result].presence
+    return scope if outcome.blank? || outcome == "all"
+
+    case outcome.to_s
+    when "succeeded", "success"
+      scope.where(outcome: "succeeded").or(scope.where(state: :succeeded))
+    when "failed", "failure"
+      scope.where(outcome: "failed").or(scope.where(state: :failed))
+    when "cancelled", "canceled"
+      scope.where(outcome: "cancelled").or(scope.where(state: :cancelled))
+    else
+      scope
+    end
   end
 
   def parse_date(value)
