@@ -29,6 +29,14 @@ class PrintHostPolicy < ApplicationPolicy
     create?
   end
 
+  def discover?
+    index?
+  end
+
+  def storage?
+    control?
+  end
+
   class Scope
     attr_reader :user, :scope
 
