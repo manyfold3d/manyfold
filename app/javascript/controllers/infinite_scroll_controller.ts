@@ -280,7 +280,7 @@ export default class extends Controller {
   }
 
   private cards (): HTMLElement[] {
-    const selector = this.cardSelectorValue || '.model-card'
+    const selector = this.cardSelectorValue !== '' ? this.cardSelectorValue : '.model-card'
     return Array.from(this.gridEl().querySelectorAll<HTMLElement>(`:scope > ${selector}`))
   }
 
@@ -317,7 +317,7 @@ export default class extends Controller {
 
   private readGap (): number {
     const style = getComputedStyle(this.gridEl())
-    const gap = parseFloat(style.rowGap || style.gap || '0')
+    const gap = parseFloat(style.rowGap !== '' ? style.rowGap : (style.gap !== '' ? style.gap : '0'))
     return Number.isFinite(gap) ? gap : 0
   }
 
@@ -625,7 +625,7 @@ export default class extends Controller {
 
   /** True when the turbo-stream payload includes card elements (vs empty page). */
   private turboStreamAppendsCards (html: string): boolean {
-    const selector = this.cardSelectorValue || '.model-card'
+    const selector = this.cardSelectorValue !== '' ? this.cardSelectorValue : '.model-card'
     const bare = selector.replace(/^\./, '')
     return html.includes(`class="${bare}`) ||
       html.includes(`class='${bare}`) ||
@@ -742,7 +742,7 @@ export default class extends Controller {
   }
 
   private dedupeCards (): void {
-    const selector = this.cardSelectorValue || '.model-card'
+    const selector = this.cardSelectorValue !== '' ? this.cardSelectorValue : '.model-card'
     const seen = new Set<string>()
     this.gridEl().querySelectorAll<HTMLElement>(`:scope > ${selector}[id]`).forEach((card) => {
       if (seen.has(card.id)) {

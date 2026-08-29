@@ -2,11 +2,6 @@
 en:
   activerecord:
     attributes:
-      print_host:
-        endpoint: Endpoint
-        mainboard_id: Mainboard ID
-        name: Name
-        protocol: Protocol
       collection:
         ai_indexable: Allow use for AI training
         caption: Caption
@@ -103,6 +98,11 @@ en:
         size: File Size
         unsupported_version: Unsupported version
         y_up: Y Up
+      print_host:
+        endpoint: Endpoint
+        mainboard_id: Mainboard ID
+        name: Name
+        protocol: Protocol
       problem:
         category: Category
         ignored: Hidden
@@ -138,10 +138,6 @@ en:
         username: Account name
     errors:
       models:
-        print_host:
-          attributes:
-            endpoint:
-              not_private_lan: must resolve to a private LAN address (RFC1918)
         collection:
           attributes:
             collection:
@@ -190,14 +186,11 @@ en:
             presupported_version:
               already_presupported: cannot be set on a presupported file
               not_supported: is not a presupported file
+        print_host:
+          attributes:
+            endpoint:
+              not_private_lan: must resolve to a private LAN address (RFC1918)
     models:
-      print_host:
-        few: Printers
-        many: Printers
-        one: Printer
-        other: Printers
-        two: Printers
-        zero: Printers
       acts_as_taggable_on/tag:
         few: Tags
         many: Tags
@@ -261,6 +254,13 @@ en:
         other: Files
         two: Files
         zero: Files
+      print_host:
+        few: Printers
+        many: Printers
+        one: Printer
+        other: Printers
+        two: Printers
+        zero: Printers
       problem:
         few: Problems
         many: Problems
@@ -370,7 +370,6 @@ en:
           label: Toggle navigation
       printed: Printed
       queue: Queue
-      unprinted: Never printed
       scan: Scan
       scan_changes:
         confirm: Are you sure you want to scan all libraries for new files? This may take a long time!
@@ -379,6 +378,7 @@ en:
       search: Search
       settings: Site Settings
       social: Social
+      unprinted: Never printed
       upload: Upload models
     search_error: Error in search syntax. Please check and try again!
     tag_list:
@@ -809,27 +809,24 @@ en:
       browse_models: Browse all models
       no_activities: There are no models in your library yet.
       open_search_help: Search syntax
-      pulse_label: Library at a glance
+      print_next_heading: What to print next
+      print_next_sub: A fresh random pick of never-printed models with photos
       pulse:
         favorites: Favorites
         models: Models
         printed: Printed
         queue: Queue
         unprinted: Never printed
+      pulse_label: Library at a glance
       queue_heading: Your print queue
       queue_sub: Models you marked to print next
-      print_next_heading: What to print next
-      print_next_sub: A fresh random pick of never-printed models with photos
-      surprise: Surprise me
-      shuffle: Shuffle
       recent_activity: Recent Activity
       recent_models: Recently added
       recent_sub: Fresh arrivals in your libraries
-      see_all: See all
       search:
         placeholder: Search models, tags, creators…
         submit: Search
-      shortcuts_label: Quick links
+      see_all: See all
       shortcuts:
         browse: Library
         browse_hint: Browse and filter everything
@@ -843,10 +840,10 @@ en:
         queue_hint: Decide later, print soon
         unprinted: Never printed
         unprinted_hint: Discover what you haven't tried
+      shortcuts_label: Quick links
+      shuffle: Shuffle
+      surprise: Surprise me
       tagline: Find what to print — know what you have
-    surprise:
-      empty: Nothing left unprinted — time to find new models!
-      picked: Here's something you haven't printed yet.
     publishing:
       content: You can make your models public by going to the model edit page and setting the permissions.
       existing_creator:
@@ -860,6 +857,9 @@ en:
       content: If you find this instance useful, you can help keep it running by clicking below.
       support_link: Support this instance
       title: Support
+    surprise:
+      empty: Nothing left unprinted — time to find new models!
+      picked: Here's something you haven't printed yet.
     uploading:
       quota: You can upload up to %{quota} of content, and you can always view your current quota usage on your settings page.
       title: Uploading
@@ -975,6 +975,9 @@ en:
     new_report:
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
+  print_hosts:
+    protocols:
+      sdcp: SDCP (UniFormation / ChituManager)
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'
@@ -1040,7 +1043,3 @@ en:
       next: Next ›
       previous: "‹ Prev"
       truncate: "…"
-
-  print_hosts:
-    protocols:
-      sdcp: SDCP (UniFormation / ChituManager)

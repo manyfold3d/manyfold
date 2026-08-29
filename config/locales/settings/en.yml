@@ -170,6 +170,51 @@ en:
       user_quotas: Account upload size limit
       user_quotas_enable_quota: Enable account upload storage limit
       user_quotas_site_default: Site default account upload storage limit in MB
+    print_hosts:
+      continue:
+        success: Continue command sent.
+      create:
+        success: Printer registered.
+      destroy:
+        success: Printer removed.
+      edit:
+        title: 'Edit printer: %{name}'
+      form:
+        endpoint_help: HTTP base for SDCP (e.g. http://10.0.0.199:3030). Private LAN only.
+        mainboard_help: Hex MainboardID from UDP discover / printer attributes.
+        protocol_note: Phase 1 protocol is SDCP only (not OctoPrint).
+      index:
+        confirm_destroy: Remove this printer registry entry?
+        description: Register UniFormation / ChituManager-family printers. Camera streams through Manyfold — not a public go2rtc URL.
+        new: Add printer
+        title: Printers (SDCP)
+      new:
+        title: Add SDCP printer
+      pause:
+        success: Pause command sent.
+      show:
+        back_list: All printers
+        camera: Live camera
+        camera_alt: Printer camera
+        camera_note: Snapshot via authenticated Manyfold proxy to cluster-internal go2rtc.
+        confirm_stop: Stop the current print?
+        continue: Continue
+        file_label: CTB / JXS file
+        pause: Pause
+        send_help: Upload an already-sliced CTB or JXS file. Manyfold does not auto-slice STL/3MF in Phase 1.
+        send_submit: Upload and print
+        send_title: Send sliced file
+        start_after_upload: Start print after upload
+        status: SDCP status
+        stop: Stop
+      stop:
+        success: Stop command sent.
+      update:
+        success: Printer updated.
+      upload_slice:
+        missing_file: Choose a .ctb or .jxs file.
+        success: Uploaded %{filename} to printer.
+        unsupported_type: Only CTB/JXS sliced files are accepted.
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
       heading: Usage Tracking
@@ -242,49 +287,3 @@ en:
         approved: Account was approved successfully.
         reset_link_sent: A link has been sent to the account owner for them to set a new password.
         success: Account updated successfully.
-
-    print_hosts:
-      index:
-        title: Printers (SDCP)
-        description: Register UniFormation / ChituManager-family printers. Camera streams through Manyfold — not a public go2rtc URL.
-        new: Add printer
-        confirm_destroy: Remove this printer registry entry?
-      new:
-        title: Add SDCP printer
-      edit:
-        title: "Edit printer: %{name}"
-      form:
-        endpoint_help: HTTP base for SDCP (e.g. http://10.0.0.199:3030). Private LAN only.
-        mainboard_help: Hex MainboardID from UDP discover / printer attributes.
-        protocol_note: Phase 1 protocol is SDCP only (not OctoPrint).
-      create:
-        success: Printer registered.
-      update:
-        success: Printer updated.
-      destroy:
-        success: Printer removed.
-      pause:
-        success: Pause command sent.
-      stop:
-        success: Stop command sent.
-      continue:
-        success: Continue command sent.
-      upload_slice:
-        success: "Uploaded %{filename} to printer."
-        missing_file: Choose a .ctb or .jxs file.
-        unsupported_type: Only CTB/JXS sliced files are accepted.
-      show:
-        back_list: All printers
-        camera: Live camera
-        camera_alt: Printer camera
-        camera_note: Snapshot via authenticated Manyfold proxy to cluster-internal go2rtc.
-        status: SDCP status
-        pause: Pause
-        continue: Continue
-        stop: Stop
-        confirm_stop: Stop the current print?
-        send_title: Send sliced file
-        send_help: Upload an already-sliced CTB or JXS file. Manyfold does not auto-slice STL/3MF in Phase 1.
-        file_label: CTB / JXS file
-        start_after_upload: Start print after upload
-        send_submit: Upload and print

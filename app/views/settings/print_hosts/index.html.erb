@@ -16,7 +16,7 @@
       <tr class="border-b border-secondary-200 dark:border-secondary-600 even:bg-secondary-50 dark:even:bg-secondary-800/30">
         <td class="px-4 py-2"><%= link_to host.name, settings_print_host_path(host), class: "text-primary-600 hover:underline" %></td>
         <td class="px-4 py-2 font-mono text-sm"><%= host.endpoint %></td>
-        <td class="px-4 py-2"><%= t("print_hosts.protocols.#{host.protocol}", default: host.protocol) %></td>
+        <td class="px-4 py-2"><%= host.protocol_label %></td>
         <td class="px-4 py-2 font-mono text-sm"><%= host.mainboard_id %></td>
         <td class="px-4 py-2 text-right space-x-2">
           <%= link_to t("general.edit"), edit_settings_print_host_path(host), class: "text-sm text-primary-600 hover:underline" if policy(host).update? %>

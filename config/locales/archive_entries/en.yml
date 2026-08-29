@@ -1,29 +1,29 @@
 ---
 en:
   archive_entries:
+    card:
+      preview_failed: Preview failed
+      preview_loading: Generating object preview
     panel:
-      title: Archive contents
+      counts: "%{total} entries · %{ready} previews · %{pending} pending · %{failed} failed"
+      download: Download
+      empty: Not scanned yet. Scan to list files inside this archive.
+      load_more: Load more entries
+      open: Open
       scan: Scan archive
       scan_all: Scan archives
-      empty: Not scanned yet. Scan to list files inside this archive.
-      counts: "%{total} entries · %{ready} previews · %{pending} pending · %{failed} failed"
-      truncated: listing truncated
-      open: Open
-      download: Download
-      load_more: Load more entries
       showing_chunk: Showing %{shown} of %{total} entries
-    card:
-      preview_loading: Generating object preview
-      preview_failed: Preview failed
-    show:
-      details: Entry details
-      path: Path
-      kind: Kind
-      size: Size
-      status: Status
-      no_preview: No preview available for this entry.
+      title: Archive contents
+      truncated: listing truncated
     scan:
       started: Archive scan queued. Refresh in a moment to see contents.
+    show:
+      details: Entry details
+      kind: Kind
+      no_preview: No preview available for this entry.
+      path: Path
+      size: Size
+      status: Status
   models:
     scan_archives:
       create:

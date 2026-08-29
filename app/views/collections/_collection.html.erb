@@ -1,6 +1,5 @@
 <%# Uniform-height collection card for card-sized browse grid. %>
-<%
-  model_count = (@model_counts || {})[collection.id] || 0
+<% model_count = (@model_counts || {})[collection.id] || 0
   collection_count = (@subcollection_counts || {})[collection.id] || 0
   has_subs = collection_count > 0
 %>

@@ -1,6 +1,5 @@
 <%# Archive contents panel — list entries, previews, scan / download actions. %>
-<%
-  file = local_assigns.fetch(:file)
+<% file = local_assigns.fetch(:file)
   page_size = ArchiveEntriesController::PAGE_SIZE
   entries_scope = file.archive_entries.order(:pathname)
   total = entries_scope.count

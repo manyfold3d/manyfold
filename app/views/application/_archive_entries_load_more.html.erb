@@ -3,5 +3,5 @@
   <%= link_to t("archive_entries.panel.load_more"),
         model_model_file_archive_entries_path(file.model, file, offset: next_offset, per_page: per_page),
         class: "inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg border border-secondary-300 dark:border-secondary-600 text-secondary-800 dark:text-secondary-200 hover:bg-secondary-50 dark:hover:bg-secondary-800 focus-visible:ring-2 focus-visible:ring-primary-500 no-underline",
-        data: { turbo_stream: true } %>
+        data: {turbo_stream: true} %>
 <% end %>

@@ -38,14 +38,14 @@ en:
     get_creator:
       unknown: Unknown
     index:
+      back_to_top: Back to top
       clear_filters: Clear filters
-      no_results_html: No creators match your filters. Try clearing filters or creating a new creator.
-      skip_creators: Skip creator list
-      loading_more: Loading more…
       end_of_results: You've reached the end of this list
       load_error: Could not load more. Scroll to retry.
+      loading_more: Loading more…
+      no_results_html: No creators match your filters. Try clearing filters or creating a new creator.
       scroll_hint: Keep scrolling — more creators load automatically.
-      back_to_top: Back to top
+      skip_creators: Skip creator list
     show:
       edit: Edit Creator Profile
     unassigned:

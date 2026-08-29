@@ -1,7 +1,6 @@
 <%# Personal list chips (library / queue / favorites / …). variant: :chrome | :sidebar %>
 <% if current_user %>
-  <%
-    list = @filter&.parameter(:list).to_s
+  <% list = @filter&.parameter(:list).to_s
     base = @filter&.to_params || {}
     variant = local_assigns.fetch(:variant, :chrome).to_sym
     chrome_chip = ->(active) {

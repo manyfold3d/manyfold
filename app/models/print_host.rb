@@ -27,6 +27,16 @@ class PrintHost < ApplicationRecord
     PROTOCOLS.fetch(protocol)::INPUT_TYPES
   end
 
+  # i18n-tasks-use t('print_hosts.protocols.sdcp')
+  def protocol_label
+    case protocol
+    when Print::SdcpService::PROTOCOL
+      I18n.t("print_hosts.protocols.sdcp")
+    else
+      protocol
+    end
+  end
+
   def print_later(file:)
     SendFileToPrintHostJob.perform_later(self, file)
   end

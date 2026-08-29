@@ -20,7 +20,7 @@
       <img data-print-host-monitor-target="snapshot"
            src="<%= snapshot_settings_print_host_path(@print_host) %>"
            alt="<%= t(".camera_alt") %>"
-           class="w-full max-h-[28rem] object-contain bg-black rounded-lg" />
+           class="w-full max-h-[28rem] object-contain bg-black rounded-lg">
       <p class="text-xs text-secondary-500 mt-2"><%= t(".camera_note") %></p>
     </section>
 
@@ -46,10 +46,10 @@
       <%= form_with url: upload_slice_settings_print_host_path(@print_host), method: :post, multipart: true, class: "flex flex-wrap items-end gap-3" do %>
         <div>
           <label class="block text-sm mb-1"><%= t(".file_label") %></label>
-          <input type="file" name="print[file]" accept=".ctb,.jxs,model/x-chitubox,model/x-uniformation-jxs" required class="block text-sm" />
+          <input type="file" name="print[file]" accept=".ctb,.jxs,model/x-chitubox,model/x-uniformation-jxs" required class="block text-sm">
         </div>
         <label class="inline-flex items-center gap-2 text-sm">
-          <input type="checkbox" name="print[start]" value="1" checked />
+          <input type="checkbox" name="print[start]" value="1" checked>
           <%= t(".start_after_upload") %>
         </label>
         <button type="submit" class="inline-flex items-center px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 text-sm">

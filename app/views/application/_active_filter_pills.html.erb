@@ -1,6 +1,5 @@
 <%# Shared active-filter pill rail (models / creators / collections browse chrome). %>
-<%
-  filter = local_assigns.fetch(:filter)
+<% filter = local_assigns.fetch(:filter)
   clear_path = local_assigns.fetch(:clear_path)
   clear_label = local_assigns.fetch(:clear_label, t("models.list.clear_filters"))
   aria_label = local_assigns.fetch(:aria_label, t("models.list.active_filters"))

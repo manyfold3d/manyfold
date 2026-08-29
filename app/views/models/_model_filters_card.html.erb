@@ -1,6 +1,5 @@
 <%# Full filter form in the models sidebar (not just search / tags). %>
-<%
-  fp = @filter&.to_params || {}
+<% fp = @filter&.to_params || {}
   has_image_on = ActiveModel::Type::Boolean.new.cast(@filter&.parameter(:has_image))
   select_class = "block w-full max-w-full min-w-0 rounded-lg border border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 dark:text-secondary-100 px-3 py-2 text-sm shadow-sm focus:ring-2 focus:ring-primary-500"
   label_class = "block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-1"
@@ -43,10 +42,10 @@
 
     <div>
       <label for="filter_link" class="<%= label_class %>"><%= t(".link", default: "Link contains") %></label>
-      <%= text_field_tag :link, (@filter&.parameter(:link) if @filter&.parameter(:link).present?),
+      <%= text_field_tag :link, @filter&.parameter(:link).presence,
             id: "filter_link",
             class: input_class,
-            placeholder: t(".link_placeholder", default: "thingiverse.com…"),
+            placeholder: t(".link_placeholder"),
             autocomplete: "off" %>
     </div>
 
@@ -56,9 +55,9 @@
             id: "filter_has_image",
             class: "mt-1 rounded border-secondary-300 text-primary-600 focus:ring-primary-500 h-4 w-4" %>
       <label for="filter_has_image" class="text-sm text-secondary-800 dark:text-secondary-200 cursor-pointer">
-        <span class="font-medium"><%= t("models.list.has_image_filter", default: "With images only") %></span>
+        <span class="font-medium"><%= t("models.list.has_image_filter") %></span>
         <span class="block text-xs text-secondary-500 dark:text-secondary-400 mt-0.5">
-          <%= t(".has_image_help", default: "Hide models with no image preview.") %>
+          <%= t(".has_image_help") %>
         </span>
       </label>
     </div>

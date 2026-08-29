@@ -30,6 +30,11 @@ module Settings
       render layout: "settings"
     end
 
+    def edit
+      authorize @print_host
+      render layout: "settings"
+    end
+
     def create
       authorize PrintHost
       @print_host = PrintHost.new(print_host_params)
@@ -39,11 +44,6 @@ module Settings
       else
         render :new, layout: "settings", status: :unprocessable_content
       end
-    end
-
-    def edit
-      authorize @print_host
-      render layout: "settings"
     end
 
     def update
@@ -62,15 +62,15 @@ module Settings
     end
 
     def pause
-      control!("pause") { @print_host.service.pause_print }
+      control_pause!
     end
 
     def stop
-      control!("stop") { @print_host.service.stop_print }
+      control_stop!
     end
 
     def continue
-      control!("continue") { @print_host.service.continue_print }
+      control_continue!
     end
 
     def status
@@ -125,10 +125,26 @@ module Settings
       params.expect(print_host: [:name, :endpoint, :mainboard_id])
     end
 
-    def control!(action)
+    def control_pause!
       authorize @print_host, :control?
-      yield
-      redirect_to settings_print_host_path(@print_host), notice: t("settings.print_hosts.#{action}.success")
+      @print_host.service.pause_print
+      redirect_to settings_print_host_path(@print_host), notice: t("settings.print_hosts.pause.success")
+    rescue Print::SdcpService::Error => e
+      redirect_to settings_print_host_path(@print_host), alert: e.message
+    end
+
+    def control_stop!
+      authorize @print_host, :control?
+      @print_host.service.stop_print
+      redirect_to settings_print_host_path(@print_host), notice: t("settings.print_hosts.stop.success")
+    rescue Print::SdcpService::Error => e
+      redirect_to settings_print_host_path(@print_host), alert: e.message
+    end
+
+    def control_continue!
+      authorize @print_host, :control?
+      @print_host.service.continue_print
+      redirect_to settings_print_host_path(@print_host), notice: t("settings.print_hosts.continue.success")
     rescue Print::SdcpService::Error => e
       redirect_to settings_print_host_path(@print_host), alert: e.message
     end
