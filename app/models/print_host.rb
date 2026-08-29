@@ -12,12 +12,22 @@ class PrintHost < ApplicationRecord
     Print::SdcpService::PROTOCOL => Print::SdcpService
   }.freeze
 
+  has_many :print_jobs, dependent: :destroy
+  has_many :sliced_artifacts, dependent: :destroy
+  has_many :resin_bottles, dependent: :nullify
+  has_many :print_vats, dependent: :destroy
+
   validates :name, presence: true
   validates :endpoint, presence: true
   validates :protocol, presence: true, inclusion: {in: PROTOCOLS.keys}
   validate :endpoint_must_be_http_url
   validate :endpoint_must_be_private_lan
   validate :mainboard_id_format
+  validates :fep_cycles, numericality: {greater_than_or_equal_to: 0, only_integer: true}, allow_nil: true
+  validates :lcd_hours, numericality: {greater_than_or_equal_to: 0}, allow_nil: true
+  validates :resolution_w, :resolution_h, numericality: {greater_than: 0, only_integer: true}, allow_nil: true
+  validates :build_x_mm, :build_y_mm, :build_z_mm, numericality: {greater_than: 0}, allow_nil: true
+  validates :storage_bytes_used, :storage_bytes_total, numericality: {greater_than_or_equal_to: 0, only_integer: true}, allow_nil: true
 
   def service
     PROTOCOLS.fetch(protocol).new(print_host: self)
@@ -25,6 +35,18 @@ class PrintHost < ApplicationRecord
 
   def input_types
     PROTOCOLS.fetch(protocol)::INPUT_TYPES
+  end
+
+  # Prefer capability stamp when present; fall back to protocol defaults.
+  def capability_formats
+    formats = Array(native_formats).map(&:to_s).reject(&:blank?)
+    formats.presence || input_types.map(&:to_s)
+  end
+
+  def resolution_label
+    return if resolution_w.blank? || resolution_h.blank?
+
+    "#{resolution_w}×#{resolution_h}"
   end
 
   # i18n-tasks-use t('print_hosts.protocols.sdcp')
@@ -35,6 +57,28 @@ class PrintHost < ApplicationRecord
     else
       protocol
     end
+  end
+
+  # Decorative / future-protocol families (Bambu/X1C) are visible but not send-capable (INIT-008).
+  def unsupported_for_send?
+    return true unless protocol == Print::SdcpService::PROTOCOL
+
+    [brand, machine_model, name].compact.join(" ").match?(/bambu|x1[\s_-]?c/i)
+  end
+
+  def send_supported?
+    !unsupported_for_send?
+  end
+
+  def endpoint_host_port
+    uri = URI.parse(endpoint.to_s)
+    port = uri.port
+    host = uri.host
+    return endpoint.to_s if host.blank?
+
+    (port && ![80, 443].include?(port)) ? "#{host}:#{port}" : host.to_s
+  rescue URI::InvalidURIError
+    endpoint.to_s
   end
 
   def print_later(file:)

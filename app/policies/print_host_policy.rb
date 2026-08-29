@@ -9,6 +9,10 @@ class PrintHostPolicy < ApplicationPolicy
     index?
   end
 
+  def settings?
+    show?
+  end
+
   def create?
     all_of(
       user&.is_administrator?,
@@ -27,6 +31,14 @@ class PrintHostPolicy < ApplicationPolicy
   # Mutating printer control (upload / start / pause / stop / continue).
   def control?
     create?
+  end
+
+  def discover?
+    index?
+  end
+
+  def storage?
+    control?
   end
 
   class Scope

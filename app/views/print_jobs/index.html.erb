@@ -1,0 +1,85 @@
+<% content_for :head do %>
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+
+<%= PageTitle title: t(".title") %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-6"
+     data-controller="print-queue"
+     data-print-queue-url-value="<%= print_jobs_path(format: :json) %>"
+     data-print-queue-interval-value="5000">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5 max-w-2xl">
+      <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= t(".heading") %></h1>
+      <p class="text-sm text-secondary-600 dark:text-secondary-300 m-0"><%= t(".subtitle") %></p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <%= link_to t(".history_link"), print_histories_path,
+            class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium no-underline hover:bg-secondary-50" %>
+      <%= link_to t(".fleet_link"), printers_path,
+            class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium no-underline hover:bg-secondary-50" %>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-3 items-start">
+    <section class="bg-[#1a1311] border border-[#332623] rounded-2xl p-5 space-y-4" aria-labelledby="queue-queued-heading">
+      <div class="flex items-center justify-between">
+        <h2 id="queue-queued-heading" class="text-sm font-bold text-surface m-0">
+          <%= t(".columns.queued", count: @queued.size) %>
+        </h2>
+        <%= Icon icon: "arrows-move", label: t(".reorder") %>
+      </div>
+      <div class="flex flex-col gap-4">
+        <% @queued.each do |job| %>
+          <%= render Components::PrintJobCard.new(job: job, column: :queued) %>
+        <% end %>
+        <% if @queued.blank? %>
+          <p class="text-sm text-secondary-500 m-0"><%= t(".empty.queued") %></p>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="bg-[#1a1311] border border-[#332623] rounded-2xl p-5 space-y-4" aria-labelledby="queue-printing-heading">
+      <h2 id="queue-printing-heading" class="text-sm font-bold text-surface m-0">
+        <%= t(".columns.printing", count: @printing.size) %>
+      </h2>
+      <div class="flex flex-col gap-4">
+        <% @printing.each do |job| %>
+          <%= render Components::PrintJobCard.new(job: job, column: :printing) %>
+        <% end %>
+        <% if @printing.blank? %>
+          <p class="text-sm text-secondary-500 m-0"><%= t(".empty.printing") %></p>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="bg-[#1a1311] border border-[#332623] rounded-2xl p-5 space-y-4" aria-labelledby="queue-completed-heading">
+      <h2 id="queue-completed-heading" class="text-sm font-bold text-surface m-0">
+        <%= t(".columns.completed", count: @completed.size) %>
+      </h2>
+      <div class="flex flex-col gap-4">
+        <% @completed.each do |job| %>
+          <%= render Components::PrintJobCard.new(job: job, column: :completed) %>
+        <% end %>
+        <% if @completed.blank? %>
+          <p class="text-sm text-secondary-500 m-0"><%= t(".empty.completed") %></p>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+  <section class="bg-[#1a1311] border border-[#332623] rounded-2xl p-5 space-y-4" aria-labelledby="fleet-status-heading">
+    <h2 id="fleet-status-heading" class="text-sm font-bold text-surface m-0"><%= t(".fleet_status") %></h2>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <% @fleet.each do |host| %>
+        <%= link_to printer_path(host), class: "flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-[#332623] bg-[#100b09] no-underline hover:border-primary-600" do %>
+          <span class="text-sm font-medium text-surface truncate"><%= host.name %></span>
+          <%= render Components::PrinterStatusBadge.new(status: host.unsupported_for_send? ? "unsupported" : "idle") %>
+        <% end %>
+      <% end %>
+      <% if @fleet.blank? %>
+        <p class="text-sm text-secondary-500 m-0"><%= t(".fleet_empty") %></p>
+      <% end %>
+    </div>
+  </section>
+</div>

@@ -97,6 +97,46 @@ Rails.application.routes.draw do
 
   authenticate :user do
     get "/welcome", to: "home#welcome", as: :welcome
+
+    # Print Studio manager API (INIT-008/SPEC-004) — first-class fleet/jobs surfaces.
+    # Settings::PrintHosts remains for admin HTML CRUD.
+    resources :printers, only: [:index, :show, :new, :create, :update] do
+      collection do
+        post :discover
+      end
+      member do
+        get :status
+        get :snapshot
+        get :settings
+        post :pause
+        post :stop
+        post :continue
+        post :send_file
+      end
+      resources :storage_files, only: [:index, :create], module: :printers do
+        delete "/", action: :destroy, on: :collection
+      end
+    end
+
+    resources :print_jobs, only: [:index, :show, :create] do
+      member do
+        post :start
+        post :pause
+        post :resume
+        post :cancel
+        post :confirm_plate_cleared
+      end
+    end
+
+    resources :print_histories, only: [:index]
+    resources :consumables, only: [:index]
+    resources :resin_bottles, only: [:index, :show, :create, :update, :destroy]
+    resources :print_vats, only: [:index, :show, :create, :update, :destroy] do
+      member do
+        post :record_maintenance
+        post :swap
+      end
+    end
   end
 
   resources :libraries, except: [:index]
@@ -152,6 +192,7 @@ Rails.application.routes.draw do
       end
       member do
         post "scan_archive", to: "archive_entries#scan"
+        get :send_eligibility, to: "model_files/send_eligibilities#show"
       end
       resources :archive_entries, only: [:index, :show] do
         member do
@@ -162,6 +203,7 @@ Rails.application.routes.draw do
       end
     end
     resource :scan_archives, only: [:create], module: :models
+    resource :print_log, only: [:show], module: :models
   end
   resources :creators do
     concerns :followable, followable_class: "Creator"

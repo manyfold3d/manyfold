@@ -1,0 +1,136 @@
+<%= PageTitle title: @printer.name, breadcrumbs: {
+      t("printers.index.heading") => printers_path
+    } %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-6"
+     data-controller="print-host-monitor"
+     data-print-host-monitor-status-url-value="<%= status_printer_path(@printer) %>"
+     data-print-host-monitor-snapshot-url-value="<%= snapshot_printer_path(@printer) %>"
+     data-print-host-monitor-interval-value="5000">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5">
+      <div class="flex flex-wrap items-center gap-3">
+        <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= @printer.name %></h1>
+        <span data-print-host-monitor-target="badge">
+          <%= render Components::PrinterStatusBadge.new(status: @printer.unsupported_for_send? ? "unsupported" : (@status.is_a?(Hash) && @status[:error] ? "offline" : "idle")) %>
+        </span>
+      </div>
+      <p class="font-mono text-[13px] text-secondary-500 m-0">
+        <%= @printer.endpoint_host_port %> · <%= @printer.protocol_label %>
+        <% if @printer.brand.present? %> · <%= @printer.brand %><% end %>
+      </p>
+    </div>
+    <% if policy(@printer).control? && !@printer.unsupported_for_send? %>
+      <div class="flex flex-wrap gap-3">
+        <%= link_to t(".settings"), settings_printer_path(@printer),
+              class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium no-underline hover:bg-secondary-50" %>
+        <%= button_to t(".pause"), pause_printer_path(@printer), method: :post,
+              class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium" %>
+        <%= button_to t(".continue"), continue_printer_path(@printer), method: :post,
+              class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium" %>
+        <%= button_to t(".stop"), stop_printer_path(@printer), method: :post,
+              class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-danger text-danger text-sm font-medium",
+              data: {turbo_confirm: t(".confirm_stop")} %>
+      </div>
+    <% elsif policy(@printer).show? %>
+      <div class="flex flex-wrap gap-3">
+        <%= link_to t(".settings"), settings_printer_path(@printer),
+              class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium no-underline hover:bg-secondary-50" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @printer.unsupported_for_send? %>
+    <div class="rounded-2xl border border-[#332623] bg-[#1a1311] p-6 text-secondary-300 text-sm">
+      <%= t(".unsupported_banner") %>
+    </div>
+  <% else %>
+    <div class="grid gap-6 lg:grid-cols-[1fr_420px]">
+      <div class="space-y-6 min-w-0">
+        <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-4 space-y-3">
+          <div class="flex items-center justify-between text-[11px] font-mono">
+            <span class="text-secondary-500 uppercase tracking-wide"><%= t(".live_stream") %></span>
+            <span class="text-success" data-print-host-monitor-target="connection"><%= t(".connecting") %></span>
+          </div>
+          <div class="bg-black rounded-lg overflow-hidden h-[420px] flex items-center justify-center">
+            <img data-print-host-monitor-target="snapshot"
+                 src="<%= snapshot_printer_path(@printer) %>"
+                 alt="<%= t(".camera_alt") %>"
+                 class="w-full h-full object-contain">
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-6 space-y-4">
+          <h2 class="font-mono text-[11px] text-secondary-500 uppercase tracking-wide m-0"><%= t(".queue") %></h2>
+          <% if @queue_jobs.blank? %>
+            <p class="text-sm text-secondary-500 m-0"><%= t(".queue_empty") %></p>
+          <% else %>
+            <ul class="list-none m-0 p-0 divide-y divide-[#332623]">
+              <% @queue_jobs.each do |job| %>
+                <li class="flex items-center justify-between py-3 gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="size-2 rounded-full <%= job.state.in?(%w[printing paused]) ? "bg-primary-600" : "bg-secondary-500" %>"></span>
+                    <span class="font-mono text-sm text-surface truncate">
+                      <%= job.model_file&.filename.presence || t(".job_untitled") %>
+                    </span>
+                  </div>
+                  <span class="text-[13px] <%= job.state.in?(%w[printing paused]) ? "text-primary-600" : "text-secondary-400" %> whitespace-nowrap">
+                    <%= t(".job_state.#{job.state}", default: job.state.humanize) %>
+                  </span>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </section>
+      </div>
+
+      <aside class="rounded-2xl border border-[#332623] bg-[#1a1311] p-6 space-y-5 h-fit">
+        <div>
+          <p class="font-mono text-[11px] text-secondary-500 uppercase tracking-wide m-0"><%= t(".telemetry") %></p>
+          <h2 class="text-xl font-bold text-surface m-0 mt-1"><%= t(".status_title", name: @printer.name) %></h2>
+        </div>
+
+        <div>
+          <p class="text-[11px] font-medium text-secondary-500 uppercase m-0"><%= t(".now_printing") %></p>
+          <p class="font-mono font-bold text-xl text-primary-600 m-0 mt-1" data-print-host-monitor-target="filename">—</p>
+        </div>
+        <hr class="border-[#332623] m-0">
+
+        <div class="space-y-2">
+          <p class="text-[11px] font-medium text-secondary-500 uppercase m-0"><%= t(".progress") %></p>
+          <div class="flex items-baseline justify-between gap-2">
+            <span class="font-mono font-semibold text-xl text-surface" data-print-host-monitor-target="percent">0%</span>
+            <span class="font-mono text-[13px] text-secondary-300" data-print-host-monitor-target="layers">—</span>
+          </div>
+          <div class="bg-[#2f2723] h-2 rounded overflow-hidden">
+            <div class="bg-primary-600 h-full transition-[width] duration-500" style="width: 0%" data-print-host-monitor-target="bar"></div>
+          </div>
+        </div>
+        <hr class="border-[#332623] m-0">
+
+        <div>
+          <p class="text-[11px] font-medium text-secondary-500 uppercase m-0"><%= t(".time_remaining") %></p>
+          <p class="font-mono font-bold text-xl text-surface m-0 mt-1" data-print-host-monitor-target="eta">—</p>
+        </div>
+        <hr class="border-[#332623] m-0">
+
+        <div>
+          <p class="text-[11px] font-medium text-secondary-500 uppercase m-0"><%= t(".resin") %></p>
+          <p class="font-mono font-semibold text-lg text-secondary-300 m-0 mt-1" data-print-host-monitor-target="resin">—</p>
+        </div>
+        <hr class="border-[#332623] m-0">
+
+        <div>
+          <p class="text-[11px] font-medium text-secondary-500 uppercase m-0"><%= t(".uv_lift") %></p>
+          <p class="font-mono font-semibold text-lg text-secondary-300 m-0 mt-1" data-print-host-monitor-target="uv">—</p>
+        </div>
+
+        <div class="bg-[#261c1a] rounded-lg p-3">
+          <p class="text-xs text-secondary-500 m-0 leading-relaxed"><%= t(".telemetry_note") %></p>
+        </div>
+
+        <pre data-print-host-monitor-target="status" class="sr-only"><%= (@status || {}).to_json %></pre>
+      </aside>
+    </div>
+  <% end %>
+</div>

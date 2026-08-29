@@ -1,0 +1,253 @@
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("printers.index.heading") => printers_path,
+      @printer.name => printer_path(@printer)
+    }, heading: false %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-8"
+     data-controller="print-host-monitor printer-camera-settings printer-storage"
+     data-print-host-monitor-status-url-value="<%= status_printer_path(@printer) %>"
+     data-print-host-monitor-snapshot-url-value="<%= snapshot_printer_path(@printer) %>"
+     data-print-host-monitor-interval-value="10000"
+     data-printer-storage-delete-url-value="<%= printer_storage_files_path(@printer) %>">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5">
+      <div class="flex flex-wrap items-center gap-3">
+        <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= @printer.name %></h1>
+        <%= render Components::PrinterStatusBadge.new(
+              status: @printer.unsupported_for_send? ? "unsupported" : (@status.is_a?(Hash) && @status[:error] ? "offline" : "idle")
+            ) %>
+      </div>
+      <p class="font-mono text-[13px] text-secondary-500 m-0">
+        <%= @printer.endpoint_host_port %> · <%= @printer.protocol_label %>
+        <% unless @status.is_a?(Hash) && @status[:error] %>
+          · <span class="text-success uppercase"><%= t(".online") %></span>
+        <% end %>
+      </p>
+      <p class="text-sm text-secondary-400 m-0 max-w-2xl"><%= t(".subtitle") %></p>
+    </div>
+    <%= link_to t(".back_status"), printer_path(@printer),
+          class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium no-underline hover:bg-secondary-50" %>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1fr_360px]">
+    <div class="space-y-6 min-w-0">
+      <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-lg font-semibold text-surface m-0"><%= t(".identity_heading") %></h2>
+          <% if policy(@printer).update? %>
+            <button type="button"
+                    class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium"
+                    data-action="click->printer-camera-settings#toggleIdentity"
+                    data-printer-camera-settings-target="editToggle"
+                    data-idle-label="<%= t(".edit_configuration") %>"
+                    data-editing-label="<%= t(".cancel_edit") %>">
+              <%= t(".edit_configuration") %>
+            </button>
+          <% end %>
+        </div>
+
+        <%= form_with model: @printer, url: printer_path(@printer), method: :patch,
+              class: "grid gap-4 sm:grid-cols-2",
+              data: {printer_camera_settings_target: "identityForm"} do |f| %>
+          <% [
+            [:brand, t(".fields.brand"), false],
+            [:machine_model, t(".fields.model"), false],
+            [:firmware, t(".fields.firmware"), false],
+            [:protocol, t(".fields.protocol"), true],
+            [:mac_address, t(".fields.mac"), false],
+            [:resolution, t(".fields.resolution"), true],
+            [:build_volume, t(".fields.build"), true],
+            [:native_formats_display, t(".fields.formats"), true]
+          ].each do |key, label, readonly_display| %>
+            <div>
+              <label class="block font-mono text-[11px] uppercase tracking-wide text-secondary-500 mb-1"><%= label %></label>
+              <% if readonly_display %>
+                <div class="rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm font-mono text-secondary-200">
+                  <% case key %>
+                  <% when :protocol %>
+                    <%= @printer.protocol_label %>
+                  <% when :resolution %>
+                    <%= @printer.resolution_label.presence || "—" %>
+                  <% when :build_volume %>
+                    <% if @printer.build_x_mm.present? %>
+                      <%= [@printer.build_x_mm, @printer.build_y_mm, @printer.build_z_mm].compact.join(" × ") %> mm
+                    <% else %>
+                      —
+                    <% end %>
+                  <% when :native_formats_display %>
+                    <%= @printer.capability_formats.map { |fmt| ".#{fmt}" }.join(" · ").presence || "—" %>
+                  <% end %>
+                </div>
+              <% else %>
+                <%= f.text_field key,
+                      class: "w-full rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm font-mono text-surface",
+                      readonly: !policy(@printer).update?,
+                      data: {printer_camera_settings_target: "identityField"} %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% if policy(@printer).update? %>
+            <div class="sm:col-span-2 hidden" data-printer-camera-settings-target="identityActions">
+              <%= f.submit t(".save_identity"),
+                    class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium cursor-pointer" %>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+
+      <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-6 space-y-5">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-semibold text-surface m-0"><%= t(".storage_heading") %></h2>
+            <p class="text-sm text-secondary-400 m-0 mt-1"><%= t(".storage_help") %></p>
+          </div>
+          <% if policy(@printer).storage? && !@printer.unsupported_for_send? %>
+            <%= form_with url: printer_storage_files_path(@printer), method: :post, multipart: true,
+                  class: "flex flex-wrap items-center gap-2" do %>
+              <label class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium cursor-pointer">
+                <%= t(".upload_file") %>
+                <input type="file" name="file" accept=".ctb,.jxs" class="sr-only" data-action="change->printer-storage#submitUpload" data-printer-storage-target="fileInput">
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% used = @printer.storage_bytes_used.to_i %>
+        <% total = @printer.storage_bytes_total.to_i %>
+        <% pct = PrintConsumablesHelper.storage_used_pct(used, total) %>
+        <% if total.positive? %>
+          <div class="space-y-2">
+            <div class="flex justify-between text-[13px] font-mono text-secondary-300">
+              <span><%= t(".storage_used", used: number_to_human_size(used), total: number_to_human_size(total), pct: pct) %></span>
+            </div>
+            <div class="bg-[#2f2723] h-2 rounded-full overflow-hidden">
+              <div class="bg-primary-600 h-full" style="width: <%= pct %>%"></div>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @storage_error.present? %>
+          <p class="text-sm text-danger m-0"><%= t(".storage_error", message: @storage_error) %></p>
+        <% elsif @printer.unsupported_for_send? %>
+          <p class="text-sm text-secondary-500 m-0"><%= t(".storage_unsupported") %></p>
+        <% else %>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[480px]">
+              <thead>
+                <tr class="border-b border-[#332623]">
+                  <th class="py-2 pe-3 font-mono text-[11px] uppercase text-secondary-500 font-medium"><%= t(".col.file") %></th>
+                  <th class="py-2 pe-3 font-mono text-[11px] uppercase text-secondary-500 font-medium"><%= t(".col.size") %></th>
+                  <th class="py-2 pe-3 font-mono text-[11px] uppercase text-secondary-500 font-medium"><%= t(".col.uploaded") %></th>
+                  <th class="py-2 font-mono text-[11px] uppercase text-secondary-500 font-medium"><%= t(".col.actions") %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Array(@storage_files).each do |file| %>
+                  <% file = file.with_indifferent_access if file.respond_to?(:with_indifferent_access) %>
+                  <% path = file[:path] || file[:name] || file["path"] || file["name"] %>
+                  <% name = file[:name] || file["name"] || File.basename(path.to_s) %>
+                  <% size = file[:size] || file["size"] || file[:Size] %>
+                  <% uploaded_at = file[:uploaded_at] || file["uploaded_at"] || file[:mtime] %>
+                  <tr class="border-b border-[#332623] last:border-0">
+                    <td class="py-3 pe-3 font-mono text-sm text-surface"><%= name %></td>
+                    <td class="py-3 pe-3 font-mono text-sm text-secondary-400">
+                      <%= size.present? ? number_to_human_size(size.to_i) : "—" %>
+                    </td>
+                    <td class="py-3 pe-3 font-mono text-sm text-secondary-400">
+                      <%= uploaded_at.presence || "—" %>
+                    </td>
+                    <td class="py-3">
+                      <% if policy(@printer).storage? && path.present? %>
+                        <%= button_to printer_storage_files_path(@printer),
+                              method: :delete,
+                              params: {file_list: [path]},
+                              class: "inline-flex items-center justify-center p-1.5 text-danger hover:opacity-80",
+                              form: {data: {turbo_confirm: t(".confirm_delete", name: name)}},
+                              title: t(".delete_file") do %>
+                          <%= Icon icon: "trash", label: t(".delete_file") %>
+                        <% end %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+                <% if Array(@storage_files).blank? %>
+                  <tr>
+                    <td colspan="4" class="py-4 text-sm text-secondary-500"><%= t(".storage_empty") %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </section>
+    </div>
+
+    <aside class="space-y-6">
+      <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-5 space-y-4">
+        <div>
+          <h2 class="text-lg font-semibold text-surface m-0"><%= t(".gate_heading") %></h2>
+          <p class="text-sm text-secondary-400 m-0 mt-1"><%= t(".gate_help") %></p>
+        </div>
+        <%= render Components::CompatibilityChecklist.new(rules: @gate_rules) %>
+      </section>
+
+      <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-5 space-y-4"
+               data-printer-camera-settings-target="cameraPanel">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-semibold text-surface m-0"><%= t(".camera_heading") %></h2>
+            <p class="text-sm text-secondary-400 m-0 mt-1"><%= t(".camera_help") %></p>
+          </div>
+          <button type="button"
+                  role="switch"
+                  aria-checked="true"
+                  class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-primary-600 transition-colors"
+                  data-action="click->printer-camera-settings#toggleStream"
+                  data-printer-camera-settings-target="toggle">
+            <span class="pointer-events-none inline-block size-5 translate-x-5 rounded-full bg-white shadow transition transform mt-0.5 ms-0.5"
+                  data-printer-camera-settings-target="toggleKnob"></span>
+          </button>
+        </div>
+
+        <div>
+          <label class="block font-mono text-[11px] uppercase tracking-wide text-secondary-500 mb-1"><%= t(".snapshot_interval") %></label>
+          <select class="w-full rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm text-surface"
+                  data-action="change->printer-camera-settings#changeInterval"
+                  data-printer-camera-settings-target="interval">
+            <option value="5000"><%= t(".interval_5s") %></option>
+            <option value="10000" selected><%= t(".interval_10s") %></option>
+            <option value="30000"><%= t(".interval_30s") %></option>
+            <option value="60000"><%= t(".interval_60s") %></option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-mono text-[11px] uppercase tracking-wide text-secondary-500 mb-1"><%= t(".rtsp_label") %></label>
+          <input type="text" readonly
+                 value="<%= t(".rtsp_placeholder", host: @printer.endpoint_host_port.to_s.split(":").first) %>"
+                 class="w-full rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm font-mono text-secondary-300">
+        </div>
+
+        <div class="relative bg-black rounded-lg overflow-hidden h-40 flex items-center justify-center">
+          <% unless @printer.unsupported_for_send? %>
+            <img data-print-host-monitor-target="snapshot"
+                 data-printer-camera-settings-target="snapshot"
+                 src="<%= snapshot_printer_path(@printer) %>"
+                 alt="<%= t(".camera_alt") %>"
+                 class="w-full h-full object-cover">
+            <div class="absolute top-2 left-2 right-2 flex justify-between pointer-events-none">
+              <span class="bg-black/50 text-secondary-200 text-[10px] font-mono px-2 py-0.5 rounded"><%= t(".cam_snapshot") %></span>
+              <span class="inline-flex items-center gap-1 bg-black/50 text-success text-[10px] font-mono px-2 py-0.5 rounded">
+                <span class="size-1.5 rounded-full bg-success"></span>
+                <%= t(".live") %>
+              </span>
+            </div>
+          <% else %>
+            <p class="text-xs text-secondary-500 m-0"><%= t(".camera_unsupported") %></p>
+          <% end %>
+        </div>
+      </section>
+    </aside>
+  </div>
+</div>

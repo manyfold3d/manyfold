@@ -73,10 +73,13 @@ RSpec.describe Print::SdcpService do
     end
 
     it "posts multipart chunks then starts when requested" do
-      # Stub HTTP upload without live printer
-      stub_request(:post, "http://10.0.0.199:3030/uploadFile/upload")
-        .to_return(status: 200, body: {code: "000000", success: true, data: {}}.to_json,
-          headers: {"Content-Type" => "application/json"})
+      response = instance_double(Net::HTTPSuccess, code: "200", body: {code: "000000", success: true, data: {}}.to_json)
+      allow(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(true)
+      http = instance_double(Net::HTTP)
+      allow(Net::HTTP).to receive(:new).and_return(http)
+      allow(http).to receive(:open_timeout=)
+      allow(http).to receive(:read_timeout=)
+      allow(http).to receive(:request).and_return(response)
       allow(session).to receive(:call).with(hash_including(cmd: 128)).and_return({"Ack" => 0})
 
       result = service.upload(io: StringIO.new("ctb-bytes"), filename: "part.ctb", start: true)
@@ -84,12 +87,126 @@ RSpec.describe Print::SdcpService do
       expect(result[:bytes]).to eq(9)
       expect(session).to have_received(:call).with(hash_including(cmd: 128))
     end
+
+    it "refuses upload when free space is known and insufficient (REQ-005)" do
+      host = build(:print_host, endpoint: "http://10.0.0.199:3030", mainboard_id: "d307202d8c1e0100",
+        storage_bytes_used: 900, storage_bytes_total: 1000)
+      tight = described_class.new(print_host: host, session: session)
+      expect {
+        tight.upload(io: StringIO.new("x" * 200), filename: "part.ctb")
+      }.to raise_error(Print::SdcpService::Error, /insufficient on-printer storage/)
+    end
+  end
+  describe "#list_files / #delete_files" do
+    it "lists via Cmd 258" do
+      allow(session).to receive(:call)
+        .with(hash_including(cmd: 258, data: {"Url" => "/local"}))
+        .and_return({"Ack" => 0, "FileList" => [{"name" => "/local/a.ctb", "type" => 1, "usedSize" => 10, "totalSize" => 100}]})
+      files = service.list_files
+      expect(files.first[:name]).to eq("/local/a.ctb")
+      expect(files.first[:type]).to eq(1)
+    end
+
+    it "deletes via Cmd 259" do
+      allow(session).to receive(:call)
+        .with(hash_including(cmd: 259, data: hash_including("FileList" => ["/local/a.ctb"])))
+        .and_return({"Ack" => 0})
+      expect(service.delete_files(file_list: ["/local/a.ctb"])).to include("Ack" => 0)
+    end
+  end
+
+  describe "#normalized_status" do
+    it "maps layer / eta / temps from status payload" do
+      raw = {
+        "Status" => {
+          "CurrentStatus" => [1],
+          "TempOfUVLED" => 42.5,
+          "TempOfBox" => 30.0,
+          "ReleaseFilm" => 120,
+          "PrintScreen" => 7200,
+          "PrintInfo" => {
+            "Status" => 3,
+            "CurrentLayer" => 100,
+            "TotalLayer" => 1000,
+            "CurrentTicks" => 60_000,
+            "TotalTicks" => 360_000,
+            "Filename" => "part.ctb"
+          }
+        }
+      }
+      dto = service.normalized_status(raw)
+      expect(dto[:current_layer]).to eq(100)
+      expect(dto[:total_layers]).to eq(1000)
+      expect(dto[:eta_seconds]).to eq(300)
+      expect(dto[:temp_uv_c]).to eq(42.5)
+      expect(dto[:fep_cycles]).to eq(120)
+      expect(dto[:lcd_seconds]).to eq(7200)
+    end
+  end
+
+  describe "#refresh_maintenance_counters!" do
+    it "persists FEP/LCD from status when available" do
+      host = create(:print_host, endpoint: "http://10.0.0.199:3030", mainboard_id: "d307202d8c1e0100")
+      svc = described_class.new(print_host: host, session: session)
+      allow(session).to receive(:call).with(hash_including(cmd: 0)).and_return({
+        "Ack" => 0,
+        "Status" => {"ReleaseFilm" => 55, "PrintScreen" => 7200}
+      })
+      svc.refresh_maintenance_counters!
+      expect(host.reload.fep_cycles).to eq(55)
+      expect(host.lcd_hours).to eq(2)
+    end
   end
 
   describe ".parse_discover_payload" do
     it "extracts JSON after M99999 prefix" do
       raw = 'M99999{"BrandName":"UniFormation","MainboardID":"d307202d8c1e0100"}'
       expect(described_class.parse_discover_payload(raw)["BrandName"]).to eq("UniFormation")
+    end
+  end
+
+  describe ".normalize_discover_candidate" do
+    it "builds a non-persisted candidate with machine_model and endpoint" do
+      parsed = {
+        "BrandName" => "UniFormation",
+        "MachineName" => "GK3 Pro",
+        "MainboardID" => "d307202d8c1e0100",
+        "MainboardIP" => "10.0.0.199",
+        "FirmwareVersion" => "1.2.3"
+      }
+      candidate = described_class.normalize_discover_candidate(parsed)
+      expect(candidate[:brand]).to eq("UniFormation")
+      expect(candidate[:machine_model]).to eq("GK3 Pro")
+      expect(candidate[:endpoint]).to eq("http://10.0.0.199:3030")
+      expect(candidate[:mainboard_id]).to eq("d307202d8c1e0100")
+      expect(PrintHost.where(mainboard_id: "d307202d8c1e0100")).to be_empty
+    end
+  end
+
+  describe ".discover_candidates allowlist" do
+    it "raises when all targets are public" do
+      expect {
+        described_class.discover_candidates(hosts: ["1.1.1.1"], timeout: 0.1)
+      }.to raise_error(Print::SdcpService::Error, /allowlisted/)
+    end
+
+    it "strips path components from upload filenames" do
+      response = instance_double(Net::HTTPSuccess, code: "200", body: {code: "000000", success: true, data: {}}.to_json)
+      allow(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(true)
+      http = instance_double(Net::HTTP)
+      allow(Net::HTTP).to receive(:new).and_return(http)
+      allow(http).to receive(:open_timeout=)
+      allow(http).to receive(:read_timeout=)
+      allow(http).to receive(:request).and_return(response)
+
+      result = service.upload(io: StringIO.new("ctb-bytes"), filename: "../../evil.ctb")
+      expect(result[:filename]).to eq("evil.ctb")
+    end
+
+    it "rejects storage deletes outside /local" do
+      expect {
+        service.delete_files(file_list: ["/etc/passwd"])
+      }.to raise_error(Print::SdcpService::Error, /under \/local/)
     end
   end
 end

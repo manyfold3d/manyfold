@@ -63,7 +63,7 @@ module Print
     end
 
     def start_print(filename:, start_layer: 0)
-      request_cmd(128, data: {"Filename" => filename, "StartLayer" => start_layer})
+      request_cmd(128, data: {"Filename" => sanitize_remote_filename(filename), "StartLayer" => start_layer})
     end
 
     def pause_print
@@ -78,12 +78,118 @@ module Print
       request_cmd(131)
     end
 
+    # Cmd 258 — list files under Url (default /local).
+    def list_files(url: "/local")
+      url = sanitize_storage_url(url)
+      payload = request_cmd(258, data: {"Url" => url})
+      Array(payload["FileList"]).map { |entry| normalize_file_entry(entry) }
+    end
+
+    # Cmd 259 — batch delete. Paths must be absolute SDCP paths under /local.
+    def delete_files(file_list: [], folder_list: [])
+      files = sanitize_storage_paths(file_list)
+      folders = sanitize_storage_paths(folder_list)
+      raise Error, "nothing_to_delete" if files.blank? && folders.blank?
+
+      request_cmd(259, data: {
+        "FileList" => files,
+        "FolderList" => folders
+      })
+    end
+
+    # Free bytes from host cache, refreshed file-list totals, or nil when unknown.
+    def storage_free_bytes
+      used = print_host.storage_bytes_used
+      total = print_host.storage_bytes_total
+      return total.to_i - used.to_i if !used.nil? && !total.nil?
+
+      nil
+    end
+
+    # Refresh storage counters from a file-list response root entry when present.
+    def refresh_storage_from_list!(url: "/local")
+      url = sanitize_storage_url(url)
+      payload = request_cmd(258, data: {"Url" => url})
+      entries = Array(payload["FileList"])
+      sample = entries.find { |e| e.is_a?(Hash) && e.key?("totalSize") } || payload
+      used = sample["usedSize"] || sample["UsedSize"]
+      total = sample["totalSize"] || sample["TotalSize"]
+      return print_host if used.nil? || total.nil?
+
+      print_host.update!(
+        storage_bytes_used: used.to_i,
+        storage_bytes_total: total.to_i
+      )
+      print_host
+    end
+
+    # Pull FEP (ReleaseFilm) / LCD (PrintScreen hours) from status/attributes when available.
+    def refresh_maintenance_counters!
+      status_body = status
+      status_hash = status_body["Status"] if status_body.is_a?(Hash)
+      status_hash ||= status_body if status_body.is_a?(Hash)
+
+      fep = dig_num(status_hash, "ReleaseFilm")
+      lcd_seconds = dig_num(status_hash, "PrintScreen")
+
+      if fep.nil? || lcd_seconds.nil?
+        attrs = attributes
+        fep ||= dig_num(attrs, "ReleaseFilm") || dig_num(attrs, "ReleaseFilmMax")
+        lcd_seconds ||= dig_num(attrs, "PrintScreen")
+      end
+
+      updates = {}
+      updates[:fep_cycles] = fep.to_i unless fep.nil?
+      unless lcd_seconds.nil?
+        # Avoid BigDecimal#/ under YJIT (known panic on some 3.4 builds); use Float.
+        updates[:lcd_hours] = (lcd_seconds.to_f / 3600.0).round(4)
+      end
+      print_host.update!(updates) if updates.any?
+      print_host
+    end
+
+    # Normalized monitor DTO (REQ-007 shaped) from Cmd 0 status payload.
+    def normalized_status(raw = nil)
+      raw ||= status
+      body = raw.is_a?(Hash) ? (raw["Status"] || raw) : {}
+      info = body["PrintInfo"].is_a?(Hash) ? body["PrintInfo"] : {}
+      current_ticks = info["CurrentTicks"].to_i
+      total_ticks = info["TotalTicks"].to_i
+      eta_seconds = if total_ticks.positive? && total_ticks >= current_ticks
+        ((total_ticks - current_ticks) / 1000.0).round
+      end
+
+      {
+        machine_status: Array(body["CurrentStatus"]),
+        print_status: info["Status"],
+        current_layer: info["CurrentLayer"],
+        total_layers: info["TotalLayer"],
+        eta_seconds: eta_seconds,
+        filename: info["Filename"],
+        temp_uv_c: body["TempOfUVLED"],
+        temp_box_c: body["TempOfBox"],
+        temp_box_target_c: body["TempTargetBox"],
+        fep_cycles: body["ReleaseFilm"],
+        lcd_seconds: body["PrintScreen"],
+        task_id: info["TaskId"],
+        error_number: info["ErrorNumber"],
+        raw: raw
+      }
+    end
+
     # Uploads a sliced CTB/JXS file in 1MB chunks, then optionally starts print.
+    # When free space is known and insufficient, raises before uploading (REQ-005).
     def upload(io:, filename:, content_type: nil, start: false, start_layer: 0)
+      filename = sanitize_remote_filename(filename)
       assert_supported_filename!(filename)
 
       bytes = io.respond_to?(:read) ? io.read : io.to_s
       raise Error, "empty upload" if bytes.blank?
+
+      free = storage_free_bytes
+      if !free.nil? && bytes.bytesize > free
+        raise Error, "insufficient on-printer storage (need #{bytes.bytesize}, free #{free})"
+      end
 
       md5 = Digest::MD5.hexdigest(bytes)
       uuid = SecureRandom.uuid
@@ -110,17 +216,58 @@ module Print
 
     # UDP discover (unicast to host or broadcast). Returns parsed attribute hash or nil.
     def self.discover(host: "255.255.255.255", port: DEFAULT_DISCOVER_PORT, timeout: 2.0)
+      discover_candidates(hosts: [host], port: port, timeout: timeout).first
+    end
+
+    # UDP M99999 discover. Returns candidate hashes only — does NOT persist PrintHost (REQ-003).
+    # Targets and reported MainboardIP must pass EndpointAllowlist (SSRF — INIT-008/SPEC-008).
+    def self.discover_candidates(hosts: ["255.255.255.255"], port: DEFAULT_DISCOVER_PORT, timeout: 2.0)
+      safe_hosts = EndpointAllowlist.filter_discover_targets(hosts)
+      raise Error, "no allowlisted discover targets" if safe_hosts.empty?
+
+      timeout = timeout.to_f.clamp(0.1, 5.0)
       socket = UDPSocket.new
       socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
-      socket.send(DISCOVER_PAYLOAD, 0, host, port)
-      readable, = IO.select([socket], nil, nil, timeout)
-      return nil unless readable
+      safe_hosts.each { |host| socket.send(DISCOVER_PAYLOAD, 0, host, port) }
 
-      data, = socket.recvfrom(65_535)
-      parse_discover_payload(data)
+      candidates = []
+      seen = {}
+      deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + timeout
+      loop do
+        remaining = deadline - Process.clock_gettime(Process::CLOCK_MONOTONIC)
+        break if remaining <= 0
+
+        readable, = IO.select([socket], nil, nil, remaining)
+        break unless readable
+
+        data, addr = socket.recvfrom(65_535)
+        parsed = parse_discover_payload(data)
+        next unless parsed
+
+        candidate = normalize_discover_candidate(parsed, addr)
+        next unless discover_candidate_allowed?(candidate)
+
+        key = candidate[:mainboard_id].presence || candidate[:endpoint]
+        next if key.blank? || seen[key]
+
+        seen[key] = true
+        candidates << candidate
+      end
+      candidates
     ensure
       socket&.close
     end
+
+    def self.discover_candidate_allowed?(candidate)
+      endpoint = candidate[:endpoint].to_s
+      return false if endpoint.blank?
+
+      host = URI.parse(endpoint).host
+      EndpointAllowlist.allowed?(host)
+    rescue URI::InvalidURIError
+      false
+    end
+    private_class_method :discover_candidate_allowed?
 
     def self.parse_discover_payload(data)
       text = data.to_s
@@ -132,11 +279,25 @@ module Print
       nil
     end
 
+    def self.normalize_discover_candidate(parsed, addr = nil)
+      ip = parsed["MainboardIP"].presence || addr&.[](3)
+      {
+        brand: parsed["BrandName"],
+        machine_model: parsed["MachineName"] || parsed["Name"],
+        mainboard_id: parsed["MainboardID"],
+        firmware: parsed["FirmwareVersion"],
+        protocol_version: parsed["ProtocolVersion"],
+        endpoint: ip.present? ? "http://#{ip}:3030" : nil,
+        raw: parsed
+      }
+    end
+
     private
 
     attr_reader :print_host
 
     def request_cmd(cmd, data: {}, collect: :response)
+      assert_endpoint_allowed!
       payload = session.call(cmd: cmd, data: data, collect: collect)
       ack = payload.is_a?(Hash) ? payload["Ack"] : nil
       if ack && ack != 0
@@ -154,13 +315,25 @@ module Print
     end
 
     def websocket_url
+      assert_endpoint_allowed!
       uri = URI.parse(print_host.endpoint)
       "ws://#{uri.host}:#{uri.port || 3030}/websocket"
     end
 
     def upload_url
+      assert_endpoint_allowed!
       uri = URI.parse(print_host.endpoint)
       "#{uri.scheme}://#{uri.host}:#{uri.port || 3030}/uploadFile/upload"
+    end
+
+    # Re-resolve at connect time to close DNS-rebinding TOCTOU after model validation.
+    def assert_endpoint_allowed!
+      uri = URI.parse(print_host.endpoint.to_s)
+      unless EndpointAllowlist.allowed?(uri.host)
+        raise Error, "PrintHost endpoint not on private LAN allowlist"
+      end
+    rescue URI::InvalidURIError
+      raise Error, "PrintHost endpoint invalid"
     end
 
     def assert_supported_filename!(filename)
@@ -171,15 +344,68 @@ module Print
       raise UnsupportedFileType, "SDCP accepts CTB/JXS only (got #{filename.inspect})"
     end
 
+    def sanitize_remote_filename(filename)
+      base = File.basename(filename.to_s)
+      raise Error, "invalid upload filename" if base.blank? || base == "." || base == ".."
+
+      base
+    end
+
+    def sanitize_storage_url(url)
+      path = url.to_s
+      path = "/local" if path.blank?
+      unless path.start_with?("/local")
+        raise Error, "storage url must be under /local"
+      end
+      if path.include?("..")
+        raise Error, "storage url path traversal rejected"
+      end
+
+      path
+    end
+
+    def sanitize_storage_paths(paths)
+      Array(paths).map(&:to_s).reject(&:blank?).map { |p|
+        raise Error, "storage path must be under /local" unless p.start_with?("/local")
+        raise Error, "storage path traversal rejected" if p.include?("..")
+
+        p
+      }
+    end
+
+    def normalize_file_entry(entry)
+      return entry unless entry.is_a?(Hash)
+
+      {
+        name: entry["name"] || entry["Name"],
+        used_size: entry["usedSize"] || entry["UsedSize"],
+        total_size: entry["totalSize"] || entry["TotalSize"],
+        storage_type: entry["storageType"] || entry["StorageType"],
+        type: entry["type"] || entry["Type"],
+        raw: entry
+      }
+    end
+
+    def dig_num(hash, key)
+      return nil unless hash.is_a?(Hash)
+      val = hash[key]
+      return nil if val.nil?
+
+      val
+    end
+
     def normalize_video_url(url)
       uri = URI.parse(url)
       if uri.host.blank?
         host = URI.parse(print_host.endpoint).host
         uri.host = host
       end
+      unless EndpointAllowlist.allowed?(uri.host)
+        raise Error, "VideoUrl host not on private LAN allowlist"
+      end
       uri.to_s
     rescue URI::InvalidURIError
-      url
+      raise Error, "VideoUrl invalid"
     end
 
     def post_upload_chunk(chunk:, filename:, md5:, uuid:, offset:, total_size:, content_type:)

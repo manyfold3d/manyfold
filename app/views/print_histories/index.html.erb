@@ -1,0 +1,139 @@
+<% content_for :head do %>
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+
+<%= PageTitle title: t(".title") %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-6">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5 max-w-2xl">
+      <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= t(".heading") %></h1>
+      <p class="text-sm text-secondary-600 dark:text-secondary-300 m-0"><%= t(".subtitle") %></p>
+    </div>
+    <div class="flex flex-wrap gap-3 items-center">
+      <%= form_with url: print_histories_path, method: :get, local: true, class: "flex flex-wrap gap-2 items-end" do |f| %>
+        <div>
+          <label class="block text-[11px] uppercase text-secondary-500 mb-1" for="history-from"><%= t(".filters.from") %></label>
+          <%= f.date_field :from, value: @from, id: "history-from",
+                class: "rounded-lg border border-secondary-300 dark:border-[#332623] bg-surface dark:bg-[#1a1311] text-sm px-3 py-1.5" %>
+        </div>
+        <div>
+          <label class="block text-[11px] uppercase text-secondary-500 mb-1" for="history-to"><%= t(".filters.to") %></label>
+          <%= f.date_field :to, value: @to, id: "history-to",
+                class: "rounded-lg border border-secondary-300 dark:border-[#332623] bg-surface dark:bg-[#1a1311] text-sm px-3 py-1.5" %>
+        </div>
+        <div>
+          <label class="block text-[11px] uppercase text-secondary-500 mb-1" for="history-printer"><%= t(".filters.printer") %></label>
+          <%= f.select :print_host_id,
+                options_from_collection_for_select(@print_hosts, :id, :name, @print_host_id),
+                {include_blank: t(".filters.all_printers")},
+                id: "history-printer",
+                class: "rounded-lg border border-secondary-300 dark:border-[#332623] bg-surface dark:bg-[#1a1311] text-sm px-3 py-1.5" %>
+        </div>
+        <div>
+          <label class="block text-[11px] uppercase text-secondary-500 mb-1" for="history-outcome"><%= t(".filters.result") %></label>
+          <%= f.select :outcome,
+                options_for_select([
+                  [t(".filters.all_results"), ""],
+                  [t("print_jobs.outcomes.succeeded"), "succeeded"],
+                  [t("print_jobs.outcomes.failed"), "failed"],
+                  [t("print_jobs.outcomes.cancelled"), "cancelled"]
+                ], @outcome),
+                {},
+                id: "history-outcome",
+                class: "rounded-lg border border-secondary-300 dark:border-[#332623] bg-surface dark:bg-[#1a1311] text-sm px-3 py-1.5" %>
+        </div>
+        <%= f.submit t(".filters.apply"),
+              class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium border-0 cursor-pointer" %>
+      <% end %>
+      <button type="button" disabled
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-500 text-sm font-medium cursor-not-allowed"
+              title="<%= t(".export_stub_title") %>"
+              aria-disabled="true">
+        <%= t(".export_csv") %>
+      </button>
+    </div>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <%= render Components::PrintHistoryKpi.new(
+          label: t(".kpis.total"),
+          value: @kpis[:jobs].to_s,
+          hint: t(".kpis.total_hint")
+        ) %>
+    <%= render Components::PrintHistoryKpi.new(
+          label: t(".kpis.success_rate"),
+          value: number_to_percentage(@kpis[:success_rate] * 100, precision: 1),
+          hint: t(".kpis.success_hint", count: @kpis[:succeeded])
+        ) %>
+    <%= render Components::PrintHistoryKpi.new(
+          label: t(".kpis.hours"),
+          value: t(".kpis.hours_value", hours: @kpis[:hours]),
+          hint: t(".kpis.hours_hint")
+        ) %>
+    <%= render Components::PrintHistoryKpi.new(
+          label: t(".kpis.resin"),
+          value: t(".kpis.resin_value", liters: @kpis[:resin_liters]),
+          hint: t(".kpis.resin_hint")
+        ) %>
+  </div>
+
+  <div class="bg-[#1a1311] border border-[#332623] rounded-2xl overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left border-collapse">
+        <thead>
+          <tr class="border-b border-[#332623] text-[11px] uppercase tracking-wide text-secondary-500">
+            <th class="px-4 py-3 font-medium"><%= t(".table.status") %></th>
+            <th class="px-4 py-3 font-medium"><%= t(".table.job") %></th>
+            <th class="px-4 py-3 font-medium"><%= t(".table.printer") %></th>
+            <th class="px-4 py-3 font-medium"><%= t(".table.resin") %></th>
+            <th class="px-4 py-3 font-medium"><%= t(".table.duration") %></th>
+            <th class="px-4 py-3 font-medium"><%= t(".table.date") %></th>
+            <th class="px-4 py-3 font-medium"><%= t(".table.result") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @histories.each do |job| %>
+            <% outcome = job.history_outcome.to_s %>
+            <tr class="border-b border-[#332623] align-top hover:bg-white/5">
+              <td class="px-4 py-3">
+                <span class="inline-flex size-2.5 rounded-full <%= outcome_dot_class(outcome) %>" aria-hidden="true"></span>
+                <span class="sr-only"><%= t("print_jobs.outcomes.#{outcome}", default: outcome) %></span>
+              </td>
+              <td class="px-4 py-3 min-w-[12rem]">
+                <div class="flex flex-col gap-1">
+                  <span class="font-medium text-surface"><%= history_job_name(job) %></span>
+                  <% if job.failure_note.present? %>
+                    <details class="text-[12px] text-danger">
+                      <summary class="cursor-pointer list-none flex items-center gap-1">
+                        <%= Icon icon: "exclamation-triangle", label: "" %>
+                        <%= t(".table.show_failure") %>
+                      </summary>
+                      <p class="m-0 mt-1 pl-5"><%= job.failure_note %></p>
+                    </details>
+                  <% end %>
+                </div>
+              </td>
+              <td class="px-4 py-3 text-secondary-300 whitespace-nowrap"><%= job.print_host&.name %></td>
+              <td class="px-4 py-3 text-secondary-300"><%= job.resin_profile.presence || "—" %></td>
+              <td class="px-4 py-3 font-mono text-[12px] text-secondary-300 whitespace-nowrap">
+                <%= history_duration(job) %>
+              </td>
+              <td class="px-4 py-3 text-secondary-400 whitespace-nowrap">
+                <%= job.finished_at&.strftime("%b %-d, %H:%M") || "—" %>
+              </td>
+              <td class="px-4 py-3">
+                <%= render Components::PrintOutcomeBadge.new(outcome: outcome) %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @histories.blank? %>
+            <tr>
+              <td colspan="7" class="px-4 py-8 text-center text-secondary-500"><%= t(".empty") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<%= PageTitle title: t(".title", name: @model.name), breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path,
+      @model.name => model_path(@model)
+    } %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-8">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5 max-w-2xl">
+      <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= @model.name %></h1>
+      <p class="text-sm text-secondary-600 dark:text-secondary-300 m-0"><%= t(".subtitle") %></p>
+    </div>
+    <div class="flex flex-wrap gap-3 items-center">
+      <button type="button" disabled
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600/50 text-white text-sm font-medium cursor-not-allowed"
+              title="<%= t(".slicer_stub_title") %>"
+              aria-disabled="true">
+        <%= t(".open_in_slicer") %>
+      </button>
+      <% if @send_file && @printers.present? %>
+        <%= render Components::SendPrintDialog.new(
+              model: @model,
+              file: @send_file,
+              printers: @printers,
+              eligibility_url: send_eligibility_model_model_file_path(@model, @send_file)
+            ) %>
+      <% else %>
+        <button type="button" disabled
+                class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-500 text-sm font-medium cursor-not-allowed"
+                title="<%= t(".print_unavailable_title") %>"
+                aria-disabled="true">
+          <%= t("printers.send.open") %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <section class="bg-[#1a1311] border border-[#332623] rounded-2xl overflow-hidden" aria-labelledby="artifacts-heading">
+    <div class="px-5 py-4 border-b border-[#332623]">
+      <h2 id="artifacts-heading" class="text-sm font-bold text-surface m-0"><%= t(".artifacts_heading") %></h2>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left border-collapse">
+        <thead>
+          <tr class="border-b border-[#332623] text-[11px] uppercase tracking-wide text-secondary-500">
+            <th class="px-5 py-3 font-medium"><%= t(".table.format") %></th>
+            <th class="px-5 py-3 font-medium"><%= t(".table.file") %></th>
+            <th class="px-5 py-3 font-medium"><%= t(".table.printer") %></th>
+            <th class="px-5 py-3 font-medium"><%= t(".table.layers") %></th>
+            <th class="px-5 py-3 font-medium"><%= t(".table.updated") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @artifacts.each do |artifact| %>
+            <tr class="border-b border-[#332623]">
+              <td class="px-5 py-3">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-primary-600/20 text-primary-600">
+                  <%= artifact.format %>
+                </span>
+              </td>
+              <td class="px-5 py-3 text-surface font-medium">
+                <%= artifact.model_file&.filename.presence || t(".unnamed_artifact") %>
+              </td>
+              <td class="px-5 py-3 text-secondary-300"><%= artifact.print_host&.name %></td>
+              <td class="px-5 py-3 font-mono text-[12px] text-secondary-300">
+                <%= artifact.estimated_layers.presence || "—" %>
+              </td>
+              <td class="px-5 py-3 text-secondary-400 whitespace-nowrap">
+                <%= l(artifact.created_at, format: :short) %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @artifacts.blank? %>
+            <tr>
+              <td colspan="5" class="px-5 py-8 text-center text-secondary-500"><%= t(".artifacts_empty") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="bg-[#1a1311] border border-[#332623] rounded-2xl overflow-hidden" aria-labelledby="model-history-heading">
+    <div class="px-5 py-4 border-b border-[#332623] flex flex-wrap items-center justify-between gap-3">
+      <h2 id="model-history-heading" class="text-sm font-bold text-surface m-0"><%= t(".history_heading") %></h2>
+      <p class="text-sm font-semibold text-success m-0">
+        <%= t(".success_widget",
+              succeeded: @success_widget[:succeeded],
+              total: @success_widget[:total]) %>
+      </p>
+    </div>
+    <ul class="list-none m-0 p-0 divide-y divide-[#332623]">
+      <% @histories.each do |job| %>
+        <li class="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
+          <div class="flex flex-wrap items-center gap-4 min-w-0 text-sm">
+            <span class="text-secondary-400 whitespace-nowrap">
+              <%= job.finished_at&.strftime("%b %-d, %H:%M") || "—" %>
+            </span>
+            <span class="font-medium text-surface"><%= job.print_host&.name %></span>
+            <span class="text-secondary-300"><%= job.resin_profile.presence || "—" %></span>
+            <span class="font-mono text-[12px] text-secondary-400">
+              <%= format_print_duration(job.actual_duration_seconds) %>
+            </span>
+          </div>
+          <%= render Components::PrintOutcomeBadge.new(outcome: job.history_outcome) %>
+        </li>
+      <% end %>
+      <% if @histories.blank? %>
+        <li class="px-5 py-8 text-center text-secondary-500"><%= t(".history_empty") %></li>
+      <% end %>
+    </ul>
+  </section>
+</div>

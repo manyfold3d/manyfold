@@ -42,6 +42,9 @@
         <div class="flex flex-wrap items-center gap-3 mb-6" role="toolbar" aria-label="Model actions">
           <%= render "models/show_list_actions" %>
           <%= DownloadButton(model: @model) %>
+          <% if policy(PrintJob).index? %>
+            <%= link_to Icon(icon: "printer", label: t(".print_log")), model_print_log_path(@model), class: secondary_action_class, title: t(".print_log") %>
+          <% end %>
           <% if policy(@model).edit? %>
             <%= link_to Icon(icon: "pencil", label: translate("general.edit")), edit_model_path(@model), class: secondary_action_class, title: translate("general.edit"), aria: {label: translate("components.model_card.edit_button.label", name: @model.name)} %>
           <% end %>

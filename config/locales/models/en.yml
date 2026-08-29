@@ -179,6 +179,7 @@ en:
       model_details: Model Details
       path: Path
       preview: This is just a preview of the complete model, which contains %{count} more files. Contact the model owner to get full access.
+      print_log: Print log
       problems_card:
         tour:
           description: This card shows any problems that were detected on this model. You can change problem visibility settings in your account preferences.

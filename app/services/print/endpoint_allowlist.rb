@@ -17,6 +17,9 @@ module Print
       IPAddr.new("::1")
     ].freeze
 
+    # UDP discover may target limited broadcast in addition to private LAN hosts.
+    DISCOVER_BROADCAST = "255.255.255.255"
+
     def allowed?(host)
       return false if host.blank?
 
@@ -24,6 +27,18 @@ module Print
       ALLOWED_CIDRS.any? { |cidr| cidr.include?(ip) }
     rescue Resolv::ResolvError, IPAddr::InvalidAddressError
       false
+    end
+
+    # Discover targets: private LAN (incl. directed broadcast like 10.0.0.255) or limited broadcast.
+    def allowed_discover_target?(host)
+      return false if host.blank?
+      return true if host.to_s.strip == DISCOVER_BROADCAST
+
+      allowed?(host)
+    end
+
+    def filter_discover_targets(hosts)
+      Array(hosts).map { |h| h.to_s.strip }.reject(&:blank?).select { |h| allowed_discover_target?(h) }.uniq
     end
   end
 end
