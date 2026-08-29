@@ -14,15 +14,34 @@ module ModelListable
     # Ordering
     @models = apply_sort_order(@models)
 
-    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter.tags)
-    @tags, @kv_tags = split_key_value_tags(@tags)
-    @unrelated_tag_count = nil unless @filter.any?
-
-    # Count before includes (avoids DISTINCT inflation); eager-load before window load.
     stream = infinite_scroll_or_stream_request?
-    total = (stream && params[:offset].present?) ? @models.count : nil
+    if stream
+      # Turbo-stream pages only append cards — skip tag-cloud work (INIT-009/SPEC-005).
+      @tags = ActsAsTaggableOn::Tag.none
+      @kv_tags = nil
+      @unrelated_tag_count = nil
+    else
+      # Default images-only browse: use the global frequency cloud (threshold + limit)
+      # instead of a semi-join over every matching model id (~9k). Restrict to the
+      # filtered set only when the athlete applied a real facet (INIT-009/SPEC-005).
+      models_for_tags = browse_tag_cloud_needs_model_scope? ? @models : nil
+      @tags, @unrelated_tag_count = generate_tag_list(models_for_tags, @filter.tags)
+      @tags, @kv_tags = split_key_value_tags(@tags)
+      @unrelated_tag_count = nil unless @filter.any?
+    end
+
+    # Count before includes (avoids DISTINCT inflation / join cost); eager-load before window.
+    total = @models.except(:order).count
     @models = @models.includes([:creator, :collection, :tags]).preload([:preview_file])
     @models = prepare_browse_window(@models, total: total)
+  end
+
+  # True when a non-default facet is active (creator/tag/q/…) so the tag cloud
+  # should reflect the filtered set. Pure has_image (default browse) is false.
+  def browse_tag_cloud_needs_model_scope?
+    return false unless defined?(@filter) && @filter
+
+    @filter.to_params.except(:has_image).present?
   end
 
   # Options for the models index filter form (lazy Turbo Frame or explicit call).

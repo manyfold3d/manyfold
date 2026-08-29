@@ -1,6 +1,8 @@
 <% if defined?(kv_tags) && kv_tags %>
   <% tiers = kv_tags.map(&:name).map { |tag| tag.split(":").first }.uniq.sort %>
-  <% if @models
+  <%# Per-tier unset COUNTs are O(tiers) correlated scans — skip on BrowseGrid pages
+      where @browse_per_page is set (INIT-009/SPEC-005). Creator/collection indexes keep them. %>
+  <% if @models && !defined?(@browse_per_page)
        tierunset = tiers.map { |tier|
          reg = ActiveRecord::Base.with_connection { |conn| conn.quote("^" + tier + ":") }
          regact = DatabaseDetector.is_postgres? ? "~" : "REGEXP"

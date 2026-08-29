@@ -43,6 +43,25 @@ class ModelFile < ApplicationRecord
   scope :unsupported, -> { where(presupported: false) }
   scope :presupported, -> { where(presupported: true) }
 
+  # SQL fragment for Model.with_image_preview / FilterService has_image (INIT-009/SPEC-005).
+  # Prefer EXISTS against models.preview_file_id over IN (SELECT id FROM model_files …).
+  def self.image_preview_exists_sql
+    exts = SupportedMimeTypes.image_extensions.map(&:downcase).uniq
+    return "FALSE" if exts.empty?
+
+    conn = ActiveRecord::Base.connection
+    ext_sql = exts.map { |ext| "model_files.filename_lower LIKE #{conn.quote("%.#{ext}")}" }.join(" OR ")
+    special_sql = if SPECIAL_FILES.empty?
+      ""
+    else
+      " AND model_files.filename NOT IN (#{SPECIAL_FILES.map { |f| conn.quote(f) }.join(", ")})"
+    end
+    Arel.sql(
+      "EXISTS (SELECT 1 FROM model_files WHERE model_files.id = models.preview_file_id" \
+      " AND (#{ext_sql})#{special_sql})"
+    )
+  end
+
   # Explicitly explain serialization for MariaDB
   serialize :attachment_data, coder: CrossDbJsonSerializer
 

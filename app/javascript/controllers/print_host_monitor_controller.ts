@@ -1,7 +1,14 @@
 import { Controller } from '@hotwired/stimulus'
 
+/**
+ * After snapshot 5xx/network error, wait at least this many ms (and at least
+ * `interval`) before the next snapshot attempt. INIT-009/SPEC-003 REQ-003.
+ */
+export const SNAPSHOT_ERROR_BACKOFF_MS = 5000
+
 // Polls SDCP status JSON and refreshes the authenticated camera snapshot.
 // Updates structured telemetry targets when present (Print Studio monitor).
+// Single-flight snapshot + error backoff + hidden-tab pause (INIT-009/SPEC-003).
 export default class extends Controller {
   static targets = [
     'status', 'snapshot', 'badge', 'connection', 'filename', 'percent',
@@ -41,17 +48,44 @@ export default class extends Controller {
   declare readonly intervalValue: number
 
   #timer?: number
+  #snapshotInFlight = false
+  #snapshotBackoffUntil = 0
+  #objectUrl?: string
+  readonly #onVisibilityChange = (): void => { this.handleVisibilityChange() }
 
   connect (): void {
+    document.addEventListener('visibilitychange', this.#onVisibilityChange)
+    if (!document.hidden) this.startPolling()
+  }
+
+  disconnect (): void {
+    document.removeEventListener('visibilitychange', this.#onVisibilityChange)
+    this.stopPolling()
+    this.revokeObjectUrl()
+  }
+
+  handleVisibilityChange (): void {
+    if (document.visibilityState === 'hidden') {
+      this.stopPolling()
+      return
+    }
+    this.startPolling()
+  }
+
+  startPolling (): void {
+    if (this.#timer != null) return
     void this.refresh()
     this.#timer = window.setInterval(() => { void this.refresh() }, this.intervalValue)
   }
 
-  disconnect (): void {
-    if (this.#timer != null) window.clearInterval(this.#timer)
+  stopPolling (): void {
+    if (this.#timer == null) return
+    window.clearInterval(this.#timer)
+    this.#timer = undefined
   }
 
   async refresh (): Promise<void> {
+    if (document.visibilityState === 'hidden') return
     await Promise.all([this.refreshStatus(), this.refreshSnapshot()])
   }
 
@@ -88,8 +122,53 @@ export default class extends Controller {
 
   async refreshSnapshot (): Promise<void> {
     if (!this.hasSnapshotTarget || this.snapshotUrlValue === '') return
+    // Single-flight: interval ticks must not stack overlapping snapshot loads.
+    if (this.#snapshotInFlight) return
+    if (Date.now() < this.#snapshotBackoffUntil) return
+
+    this.#snapshotInFlight = true
     const url = `${this.snapshotUrlValue}${this.snapshotUrlValue.includes('?') ? '&' : '?'}t=${Date.now()}`
-    this.snapshotTarget.src = url
+    try {
+      // Fetch blob so 5xx is detectable (img.src alone does not expose status).
+      const response = await fetch(url, {
+        credentials: 'same-origin',
+        headers: { Accept: 'image/jpeg,image/*,*/*' }
+      })
+      if (!response.ok) {
+        this.armSnapshotBackoff()
+        return
+      }
+      const blob = await response.blob()
+      if (blob.size <= 100) {
+        this.armSnapshotBackoff()
+        return
+      }
+      const objectUrl = URL.createObjectURL(blob)
+      this.revokeObjectUrl()
+      this.#objectUrl = objectUrl
+      this.snapshotTarget.src = objectUrl
+      try {
+        await this.snapshotTarget.decode()
+      } catch {
+        this.armSnapshotBackoff()
+      }
+    } catch {
+      this.armSnapshotBackoff()
+    } finally {
+      this.#snapshotInFlight = false
+    }
+  }
+
+  /** Schedule next snapshot no sooner than max(interval, SNAPSHOT_ERROR_BACKOFF_MS). */
+  armSnapshotBackoff (): void {
+    const delay = Math.max(this.intervalValue, SNAPSHOT_ERROR_BACKOFF_MS)
+    this.#snapshotBackoffUntil = Date.now() + delay
+  }
+
+  revokeObjectUrl (): void {
+    if (this.#objectUrl == null) return
+    URL.revokeObjectURL(this.#objectUrl)
+    this.#objectUrl = undefined
   }
 
   applyTelemetry (data: Record<string, unknown>): void {

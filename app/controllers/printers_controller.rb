@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Print Studio fleet UI + JSON API (INIT-008/SPEC-004 + SPEC-005).
+# Fleet HTML index loads statuses async via member JSON (INIT-009/SPEC-004 · ADR D-2).
 # Settings::PrintHosts remains for admin settings CRUD; this surface is first-class.
 class PrintersController < ApplicationController
   include PrintApi
@@ -16,10 +17,8 @@ class PrintersController < ApplicationController
     authorize PrintHost
     @printers = policy_scope(PrintHost).order(:name)
     respond_to do |format|
-      format.html do
-        @statuses = {}
-        @printers.each { |host| @statuses[host.id] = fetch_status(host) }
-      end
+      # HTML: no per-host fetch_status / SDCP — cards poll status_printer_path (INIT-009/SPEC-004).
+      format.html
       format.json {
         render json: {printers: @printers.map { |host| serialize_printer(host) }}
       }

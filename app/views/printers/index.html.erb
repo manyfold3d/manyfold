@@ -28,7 +28,7 @@
     <% @printers.each do |printer| %>
       <%= render Components::PrinterCard.new(
             printer: printer,
-            status: @statuses[printer.id],
+            status_url: (status_printer_path(printer) unless printer.unsupported_for_send?),
             snapshot_url: (snapshot_printer_path(printer) unless printer.unsupported_for_send?)
           ) %>
     <% end %>

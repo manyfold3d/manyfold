@@ -8,7 +8,8 @@ module BrowseWindowable
   private
 
   # Apply Kaminari first-page or offset stream window to +scope+.
-  # Pass +total:+ when the caller already counted (e.g. before includes).
+  # Pass +total:+ when the caller already counted (e.g. before includes) — preferred
+  # so HTML and stream paths avoid a second COUNT after eager-load joins (INIT-009/SPEC-005).
   def prepare_browse_window(scope, total: nil)
     stream = infinite_scroll_or_stream_request?
     per_page = BrowseGrid.page_size_for_request(params, stream: stream)
@@ -34,9 +35,13 @@ module BrowseWindowable
       end
       result = scope.page(page).per(per_page)
       @browse_offset = (page.to_i - 1) * per_page
-      @browse_total_count = result.total_count
+      @browse_total_count = total.nil? ? result.total_count : total
       @browse_returned_count = result.size
-      @browse_has_more_after = result.next_page.present?
+      @browse_has_more_after = if total.nil?
+        result.next_page.present?
+      else
+        (@browse_offset + @browse_returned_count) < total
+      end
       @browse_has_more_before = page.to_i > 1
       @browse_window = "after"
       result

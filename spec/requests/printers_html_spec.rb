@@ -16,12 +16,12 @@ RSpec.describe "Printers HTML UI" do
       allow(SiteSettings).to receive(:demo_mode_enabled?).and_return(false)
     end
 
-    it "renders the fleet dashboard" do
+    # INIT-009/SPEC-004 · ADR D-2 — fleet HTML must not sync-fetch SDCP status per host.
+    it "renders the fleet dashboard without invoking PrintHost#service" do
       host = create(:print_host, name: "GK3 Pro — garage")
-      service = instance_double(Print::SdcpService, normalized_status: {
-        current_layer: 10, total_layers: 100, filename: "a.ctb", eta_seconds: 120
-      })
-      allow_any_instance_of(PrintHost).to receive(:service).and_return(service) # rubocop:disable RSpec/AnyInstance
+      allow_any_instance_of(PrintHost).to receive(:service) do # rubocop:disable RSpec/AnyInstance
+        raise "PrintHost#service must not be called on GET /printers HTML (INIT-009/SPEC-004)"
+      end
 
       get printers_path
       expect(response).to have_http_status(:success)
@@ -29,6 +29,9 @@ RSpec.describe "Printers HTML UI" do
       expect(response.body).to include("GK3 Pro — garage")
       expect(response.body).to include("Scan network")
       expect(response.body).to include(printer_path(host))
+      expect(response.body).to include('data-controller="printer-fleet"')
+      expect(response.body).to include(status_printer_path(host))
+      expect(response.body).to include("data-printer-fleet-status-url-value")
     end
 
     it "renders add printer form" do

@@ -8,6 +8,58 @@ RSpec.describe Print::SdcpService do
   let(:print_host) { build(:print_host, endpoint: "http://10.0.0.199:3030", mainboard_id: "d307202d8c1e0100") }
   let(:session) { instance_double(Print::SdcpService::WebsocketSession) }
 
+  describe "ADR D-1 SDCP timeout seam (INIT-009/SPEC-002)" do
+    it "keeps UI WS timeout strictly below control WS timeout" do
+      expect(described_class::SDCP_UI_WS_TIMEOUT).to be <= 3
+      expect(described_class::SDCP_CONTROL_WS_TIMEOUT).to eq(10)
+      expect(described_class::SDCP_UI_WS_TIMEOUT).to be < described_class::SDCP_CONTROL_WS_TIMEOUT
+    end
+
+    # rubocop:disable RSpec/ExampleLength -- dual-session seam needs both budgets asserted
+    it "builds a UI-budget session for status and a control-budget session for pause" do
+      host = build(:print_host, endpoint: "http://10.0.0.199:3030", mainboard_id: "d307202d8c1e0100")
+      svc = described_class.new(print_host: host)
+      ui_session = instance_double(Print::SdcpService::WebsocketSession)
+      control_session = instance_double(Print::SdcpService::WebsocketSession)
+
+      allow(Print::SdcpService::WebsocketSession).to receive(:new)
+        .with(hash_including(timeout: described_class::SDCP_UI_WS_TIMEOUT))
+        .and_return(ui_session)
+      allow(Print::SdcpService::WebsocketSession).to receive(:new)
+        .with(hash_including(timeout: described_class::SDCP_CONTROL_WS_TIMEOUT))
+        .and_return(control_session)
+      allow(ui_session).to receive(:call).with(hash_including(cmd: 0)).and_return({"Ack" => 0})
+      allow(control_session).to receive(:call).with(hash_including(cmd: 129)).and_return({"Ack" => 0})
+
+      svc.status
+      svc.pause_print
+
+      expect(Print::SdcpService::WebsocketSession).to have_received(:new)
+        .with(hash_including(timeout: described_class::SDCP_UI_WS_TIMEOUT))
+      expect(Print::SdcpService::WebsocketSession).to have_received(:new)
+        .with(hash_including(timeout: described_class::SDCP_CONTROL_WS_TIMEOUT))
+      expect(ui_session).to have_received(:call).with(hash_including(cmd: 0))
+      expect(control_session).to have_received(:call).with(hash_including(cmd: 129))
+    end
+
+    it "uses the UI status path when normalized_status fetches live status" do
+      host = build(:print_host, endpoint: "http://10.0.0.199:3030", mainboard_id: "d307202d8c1e0100")
+      svc = described_class.new(print_host: host)
+      ui_session = instance_double(Print::SdcpService::WebsocketSession)
+      allow(Print::SdcpService::WebsocketSession).to receive(:new)
+        .with(hash_including(timeout: described_class::SDCP_UI_WS_TIMEOUT))
+        .and_return(ui_session)
+      allow(ui_session).to receive(:call).with(hash_including(cmd: 0)).and_return({
+        "Ack" => 0,
+        "Status" => {"CurrentStatus" => [0], "PrintInfo" => {}}
+      })
+
+      expect(svc.normalized_status[:machine_status]).to eq([0])
+      expect(ui_session).to have_received(:call).with(hash_including(cmd: 0))
+    end
+    # rubocop:enable RSpec/ExampleLength
+  end
+
   describe "#ok?" do
     it "is true when Cmd 0 Ack is 0" do
       allow(session).to receive(:call).with(hash_including(cmd: 0)).and_return({"Ack" => 0})
@@ -97,6 +149,7 @@ RSpec.describe Print::SdcpService do
       }.to raise_error(Print::SdcpService::Error, /insufficient on-printer storage/)
     end
   end
+
   describe "#list_files / #delete_files" do
     it "lists via Cmd 258" do
       allow(session).to receive(:call)

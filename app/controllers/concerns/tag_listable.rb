@@ -1,5 +1,9 @@
 module TagListable
-  def generate_tag_list(models = nil, filter_tags = nil)
+  # Cap tag-cloud rows on browse HTML — chrome uses 14 chips; sidebar still needs a
+  # bounded cloud so we never materialize every tag for a 40k-model library (INIT-009/SPEC-005).
+  BROWSE_TAG_CLOUD_LIMIT = 100
+
+  def generate_tag_list(models = nil, filter_tags = nil, limit: BROWSE_TAG_CLOUD_LIMIT)
     # All tags bigger than threshold
     tags = all_tags = policy_scope(ActsAsTaggableOn::Tag).where(taggings_count: helpers.tag_cloud_settings["threshold"]..)
     # Ignore any tags that have been applied as filters
@@ -22,6 +26,7 @@ module TagListable
     unrelated_tag_count = 0
     # Only get what we need for rendering
     tags = tags.select("tags.name", "tags.taggings_count")
+    tags = tags.limit(limit) if limit
     # Done!
     [tags, unrelated_tag_count]
   end

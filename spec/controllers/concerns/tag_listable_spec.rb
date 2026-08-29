@@ -51,5 +51,13 @@ RSpec.describe TagListable, type: :controller do
       tags, _ = controller.send(:generate_tag_list, [model])
       expect(tags.pluck(:name)).to include("gamma")
     end
+
+    it "limits the browse tag cloud so large libraries stay bounded" do
+      create(:model, tag_list: ["alpha"])
+      create(:model, tag_list: ["beta"])
+      tags, _ = controller.send(:generate_tag_list, Model.all, limit: 1)
+      expect(tags.limit_value).to eq 1
+      expect(tags.to_a.size).to eq 1
+    end
   end
 end

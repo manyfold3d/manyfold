@@ -180,16 +180,10 @@ class Search::FilterService
   def filter_by_has_image(scope)
     return scope unless truthy?(parameter(:has_image))
 
-    exts = SupportedMimeTypes.image_extensions.map(&:downcase).uniq
-    return scope.none if exts.empty?
+    # Delegate to Model.with_image_preview (EXISTS + filename_lower) — INIT-009/SPEC-005.
+    return scope.none if SupportedMimeTypes.image_extensions.empty?
 
-    image_filename_sql = exts.map { |ext|
-      "LOWER(model_files.filename) LIKE #{ActiveRecord::Base.connection.quote("%.#{ext}")}"
-    }.join(" OR ")
-
-    scope.where(
-      preview_file_id: ModelFile.without_special.where(image_filename_sql).select(:id)
-    )
+    scope.merge(Model.with_image_preview)
   end
 
   def filter_by_list(scope)

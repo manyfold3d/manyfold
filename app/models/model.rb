@@ -38,16 +38,14 @@ class Model < ApplicationRecord
   scope :recent, -> { order(created_at: :desc) }
 
   # Preview is an image file (jpg/png/…) — same rule as FilterService#filter_by_has_image.
+  # EXISTS + filename_lower does a PK lookup per model.preview_file_id instead of scanning
+  # every model_file via IN (SELECT id … LOWER(filename) LIKE …) (INIT-009/SPEC-005).
   scope :with_image_preview, -> {
     exts = SupportedMimeTypes.image_extensions.map(&:downcase).uniq
     if exts.empty?
       none
     else
-      image_filename_sql = exts.map { |ext|
-        "LOWER(model_files.filename) LIKE #{ActiveRecord::Base.connection.quote("%.#{ext}")}"
-      }.join(" OR ")
-
-      where(preview_file_id: ModelFile.without_special.where(image_filename_sql).select(:id))
+      where(ModelFile.image_preview_exists_sql)
     end
   }
 

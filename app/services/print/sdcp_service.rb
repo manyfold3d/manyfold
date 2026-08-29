@@ -20,6 +20,10 @@ module Print
     DEFAULT_CONTROL_PORT = 3030
     CHUNK_SIZE = 1 * 1024 * 1024 # SDCP HTTP upload packet size
 
+    # Binding caps from INIT-009 ADR D-1 (REQ-005). UI polls must be strictly shorter than control.
+    SDCP_UI_WS_TIMEOUT = 3
+    SDCP_CONTROL_WS_TIMEOUT = 10
+
     class Error < StandardError; end
 
     class AckError < Error
@@ -37,7 +41,7 @@ module Print
 
     def initialize(print_host:, session: nil)
       @print_host = print_host
-      @session = session
+      @injected_session = session
     end
 
     def ok?
@@ -46,8 +50,9 @@ module Print
       false
     end
 
+    # UI status poll — short WS budget (INIT-009/SPEC-002).
     def status
-      request_cmd(0)
+      request_cmd(0, timeout: SDCP_UI_WS_TIMEOUT)
     end
 
     def attributes
@@ -150,6 +155,7 @@ module Print
     end
 
     # Normalized monitor DTO (REQ-007 shaped) from Cmd 0 status payload.
+    # When raw is omitted, uses the UI status budget (INIT-009/SPEC-002).
     def normalized_status(raw = nil)
       raw ||= status
       body = raw.is_a?(Hash) ? (raw["Status"] || raw) : {}
@@ -302,9 +308,9 @@ module Print
 
     attr_reader :print_host
 
-    def request_cmd(cmd, data: {}, collect: :response)
+    def request_cmd(cmd, data: {}, collect: :response, timeout: SDCP_CONTROL_WS_TIMEOUT)
       assert_endpoint_allowed!
-      payload = session.call(cmd: cmd, data: data, collect: collect)
+      payload = session_for(timeout).call(cmd: cmd, data: data, collect: collect)
       ack = payload.is_a?(Hash) ? payload["Ack"] : nil
       if ack && ack != 0
         raise AckError.new(cmd: cmd, ack: ack, payload: payload)
@@ -312,11 +318,15 @@ module Print
       payload
     end
 
-    def session
-      @session ||= WebsocketSession.new(
+    # Injected session wins (specs). Otherwise cache one WebsocketSession per timeout budget.
+    def session_for(timeout)
+      return @injected_session if @injected_session
+
+      @sessions ||= {}
+      @sessions[timeout] ||= WebsocketSession.new(
         url: websocket_url,
         mainboard_id: print_host.mainboard_id.to_s,
-        timeout: 10
+        timeout: timeout
       )
     end
 
@@ -482,7 +492,7 @@ module Print
 
     # Minimal SDCP WebSocket session using the `websocket` gem (already in lockfile).
     class WebsocketSession
-      def initialize(url:, mainboard_id:, timeout: 10)
+      def initialize(url:, mainboard_id:, timeout: SdcpService::SDCP_CONTROL_WS_TIMEOUT)
         @url = url
         @mainboard_id = mainboard_id
         @timeout = timeout
