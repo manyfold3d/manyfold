@@ -27,6 +27,7 @@ RSpec.describe "browse infinite-scroll stream fence" do
   it "documents models/list as the shared chrome that requires show streams" do
     list = Rails.root.join("app/views/models/_list.html.erb").read
     expect(list).to include("browse_infinite_grid")
-    expect(list).to match(/models-scroll-sentinel/)
+    # Sentinel DOM id is "#{sentinel_prefix}-scroll-sentinel" in the shared layout.
+    expect(list).to include('sentinel_prefix: "models"')
   end
 end
