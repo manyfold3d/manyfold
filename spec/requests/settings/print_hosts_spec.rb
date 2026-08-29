@@ -56,8 +56,7 @@ RSpec.describe "Settings::PrintHosts" do
 
     it "proxies snapshot only when authorized" do
       host = create(:print_host)
-      stub_request(:get, %r{/api/frame\.jpeg})
-        .to_return(status: 200, body: "\xFF\xD8\xFF" + ("x" * 200), headers: {"Content-Type" => "image/jpeg"})
+      allow(Print::Go2rtcClient).to receive(:frame_jpeg).and_return("\xFF\xD8\xFF" + ("x" * 200))
       get snapshot_settings_print_host_path(host)
       expect(response).to have_http_status(:success)
       expect(response.media_type).to eq("image/jpeg")

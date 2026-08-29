@@ -40,7 +40,7 @@ Rails.application.routes.draw do
         get :integrations
       end
       resources :libraries, only: [:index]
-      resources :print_hosts do
+      resources :print_hosts, module: :settings do
         member do
           get :status
           get :snapshot

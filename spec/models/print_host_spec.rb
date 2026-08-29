@@ -61,7 +61,7 @@ RSpec.describe PrintHost do
     end
 
     it "enqueues SendFileToPrintHostJob" do
-      file = instance_double(ModelFile)
+      file = create(:model_file)
       expect {
         print_host.print_later(file: file)
       }.to have_enqueued_job(SendFileToPrintHostJob).with(print_host, file)

@@ -8,7 +8,7 @@ module TagListable
     if models
       tags = tags.joins(:taggings).where(
         taggings: {taggable_type: "Model", taggable_id: taggable_model_ids_scope(models)}
-      )
+      ).group("tags.id", "tags.name", "tags.taggings_count")
     end
     # Apply tag sorting
     tags = case helpers.tag_cloud_settings["sorting"]
@@ -20,8 +20,8 @@ module TagListable
     # Skip all_tags.count - tags.count (two full COUNTs over the library). Callers
     # already nil @unrelated_tag_count unless a filter is active.
     unrelated_tag_count = 0
-    # Project + distinct after ORDER BY so Postgres has ORDER columns in the SELECT list.
-    tags = tags.select("tags.name", "tags.taggings_count").distinct
+    # Only get what we need for rendering
+    tags = tags.select("tags.name", "tags.taggings_count")
     # Done!
     [tags, unrelated_tag_count]
   end
