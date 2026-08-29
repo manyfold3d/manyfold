@@ -112,8 +112,8 @@ en:
         firmware: Firmware
         lcd_hours: LCD hours
         mac_address: MAC address
-        mainboard_id: Mainboard ID
         machine_model: Machine model
+        mainboard_id: Mainboard ID
         name: Name
         native_formats: Native formats
         protocol: Protocol
@@ -146,6 +146,12 @@ en:
         print_host: Printer
         resin_bottle: Resin bottle
         status: Status
+      problem:
+        category: Category
+        ignored: Hidden
+        note: Note
+        problematic_type: Object Type
+        severity: Severity
       resin_bottle:
         brand: Brand
         capacity_ml: Capacity (ml)
@@ -161,12 +167,6 @@ en:
         model: Model
         model_file: Model file
         print_host: Target printer
-      problem:
-        category: Category
-        ignored: Hidden
-        note: Note
-        problematic_type: Object Type
-        severity: Severity
       user:
         approved: Approved?
         auth_uid: OIDC
@@ -344,6 +344,13 @@ en:
         other: Vats
         two: Vats
         zero: Vats
+      problem:
+        few: Problems
+        many: Problems
+        one: Problem
+        other: Problems
+        two: Problems
+        zero: Problems
       resin_bottle:
         few: Resin Bottles
         many: Resin Bottles
@@ -358,13 +365,6 @@ en:
         other: Sliced Artifacts
         two: Sliced Artifacts
         zero: Sliced Artifacts
-      problem:
-        few: Problems
-        many: Problems
-        one: Problem
-        other: Problems
-        two: Problems
-        zero: Problems
       user:
         few: Accounts
         many: Accounts
@@ -466,8 +466,8 @@ en:
         toggler:
           label: Toggle navigation
       printed: Printed
-      queue: Queue
       printers: Printers
+      queue: Queue
       scan: Scan
       scan_changes:
         confirm: Are you sure you want to scan all libraries for new files? This may take a long time!
@@ -583,6 +583,63 @@ en:
       sync:
         bad_request: 'Synchronization failed: missing link ID'
         success: Synchronization requested successfully
+  consumables:
+    index:
+      clean_vat: Clean vat
+      col:
+        actions: Actions
+        fep: FEP cycles
+        last_cleaned: Last cleaned
+        last_leveled: Last leveled
+        lcd: LCD exposure hours
+        printer: Printer
+      confirm_replace_fep: Reset FEP cycle counter to 0?
+      heading: Consumables & Inventory
+      maintenance_heading: Printer maintenance & lifespans
+      no_vat: No vat assigned
+      not_tracked: "—"
+      order_stub_title: Supply ordering is not wired yet
+      order_supplies: Order supplies
+      printers_empty: No printers registered yet.
+      record_maintenance: Record maintenance
+      record_stub_title: Use Replace FEP / Clean Vat on a printer row for now
+      replace_fep: Replace FEP
+      resin_empty: No resin bottles recorded yet.
+      resin_heading: Resin inventory
+      subtitle: Track FEP life cycle metrics, exposure wear-leveling logs, and liquid resin reserves.
+      title: Consumables
+      vat_empty: No vats registered yet.
+      vat_heading: Vat registry
+    levels:
+      danger: Danger
+      optimal: Optimal
+      replace: Replace
+      warning: Warning
+    resin:
+      adjust: Adjust level
+      low: Low
+      opened: 'Opened: %{date}'
+      prints:
+        one: "%{count} print"
+        other: "%{count} prints"
+        zero: 0 prints
+      remaining_label: Remaining (ml)
+      save: Save level
+      unopened: Unopened
+      volume: "%{remaining}ml / %{capacity}ml"
+    vat:
+      assigned_to: Assigned to
+      cycles_badge: "%{count} cycles"
+      health:
+        danger: Danger
+        optimal: Optimal
+        warning: FEP warning
+      liquid_profile: Current liquid profile
+      no_resin: No resin assigned
+      swap: Swap vat allocation
+      swap_label: Resin bottle
+      unassign_resin: Unassign resin
+      unassigned: Unassigned
   doorkeeper:
     applications:
       buttons:
@@ -839,6 +896,7 @@ en:
   general:
     are_you_sure: Are you sure?
     back: Back
+    cancel: Cancel
     collapse: Collapse
     copy_fediverse_handle: Copy Fediverse handle to clipboard
     delete: Delete
@@ -1066,6 +1124,26 @@ en:
     LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  models:
+    print_logs:
+      show:
+        artifacts_empty: No sliced artifacts yet.
+        artifacts_heading: Files
+        history_empty: No prints recorded for this model.
+        history_heading: Print History
+        open_in_slicer: Open in Slicer
+        print_unavailable_title: Add a sliced CTB/JXS file to enable Print
+        slicer_stub_title: Open in Slicer is stubbed (GR-001)
+        subtitle: Sliced artifacts, print outcomes, and send controls for this model.
+        success_widget: "%{succeeded}/%{total} prints successful"
+        table:
+          file: File name
+          format: Format
+          layers: Layers
+          printer: Printer target
+          updated: Updated
+        title: Print log · %{name}
+        unnamed_artifact: Untitled artifact
   moderator_mailer:
     new_approval:
       message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}
@@ -1073,377 +1151,293 @@ en:
     new_report:
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
+  print_histories:
+    index:
+      empty: No print history for this filter.
+      export_csv: Export CSV
+      export_stub_title: CSV export arrives in a later initiative
+      filters:
+        all_printers: All printers
+        all_results: All results
+        apply: Apply
+        from: From
+        printer: Printer
+        result: Result
+        to: To
+      heading: Print History
+      kpis:
+        hours: Total Print Time
+        hours_hint: Sum of actual durations
+        hours_value: "%{hours}h"
+        resin: Resin Used
+        resin_hint: Sum of recorded resin
+        resin_value: "%{liters}L"
+        success_hint:
+          one: "%{count} succeeded"
+          other: "%{count} succeeded"
+        success_rate: Success Rate
+        total: Total Prints
+        total_hint: Terminal jobs in range
+      subtitle: Archived additive fabrication run logs and telemetry diagnostics.
+      table:
+        date: Date
+        duration: Duration
+        duration_with_est: "%{actual} (est %{estimated})"
+        job: Job
+        printer: Printer
+        resin: Resin profile
+        result: Result
+        show_failure: Show failure detail
+        status: Status
+      title: Print History
   print_hosts:
     protocols:
       sdcp: SDCP (UniFormation / ChituManager)
   print_jobs:
-    index:
-      title: Job Queue
-      heading: Job Queue
-      subtitle: Prioritized additive runs, active exposure schedules, and unclaimed print plates
-      history_link: Print history
-      fleet_link: Printers
-      reorder: Reorder
-      fleet_status: Fleet Status
-      fleet_empty: No printers registered yet.
-      columns:
-        queued:
-          one: Queued (%{count})
-          other: Queued (%{count})
-        printing:
-          one: Printing (%{count})
-          other: Printing (%{count})
-        completed:
-          one: Completed (%{count})
-          other: Completed (%{count})
-      empty:
-        queued: Nothing waiting to print.
-        printing: No active prints.
-        completed: No completed jobs yet.
+    cancel:
+      success: Print cancelled.
     card:
-      untitled: Untitled job
-      unknown_host: Unknown printer
-      resin_unknown: Unknown resin
-      target: "Target: %{name}"
-      resin: "Resin: %{profile}"
-      system: system
       ago: ago
-      waiting_plate: Waiting for plate clear confirmation
-      reorder: Drag to reorder
-      pause: Pause
       cancel: Cancel
       confirm_cancel: Cancel this print?
       confirm_plate_cleared: Confirm Plate Cleared
-      reset_diagnostics: Reset & Diagnostics
-      finished_unknown: Finished time unknown
-      finished_ago: "Finished %{time} ago"
-      layers: "Layer %{current} / %{total}"
-      layers_unknown: Layer — / —
-      elapsed: ELAPSED
-      remaining: REMAINING
       duration_hm: "%{hours}h %{minutes}m"
       duration_m: "%{minutes}m"
-    outcomes:
-      succeeded: SUCCESS
-      success: SUCCESS
-      failed: FAILED
-      failure: FAILED
-      cancelled: CANCELLED
-      canceled: CANCELLED
-      unknown: UNKNOWN
+      elapsed: ELAPSED
+      finished_ago: Finished %{time} ago
+      finished_unknown: Finished time unknown
+      layers: Layer %{current} / %{total}
+      layers_unknown: Layer — / —
+      pause: Pause
+      remaining: REMAINING
+      reorder: Drag to reorder
+      reset_diagnostics: Reset & Diagnostics
+      resin: 'Resin: %{profile}'
+      resin_unknown: Unknown resin
+      system: system
+      target: 'Target: %{name}'
+      unknown_host: Unknown printer
+      untitled: Untitled job
+      waiting_plate: Waiting for plate clear confirmation
     confirm_plate_cleared:
       success: Plate cleared. Waiting jobs are now queued.
-    cancel:
-      success: Print cancelled.
+    index:
+      columns:
+        completed:
+          one: Completed (%{count})
+          other: Completed (%{count})
+        printing:
+          one: Printing (%{count})
+          other: Printing (%{count})
+        queued:
+          one: Queued (%{count})
+          other: Queued (%{count})
+      empty:
+        completed: No completed jobs yet.
+        printing: No active prints.
+        queued: Nothing waiting to print.
+      fleet_empty: No printers registered yet.
+      fleet_link: Printers
+      fleet_status: Fleet Status
+      heading: Job Queue
+      history_link: Print history
+      reorder: Reorder
+      subtitle: Prioritized additive runs, active exposure schedules, and unclaimed print plates
+      title: Job Queue
+    outcomes:
+      canceled: CANCELLED
+      cancelled: CANCELLED
+      failed: FAILED
+      failure: FAILED
+      succeeded: SUCCESS
+      success: SUCCESS
+      unknown: UNKNOWN
     pause:
       success: Pause command sent.
-  print_histories:
-    index:
-      title: Print History
-      heading: Print History
-      subtitle: Archived additive fabrication run logs and telemetry diagnostics.
-      export_csv: Export CSV
-      export_stub_title: CSV export arrives in a later initiative
-      empty: No print history for this filter.
-      filters:
-        from: From
-        to: To
-        printer: Printer
-        result: Result
-        all_printers: All printers
-        all_results: All results
-        apply: Apply
-      kpis:
-        total: Total Prints
-        total_hint: Terminal jobs in range
-        success_rate: Success Rate
-        success_hint:
-          one: "%{count} succeeded"
-          other: "%{count} succeeded"
-        hours: Total Print Time
-        hours_value: "%{hours}h"
-        hours_hint: Sum of actual durations
-        resin: Resin Used
-        resin_value: "%{liters}L"
-        resin_hint: Sum of recorded resin
-      table:
-        status: Status
-        job: Job
-        printer: Printer
-        resin: Resin profile
-        duration: Duration
-        duration_with_est: "%{actual} (est %{estimated})"
-        date: Date
-        result: Result
-        show_failure: Show failure detail
-  models:
-    print_logs:
-      show:
-        title: "Print log · %{name}"
-        subtitle: Sliced artifacts, print outcomes, and send controls for this model.
-        open_in_slicer: Open in Slicer
-        slicer_stub_title: Open in Slicer is stubbed (GR-001)
-        print_unavailable_title: Add a sliced CTB/JXS file to enable Print
-        artifacts_heading: Files
-        artifacts_empty: No sliced artifacts yet.
-        unnamed_artifact: Untitled artifact
-        history_heading: Print History
-        history_empty: No prints recorded for this model.
-        success_widget: "%{succeeded}/%{total} prints successful"
-        table:
-          format: Format
-          file: File name
-          printer: Printer target
-          layers: Layers
-          updated: Updated
-  consumables:
-    index:
-      title: Consumables
-      heading: Consumables & Inventory
-      subtitle: Track FEP life cycle metrics, exposure wear-leveling logs, and liquid resin reserves.
-      order_supplies: Order supplies
-      order_stub_title: Supply ordering is not wired yet
-      record_maintenance: Record maintenance
-      record_stub_title: Use Replace FEP / Clean Vat on a printer row for now
-      resin_heading: Resin inventory
-      resin_empty: No resin bottles recorded yet.
-      maintenance_heading: Printer maintenance & lifespans
-      vat_heading: Vat registry
-      vat_empty: No vats registered yet.
-      printers_empty: No printers registered yet.
-      col:
-        printer: Printer
-        fep: FEP cycles
-        lcd: LCD exposure hours
-        last_leveled: Last leveled
-        last_cleaned: Last cleaned
-        actions: Actions
-      not_tracked: —
-      replace_fep: Replace FEP
-      clean_vat: Clean vat
-      confirm_replace_fep: Reset FEP cycle counter to 0?
-      no_vat: No vat assigned
-    resin:
-      adjust: Adjust level
-      volume: "%{remaining}ml / %{capacity}ml"
-      low: Low
-      opened: "Opened: %{date}"
-      unopened: Unopened
-      prints:
-        zero: 0 prints
-        one: "%{count} print"
-        other: "%{count} prints"
-      remaining_label: Remaining (ml)
-      save: Save level
-    vat:
-      assigned_to: Assigned to
-      unassigned: Unassigned
-      liquid_profile: Current liquid profile
-      no_resin: No resin assigned
-      swap_label: Resin bottle
-      unassign_resin: Unassign resin
-      swap: Swap vat allocation
-      cycles_badge: "%{count} cycles"
-      health:
-        optimal: Optimal
-        warning: FEP warning
-        danger: Danger
-    levels:
-      optimal: Optimal
-      warning: Warning
-      danger: Danger
-      replace: Replace
-  resin_bottles:
-    create:
-      success: Resin bottle added.
-    update:
-      adjusted: Resin level updated.
-    destroy:
-      destroyed: Resin bottle removed.
   print_vats:
     create:
       success: Vat registered.
-    update:
-      updated: Vat updated.
     destroy:
       destroyed: Vat removed.
     record_maintenance:
       maintenance_recorded: Maintenance recorded.
     swap:
       swapped: Vat allocation updated.
+    update:
+      updated: Vat updated.
   printers:
+    card:
+      camera_alt: Camera for %{name}
+      camera_offline: Camera offline
+      duration_hm: "%{hours}h %{minutes}m"
+      duration_m: "%{minutes}m"
+      eta_remaining: "%{duration} remaining"
+      eta_unknown: ETA unknown
+      job_printing: "%{filename} · %{percent}% · Layer %{layers}"
+      live: LIVE
+      meta_sdcp: 'IP: %{endpoint} · SDCP protocol'
+      meta_unsupported: 'System: %{brand} · LAN connection'
+      no_active_job: No active job
+      offline_duration: Offline
+      open_monitor: Open monitor
+      standby: STANDBY
+      unsupported_note: Decorative / unsupported — send is disabled for this family.
+    continue:
+      success: Continue command sent.
+    create:
+      success: Printer registered.
+    discover:
+      add: Add printer
+      description: UDP discovery (SDCP M99999) — scans your network without OctoPrint.
+      empty: No printers found yet. Scan the LAN or register manually.
+      endpoint_line: 'IP: %{endpoint} · %{protocol}'
+      ready_help: Ready to accept sliced files. Discovered via SDCP.
+      scan: Scan network
+      title: Find printers on the LAN
+      unknown: Unknown SDCP device
     index:
-      title: Printers
-      heading: Printers
-      subtitle: Watch the shop, prepare a plate, and send a job — without leaving the library.
       add_printer: Add printer
       consumables: Consumables
+      heading: Printers
       prepare_print: Prepare print
       prepare_stub_title: In-browser prepare arrives in a later initiative
-    show:
-      pause: Pause
-      continue: Continue
-      stop: Stop
-      settings: Settings
-      confirm_stop: Stop the current print?
-      live_stream: Live monitor stream
-      connecting: ● Connecting…
-      camera_alt: Printer camera
-      queue: Print queue
-      queue_empty: No jobs queued for this printer.
-      job_untitled: Untitled job
-      job_state:
-        queued: Queued
-        waiting_plate: Waiting for plate clear
-        printing: Printing now
-        paused: Paused
-      telemetry: Telemetry
-      status_title: "%{name} Status"
-      now_printing: Now printing
-      progress: Progress
-      time_remaining: Time remaining
-      resin: Resin consumption
-      uv_lift: UV / lift details
-      telemetry_note: Telemetry pulled via SDCP. Control commands are routed through Manyfold authorizations.
-      unsupported_banner: This printer family is shown for reference only. Send and remote control are not available until a later protocol initiative.
-    update:
-      updated: Printer configuration saved.
-    settings:
-      title: Settings
-      subtitle: Machine configuration, compatibility rules, and on-board storage. Changes are committed over native SDCP endpoints securely.
-      online: Online
-      back_status: Back to status
-      identity_heading: Machine Identity
-      edit_configuration: Edit configuration
-      cancel_edit: Cancel
-      save_identity: Save configuration
-      fields:
-        brand: Brand
-        model: Model
-        firmware: Firmware
-        protocol: Protocol
-        mac: MAC address
-        resolution: Resolution
-        build: Build volume
-        formats: Native formats
-      storage_heading: On-board Storage
-      storage_help: Internal memory used for caching dispatched sliced print files.
-      upload_file: Upload File
-      storage_used: "%{used} / %{total} used (%{pct}%)"
-      storage_error: "Could not list storage — %{message}"
-      storage_unsupported: Storage management is not available for this printer family.
-      storage_empty: No files on printer storage.
-      confirm_delete: "Delete %{name} from printer storage?"
-      delete_file: Delete file
-      col:
-        file: File name
-        size: File size
-        uploaded: Uploaded
-        actions: Actions
-      gate_heading: Compatibility Gate
-      gate_help: Files failing these checks cannot be sent.
-      gate:
-        formats_title: File type formats
-        formats_detail: "Matches %{formats}"
-        resolution_title: Resolution boundary
-        resolution_detail: "Must match screen dimensions (%{resolution})"
-        z_title: Maximum height limit
-        z_detail: "Z axis span must be < %{z} mm"
-        aa_title: Slicing AA check
-        aa_detail: Anti-aliasing limit must reside in range 0–4 (aa_max not configured on host)
-      camera_heading: Camera Enclosure
-      camera_help: Pull video straight from hardware
-      snapshot_interval: Snapshot interval
-      interval_5s: Every 5 seconds
-      interval_10s: Every 10 seconds
-      interval_30s: Every 30 seconds
-      interval_60s: Every 60 seconds
-      rtsp_label: RTSP protocol feed endpoint
-      rtsp_placeholder: "rtsp://%{host}:554/live/mjpeg"
-      camera_alt: Printer camera
-      cam_snapshot: Cam snapshot
-      live: Live
-      camera_unsupported: Camera preview unavailable for this printer family.
-    storage:
-      missing_file: Choose a file to upload.
-      unsupported_type: Only CTB/JXS sliced files may be uploaded.
-      uploaded: "Uploaded %{filename}."
-      deleted: File deleted from printer storage.
-      nothing_to_delete: Nothing to delete.
+      subtitle: Watch the shop, prepare a plate, and send a job — without leaving the library.
+      title: Printers
     new:
-      title: Add a printer
+      endpoint_label: IP address
+      endpoint_placeholder: http://10.0.1.199:3030
+      footer_note: Camera feeds are restreamed through Manyfold. The physical printer stays on your private LAN.
       heading: Add a printer
-      subtitle: Manyfold talks directly to the machine. You do not need to configure OctoPrint servers or local plugin managers.
       lan_heading: Found on the LAN · UDP :3000 M99999
+      mainboard_label: Mainboard ID
+      mainboard_placeholder: Hex MainboardID
       manual_heading: Register manually
       name_label: Printer name
       name_placeholder: e.g. GK3 Pro — garage
-      endpoint_label: IP address
-      endpoint_placeholder: "http://10.0.1.199:3030"
-      mainboard_label: Mainboard ID
-      mainboard_placeholder: Hex MainboardID
       save: Save printer
-      footer_note: Camera feeds are restreamed through Manyfold. The physical printer stays on your private LAN.
-    create:
-      success: Printer registered.
+      subtitle: Manyfold talks directly to the machine. You do not need to configure OctoPrint servers or local plugin managers.
+      title: Add a printer
     pause:
       success: Pause command sent.
-    stop:
-      success: Stop command sent.
-    continue:
-      success: Continue command sent.
+    send:
+      choose_printer: Select a printer…
+      open: Print
+      prepare_cta: Open Prepare
+      prepare_help: Add the STL or 3MF onto the virtual build plate to scale, support, and slice in browser.
+      prepare_stub_note: Stubbed for INIT-009 (GR-001). Use a sliced CTB/JXS file below.
+      prepare_stub_title: Prepare is not available yet
+      prepare_title: Prepare on the plate
+      printer_unsupported_option: "%{name} (unsupported)"
+      sliced_cta: Send .%{ext}
+      sliced_help: Already compiled a build file? Send prepared .ctb or .jxs straight to the machine.
+      sliced_title: Send a sliced file
+      slicer_stub_note: Open in Slicer is stubbed (GR-001).
+      subtitle: Open %{name} · Choose how it reaches the machine
+      target_printer: Target printer
+      title: Print this model
     send_file:
       format_not_sliced: Only CTB/JXS sliced files may be sent.
+      gate_failed: Cannot send — %{reasons}
+      success: Queued %{filename} for %{printer}.
       unsupported_printer: That printer family does not support send yet.
-      gate_failed: "Cannot send — %{reasons}"
-      success: "Queued %{filename} for %{printer}."
+    settings:
+      back_status: Back to status
+      cam_snapshot: Cam snapshot
+      camera_alt: Printer camera
+      camera_heading: Camera Enclosure
+      camera_help: Pull video straight from hardware
+      camera_unsupported: Camera preview unavailable for this printer family.
+      cancel_edit: Cancel
+      col:
+        actions: Actions
+        file: File name
+        size: File size
+        uploaded: Uploaded
+      confirm_delete: Delete %{name} from printer storage?
+      delete_file: Delete file
+      edit_configuration: Edit configuration
+      fields:
+        brand: Brand
+        build: Build volume
+        firmware: Firmware
+        formats: Native formats
+        mac: MAC address
+        model: Model
+        protocol: Protocol
+        resolution: Resolution
+      gate:
+        aa_detail: Anti-aliasing limit must reside in range 0–4 (aa_max not configured on host)
+        aa_title: Slicing AA check
+        formats_detail: Matches %{formats}
+        formats_title: File type formats
+        resolution_detail: Must match screen dimensions (%{resolution})
+        resolution_title: Resolution boundary
+        z_detail: Z axis span must be < %{z} mm
+        z_title: Maximum height limit
+      gate_heading: Compatibility Gate
+      gate_help: Files failing these checks cannot be sent.
+      identity_heading: Machine Identity
+      interval_10s: Every 10 seconds
+      interval_30s: Every 30 seconds
+      interval_5s: Every 5 seconds
+      interval_60s: Every 60 seconds
+      live: Live
+      online: Online
+      rtsp_label: RTSP protocol feed endpoint
+      rtsp_placeholder: rtsp://%{host}:554/live/mjpeg
+      save_identity: Save configuration
+      snapshot_interval: Snapshot interval
+      storage_empty: No files on printer storage.
+      storage_error: Could not list storage — %{message}
+      storage_heading: On-board Storage
+      storage_help: Internal memory used for caching dispatched sliced print files.
+      storage_unsupported: Storage management is not available for this printer family.
+      storage_used: "%{used} / %{total} used (%{pct}%)"
+      subtitle: Machine configuration, compatibility rules, and on-board storage. Changes are committed over native SDCP endpoints securely.
+      title: Settings
+      upload_file: Upload File
+    show:
+      camera_alt: Printer camera
+      confirm_stop: Stop the current print?
+      connecting: "● Connecting…"
+      continue: Continue
+      job_state:
+        paused: Paused
+        printing: Printing now
+        queued: Queued
+        waiting_plate: Waiting for plate clear
+      job_untitled: Untitled job
+      live_stream: Live monitor stream
+      now_printing: Now printing
+      pause: Pause
+      progress: Progress
+      queue: Print queue
+      queue_empty: No jobs queued for this printer.
+      resin: Resin consumption
+      settings: Settings
+      status_title: "%{name} Status"
+      stop: Stop
+      telemetry: Telemetry
+      telemetry_note: Telemetry pulled via SDCP. Control commands are routed through Manyfold authorizations.
+      time_remaining: Time remaining
+      unsupported_banner: This printer family is shown for reference only. Send and remote control are not available until a later protocol initiative.
+      uv_lift: UV / lift details
     status:
-      printing: Printing
       idle: Idle
       offline: Offline
-      unsupported: Unsupported
       paused: Paused
-    card:
-      open_monitor: Open monitor
-      camera_offline: Camera offline
-      camera_alt: "Camera for %{name}"
-      live: LIVE
-      standby: STANDBY
-      meta_sdcp: "IP: %{endpoint} · SDCP protocol"
-      meta_unsupported: "System: %{brand} · LAN connection"
-      unsupported_note: Decorative / unsupported — send is disabled for this family.
-      job_printing: "%{filename} · %{percent}% · Layer %{layers}"
-      no_active_job: No active job
-      offline_duration: Offline
-      eta_unknown: ETA unknown
-      eta_remaining: "%{duration} remaining"
-      duration_hm: "%{hours}h %{minutes}m"
-      duration_m: "%{minutes}m"
-    discover:
-      title: Find printers on the LAN
-      description: UDP discovery (SDCP M99999) — scans your network without OctoPrint.
-      scan: Scan network
-      empty: No printers found yet. Scan the LAN or register manually.
-      unknown: Unknown SDCP device
-      endpoint_line: "IP: %{endpoint} · %{protocol}"
-      ready_help: Ready to accept sliced files. Discovered via SDCP.
-      add: Add printer
-    send:
-      open: Print
-      title: Print this model
-      subtitle: "Open %{name} · Choose how it reaches the machine"
-      target_printer: Target printer
-      choose_printer: Select a printer…
-      printer_unsupported_option: "%{name} (unsupported)"
-      prepare_title: Prepare on the plate
-      prepare_help: Add the STL or 3MF onto the virtual build plate to scale, support, and slice in browser.
-      prepare_cta: Open Prepare
-      prepare_stub_title: Prepare is not available yet
-      prepare_stub_note: Stubbed for INIT-009 (GR-001). Use a sliced CTB/JXS file below.
-      sliced_title: Send a sliced file
-      sliced_help: Already compiled a build file? Send prepared .ctb or .jxs straight to the machine.
-      sliced_cta: "Send .%{ext}"
-      slicer_stub_note: Open in Slicer is stubbed (GR-001).
+      printing: Printing
+      unsupported: Unsupported
+    stop:
+      success: Stop command sent.
+    storage:
+      deleted: File deleted from printer storage.
+      missing_file: Choose a file to upload.
+      nothing_to_delete: Nothing to delete.
+      unsupported_type: Only CTB/JXS sliced files may be uploaded.
+      uploaded: Uploaded %{filename}.
+    update:
+      updated: Printer configuration saved.
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'
@@ -1459,6 +1453,13 @@ en:
       description: If this item violates any laws or server policies, you can report it to our moderators. Add a comment to let us know why!
       submit: Send report
       title: 'Report %{type}: "%{name}"'
+  resin_bottles:
+    create:
+      success: Resin bottle added.
+    destroy:
+      destroyed: Resin bottle removed.
+    update:
+      adjusted: Resin level updated.
   scans:
     create:
       success: Scan started.

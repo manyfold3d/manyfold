@@ -76,7 +76,8 @@ class PrintJobsController < ApplicationController
   def pause
     authorize @print_job, :pause?
     job_service_for(@print_job.print_host).pause!(@print_job)
-    respond_with_job_mutation
+    # i18n-tasks-use t("print_jobs.pause.success")
+    respond_with_job_mutation(notice_key: "print_jobs.pause.success")
   rescue Print::JobService::InvalidState, Print::JobService::Error, Print::SdcpService::Error => e
     respond_with_job_error(e)
   end
@@ -92,6 +93,7 @@ class PrintJobsController < ApplicationController
   def cancel
     authorize @print_job, :cancel?
     job_service_for(@print_job.print_host).cancel!(@print_job, note: params[:note])
+    # i18n-tasks-use t("print_jobs.cancel.success")
     respond_with_job_mutation(notice_key: "print_jobs.cancel.success")
   rescue Print::JobService::InvalidState, Print::JobService::Error, Print::SdcpService::Error => e
     respond_with_job_error(e)
@@ -100,6 +102,7 @@ class PrintJobsController < ApplicationController
   def confirm_plate_cleared
     authorize @print_job, :confirm_plate_cleared?
     job_service_for(@print_job.print_host).confirm_plate_cleared!(@print_job)
+    # i18n-tasks-use t("print_jobs.confirm_plate_cleared.success")
     respond_with_job_mutation(notice_key: "print_jobs.confirm_plate_cleared.success")
   rescue Print::JobService::InvalidState, Print::JobService::Error => e
     respond_with_job_error(e)
