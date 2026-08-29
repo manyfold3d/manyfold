@@ -84,6 +84,15 @@ class PrintersController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @printer
+    @printer.destroy!
+    respond_to do |format|
+      format.html { redirect_to printers_path, notice: t(".destroyed") }
+      format.json { head :no_content }
+    end
+  end
+
   # UDP discover — returns candidates only; never persists (REQ-003).
   def discover
     authorize PrintHost, :discover?

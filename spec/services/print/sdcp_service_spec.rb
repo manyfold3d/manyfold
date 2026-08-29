@@ -181,6 +181,38 @@ RSpec.describe Print::SdcpService do
       expect(candidate[:mainboard_id]).to eq("d307202d8c1e0100")
       expect(PrintHost.where(mainboard_id: "d307202d8c1e0100")).to be_empty
     end
+
+    it "reads identity from nested Data (GK3 discover payload)" do
+      parsed = {
+        "Id" => "x",
+        "Data" => {
+          "BrandName" => "UniFormation",
+          "MachineName" => "GK3 Pro",
+          "MainboardID" => "d307202d8c1e0100",
+          "MainboardIP" => "10.0.0.199",
+          "FirmwareVersion" => "V1.0"
+        }
+      }
+      candidate = described_class.normalize_discover_candidate(parsed)
+      expect(candidate[:brand]).to eq("UniFormation")
+      expect(candidate[:mainboard_id]).to eq("d307202d8c1e0100")
+      expect(candidate[:endpoint]).to eq("http://10.0.0.199:3030")
+    end
+  end
+
+  describe "#control_port" do
+    it "uses 3030 when endpoint omits a port (URI default 80)" do
+      host = build(:print_host, endpoint: "http://10.0.0.199")
+      svc = described_class.new(print_host: host)
+      expect(svc.send(:control_port)).to eq(3030)
+      expect(svc.send(:websocket_url)).to eq("ws://10.0.0.199:3030/websocket")
+    end
+
+    it "keeps an explicit non-default port" do
+      host = build(:print_host, endpoint: "http://10.0.0.199:3031")
+      svc = described_class.new(print_host: host)
+      expect(svc.send(:control_port)).to eq(3031)
+    end
   end
 
   describe ".discover_candidates allowlist" do

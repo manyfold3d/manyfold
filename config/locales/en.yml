@@ -1286,6 +1286,8 @@ en:
       success: Continue command sent.
     create:
       success: Printer registered.
+    destroy:
+      destroyed: Printer removed.
     discover:
       add: Add printer
       description: UDP discovery (SDCP M99999) — scans your network without OctoPrint.
@@ -1354,15 +1356,23 @@ en:
         size: File size
         uploaded: Uploaded
       confirm_delete: Delete %{name} from printer storage?
+      confirm_delete_printer: Remove printer "%{name}" from Manyfold? This does not wipe files on the machine.
+      danger_heading: Remove printer
+      danger_help: Deletes this printer from Manyfold. Jobs and history for this host are removed; on-board storage is left alone.
       delete_file: Delete file
+      delete_printer: Delete printer
       edit_configuration: Edit configuration
+      endpoint_help: SDCP control port is 3030. Use http://IP:3030 — a bare http://IP is rewritten to :3030 on save.
       fields:
         brand: Brand
         build: Build volume
+        endpoint: Endpoint URL
         firmware: Firmware
         formats: Native formats
         mac: MAC address
+        mainboard_id: Mainboard ID
         model: Model
+        name: Name
         protocol: Protocol
         resolution: Resolution
       gate:

@@ -35,6 +35,40 @@ RSpec.describe "Printer settings HTML UI" do
       expect(host.firmware).to eq("9.9.9")
     end
 
+    it "updates endpoint and mainboard_id via HTML" do
+      host = create(:print_host, :with_capabilities, endpoint: "http://10.0.0.199:3030")
+      patch printer_path(host), params: {
+        printer: {endpoint: "http://10.0.0.50", mainboard_id: "aabbccddeeff0011", name: "Garage GK3"}
+      }
+      expect(response).to redirect_to(settings_printer_path(host))
+      host.reload
+      expect(host.endpoint).to eq("http://10.0.0.50:3030")
+      expect(host.mainboard_id).to eq("aabbccddeeff0011")
+      expect(host.name).to eq("Garage GK3")
+    end
+
+    it "deletes a printer via HTML" do
+      host = create(:print_host, :with_capabilities)
+      expect {
+        delete printer_path(host)
+      }.to change(PrintHost, :count).by(-1)
+      expect(response).to redirect_to(printers_path)
+    end
+
+    it "renders editable endpoint and delete control" do
+      host = create(:print_host, :with_capabilities, name: "GK3 Pro — garage")
+      service = instance_double(Print::SdcpService,
+        normalized_status: {filename: nil},
+        list_files: [],
+        storage_free_bytes: nil)
+      allow_any_instance_of(PrintHost).to receive(:service).and_return(service) # rubocop:disable RSpec/AnyInstance
+
+      get settings_printer_path(host)
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include('name="print_host[endpoint]"').or include('name="printer[endpoint]"')
+      expect(response.body).to include("Delete printer")
+    end
+
     it "uploads sliced storage file via HTML form" do
       host = create(:print_host, :with_capabilities)
       service = instance_double(Print::SdcpService)

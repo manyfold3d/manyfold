@@ -49,6 +49,29 @@
         <%= form_with model: @printer, url: printer_path(@printer), method: :patch,
               class: "grid gap-4 sm:grid-cols-2",
               data: {printer_camera_settings_target: "identityForm"} do |f| %>
+          <div>
+            <label class="block font-mono text-[11px] uppercase tracking-wide text-secondary-500 mb-1"><%= t(".fields.name") %></label>
+            <%= f.text_field :name,
+                  class: "w-full rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm font-mono text-surface",
+                  readonly: !policy(@printer).update?,
+                  data: {printer_camera_settings_target: "identityField"} %>
+          </div>
+          <div>
+            <label class="block font-mono text-[11px] uppercase tracking-wide text-secondary-500 mb-1"><%= t(".fields.endpoint") %></label>
+            <%= f.text_field :endpoint,
+                  class: "w-full rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm font-mono text-surface",
+                  readonly: !policy(@printer).update?,
+                  placeholder: "http://10.0.0.199:3030",
+                  data: {printer_camera_settings_target: "identityField"} %>
+            <p class="text-xs text-secondary-500 m-0 mt-1"><%= t(".endpoint_help") %></p>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block font-mono text-[11px] uppercase tracking-wide text-secondary-500 mb-1"><%= t(".fields.mainboard_id") %></label>
+            <%= f.text_field :mainboard_id,
+                  class: "w-full rounded-lg border border-[#332623] bg-[#120f0d] px-3 py-2 text-sm font-mono text-surface",
+                  readonly: !policy(@printer).update?,
+                  data: {printer_camera_settings_target: "identityField"} %>
+          </div>
           <% [
             [:brand, t(".fields.brand"), false],
             [:machine_model, t(".fields.model"), false],
@@ -88,11 +111,21 @@
           <% end %>
 
           <% if policy(@printer).update? %>
-            <div class="sm:col-span-2 hidden" data-printer-camera-settings-target="identityActions">
+            <div class="sm:col-span-2 hidden flex flex-wrap items-center gap-3" data-printer-camera-settings-target="identityActions">
               <%= f.submit t(".save_identity"),
                     class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium cursor-pointer" %>
             </div>
           <% end %>
+        <% end %>
+
+        <% if policy(@printer).destroy? %>
+          <div class="pt-4 border-t border-[#332623]">
+            <h3 class="text-sm font-semibold text-surface m-0 mb-2"><%= t(".danger_heading") %></h3>
+            <p class="text-sm text-secondary-400 m-0 mb-3"><%= t(".danger_help") %></p>
+            <%= button_to t(".delete_printer"), printer_path(@printer), method: :delete,
+                  form: {data: {turbo_confirm: t(".confirm_delete_printer", name: @printer.name)}},
+                  class: "inline-flex items-center justify-center px-4 py-2 rounded-lg border border-danger text-danger text-sm font-medium bg-transparent cursor-pointer hover:bg-danger/10" %>
+          </div>
         <% end %>
       </section>
 

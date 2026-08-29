@@ -29,6 +29,9 @@ class PrintHost < ApplicationRecord
   validates :build_x_mm, :build_y_mm, :build_z_mm, numericality: {greater_than: 0}, allow_nil: true
   validates :storage_bytes_used, :storage_bytes_total, numericality: {greater_than_or_equal_to: 0, only_integer: true}, allow_nil: true
 
+  # SDCP control is always :3030. Bare http://IP (URI default :80) must not stick.
+  before_validation :normalize_sdcp_endpoint_port
+
   def service
     PROTOCOLS.fetch(protocol).new(print_host: self)
   end
@@ -86,6 +89,22 @@ class PrintHost < ApplicationRecord
   end
 
   private
+
+  def normalize_sdcp_endpoint_port
+    return unless protocol == Print::SdcpService::PROTOCOL
+    return if endpoint.blank?
+
+    uri = URI.parse(endpoint.to_s)
+    return unless uri.is_a?(URI::HTTP) && uri.host.present?
+
+    # URI#port returns scheme default (80/443) when omitted — wrong for SDCP.
+    if uri.port.nil? || uri.port == uri.default_port
+      uri.port = Print::SdcpService::DEFAULT_CONTROL_PORT
+      self.endpoint = uri.to_s
+    end
+  rescue URI::InvalidURIError
+    # covered by endpoint_must_be_http_url
+  end
 
   def endpoint_must_be_http_url
     return if endpoint.blank?

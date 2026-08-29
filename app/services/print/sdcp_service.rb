@@ -17,6 +17,7 @@ module Print
     INPUT_TYPES = [Mime[:chitubox], Mime[:jxs]].freeze
     DISCOVER_PAYLOAD = "M99999"
     DEFAULT_DISCOVER_PORT = 3000
+    DEFAULT_CONTROL_PORT = 3030
     CHUNK_SIZE = 1 * 1024 * 1024 # SDCP HTTP upload packet size
 
     class Error < StandardError; end
@@ -280,14 +281,19 @@ module Print
     end
 
     def self.normalize_discover_candidate(parsed, addr = nil)
-      ip = parsed["MainboardIP"].presence || addr&.[](3)
+      # GK3 / UniFormation nest identity under Data; older samples use top-level keys.
+      data = parsed.is_a?(Hash) ? (parsed["Data"].is_a?(Hash) ? parsed["Data"] : parsed) : {}
+      top = parsed.is_a?(Hash) ? parsed : {}
+      pick = ->(key) { data[key].presence || top[key].presence }
+
+      ip = pick.call("MainboardIP") || addr&.[](3)
       {
-        brand: parsed["BrandName"],
-        machine_model: parsed["MachineName"] || parsed["Name"],
-        mainboard_id: parsed["MainboardID"],
-        firmware: parsed["FirmwareVersion"],
-        protocol_version: parsed["ProtocolVersion"],
-        endpoint: ip.present? ? "http://#{ip}:3030" : nil,
+        brand: pick.call("BrandName"),
+        machine_model: pick.call("MachineName") || pick.call("Name"),
+        mainboard_id: pick.call("MainboardID"),
+        firmware: pick.call("FirmwareVersion"),
+        protocol_version: pick.call("ProtocolVersion"),
+        endpoint: ip.present? ? "http://#{ip}:#{DEFAULT_CONTROL_PORT}" : nil,
         raw: parsed
       }
     end
@@ -314,16 +320,25 @@ module Print
       )
     end
 
+    # URI#port returns 80/443 when the URL omits a port — never use those for SDCP.
+    def control_port
+      uri = URI.parse(print_host.endpoint.to_s)
+      port = uri.port
+      return DEFAULT_CONTROL_PORT if port.nil? || port == uri.default_port
+
+      port
+    end
+
     def websocket_url
       assert_endpoint_allowed!
       uri = URI.parse(print_host.endpoint)
-      "ws://#{uri.host}:#{uri.port || 3030}/websocket"
+      "ws://#{uri.host}:#{control_port}/websocket"
     end
 
     def upload_url
       assert_endpoint_allowed!
       uri = URI.parse(print_host.endpoint)
-      "#{uri.scheme}://#{uri.host}:#{uri.port || 3030}/uploadFile/upload"
+      "#{uri.scheme}://#{uri.host}:#{control_port}/uploadFile/upload"
     end
 
     # Re-resolve at connect time to close DNS-rebinding TOCTOU after model validation.

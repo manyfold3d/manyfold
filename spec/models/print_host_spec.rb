@@ -47,6 +47,12 @@ RSpec.describe PrintHost do
     it "allows blank mainboard_id until discover" do
       expect(described_class.create(attributes.merge(mainboard_id: nil))).to be_valid
     end
+
+    it "rewrites bare SDCP http://IP endpoints to :3030" do
+      host = described_class.create(attributes.merge(endpoint: "http://10.0.0.199"))
+      expect(host).to be_valid
+      expect(host.endpoint).to eq("http://10.0.0.199:3030")
+    end
   end
 
   describe "capabilities (INIT-008/SPEC-002)" do
