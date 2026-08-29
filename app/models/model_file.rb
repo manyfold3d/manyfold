@@ -58,9 +58,16 @@ class ModelFile < ApplicationRecord
     withsupports
   ]
 
+  SLICED_PRINT_EXTENSIONS = %w[ctb jxs].freeze
+
   def extension
     attached = (attachment&.extension if has_attribute?(:attachment_data))
     attached.presence || File.extname(filename.to_s).delete(".").downcase
+  end
+
+  # Already-sliced resin plate files that may be sent to an SDCP host (REQ-004).
+  def sliced_for_print?
+    SLICED_PRINT_EXTENSIONS.include?(extension.to_s.downcase)
   end
 
   def is_image?

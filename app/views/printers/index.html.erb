@@ -1,0 +1,37 @@
+<% content_for :head do %>
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+
+<%= PageTitle title: t(".title") %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-8">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5 max-w-2xl">
+      <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= t(".heading") %></h1>
+      <p class="text-sm text-secondary-600 dark:text-secondary-300 m-0"><%= t(".subtitle") %></p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <%= link_to t(".add_printer"), new_printer_path,
+            class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium no-underline hover:bg-secondary-50" if policy(PrintHost).create? %>
+      <button type="button" disabled
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600/50 text-white text-sm font-medium cursor-not-allowed"
+              title="<%= t(".prepare_stub_title") %>"
+              aria-disabled="true">
+        <%= t(".prepare_print") %>
+      </button>
+    </div>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+    <% @printers.each do |printer| %>
+      <%= render Components::PrinterCard.new(
+            printer: printer,
+            status: @statuses[printer.id],
+            snapshot_url: (snapshot_printer_path(printer) unless printer.unsupported_for_send?)
+          ) %>
+    <% end %>
+    <% if policy(PrintHost).discover? %>
+      <%= render Components::PrinterDiscoverCard.new(discover_url: discover_printers_path) %>
+    <% end %>
+  </div>
+</div>

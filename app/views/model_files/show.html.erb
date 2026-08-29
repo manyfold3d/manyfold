@@ -83,6 +83,14 @@
       <%= app_links @file %>
     </ul>
   </div>
+  <% if @file.sliced_for_print? && policy(PrintHost).control? %>
+    <%= render Components::SendPrintDialog.new(
+          model: @model,
+          file: @file,
+          printers: policy_scope(PrintHost).order(:name),
+          eligibility_url: send_eligibility_model_model_file_path(@model, @file)
+        ) %>
+  <% end %>
   <div class="ml-auto">
     <%= BurgerMenu do %>
       <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>

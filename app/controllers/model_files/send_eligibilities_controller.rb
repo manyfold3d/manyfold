@@ -11,23 +11,35 @@ module ModelFiles
     before_action :load_model_and_file
     skip_after_action :verify_policy_scoped
 
-    SLICED_EXTENSIONS = %w[ctb jxs].freeze
-
     def show
       authorize @file, :show?
       print_host = policy_scope(PrintHost).find(params.require(:print_host_id))
       authorize print_host, :control?
 
       extension = @file.extension.to_s.downcase
-      unless SLICED_EXTENSIONS.include?(extension)
+      unless @file.sliced_for_print?
         render json: {
           eligible: false,
           offered: false,
           reasons: [{
             code: "format_not_sliced",
             message: "Only CTB/JXS sliced files may be sent; STL and meshes are not offered",
-            expected: SLICED_EXTENSIONS,
+            expected: ModelFile::SLICED_PRINT_EXTENSIONS,
             actual: extension.presence || "unknown"
+          }]
+        }
+        return
+      end
+
+      if print_host.unsupported_for_send?
+        render json: {
+          eligible: false,
+          offered: false,
+          reasons: [{
+            code: "printer_unsupported",
+            message: "This printer family is not supported for send in Print Studio",
+            expected: Print::SdcpService::PROTOCOL,
+            actual: print_host.protocol
           }]
         }
         return

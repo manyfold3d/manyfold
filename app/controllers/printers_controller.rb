@@ -1,35 +1,67 @@
 # frozen_string_literal: true
 
-# First-class Print Studio fleet API (INIT-008/SPEC-004).
-# Settings::PrintHosts remains for admin HTML CRUD / camera proxy.
+# Print Studio fleet UI + JSON API (INIT-008/SPEC-004 + SPEC-005).
+# Settings::PrintHosts remains for admin settings CRUD; this surface is first-class.
 class PrintersController < ApplicationController
   include PrintApi
 
-  respond_to :json
+  respond_to :html, :json
 
-  before_action :load_printer, only: [:show, :update, :status]
-  skip_after_action :verify_policy_scoped, only: [:discover]
+  before_action :load_printer, only: [
+    :show, :update, :status, :snapshot, :pause, :stop, :continue, :send_file
+  ]
+  skip_after_action :verify_policy_scoped, only: [:discover, :new]
 
   def index
     authorize PrintHost
     @printers = policy_scope(PrintHost).order(:name)
-    render json: {printers: @printers.map { |host| serialize_printer(host) }}
+    respond_to do |format|
+      format.html do
+        @statuses = {}
+        @printers.each { |host| @statuses[host.id] = fetch_status(host) }
+      end
+      format.json {
+        render json: {printers: @printers.map { |host| serialize_printer(host) }}
+      }
+    end
   end
 
   def show
     authorize @printer
-    status_payload = fetch_status(@printer)
-    render json: {printer: serialize_printer(@printer, status: status_payload)}
+    @status = fetch_status(@printer)
+    @queue_jobs = policy_scope(PrintJob)
+      .includes(:model_file)
+      .where(print_host_id: @printer.id)
+      .where(state: %w[queued waiting_plate printing paused])
+      .order(:created_at)
+      .limit(20)
+    respond_to do |format|
+      format.html
+      format.json { render json: {printer: serialize_printer(@printer, status: @status)} }
+    end
+  end
+
+  def new
+    authorize PrintHost
+    @printer = PrintHost.new(protocol: Print::SdcpService::PROTOCOL)
+    @candidates = []
   end
 
   def create
     authorize PrintHost
     @printer = PrintHost.new(printer_params)
     @printer.protocol = Print::SdcpService::PROTOCOL
-    if @printer.save
-      render json: {printer: serialize_printer(@printer)}, status: :created
-    else
-      render json: {errors: @printer.errors.to_hash}, status: :unprocessable_content
+    respond_to do |format|
+      if @printer.save
+        format.html { redirect_to printer_path(@printer), notice: t(".success") }
+        format.json { render json: {printer: serialize_printer(@printer)}, status: :created }
+      else
+        format.html {
+          @candidates = []
+          render :new, status: :unprocessable_content
+        }
+        format.json { render json: {errors: @printer.errors.to_hash}, status: :unprocessable_content }
+      end
     end
   end
 
@@ -47,8 +79,12 @@ class PrintersController < ApplicationController
     authorize PrintHost, :discover?
     hosts = Array(params[:hosts].presence || ["255.255.255.255"])
     timeout = (params[:timeout].presence || 2.0).to_f
-    candidates = Print::SdcpService.discover_candidates(hosts: hosts, timeout: timeout)
-    render json: {candidates: candidates}
+    @candidates = Print::SdcpService.discover_candidates(hosts: hosts, timeout: timeout)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { render partial: "printers/discoveries", locals: {candidates: @candidates} }
+      format.json { render json: {candidates: @candidates} }
+    end
   end
 
   def status
@@ -58,18 +94,79 @@ class PrintersController < ApplicationController
     render json: {error: e.message}, status: :bad_gateway
   end
 
+  # Authenticated JPEG proxy — browsers never talk to go2rtc ClusterIP directly.
+  def snapshot
+    authorize @printer, :show?
+    jpeg = Print::Go2rtcClient.frame_jpeg(stream: camera_stream_name)
+    send_data jpeg, type: "image/jpeg", disposition: "inline"
+  rescue Print::Go2rtcClient::Error => e
+    Rails.logger.warn("[Printers#snapshot] #{e.class}: #{e.message}")
+    head :bad_gateway
+  end
+
+  def pause
+    control_command!(:pause_print, :pause)
+  end
+
+  def stop
+    control_command!(:stop_print, :stop)
+  end
+
+  def continue
+    control_command!(:continue_print, :continue)
+  end
+
+  # Library send path — sliced ModelFile only; gate must pass (REQ-004).
+  def send_file
+    authorize @printer, :control?
+    model = policy_scope(Model).find_param(params.require(:model_id))
+    file = policy_scope(model.model_files).find_param(params.require(:model_file_id))
+    authorize file, :show?
+
+    unless file.sliced_for_print?
+      redirect_back_or_to model_model_file_path(model, file),
+        alert: t(".format_not_sliced")
+      return
+    end
+    extension = file.extension.to_s.downcase
+
+    if @printer.unsupported_for_send?
+      redirect_back_or_to model_model_file_path(model, file),
+        alert: t(".unsupported_printer")
+      return
+    end
+
+    stamp = {format: extension}
+    gate = Print::CompatibilityGate.call(print_host: @printer, stamp: stamp)
+    unless gate.pass?
+      messages = gate.reasons.map(&:message).join("; ")
+      redirect_back_or_to model_model_file_path(model, file),
+        alert: t(".gate_failed", reasons: messages)
+      return
+    end
+
+    @printer.print_later(file: file)
+    redirect_to printer_path(@printer), notice: t(".success", filename: file.filename, printer: @printer.name)
+  end
+
   private
 
   def load_printer
     @printer = policy_scope(PrintHost).find(params[:id])
   end
 
+  PERMITTED_PRINTER_ATTRS = [
+    :name, :endpoint, :mainboard_id, :brand, :machine_model, :firmware, :mac_address,
+    :resolution_w, :resolution_h, :build_x_mm, :build_y_mm, :build_z_mm,
+    :fep_cycles, :lcd_hours, {native_formats: []}
+  ].freeze
+
   def printer_params
-    params.expect(printer: [
-      :name, :endpoint, :mainboard_id, :brand, :machine_model, :firmware, :mac_address,
-      :resolution_w, :resolution_h, :build_x_mm, :build_y_mm, :build_z_mm,
-      :fep_cycles, :lcd_hours, {native_formats: []}
-    ])
+    if params[:printer].present?
+      params.expect(printer: PERMITTED_PRINTER_ATTRS)
+    else
+      params.expect(print_host: PERMITTED_PRINTER_ATTRS)
+    end
   end
 
   def fetch_status(printer)
@@ -79,6 +176,25 @@ class PrintersController < ApplicationController
   end
 
   def fetch_status!(printer)
+    return {error: "unsupported", unsupported: true} if printer.unsupported_for_send?
+
     printer.service.normalized_status
+  end
+
+  def control_command!(service_method, i18n_key)
+    authorize @printer, :control?
+    if @printer.unsupported_for_send?
+      redirect_to printer_path(@printer), alert: t("printers.send_file.unsupported_printer")
+      return
+    end
+
+    @printer.service.public_send(service_method)
+    redirect_to printer_path(@printer), notice: t("printers.#{i18n_key}.success")
+  rescue Print::SdcpService::Error => e
+    redirect_to printer_path(@printer), alert: e.message
+  end
+
+  def camera_stream_name
+    ENV.fetch("GO2RTC_STREAM", "gk3_pro")
   end
 end

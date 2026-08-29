@@ -100,12 +100,17 @@ Rails.application.routes.draw do
 
     # Print Studio manager API (INIT-008/SPEC-004) — first-class fleet/jobs surfaces.
     # Settings::PrintHosts remains for admin HTML CRUD.
-    resources :printers, only: [:index, :show, :create, :update] do
+    resources :printers, only: [:index, :show, :new, :create, :update] do
       collection do
         post :discover
       end
       member do
         get :status
+        get :snapshot
+        post :pause
+        post :stop
+        post :continue
+        post :send_file
       end
       resources :storage_files, only: [:index, :create], module: :printers do
         delete "/", action: :destroy, on: :collection

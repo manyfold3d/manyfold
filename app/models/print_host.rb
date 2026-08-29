@@ -59,6 +59,28 @@ class PrintHost < ApplicationRecord
     end
   end
 
+  # Decorative / future-protocol families (Bambu/X1C) are visible but not send-capable (INIT-008).
+  def unsupported_for_send?
+    return true unless protocol == Print::SdcpService::PROTOCOL
+
+    [brand, machine_model, name].compact.join(" ").match?(/bambu|x1[\s_-]?c/i)
+  end
+
+  def send_supported?
+    !unsupported_for_send?
+  end
+
+  def endpoint_host_port
+    uri = URI.parse(endpoint.to_s)
+    port = uri.port
+    host = uri.host
+    return endpoint.to_s if host.blank?
+
+    (port && ![80, 443].include?(port)) ? "#{host}:#{port}" : host.to_s
+  rescue URI::InvalidURIError
+    endpoint.to_s
+  end
+
   def print_later(file:)
     SendFileToPrintHostJob.perform_later(self, file)
   end

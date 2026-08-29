@@ -467,6 +467,7 @@ en:
           label: Toggle navigation
       printed: Printed
       queue: Queue
+      printers: Printers
       scan: Scan
       scan_changes:
         confirm: Are you sure you want to scan all libraries for new files? This may take a long time!
@@ -1075,6 +1076,113 @@ en:
   print_hosts:
     protocols:
       sdcp: SDCP (UniFormation / ChituManager)
+  printers:
+    index:
+      title: Printers
+      heading: Printers
+      subtitle: Watch the shop, prepare a plate, and send a job — without leaving the library.
+      add_printer: Add printer
+      prepare_print: Prepare print
+      prepare_stub_title: In-browser prepare arrives in a later initiative
+    show:
+      pause: Pause
+      continue: Continue
+      stop: Stop
+      confirm_stop: Stop the current print?
+      live_stream: Live monitor stream
+      connecting: ● Connecting…
+      camera_alt: Printer camera
+      queue: Print queue
+      queue_empty: No jobs queued for this printer.
+      job_untitled: Untitled job
+      job_state:
+        queued: Queued
+        waiting_plate: Waiting for plate clear
+        printing: Printing now
+        paused: Paused
+      telemetry: Telemetry
+      status_title: "%{name} Status"
+      now_printing: Now printing
+      progress: Progress
+      time_remaining: Time remaining
+      resin: Resin consumption
+      uv_lift: UV / lift details
+      telemetry_note: Telemetry pulled via SDCP. Control commands are routed through Manyfold authorizations.
+      unsupported_banner: This printer family is shown for reference only. Send and remote control are not available until a later protocol initiative.
+    new:
+      title: Add a printer
+      heading: Add a printer
+      subtitle: Manyfold talks directly to the machine. You do not need to configure OctoPrint servers or local plugin managers.
+      lan_heading: Found on the LAN · UDP :3000 M99999
+      manual_heading: Register manually
+      name_label: Printer name
+      name_placeholder: e.g. GK3 Pro — garage
+      endpoint_label: IP address
+      endpoint_placeholder: "http://10.0.1.199:3030"
+      mainboard_label: Mainboard ID
+      mainboard_placeholder: Hex MainboardID
+      save: Save printer
+      footer_note: Camera feeds are restreamed through Manyfold. The physical printer stays on your private LAN.
+    create:
+      success: Printer registered.
+    pause:
+      success: Pause command sent.
+    stop:
+      success: Stop command sent.
+    continue:
+      success: Continue command sent.
+    send_file:
+      format_not_sliced: Only CTB/JXS sliced files may be sent.
+      unsupported_printer: That printer family does not support send yet.
+      gate_failed: "Cannot send — %{reasons}"
+      success: "Queued %{filename} for %{printer}."
+    status:
+      printing: Printing
+      idle: Idle
+      offline: Offline
+      unsupported: Unsupported
+      paused: Paused
+    card:
+      open_monitor: Open monitor
+      camera_offline: Camera offline
+      camera_alt: "Camera for %{name}"
+      live: LIVE
+      standby: STANDBY
+      meta_sdcp: "IP: %{endpoint} · SDCP protocol"
+      meta_unsupported: "System: %{brand} · LAN connection"
+      unsupported_note: Decorative / unsupported — send is disabled for this family.
+      job_printing: "%{filename} · %{percent}% · Layer %{layers}"
+      no_active_job: No active job
+      offline_duration: Offline
+      eta_unknown: ETA unknown
+      eta_remaining: "%{duration} remaining"
+      duration_hm: "%{hours}h %{minutes}m"
+      duration_m: "%{minutes}m"
+    discover:
+      title: Find printers on the LAN
+      description: UDP discovery (SDCP M99999) — scans your network without OctoPrint.
+      scan: Scan network
+      empty: No printers found yet. Scan the LAN or register manually.
+      unknown: Unknown SDCP device
+      endpoint_line: "IP: %{endpoint} · %{protocol}"
+      ready_help: Ready to accept sliced files. Discovered via SDCP.
+      add: Add printer
+    send:
+      open: Print
+      title: Print this model
+      subtitle: "Open %{name} · Choose how it reaches the machine"
+      target_printer: Target printer
+      choose_printer: Select a printer…
+      printer_unsupported_option: "%{name} (unsupported)"
+      prepare_title: Prepare on the plate
+      prepare_help: Add the STL or 3MF onto the virtual build plate to scale, support, and slice in browser.
+      prepare_cta: Open Prepare
+      prepare_stub_title: Prepare is not available yet
+      prepare_stub_note: Stubbed for INIT-009 (GR-001). Use a sliced CTB/JXS file below.
+      sliced_title: Send a sliced file
+      sliced_help: Already compiled a build file? Send prepared .ctb or .jxs straight to the machine.
+      sliced_cta: "Send .%{ext}"
+      slicer_stub_note: Open in Slicer is stubbed (GR-001).
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'

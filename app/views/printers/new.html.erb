@@ -1,0 +1,63 @@
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("printers.index.heading") => printers_path
+    } %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-8"
+     data-controller="printer-discover"
+     data-printer-discover-url-value="<%= discover_printers_path %>">
+  <div class="space-y-2">
+    <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= t(".heading") %></h1>
+    <p class="text-sm text-secondary-600 dark:text-secondary-300 m-0 max-w-3xl"><%= t(".subtitle") %></p>
+  </div>
+
+  <section class="space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="font-mono text-[11px] text-secondary-500 uppercase tracking-wide m-0"><%= t(".lan_heading") %></p>
+      <button type="button"
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium"
+              data-action="click->printer-discover#scan"
+              data-printer-discover-target="button">
+        <%= t("printers.discover.scan") %>
+      </button>
+    </div>
+    <div id="printer-discover-results" class="grid gap-5 sm:grid-cols-2" data-printer-discover-target="results">
+      <%= render "printers/discoveries", candidates: @candidates || [] %>
+    </div>
+  </section>
+
+  <section class="rounded-2xl border border-[#332623] bg-[#1a1311] p-6 space-y-5">
+    <p class="font-mono text-[11px] text-secondary-500 uppercase tracking-wide m-0"><%= t(".manual_heading") %></p>
+    <%= form_with model: @printer, url: printers_path, scope: :printer, class: "space-y-5" do |form| %>
+      <% if @printer.errors.any? %>
+        <div class="rounded-lg border border-danger/40 bg-danger/10 text-danger text-sm p-3">
+          <ul class="list-disc ps-5 m-0">
+            <% @printer.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="space-y-1.5">
+          <%= form.label :name, t(".name_label"), class: "text-[11px] font-medium text-secondary-500 uppercase" %>
+          <%= form.text_field :name, placeholder: t(".name_placeholder"),
+                class: "w-full bg-[#261c1a] border border-[#332623] rounded-lg px-4 py-3 font-mono text-[13px] text-surface placeholder:text-secondary-500" %>
+        </div>
+        <div class="space-y-1.5">
+          <%= form.label :endpoint, t(".endpoint_label"), class: "text-[11px] font-medium text-secondary-500 uppercase" %>
+          <%= form.text_field :endpoint, placeholder: t(".endpoint_placeholder"),
+                class: "w-full bg-[#261c1a] border border-[#332623] rounded-lg px-4 py-3 font-mono text-[13px] text-surface placeholder:text-secondary-500" %>
+        </div>
+        <div class="space-y-1.5">
+          <%= form.label :mainboard_id, t(".mainboard_label"), class: "text-[11px] font-medium text-secondary-500 uppercase" %>
+          <%= form.text_field :mainboard_id, placeholder: t(".mainboard_placeholder"),
+                class: "w-full bg-[#261c1a] border border-[#332623] rounded-lg px-4 py-3 font-mono text-[13px] text-surface placeholder:text-secondary-500" %>
+        </div>
+      </div>
+      <%= form.submit t(".save"),
+            class: "inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 cursor-pointer border-0" %>
+    <% end %>
+  </section>
+
+  <p class="text-[13px] text-secondary-500 m-0"><%= t(".footer_note") %></p>
+</div>
