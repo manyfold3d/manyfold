@@ -96,9 +96,17 @@ export default class extends Controller {
         headers: { Accept: 'application/json' },
         credentials: 'same-origin'
       })
-      if (!response.ok) throw new Error(`status ${response.status}`)
-      const payload = await response.json()
-      const data = payload.status ?? payload
+      const payload = await response.json().catch(() => ({})) as Record<string, unknown>
+      if (!response.ok) {
+        const err = payload.error != null ? String(payload.error) : `status ${response.status}`
+        this.applyStatusFailure(err)
+        return
+      }
+      const data = (payload.status ?? payload) as Record<string, unknown>
+      if (data.error != null) {
+        this.applyStatusFailure(String(data.error))
+        return
+      }
       if (this.hasStatusTarget) {
         this.statusTarget.textContent = JSON.stringify(data, null, 2)
       }
@@ -109,15 +117,21 @@ export default class extends Controller {
         this.connectionTarget.classList.add('text-success')
       }
     } catch (error) {
-      if (this.hasStatusTarget) {
-        this.statusTarget.textContent = `error: ${String(error)}`
-      }
-      if (this.hasConnectionTarget) {
-        this.connectionTarget.textContent = '● OFFLINE'
-        this.connectionTarget.classList.remove('text-success')
-        this.connectionTarget.classList.add('text-danger')
-      }
+      this.applyStatusFailure(String(error))
     }
+  }
+
+  applyStatusFailure (message: string): void {
+    if (this.hasStatusTarget) {
+      this.statusTarget.textContent = `error: ${message}`
+    }
+    if (this.hasConnectionTarget) {
+      this.connectionTarget.textContent = '● OFFLINE'
+      this.connectionTarget.classList.remove('text-success')
+      this.connectionTarget.classList.add('text-danger')
+    }
+    this.applyTelemetry({ error: message })
+    // Snapshot polling continues independently — status OFFLINE ≠ camera dead.
   }
 
   async refreshSnapshot (): Promise<void> {

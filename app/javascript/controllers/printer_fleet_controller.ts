@@ -45,8 +45,13 @@ export default class extends Controller {
         headers: { Accept: 'application/json' },
         credentials: 'same-origin'
       })
-      if (!response.ok) throw new Error(`status ${response.status}`)
-      const payload = await response.json()
+      const payload = await response.json().catch(() => ({})) as Record<string, unknown>
+      // Soft 502/{error} from Printers#status — do not throw opaque "status 502".
+      if (!response.ok) {
+        const err = payload.error != null ? String(payload.error) : `status ${response.status}`
+        this.applyOffline(err)
+        return
+      }
       const data = (payload.status ?? payload) as Record<string, unknown>
       if (data.error != null || data.unsupported === true) {
         const errMsg = data.error != null ? String(data.error) : ''
@@ -68,7 +73,8 @@ export default class extends Controller {
     }
     if (this.hasBarTarget) this.barTarget.style.width = '0%'
     if (this.hasEtaTarget) this.etaTarget.textContent = this.label('offline_duration')
-    this.showCameraOffline(true)
+    // Camera is independent of SDCP status (go2rtc/RTSP). Hiding it here made
+    // a status timeout look like a dead camera even when snapshots still work.
   }
 
   applyOnline (data: Record<string, unknown>): void {
@@ -106,7 +112,7 @@ export default class extends Controller {
       }
     }
 
-    this.showCameraOffline(false)
+    // Camera visibility is owned by snapshotLoaded / snapshotFailed — not SDCP.
     this.setLiveBadge(printing)
   }
 
@@ -132,6 +138,16 @@ export default class extends Controller {
     if (this.hasLiveBadgeTarget) {
       this.liveBadgeTarget.classList.toggle('hidden', offline)
     }
+  }
+
+  /** img onerror — camera path failed independently of SDCP status. */
+  snapshotFailed (): void {
+    this.showCameraOffline(true)
+  }
+
+  /** img load — restore camera when a later refresh / navigation succeeds. */
+  snapshotLoaded (): void {
+    this.showCameraOffline(false)
   }
 
   setLiveBadge (printing: boolean): void {

@@ -123,7 +123,7 @@ class PrintersController < ApplicationController
         svc = @printer.service
         @storage_files = Array(svc.list_files(url: "/local"))
         @storage_bytes_free = svc.storage_free_bytes
-      rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+      rescue Print::SdcpService::Error, *Print::SdcpService::TRANSPORT_ERRORS => e
         @storage_error = e.message
       end
     end
@@ -133,7 +133,8 @@ class PrintersController < ApplicationController
   def status
     authorize @printer, :show?
     render json: {status: fetch_status!(@printer)}
-  rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+  rescue Print::SdcpService::Error, *Print::SdcpService::TRANSPORT_ERRORS => e
+    # Soft unreachable — never 500. Fleet/monitor treat 502+{error} as offline.
     render json: {error: e.message}, status: :bad_gateway
   end
 
@@ -214,7 +215,7 @@ class PrintersController < ApplicationController
 
   def fetch_status(printer)
     fetch_status!(printer)
-  rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+  rescue Print::SdcpService::Error, *Print::SdcpService::TRANSPORT_ERRORS => e
     {error: e.message}
   end
 

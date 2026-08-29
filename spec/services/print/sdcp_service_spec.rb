@@ -15,6 +15,10 @@ RSpec.describe Print::SdcpService do
       expect(described_class::SDCP_UI_WS_TIMEOUT).to be < described_class::SDCP_CONTROL_WS_TIMEOUT
     end
 
+    it "lists Errno::ETIMEDOUT in TRANSPORT_ERRORS (Socket.tcp connect_timeout)" do
+      expect(described_class::TRANSPORT_ERRORS).to include(Errno::ETIMEDOUT)
+    end
+
     # rubocop:disable RSpec/ExampleLength -- dual-session seam needs both budgets asserted
     it "builds a UI-budget session for status and a control-budget session for pause" do
       host = build(:print_host, endpoint: "http://10.0.0.199:3030", mainboard_id: "d307202d8c1e0100")

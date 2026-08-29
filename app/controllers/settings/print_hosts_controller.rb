@@ -18,7 +18,7 @@ module Settings
       authorize @print_host
       @status = begin
         @print_host.service.status
-      rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+      rescue Print::SdcpService::Error, *Print::SdcpService::TRANSPORT_ERRORS => e
         {error: e.message}
       end
       render layout: "settings"
@@ -77,7 +77,7 @@ module Settings
       authorize @print_host, :show?
       payload = @print_host.service.status
       render json: payload
-    rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+    rescue Print::SdcpService::Error, *Print::SdcpService::TRANSPORT_ERRORS => e
       render json: {error: e.message}, status: :bad_gateway
     end
 

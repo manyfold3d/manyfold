@@ -72,6 +72,17 @@ RSpec.describe "Printers API" do
       expect(response.parsed_body["status"]["current_layer"]).to eq(1)
     end
 
+    # Socket.tcp(connect_timeout:) raises Errno::ETIMEDOUT — must soft-502, never 500.
+    it "returns 502 JSON when SDCP connect times out (Errno::ETIMEDOUT)" do
+      host = create(:print_host, :with_capabilities)
+      allow(PrintHost).to receive(:find).and_call_original
+      allow_any_instance_of(PrintHost).to receive(:service).and_raise(Errno::ETIMEDOUT) # rubocop:disable RSpec/AnyInstance
+
+      get status_printer_path(host), as: :json
+      expect(response).to have_http_status(:bad_gateway)
+      expect(response.parsed_body["error"]).to be_present
+    end
+
     it "updates printer settings" do
       host = create(:print_host, :with_capabilities)
       patch printer_path(host), params: {printer: {name: "Renamed GK3"}}, as: :json

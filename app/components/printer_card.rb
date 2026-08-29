@@ -89,7 +89,11 @@ class Components::PrinterCard < Components::Base
         src: @snapshot_url,
         alt: t("printers.card.camera_alt", name: @printer.name),
         class: "absolute inset-0 size-full object-cover",
-        data: {printer_fleet_target: "snapshot", printer_id: @printer.id}
+        data: {
+          printer_fleet_target: "snapshot",
+          printer_id: @printer.id,
+          action: "error->printer-fleet#snapshotFailed load->printer-fleet#snapshotLoaded"
+        }
       )
       div(class: "absolute top-3 left-3 right-3 flex items-start justify-between", data: {printer_fleet_target: "liveBadge"}) do
         span(class: "inline-flex items-center bg-white/10 text-secondary-300 text-[10px] font-mono px-2 py-0.5 rounded") do

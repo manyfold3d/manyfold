@@ -20,7 +20,7 @@ module Printers
         storage_bytes_total: @printer.storage_bytes_total,
         storage_bytes_free: free
       }
-    rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+    rescue Print::SdcpService::Error, *Print::SdcpService::TRANSPORT_ERRORS => e
       render json: {error: e.message}, status: :bad_gateway
     end
 

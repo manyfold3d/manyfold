@@ -24,6 +24,17 @@ module Print
     SDCP_UI_WS_TIMEOUT = 3
     SDCP_CONTROL_WS_TIMEOUT = 10
 
+    # Socket.tcp(connect_timeout:) raises Errno::ETIMEDOUT (not Timeout::Error). Controllers
+    # that omit it turn a soft unreachable printer into an unrescued 500 → UI "offline".
+    TRANSPORT_ERRORS = [
+      SocketError,
+      Errno::ECONNREFUSED,
+      Errno::ETIMEDOUT,
+      Errno::EHOSTUNREACH,
+      Errno::ENETUNREACH,
+      Timeout::Error
+    ].freeze
+
     class Error < StandardError; end
 
     class AckError < Error
@@ -46,7 +57,7 @@ module Print
 
     def ok?
       status.fetch("Ack", 1).zero?
-    rescue Error, SocketError, Errno::ECONNREFUSED, Errno::ETIMEDOUT, Timeout::Error
+    rescue Error, *TRANSPORT_ERRORS
       false
     end
 
