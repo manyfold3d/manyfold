@@ -105,7 +105,7 @@ jobs:
               yarn install
               bundle exec rails db:prepare:with_data
               bundle exec rails assets:precompile
-              bundle exec rspec --fail-fast
+              bundle exec rspec --format progress
             "
 
       - name: Upload coverage
