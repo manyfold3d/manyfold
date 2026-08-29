@@ -1076,18 +1076,215 @@ en:
   print_hosts:
     protocols:
       sdcp: SDCP (UniFormation / ChituManager)
+  print_jobs:
+    index:
+      title: Job Queue
+      heading: Job Queue
+      subtitle: Prioritized additive runs, active exposure schedules, and unclaimed print plates
+      history_link: Print history
+      fleet_link: Printers
+      reorder: Reorder
+      fleet_status: Fleet Status
+      fleet_empty: No printers registered yet.
+      columns:
+        queued:
+          one: Queued (%{count})
+          other: Queued (%{count})
+        printing:
+          one: Printing (%{count})
+          other: Printing (%{count})
+        completed:
+          one: Completed (%{count})
+          other: Completed (%{count})
+      empty:
+        queued: Nothing waiting to print.
+        printing: No active prints.
+        completed: No completed jobs yet.
+    card:
+      untitled: Untitled job
+      unknown_host: Unknown printer
+      resin_unknown: Unknown resin
+      target: "Target: %{name}"
+      resin: "Resin: %{profile}"
+      system: system
+      ago: ago
+      waiting_plate: Waiting for plate clear confirmation
+      reorder: Drag to reorder
+      pause: Pause
+      cancel: Cancel
+      confirm_cancel: Cancel this print?
+      confirm_plate_cleared: Confirm Plate Cleared
+      reset_diagnostics: Reset & Diagnostics
+      finished_unknown: Finished time unknown
+      finished_ago: "Finished %{time} ago"
+      layers: "Layer %{current} / %{total}"
+      layers_unknown: Layer — / —
+      elapsed: ELAPSED
+      remaining: REMAINING
+      duration_hm: "%{hours}h %{minutes}m"
+      duration_m: "%{minutes}m"
+    outcomes:
+      succeeded: SUCCESS
+      success: SUCCESS
+      failed: FAILED
+      failure: FAILED
+      cancelled: CANCELLED
+      canceled: CANCELLED
+      unknown: UNKNOWN
+    confirm_plate_cleared:
+      success: Plate cleared. Waiting jobs are now queued.
+    cancel:
+      success: Print cancelled.
+    pause:
+      success: Pause command sent.
+  print_histories:
+    index:
+      title: Print History
+      heading: Print History
+      subtitle: Archived additive fabrication run logs and telemetry diagnostics.
+      export_csv: Export CSV
+      export_stub_title: CSV export arrives in a later initiative
+      empty: No print history for this filter.
+      filters:
+        from: From
+        to: To
+        printer: Printer
+        result: Result
+        all_printers: All printers
+        all_results: All results
+        apply: Apply
+      kpis:
+        total: Total Prints
+        total_hint: Terminal jobs in range
+        success_rate: Success Rate
+        success_hint:
+          one: "%{count} succeeded"
+          other: "%{count} succeeded"
+        hours: Total Print Time
+        hours_value: "%{hours}h"
+        hours_hint: Sum of actual durations
+        resin: Resin Used
+        resin_value: "%{liters}L"
+        resin_hint: Sum of recorded resin
+      table:
+        status: Status
+        job: Job
+        printer: Printer
+        resin: Resin profile
+        duration: Duration
+        duration_with_est: "%{actual} (est %{estimated})"
+        date: Date
+        result: Result
+        show_failure: Show failure detail
+  models:
+    print_logs:
+      show:
+        title: "Print log · %{name}"
+        subtitle: Sliced artifacts, print outcomes, and send controls for this model.
+        open_in_slicer: Open in Slicer
+        slicer_stub_title: Open in Slicer is stubbed (GR-001)
+        print_unavailable_title: Add a sliced CTB/JXS file to enable Print
+        artifacts_heading: Files
+        artifacts_empty: No sliced artifacts yet.
+        unnamed_artifact: Untitled artifact
+        history_heading: Print History
+        history_empty: No prints recorded for this model.
+        success_widget: "%{succeeded}/%{total} prints successful"
+        table:
+          format: Format
+          file: File name
+          printer: Printer target
+          layers: Layers
+          updated: Updated
+  consumables:
+    index:
+      title: Consumables
+      heading: Consumables & Inventory
+      subtitle: Track FEP life cycle metrics, exposure wear-leveling logs, and liquid resin reserves.
+      order_supplies: Order supplies
+      order_stub_title: Supply ordering is not wired yet
+      record_maintenance: Record maintenance
+      record_stub_title: Use Replace FEP / Clean Vat on a printer row for now
+      resin_heading: Resin inventory
+      resin_empty: No resin bottles recorded yet.
+      maintenance_heading: Printer maintenance & lifespans
+      vat_heading: Vat registry
+      vat_empty: No vats registered yet.
+      printers_empty: No printers registered yet.
+      col:
+        printer: Printer
+        fep: FEP cycles
+        lcd: LCD exposure hours
+        last_leveled: Last leveled
+        last_cleaned: Last cleaned
+        actions: Actions
+      not_tracked: —
+      replace_fep: Replace FEP
+      clean_vat: Clean vat
+      confirm_replace_fep: Reset FEP cycle counter to 0?
+      no_vat: No vat assigned
+    resin:
+      adjust: Adjust level
+      volume: "%{remaining}ml / %{capacity}ml"
+      low: Low
+      opened: "Opened: %{date}"
+      unopened: Unopened
+      prints:
+        zero: 0 prints
+        one: "%{count} print"
+        other: "%{count} prints"
+      remaining_label: Remaining (ml)
+      save: Save level
+    vat:
+      assigned_to: Assigned to
+      unassigned: Unassigned
+      liquid_profile: Current liquid profile
+      no_resin: No resin assigned
+      swap_label: Resin bottle
+      unassign_resin: Unassign resin
+      swap: Swap vat allocation
+      cycles_badge: "%{count} cycles"
+      health:
+        optimal: Optimal
+        warning: FEP warning
+        danger: Danger
+    levels:
+      optimal: Optimal
+      warning: Warning
+      danger: Danger
+      replace: Replace
+  resin_bottles:
+    create:
+      success: Resin bottle added.
+    update:
+      adjusted: Resin level updated.
+    destroy:
+      destroyed: Resin bottle removed.
+  print_vats:
+    create:
+      success: Vat registered.
+    update:
+      updated: Vat updated.
+    destroy:
+      destroyed: Vat removed.
+    record_maintenance:
+      maintenance_recorded: Maintenance recorded.
+    swap:
+      swapped: Vat allocation updated.
   printers:
     index:
       title: Printers
       heading: Printers
       subtitle: Watch the shop, prepare a plate, and send a job — without leaving the library.
       add_printer: Add printer
+      consumables: Consumables
       prepare_print: Prepare print
       prepare_stub_title: In-browser prepare arrives in a later initiative
     show:
       pause: Pause
       continue: Continue
       stop: Stop
+      settings: Settings
       confirm_stop: Stop the current print?
       live_stream: Live monitor stream
       connecting: ● Connecting…
@@ -1109,6 +1306,70 @@ en:
       uv_lift: UV / lift details
       telemetry_note: Telemetry pulled via SDCP. Control commands are routed through Manyfold authorizations.
       unsupported_banner: This printer family is shown for reference only. Send and remote control are not available until a later protocol initiative.
+    update:
+      updated: Printer configuration saved.
+    settings:
+      title: Settings
+      subtitle: Machine configuration, compatibility rules, and on-board storage. Changes are committed over native SDCP endpoints securely.
+      online: Online
+      back_status: Back to status
+      identity_heading: Machine Identity
+      edit_configuration: Edit configuration
+      cancel_edit: Cancel
+      save_identity: Save configuration
+      fields:
+        brand: Brand
+        model: Model
+        firmware: Firmware
+        protocol: Protocol
+        mac: MAC address
+        resolution: Resolution
+        build: Build volume
+        formats: Native formats
+      storage_heading: On-board Storage
+      storage_help: Internal memory used for caching dispatched sliced print files.
+      upload_file: Upload File
+      storage_used: "%{used} / %{total} used (%{pct}%)"
+      storage_error: "Could not list storage — %{message}"
+      storage_unsupported: Storage management is not available for this printer family.
+      storage_empty: No files on printer storage.
+      confirm_delete: "Delete %{name} from printer storage?"
+      delete_file: Delete file
+      col:
+        file: File name
+        size: File size
+        uploaded: Uploaded
+        actions: Actions
+      gate_heading: Compatibility Gate
+      gate_help: Files failing these checks cannot be sent.
+      gate:
+        formats_title: File type formats
+        formats_detail: "Matches %{formats}"
+        resolution_title: Resolution boundary
+        resolution_detail: "Must match screen dimensions (%{resolution})"
+        z_title: Maximum height limit
+        z_detail: "Z axis span must be < %{z} mm"
+        aa_title: Slicing AA check
+        aa_detail: Anti-aliasing limit must reside in range 0–4 (aa_max not configured on host)
+      camera_heading: Camera Enclosure
+      camera_help: Pull video straight from hardware
+      snapshot_interval: Snapshot interval
+      interval_5s: Every 5 seconds
+      interval_10s: Every 10 seconds
+      interval_30s: Every 30 seconds
+      interval_60s: Every 60 seconds
+      rtsp_label: RTSP protocol feed endpoint
+      rtsp_placeholder: "rtsp://%{host}:554/live/mjpeg"
+      camera_alt: Printer camera
+      cam_snapshot: Cam snapshot
+      live: Live
+      camera_unsupported: Camera preview unavailable for this printer family.
+    storage:
+      missing_file: Choose a file to upload.
+      unsupported_type: Only CTB/JXS sliced files may be uploaded.
+      uploaded: "Uploaded %{filename}."
+      deleted: File deleted from printer storage.
+      nothing_to_delete: Nothing to delete.
     new:
       title: Add a printer
       heading: Add a printer

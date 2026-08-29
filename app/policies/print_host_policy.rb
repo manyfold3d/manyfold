@@ -9,6 +9,10 @@ class PrintHostPolicy < ApplicationPolicy
     index?
   end
 
+  def settings?
+    show?
+  end
+
   def create?
     all_of(
       user&.is_administrator?,

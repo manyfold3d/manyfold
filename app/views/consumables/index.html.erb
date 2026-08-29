@@ -1,0 +1,128 @@
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("printers.index.heading") => printers_path
+    }, heading: false %>
+
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-10"
+     data-controller="resin-adjust">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="space-y-1.5 max-w-2xl">
+      <h1 class="font-display font-bold text-3xl text-secondary-900 dark:text-surface m-0"><%= t(".heading") %></h1>
+      <p class="text-sm text-secondary-600 dark:text-secondary-300 m-0"><%= t(".subtitle") %></p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <button type="button" disabled
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-sm font-medium cursor-not-allowed opacity-70"
+              title="<%= t(".order_stub_title") %>"
+              aria-disabled="true">
+        <%= t(".order_supplies") %>
+      </button>
+      <button type="button" disabled
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600/50 text-white text-sm font-medium cursor-not-allowed"
+              title="<%= t(".record_stub_title") %>"
+              aria-disabled="true">
+        <%= t(".record_maintenance") %>
+      </button>
+    </div>
+  </div>
+
+  <section class="space-y-4">
+    <h2 class="font-mono text-[11px] uppercase tracking-wide text-secondary-500 m-0"><%= t(".resin_heading") %></h2>
+    <% if @resin_bottles.blank? %>
+      <p class="text-sm text-secondary-500 m-0"><%= t(".resin_empty") %></p>
+    <% else %>
+      <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <% @resin_bottles.each do |bottle| %>
+          <%= render Components::ResinBottleCard.new(bottle: bottle) %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="font-mono text-[11px] uppercase tracking-wide text-secondary-500 m-0"><%= t(".maintenance_heading") %></h2>
+    <div class="rounded-2xl border border-[#332623] bg-[#1a1311] overflow-x-auto">
+      <table class="w-full text-left border-collapse min-w-[720px]">
+        <thead>
+          <tr class="border-b border-[#332623]">
+            <th class="px-4 py-3 font-mono text-[11px] uppercase tracking-wide text-secondary-500 font-medium"><%= t(".col.printer") %></th>
+            <th class="px-4 py-3 font-mono text-[11px] uppercase tracking-wide text-secondary-500 font-medium"><%= t(".col.fep") %></th>
+            <th class="px-4 py-3 font-mono text-[11px] uppercase tracking-wide text-secondary-500 font-medium"><%= t(".col.lcd") %></th>
+            <th class="px-4 py-3 font-mono text-[11px] uppercase tracking-wide text-secondary-500 font-medium"><%= t(".col.last_leveled") %></th>
+            <th class="px-4 py-3 font-mono text-[11px] uppercase tracking-wide text-secondary-500 font-medium"><%= t(".col.last_cleaned") %></th>
+            <th class="px-4 py-3 font-mono text-[11px] uppercase tracking-wide text-secondary-500 font-medium"><%= t(".col.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @printers.each do |printer| %>
+            <% fep_level = PrintConsumablesHelper.fep_level(printer.fep_cycles) %>
+            <% lcd_level = PrintConsumablesHelper.lcd_level(printer.lcd_hours) %>
+            <tr class="border-b border-[#332623] last:border-0">
+              <td class="px-4 py-3 text-sm text-surface font-medium">
+                <%= link_to printer.name, printer_path(printer), class: "text-surface no-underline hover:underline" %>
+              </td>
+              <td class="px-4 py-3 text-sm">
+                <span class="font-mono text-secondary-200">
+                  <%= printer.fep_cycles.to_i %> / <%= PrintConsumablesHelper::FEP_LIFE_CYCLES %>
+                </span>
+                <% if fep_level != :optimal %>
+                  <span class="ms-2 inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-mono font-semibold uppercase
+                    <%= fep_level == :danger ? "bg-danger/20 text-danger" : "bg-warning/20 text-warning" %>">
+                    <%= t("consumables.levels.#{fep_level}") %>
+                  </span>
+                <% end %>
+              </td>
+              <td class="px-4 py-3 text-sm">
+                <span class="font-mono text-secondary-200">
+                  <%= number_with_precision(printer.lcd_hours.to_f, precision: 0, delimiter: ",") %> / <%= number_with_delimiter(PrintConsumablesHelper::LCD_LIFE_HOURS) %>
+                </span>
+                <% if lcd_level == :danger %>
+                  <span class="ms-2 inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-mono font-semibold uppercase bg-danger/20 text-danger">
+                    <%= t("consumables.levels.replace") %>
+                  </span>
+                <% end %>
+              </td>
+              <td class="px-4 py-3 text-sm text-secondary-400"><%= t(".not_tracked") %></td>
+              <td class="px-4 py-3 text-sm text-secondary-400"><%= t(".not_tracked") %></td>
+              <td class="px-4 py-3">
+                <div class="flex flex-wrap gap-2">
+                  <% vat = @print_vats.find { |v| v.print_host_id == printer.id } %>
+                  <% if vat && policy(vat).update? %>
+                    <%= button_to t(".replace_fep"), record_maintenance_print_vat_path(vat),
+                          method: :post,
+                          params: {fep_cycles: 0},
+                          class: "inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-xs font-medium",
+                          form: {data: {turbo_confirm: t(".confirm_replace_fep")}} %>
+                    <%= button_to t(".clean_vat"), record_maintenance_print_vat_path(vat),
+                          method: :post,
+                          params: {increment_fep: 0, sync_host: false},
+                          class: "inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-surface border border-secondary-300 text-secondary-900 text-xs font-medium" %>
+                  <% else %>
+                    <span class="text-xs text-secondary-500"><%= t(".no_vat") %></span>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+          <% if @printers.blank? %>
+            <tr>
+              <td colspan="6" class="px-4 py-6 text-sm text-secondary-500"><%= t(".printers_empty") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="font-mono text-[11px] uppercase tracking-wide text-secondary-500 m-0"><%= t(".vat_heading") %></h2>
+    <% if @print_vats.blank? %>
+      <p class="text-sm text-secondary-500 m-0"><%= t(".vat_empty") %></p>
+    <% else %>
+      <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <% @print_vats.each do |vat| %>
+          <%= render Components::PrintVatCard.new(vat: vat, bottles: @bottles_for_swap) %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</div>

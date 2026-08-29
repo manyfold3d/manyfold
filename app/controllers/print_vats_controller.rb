@@ -3,45 +3,62 @@
 class PrintVatsController < ApplicationController
   include PrintApi
 
-  respond_to :json
+  respond_to :html, :json
 
-  before_action :load_vat, only: [:show, :update, :destroy, :record_maintenance]
+  before_action :load_vat, only: [:show, :update, :destroy, :record_maintenance, :swap]
 
   def index
     authorize PrintVat
     vats = policy_scope(PrintVat).includes(:print_host, :resin_bottle).order(:identity)
     vats = vats.where(print_host_id: params[:print_host_id]) if params[:print_host_id].present?
-    render json: {print_vats: vats.map { |v| serialize_print_vat(v) }}
+    respond_to do |format|
+      format.json { render json: {print_vats: vats.map { |v| serialize_print_vat(v) }} }
+      format.html { redirect_to consumables_path }
+    end
   end
 
   def show
     authorize @vat
-    render json: {print_vat: serialize_print_vat(@vat)}
+    respond_to do |format|
+      format.json { render json: {print_vat: serialize_print_vat(@vat)} }
+      format.html { redirect_to consumables_path }
+    end
   end
 
   def create
     authorize PrintVat
     @vat = PrintVat.new(vat_params)
-    if @vat.save
-      render json: {print_vat: serialize_print_vat(@vat)}, status: :created
-    else
-      render json: {errors: @vat.errors.to_hash}, status: :unprocessable_content
+    respond_to do |format|
+      if @vat.save
+        format.json { render json: {print_vat: serialize_print_vat(@vat)}, status: :created }
+        format.html { redirect_to consumables_path, notice: t(".success") }
+      else
+        format.json { render json: {errors: @vat.errors.to_hash}, status: :unprocessable_content }
+        format.html { redirect_to consumables_path, alert: @vat.errors.full_messages.to_sentence }
+      end
     end
   end
 
   def update
     authorize @vat
-    if @vat.update(vat_params)
-      render json: {print_vat: serialize_print_vat(@vat)}
-    else
-      render json: {errors: @vat.errors.to_hash}, status: :unprocessable_content
+    respond_to do |format|
+      if @vat.update(vat_params)
+        format.json { render json: {print_vat: serialize_print_vat(@vat)} }
+        format.html { redirect_to consumables_path, notice: t(".updated") }
+      else
+        format.json { render json: {errors: @vat.errors.to_hash}, status: :unprocessable_content }
+        format.html { redirect_to consumables_path, alert: @vat.errors.full_messages.to_sentence }
+      end
     end
   end
 
   def destroy
     authorize @vat
     @vat.destroy!
-    head :no_content
+    respond_to do |format|
+      format.json { head :no_content }
+      format.html { redirect_to consumables_path, notice: t(".destroyed") }
+    end
   end
 
   def record_maintenance
@@ -52,9 +69,34 @@ class PrintVatsController < ApplicationController
       increment_fep: params.fetch(:increment_fep, 0),
       sync_host: ActiveModel::Type::Boolean.new.cast(params.fetch(:sync_host, true))
     )
-    render json: {print_vat: serialize_print_vat(@vat.reload)}
+    respond_to do |format|
+      format.json { render json: {print_vat: serialize_print_vat(@vat.reload)} }
+      format.html { redirect_to consumables_path, notice: t(".maintenance_recorded") }
+    end
   rescue Print::ConsumableService::Error => e
-    render_print_error(e)
+    respond_to do |format|
+      format.json { render_print_error(e) }
+      format.html { redirect_to consumables_path, alert: e.message }
+    end
+  end
+
+  # Swap resin allocation on a vat (REQ-011).
+  def swap
+    authorize @vat, :update?
+    bottle_id = params[:resin_bottle_id].presence
+    attrs = {resin_bottle_id: bottle_id}
+    attrs[:print_host_id] = params[:print_host_id] if params[:print_host_id].present?
+    if @vat.update(attrs)
+      respond_to do |format|
+        format.json { render json: {print_vat: serialize_print_vat(@vat)} }
+        format.html { redirect_to consumables_path, notice: t(".swapped") }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: {errors: @vat.errors.to_hash}, status: :unprocessable_content }
+        format.html { redirect_to consumables_path, alert: @vat.errors.full_messages.to_sentence }
+      end
+    end
   end
 
   private

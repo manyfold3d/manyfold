@@ -107,6 +107,7 @@ Rails.application.routes.draw do
       member do
         get :status
         get :snapshot
+        get :settings
         post :pause
         post :stop
         post :continue
@@ -128,10 +129,12 @@ Rails.application.routes.draw do
     end
 
     resources :print_histories, only: [:index]
+    resources :consumables, only: [:index]
     resources :resin_bottles, only: [:index, :show, :create, :update, :destroy]
     resources :print_vats, only: [:index, :show, :create, :update, :destroy] do
       member do
         post :record_maintenance
+        post :swap
       end
     end
   end

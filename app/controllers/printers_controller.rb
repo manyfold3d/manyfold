@@ -8,7 +8,7 @@ class PrintersController < ApplicationController
   respond_to :html, :json
 
   before_action :load_printer, only: [
-    :show, :update, :status, :snapshot, :pause, :stop, :continue, :send_file
+    :show, :update, :status, :snapshot, :settings, :pause, :stop, :continue, :send_file
   ]
   skip_after_action :verify_policy_scoped, only: [:discover, :new]
 
@@ -67,10 +67,20 @@ class PrintersController < ApplicationController
 
   def update
     authorize @printer
-    if @printer.update(printer_params)
-      render json: {printer: serialize_printer(@printer)}
-    else
-      render json: {errors: @printer.errors.to_hash}, status: :unprocessable_content
+    respond_to do |format|
+      if @printer.update(printer_params)
+        format.json { render json: {printer: serialize_printer(@printer)} }
+        format.html { redirect_to settings_printer_path(@printer), notice: t(".updated") }
+      else
+        format.json { render json: {errors: @printer.errors.to_hash}, status: :unprocessable_content }
+        format.html {
+          @status = fetch_status(@printer)
+          @storage_files = []
+          @storage_error = nil
+          @gate_rules = build_gate_checklist(@printer)
+          render :settings, status: :unprocessable_content
+        }
+      end
     end
   end
 
@@ -85,6 +95,25 @@ class PrintersController < ApplicationController
       format.html { render partial: "printers/discoveries", locals: {candidates: @candidates} }
       format.json { render json: {candidates: @candidates} }
     end
+  end
+
+  # Printer Settings UI — identity, storage, gate checklist, camera (INIT-008/SPEC-007 · REQ-012).
+  def settings
+    authorize @printer
+    @status = fetch_status(@printer)
+    @storage_files = []
+    @storage_error = nil
+    @storage_bytes_free = nil
+    unless @printer.unsupported_for_send?
+      begin
+        svc = @printer.service
+        @storage_files = Array(svc.list_files(url: "/local"))
+        @storage_bytes_free = svc.storage_free_bytes
+      rescue Print::SdcpService::Error, SocketError, Errno::ECONNREFUSED, Timeout::Error => e
+        @storage_error = e.message
+      end
+    end
+    @gate_rules = build_gate_checklist(@printer)
   end
 
   def status
@@ -196,5 +225,38 @@ class PrintersController < ApplicationController
 
   def camera_stream_name
     ENV.fetch("GO2RTC_STREAM", "gk3_pro")
+  end
+
+  # Static checklist describing gate rules for this host (settings sidebar).
+  def build_gate_checklist(printer)
+    formats = printer.capability_formats.map { |f| ".#{f}" }.join(", ")
+    res = printer.resolution_label || "—"
+    z = printer.build_z_mm
+    [
+      {
+        key: :formats,
+        pass: formats.present?,
+        title: I18n.t("printers.settings.gate.formats_title"),
+        detail: I18n.t("printers.settings.gate.formats_detail", formats: formats.presence || "—")
+      },
+      {
+        key: :resolution,
+        pass: printer.resolution_w.present? && printer.resolution_h.present?,
+        title: I18n.t("printers.settings.gate.resolution_title"),
+        detail: I18n.t("printers.settings.gate.resolution_detail", resolution: res)
+      },
+      {
+        key: :z_height,
+        pass: z.present?,
+        title: I18n.t("printers.settings.gate.z_title"),
+        detail: I18n.t("printers.settings.gate.z_detail", z: z.presence || "—")
+      },
+      {
+        key: :aa,
+        pass: false,
+        title: I18n.t("printers.settings.gate.aa_title"),
+        detail: I18n.t("printers.settings.gate.aa_detail")
+      }
+    ]
   end
 end
