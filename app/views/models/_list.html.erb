@@ -17,7 +17,7 @@
       <%= form_with url: models_path, method: :get, local: true, role: "search", class: "flex-1 min-w-[12rem] max-w-xl" do |f| %>
         <% (@filter&.to_params || {}).except(:q).each do |key, value| %>
           <% Array(value).each do |v| %>
-            <%= hidden_field_tag (key.to_s == "tag" ? "tag[]" : key), v %>
+            <%= hidden_field_tag((key.to_s == "tag") ? "tag[]" : key, v) %>
           <% end %>
         <% end %>
         <div class="relative">
@@ -130,7 +130,8 @@
     <% list = @filter&.parameter(:list).to_s %>
     <% extra_filters = (@filter&.to_params || {}).except(:list) %>
     <div class="flex flex-col items-center justify-center py-16 px-4 text-center rounded-2xl bg-surface dark:bg-surface-dark border border-secondary-200 dark:border-secondary-600" role="status" aria-live="polite">
-      <%= Icon icon: ({"queue" => "bookmark", "unprinted" => "stars", "favorite" => "heart", "printed" => "check-circle"}[list] || "search"), label: "" %>
+      <% empty_icon = {"queue" => "bookmark", "unprinted" => "stars", "favorite" => "heart", "printed" => "check-circle"}[list] || "search" %>
+      <%= Icon icon: empty_icon, label: "" %>
       <% if list == "queue" && extra_filters.blank? %>
         <h2 class="mt-4 font-display text-xl font-semibold text-secondary-900 dark:text-secondary-100"><%= t(".empty.queue_title") %></h2>
         <p class="mt-2 max-w-md text-secondary-600 dark:text-secondary-400"><%= t(".empty.queue_body") %></p>

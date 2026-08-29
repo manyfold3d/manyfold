@@ -8,7 +8,7 @@ module TagListable
     if models
       tags = tags.joins(:taggings).where(
         taggings: {taggable_type: "Model", taggable_id: taggable_model_ids_scope(models)}
-      ).distinct
+      ).group("tags.id", "tags.name", "tags.taggings_count")
     end
     # Apply tag sorting
     tags = case helpers.tag_cloud_settings["sorting"]

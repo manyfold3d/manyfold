@@ -11,7 +11,10 @@ module PhlexTestHelpers
   delegate :view_context, to: :controller
 
   def controller
-    @controller ||= ComponentSpecController.new
+    @controller ||= ComponentSpecController.new.tap do |c|
+      # Devise raises MissingWarden without middleware; default anonymous for component renders.
+      allow(c).to receive(:current_user).and_return(nil)
+    end
   end
 
   def sign_in(user)

@@ -1,7 +1,6 @@
 <%# Infinite-scroll sentinel (top or bottom) for bidirectional row window.
     Client owns fetch URLs; sentinels expose flags/totals/offset only. %>
-<%
-  sentinel_id = local_assigns.fetch(:sentinel_id)
+<% sentinel_id = local_assigns.fetch(:sentinel_id)
   position = local_assigns.fetch(:position, :bottom) # :top or :bottom
   meta = local_assigns.fetch(:meta, {})
   has_more_after = ActiveModel::Type::Boolean.new.cast(meta.fetch(:has_more_after, false))
@@ -11,7 +10,7 @@
   loading_label = local_assigns.fetch(:loading_label, t("models.list.loading_more"))
   target = (position == :top) ? "topSentinel" : "sentinel"
   # Top sentinel is an insertion/observe point only — never shows a loader.
-  show_loader = (position == :bottom && has_more_after)
+  show_loader = position == :bottom && has_more_after
 %>
 <div id="<%= sentinel_id %>"
      class="browse-scroll-sentinel browse-scroll-sentinel--<%= position %> col-span-full<%= " browse-scroll-sentinel--end" unless show_loader %>"

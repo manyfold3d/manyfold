@@ -65,17 +65,6 @@ en:
       back_to_top: Back to top
       bulk_edit: Edit All Models
       clear_filters: Clear filters
-      end_of_results: You've reached the end of this list
-      load_error: Could not load more. Scroll to retry.
-      filters: Filters
-      has_image_filter: With images only
-      has_image_filter_on: With images
-      loading_more: Loading more…
-      more_collections: More…
-      more_creators: More…
-      no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
-      no_results_signed_out_html: Sorry, we couldn't find anything to show you! There might be more to see if you <a href="%{link}">sign in</a>.
-      personal_lists: My lists
       empty:
         browse_library: Browse library
         browse_printed: See what you've printed
@@ -88,6 +77,17 @@ en:
         queue_title: Your print queue is empty
         unprinted_body: Looks like everything in the library is marked printed. Time to add something new?
         unprinted_title: You've printed it all
+      end_of_results: You've reached the end of this list
+      filters: Filters
+      has_image_filter: With images only
+      has_image_filter_on: With images
+      load_error: Could not load more. Scroll to retry.
+      loading_more: Loading more…
+      more_collections: More…
+      more_creators: More…
+      no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
+      no_results_signed_out_html: Sorry, we couldn't find anything to show you! There might be more to see if you <a href="%{link}">sign in</a>.
+      personal_lists: My lists
       result_count:
         one: "%{count} model"
         other: "%{count} models"
@@ -104,6 +104,8 @@ en:
         select: Select model
         toolbar_label: Model selection actions
       skip_models: Skip model list
+    merge:
+      success: Models merged successfully.
     model_filters_card:
       any: Any
       apply: Apply filters
@@ -116,8 +118,6 @@ en:
       search: Search
       search_placeholder: Name, notes…
       title: Filter models
-    merge:
-      success: Models merged successfully.
     new:
       archives-only: Upload only compressed archives (ZIP, RAR, etc), and each file will be extracted and become a separate model.
       description: 'Add new models by uploading files! The models that are created depend on what you upload:'
@@ -146,19 +146,11 @@ en:
         title: Problems
     scan:
       success: Model scan started
-    toggle_favorite:
-      added: Added to favorites
-      removed: Removed from favorites
-    toggle_queue:
-      queue_added: Added to print queue
-      queue_removed: Removed from print queue
     show:
+      dequeue: In queue
       download_preparing: Download is being prepared, please wait.
       download_requested: Download requested and will be ready soon, please wait.
       favorite: Favorite
-      unfavorite: Unfavorite
-      queue: Queue to print
-      dequeue: In queue
       fediverse: Fediverse
       file_selection:
         bulk_edit: Bulk edit
@@ -191,13 +183,21 @@ en:
         tour:
           description: This card shows any problems that were detected on this model. You can change problem visibility settings in your account preferences.
           title: Problems
+      queue: Queue to print
       rescan: Rescan files
       scan_in_progress: Scan in progress...
       search: Search the Internet for models with this name
       submit: Upload Files
       tags: Tags
+      unfavorite: Unfavorite
       upload_card:
         heading: Upload
+    toggle_favorite:
+      added: Added to favorites
+      removed: Removed from favorites
+    toggle_queue:
+      queue_added: Added to print queue
+      queue_removed: Removed from print queue
     unmerge:
       missing: Merge history entry not found.
       success: Merge undone.

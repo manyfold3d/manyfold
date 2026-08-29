@@ -1,6 +1,5 @@
 <%# Uniform-height creator card for card-sized browse / infinite scroll. %>
-<%
-  model_count = (@model_counts || {})[creator.id] || 0
+<% model_count = (@model_counts || {})[creator.id] || 0
   collection_count = (@collection_counts || {})[creator.id] || 0
   has_collections = collection_count > 0
 %>
@@ -14,7 +13,7 @@
   <% end %>
   <div class="aspect-[4/3] bg-secondary-100 dark:bg-secondary-800 relative flex items-center justify-center overflow-hidden">
     <% if creator.banner.present? %>
-      <img src="<%= banner_creator_path(creator) %>" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35" loading="lazy" decoding="async" />
+      <img src="<%= banner_creator_path(creator) %>" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35" loading="lazy" decoding="async">
     <% end %>
     <% if creator.avatar.present? %>
       <div class="relative z-[1]">

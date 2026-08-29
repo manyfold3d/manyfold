@@ -9,10 +9,8 @@
       aria_label:
       path_helper:     symbol for browse_window_meta parity
       end_message:, error_message:, loading_message:, scroll_hint:, back_to_top:
-      unassigned_html: optional SafeBuffer rendered outside the card grid
-%>
-<%
-  sentinel_prefix = local_assigns.fetch(:sentinel_prefix)
+      unassigned_html: optional SafeBuffer rendered outside the card grid %>
+<% sentinel_prefix = local_assigns.fetch(:sentinel_prefix)
   grid_id = local_assigns.fetch(:grid_id)
   card_selector = local_assigns.fetch(:card_selector)
   storage_key_prefix = local_assigns.fetch(:storage_key_prefix)

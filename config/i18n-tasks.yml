@@ -152,6 +152,22 @@ ignore_unused:
 - 'layouts.application.skip_to_content' # Accessibility link
 - 'models.problems_card.tour.*' # Used in problems card tour (also under show)
 - 'models.show.menu.tour.*' # Used in model show menu tour
+- 'models.toggle_favorite.*' # Relative keys via toggle_personal_list(added_key:)
+- 'models.toggle_queue.*' # Relative keys via toggle_personal_list(added_key:)
+- 'application.footer.community'
+- 'application.footer.instance_heading'
+- 'application.footer.issues'
+- 'application.footer.sponsor'
+- 'archive_entries.panel.showing_chunk'
+- 'home.browsing.manual_link'
+- 'home.index.open_search_help'
+- 'home.index.recent_activity'
+- 'home.index.shortcuts.favorites'
+- 'home.index.shortcuts.favorites_hint'
+- 'home.index.shortcuts.problems'
+- 'home.index.shortcuts.problems_hint'
+- 'models.list.skip_models'
+- 'models.model_filters_card.has_image_active_hint'
 
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'

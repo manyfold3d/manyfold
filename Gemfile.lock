@@ -1058,6 +1058,7 @@ DEPENDENCIES
   warning (~> 1.5)
   web-console (~> 4.1)
   webmock (~> 3.26)
+  websocket (~> 1.2)
   with_model (~> 2.2)
   yard-lint (~> 1.4)
   zaru (~> 1.0)

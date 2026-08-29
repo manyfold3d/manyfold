@@ -1,0 +1,30 @@
+<h3 class="text-xl font-semibold text-secondary-900 dark:text-secondary-100 mb-2"><%= t(".title") %></h3>
+<p class="text-lg text-secondary-600 dark:text-secondary-400 mb-4"><%= t(".description") %></p>
+
+<table class="w-full border-collapse border border-secondary-200 dark:border-secondary-600">
+  <thead>
+    <tr class="border-b border-secondary-200 dark:border-secondary-600 bg-secondary-50 dark:bg-secondary-800/50">
+      <th class="px-4 py-2 text-left"><%= PrintHost.human_attribute_name(:name) %></th>
+      <th class="px-4 py-2 text-left"><%= PrintHost.human_attribute_name(:endpoint) %></th>
+      <th class="px-4 py-2 text-left"><%= PrintHost.human_attribute_name(:protocol) %></th>
+      <th class="px-4 py-2 text-left"><%= PrintHost.human_attribute_name(:mainboard_id) %></th>
+      <th class="px-4 py-2 text-left"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @print_hosts.each do |host| %>
+      <tr class="border-b border-secondary-200 dark:border-secondary-600 even:bg-secondary-50 dark:even:bg-secondary-800/30">
+        <td class="px-4 py-2"><%= link_to host.name, settings_print_host_path(host), class: "text-primary-600 hover:underline" %></td>
+        <td class="px-4 py-2 font-mono text-sm"><%= host.endpoint %></td>
+        <td class="px-4 py-2"><%= host.protocol_label %></td>
+        <td class="px-4 py-2 font-mono text-sm"><%= host.mainboard_id %></td>
+        <td class="px-4 py-2 text-right space-x-2">
+          <%= link_to t("general.edit"), edit_settings_print_host_path(host), class: "text-sm text-primary-600 hover:underline" if policy(host).update? %>
+          <%= link_to t("general.delete"), settings_print_host_path(host), method: :delete, data: {confirm: t(".confirm_destroy")}, class: "text-sm text-danger hover:underline" if policy(host).destroy? %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t(".new"), new_settings_print_host_path, class: "inline-flex items-center px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 no-underline mt-4" if policy(PrintHost).new? %>

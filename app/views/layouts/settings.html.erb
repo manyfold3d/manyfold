@@ -69,6 +69,9 @@
         <li>
           <%= link_to t("settings.integrations.heading"), integrations_settings_path, class: settings_nav_link_class(integrations_settings_path), aria: (current_page?(integrations_settings_path) ? {current: "page"} : {}) %>
         </li>
+        <li>
+          <%= link_to t("settings.print_hosts.index.title"), settings_print_hosts_path, class: settings_nav_link_class(settings_print_hosts_path), aria: ((current_page?(settings_print_hosts_path) || request.path.start_with?("/settings/print_hosts")) ? {current: "page"} : {}) %>
+        </li>
       </ul>
     <% end %>
     <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>
