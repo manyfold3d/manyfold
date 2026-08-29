@@ -54,6 +54,12 @@ RSpec.describe "Printers API" do
       expect(response).to have_http_status(:created)
     end
 
+    it "rejects discover targets outside the private LAN allowlist" do
+      post discover_printers_path, params: {hosts: ["1.1.1.1", "8.8.8.8"]}, as: :json
+      expect(response).to have_http_status(:unprocessable_content)
+      expect(response.parsed_body["error"]).to match(/allowlisted/)
+    end
+
     it "returns status JSON" do
       host = create(:print_host, :with_capabilities)
       status = {machine_status: [0], current_layer: 1, total_layers: 10}

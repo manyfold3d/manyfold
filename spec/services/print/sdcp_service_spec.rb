@@ -182,4 +182,31 @@ RSpec.describe Print::SdcpService do
       expect(PrintHost.where(mainboard_id: "d307202d8c1e0100")).to be_empty
     end
   end
+
+  describe ".discover_candidates allowlist" do
+    it "raises when all targets are public" do
+      expect {
+        described_class.discover_candidates(hosts: ["1.1.1.1"], timeout: 0.1)
+      }.to raise_error(Print::SdcpService::Error, /allowlisted/)
+    end
+
+    it "strips path components from upload filenames" do
+      response = instance_double(Net::HTTPSuccess, code: "200", body: {code: "000000", success: true, data: {}}.to_json)
+      allow(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(true)
+      http = instance_double(Net::HTTP)
+      allow(Net::HTTP).to receive(:new).and_return(http)
+      allow(http).to receive(:open_timeout=)
+      allow(http).to receive(:read_timeout=)
+      allow(http).to receive(:request).and_return(response)
+
+      result = service.upload(io: StringIO.new("ctb-bytes"), filename: "../../evil.ctb")
+      expect(result[:filename]).to eq("evil.ctb")
+    end
+
+    it "rejects storage deletes outside /local" do
+      expect {
+        service.delete_files(file_list: ["/etc/passwd"])
+      }.to raise_error(Print::SdcpService::Error, /under \/local/)
+    end
+  end
 end

@@ -63,7 +63,7 @@ module Print
     end
 
     def start_print(filename:, start_layer: 0)
-      request_cmd(128, data: {"Filename" => filename, "StartLayer" => start_layer})
+      request_cmd(128, data: {"Filename" => sanitize_remote_filename(filename), "StartLayer" => start_layer})
     end
 
     def pause_print
@@ -80,15 +80,20 @@ module Print
 
     # Cmd 258 — list files under Url (default /local).
     def list_files(url: "/local")
+      url = sanitize_storage_url(url)
       payload = request_cmd(258, data: {"Url" => url})
       Array(payload["FileList"]).map { |entry| normalize_file_entry(entry) }
     end
 
-    # Cmd 259 — batch delete. Paths must be absolute SDCP paths.
+    # Cmd 259 — batch delete. Paths must be absolute SDCP paths under /local.
     def delete_files(file_list: [], folder_list: [])
+      files = sanitize_storage_paths(file_list)
+      folders = sanitize_storage_paths(folder_list)
+      raise Error, "nothing_to_delete" if files.blank? && folders.blank?
+
       request_cmd(259, data: {
-        "FileList" => Array(file_list),
-        "FolderList" => Array(folder_list)
+        "FileList" => files,
+        "FolderList" => folders
       })
     end
 
@@ -103,6 +108,7 @@ module Print
 
     # Refresh storage counters from a file-list response root entry when present.
     def refresh_storage_from_list!(url: "/local")
+      url = sanitize_storage_url(url)
       payload = request_cmd(258, data: {"Url" => url})
       entries = Array(payload["FileList"])
       sample = entries.find { |e| e.is_a?(Hash) && e.key?("totalSize") } || payload
@@ -174,6 +180,7 @@ module Print
     # Uploads a sliced CTB/JXS file in 1MB chunks, then optionally starts print.
     # When free space is known and insufficient, raises before uploading (REQ-005).
     def upload(io:, filename:, content_type: nil, start: false, start_layer: 0)
+      filename = sanitize_remote_filename(filename)
       assert_supported_filename!(filename)
 
       bytes = io.respond_to?(:read) ? io.read : io.to_s
@@ -213,10 +220,15 @@ module Print
     end
 
     # UDP M99999 discover. Returns candidate hashes only — does NOT persist PrintHost (REQ-003).
+    # Targets and reported MainboardIP must pass EndpointAllowlist (SSRF — INIT-008/SPEC-008).
     def self.discover_candidates(hosts: ["255.255.255.255"], port: DEFAULT_DISCOVER_PORT, timeout: 2.0)
+      safe_hosts = EndpointAllowlist.filter_discover_targets(hosts)
+      raise Error, "no allowlisted discover targets" if safe_hosts.empty?
+
+      timeout = timeout.to_f.clamp(0.1, 5.0)
       socket = UDPSocket.new
       socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
-      Array(hosts).each { |host| socket.send(DISCOVER_PAYLOAD, 0, host, port) }
+      safe_hosts.each { |host| socket.send(DISCOVER_PAYLOAD, 0, host, port) }
 
       candidates = []
       seen = {}
@@ -233,6 +245,8 @@ module Print
         next unless parsed
 
         candidate = normalize_discover_candidate(parsed, addr)
+        next unless discover_candidate_allowed?(candidate)
+
         key = candidate[:mainboard_id].presence || candidate[:endpoint]
         next if key.blank? || seen[key]
 
@@ -243,6 +257,17 @@ module Print
     ensure
       socket&.close
     end
+
+    def self.discover_candidate_allowed?(candidate)
+      endpoint = candidate[:endpoint].to_s
+      return false if endpoint.blank?
+
+      host = URI.parse(endpoint).host
+      EndpointAllowlist.allowed?(host)
+    rescue URI::InvalidURIError
+      false
+    end
+    private_class_method :discover_candidate_allowed?
 
     def self.parse_discover_payload(data)
       text = data.to_s
@@ -272,6 +297,7 @@ module Print
     attr_reader :print_host
 
     def request_cmd(cmd, data: {}, collect: :response)
+      assert_endpoint_allowed!
       payload = session.call(cmd: cmd, data: data, collect: collect)
       ack = payload.is_a?(Hash) ? payload["Ack"] : nil
       if ack && ack != 0
@@ -289,13 +315,25 @@ module Print
     end
 
     def websocket_url
+      assert_endpoint_allowed!
       uri = URI.parse(print_host.endpoint)
       "ws://#{uri.host}:#{uri.port || 3030}/websocket"
     end
 
     def upload_url
+      assert_endpoint_allowed!
       uri = URI.parse(print_host.endpoint)
       "#{uri.scheme}://#{uri.host}:#{uri.port || 3030}/uploadFile/upload"
+    end
+
+    # Re-resolve at connect time to close DNS-rebinding TOCTOU after model validation.
+    def assert_endpoint_allowed!
+      uri = URI.parse(print_host.endpoint.to_s)
+      unless EndpointAllowlist.allowed?(uri.host)
+        raise Error, "PrintHost endpoint not on private LAN allowlist"
+      end
+    rescue URI::InvalidURIError
+      raise Error, "PrintHost endpoint invalid"
     end
 
     def assert_supported_filename!(filename)
@@ -304,6 +342,35 @@ module Print
       return if INPUT_TYPES.include?(mime)
 
       raise UnsupportedFileType, "SDCP accepts CTB/JXS only (got #{filename.inspect})"
+    end
+
+    def sanitize_remote_filename(filename)
+      base = File.basename(filename.to_s)
+      raise Error, "invalid upload filename" if base.blank? || base == "." || base == ".."
+
+      base
+    end
+
+    def sanitize_storage_url(url)
+      path = url.to_s
+      path = "/local" if path.blank?
+      unless path.start_with?("/local")
+        raise Error, "storage url must be under /local"
+      end
+      if path.include?("..")
+        raise Error, "storage url path traversal rejected"
+      end
+
+      path
+    end
+
+    def sanitize_storage_paths(paths)
+      Array(paths).map(&:to_s).reject(&:blank?).map { |p|
+        raise Error, "storage path must be under /local" unless p.start_with?("/local")
+        raise Error, "storage path traversal rejected" if p.include?("..")
+
+        p
+      }
     end
 
     def normalize_file_entry(entry)
@@ -333,9 +400,12 @@ module Print
         host = URI.parse(print_host.endpoint).host
         uri.host = host
       end
+      unless EndpointAllowlist.allowed?(uri.host)
+        raise Error, "VideoUrl host not on private LAN allowlist"
+      end
       uri.to_s
     rescue URI::InvalidURIError
-      url
+      raise Error, "VideoUrl invalid"
     end
 
     def post_upload_chunk(chunk:, filename:, md5:, uuid:, offset:, total_size:, content_type:)

@@ -95,6 +95,12 @@ class PrintersController < ApplicationController
       format.html { render partial: "printers/discoveries", locals: {candidates: @candidates} }
       format.json { render json: {candidates: @candidates} }
     end
+  rescue Print::SdcpService::Error => e
+    respond_to do |format|
+      format.turbo_stream { head :unprocessable_content }
+      format.html { render plain: e.message, status: :unprocessable_content }
+      format.json { render json: {error: e.message}, status: :unprocessable_content }
+    end
   end
 
   # Printer Settings UI — identity, storage, gate checklist, camera (INIT-008/SPEC-007 · REQ-012).
