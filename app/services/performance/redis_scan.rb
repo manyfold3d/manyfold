@@ -3,8 +3,10 @@
 # INIT-013/SPEC-002 — bounded SCAN only (never KEYS). ADR D-4 / D-6.
 module Performance
   module RedisScan
-    DEFAULT_COUNT = 200
-    DEFAULT_MAX_ITERATIONS = 500
+    # COUNT is a Redis hint; production RP namespaces (~80k+ keys) need headroom so
+    # MATCH scans finish before max_iterations (ADR D-4 / REQ-002 KPI shell).
+    DEFAULT_COUNT = 500
+    DEFAULT_MAX_ITERATIONS = 2_500
 
     Result = Data.define(:keys, :budget_exceeded)
 
