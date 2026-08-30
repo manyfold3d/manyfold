@@ -81,11 +81,9 @@
         <li>
           <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: settings_nav_link_class(reporting_settings_path), aria: (current_page?(reporting_settings_path) ? {current: "page"} : {}) %>
         </li>
-        <% unless Rails.env.test? %>
-          <li>
-            <%= link_to t(".performance"), rails_performance_path, class: settings_nav_link_class(rails_performance_path), aria: (current_page?(rails_performance_path) ? {current: "page"} : {}) %>
-          </li>
-        <% end %>
+        <li>
+          <%= link_to t(".performance"), admin_performance_path, class: settings_nav_link_class(admin_performance_path), aria: (current_page?(admin_performance_path) ? {current: "page"} : {}) %>
+        </li>
         <li>
           <%= link_to t(".sidekiq"), sidekiq_web_path, class: settings_nav_link_class(sidekiq_web_path), aria: (current_page?(sidekiq_web_path) ? {current: "page"} : {}) %>
         </li>

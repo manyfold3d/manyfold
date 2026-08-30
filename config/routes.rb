@@ -52,7 +52,9 @@ Rails.application.routes.draw do
       end
     end
     mount Sidekiq::Web => "/admin/sidekiq"
-    mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?
+    # INIT-013/SPEC-003 — Manyfold owns /admin/performance; gem remounted as escape hatch
+    get "/admin/performance", to: "performance#index", as: :admin_performance
+    mount RailsPerformance::Engine => "/admin/rails_performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?
     mount PgHero::Engine => "/admin/pghero"
     get "/activity" => "activity#index", :as => :activity
   end

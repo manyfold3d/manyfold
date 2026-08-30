@@ -1151,6 +1151,56 @@ en:
     new_report:
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
+  performance:
+    index:
+      charts:
+        empty: No request samples in the current scan window.
+        legend_avg: avg
+        legend_p95: p95
+        response_subtitle: Average response time per minute from scanned HTTP samples.
+        response_title: Average Response Time
+        throughput_subtitle: HTTP requests sampled in the current Redis window (site visitors, bots, etc).
+        throughput_title: Throughput Report
+        throughput_unit: rpm (requests/min)
+      heading: Application Performance
+      kpi:
+        active: Active
+        p50: p50 (median)
+        p95: p95 (warning)
+        p99: p99 (critical)
+      ms: "%{value} ms"
+      na: N/A
+      secondary:
+        apdex: Apdex Score
+        avg_db: Avg DB Time
+        error_rate: Error Rate
+        heading: Additional Operational Metrics
+        requests_hint: Sampled HTTP requests in scan window
+        requests_today: Requests (window)
+      sidebar:
+        brand: Rails Perf
+        env:
+          development: DEVELOPMENT
+          production: PRODUCTION
+          staging: STAGING
+          test: TEST
+        monitoring: Monitoring
+        nav:
+          custom_events: Custom Events
+          dashboard: Dashboard
+          errors_500: 500 Errors
+          recent_requests: Recent Requests
+          requests_analysis: Requests Analysis
+          sidekiq: Sidekiq
+          slow_requests: Slow Requests
+          system: System
+        nav_label: Performance monitoring
+        version: "%{app} • Ruby %{ruby}"
+      status:
+        operational: All Systems Operational
+        partial: Partial telemetry (scan budget)
+      subtitle: Live application performance telemetry and request profiling.
+      title: Performance
   print_histories:
     index:
       empty: No print history for this filter.

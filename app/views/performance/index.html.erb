@@ -1,0 +1,4 @@
+<%# INIT-013/SPEC-004 — Phlex performance dashboard (Figma 29:297) %>
+<% content_for :hide_footer, "1" %>
+
+<%= render Components::Performance::Dashboard.new(telemetry: @telemetry) %>
