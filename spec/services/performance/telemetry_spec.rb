@@ -74,6 +74,19 @@ RSpec.describe Performance::Telemetry do
     expect(result.budget_exceeded).to be(true)
   end
 
+  it "caches Result in Redis (not Rails.cache file store)" do
+    allow(Rails).to receive(:cache).and_raise("Rails.cache must not be used")
+    first = described_class.new(redis: redis, cache: true).call
+    # Mutate underlying samples; cached result must still win within TTL
+    redis.set(
+      request_key(datetime: "20260830T0803", datetimei: 1_725_000_180, duration: 999, request_id: "d"),
+      {duration: 999, view_runtime: 1, db_runtime: 1}.to_json
+    )
+    second = described_class.new(redis: redis, cache: true).call
+    expect(second.sample_count).to eq(first.sample_count)
+    expect(second.sample_count).to eq(3)
+  end
+
   it "never invokes Redis KEYS (Utils.fetch_from_redis path forbidden)" do
     allow(redis).to receive(:keys).and_call_original
     described_class.new(redis: redis, cache: false).call

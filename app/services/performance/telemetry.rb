@@ -31,14 +31,41 @@ module Performance
     end
 
     def call
-      if @cache && defined?(Rails) && Rails.respond_to?(:cache)
-        Rails.cache.fetch(cache_key, expires_in: CACHE_TTL) { compute }
-      else
-        compute
-      end
+      return compute unless @cache
+
+      cached = read_cache
+      return cached if cached
+
+      result = compute
+      write_cache(result)
+      result
     end
 
     private
+
+    # Prefer Redis over Rails.cache — production defaults to FileStore under
+    # tmp/cache, which is not reliably writable in the container (EACCES → 500).
+    def read_cache
+      client = redis_client
+      return nil unless client
+
+      raw = client.get(cache_key)
+      return nil if raw.blank?
+
+      data = JSON.parse(raw, symbolize_names: true)
+      Result.new(**data)
+    rescue StandardError
+      nil
+    end
+
+    def write_cache(result)
+      client = redis_client
+      return unless client
+
+      client.set(cache_key, result.to_h.to_json, ex: CACHE_TTL.to_i)
+    rescue StandardError
+      nil
+    end
 
     def compute
       client = redis_client
@@ -210,7 +237,7 @@ module Performance
     end
 
     def cache_key
-      "performance/telemetry/v3"
+      "performance/telemetry/v4"
     end
   end
 end
