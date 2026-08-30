@@ -3,10 +3,12 @@
 # INIT-013/SPEC-002 — KPI / chart read path without Redis KEYS (ADR D-3 / D-4).
 # Percentiles and throughput come from HTTP request samples only — never Sidekiq keys.
 # INIT-013/SPEC-004 — response_series + avg_db_ms for dashboard charts / secondary stats.
+# Follow-up — error_rate + apdex from HTTP status/duration (no invented N/A when samples exist).
 module Performance
   class Telemetry
     REQUEST_MATCH = "performance|*"
     CACHE_TTL = 15.seconds
+    APDEX_T_MS = 500.0
 
     Result = Data.define(
       :p50, :p95, :p99,
@@ -14,6 +16,8 @@ module Performance
       :response_series,
       :sample_count,
       :avg_db_ms,
+      :error_rate,
+      :apdex,
       :budget_exceeded
     )
 
@@ -59,6 +63,8 @@ module Performance
         response_series: response_time_series(samples),
         sample_count: samples.size,
         avg_db_ms: average(db_runtimes),
+        error_rate: error_rate(samples),
+        apdex: apdex_score(durations),
         budget_exceeded: scan.budget_exceeded
       )
     end
@@ -78,6 +84,7 @@ module Performance
         {
           duration: parsed["duration"],
           db_runtime: parsed["db_runtime"],
+          status: status_from_key(key),
           datetime: datetime_from_key(key),
           datetimei: datetimei_from_key(key)
         }
@@ -90,7 +97,15 @@ module Performance
       {}
     end
 
-    # performance|…|datetime|20200124T0523|datetimei|1579861423|…
+    # performance|…|status|200|datetime|20200124T0523|datetimei|1579861423|…
+    def status_from_key(key)
+      parts = key.to_s.split("|")
+      idx = parts.index("status")
+      return nil unless idx
+
+      Integer(parts[idx + 1], exception: false)
+    end
+
     def datetime_from_key(key)
       parts = key.to_s.split("|")
       idx = parts.index("datetime")
@@ -123,6 +138,32 @@ module Performance
       values.sum.to_f / values.size
     end
 
+    def error_rate(samples)
+      return nil if samples.empty?
+
+      with_status = samples.select { |s| s[:status].is_a?(Integer) }
+      return nil if with_status.empty?
+
+      errors = with_status.count { |s| s[:status] >= 500 }
+      (errors.to_f / with_status.size) * 100.0
+    end
+
+    # Apdex with T = APDEX_T_MS (satisfied ≤ T, tolerating ≤ 4T).
+    def apdex_score(durations)
+      return nil if durations.empty?
+
+      satisfied = 0
+      tolerating = 0
+      durations.each do |ms|
+        if ms <= APDEX_T_MS
+          satisfied += 1
+        elsif ms <= (APDEX_T_MS * 4)
+          tolerating += 1
+        end
+      end
+      (satisfied + (tolerating / 2.0)) / durations.size
+    end
+
     # Bucket by minute (RP datetime key YYYYMMDDTHHMM) → rpm points sorted by bucket.
     def throughput_series(samples)
       buckets = Hash.new(0)
@@ -135,7 +176,7 @@ module Performance
       buckets.keys.sort.map { |k| {datetime: k, rpm: buckets[k]} }
     end
 
-    # Per-minute average duration for response-time chart (honest sample means, not invent).
+    # Per-minute average duration + p95 for response-time chart.
     def response_time_series(samples)
       buckets = Hash.new { |h, k| h[k] = [] }
       samples.each do |sample|
@@ -147,7 +188,11 @@ module Performance
       end
       buckets.keys.sort.map do |k|
         vals = buckets[k]
-        {datetime: k, avg: vals.sum.to_f / vals.size}
+        {
+          datetime: k,
+          avg: vals.sum.to_f / vals.size,
+          p95: percentile(vals, 95)
+        }
       end
     end
 
@@ -158,12 +203,14 @@ module Performance
         response_series: [],
         sample_count: 0,
         avg_db_ms: nil,
+        error_rate: nil,
+        apdex: nil,
         budget_exceeded: budget_exceeded
       )
     end
 
     def cache_key
-      "performance/telemetry/v2"
+      "performance/telemetry/v3"
     end
   end
 end

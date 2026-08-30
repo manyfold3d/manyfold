@@ -30,6 +30,8 @@ class PerformanceController < ApplicationController
       response_series: result.response_series,
       sample_count: result.sample_count,
       avg_db_ms: result.avg_db_ms,
+      error_rate: result.error_rate,
+      apdex: result.apdex,
       budget_exceeded: result.budget_exceeded
     }
   end

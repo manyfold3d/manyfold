@@ -44,15 +44,30 @@ RSpec.describe Performance::Telemetry do
       {datetime: "20260830T0800", rpm: 2},
       {datetime: "20260830T0801", rpm: 1}
     ])
-    expect(result.response_series).to eq([
-      {datetime: "20260830T0800", avg: 15.0},
-      {datetime: "20260830T0801", avg: 30.0}
-    ])
+    expect(result.response_series.size).to eq(2)
+    expect(result.response_series[0][:datetime]).to eq("20260830T0800")
+    expect(result.response_series[0][:avg]).to eq(15.0)
+    expect(result.response_series[0][:p95]).to be_within(0.01).of(19.5)
+    expect(result.response_series[1]).to eq(datetime: "20260830T0801", avg: 30.0, p95: 30.0)
     expect(result.avg_db_ms).to eq(2.0)
+    expect(result.error_rate).to eq(0.0)
+    expect(result.apdex).to eq(1.0)
     expect(result.budget_exceeded).to be(false)
     expect(redis).not_to have_received(:keys)
   end
   # rubocop:enable RSpec/ExampleLength, RSpec/MultipleExpectations
+
+  it "computes error rate and Apdex from status and duration" do
+    redis.set(
+      "performance|controller|X|action|y|format|html|status|500|" \
+        "datetime|20260830T0802|datetimei|1725000120|method|GET|path|/boom|request_id|e|END|1.0.0",
+      {duration: 50, view_runtime: 1, db_runtime: 1}.to_json
+    )
+    result = described_class.new(redis: redis, cache: false).call
+    expect(result.sample_count).to eq(4)
+    expect(result.error_rate).to eq(25.0)
+    expect(result.apdex).to eq(1.0)
+  end
 
   it "sets budget_exceeded when SCAN iteration budget is hit" do
     result = described_class.new(redis: redis, cache: false, max_iterations: 0).call

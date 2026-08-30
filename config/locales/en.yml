@@ -1154,25 +1154,40 @@ en:
   performance:
     index:
       charts:
-        empty: No request samples in the current scan window.
+        buckets:
+          one: "%{count} minute bucket"
+          other: "%{count} minute buckets"
+        empty: Not enough samples yet to draw a trend (need 2+ minutes).
+        latest: Latest %{value}
         legend_avg: avg
         legend_p95: p95
-        response_subtitle: Average response time per minute from scanned HTTP samples.
+        peak: Peak %{value}
+        response_subtitle: Average and p95 response time per minute from scanned HTTP samples.
         response_title: Average Response Time
+        single_point: Only one minute so far (%{value}). Traffic will fill the chart.
         throughput_subtitle: HTTP requests sampled in the current Redis window (site visitors, bots, etc).
         throughput_title: Throughput Report
         throughput_unit: rpm (requests/min)
       heading: Application Performance
       kpi:
-        active: Active
+        critical: Critical
+        healthy: Healthy
+        hint_p50: Half of requests are faster than this
+        hint_p95: 95% of requests are faster than this
+        hint_p99: Tail latency — worst 1%
         p50: p50 (median)
-        p95: p95 (warning)
-        p99: p99 (critical)
+        p95: p95
+        p99: p99
+        warning: Elevated
       ms: "%{value} ms"
       na: N/A
+      pct: "%{value}%"
       secondary:
         apdex: Apdex Score
+        apdex_hint: T=500ms · 1.0 is ideal
         avg_db: Avg DB Time
+        db_hint: Mean db_runtime from samples
+        error_hint: Share of scanned HTTP samples with status ≥ 500
         error_rate: Error Rate
         heading: Additional Operational Metrics
         requests_hint: Sampled HTTP requests in scan window

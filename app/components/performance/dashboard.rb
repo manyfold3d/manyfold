@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # INIT-013/SPEC-004 — Phlex performance dashboard (Figma 29:297 adapted to Manyfold tokens).
+# Follow-up — contrast + SVG charts + real error/apdex metrics.
 class Components::Performance::Dashboard < Components::Base
   def initialize(telemetry:)
     @telemetry = telemetry
@@ -8,7 +9,7 @@ class Components::Performance::Dashboard < Components::Base
 
   def view_template
     div(
-      class: "flex items-stretch gap-0 -mx-4 sm:-mx-6 lg:-mx-8 min-h-[calc(100vh-8rem)] bg-secondary-50 dark:bg-secondary-950",
+      class: "flex items-stretch gap-0 -mx-4 sm:-mx-6 lg:-mx-8 min-h-[calc(100vh-8rem)] bg-secondary-100 dark:bg-secondary-950",
       data: {region: "performance-dashboard"}
     ) do
       render Components::Performance::Sidebar.new
@@ -30,13 +31,14 @@ class Components::Performance::Dashboard < Components::Base
   def header
     div(class: "flex flex-wrap items-start justify-between gap-4", data: {region: "performance-header"}) do
       div(class: "min-w-0 space-y-1") do
-        h1(class: "text-2xl font-bold text-secondary-900 dark:text-secondary-50 m-0") do
+        h1(class: "text-2xl font-bold text-secondary-950 dark:text-white m-0") do
           t("performance.index.heading")
         end
-        p(class: "text-sm text-secondary-500 m-0") { t("performance.index.subtitle") }
+        p(class: "text-sm text-secondary-600 dark:text-secondary-300 m-0") { t("performance.index.subtitle") }
       end
       span(
-        class: "inline-flex items-center gap-2 rounded-full border border-secondary-200 dark:border-secondary-700 bg-surface px-3 py-1.5 text-sm text-secondary-700 dark:text-secondary-200"
+        class: "inline-flex items-center gap-2 rounded-full border border-secondary-300 dark:border-secondary-600 " \
+               "bg-secondary-50 dark:bg-secondary-900 px-3 py-1.5 text-sm font-medium text-secondary-800 dark:text-secondary-100"
       ) do
         span(class: "size-2 rounded-full bg-success", "aria-hidden": "true")
         plain status_label
@@ -57,20 +59,23 @@ class Components::Performance::Dashboard < Components::Base
       render Components::Performance::KpiCard.new(
         label: t("performance.index.kpi.p50"),
         value: format_ms(@telemetry.p50),
-        tone: :success,
-        sparkline_values: sparkline_from_response
+        tone: kpi_tone(@telemetry.p50, warn: 300, crit: 800),
+        sparkline_values: sparkline_from_response,
+        hint: t("performance.index.kpi.hint_p50")
       )
       render Components::Performance::KpiCard.new(
         label: t("performance.index.kpi.p95"),
         value: format_ms(@telemetry.p95),
-        tone: :warning,
-        sparkline_values: sparkline_from_response
+        tone: kpi_tone(@telemetry.p95, warn: 500, crit: 1500),
+        sparkline_values: sparkline_from_response,
+        hint: t("performance.index.kpi.hint_p95")
       )
       render Components::Performance::KpiCard.new(
         label: t("performance.index.kpi.p99"),
         value: format_ms(@telemetry.p99),
-        tone: :danger,
-        sparkline_values: sparkline_from_response
+        tone: kpi_tone(@telemetry.p99, warn: 800, crit: 3000),
+        sparkline_values: sparkline_from_response,
+        hint: t("performance.index.kpi.hint_p99")
       )
     end
   end
@@ -82,7 +87,7 @@ class Components::Performance::Dashboard < Components::Base
         subtitle: t("performance.index.charts.throughput_subtitle"),
         unit: t("performance.index.charts.throughput_unit"),
         series: throughput_series,
-        mode: :bars
+        mode: :area
       )
       render Components::Performance::ChartCard.new(
         title: t("performance.index.charts.response_title"),
@@ -99,7 +104,7 @@ class Components::Performance::Dashboard < Components::Base
 
   def secondary_stats
     div(class: "space-y-3", data: {region: "performance-secondary"}) do
-      h2(class: "text-sm font-semibold uppercase tracking-wide text-secondary-500 m-0") do
+      h2(class: "text-sm font-semibold uppercase tracking-wide text-secondary-600 dark:text-secondary-300 m-0") do
         t("performance.index.secondary.heading")
       end
       div(class: "grid gap-4 sm:grid-cols-2 xl:grid-cols-4") do
@@ -110,15 +115,18 @@ class Components::Performance::Dashboard < Components::Base
         )
         render Components::Performance::SecondaryStat.new(
           label: t("performance.index.secondary.error_rate"),
-          value: t("performance.index.na")
+          value: format_pct(@telemetry.error_rate),
+          hint: t("performance.index.secondary.error_hint")
         )
         render Components::Performance::SecondaryStat.new(
           label: t("performance.index.secondary.apdex"),
-          value: t("performance.index.na")
+          value: format_apdex(@telemetry.apdex),
+          hint: t("performance.index.secondary.apdex_hint")
         )
         render Components::Performance::SecondaryStat.new(
           label: t("performance.index.secondary.avg_db"),
-          value: format_ms(@telemetry.avg_db_ms)
+          value: format_ms(@telemetry.avg_db_ms),
+          hint: t("performance.index.secondary.db_hint")
         )
       end
     end
@@ -134,6 +142,30 @@ class Components::Performance::Dashboard < Components::Base
     value.to_i.to_s
   end
 
+  def format_pct(value)
+    return t("performance.index.na") if value.nil?
+
+    t("performance.index.pct", value: Kernel.format("%.2f", value.to_f))
+  end
+
+  def format_apdex(value)
+    return t("performance.index.na") if value.nil?
+
+    Kernel.format("%.2f", value.to_f)
+  end
+
+  def kpi_tone(ms, warn:, crit:)
+    return :success if ms.nil?
+
+    if ms >= crit
+      :danger
+    elsif ms >= warn
+      :warning
+    else
+      :success
+    end
+  end
+
   def sparkline_from_response
     series = @telemetry.response_series
     return [0, 0] if series.blank?
@@ -146,12 +178,11 @@ class Components::Performance::Dashboard < Components::Base
   end
 
   def response_series
-    p95 = @telemetry.p95
     @telemetry.response_series.map do |p|
       {
         label: p[:datetime],
         y: p[:avg].to_f,
-        y2: p95 # overlay constant p95 threshold when available
+        y2: p[:p95].to_f
       }
     end
   end

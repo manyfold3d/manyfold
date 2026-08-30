@@ -38,10 +38,15 @@ RSpec.describe "Admin performance" do
           p50: 12.5,
           p95: 40.0,
           p99: 55.0,
-          throughput: [{datetime: "20260830T0800", rpm: 2}],
-          response_series: [{datetime: "20260830T0800", avg: 12.5}],
+          throughput: [{datetime: "20260830T0800", rpm: 2}, {datetime: "20260830T0801", rpm: 1}],
+          response_series: [
+            {datetime: "20260830T0800", avg: 12.5, p95: 15.0},
+            {datetime: "20260830T0801", avg: 30.0, p95: 30.0}
+          ],
           sample_count: 3,
           avg_db_ms: 2.0,
+          error_rate: 0.0,
+          apdex: 1.0,
           budget_exceeded: false
         )
       end
@@ -64,8 +69,11 @@ RSpec.describe "Admin performance" do
         expect(body).to include("Application Performance")
         expect(body).to include("Throughput Report")
         expect(body).to include("12.5 ms")
+        expect(body).to include("<svg")
+        expect(body).to include("0.00%")
+        expect(body).to include("1.00")
         # Manyfold primary tokens — not Figma indigo utility classes
-        expect(body).to include("bg-primary-500")
+        expect(body).to include("stroke-primary-")
         expect(body).not_to match(/class="[^"]*\b(bg|text)-indigo-\d+/)
       end
       # rubocop:enable RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -81,10 +89,14 @@ RSpec.describe "Admin performance" do
           "p99" => 55.0,
           "sample_count" => 3,
           "avg_db_ms" => 2.0,
+          "error_rate" => 0.0,
+          "apdex" => 1.0,
           "budget_exceeded" => false
         )
-        expect(json["throughput"]).to eq([{"datetime" => "20260830T0800", "rpm" => 2}])
-        expect(json["response_series"]).to eq([{"datetime" => "20260830T0800", "avg" => 12.5}])
+        expect(json["throughput"]).to eq([
+          {"datetime" => "20260830T0800", "rpm" => 2},
+          {"datetime" => "20260830T0801", "rpm" => 1}
+        ])
       end
       # rubocop:enable RSpec/ExampleLength, RSpec/MultipleExpectations
     end
