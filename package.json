@@ -49,7 +49,7 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^17.0.0",
     "postcss-preset-env": "^11.4.0",
-    "rollup": "^4.62.5",
+    "rollup": "^4.63.1",
     "sass-embedded": "^1.103.1",
     "typescript": "~5.9.3",
     "vite": "^8.2.2",
