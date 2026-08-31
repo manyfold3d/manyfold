@@ -817,7 +817,7 @@ GEM
     scout_apm (6.2.1)
       parser
     securerandom (0.4.1)
-    selenium-webdriver (4.47.0)
+    selenium-webdriver (4.48.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -1416,7 +1416,7 @@ CHECKSUMS
   scoped_search (5.0.0) sha256=eb797af7bb9e51d1e6256b5d2b88214fb4ec9277b298939831697352dc12aeb2
   scout_apm (6.2.1) sha256=c3a81e51938e8a1b38f0bfbd841845b052ea8d3b000b3fff6f5f99c9cabc3ba5
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.47.0) sha256=67f915b8223d2133bbaa13e92fd98854175394f086e2036a9eff4f5561fd69e4
+  selenium-webdriver (4.48.0) sha256=0c8376ebc8a0a4879343fe6fe6eccdcea76748611cd25de370b33eded2077a94
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
   shrine (3.9.0) sha256=3ccc2dd1cff89efc034449675f6524017084485b8b387059d68b4f303c848aa7
   shrine-tus (3.0.0) sha256=932344c54569eb260d9533edeb0cbb72cdfd5955d0ec861ea08dda024c6f486d
