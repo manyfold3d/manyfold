@@ -492,6 +492,48 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
       expect(Scan::Library::CreateModelFromPathJob).not_to have_been_enqueued
         .with(library.id, "escape_link", anything)
     end
+
+    # INIT-016/SPEC-005 SEC-001: all prefixes rejected → fail closed (no whole-library walk).
+    it "enqueues zero CreateModelFromPath and zero CheckMissingFiles when all prefixes are rejected" do
+      expect {
+        described_class.perform_now(library.id, path_prefixes: ["../outside", "/etc", "escape_link"])
+      }.not_to have_enqueued_job(Scan::Library::CreateModelFromPathJob)
+      expect(Scan::Library::CheckMissingFilesJob).not_to have_been_enqueued
+    end
+  end
+
+  # INIT-016/SPEC-005 SEC-001 remediation
+  describe "path_prefixes empty-after-sanitize fail-closed" do
+    around do |ex|
+      MockDirectory.create([
+        "safe/model/part.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "enqueues zero CreateModelFromPath and zero CheckMissingFiles for missing prefixes" do
+      expect {
+        described_class.perform_now(library.id, path_prefixes: ["DoesNotExist"])
+      }.not_to have_enqueued_job(Scan::Library::CreateModelFromPathJob)
+      expect(Scan::Library::CheckMissingFilesJob).not_to have_been_enqueued
+    end
+
+    it "keeps a scoped lock fingerprint for lexically valid missing prefixes" do
+      job = described_class.new(library.id, path_prefixes: ["DoesNotExist"])
+      expect(job.lock_key_arguments.last).to start_with("scoped:")
+      expect(job.lock_key_arguments.last).not_to eq("full")
+    end
+
+    it "does not walk the whole library when prefixes sanitize empty" do
+      detector = Scan::Library::FilesystemChangeDetector.new(status: {})
+      expect(detector.folders_with_changes(library, path_prefixes: ["DoesNotExist"])).to eq([])
+      # Unscoped still discovers under the same tree ("model" is a common subfolder → path "safe").
+      expect(detector.folders_with_changes(library, path_prefixes: nil)).to include("safe")
+    end
   end
 
   describe "uniqueness scope fingerprint" do

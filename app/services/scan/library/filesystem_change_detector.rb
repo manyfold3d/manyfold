@@ -244,6 +244,16 @@ module Scan
 
         since = last_detect_at(library)
         sanitized = sanitize_path_prefixes(library, path_prefixes)
+
+        # INIT-016/SPEC-005 SEC-001: caller asked for a scoped walk but nothing survived sanitize —
+        # fail closed (empty list), never visit the library root. Do not remember_detect_at!.
+        if !path_prefixes.nil? && sanitized.empty?
+          Rails.logger.warn(
+            "[scan] library=#{library.id} reason=empty_after_sanitize — aborting discover"
+          )
+          return []
+        end
+
         scoped = sanitized.any?
         new_folders = []
         pruned = {count: 0}

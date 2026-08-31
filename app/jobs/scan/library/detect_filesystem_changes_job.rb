@@ -26,6 +26,19 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
     # Capture watermark before discover's remember_detect_at! so known-model refresh stays correct.
     since = detector.last_detect_at(library)
     sanitized_prefixes = detector.sanitize_path_prefixes(library, path_prefixes)
+
+    # INIT-016/SPEC-005 SEC-001: non-nil path_prefixes that sanitize to empty must fail closed —
+    # never fall through to a whole-library discover + CheckMissingFiles (DoS / uniqueness bypass).
+    # Lock fingerprint may remain scoped (lexical); this path is a short no-op on that key.
+    if !path_prefixes.nil? && sanitized_prefixes.empty?
+      Rails.logger.warn(
+        "[scan] library=#{library.id} reason=empty_after_sanitize " \
+        "prefixes_given=#{Array(path_prefixes).size} — aborting scoped detect " \
+        "(no discover, no CheckMissingFiles)"
+      )
+      return
+    end
+
     scoped = sanitized_prefixes.any?
 
     new_model_paths = folders_with_changes(library, path_prefixes: path_prefixes)
