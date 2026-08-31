@@ -191,8 +191,14 @@ class Library < ApplicationRecord
     new_default ? new_default.make_default : SiteSettings.default_library = nil
   end
 
-  def detect_filesystem_changes_later(delay: 0.seconds)
-    Scan::Library::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
+  # INIT-016/SPEC-002: optional path_prefixes for scoped Phase A (ADR D-3).
+  # Prefer create_model_from_path_later for promote manifests with exact model paths.
+  def detect_filesystem_changes_later(delay: 0.seconds, path_prefixes: nil)
+    if path_prefixes.nil?
+      Scan::Library::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
+    else
+      Scan::Library::DetectFilesystemChangesJob.set(wait: delay).perform_later(id, path_prefixes: path_prefixes)
+    end
   end
 
   def create_model_from_path_later(path, delay: 0.seconds, scan_batch_id: nil)

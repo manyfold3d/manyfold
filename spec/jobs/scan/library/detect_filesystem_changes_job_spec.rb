@@ -2,6 +2,15 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Scan::Library::DetectFilesystemChangesJob do
+  # INIT-016/SPEC-002: discover now writes last_detect_at; clear between examples so
+  # earlier watermarks cannot mtime-prune a fresh MockDirectory tree.
+  after do
+    Rails.cache.delete_matched("manyfold:scan:library:*:last_filesystem_detect_at")
+  rescue NotImplementedError, NoMethodError
+    # MemoryStore / FileStore without delete_matched — clear the whole store.
+    Rails.cache.clear
+  end
+
   context "with files in various folders" do
     around do |ex|
       MockDirectory.create([
@@ -114,12 +123,12 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
   context "with model folders that contain some common subfolders" do
     around do |ex|
       MockDirectory.create([
-        "model/presupported/part_one.stl",
-        "model/unsupported/part_one.stl",
-        "model/supported/part_one.stl",
-        "model/parts/part_one.stl",
-        "model/files/part_one.stl",
-        "model/images/part_one.png"
+        "kit/presupported/part_one.stl",
+        "kit/unsupported/part_one.stl",
+        "kit/supported/part_one.stl",
+        "kit/parts/part_one.stl",
+        "kit/files/part_one.stl",
+        "kit/images/part_one.png"
       ]) do |path|
         @library_path = path
         ex.run
@@ -132,19 +141,19 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "understands that it's a single model" do
-      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::Library::CreateModelFromPathJob).with(library.id, "model", hash_including(scan_batch_id: kind_of(String))).exactly(1).times
+      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::Library::CreateModelFromPathJob).with(library.id, "kit", hash_including(scan_batch_id: kind_of(String))).exactly(1).times
     end
   end
 
   context "with model folders that contain some common subfolders with mixed case" do
     around do |ex|
       MockDirectory.create([
-        "model/Presupported/part_one.stl",
-        "model/UnSupported/part_one.stl",
-        "model/Supported/part_one.stl",
-        "model/Parts/part_one.stl",
-        "model/Files/part_one.stl",
-        "model/Images/part_one.png"
+        "kit/Presupported/part_one.stl",
+        "kit/UnSupported/part_one.stl",
+        "kit/Supported/part_one.stl",
+        "kit/Parts/part_one.stl",
+        "kit/Files/part_one.stl",
+        "kit/Images/part_one.png"
       ]) do |path|
         @library_path = path
         ex.run
@@ -157,7 +166,7 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "ignores case and filters out subfolders correctly" do
-      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::Library::CreateModelFromPathJob).with(library.id, "model", hash_including(scan_batch_id: kind_of(String))).exactly(1).times
+      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::Library::CreateModelFromPathJob).with(library.id, "kit", hash_including(scan_batch_id: kind_of(String))).exactly(1).times
     end
   end
 
@@ -372,6 +381,153 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
       described_class.perform_now(library.id)
       expect(Scan::Library::CreateModelFromPathJob).to have_been_enqueued.with(library.id, "safe_model", hash_including(scan_batch_id: kind_of(String)))
       expect(Scan::Library::CreateModelFromPathJob).not_to have_been_enqueued.with(library.id, "escape_link", anything)
+    end
+  end
+
+  # INIT-016/SPEC-002 — mtime prune, path_prefixes, uniqueness fingerprint, CheckMissing skip
+  describe "mtime prune on discover" do
+    around do |ex|
+      MockDirectory.create([
+        "CategoryA/ModelOld/part.stl",
+        "CategoryB/ModelNew/part.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "skips untouched Category trees when last_detect_at is set" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      watermark = 1.hour.ago
+      Rails.cache.write(
+        "manyfold:scan:library:#{library.id}:last_filesystem_detect_at",
+        watermark,
+        expires_in: 30.days
+      )
+
+      old = 2.hours.ago.to_time
+      FileUtils.touch(File.join(@library_path, "CategoryA"), mtime: old) # rubocop:todo RSpec/InstanceVariable
+      FileUtils.touch(File.join(@library_path, "CategoryA", "ModelOld"), mtime: old) # rubocop:todo RSpec/InstanceVariable
+      FileUtils.touch(File.join(@library_path, "CategoryA", "ModelOld", "part.stl"), mtime: old) # rubocop:todo RSpec/InstanceVariable
+
+      fresh = Time.current.to_time
+      FileUtils.touch(File.join(@library_path, "CategoryB"), mtime: fresh) # rubocop:todo RSpec/InstanceVariable
+      FileUtils.touch(File.join(@library_path, "CategoryB", "ModelNew"), mtime: fresh) # rubocop:todo RSpec/InstanceVariable
+      FileUtils.touch(File.join(@library_path, "CategoryB", "ModelNew", "part.stl"), mtime: fresh) # rubocop:todo RSpec/InstanceVariable
+
+      expect { described_class.perform_now(library.id) }
+        .to have_enqueued_job(Scan::Library::CreateModelFromPathJob)
+        .with(library.id, "CategoryB/ModelNew", hash_including(scan_batch_id: kind_of(String)))
+      expect(Scan::Library::CreateModelFromPathJob).not_to have_been_enqueued
+        .with(library.id, "CategoryA/ModelOld", anything)
+    end
+  end
+
+  describe "path_prefixes scoping" do
+    around do |ex|
+      MockDirectory.create([
+        "KeepMe/ModelOne/part.stl",
+        "SkipMe/ModelTwo/part.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "only enqueues CreateModelFromPath under the given prefixes" do
+      expect { described_class.perform_now(library.id, path_prefixes: ["KeepMe"]) }
+        .to have_enqueued_job(Scan::Library::CreateModelFromPathJob)
+        .with(library.id, "KeepMe/ModelOne", hash_including(scan_batch_id: kind_of(String)))
+      expect(Scan::Library::CreateModelFromPathJob).not_to have_been_enqueued
+        .with(library.id, "SkipMe/ModelTwo", anything)
+    end
+
+    it "skips library-wide CheckMissingFiles when path_prefixes are present" do
+      described_class.perform_now(library.id, path_prefixes: ["KeepMe"])
+      expect(Scan::Library::CheckMissingFilesJob).not_to have_been_enqueued
+    end
+
+    it "still enqueues CheckMissingFiles on unscoped detect" do
+      described_class.perform_now(library.id)
+      expect(Scan::Library::CheckMissingFilesJob).to have_been_enqueued
+        .with(library.id, hash_including(scan_batch_id: kind_of(String)))
+    end
+  end
+
+  describe "path_prefixes escape rejection" do
+    around do |ex|
+      MockDirectory.create([
+        "safe/model/part.stl"
+      ]) do |path|
+        @library_path = path
+        outside = File.join(File.dirname(path), "outside_escape")
+        FileUtils.mkdir_p(outside)
+        File.write(File.join(outside, "secret.stl"), "x")
+        File.symlink(outside, File.join(path, "escape_link"))
+        @outside = outside
+        ex.run
+      ensure
+        FileUtils.rm_rf(@outside) if @outside && File.exist?(@outside)
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "rejects .. absolute and symlink-escape prefixes" do
+      detector = Scan::Library::FilesystemChangeDetector.new(status: {})
+      sanitized = detector.sanitize_path_prefixes(library, [
+        "../outside",
+        "/etc",
+        "escape_link",
+        "safe"
+      ])
+      expect(sanitized).to eq(["safe"])
+    end
+
+    it "does not enqueue models for rejected escape prefixes" do
+      described_class.perform_now(library.id, path_prefixes: ["../outside", "/etc", "escape_link"])
+      expect(Scan::Library::CreateModelFromPathJob).not_to have_been_enqueued
+        .with(library.id, "escape_link", anything)
+    end
+  end
+
+  describe "uniqueness scope fingerprint" do
+    it "uses full for nil/empty prefixes" do
+      expect(described_class.scope_lock_fingerprint(nil)).to eq("full")
+      expect(described_class.scope_lock_fingerprint([])).to eq("full")
+    end
+
+    it "distinguishes scoped fingerprints from full and from each other" do
+      a = described_class.scope_lock_fingerprint(["KeepMe"])
+      b = described_class.scope_lock_fingerprint(["Other"])
+      expect(a).to start_with("scoped:")
+      expect(b).to start_with("scoped:")
+      expect(a).not_to eq("full")
+      expect(a).not_to eq(b)
+      expect(described_class.scope_lock_fingerprint(["B", "A"]))
+        .to eq(described_class.scope_lock_fingerprint(["A", "B"]))
+    end
+
+    it "builds distinct lock_key_arguments for full vs scoped jobs" do
+      full = described_class.new(42)
+      scoped = described_class.new(42, path_prefixes: ["KeepMe"])
+      expect(full.lock_key_arguments).to eq([42, "full"])
+      expect(scoped.lock_key_arguments.first).to eq(42)
+      expect(scoped.lock_key_arguments.last).to start_with("scoped:")
+      expect(scoped.lock_key_arguments).not_to eq(full.lock_key_arguments)
+    end
+  end
+
+  describe "Library#detect_filesystem_changes_later" do
+    let(:library) { create(:library) }
+
+    it "passes path_prefixes through to the job" do
+      expect {
+        library.detect_filesystem_changes_later(path_prefixes: ["CategoryA"])
+      }.to have_enqueued_job(described_class).with(library.id, hash_including(path_prefixes: ["CategoryA"]))
     end
   end
 end
