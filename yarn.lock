@@ -1391,6 +1391,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@transloadit/prettier-bytes@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@transloadit/prettier-bytes@npm:2.0.0"
+  checksum: b0d0dd97293c33bdca26ee22bbdbc5d837f0aa3e9dab361700339cfc68092b62099ec356a34e94a9e2dc08feb9276e93fc5d680758d0fbf72f7dc794b80c8214
+  languageName: node
+  linkType: hard
+
 "@tweenjs/tween.js@npm:~23.1.3":
   version: 23.1.3
   resolution: "@tweenjs/tween.js@npm:23.1.3"
@@ -1630,32 +1637,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/companion-client@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@uppy/companion-client@npm:5.1.1"
+"@uppy/core@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@uppy/core@npm:6.0.0"
   dependencies:
-    "@uppy/utils": ^7.1.1
-    namespace-emitter: ^2.0.1
-    p-retry: ^6.1.0
-  peerDependencies:
-    "@uppy/core": ^5.1.1
-  checksum: c7cf743522be8c37c8628e3ec498cb21cefa95f4cff9da5e7b470992731f36eccb8183ed6439fafd4340e34c625a03c2010205beb842e70dfc8fcbeb72f0bee3
-  languageName: node
-  linkType: hard
-
-"@uppy/core@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "@uppy/core@npm:5.2.0"
-  dependencies:
-    "@transloadit/prettier-bytes": ^0.3.4
-    "@uppy/store-default": ^5.0.0
-    "@uppy/utils": ^7.1.4
-    lodash: ^4.17.21
+    "@transloadit/prettier-bytes": ^2.0.0
+    classnames: ^2.5.1
+    lodash: ^4.18.1
     mime-match: ^1.0.2
     namespace-emitter: ^2.0.1
-    nanoid: ^5.0.9
-    preact: ^10.5.13
-  checksum: d7b63c8538ae12b9244de15899d0e1385620b91cbcc609956345fe7ba9e406f1c5fae8ca51bd8e7e52be9c1252b0b8374a84d627f5cb14abb54e86badd58b8e6
+    nanoid: ^5.1.11
+    p-queue: ^9.3.3
+    p-retry: ^6.1.0
+    preact: ^10.29.2
+  checksum: 87b3c6803c70643e1fdbe27a8e5fc49084ad144486bf7a8351b088478edc68ea4613877ccc840fa99270a8c53ac792c8cd9e163d5ef4fc5c5deb2b681313657d
   languageName: node
   linkType: hard
 
@@ -1678,24 +1673,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/form@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@uppy/form@npm:5.1.0"
+"@uppy/form@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@uppy/form@npm:6.0.0"
   dependencies:
-    "@uppy/utils": ^7.1.4
     get-form-data: ^3.0.0
   peerDependencies:
-    "@uppy/core": ^5.2.0
-  checksum: 3804c0896a28696ee53b6b8e273162cc07d2cd033c9bff48cf0b71cdf3044879a19d367960f505cf3630875711c9b2525e305b2a336564b8c8b0bc926298880e
+    "@uppy/core": ^6.0.0
+  checksum: 6786b4342e07f8142a5172c6d5c3ec22e1e249525116021ea179636a4d846702f52ccb18cf1f1013af2438454bc5ba463d80ee180077bdb33d4ad2d2585070a8
   languageName: node
   linkType: hard
 
-"@uppy/locales@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@uppy/locales@npm:5.1.1"
+"@uppy/locales@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "@uppy/locales@npm:5.2.0"
   dependencies:
-    "@uppy/utils": ^7.1.5
-  checksum: 9875dd17a64a9ad12548c986d9d99d51d3f447131effa396d10c8b49ba8aff335a200a83db67dfdfba2f4f6d561050d283efbd7bdba6ab329e7ea48ca02ff132
+    "@uppy/core": ^6.0.0
+  checksum: 17c95a220df6d0dd7c3c5fbb47241ad143f719daf90c77b03b33bda5eab5565c964617dadbc75f465e0d56227753ce35a98c33d9ba866fbdcedf8daa4bcbc8d3
   languageName: node
   linkType: hard
 
@@ -1715,13 +1709,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/store-default@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@uppy/store-default@npm:5.0.0"
-  checksum: 80c46582e04ffbc8fdab1aec98c70ab594e68d6be493ac0e809a9a8b5f2e8940f5fba00f7a81942b1b88936aa1beecdcf042e2875ed293a57a780fb81e962b9b
-  languageName: node
-  linkType: hard
-
 "@uppy/thumbnail-generator@npm:^5.1.0":
   version: 5.1.0
   resolution: "@uppy/thumbnail-generator@npm:5.1.0"
@@ -1734,20 +1721,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/tus@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@uppy/tus@npm:5.1.1"
+"@uppy/tus@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@uppy/tus@npm:6.0.0"
   dependencies:
-    "@uppy/companion-client": ^5.1.1
-    "@uppy/utils": ^7.1.5
-    tus-js-client: ^4.2.3
+    tus-js-client: ^4.3.1
   peerDependencies:
-    "@uppy/core": ^5.2.0
-  checksum: 4c173f1d8996fdbf7cf89bdb327d4aa2789bfb5b2761a88932f29f901e859d58620e271d8a62fc501c5b9f6a225d2ebb732a27e93939c8ed037da0c0a04caa81
+    "@uppy/core": ^6.0.0
+  checksum: cdfef379034dd382e8517102182c0c6fc93b7adc494f03660dbe1631b46571f9088fe874cdd39a288c86aa4357bac541450b27b3ac5e18e75709d6a6448bf440
   languageName: node
   linkType: hard
 
-"@uppy/utils@npm:^7.1.1, @uppy/utils@npm:^7.1.4, @uppy/utils@npm:^7.1.5, @uppy/utils@npm:^7.2.0":
+"@uppy/utils@npm:^7.1.4, @uppy/utils@npm:^7.1.5":
   version: 7.2.0
   resolution: "@uppy/utils@npm:7.2.0"
   dependencies:
@@ -2191,7 +2176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.6":
+"classnames@npm:^2.2.6, classnames@npm:^2.5.1":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: da424a8a6f3a96a2e87d01a432ba19315503294ac7e025f9fece656db6b6a0f7b5003bb1fbb51cbb0d9624d964f1b9bb35a51c73af9b2434c7b292c42231c1e5
@@ -2877,7 +2862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^5.0.1":
+"eventemitter3@npm:^5.0.1, eventemitter3@npm:^5.0.4":
   version: 5.0.4
   resolution: "eventemitter3@npm:5.0.4"
   checksum: bcbd2c3a9d2553c2289623ede8aab474d5c92bcbf18e5fe76f0e550c2b7801afb5a4351c7f11e8ee2379cca1ee48316aeb98fc3b946b7dd1f47a4c1ee8c4dcf2
@@ -4018,7 +4003,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:*, lodash@npm:^4.17.21, lodash@npm:^4.17.23":
+"lodash@npm:*, lodash@npm:^4.17.21, lodash@npm:^4.17.23, lodash@npm:^4.18.1":
   version: 4.18.1
   resolution: "lodash@npm:4.18.1"
   checksum: bb5f5b49aad29614e709af02b64c56b0f8b78c6a81434a3c1ae527d2f0f78ca08f9d9fb22aa825a053876c9d2166e9c01f31c356014b5e2bdc0556c057433102
@@ -4088,12 +4073,11 @@ __metadata:
     "@types/three": ^0.185.4
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
-    "@uppy/core": ^5.2.0
+    "@uppy/core": ^6.0.0
     "@uppy/dashboard": 5.1.0
-    "@uppy/form": ^5.1.0
-    "@uppy/locales": ^5.1.1
-    "@uppy/tus": ^5.1.1
-    "@uppy/utils": ^7.2.0
+    "@uppy/form": ^6.0.0
+    "@uppy/locales": ^5.2.0
+    "@uppy/tus": ^6.0.0
     altcha: ^3.2.2
     bootstrap: ^5.3.8
     bootstrap-icons: ^1.13.1
@@ -4298,12 +4282,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^5.0.9":
-  version: 5.1.11
-  resolution: "nanoid@npm:5.1.11"
+"nanoid@npm:^5.0.9, nanoid@npm:^5.1.11":
+  version: 5.1.16
+  resolution: "nanoid@npm:5.1.16"
   bin:
     nanoid: bin/nanoid.js
-  checksum: d5971a1d39f68bd9845565c70a27733c832ba1bd73caad3c7b999a366c0355b6fcc65064f3b0179bca6cd36b50cacd5747d4482c303f026b58d62ebe31df9868
+  checksum: b1e702e2b7072e74ac2ae880907d0a291853a36617ec5c3d27d81ab04965ebc0d4d0f707cf9220928cf93d5370b1f561c930efee853dc9c1a3facaefdf1a42ee
   languageName: node
   linkType: hard
 
@@ -4571,6 +4555,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"p-queue@npm:^9.3.3":
+  version: 9.3.3
+  resolution: "p-queue@npm:9.3.3"
+  dependencies:
+    eventemitter3: ^5.0.4
+    p-timeout: ^7.0.0
+  checksum: d91c91378289988d8d04a001449186ed8abedf24884d12e53cd73a5bb0ea4104e6571705a543985e4a8e45a6ec2116057df2959673f6787c5f336108acda42cd
+  languageName: node
+  linkType: hard
+
 "p-retry@npm:^6.1.0":
   version: 6.2.1
   resolution: "p-retry@npm:6.2.1"
@@ -4586,6 +4580,13 @@ __metadata:
   version: 6.1.4
   resolution: "p-timeout@npm:6.1.4"
   checksum: 0fb7bcac2cf49a97b44f881accfdd1057560a4d8657d75c32c4ebc9d75c0a4a09107f32491bcfedb3d8c0b95d06407beb004d880d6386fa58492ab40cd85a1c5
+  languageName: node
+  linkType: hard
+
+"p-timeout@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "p-timeout@npm:7.0.1"
+  checksum: 696d5e3b46cd4f81e1c6ec37e8f8555e56441c3e5e98cff080f795edd423b1b0a42c4f113f7a0369842994e9c2ea017bf10b9101574f7e5a477c6638664be84d
   languageName: node
   linkType: hard
 
@@ -5098,7 +5099,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.26.10, preact@npm:^10.5.13":
+"preact@npm:^10.26.10, preact@npm:^10.29.2, preact@npm:^10.5.13":
   version: 10.29.8
   resolution: "preact@npm:10.29.8"
   peerDependencies:
@@ -6192,7 +6193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tus-js-client@npm:^4.2.3":
+"tus-js-client@npm:^4.3.1":
   version: 4.3.1
   resolution: "tus-js-client@npm:4.3.1"
   dependencies:
