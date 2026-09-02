@@ -73,6 +73,10 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
           expect(graph).to be_valid
         end
+
+        run_test! "includes raw content URL" do
+          expect(response.parsed_body["contentUrl"]).to eq "/models/#{model.to_param}/raw/#{file.filename}"
+        end
       end
 
       response "401", "Unauthorized; the request did not provide valid authentication details" do
@@ -164,6 +168,102 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
 
       response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+  end
+
+  path "/models/{model_id}/raw/{filename}" do
+    parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
+    parameter name: :filename, in: :path, type: :string, required: true, example: "supported/model.stl"
+
+    let(:model) { create(:model, :with_collection, creator: create(:creator)) }
+    let(:file) { create(:model_file, model: model) }
+
+    let(:model_id) { model.to_param }
+    let(:filename) { file.filename }
+
+    get "Raw file data" do
+      tags "Files"
+      security [client_credentials: ["public", "read"]]
+
+      response "200", "Success" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test! do
+          expect(response.content_type).to eq "model/stl"
+        end
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
+    put "Replace file content" do
+      tags "Files"
+      security [client_credentials: ["write"]]
+
+      parameter in: :header, name: "Content-Length", description: "The number of bytes being sent in the PUT body", example: 128, required: true
+      parameter in: :header, name: "Content-Type", description: "The media type of the file being uploaded. Must match the existing file", example: "model/stl", required: true
+      parameter in: :body, name: :body
+      metadata[:operation][:requestBody] = {
+        required: true,
+        description: "New file content to replace the current contents.",
+        content: {
+          "*/*": {
+            schema: {
+              type: "string",
+              format: "binary"
+            }
+          }
+        }
+      }
+
+      response "200", "Success" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { "solid xxxxxxxxxxxx" }
+        let(:"Content-Type") { "model/stl" } # rubocop:disable RSpec/VariableName
+        let(:"Content-Length") { 18 } # rubocop:disable RSpec/VariableName
+
+        run_test! do  # rubocop:disable RSpec/MultipleExpectations
+          expect(file.reload.attachment.read).to eq "solid xxxxxxxxxxxx"
+          expect(Scan::ModelFile::ParseMetadataJob).to have_been_enqueued
+        end
+      end
+
+      response "400", "Bad Request" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { "solid xxxxxxxxxxxx" }
+        let(:"Content-Type") { "model/obj" } # rubocop:disable RSpec/VariableName
+        let(:"Content-Length") { 18 } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+        let(:body) { nil }
+        let(:"Content-Type") { "application/octet-stream" } # rubocop:disable RSpec/VariableName
+        let(:"Content-Length") { 0 } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { nil }
+        let(:"Content-Type") { "application/octet-stream" } # rubocop:disable RSpec/VariableName
+        let(:"Content-Length") { 0 } # rubocop:disable RSpec/VariableName
 
         run_test!
       end

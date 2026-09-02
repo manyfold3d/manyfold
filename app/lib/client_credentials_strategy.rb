@@ -8,9 +8,9 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     fail! and throw(:warden, status: :unauthorized) unless token&.accessible?
 
     scopes = case request.env.dig("action_dispatch.request.parameters", "action") || request.env.dig("action_dispatch.route_uri_pattern")
-    when "index", "show"
+    when "index", "show", "raw"
       ["public", "read"]
-    when "create", "update"
+    when "create", "update", "raw_put"
       ["write"]
     when "destroy"
       ["delete"]

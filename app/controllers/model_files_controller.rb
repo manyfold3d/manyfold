@@ -4,7 +4,8 @@ class ModelFilesController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create
 
   before_action :get_model
-  before_action :get_file, except: [:create, :bulk_edit, :bulk_update, :raw]
+  before_action :get_file, except: [:create, :bulk_edit, :bulk_update, :raw, :raw_put]
+  before_action :get_raw_file, only: [:raw, :raw_put]
   before_action -> { set_indexable @file }, except: [:create, :bulk_edit, :bulk_update]
 
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
@@ -39,16 +40,20 @@ class ModelFilesController < ApplicationController
   end
 
   def raw
-    @file = @model.model_files.find_by!(
-      filename: [
-        params[:filename],
-        [params[:filename], params[:format]].join(".")
-      ]
-    )
-    authorize @file
     request.format = params[:format].downcase
     respond_to @file.mime_type.to_sym
     send_file_content @file.attachment, disposition: (params[:download] == "true") ? :attachment : :inline
+  end
+
+  def raw_put
+    if request.content_length > 0 && request.content_type == @file.mime_type.to_s
+      @file.attachment = request.body
+      @file.save!
+      @file.parse_metadata_later
+      head :ok
+    else
+      head :bad_request
+    end
   end
 
   def create
@@ -205,5 +210,15 @@ class ModelFilesController < ApplicationController
 
   def embedded?
     params[:embed] == "true"
+  end
+
+  def get_raw_file
+    @file = @model.model_files.find_by!(
+      filename: [
+        params[:filename],
+        [params[:filename], params[:format]].join(".")
+      ]
+    )
+    authorize @file
   end
 end

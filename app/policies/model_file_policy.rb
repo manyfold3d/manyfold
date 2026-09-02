@@ -8,6 +8,10 @@ class ModelFilePolicy < ApplicationPolicy
     show?
   end
 
+  def raw_put?
+    update?
+  end
+
   def print?
     all_of(
       @user&.is_printer?,
