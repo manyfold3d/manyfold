@@ -73,6 +73,10 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
           expect(graph).to be_valid
         end
+
+        run_test! "includes content URL" do
+          expect(response.parsed_body["contentUrl"]).to eq "/models/#{model.to_param}/model_files/#{file.to_param}.stl"
+        end
       end
 
       response "401", "Unauthorized; the request did not provide valid authentication details" do
