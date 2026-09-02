@@ -19,7 +19,6 @@
     "@uppy/form": "^6.0.0",
     "@uppy/locales": "^5.2.0",
     "@uppy/tus": "^6.0.0",
-    "@uppy/utils": "^7.2.0",
     "altcha": "^3.2.2",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
