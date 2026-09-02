@@ -74,8 +74,8 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
           expect(graph).to be_valid
         end
 
-        run_test! "includes content URL" do
-          expect(response.parsed_body["contentUrl"]).to eq "/models/#{model.to_param}/model_files/#{file.to_param}.stl"
+        run_test! "includes raw content URL" do
+          expect(response.parsed_body["contentUrl"]).to eq "/models/#{model.to_param}/raw/#{file.filename}"
         end
       end
 
