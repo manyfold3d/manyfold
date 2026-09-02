@@ -173,4 +173,40 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       end
     end
   end
+
+  path "/models/{model_id}/raw/{filename}" do
+    parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
+    parameter name: :filename, in: :path, type: :string, required: true, example: "supported/model.stl"
+
+    let(:model) { create(:model, :with_collection, creator: create(:creator)) }
+    let(:file) { create(:model_file, model: model) }
+
+    let(:model_id) { model.to_param }
+    let(:filename) { file.filename }
+
+    get "Raw file data" do
+      tags "Files"
+      security [client_credentials: ["public", "read"]]
+
+      response "200", "Success" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test! do
+          expect(response.content_type).to eq "model/stl"
+        end
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+  end
 end
