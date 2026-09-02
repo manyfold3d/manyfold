@@ -10,7 +10,7 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     scopes = case request.env.dig("action_dispatch.request.parameters", "action") || request.env.dig("action_dispatch.route_uri_pattern")
     when "index", "show", "raw"
       ["public", "read"]
-    when "create", "update"
+    when "create", "update", "raw_put"
       ["write"]
     when "destroy"
       ["delete"]

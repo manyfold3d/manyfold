@@ -1539,6 +1539,61 @@
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
+      },
+      "put": {
+        "summary": "Replace file content",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "The number of bytes being sent in the PUT body",
+            "example": 128,
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "The media type of the file being uploaded. Must match the existing file",
+            "example": "model/stl",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New file content to replace the current contents.",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
       }
     },
     "/models": {
