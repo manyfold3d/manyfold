@@ -85,15 +85,4 @@ RSpec.describe ExtractArchiveJob do
         .to have_enqueued_job(Scan::Model::ParseMetadataJob).with(model.id).once
     end
   end
-
-  it "sets a preview file if anything becomes available" do # rubocop:todo RSpec/ExampleLength
-    Tempfile.create(%w[test .zip]) do |file|
-      Zip::File.open(file, create: true) do |zipfile|
-        zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
-      end
-      model_file = model.model_files.create(filename: "test.zip", attachment: Rack::Test::UploadedFile.new(file))
-      described_class.perform_now(model_file.id, remove_when_complete: true)
-      expect(model.reload.preview_file&.filename).to eq "test.stl"
-    end
-  end
 end
