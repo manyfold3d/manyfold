@@ -8,6 +8,8 @@ class ExtractArchiveJob < ApplicationJob
     return unless file.is_archive?
 
     unzip_into_model(file)
+
+    file.model.update preview_file: nil # Clear preview file so we reassess it now everything's extracted
     file.model.parse_metadata_later
 
     if remove_when_complete
