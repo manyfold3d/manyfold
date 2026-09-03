@@ -75,7 +75,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
         end
 
         run_test! "includes raw content URL" do
-          expect(response.parsed_body["contentUrl"]).to eq "/models/#{model.to_param}/raw/#{file.filename}"
+          expect(response.parsed_body["contentUrl"]).to eq "http://localhost:3214/models/#{model.to_param}/raw/#{file.filename}"
         end
       end
 
