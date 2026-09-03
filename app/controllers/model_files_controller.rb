@@ -27,7 +27,7 @@ class ModelFilesController < ApplicationController
       @related = Naturally.sort([@file, @file.related_files, @file.files_related_to_me].flatten.uniq, by: :name_and_filename) if @file.relationships.any? || @file.reverse_relationships.any?
       respond_to do |format|
         format.html
-        format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize }
+        format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file, current_user: current_user).serialize }
         format.any(*MediaType.indexable_types.map(&:to_sym)) do
           attachment = @file.attachment(params[:derivative]) || @file.attachment
           send_file_content attachment, derivative: params[:derivative], disposition: (params[:download] == "true") ? :attachment : :inline
