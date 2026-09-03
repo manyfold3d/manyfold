@@ -911,20 +911,6 @@ en:
         processing: Processing "%{filename}" from "%{model_name}"
       backfill_model_renders:
         rendering: Rendering "%{filename}" from "%{model_name}"
-  kaminari:
-    first_page:
-      label: Go to first page
-    last_page:
-      label: Go to last page
-    next_page:
-      label: Go to next page
-    page:
-      current_page: Current page
-      label: Go to page %{page}
-    paginator:
-      label: Page navigation
-    prev_page:
-      label: Go to previous page
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ en:
     new_report:
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
+  pagy:
+    aria_label:
+      nav: Page navigation
+      next: Go to next page
+      previous: Go to previous page
+    next: Next ›
+    previous: "‹ Prev"
   print_hosts:
     create:
       success: Printer created successfully
@@ -1077,12 +1070,6 @@ en:
       show:
         description: Add more items to your lists using the lists box on model pages.
         title: 'List: %{name}'
-    pagination:
-      first: "« First"
-      last: Last »
-      next: Next ›
-      previous: "‹ Prev"
-      truncate: "…"
     plugins:
       index:
         description_html: Plugins are optional components that allow you to add additional features to Manyfold. See the <a href="%{url}">documentation</a> for details.

@@ -911,20 +911,6 @@ pt:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label:
-    last_page:
-      label:
-    next_page:
-      label:
-    page:
-      current_page:
-      label:
-    paginator:
-      label:
-    prev_page:
-      label:
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ pt:
     new_report:
       message:
       subject:
+  pagy:
+    aria_label:
+      nav:
+      next:
+      previous:
+    next:
+    previous:
   print_hosts:
     create:
       success:
@@ -1077,12 +1070,6 @@ pt:
       show:
         description:
         title:
-    pagination:
-      first:
-      last:
-      next:
-      previous:
-      truncate:
     plugins:
       index:
         description_html:

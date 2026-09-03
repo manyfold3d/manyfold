@@ -913,20 +913,6 @@ fr:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label: Aller à la première page
-    last_page:
-      label: Aller à la dernière page
-    next_page:
-      label: Aller à la page suivante
-    page:
-      current_page: Page actuelle
-      label: Aller à la page %{page}
-    paginator:
-      label: Navigation dans les pages
-    prev_page:
-      label: Aller à la page précédente
   layouts:
     application:
       alert:
@@ -987,6 +973,13 @@ fr:
     new_report:
       message:
       subject: Nouveau rapport reçu
+  pagy:
+    aria_label:
+      nav: Navigation dans les pages
+      next: Aller à la page suivante
+      previous: Aller à la page précédente
+    next: Suivant ›
+    previous: "‹ Précédent"
   print_hosts:
     create:
       success:
@@ -1079,12 +1072,6 @@ fr:
       show:
         description:
         title:
-    pagination:
-      first: "« Premier"
-      last: Dernier »
-      next: Suivant ›
-      previous: "‹ Précédent"
-      truncate: "…"
     plugins:
       index:
         description_html:

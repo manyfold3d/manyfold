@@ -911,20 +911,6 @@ zh-CN:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label:
-    last_page:
-      label:
-    next_page:
-      label:
-    page:
-      current_page:
-      label:
-    paginator:
-      label:
-    prev_page:
-      label:
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ zh-CN:
     new_report:
       message: 有人报告了需要修改的内容。查看 %{link}
       subject: 收到新报告
+  pagy:
+    aria_label:
+      nav:
+      next:
+      previous:
+    next: 下一页  ›
+    previous: "‹ 上一页"
   print_hosts:
     create:
       success:
@@ -1077,12 +1070,6 @@ zh-CN:
       show:
         description:
         title:
-    pagination:
-      first: "«  首页"
-      last: 末页 »
-      next: 下一页  ›
-      previous: "‹ 上一页"
-      truncate: "…"
     plugins:
       index:
         description_html:

@@ -911,20 +911,6 @@ cs:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label: Přejít na první stránku
-    last_page:
-      label: Přejít na poslední stránku
-    next_page:
-      label: Přejít na další stránku
-    page:
-      current_page: Aktuální stránka
-      label: Přejít na stránku %{page}
-    paginator:
-      label: Navigace stránky
-    prev_page:
-      label: Přejít na předchozí stránku
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ cs:
     new_report:
       message: Někdo nahlásil obsah, který je třeba posoudit. Prohlédněte si zprávu na adrese %{link}
       subject: Obdrženo nové hlášení
+  pagy:
+    aria_label:
+      nav: Navigace stránky
+      next: Přejít na další stránku
+      previous: Přejít na předchozí stránku
+    next: Další ›
+    previous: "‹ Předchozí"
   print_hosts:
     create:
       success:
@@ -1077,12 +1070,6 @@ cs:
       show:
         description:
         title:
-    pagination:
-      first: "« První"
-      last: Poslední »
-      next: Další ›
-      previous: "‹ Předchozí"
-      truncate: "..."
     plugins:
       index:
         description_html:
