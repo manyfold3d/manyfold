@@ -1,8 +1,8 @@
 module ManyfoldApi::V0
   class GroupListSerializer < ApplicationSerializer
-    def initialize(creator, groups)
+    def initialize(creator, groups, pager: nil)
       @creator = creator
-      super(groups)
+      super(groups, pager: pager)
     end
 
     def groups_path(options = {})
@@ -14,7 +14,7 @@ module ManyfoldApi::V0
         "@context": context,
         "@id": groups_path,
         "@type": "hydra:Collection",
-        totalItems: @object.total_count,
+        totalItems: @pager.count,
         member: @object.map { |group|
           {
             "@id": Rails.application.routes.url_helpers.creator_group_path(@creator, group),
@@ -22,12 +22,12 @@ module ManyfoldApi::V0
           }
         },
         view: {
-          "@id": groups_path(page: @object.current_page),
+          "@id": groups_path(page: @pager.page),
           "@type": "hydra:PartialCollectionView",
           first: groups_path(page: 1),
-          previous: (groups_path(page: @object.prev_page) if @object.prev_page),
-          next: (groups_path(page: @object.next_page) if @object.next_page),
-          last: groups_path(page: @object.total_pages)
+          previous: (groups_path(page: @pager.previous) if @pager.previous),
+          next: (groups_path(page: @pager.next) if @pager.next),
+          last: groups_path(page: @pager.pages)
         }.compact
       }
     end

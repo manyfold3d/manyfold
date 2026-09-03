@@ -321,4 +321,13 @@ module ApplicationHelper
       "tour-description" => description
     }.compact
   end
+
+  def pagination
+    # i18n-tasks-use t('pagy.aria_label.nav')
+    # i18n-tasks-use t('pagy.aria_label.next')
+    # i18n-tasks-use t('pagy.aria_label.previous')
+    # i18n-tasks-use t('pagy.next')
+    # i18n-tasks-use t('pagy.previous')
+    @pagy&.series_nav(:bootstrap)&.html_safe # rubocop:disable Rails/OutputSafety, Rails/HelperInstanceVariable
+  end
 end

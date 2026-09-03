@@ -2,7 +2,7 @@
 
 <%= render "filters" %>
 
-<%= paginate @problems %>
+<%= pagination %>
 
 <% if @problems.empty? %>
   <div class="alert alert-info">
@@ -60,4 +60,4 @@
   <%= render partial: "action_buttons", locals: {form: form} %>
 <% end %>
 
-<%= paginate @problems %>
+<%= pagination %>

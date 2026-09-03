@@ -568,6 +568,10 @@ GEM
     openssl (3.3.2)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
+    pagy (43.6.2)
+      json
+      uri
+      yaml
     parallel (2.1.0)
     parser (3.3.12.0)
       ast (~> 2.4.1)
@@ -964,6 +968,7 @@ GEM
       activerecord (>= 7.2)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yaml (0.4.0)
     yard (0.9.45)
     yard-activerecord (0.0.17)
       activesupport
@@ -1036,7 +1041,6 @@ DEPENDENCIES
   image_processing
   jbuilder (~> 2.15)
   job-iteration (~> 1.15)
-  kaminari (~> 1.2)
   kramdown (~> 2.5)
   kramdown-parser-gfm (~> 1.1)
   letter_opener (~> 1.10)
@@ -1055,6 +1059,7 @@ DEPENDENCIES
   noticed (~> 3.0)
   omniauth (~> 2.1)
   omniauth_openid_connect (~> 0.8)
+  pagy (~> 43.6)
   pg (~> 1.6)
   pg_query (~> 6.2)
   pghero (~> 4.0)
@@ -1327,6 +1332,7 @@ CHECKSUMS
   openssl (3.3.2) sha256=7f4e01215dc9c4be1fca71d692406be3e6340b39c1f71a47fea9c497decd0f6c
   orm_adapter (0.5.0) sha256=aa5d0be5d540cbb46d3a93e88061f4ece6a25f6e97d6a47122beb84fe595e9b9
   ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
+  pagy (43.6.2) sha256=b1d461b6bb43ce410ed2b9f09ce2a90430fa804265d167207a30337ea45c1dd3
   parallel (2.1.0) sha256=b35258865c2e31134c5ecb708beaaf6772adf9d5efae28e93e99260877b09356
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
   pg (1.6.3-aarch64-linux) sha256=0698ad563e02383c27510b76bf7d4cd2de19cd1d16a5013f375dd473e4be72ea
@@ -1485,6 +1491,7 @@ CHECKSUMS
   win32ole (1.9.3) sha256=01f43dc5dc13806e6e58204f538b4a28f3d85968ea89074abc9a3cd118e94d96
   with_model (2.3.1) sha256=e4e0699f072a8a6a350ec79054db07af8881418c8749aa65ff4c9871d903322f
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
+  yaml (0.4.0) sha256=240e69d1e6ce3584d6085978719a0faa6218ae426e034d8f9b02fb54d3471942
   yard (0.9.45) sha256=52e211493f7cb8a3ebf7e104a25a1e73937a3103092545d34cb88fafebb3dc51
   yard-activerecord (0.0.17) sha256=ba485dbf789795c2e9c296ffe6e5902ddb28fb50a6eef70e970746199134e055
   yard-activesupport-concern (0.0.1) sha256=be790cb0efc23e2e87677063598ac8b743586154657bbd9655a7f03ce78390ef

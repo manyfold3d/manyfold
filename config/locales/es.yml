@@ -911,20 +911,6 @@ es:
         processing: Procesando "%{filename}" desde "%{model_name}"
       backfill_model_renders:
         rendering: Renderizando "%{filename}" desde "%{model_name}"
-  kaminari:
-    first_page:
-      label: Ir a la primera página
-    last_page:
-      label: Ir a la última página
-    next_page:
-      label: Ir a la siguiente página
-    page:
-      current_page: Página actual
-      label: Ir a la página %{page}
-    paginator:
-      label: Navegación por la página
-    prev_page:
-      label: Ir a la página anterior
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ es:
     new_report:
       message: Alguien ha denunciado un contenido que necesita moderación. Revise el informe en %{link}
       subject: Nuevo informe recibido
+  pagy:
+    aria_label:
+      nav: Navegación por la página
+      next: Ir a la siguiente página
+      previous: Ir a la página anterior
+    next: Siguiente >
+    previous: "‹ Anterior"
   print_hosts:
     create:
       success: La impresora se ha creado correctamente
@@ -1077,12 +1070,6 @@ es:
       show:
         description: Añada más elementos a sus listas utilizando el cuadro de listas de las páginas modelo.
         title: 'Lista: %{name}'
-    pagination:
-      first: "« Primera"
-      last: Última »
-      next: Siguiente >
-      previous: "‹ Anterior"
-      truncate: "…"
     plugins:
       index:
         description_html: Los complementos son componentes opcionales que te permiten añadir funciones adicionales a Manyfold. Consulta la <a href="%{url}">documentación</a> para obtener más información.

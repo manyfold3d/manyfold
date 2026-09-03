@@ -25,7 +25,7 @@ class ModelsController < ApplicationController
     set_indexable @models
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models, pager: @pagy).serialize }
     end
   end
 
@@ -173,9 +173,8 @@ class ModelsController < ApplicationController
     authorize Model
     @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collections, :creator)
     generate_available_tag_list
-    page = params[:page] || 1
     # Double the normal page size for bulk editing
-    @models = @models.page(page).per(helpers.pagination_settings["per_page"] * 2)
+    @pagy, @models = pagy(:offset, @models, limit: helpers.pagination_settings["per_page"] * 2)
     set_indexable @models
     # Apply tag filters in-place
     @filter_in_place = true

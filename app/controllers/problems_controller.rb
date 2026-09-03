@@ -8,7 +8,6 @@ class ProblemsController < ApplicationController
     @show_ignored = (params[:show_ignored] == "true")
     query = @show_ignored ? policy_scope(Problem.including_ignored) : policy_scope(Problem)
     # Now, which page are we on?
-    page = params[:page] || 1
     # What categories are we showing?
     # First, get the possible categories based on severity filter
     severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil # rubocop:disable Pundit/UsePolicyScope
@@ -26,7 +25,10 @@ class ProblemsController < ApplicationController
     # Don't show types ignored in user settings
     query = query.visible(helpers.problem_settings)
     query = query.includes([:problematic])
-    @problems = query.page(page).per(params[:per_page]&.to_i || 50).order([:category, :problematic_type]).includes(problematic: [:library, :model])
+    query = query.order([:category, :problematic_type])
+    query = query.includes(problematic: [:library, :model])
+
+    @pagy, @problems = pagy(:offset, query)
     # Do we have any filters at all?
     @filters_applied = [:show_ignored, :severity, :category, :type].any? { |k| params.has_key?(k) }
     # i18n-tasks-use t("activerecord.attributes.problem.category")

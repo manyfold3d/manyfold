@@ -911,20 +911,6 @@ pl:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label: Przejdź do pierwszej strony
-    last_page:
-      label: Przejdź do ostatniej strony
-    next_page:
-      label: Przejdź do następnej strony
-    page:
-      current_page: Bieżąca strona
-      label: Przejdź do %{page} strony
-    paginator:
-      label: Nawigacja strony
-    prev_page:
-      label: Przejdź do poprzedniej strony
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ pl:
     new_report:
       message: Ktoś zgłosił zawartość wymagającą moderacji. Przejrzyj zgłoszenie pod adresem %{link}
       subject: Otrzymano nowe zgłoszenie
+  pagy:
+    aria_label:
+      nav: Nawigacja strony
+      next: Przejdź do następnej strony
+      previous: Przejdź do poprzedniej strony
+    next: Następna ›
+    previous: "‹ Poprzednia"
   print_hosts:
     create:
       success:
@@ -1077,12 +1070,6 @@ pl:
       show:
         description:
         title:
-    pagination:
-      first: "« Pierwsza"
-      last: Ostatnia »
-      next: Następna ›
-      previous: "‹ Poprzednia"
-      truncate: "…"
     plugins:
       index:
         description_html:

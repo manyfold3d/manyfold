@@ -1,15 +1,19 @@
 require "rails_helper"
 
 RSpec.describe ManyfoldApi::V0::CollectionListSerializer do
+  include Pagy::Method
+
   context "when generating a JSON-LD representation" do
-    subject(:serializer) { described_class.new(object) }
+    subject(:serializer) { described_class.new(object, pager: pager) }
 
     before do
       create_list(:collection, 10)
     end
 
     let(:output) { serializer.serialize }
-    let(:object) { Collection.all.page(0).per(2) }
+    let(:pager_and_object) { pagy :offset, Collection.all, request: {params: {}}, limit: 2 }
+    let(:pager) { pager_and_object[0] }
+    let(:object) { pager_and_object[1] }
     let(:collection) { Collection.first }
 
     it "uses HYDRA JSON-LD context" do

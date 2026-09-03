@@ -21,8 +21,7 @@ class CreatorsController < ApplicationController
     # Ordering
     @creators = apply_sort_order(@creators)
 
-    page = params[:page] || 1
-    @creators = @creators.page(page).per(helpers.pagination_settings["per_page"])
+    @pagy, @creators = pagy(:offset, @creators, limit: helpers.pagination_settings["per_page"])
     # Eager load data
     @creators = @creators.includes(:links, :collections)
     # Apply tag filters in-place
@@ -34,7 +33,7 @@ class CreatorsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@creators).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@creators, pager: @pagy).serialize }
     end
   end
 

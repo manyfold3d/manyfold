@@ -6,7 +6,7 @@ class Settings::UsersController < ApplicationController
   def index
     @users = policy_scope(User).active.includes([:roles])
     @users = apply_sort_order(@users)
-    @users = @users.page(params[:page]&.to_i || 1).per(params[:per_page]&.to_i || 25)
+    @pagy, @users = pagy(:offset, @users)
     render layout: "settings"
     # i18n-tasks-use t("activerecord.attributes.user.approved")
     # i18n-tasks-use t("activerecord.attributes.user.auth_uid")

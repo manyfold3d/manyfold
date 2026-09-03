@@ -911,20 +911,6 @@ ru:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label:
-    last_page:
-      label:
-    next_page:
-      label:
-    page:
-      current_page:
-      label:
-    paginator:
-      label:
-    prev_page:
-      label:
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ ru:
     new_report:
       message:
       subject:
+  pagy:
+    aria_label:
+      nav:
+      next:
+      previous:
+    next: Следующая &rsaquo;
+    previous: "&lsaquo; Предыдущая"
   print_hosts:
     create:
       success:
@@ -1077,12 +1070,6 @@ ru:
       show:
         description:
         title:
-    pagination:
-      first: "&laquo; Первая"
-      last: Последняя &raquo;
-      next: Следующая &rsaquo;
-      previous: "&lsaquo; Предыдущая"
-      truncate: "&hellip;"
     plugins:
       index:
         description_html:

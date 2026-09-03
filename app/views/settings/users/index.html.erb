@@ -3,7 +3,7 @@
 <%= link_to t(".new"), new_settings_user_path, class: "btn btn-primary float-end" if policy(:user).new? %>
 <p class="lead"><%= t(".description") %></p>
 
-<%= paginate @users %>
+<%= pagination %>
 
 <table class="table table-striped">
   <tr>
@@ -37,4 +37,4 @@
   <% end %>
 </table>
 
-<%= paginate @users %>
+<%= pagination %>

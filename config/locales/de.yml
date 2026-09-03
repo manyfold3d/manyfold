@@ -913,20 +913,6 @@ de:
         processing: Verarbeitung von "%{filename}" aus "%{model_name}"
       backfill_model_renders:
         rendering: Rendering "%{filename}" von "%{model_name}"
-  kaminari:
-    first_page:
-      label: Zur ersten Seite gehen
-    last_page:
-      label: Zur letzten Seite gehen
-    next_page:
-      label: Weiter zur nächsten Seite
-    page:
-      current_page: Aktuelle Seite
-      label: Gehe zur Seite %{page}
-    paginator:
-      label: Seitennavigation
-    prev_page:
-      label: Zur vorherigen Seite gehen
   layouts:
     application:
       alert:
@@ -989,6 +975,13 @@ de:
     new_report:
       message: Jemand hat Inhalte gemeldet, die moderiert werden müssen. Überprüfe den Bericht unter %{link}
       subject: Neuer Bericht eingegangen
+  pagy:
+    aria_label:
+      nav: Seitennavigation
+      next: Weiter zur nächsten Seite
+      previous: Zur vorherigen Seite gehen
+    next: Weiter ›
+    previous: "‹ Zurück"
   print_hosts:
     create:
       success: Drucker wurde erfolgreich angelegt
@@ -1081,12 +1074,6 @@ de:
       show:
         description: Füge weitere Elemente zu deiner Liste hinzu, indem du das Listenfeld auf den Modellseiten verwendest.
         title: 'Liste: %{name}'
-    pagination:
-      first: "« Anfang"
-      last: Letzte »
-      next: Weiter ›
-      previous: "‹ Zurück"
-      truncate: "…"
     plugins:
       index:
         description_html: Plugins sind optionale Komponenten, mit denen du Manyfold um zusätzliche Funktionen erweitern kannst. Weitere Informationen findest du in der <a href="%{url}">Dokumentation</a>.

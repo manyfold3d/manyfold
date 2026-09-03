@@ -26,8 +26,7 @@ class CollectionsController < ApplicationController
     # Ordering
     @collections = apply_sort_order(@collections)
 
-    page = params[:page] || 1
-    @collections = @collections.page(page).per(helpers.pagination_settings["per_page"])
+    @pagy, @collections = pagy(:offset, @collections, limit: helpers.pagination_settings["per_page"])
     # Eager load
     @collections = @collections.includes :collections, :collection, :links
     # Apply tag filters in-place
@@ -38,7 +37,7 @@ class CollectionsController < ApplicationController
     set_indexable @collections
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionListSerializer.new(@collections).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionListSerializer.new(@collections, pager: @pagy).serialize }
     end
   end
 

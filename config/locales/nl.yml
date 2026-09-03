@@ -911,20 +911,6 @@ nl:
         processing:
       backfill_model_renders:
         rendering:
-  kaminari:
-    first_page:
-      label: Ga naar eerste pagina
-    last_page:
-      label: Ga naar laatste pagina
-    next_page:
-      label: Ga naar volgende pagina
-    page:
-      current_page: Huidige pagina
-      label: Ga naar pagina %{page}
-    paginator:
-      label: Paginanavigatie
-    prev_page:
-      label: Ga naar vorige pagina
   layouts:
     application:
       alert:
@@ -985,6 +971,13 @@ nl:
     new_report:
       message:
       subject:
+  pagy:
+    aria_label:
+      nav: Paginanavigatie
+      next: Ga naar volgende pagina
+      previous: Ga naar vorige pagina
+    next: Volgende ›
+    previous: "‹ Vorige"
   print_hosts:
     create:
       success:
@@ -1077,12 +1070,6 @@ nl:
       show:
         description:
         title: 'Lijst: %{name}'
-    pagination:
-      first: "« Eerste"
-      last: Laatste »
-      next: Volgende ›
-      previous: "‹ Vorige"
-      truncate: "…"
     plugins:
       index:
         description_html:
