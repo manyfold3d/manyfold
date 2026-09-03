@@ -4,8 +4,9 @@ class ModelFilesController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create
 
   before_action :get_model
-  before_action :get_file, except: [:create, :bulk_edit, :bulk_update, :raw, :raw_put]
-  before_action :get_raw_file, only: [:raw, :raw_put]
+  before_action -> { @purpose = "download" }, only: [:show, :raw]
+  before_action -> { @purpose = "write" }, only: [:raw_put]
+  before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
   before_action -> { set_indexable @file }, except: [:create, :bulk_edit, :bulk_update]
 
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
@@ -189,12 +190,18 @@ class ModelFilesController < ApplicationController
     begin
       @file = scope.find_param(params[:id])
     rescue ActiveRecord::RecordNotFound
-      @file = scope.find_by!(filename: [params[:id], params[:format]].join("."))
+      @file = scope.find_by!(
+        filename: [
+          params[:filename],
+          [params[:filename], params[:format]].join("."),
+          [params[:id], params[:format]].join(".")
+        ]
+      )
       request.format = params[:format].downcase
     end
     # Check for signed download URLs
-    if has_signed_id?
-      @signed_file = @model.model_files.find_signed!(params[:sig], purpose: "download")
+    if has_signed_id? && @purpose
+      @signed_file = @model.model_files.find_signed!(params[:sig], purpose: @purpose)
       if @file == @signed_file
         skip_authorization
       else
@@ -210,15 +217,5 @@ class ModelFilesController < ApplicationController
 
   def embedded?
     params[:embed] == "true"
-  end
-
-  def get_raw_file
-    @file = @model.model_files.find_by!(
-      filename: [
-        params[:filename],
-        [params[:filename], params[:format]].join(".")
-      ]
-    )
-    authorize @file
   end
 end
