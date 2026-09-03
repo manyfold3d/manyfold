@@ -3035,6 +3035,11 @@
             "type": "string",
             "example": "https://example.com/models/abc123/model_files/def456.stl"
           },
+          "updateContentUrl": {
+            "type": "string",
+            "example": "https://example.com/models/abc123/model_files/def456.stl?sig=fdsklfjdksl",
+            "description": "A signed URL that can be used to save back edited file contents via a PUT request. Signature is valid for 1 hour. Only included if user has write permissions to the file."
+          },
           "contentSize": {
             "type": "integer",
             "example": 12345
