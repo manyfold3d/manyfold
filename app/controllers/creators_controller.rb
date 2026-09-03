@@ -33,7 +33,7 @@ class CreatorsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@creators).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@creators, pager: @pagy).serialize }
     end
   end
 

@@ -25,7 +25,7 @@ class ModelsController < ApplicationController
     set_indexable @models
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models, pager: @pagy).serialize }
     end
   end
 

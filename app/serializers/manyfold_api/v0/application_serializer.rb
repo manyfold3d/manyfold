@@ -1,7 +1,8 @@
 module ManyfoldApi::V0
   class ApplicationSerializer
-    def initialize(object)
+    def initialize(object, pager: nil)
       @object = object
+      @pager = pager
     end
 
     def context

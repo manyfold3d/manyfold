@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
     @pagy, groups = pagy(:offset, policy_scope(@creator.groups), limit: 100)
     respond_to do |format|
       format.html { render Views::Groups::Index.new(groups: groups, creator: @creator) }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::GroupListSerializer.new(@creator, groups).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::GroupListSerializer.new(@creator, groups, pager: @pagy).serialize }
     end
   end
 
