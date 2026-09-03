@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render "unassigned" if @unassigned_count > 0 && @collections.first_page? && !(@filter.filtering_by?(:collection) || @filter.filtering_by?(:creator)) %>
+      <%= render "unassigned" if @unassigned_count > 0 && (@pagy.page == 1) && !(@filter.filtering_by?(:collection) || @filter.filtering_by?(:creator)) %>
       <%= render @collections %>
     </div>
     <%= pagination %>

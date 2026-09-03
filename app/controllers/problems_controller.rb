@@ -8,7 +8,6 @@ class ProblemsController < ApplicationController
     @show_ignored = (params[:show_ignored] == "true")
     query = @show_ignored ? policy_scope(Problem.including_ignored) : policy_scope(Problem)
     # Now, which page are we on?
-    page = params[:page] || 1
     # What categories are we showing?
     # First, get the possible categories based on severity filter
     severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil # rubocop:disable Pundit/UsePolicyScope

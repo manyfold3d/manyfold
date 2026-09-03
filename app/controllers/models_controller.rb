@@ -173,7 +173,6 @@ class ModelsController < ApplicationController
     authorize Model
     @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collections, :creator)
     generate_available_tag_list
-    page = params[:page] || 1
     # Double the normal page size for bulk editing
     @pagy, @models = pagy(:offset, @models, limit: helpers.pagination_settings["per_page"] * 2)
     set_indexable @models
