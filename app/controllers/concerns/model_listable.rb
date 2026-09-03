@@ -17,8 +17,7 @@ module ModelListable
     @tags, @kv_tags = split_key_value_tags(@tags)
     @unrelated_tag_count = nil unless @filter.any?
 
-    page = params[:page] || 1
-    @models = @models.page(page).per(helpers.pagination_settings["per_page"])
+    @pagy, @models = pagy(:offset, @models, limit: helpers.pagination_settings["per_page"])
 
     # Load extra data
     @models = @models.includes [:creator, :collections]

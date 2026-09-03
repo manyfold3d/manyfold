@@ -5,7 +5,7 @@
 <div class="form-container">
   <p class="lead"><%= t(".description") %></p>
 
-  <%= paginate @models %>
+  <%= pagination %>
 
   <%= form_with url: update_models_path, method: :patch do |form| %>
 

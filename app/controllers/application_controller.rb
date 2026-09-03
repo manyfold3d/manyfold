@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include BetterContentSecurityPolicy::HasContentSecurityPolicy
+  include Pagy::Method
 
   after_action :verify_authorized, except: :index, unless: -> { respond_to?(:fasp_client_controller?) }
   after_action :verify_policy_scoped, only: :index, unless: -> { respond_to?(:fasp_client_controller?) }

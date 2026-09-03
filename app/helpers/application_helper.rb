@@ -321,4 +321,8 @@ module ApplicationHelper
       "tour-description" => description
     }.compact
   end
+
+  def pagination
+    @pagy.series_nav(:bootstrap).html_safe
+  end
 end

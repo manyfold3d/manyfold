@@ -175,7 +175,7 @@ class ModelsController < ApplicationController
     generate_available_tag_list
     page = params[:page] || 1
     # Double the normal page size for bulk editing
-    @models = @models.page(page).per(helpers.pagination_settings["per_page"] * 2)
+    @pagy, @models = pagy(:offset, @models, limit: helpers.pagination_settings["per_page"] * 2)
     set_indexable @models
     # Apply tag filters in-place
     @filter_in_place = true

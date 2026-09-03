@@ -8,7 +8,7 @@
     <%= skip_link "sidebar", t(".skip_collections") %>
     <div class="row">
       <div class="col">
-        <%= paginate @collections %>
+        <%= pagination %>
       </div>
       <div class="col col-auto">
         <%= SortMenu(filter: @filter) %>
@@ -18,7 +18,7 @@
       <%= render "unassigned" if @unassigned_count > 0 && @collections.first_page? && !(@filter.filtering_by?(:collection) || @filter.filtering_by?(:creator)) %>
       <%= render @collections %>
     </div>
-    <%= paginate @collections %>
+    <%= pagination %>
   </div>
 <% end %>
 
