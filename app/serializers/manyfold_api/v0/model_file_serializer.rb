@@ -5,7 +5,7 @@ module ManyfoldApi::V0
         "@context": context,
         name: @object.name,
         isPartOf: model_ref(@object.model),
-        contentUrl: Rails.application.routes.url_helpers.model_model_file_raw_path(@object.model, @object.filename),
+        contentUrl: Rails.application.routes.url_helpers.model_model_file_raw_url(@object.model, @object.filename),
         encodingFormat: @object.mime_type.to_s,
         contentSize: @object.size,
         description: @object.notes,
