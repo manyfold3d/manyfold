@@ -976,7 +976,19 @@ nl:
       nav: Paginanavigatie
       next: Ga naar volgende pagina
       previous: Ga naar vorige pagina
+    gap: "…"
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next: Volgende ›
+    p11n:
     previous: "‹ Vorige"
   print_hosts:
     create:

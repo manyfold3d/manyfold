@@ -21,7 +21,18 @@ locales = [
 
 namespace :translation do
   namespace :clobber_and_sync do
-    task all: locales
+    task all: :environment do
+      locales.each do |locale|
+        puts "-- Clobbering #{locale}.yml files"
+        system "find config/locales -name #{locale}.yml | xargs rm -v"
+      end
+      puts "-- Downloading from translation.io"
+      system "rake translation:sync"
+      puts "-- Normalizing files"
+      system "i18n-tasks normalize -p"
+      puts "-- Done!"
+    end
+
     locales.each do |locale|
       task locale => :environment do
         puts "-- Clobbering #{locale}.yml files"

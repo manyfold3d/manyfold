@@ -976,7 +976,19 @@ ja:
       nav:
       next:
       previous:
+    gap: "&hellip;"
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next: 次 &rsaquo;
+    p11n:
     previous: "&lsaquo; 前"
   print_hosts:
     create:

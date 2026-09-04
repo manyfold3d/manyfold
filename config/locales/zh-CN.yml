@@ -976,7 +976,19 @@ zh-CN:
       nav:
       next:
       previous:
+    gap: "…"
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next: 下一页  ›
+    p11n:
     previous: "‹ 上一页"
   print_hosts:
     create:

@@ -326,7 +326,16 @@ module ApplicationHelper
     # i18n-tasks-use t('pagy.aria_label.nav')
     # i18n-tasks-use t('pagy.aria_label.next')
     # i18n-tasks-use t('pagy.aria_label.previous')
+    # i18n-tasks-use t('pagy.gap')
+    # i18n-tasks-use t('pagy.info_tag.multiple_pages')
+    # i18n-tasks-use t('pagy.info_tag.no_count')
+    # i18n-tasks-use t('pagy.info_tag.no_items')
+    # i18n-tasks-use t('pagy.info_tag.single_page')
+    # i18n-tasks-use t('pagy.input_nav_js')
+    # i18n-tasks-use t('pagy.item_name')
+    # i18n-tasks-use t('pagy.limit_tag_js')
     # i18n-tasks-use t('pagy.next')
+    # i18n-tasks-use t('pagy.p11n')
     # i18n-tasks-use t('pagy.previous')
     @pagy&.series_nav(:bootstrap)&.html_safe # rubocop:disable Rails/OutputSafety, Rails/HelperInstanceVariable
   end

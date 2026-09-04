@@ -976,7 +976,19 @@ pl:
       nav: Nawigacja strony
       next: Przejdź do następnej strony
       previous: Przejdź do poprzedniej strony
+    gap: "…"
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next: Następna ›
+    p11n:
     previous: "‹ Poprzednia"
   print_hosts:
     create:
