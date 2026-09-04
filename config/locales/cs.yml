@@ -987,9 +987,9 @@ cs:
       one:
       other:
     limit_tag_js:
-    next: Další ›
+    next: Další &rsaquo;
     p11n:
-    previous: "‹ Předchozí"
+    previous: "&lsaquo; Předchozí"
   print_hosts:
     create:
       success:
