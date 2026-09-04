@@ -987,9 +987,9 @@ en:
       one: item
       other: items
     limit_tag_js: Show %{limit_input} %{item_name} per page
-    next: Next &rsaquo;
+    next: Next ›
     p11n: OneOther
-    previous: "&lsaquo; Prev"
+    previous: "‹ Prev"
   print_hosts:
     create:
       success: Printer created successfully
