@@ -989,9 +989,9 @@ fr:
       one:
       other:
     limit_tag_js:
-    next: Suivant ›
+    next: Suivant &rsaquo;
     p11n:
-    previous: "‹ Précédent"
+    previous: "&lsaquo; Précédent"
   print_hosts:
     create:
       success:
