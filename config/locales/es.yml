@@ -976,7 +976,19 @@ es:
       nav: Navegación por la página
       next: Ir a la siguiente página
       previous: Ir a la página anterior
-    next: Siguiente >
+    gap: "…"
+    info_tag:
+      multiple_pages: Se muestran %{item_name} %{from}-%{to} de un total de %{count}
+      no_count: Página %{page} de %{pages}
+      no_items: No se ha encontrado %{item_name}
+      single_page: Mostrando %{count} %{item_name}
+    input_nav_js: Página %{page_input} de %{pages}
+    item_name:
+      one: artículo
+      other: artículos
+    limit_tag_js: Mostrar %{limit_input} %{item_name} por página
+    next: Siguiente ›
+    p11n: Otros
     previous: "‹ Anterior"
   print_hosts:
     create:

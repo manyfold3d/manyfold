@@ -980,7 +980,19 @@ de:
       nav: Seitennavigation
       next: Weiter zur nächsten Seite
       previous: Zur vorherigen Seite gehen
+    gap: "…"
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next: Weiter ›
+    p11n:
     previous: "‹ Zurück"
   print_hosts:
     create:

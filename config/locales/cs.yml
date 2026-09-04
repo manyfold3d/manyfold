@@ -976,7 +976,19 @@ cs:
       nav: Navigace stránky
       next: Přejít na další stránku
       previous: Přejít na předchozí stránku
+    gap: "..."
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next: Další ›
+    p11n:
     previous: "‹ Předchozí"
   print_hosts:
     create:

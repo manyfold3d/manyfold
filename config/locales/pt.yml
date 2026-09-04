@@ -976,7 +976,19 @@ pt:
       nav:
       next:
       previous:
+    gap:
+    info_tag:
+      multiple_pages:
+      no_count:
+      no_items:
+      single_page:
+    input_nav_js:
+    item_name:
+      one:
+      other:
+    limit_tag_js:
     next:
+    p11n:
     previous:
   print_hosts:
     create:
