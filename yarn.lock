@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.1":
+"@csstools/css-color-parser@npm:^4.2.1, @csstools/css-color-parser@npm:^4.2.2":
   version: 4.2.2
   resolution: "@csstools/css-color-parser@npm:4.2.2"
   dependencies:
@@ -265,17 +265,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-gradients-interpolation-method@npm:^6.0.9":
-  version: 6.0.9
-  resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.9"
+  version: 6.0.10
+  resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.10"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.1
+    "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 2b4c0f0060c220882b83e0021f0bfa6ac01034b15915f8a7a8fae6f6000cbf7bda6bb9712a9f8c8df1909524927454346ac01f7d57a9128bc29a75eb1d483bca
+  checksum: 28433c8b7e36ac19030bf4d2b6d64280e70f33db862cc19db519c76a048bc5ffb93b3e369f5494db2ece12eada79a3a7431df588c2c5cfde9c996725f118e925
   languageName: node
   linkType: hard
 
