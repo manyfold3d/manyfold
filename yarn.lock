@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.1":
+"@csstools/css-color-parser@npm:^4.2.1, @csstools/css-color-parser@npm:^4.2.2":
   version: 4.2.2
   resolution: "@csstools/css-color-parser@npm:4.2.2"
   dependencies:
@@ -469,17 +469,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-oklab-function@npm:^5.0.9":
-  version: 5.0.9
-  resolution: "@csstools/postcss-oklab-function@npm:5.0.9"
+  version: 5.0.10
+  resolution: "@csstools/postcss-oklab-function@npm:5.0.10"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.1
+    "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 2f5d22bbf427c635f25ac336eea6e767f7b9ca46e7705f278e6b618220a0770ec4ea0ed6936b47fb4e9e696cafe114c22e6be306ac7f1157a6da56f926d347ea
+  checksum: 1d72805df124062cbd8eb02c08332c63ad05eb1c24584ea705312fca4ae6c918e43ff19eaed31d00b9059bea7f1e5347ddb62ca7aa120a7c3587fe955a2e5268
   languageName: node
   linkType: hard
 
