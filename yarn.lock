@@ -151,17 +151,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-mix-variadic-function-arguments@npm:^2.0.9":
-  version: 2.0.9
-  resolution: "@csstools/postcss-color-mix-variadic-function-arguments@npm:2.0.9"
+  version: 2.0.10
+  resolution: "@csstools/postcss-color-mix-variadic-function-arguments@npm:2.0.10"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.1
+    "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 1a12d5d90d933ff0803a48b880004c5b9042c735bb3920c99d6f5e136c8b7037034b6aa722d3caac2fe11e8e384d251cc7d11c76f51154027887d92229a12797
+  checksum: 6fbe179ec7d62f0e15919d86884bc02b39d98c4feeead876750f7a97acde4579e8b29872c61ba3352adce3146033b0221bc928cae9e1fd6147e79a8b1b90d5e3
   languageName: node
   linkType: hard
 
