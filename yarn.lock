@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.1":
+"@csstools/css-color-parser@npm:^4.2.1, @csstools/css-color-parser@npm:^4.2.2":
   version: 4.2.2
   resolution: "@csstools/css-color-parser@npm:4.2.2"
   dependencies:
@@ -106,17 +106,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-function-display-p3-linear@npm:^2.0.9":
-  version: 2.0.9
-  resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.9"
+  version: 2.0.10
+  resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.10"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.1
+    "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 7836d4aa4550d03478cbcc306fa28675e6608dedd5bf4daab358a8e58a8bc4dee489e9be713473daf9f9d562e8d7c9ef990dcdd594c5700a60e60d3fe7bf3d18
+  checksum: 29ba61accbacb4cf8ec6be2c596f426a6e21158d9fbf7a6dc6c567d59adf1cf69ecdde04100f50351017460e01b23ae63b928eaf0230cfea31f5533544cdda13
   languageName: node
   linkType: hard
 
