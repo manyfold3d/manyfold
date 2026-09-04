@@ -41,6 +41,7 @@ class CreatorsController < ApplicationController
     respond_to do |format|
       format.html do
         @models = policy_scope(Model).where(creator: @creator)
+        @models = @filter.models(@models) if @filter.any?
         prepare_model_list
         @additional_filters = {creator: @creator}
         render layout: "card_list_page"
