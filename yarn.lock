@@ -280,17 +280,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-hwb-function@npm:^5.0.9":
-  version: 5.0.9
-  resolution: "@csstools/postcss-hwb-function@npm:5.0.9"
+  version: 5.0.10
+  resolution: "@csstools/postcss-hwb-function@npm:5.0.10"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.1
+    "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 3634c75c76c3cddbfa32b0c59da09ac4d7aeadc34f2144a5c2dbc3d979eba8cec45a472e3f557e041002cdfbe0bbc7930d6fbdc2196c5c9531eb316ef14634ae
+  checksum: 762f15778b588ad32402dc4460d2a84601f80696e162777a9f1ea91438e5175ddcfb1cdecad79c35f55e6f73a0292a7f9fa9502cbe25078f7b608ec4461727e9
   languageName: node
   linkType: hard
 
