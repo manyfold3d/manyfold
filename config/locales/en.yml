@@ -976,8 +976,20 @@ en:
       nav: Page navigation
       next: Go to next page
       previous: Go to previous page
-    next: Next ›
-    previous: "‹ Prev"
+    gap: "&hellip;"
+    info_tag:
+      multiple_pages: Displaying %{item_name} %{from}-%{to} of %{count} in total
+      no_count: Page %{page} of %{pages}
+      no_items: No %{item_name} found
+      single_page: Displaying %{count} %{item_name}
+    input_nav_js: Page %{page_input} of %{pages}
+    item_name:
+      one: item
+      other: items
+    limit_tag_js: Show %{limit_input} %{item_name} per page
+    next: Next &rsaquo;
+    p11n: OneOther
+    previous: "&lsaquo; Prev"
   print_hosts:
     create:
       success: Printer created successfully
