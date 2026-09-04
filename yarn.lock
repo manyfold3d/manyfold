@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.1":
+"@csstools/css-color-parser@npm:^4.2.1, @csstools/css-color-parser@npm:^4.2.2":
   version: 4.2.2
   resolution: "@csstools/css-color-parser@npm:4.2.2"
   dependencies:
@@ -192,17 +192,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-contrast-color-function@npm:^3.0.9":
-  version: 3.0.9
-  resolution: "@csstools/postcss-contrast-color-function@npm:3.0.9"
+  version: 3.0.10
+  resolution: "@csstools/postcss-contrast-color-function@npm:3.0.10"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.1
+    "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.2
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 04eef6ce98beb8a0673e5e03821c62cb118356f11c30e28b278aeefc16e4393b4cb9098cbacbed2e6f8891f1e5e36d948317978923b4628bfad02d2df365830a
+  checksum: 5f881e5b28a5fd23e585f29ac0ac2dd208b5f67b020cd794b452751fe6aeb0b9037413f69158bae53752ada2074920f12e127709a27f5071ce941278bc08b406
   languageName: node
   linkType: hard
 
