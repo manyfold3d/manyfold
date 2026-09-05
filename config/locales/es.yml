@@ -800,10 +800,10 @@ es:
   group_mailer:
     new_member:
       existing:
-        message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{creator_link}
+        message: Te han añadido al grupo «%{group_name}» de %{creator_name} en %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora podrás acceder a ellos en %{creator_link}.
         subject: Has sido añadido a un grupo en %{site_name}
       inviting:
-        message: Has sido invitado al grupo "%{group_name}" de %{site_name}. Para acceder a los modelos, configura tu cuenta en %{invitation_link} y, a continuación, visualiza los modelos del creador en %{creator_link}
+        message: Has sido invitado al grupo «%{group_name}» de %{creator_name} en %{site_name}. Para acceder a los modelos, crea tu cuenta en %{invitation_link} y, a continuación, consulta los modelos del creador en %{creator_link}.
         subject: Reclame tus modelos en %{site_name}
   groups:
     create:
@@ -885,9 +885,9 @@ es:
       collection_published:
         comment: Una nueva colección de modelos 3D, ["%{name}"](%{url}) ha sido publicada
       model_published:
-        comment: 'Un nuevo modelo 3D, ["%{name}"](%{url}), ha sido publicado '
+        comment: 'Nuevo modelo 3D: [«%{name}»](%{url}) por %{creator_name} (%{creator_handle})'
       updated_model:
-        comment: El modelo 3D ["%{name}"](%{url}), ha sido actualizado.
+        comment: 'Modelo 3D actualizado: [«%{name}»](%{url}) por %{creator_name} (%{creator_handle})'
     analysis:
       analyse_model_file:
         detect_duplicates: Buscando ficheros duplicados
@@ -987,9 +987,9 @@ es:
       one: artículo
       other: artículos
     limit_tag_js: Mostrar %{limit_input} %{item_name} por página
-    next: Siguiente ›
+    next: Siguiente &rsaquo;
     p11n: Otros
-    previous: "‹ Anterior"
+    previous: "&lsaquo; Anterior"
   print_hosts:
     create:
       success: La impresora se ha creado correctamente
