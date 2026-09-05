@@ -987,9 +987,9 @@ zh-CN:
       one:
       other:
     limit_tag_js:
-    next: 下一页  ›
+    next: 下一页  &rsaquo;
     p11n:
-    previous: "‹ 上一页"
+    previous: "&lsaquo; 上一页"
   print_hosts:
     create:
       success:
