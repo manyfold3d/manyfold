@@ -89,7 +89,7 @@ de:
       delete: Beziehung entfernen
       edit_related: Zugehöriges Modell bearbeiten
       this_model: Dieses Modell
-      type_to_search: zum suchen Tippen...
+      type_to_search: zum Suchen tippen...
     relationships_form:
       add: Eine neue Modellbeziehung hinzufügen
     scan:
