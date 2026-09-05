@@ -3,7 +3,7 @@ de:
   problems:
     categories:
       duplicate: Duplizierte Dateien
-      empty: Modell oder Datei ist Leer
+      empty: Modell oder Datei ist leer
       file_naming: Der Pfad stimmt nicht mit der Vorlage überein
       http_error: HTTP-Fehler beim Abrufen des Links
       inefficient: Unvollständige Formate

@@ -22,7 +22,7 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         avatar: Avatar-Bild
         banner: Banner-Bild
-        caption: Beschreibung
+        caption: Slogan
         indexable: Suchindizierung zulassen
         name: Autor
         notes: Beschreibung
@@ -73,7 +73,7 @@ de:
         invitations: Einladungen
         memberships: Mitgliedschaften
         name: Name
-        typed_id: Berechtigungsa-ID
+        typed_id: Berechtigungs-ID
       library:
         caption: Beschreibung
         create_path_if_not_on_disk: Ordner automatisch erstellen
@@ -81,16 +81,16 @@ de:
         icon: Symbol
         name: Name
         notes: Notizen
-        parse_metadata_from_path: Ableitung von Metadaten aus dem Pfad
+        parse_metadata_from_path: Metadaten aus dem Pfad ableiten
         path: Pfad
         path_template: Vorlage für Ordnernamen
         s3_access_key_id: Zugangsschlüssel-ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
-        s3_path_style: Verwende pfad-ähnliche URLs
+        s3_path_style: Verwende Pfad-ähnliche URLs
         s3_region: Region
         s3_secret_access_key: Geheimer Zugangsschlüssel
-        safe_folder_names: Dateisystem sichere Ordnernamen verwenden
+        safe_folder_names: Dateisystem-sichere Ordnernamen verwenden
         storage_service: Speicherdienst
         tag_regex: Erforderliche Tags
       link:
@@ -105,7 +105,7 @@ de:
         caption: Bildunterschrift
         creator_id: Autor
         entrypoint: Einstiegspunkt
-        entrypoint_fragment: Einstiegspunkt Fragment
+        entrypoint_fragment: Einstiegspunkt-Fragment
         indexable: Suchindizierung zulassen
         library_id: Sammlung
         license: Lizenz
@@ -136,7 +136,7 @@ de:
         category: Kategorie
         ignored: Versteckt
         note: Notiz
-        problematic_type: Objekt Typ
+        problematic_type: Objekttyp
         severity: Schweregrad
       user:
         approved: Genehmigt?
@@ -151,7 +151,7 @@ de:
         email: E-Mail
         encrypted_password: Verschlüsseltes Passwort
         failed_attempts: Fehlversuche
-        interface_language: Webseiten Sprache
+        interface_language: Webseiten-Sprache
         landing_page: Landing Page
         last_sign_in_at: Letzte Anmeldung am
         last_sign_in_ip: IP der letzten Anmeldung
@@ -163,7 +163,7 @@ de:
         remember_created_at: Angemeldet bleiben vom
         remember_me: Angemeldet bleiben
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am
-        reset_password_token: Passwort-reset-Token
+        reset_password_token: Passwort-Reset-Token
         sensitive_content_handling: Möglicherweise verstörender Inhalt
         sign_in_count: Anzahl Anmeldungen
         sort_order: Sortieren nach
@@ -184,7 +184,7 @@ de:
             redirect_uri:
               forbidden_uri: ist vom Server verboten.
               fragment_present: darf kein Fragment enthalten.
-              invalid_uri: muss eine Stimmende URI (Identifier) sein.
+              invalid_uri: muss eine stimmende URI (Identifier) sein.
               relative_uri: muss ein absoluter URI (Identifier) sein.
               secured_uri: muss ein HTTPS/SSL URI (Identifier) sein.
               unspecified_scheme: muss ein Schema angeben.
@@ -201,7 +201,7 @@ de:
               non_writable_subfolder: enthält nicht beschreibbare Unterordner
               not_a_directory: ist kein Verzeichnis
               not_found: konnte nicht auf der Festplatte gefunden werden
-              unsafe: kann kein privilegierter Systempfad sein
+              unsafe: darf kein privilegierter Systempfad sein
         model:
           attributes:
             creator:
@@ -250,7 +250,7 @@ de:
       doorkeeper/access_token:
         few: Zugangstoken
         many: Zugangstoken
-        one: Zugangs-Token
+        one: Zugangstoken
         other: Zugangstoken
         two: Zugangstoken
         zero: Zugangstoken
@@ -271,7 +271,7 @@ de:
       fasp_client_event_subscription:
         few: Event-Abonnements
         many: Event-Abonnements
-        one: Abonnement der Veranstaltung
+        one: Event-Abonnement
         other: Event-Abonnements
         two: Event-Abonnements
         zero: Event-Abonnements
@@ -449,7 +449,7 @@ de:
       version: Version
     link_fields:
       text:
-        placeholder: Optionaler Linktext/titel
+        placeholder: Optionaler Linktext/-titel
       url:
         delete: Löschen
         placeholder: Verwandte Webseiten
@@ -573,7 +573,7 @@ de:
         text: Öffnen
     new_comment_form:
       placeholder: Teile deine Gedanken hier...
-      submit: Beitrag
+      submit: Absenden
       title: Einen Kommentar abgeben
     path_template_preview:
       description: Die folgende Tabelle zeigt einige der abgeleiteten Metadaten für Ordner in dieser Bibliothek, die auf der obigen Vorlage basieren.
@@ -614,7 +614,7 @@ de:
         admin_authenticator_not_configured: Der Zugriff auf die Administrationsoberfläche ist verboten, da Doorkeeper.configure.admin_authenticator nicht konfiguriert ist.
         credential_flow_not_configured: Resource Owner Password Credentials flow ist fehlgeschlagen, da Doorkeeper.configure.resource_owner_from_credentials nicht konfiguriert ist.
         forbidden_token:
-          missing_scope: Der Zugriff auf diese Ressource erfordert den Bereich "%{oauth_scopes}".
+          missing_scope: Der Zugriff auf diese Ressource erfordert den Scope "%{oauth_scopes}".
         invalid_client: Die Client-Authentifizierung ist fehlgeschlagen, weil der Client unbekannt ist, keine Client-Authentifizierung enthalten ist oder die Authentifizierungsmethode nicht unterstützt wird.
         invalid_code_challenge_method:
           one: Die code_challenge_method muss %{challenge_methods} sein.
@@ -763,7 +763,7 @@ de:
     remote_follow:
       help: Du brauchst kein Konto auf diesem Server, um %{name} zu folgen; gib hier deinen eigenen Kontonamen ein, und wir schicken Sie nach Hause, um den Vorgang abzuschließen.
       no_results_html: Wir konnten dein Privatkonto nicht finden; hast du es richtig angegeben?
-      placeholder: dein Fediverse-handle, z. B. manyfold@3dp.chat
+      placeholder: dein Fediverse-Handle, z. B. manyfold@3dp.chat
       submit: Bring mich nach Hause
       title: Folge %{name}
     search_form:
@@ -982,17 +982,17 @@ de:
       previous: Zur vorherigen Seite gehen
     gap: "…"
     info_tag:
-      multiple_pages:
-      no_count:
-      no_items:
-      single_page:
-    input_nav_js:
+      multiple_pages: Es werden %{item_name} %{from}–%{to} von insgesamt %{count} angezeigt
+      no_count: Seite %{page} von %{pages}
+      no_items: "%{item_name} nicht gefunden"
+      single_page: Anzeige von %{count} %{item_name}
+    input_nav_js: Seite %{page_input} von %{pages}
     item_name:
-      one:
-      other:
-    limit_tag_js:
+      one: Objekt
+      other: Objekte
+    limit_tag_js: "%{limit_input} %{item_name} pro Seite anzeigen"
     next: Weiter ›
-    p11n:
+    p11n: OneOther
     previous: "‹ Zurück"
   print_hosts:
     create:
@@ -1020,7 +1020,7 @@ de:
   renderer:
     errors:
       load: Fehler beim Laden
-    load: Lädt
+    load: Laden
     processing: verarbeite Mesh
   reports:
     create:
