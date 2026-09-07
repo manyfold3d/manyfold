@@ -12,7 +12,7 @@ es:
       models_button:
         label: Mostrar modelos en %{name}
         remote_label: Mostrar modelos locales en %{name}
-      no_preview: vista previa no disponible
+      no_preview: Vista previa no disponible
     create:
       success: Detalles de la nueva colección guardados.
     destroy:

@@ -16,7 +16,7 @@ es:
           zero: Creadores
         indexable: Permitir la indexación de búsquedas
         name: Nombre
-        notes: Notas
+        notes: Descripción
         preview_model_id: Vista previa del modelo
       creator:
         ai_indexable: Permitir el uso para el entrenamiento de IA
@@ -25,7 +25,7 @@ es:
         caption: Subtítulo
         indexable: Permitir la indexación de búsquedas
         name: Nombre del creador
-        notes: Notas
+        notes: Descripción
         slug: Handle
       doorkeeper/access_token:
         active: Activo
@@ -386,12 +386,12 @@ es:
         two: Roles
         zero: Roles
       user:
-        few: Usuarios
-        many: Usuarios
-        one: Usuario
-        other: Usuarios
-        two: Usuarios
-        zero: Usuarios
+        few: Cuentas
+        many: Cuentas
+        one: Cuenta
+        other: Cuentas
+        two: Cuentas
+        zero: Cuentas
   activity:
     index:
       description: Las entradas se borran después de %{retention_period}.
@@ -438,11 +438,11 @@ es:
       unknown: Desconocido
     footer:
       about: Acerca de esta instancia
-      api: API
+      api: Explora nuestra API
       by_html: Diseñado y construido por <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> con la ayuda de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">nuestros colaboradores</a>.
       community: Únete a la comunidad
       instance_heading: Detalles de la instancia
-      issues: Problemas
+      issues: Informar de un problema
       open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">GNU Affero GPL 3.0</a>.
       sponsor: Colaborar
       support: Apoyar esta instancia
@@ -456,7 +456,7 @@ es:
     links_form:
       add: añadir otro enlace
     navbar:
-      account: Cuenta
+      account: Mi cuenta
       activity: Actividad
       add_models: Añadir contenido
       check_existing:
@@ -481,9 +481,9 @@ es:
         label: Buscar cambios
       scanning: Escaneando
       search: Buscar
-      settings: Ajustes
+      settings: Configuración del sitio
       social: Social
-      upload: Cargar
+      upload: Subir modelos
     search_error: Error en la sintaxis de búsqueda. Por favor, compruébelo e inténtelo de nuevo
     tag_list:
       unrelated_tag_count:
@@ -842,10 +842,10 @@ es:
   group_mailer:
     new_member:
       existing:
-        message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{creator_link}
+        message: Te han añadido al grupo «%{group_name}» de %{creator_name} en %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora podrás acceder a ellos en %{creator_link}.
         subject: Has sido añadido a un grupo en %{site_name}
       inviting:
-        message: Has sido invitado al grupo "%{group_name}" de %{site_name}. Para acceder a los modelos, configura tu cuenta en %{invitation_link} y, a continuación, visualiza los modelos del creador en %{creator_link}
+        message: Has sido invitado al grupo «%{group_name}» de %{creator_name} en %{site_name}. Para acceder a los modelos, crea tu cuenta en %{invitation_link} y, a continuación, consulta los modelos del creador en %{creator_link}.
         subject: Reclame tus modelos en %{site_name}
   groups:
     create:
@@ -927,9 +927,9 @@ es:
       collection_published:
         comment: Una nueva colección de modelos 3D, ["%{name}"](%{url}) ha sido publicada
       model_published:
-        comment: 'Un nuevo modelo 3D, ["%{name}"](%{url}), ha sido publicado '
+        comment: 'Nuevo modelo 3D: [«%{name}»](%{url}) por %{creator_name} (%{creator_handle})'
       updated_model:
-        comment: El modelo 3D ["%{name}"](%{url}), ha sido actualizado.
+        comment: 'Modelo 3D actualizado: [«%{name}»](%{url}) por %{creator_name} (%{creator_handle})'
     analysis:
       analyse_model_file:
         detect_duplicates: Buscando ficheros duplicados
