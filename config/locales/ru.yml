@@ -976,7 +976,7 @@ ru:
       nav:
       next:
       previous:
-    gap: "&hellip;"
+    gap: "…"
     info_tag:
       multiple_pages:
       no_count:
@@ -987,9 +987,9 @@ ru:
       one:
       other:
     limit_tag_js:
-    next: Следующая &rsaquo;
+    next: Следующая ›
     p11n:
-    previous: "&lsaquo; Предыдущая"
+    previous: "‹ Предыдущая"
   print_hosts:
     create:
       success:

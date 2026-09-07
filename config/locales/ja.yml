@@ -976,7 +976,7 @@ ja:
       nav:
       next:
       previous:
-    gap: "&hellip;"
+    gap: "…"
     info_tag:
       multiple_pages:
       no_count:
@@ -987,9 +987,9 @@ ja:
       one:
       other:
     limit_tag_js:
-    next: 次 &rsaquo;
+    next: 次 ›
     p11n:
-    previous: "&lsaquo; 前"
+    previous: "‹ 前"
   print_hosts:
     create:
       success:

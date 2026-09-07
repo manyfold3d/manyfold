@@ -965,7 +965,7 @@ lt:
       nav:
       next:
       previous:
-    gap: "&hellip;"
+    gap: "…"
     info_tag:
       multiple_pages:
       no_count:
@@ -976,9 +976,9 @@ lt:
       one:
       other:
     limit_tag_js:
-    next: Next &rsaquo;
+    next: Next ›
     p11n:
-    previous: "&lsaquo; Prev"
+    previous: "‹ Prev"
   print_hosts:
     create:
       success:
