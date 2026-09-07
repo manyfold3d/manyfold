@@ -9,15 +9,7 @@ unless ENV["RACK_ENV"] === "production"
   RuboCop::RakeTask.new
 end
 
-locales = [
-  :cs,
-  :de,
-  :es,
-  :fr,
-  :ja,
-  :nl,
-  :pl
-]
+locales = YAML.load_file(Rails.root.join("config/locales.yml")).values.flatten.map(&:to_sym).without(:en)
 
 namespace :translation do
   namespace :clobber_and_sync do

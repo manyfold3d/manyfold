@@ -711,16 +711,58 @@ ru:
       never:
       revoked:
   errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed:
-      confirmation_period_expired:
-      expired:
-      not_found:
-      not_locked:
+      accepted: нужно подтвердить
+      already_confirmed: уже подтверждён. Пожалуйста, попробуйте войти в систему
+      blank: не может быть пустым
+      confirmation: не совпадает со значением поля %{attribute}
+      confirmation_period_expired: должен быть подтвержден в течение %{period}, пожалуйста, повторите запрос на подтверждение
+      empty: не может быть пустым
+      equal_to: может иметь лишь значение, равное %{count}
+      even: может иметь лишь четное значение
+      exclusion: имеет зарезервированное значение
+      expired: устарела. Пожалуйста, запросите новую
+      greater_than: может иметь значение большее %{count}
+      greater_than_or_equal_to: может иметь значение большее или равное %{count}
+      in:
+      inclusion: имеет непредусмотренное значение
+      invalid: имеет неверное значение
+      less_than: может иметь значение меньшее чем %{count}
+      less_than_or_equal_to: может иметь значение меньшее или равное %{count}
+      model_invalid: 'Возникли ошибки: %{errors}'
+      not_a_number: не является числом
+      not_an_integer: не является целым числом
+      not_found: не найден
+      not_locked: не заблокирован
       not_saved:
-        one:
-        other:
+        one: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
+        other: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
+      odd: может иметь лишь нечетное значение
+      other_than: должно отличаться от %{count}
+      password_too_long:
+      present: нужно оставить пустым
+      required: не может отсутствовать
+      taken: уже существует
+      too_long:
+        one: слишком большой длины (не может быть больше чем %{count} символ)
+        other: слишком большой длины (не может быть больше чем %{count} символа)
+      too_short:
+        one: недостаточной длины (не может быть меньше %{count} символа)
+        other: недостаточной длины (не может быть меньше %{count} символа)
+      url:
       weak_password:
+      wrong_length:
+        one: неверной длины (может быть длиной ровно %{count} символ)
+        other: неверной длины (может быть длиной ровно %{count} символа)
+    template:
+      body: 'Проблемы возникли со следующими полями:'
+      header:
+        one: "%{model}: сохранение не удалось из-за %{count} ошибки"
+        other: "%{model}: сохранение не удалось из-за %{count} ошибки"
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:
@@ -976,7 +1018,7 @@ ru:
       nav:
       next:
       previous:
-    gap: "&hellip;"
+    gap: "…"
     info_tag:
       multiple_pages:
       no_count:
@@ -987,9 +1029,9 @@ ru:
       one:
       other:
     limit_tag_js:
-    next: Следующая &rsaquo;
+    next: Следующая ›
     p11n:
-    previous: "&lsaquo; Предыдущая"
+    previous: "‹ Предыдущая"
   print_hosts:
     create:
       success:

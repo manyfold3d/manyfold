@@ -10,7 +10,6 @@ if Rails.env.development?
       # Other things we don't want to translate or don't know what they are
       "i18n_tasks",
       "number",
-      "errors",
       "flash",
       "helpers.page_entries_info",
       "datetime",

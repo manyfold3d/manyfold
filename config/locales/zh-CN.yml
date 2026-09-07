@@ -711,16 +711,58 @@ zh-CN:
       never: 从不
       revoked:
   errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed:
-      confirmation_period_expired:
-      expired:
-      not_found:
-      not_locked:
+      accepted: 必须是可被接受的
+      already_confirmed: 已经确认，请重新登录。
+      blank: 不能为空字符
+      confirmation: 与 %{attribute} 不匹配
+      confirmation_period_expired: 注册帐号后须在%{period}以内确认。请重新注册。
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      expired: 邮件确认已过期，请重新注册。
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      in:
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      model_invalid: '验证失败: %{errors}'
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      not_found: 找不到
+      not_locked: 未被锁定
       not_saved:
+        one: 发生 1 个错误，导致%{resource}保存失败：
+        other: 发生 %{count} 个错误，导致%{resource}保存失败：
+      odd: 必须为单数
+      other_than: 长度非法（不可为 %{count} 个字符
+      password_too_long:
+      present: 必须是空白
+      required: 必须存在
+      taken: 已经被使用
+      too_long:
         one:
         other:
+      too_short:
+        one:
+        other:
+      url:
       weak_password:
+      wrong_length:
+        one:
+        other:
+    template:
+      body: 如下字段出现错误：
+      header:
+        one:
+        other:
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:
