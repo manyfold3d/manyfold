@@ -27,7 +27,7 @@ de:
         label: Name der Website
       site_tagline:
         help: Ein paar Worte zur Vorstellung deiner Website, die auf der Startseite angezeigt werden.
-        label: Beschreibung
+        label: Slogan
       summary: Passe das aussehen deiner Instanz an.
       support_link:
         help: Ein Link zu einem Ort, an dem deine Besucher die Instanz finanziell unterstützen können (z. B. OpenCollective, Patreon). Wird in der Fußzeile angezeigt.
@@ -150,7 +150,7 @@ de:
       registration: Kontoregistrierung
       registration_open:
         help: Ermöglicht es Besuchern, sich für Konten anzumelden.
-        label: Aktiviere registrierung
+        label: Aktiviere Registrierung
       single_user_mode: Manyfold läuft im Single user modus.
       user_quotas: Größenbeschränkung für den Konto-Upload
       user_quotas_enable_quota: Speicherlimit für Konto-Uploads aktivieren
@@ -207,7 +207,7 @@ de:
         fediverse_address: Fediverse-Adresse
         local: Lokal
         new: Neues Konto
-        title: Konten verwaltung
+        title: Kontenverwaltung
         view: Details
       new:
         title: Konto erstellen
