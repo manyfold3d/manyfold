@@ -711,16 +711,58 @@ pl:
       never: Nigdy
       revoked:
   errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed:
-      confirmation_period_expired:
-      expired:
-      not_found:
-      not_locked:
+      accepted: musi zostać zaakceptowane
+      already_confirmed: już został aktywowany, możesz się zalogować
+      blank: nie może być puste
+      confirmation: musi być taki sam jak w %{attribute}
+      confirmation_period_expired: musi być potwierdzone w ciągu %{period}, zamów nową wiadomość aktywacyjną
+      empty: nie może być puste
+      equal_to: musi być równe %{count}
+      even: musi być parzyste
+      exclusion: jest zarezerwowane
+      expired: stracił ważność, wyślij zapytanie o nowy
+      greater_than: musi być większe od %{count}
+      greater_than_or_equal_to: musi być większe lub równe %{count}
+      in:
+      inclusion: nie znajduje się na liście dopuszczalnych wartości
+      invalid: jest nieprawidłowe
+      less_than: musi być mniejsze od %{count}
+      less_than_or_equal_to: musi być mniejsze lub równe %{count}
+      model_invalid:
+      not_a_number: nie jest liczbą
+      not_an_integer: musi być liczbą całkowitą
+      not_found: nie znaleziono
+      not_locked: nie był zablokowany
       not_saved:
-        one:
-        other:
+        one: "%{resource} nie został zapisany z powodu jednego błędu:"
+        other: "%{resource} nie został zapisany z powodu %{count} błędów:"
+      odd: musi być nieparzyste
+      other_than: musi być inne niż %{count}
+      password_too_long:
+      present: musi być puste
+      required: musi istnieć
+      taken: zostało już zajęte
+      too_long:
+        one: jest za długie (maksymalnie jeden znak)
+        other: jest za długie (maksymalnie %{count} znaków)
+      too_short:
+        one: jest za krótkie (przynajmniej jeden znak)
+        other: jest za krótkie (przynajmniej %{count} znaków)
+      url:
       weak_password:
+      wrong_length:
+        one: ma nieprawidłową długość (powinna wynosić jeden znak)
+        other: ma nieprawidłową długość (powinna wynosić %{count} znaków)
+    template:
+      body: 'Błędy dotyczą następujących pól:'
+      header:
+        one: "%{model} nie został zachowany z powodu jednego błędu"
+        other: "%{model} nie został zachowany z powodu %{count} błędów"
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:

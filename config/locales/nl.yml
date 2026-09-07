@@ -711,16 +711,58 @@ nl:
       never: Nooit
       revoked:
   errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed: was al bevestigd, probeer in te loggen
-      confirmation_period_expired: moet binnen %{period} worden bevestigd, vraag een nieuwe aan
+      accepted: moet worden geaccepteerd
+      already_confirmed: is reeds bevestigd
+      blank: moet opgegeven zijn
+      confirmation: komt niet overeen met %{attribute}
+      confirmation_period_expired: moet binnen %{period} worden bevestigd, plaats a.u.b. een nieuw verzoek
+      empty: moet opgegeven zijn
+      equal_to: moet gelijk zijn aan %{count}
+      even: moet even zijn
+      exclusion: is gereserveerd
       expired: is verlopen, vraag een nieuwe aan
+      greater_than: moet groter zijn dan %{count}
+      greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
+      in:
+      inclusion: is niet in de lijst opgenomen
+      invalid: is ongeldig
+      less_than: moet minder zijn dan %{count}
+      less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
+      model_invalid: 'Validatie mislukt: %{errors}'
+      not_a_number: is geen getal
+      not_an_integer: moet een geheel getal zijn
       not_found: niet gevonden
-      not_locked: was niet vergrendeld
+      not_locked: is niet gesloten
       not_saved:
-        one: '1 fout verhinderde dat deze %{resource} werd opgeslagen:'
-        other: "%{count} fouten verhinderden dat deze %{resource} werd opgeslagen:"
-      weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
+        one: 'Een fout verhinderde het opslaan van deze %{resource}:'
+        other: "%{count} fouten verhinderde het opslaan van deze %{resource}:"
+      odd: moet oneven zijn
+      other_than: moet anders zijn dan %{count}
+      password_too_long:
+      present: moet leeg zijn
+      required: moet bestaan
+      taken: is al in gebruik
+      too_long:
+        one: is te lang (maximaal %{count} teken)
+        other: is te lang (maximaal %{count} tekens)
+      too_short:
+        one: is te kort (minimaal %{count} teken)
+        other: is te kort (minimaal %{count} tekens)
+      url:
+      weak_password:
+      wrong_length:
+        one: heeft onjuiste lengte (moet 1 teken lang zijn)
+        other: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+    template:
+      body: 'Er zijn problemen met de volgende velden:'
+      header:
+        one: "%{model} niet opgeslagen: 1 fout gevonden"
+        other: "%{model} niet opgeslagen: %{count} fouten gevonden"
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:

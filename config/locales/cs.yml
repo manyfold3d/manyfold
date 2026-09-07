@@ -711,16 +711,58 @@ cs:
       never: Nikdy
       revoked:
   errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed:
-      confirmation_period_expired:
-      expired:
-      not_found:
-      not_locked:
+      accepted: musí být potvrzeno
+      already_confirmed: byl již potvrzen, zkuste se přihlásit
+      blank: je povinná položka
+      confirmation: nebylo potvrzeno
+      confirmation_period_expired: Je potřeba potvrdit do %{period},  požádejte o novou
+      empty: nesmí být prázdný/á/é
+      equal_to: musí být rovno %{count}
+      even: musí být sudé číslo
+      exclusion: je vyhrazeno pro jiný účel
+      expired: vypršela, požádejte o nové
+      greater_than: musí být větší než %{count}
+      greater_than_or_equal_to: musí být větší nebo rovno %{count}
+      in:
+      inclusion: není v seznamu povolených hodnot
+      invalid: není platná hodnota
+      less_than: musí být méně než %{count}
+      less_than_or_equal_to: musí být méně nebo rovno %{count}
+      model_invalid:
+      not_a_number: není číslo
+      not_an_integer: musí být celé číslo
+      not_found: nenalezen
+      not_locked: nebyl uzamčen
       not_saved:
+        one: "%{resource} nebyl uložen kvůli chybě:"
+        other: "%{resource} nebyl uložen kvůli %{count} chybám:"
+      odd: musí být liché číslo
+      other_than: musí být rozdílný/á/é od %{count}
+      password_too_long:
+      present: musí být prázdný/á/é
+      required: musí existovat
+      taken: již databáze obsahuje
+      too_long:
         one:
         other:
+      too_short:
+        one:
+        other:
+      url:
       weak_password:
+      wrong_length:
+        one:
+        other:
+    template:
+      body: 'Následující pole obsahují chybně vyplněné údaje: '
+      header:
+        one: Při ukládání objektu %{model} došlo k chybám a nebylo jej možné uložit
+        other: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné jej uložit
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:

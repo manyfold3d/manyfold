@@ -711,16 +711,58 @@ pt:
       never:
       revoked:
   errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed:
-      confirmation_period_expired:
-      expired:
-      not_found:
-      not_locked:
+      accepted: tem de ser aceite
+      already_confirmed: já foi confirmado, por favor tente efetuar a autenticação
+      blank: não pode estar em branco
+      confirmation: não coincide com a confirmação
+      confirmation_period_expired: necessitava de confirmação até %{period}, por favor faça um novo pedido
+      empty: não pode estar vazio
+      equal_to: tem de ser igual a %{count}
+      even: tem de ser par
+      exclusion: é reservado
+      expired: expirou, por favor solicite um novo
+      greater_than: tem de ser maior que %{count}
+      greater_than_or_equal_to: tem de ser maior ou igual a %{count}
+      in:
+      inclusion: não está incluído na lista
+      invalid: é inválido
+      less_than: tem de ser menor que %{count}
+      less_than_or_equal_to: tem de ser menor ou igual a %{count}
+      model_invalid: 'A validação falhou: %{errors}'
+      not_a_number: não é um número
+      not_an_integer: tem de ser um inteiro
+      not_found: não foi encontrado
+      not_locked: não foi bloqueado
       not_saved:
+        one: "%{count} erro impediu %{resource} de ser gravado:"
+        other: "%{count} erros impediram %{resource} de ser gravado:"
+      odd: tem de ser ímpar
+      other_than: tem de ser diferente de %{count}
+      password_too_long:
+      present: não pode estar em branco
+      required: é obrigatório
+      taken: não está disponível
+      too_long:
         one:
         other:
+      too_short:
+        one:
+        other:
+      url:
       weak_password:
+      wrong_length:
+        one:
+        other:
+    template:
+      body: 'Por favor, verifique os seguintes campos:'
+      header:
+        one: 1 erro impediu guardar este %{model}
+        other: "%{count} erros impediram guardar este %{model}"
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:

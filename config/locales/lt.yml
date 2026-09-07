@@ -710,6 +710,59 @@ lt:
       expired:
       never:
       revoked:
+  errors:
+    connection_refused:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: turi būti patvirtintas
+      already_confirmed: jau buvo patvirtintas, pamėginkite prisijungti
+      blank: negali būti tuščias
+      confirmation: neteisingai pakartotas
+      confirmation_period_expired: privalo būti patvirtintas per %{period}.
+      empty: negali būti tuščias
+      equal_to: turi būti lygus %{count}
+      even: turi būti lyginis skaičius
+      exclusion: yra rezervuotas
+      expired: nebegalioja, aktyvuokite naują
+      greater_than: turi būti didesnis už %{count}
+      greater_than_or_equal_to: turi būti didesnis arba lygus %{count}
+      in:
+      inclusion: nenumatyta reikšmė
+      invalid: neteisingas
+      less_than: turi būti mažesnis už %{count}
+      less_than_or_equal_to: turi būti mažesnis arba lygus %{count}
+      model_invalid:
+      not_a_number: ne skaičius
+      not_an_integer: privalo būti sveikas skaičius
+      not_found: nerastas
+      not_locked: nebuvo užblokuota
+      not_saved:
+        one: 'Dėl klaidos nepavyko išsaugoti %{resource}:'
+        other: 'Dėl %{count} klaidos(-ų) nepavyko išsaugoti %{resource}:'
+      odd: turi būti nelyginis skaičius
+      other_than: privalo būti kitoks nei %{count}
+      password_too_long:
+      present: turi būti tuščias
+      required:
+      taken: jau užimtas
+      too_long:
+        one: per ilgas (daugiausiai %{count} simbolis)
+        other: per ilgas (daugiausiai %{count} simbolių)
+      too_short:
+        one: per trumpas (mažiausiai %{count} simbolis)
+        other: per trumpas (mažiausiai %{count} simbolių)
+      url:
+      weak_password:
+      wrong_length:
+        one:
+        other:
+    template:
+      body: 'Šiuose laukuose yra klaidų:'
+      header:
+        one: Išsaugant objektą %{model} rasta %{count} klaida
+        other: Išsaugant objektą %{model} rasta %{count} klaidų
+    unacceptable_request:
+    unavailable_session:
   fasp_client:
     providers:
       edit:
@@ -976,7 +1029,7 @@ lt:
       one:
       other:
     limit_tag_js:
-    next: Next ›
+    next: Next &rsaquo;
     p11n:
     previous: "‹ Prev"
   print_hosts:
