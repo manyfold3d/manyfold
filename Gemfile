@@ -222,7 +222,7 @@ gem "mini_magick"
 
 gem "csv", "~> 3.3"
 
-gem "arel_extensions", "~> 2.4"
+gem "arel_extensions", "~> 2.5"
 
 gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
 
