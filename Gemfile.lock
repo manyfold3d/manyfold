@@ -964,8 +964,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     win32ole (1.9.3)
-    with_model (2.3.1)
-      activerecord (>= 7.2)
+    with_model (2.4.0)
+      activerecord (>= 8.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yaml (0.4.0)
@@ -1120,7 +1120,7 @@ DEPENDENCIES
   warning (~> 1.6)
   web-console (~> 4.3)
   webmock (~> 3.26)
-  with_model (~> 2.3)
+  with_model (~> 2.4)
   yard-activerecord (~> 0.0.17)
   yard-activesupport-concern (~> 0.0.1)
   yard-lint (~> 1.11)
@@ -1489,7 +1489,7 @@ CHECKSUMS
   websocket-driver (0.8.2) sha256=97c556b019bf3410b4961002ac501621e9322d3f8a7bc02161a09301cc4c4146
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
   win32ole (1.9.3) sha256=01f43dc5dc13806e6e58204f538b4a28f3d85968ea89074abc9a3cd118e94d96
-  with_model (2.3.1) sha256=e4e0699f072a8a6a350ec79054db07af8881418c8749aa65ff4c9871d903322f
+  with_model (2.4.0) sha256=2f7d7ae7002bbc663d6e68adfb132e4ef0c21e2009ae78a705d8aaa7dcea90a4
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
   yaml (0.4.0) sha256=240e69d1e6ce3584d6085978719a0faa6218ae426e034d8f9b02fb54d3471942
   yard (0.9.45) sha256=52e211493f7cb8a3ebf7e104a25a1e73937a3103092545d34cb88fafebb3dc51
