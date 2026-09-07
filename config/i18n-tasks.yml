@@ -118,8 +118,8 @@ search:
 #   # deepl_version: "v2"
 
 ## Do not consider these keys missing:
-# ignore_missing:
-# - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
+ignore_missing:
+- 'errors.*'
 # - '{devise,simple_form}.*'
 
 ## Consider these keys used:
