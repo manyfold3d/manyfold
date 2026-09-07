@@ -44,7 +44,7 @@
     "eslint": "^9.0.0",
     "husky": "^9.1.7",
     "neostandard": "^0.13.0",
-    "postcss": "^8.5.26",
+    "postcss": "^8.5.28",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^17.0.0",
     "postcss-preset-env": "^11.5.1",
