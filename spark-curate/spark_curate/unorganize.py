@@ -19,6 +19,8 @@ from .config import DEFAULT_CATEGORIES, SKIP_TOP_LEVEL, CurateConfig
 from .indexable import (
     ARCHIVE_EXTENSIONS,
     COMMON_SUBFOLDERS,
+    IMAGE_EXTENSIONS,
+    MESH_EXTENSIONS,
     PROVENANCE,
     bucket_name_hint,
     creator_name_hint,
@@ -58,6 +60,31 @@ class PathJailRefused(UnorganizeError):
 
 class ControlCharInPathRefused(UnorganizeError):
     """Control character in a filesystem path."""
+
+
+class FrozenRootWriteRefused(UnorganizeError):
+    """A run would write artifacts into a frozen intake tree."""
+
+
+# INIT-018 froze the Mega dump: it may be read and profiled, never written to.
+# Scanning is allowed; landing artifacts inside it requires an explicit --work-dir
+# pointing somewhere else.
+FROZEN_INTAKE_ROOTS: tuple[str, ...] = (
+    "/mnt/backups/3D-Prints-Unorg/intake/Mega",
+)
+
+
+def assert_writable_work_dir(work: Path) -> None:
+    """Refuse to write run artifacts into a frozen intake tree."""
+    resolved = Path(os.path.abspath(str(work)))
+    for frozen in FROZEN_INTAKE_ROOTS:
+        frozen_path = Path(frozen)
+        if resolved == frozen_path or frozen_path in resolved.parents:
+            raise FrozenRootWriteRefused(
+                f"Refusing to write into frozen intake tree {frozen_path} "
+                f"(would write {resolved}). The tree is read-only per INIT-018; "
+                f"pass --work-dir pointing outside it to profile it."
+            )
 
 
 @dataclass
@@ -526,11 +553,13 @@ def _is_archive_only_pack(plan: PackPlan) -> bool:
     via_common = [s for s in plan.signals if s.startswith("indexable_via_common_subfolder:")]
     if via_common:
         return False
-    if not direct and plan.archive_files:
-        return True
-    if direct and all(ext in ARCHIVE_EXTENSIONS for ext in direct):
-        return True
-    return False
+    if not plan.archive_files:
+        return False
+    # A README or licence sitting beside the archives is a companion, not content:
+    # only a loose mesh or image makes the pack mixed.
+    return not any(
+        ext in MESH_EXTENSIONS or ext in IMAGE_EXTENSIONS for ext in direct
+    )
 
 
 def _dedupe_plans(
@@ -568,6 +597,7 @@ def run_unorganize(
         work = Path(cfg.work_dir)
     else:
         work = intake_resolved / ".spark-curate"
+    assert_writable_work_dir(work)
     work.mkdir(parents=True, exist_ok=True)
     plan_path = work / f"unorganize-plan-{run_id}.jsonl"
     summary_path = work / f"unorganize-summary-{run_id}.json"

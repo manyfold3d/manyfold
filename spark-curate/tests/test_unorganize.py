@@ -14,8 +14,11 @@ from spark_curate.indexable import (
     parse_multipart_volume,
 )
 from spark_curate.unorganize import (
+    FROZEN_INTAKE_ROOTS,
+    FrozenRootWriteRefused,
     SymlinkEscapeRefused,
     assert_intake_contained,
+    assert_writable_work_dir,
     run_unorganize,
 )
 
@@ -269,6 +272,54 @@ class TestMultipartParse(unittest.TestCase):
         assert vol is not None
         self.assertEqual(vol.stem_key, "foo")
         self.assertEqual(vol.volume_num, 3)
+
+
+class TestFrozenRootGuard(unittest.TestCase):
+    def test_work_dir_inside_frozen_tree_is_refused(self):
+        frozen = Path(FROZEN_INTAKE_ROOTS[0])
+        with self.assertRaises(FrozenRootWriteRefused) as ctx:
+            assert_writable_work_dir(frozen / ".spark-curate")
+        self.assertIn("read-only", str(ctx.exception))
+
+    def test_frozen_root_itself_is_refused(self):
+        with self.assertRaises(FrozenRootWriteRefused):
+            assert_writable_work_dir(Path(FROZEN_INTAKE_ROOTS[0]))
+
+    def test_sibling_of_frozen_tree_is_allowed(self):
+        sibling = Path(FROZEN_INTAKE_ROOTS[0] + "-profiling") / ".spark-curate"
+        assert_writable_work_dir(sibling)
+
+    def test_unrelated_work_dir_is_allowed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            assert_writable_work_dir(Path(tmp) / ".spark-curate")
+
+
+class TestArchiveOnlyCounter(unittest.TestCase):
+    def _summary(self, tree_builder) -> dict:
+        with tempfile.TemporaryDirectory() as tmp:
+            intake = Path(tmp) / "intake"
+            intake.mkdir()
+            tree_builder(intake)
+            cfg = CurateConfig(library_root=str(intake))
+            result = run_unorganize(cfg, intake_root=intake, run_id="test")
+            return json.loads(result.summary_path.read_text(encoding="utf-8"))
+
+    def test_document_companion_does_not_defeat_archive_only(self):
+        def build(root: Path) -> None:
+            _touch(root / "Anime" / "SomePack" / "pack.zip")
+            _touch(root / "Anime" / "SomePack" / "readme.txt")
+
+        summary = self._summary(build)
+        self.assertEqual(summary["packs_detected"], 1)
+        self.assertEqual(summary["archive_only_packs"], 1)
+
+    def test_loose_mesh_beside_archive_is_not_archive_only(self):
+        def build(root: Path) -> None:
+            _touch(root / "Anime" / "SomePack" / "pack.zip")
+            _touch(root / "Anime" / "SomePack" / "bust.stl")
+
+        summary = self._summary(build)
+        self.assertEqual(summary["archive_only_packs"], 0)
 
 
 if __name__ == "__main__":
