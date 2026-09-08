@@ -19,6 +19,7 @@ from spark_curate.archive_index import (  # noqa: E402
     DEFAULT_MAX_MEMBERS_PER_ARCHIVE,
     build_archive_index,
     run_archive_match,
+    run_cross_root_archive_recall,
     summary_dict as archive_match_summary,
 )
 from spark_curate.candidates import build_merge_candidates  # noqa: E402
@@ -49,12 +50,28 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--mode",
-        choices=("organize", "merge", "match"),
+        choices=("organize", "merge", "match", "archive-recall"),
         default="organize",
         help=(
             "organize=folder rearrange (default); merge=duplicate pack merge plans; "
-            "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004)"
+            "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004); "
+            "archive-recall=cross-root batch↔library recall (INIT-021/SPEC-006)"
         ),
+    )
+    p.add_argument(
+        "--batch-root",
+        default=None,
+        help="Intake batch root for MODE=archive-recall",
+    )
+    p.add_argument(
+        "--slice-top",
+        default=None,
+        help="Optional top-level folder under --batch-root for archive-recall slice",
+    )
+    p.add_argument(
+        "--work-dir",
+        default=None,
+        help="Override .spark-curate work dir (defaults under batch/library root)",
     )
     p.add_argument(
         "--max-archive-members",
@@ -288,6 +305,39 @@ def run_match(args: argparse.Namespace, curate: CurateConfig) -> int:
     return 0
 
 
+def run_archive_recall(args: argparse.Namespace, curate: CurateConfig) -> int:
+    """MODE=archive-recall — batch libarchive listing + library archive_entries recall."""
+    from spark_curate.library_members import load_library_members_index
+    from spark_curate.manyfold_client import ManyfoldClient
+
+    batch_root = args.batch_root or curate.library_root
+    work = Path(curate.work_dir) if curate.work_dir else Path(batch_root) / ".spark-curate"
+    work.mkdir(parents=True, exist_ok=True)
+    run_id = time.strftime("%Y%m%d-%H%M%S")
+    max_members = max(1, int(args.max_archive_members))
+    workers = max(1, int(getattr(args, "workers", None) or 1))
+
+    print(f"Batch:    {batch_root}")
+    print(f"Work dir: {work}")
+    print(f"Mode:     archive-recall (listing only; INIT-021/SPEC-006)")
+    print(f"Workers:  {workers} (NFS archive open cap)")
+    if args.slice_top:
+        print(f"Slice:    {args.slice_top}")
+
+    client = ManyfoldClient(timeout=180.0)
+    library_index = load_library_members_index(client)
+    result = run_cross_root_archive_recall(
+        batch_root=batch_root,
+        work_dir=work,
+        library_index=library_index,
+        max_members_per_archive=max_members,
+        slice_top=args.slice_top,
+        run_id=run_id,
+    )
+    print(json.dumps(json.loads(Path(result.summary_path or "").read_text()), indent=2))
+    return 0
+
+
 def run_merge(args: argparse.Namespace, spark: SparkConfig, curate: CurateConfig) -> int:
     work = curate.resolved_work_dir()
     work.mkdir(parents=True, exist_ok=True)
@@ -395,6 +445,10 @@ def main(argv: list[str] | None = None) -> int:
     spark, curate = load_config(args.config)
     if args.library:
         curate.library_root = args.library
+    if getattr(args, "work_dir", None):
+        curate.work_dir = args.work_dir
+    if args.batch_root:
+        curate.library_root = args.batch_root
     if args.limit:
         curate.limit = args.limit
     if args.categories:
@@ -419,6 +473,8 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.mode == "match":
         return run_match(args, curate)
+    if args.mode == "archive-recall":
+        return run_archive_recall(args, curate)
     if args.mode == "merge":
         return run_merge(args, spark, curate)
     return run_organize(args, spark, curate)

@@ -1,19 +1,21 @@
 # candidates.py — build merge candidate pairs from filesystem heuristics
 # Provenance: INIT-018/SPEC-005 — archive-member signals via inverted postings (ADR D-1, D-4).
+# Cross-root extension: INIT-021/SPEC-006
 from __future__ import annotations
 
 import hashlib
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from .config import CurateConfig
 from .preview import ARCHIVE_EXT, IMAGE_EXT
 from .walk import MODEL_EXT, ModelFolder, iter_model_folders
 
 if TYPE_CHECKING:
-    from .archive_index import ArchiveIndexResult
+    from .archive_index import ArchiveIndexResult, BatchArchiveListing, BatchPackRef
+    from .library_members import LibraryMembersIndex
 
 # Default T for archive mesh overlap — keep aligned with decide_merge.DEFAULT_MESH_OVERLAP_T (ADR D-4).
 DEFAULT_MESH_OVERLAP_T = 3
@@ -153,13 +155,210 @@ def pair_mesh_overlap_counts(
 
 
 def _with_archive_signals(signals: list[str], overlap: int) -> list[str]:
-    """Attach shared_archive_member + archive_member_overlap:N (aud-1)."""
+    """Attach shared_archive_member + archive_member_overlap:N (within-library CRC path)."""
     if overlap < 1:
         return list(signals)
     out = [s for s in signals if not s.startswith("archive_member_overlap:")]
     if "shared_archive_member" not in out:
         out.append("shared_archive_member")
     out.append(f"archive_member_overlap:{overlap}")
+    return out
+
+
+def _with_nocrc_overlap(signals: list[str], overlap: int) -> list[str]:
+    """Cross-root mesh overlap — basename|size only (INIT-021/SPEC-006 ac-4)."""
+    if overlap < 1:
+        return list(signals)
+    out = [
+        s
+        for s in signals
+        if not s.startswith("archive_member_overlap_nocrc:")
+        and not s.startswith("archive_member_overlap:")
+    ]
+    if "shared_archive_member" not in out:
+        out.append("shared_archive_member")
+    out.append(f"archive_member_overlap_nocrc:{overlap}")
+    return out
+
+
+def _origin_tag(origin: str) -> str:
+    return f"origin_pair:{origin}"
+
+
+def _pack_to_folder(pack: "BatchPackRef", batch_root: Path) -> ModelFolder:
+    rel = pack.rel_posix.replace("\\", "/")
+    parts = rel.split("/")
+    if len(parts) >= 2:
+        category, name = parts[0], parts[-1]
+    elif parts:
+        category, name = "intake", parts[0]
+    else:
+        category, name = "intake", pack.pack_root.name
+    return ModelFolder(path=pack.pack_root, category=category, name=name)
+
+
+def _library_path_to_folder(model_path: str, library_root: Path | None = None) -> ModelFolder:
+    norm = model_path.replace("\\", "/")
+    parts = norm.split("/")
+    if len(parts) >= 2:
+        category, name = parts[0], parts[-1]
+    else:
+        category, name = "library", parts[0] if parts else "unknown"
+    path = (library_root / norm) if library_root else Path(norm)
+    return ModelFolder(path=path, category=category, name=name)
+
+
+def _sha512_file(path: Path, max_bytes: int = 512 * 1024 * 1024) -> str | None:
+    try:
+        size = path.stat().st_size
+        if size <= 0 or size > max_bytes:
+            return None
+        h = hashlib.sha512()
+        with path.open("rb") as fh:
+            while True:
+                chunk = fh.read(1024 * 1024)
+                if not chunk:
+                    break
+                h.update(chunk)
+        return h.hexdigest()
+    except OSError:
+        return None
+
+
+def _append_digest_signals(
+    signals: list[str],
+    *,
+    batch_archive: Path | None,
+    library_digest: str | None,
+) -> None:
+    """
+    ac-11: exact_file_digest when library digest exists and matches;
+    digest_unavailable when absent — never treat absence as a miss.
+    """
+    if library_digest:
+        if batch_archive is not None:
+            batch_digest = _sha512_file(batch_archive)
+            if batch_digest and batch_digest == library_digest:
+                signals.append("exact_file_digest")
+            elif batch_digest:
+                signals.append("digest_mismatch")
+        else:
+            signals.append("digest_unavailable")
+    else:
+        signals.append("digest_unavailable")
+
+
+def build_cross_root_candidates(
+    *,
+    batch_listings: list[BatchArchiveListing],
+    library_index: LibraryMembersIndex,
+    batch_root: Path,
+    min_mesh_overlap: int = 1,
+    library_root: Path | None = None,
+) -> list[MergeCandidate]:
+    """
+    Emit recall candidates: within-batch (intake_intake) and cross-root (intake_library).
+
+    Uses mesh basename|size signatures; cross-root signal is archive_member_overlap_nocrc:N.
+    """
+    from .archive_index import (
+        BatchArchiveListing,
+        batch_mesh_sigs,
+        member_signature_nocrc,
+    )
+
+    # pack rel -> mesh sigs (nocrc)
+    pack_sigs: dict[str, set[str]] = {}
+    pack_by_rel: dict[str, BatchPackRef] = {}
+    pack_archive: dict[str, Path] = {}
+    for bl in batch_listings:
+        if bl.skip_reason or bl.pack.incomplete_multipart:
+            continue
+        rel = bl.pack.rel_posix
+        pack_by_rel[rel] = bl.pack
+        if bl.pack.archive_paths:
+            pack_archive[rel] = Path(bl.pack.archive_paths[0])
+        sigs = set(batch_mesh_sigs(bl))
+        if sigs:
+            pack_sigs[rel] = sigs
+
+    # Within-batch inverted index (CRC-capable path uses full sig from members for intake_intake)
+    batch_inverted: dict[str, list[str]] = {}
+    for bl in batch_listings:
+        if bl.skip_reason or bl.pack.incomplete_multipart:
+            continue
+        rel = bl.pack.rel_posix
+        for m in bl.members:
+            if not m.is_mesh:
+                continue
+            nocrc = member_signature_nocrc(m.basename, m.uncompressed_size)
+            batch_inverted.setdefault(nocrc, []).append(rel)
+
+    seen: set[tuple[str, str]] = set()
+    out: list[MergeCandidate] = []
+
+    pack_crc_sigs: dict[str, set[str]] = {}
+    for bl in batch_listings:
+        if bl.skip_reason or bl.pack.incomplete_multipart:
+            continue
+        rel = bl.pack.rel_posix
+        pack_crc_sigs[rel] = {m.sig for m in bl.members if m.is_mesh}
+
+    # Within-batch pairs — CRC sigs when both sides are batch (ac-12)
+    batch_rels = sorted(pack_sigs.keys())
+    for i in range(len(batch_rels)):
+        for j in range(i + 1, len(batch_rels)):
+            ra, rb = batch_rels[i], batch_rels[j]
+            pa = pack_by_rel[ra]
+            pb = pack_by_rel[rb]
+            fa = _pack_to_folder(pa, batch_root)
+            fb = _pack_to_folder(pb, batch_root)
+            key = tuple(sorted((fa.rel_posix.lower(), fb.rel_posix.lower())))
+            if key in seen:
+                continue
+            crc_overlap = len(pack_crc_sigs.get(ra, set()) & pack_crc_sigs.get(rb, set()))
+            nocrc_overlap = len(pack_sigs.get(ra, set()) & pack_sigs.get(rb, set()))
+            overlap = crc_overlap if crc_overlap else nocrc_overlap
+            if overlap < min_mesh_overlap:
+                continue
+            signals = [_origin_tag("intake_intake")]
+            if crc_overlap:
+                signals = _with_archive_signals(signals, crc_overlap)
+            else:
+                signals = _with_nocrc_overlap(signals, nocrc_overlap)
+            cand = MergeCandidate(a=fa, b=fb, signals=signals)
+            seen.add(cand.pair_key)
+            out.append(cand)
+
+    # Cross-root: batch pack vs library model
+    for pack_rel, sigs in sorted(pack_sigs.items()):
+        pack = pack_by_rel[pack_rel]
+        lib_hits: dict[str, int] = {}
+        lib_digest: dict[str, str | None] = {}
+        for sig in sigs:
+            for post in library_index.models_for_sig(sig):
+                lib_hits[post.model_path] = lib_hits.get(post.model_path, 0) + 1
+                lib_digest.setdefault(post.model_path, post.digest)
+        for model_path, overlap in sorted(lib_hits.items(), key=lambda kv: (-kv[1], kv[0].lower())):
+            if overlap < min_mesh_overlap:
+                continue
+            fb = _library_path_to_folder(model_path, library_root)
+            fa = _pack_to_folder(pack, batch_root)
+            key = tuple(sorted((fa.rel_posix.lower(), fb.rel_posix.lower())))
+            if key in seen:
+                continue
+            signals = [_origin_tag("intake_library")]
+            signals = _with_nocrc_overlap(signals, overlap)
+            _append_digest_signals(
+                signals,
+                batch_archive=pack_archive.get(pack_rel),
+                library_digest=lib_digest.get(model_path),
+            )
+            cand = MergeCandidate(a=fa, b=fb, signals=signals)
+            seen.add(cand.pair_key)
+            out.append(cand)
+
+    out.sort(key=lambda c: (c.a.rel_posix.lower(), c.b.rel_posix.lower()))
     return out
 
 
