@@ -375,6 +375,55 @@ class TransientRetryTests(unittest.TestCase):
         self.assertEqual(calls["n"], 1)
 
 
+class UnsafePathHaltTests(unittest.TestCase):
+    """Path-safety refusal must halt via run_promote with a typed receipt.
+
+    The Sep 4 defect class is "handler references a name it did not bind":
+    a traversal refusal used to raise UnboundLocalError, skip _halt, and
+    leave receipt.failed empty. Drive the unsafe path through run_promote
+    (not _promote_one) so the loop, halt, and receipt write are asserted.
+    """
+
+    def test_run_promote_unsafe_path_halts_with_typed_receipt(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            intake = tmp / "intake"
+            lib = tmp / "library"
+            lib.mkdir()
+            intake.mkdir()
+            work = intake / ".spark-curate"
+            work.mkdir()
+            rel = "AnySTL/../escape"
+            batch = _batch(work, "batch-unsafe.txt", [rel])
+            cfg = CurateConfig(library_root=str(lib), work_dir=str(work))
+            fake: Any = _FakeManyfold()
+            with self.assertRaises(PromoteHalted) as ctx:
+                run_promote(
+                    cfg,
+                    [batch],
+                    intake_root=intake,
+                    do_apply=False,
+                    client=fake,
+                    run_id="unsafe-path",
+                )
+            receipt = ctx.exception.receipt
+            self.assertIsNotNone(receipt.halted_at)
+            self.assertEqual(receipt.halted_at.batch_file, "batch-unsafe.txt")
+            self.assertEqual(receipt.halted_at.reason, "TraversalSegmentError")
+            self.assertEqual(
+                receipt.failed,
+                [{"path": rel, "reason": "TraversalSegmentError"}],
+            )
+            self.assertEqual(receipt.batches_attempted, [str(batch)])
+            self.assertEqual(fake.scans, [])
+            dest = work / "promote-receipt-unsafe-path.json"
+            self.assertTrue(dest.is_file())
+            data = json.loads(dest.read_text(encoding="utf-8"))
+            self.assertEqual(data["failed"], [{"path": rel, "reason": "TraversalSegmentError"}])
+            self.assertEqual(data["halted_at"]["reason"], "TraversalSegmentError")
+            self.assertEqual(data["halted_at"]["batch_file"], "batch-unsafe.txt")
+
+
 class NoSecondAdHocPathTests(unittest.TestCase):
     def test_promote_module_is_the_entry_point(self) -> None:
         src = inspect.getsource(main)

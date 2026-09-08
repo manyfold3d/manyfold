@@ -235,7 +235,7 @@ def _promote_one(
     """Validate and optionally move one pack. Returns rel if it should be scanned."""
     try:
         category, name = check_rel_path(rel)
-    except PathUnsafeError:
+    except PathUnsafeError as e:
         _record_fail(receipt, rel, type(e).__name__)
         raise
 

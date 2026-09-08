@@ -174,6 +174,43 @@ class VerifyDbIsSystemOfRecordTests(unittest.TestCase):
         self.assertNotIn("datapackage.json", src)
         self.assertIn("verify_tagged", src)
 
+    def test_verify_tagged_trusts_db_not_ondisk_datapackage(self) -> None:
+        """Behavioral: on-disk datapackage.json does not make verify_tagged pass."""
+        from spark_curate.manyfold_client import VERIFY_RUNNER, ManyfoldClient
+
+        self.assertNotIn("datapackage", VERIFY_RUNNER)
+        with tempfile.TemporaryDirectory() as td:
+            pack = Path(td) / "AnySTL" / "King's Throne"
+            pack.mkdir(parents=True)
+            dp = pack / "datapackage.json"
+            dp.write_text(
+                json.dumps({"name": "King's Throne", "keywords": ["should-not-count"]}),
+                encoding="utf-8",
+            )
+
+            def run_fn(argv: list[str], **kwargs: Any) -> subprocess.CompletedProcess[bytes]:
+                payload = json.dumps(
+                    {
+                        "results": [
+                            {
+                                "path": "AnySTL/King's Throne",
+                                "status": "untagged",
+                                "model_id": 1,
+                                "tag_count": 0,
+                            }
+                        ]
+                    }
+                ).encode("utf-8")
+                return subprocess.CompletedProcess(argv, 0, stdout=payload + b"\n", stderr=b"")
+
+            client = ManyfoldClient(run_fn=run_fn, sleep_fn=lambda _s: None)
+            rows = client.verify_tagged(["AnySTL/King's Throne"])
+            self.assertEqual(len(rows), 1)
+            self.assertEqual(rows[0].status, "untagged")
+            self.assertEqual(rows[0].tag_count, 0)
+            self.assertFalse(rows[0].ok)
+            self.assertTrue(dp.is_file())
+
 
 class ReceiptTests(unittest.TestCase):
     """ac-8: per-run receipt under the batch .spark-curate/."""
@@ -303,6 +340,33 @@ class ReceiptTests(unittest.TestCase):
             self.assertEqual(receipt.promoted, [rel])
             self.assertEqual(receipt.verified_in_db, [rel])
             self.assertTrue((lib / "AnySTL" / "King's Throne").is_dir())
+
+    def test_copy_same_inode_treats_as_already_landed(self) -> None:
+        """--copy when dest is src (same inode) must verify, not copytree onto self."""
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            root = tmp / "shared"
+            rel = "AnySTL/King's Throne"
+            _write_pack(root, rel)
+            work = tmp / "work"
+            work.mkdir()
+            batch = _batch(work, "batch-same-inode.txt", [rel])
+            cfg = CurateConfig(library_root=str(root), work_dir=str(work))
+            fake: Any = _FakeManyfold()
+            receipt = run_promote(
+                cfg,
+                [batch],
+                intake_root=root,
+                do_apply=True,
+                copy=True,
+                client=fake,
+                run_id="same-inode",
+            )
+            self.assertIsNone(receipt.halted_at)
+            self.assertEqual(receipt.promoted, [rel])
+            self.assertEqual(receipt.failed, [])
+            self.assertTrue((root / "AnySTL" / "King's Throne" / "model.stl").is_file())
+            self.assertFalse((root / "AnySTL" / "King's Throne (2)").exists())
 
 
 class LiveTreeUntouchedTests(unittest.TestCase):
