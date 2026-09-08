@@ -54,6 +54,20 @@ class ListedMember:
     is_image: bool
     is_junk: bool
 
+    @property
+    def sig_nocrc(self) -> str:
+        from .archive_index import member_signature_nocrc
+
+        return member_signature_nocrc(self.basename, self.size)
+
+    @property
+    def sig_crc(self) -> str | None:
+        if self.crc32 is None:
+            return None
+        from .archive_index import member_signature
+
+        return member_signature(self.basename, self.size, self.crc32)
+
 @dataclass
 class ArchiveListing:
     archive_path: str
