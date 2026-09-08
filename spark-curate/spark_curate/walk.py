@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .config import SKIP_TOP_LEVEL, CurateConfig
+from .indexable import should_skip_dir_name as _should_skip_dir_name
 from .preview import ARCHIVE_EXT, IMAGE_EXT
 
 
@@ -25,6 +26,11 @@ MODEL_EXT = {
     ".sl1s",
     ".3dm",
 } | ARCHIVE_EXT
+
+
+def should_skip_walk_dir(name: str) -> bool:
+    """Shared skip semantics for organize and unorganize walks (SPEC-004 / ac-9)."""
+    return name in SKIP_TOP_LEVEL or _should_skip_dir_name(name)
 
 
 @dataclass
@@ -85,6 +91,8 @@ def iter_model_folders(cfg: CurateConfig) -> list[ModelFolder]:
         if not cat_dir.is_dir():
             continue
         if cat_dir.name in SKIP_TOP_LEVEL or cat_dir.name.startswith("."):
+            continue
+        if _should_skip_dir_name(cat_dir.name):
             continue
         if only is not None and cat_dir.name.lower() not in only:
             continue

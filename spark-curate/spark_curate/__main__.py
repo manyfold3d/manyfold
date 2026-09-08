@@ -25,6 +25,7 @@ from spark_curate.candidates import build_merge_candidates  # noqa: E402
 from spark_curate.config import CurateConfig, SparkConfig, load_config, save_example_config  # noqa: E402
 from spark_curate.decide import decide_one  # noqa: E402
 from spark_curate.decide_merge import decide_merge_pair_safe  # noqa: E402
+from spark_curate.unorganize import run_unorganize_cli  # noqa: E402
 from spark_curate.walk import iter_model_folders  # noqa: E402
 
 
@@ -49,12 +50,25 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--mode",
-        choices=("organize", "merge", "match"),
+        choices=("organize", "merge", "match", "unorganize"),
         default="organize",
         help=(
             "organize=folder rearrange (default); merge=duplicate pack merge plans; "
-            "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004)"
+            "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004); "
+            "unorganize=intake bucket dismantle + pack-root plan (INIT-021/SPEC-004)"
         ),
+    )
+    p.add_argument(
+        "--intake",
+        default=None,
+        help="Intake/Unorg root for MODE=unorganize (defaults to --library)",
+    )
+    p.add_argument(
+        "--unorganize-slice",
+        action="append",
+        dest="unorganize_slice",
+        default=[],
+        help="Limit unorganize pass to these top-level folder names (repeatable)",
     )
     p.add_argument(
         "--max-archive-members",
@@ -421,6 +435,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_match(args, curate)
     if args.mode == "merge":
         return run_merge(args, spark, curate)
+    if args.mode == "unorganize":
+        return run_unorganize_cli(args, curate)
     return run_organize(args, spark, curate)
 
 
