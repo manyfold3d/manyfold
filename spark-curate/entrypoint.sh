@@ -87,6 +87,19 @@ if [[ ${#ARGS[@]} -eq 0 ]] || [[ "${ARGS[*]}" == "--library /library" ]]; then
   if [[ -n "${MAX_MERGE_PAIRS:-}" ]]; then
     ARGS+=(--max-merge-pairs "${MAX_MERGE_PAIRS}")
   fi
+  if [[ -n "${PATHS_FILE:-}" ]]; then
+    IFS=',' read -ra PFS <<< "${PATHS_FILE}"
+    for pf in "${PFS[@]}"; do
+      pf="$(echo "$pf" | xargs)"
+      [[ -n "$pf" ]] && ARGS+=(--paths-file "$pf")
+    done
+  fi
+  if [[ -n "${INTAKE:-}" ]]; then
+    ARGS+=(--intake "${INTAKE}")
+  fi
+  if [[ "${PROMOTE_COPY:-0}" == "1" || "${PROMOTE_COPY:-}" == "true" ]]; then
+    ARGS+=(--copy)
+  fi
 else
   has_config=0
   for a in "${ARGS[@]}"; do
