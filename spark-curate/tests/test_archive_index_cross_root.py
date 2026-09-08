@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import inspect
 import json
 import os
 import sys
@@ -94,6 +95,21 @@ class LibarchiveFormatTests(unittest.TestCase):
         self.assertIsNone(r_list.skip_reason, r_list.skip_detail)
         mesh = [m for m in r_list.members if m.basename.endswith(".stl")]
         self.assertGreater(len(mesh), 0)
+
+    def test_all_format_readers_enabled_for_rar5(self) -> None:
+        """ac-2: the batch is 87% RAR v5, which libarchive reads through a
+        different backend than the v2.0 fixture above. Narrowing the reader set
+        to a named list would keep that fixture green while going blind to most
+        of the real content, so pin the all-formats call itself."""
+        from spark_curate import libarchive_list
+
+        src = inspect.getsource(libarchive_list)
+        self.assertIn(
+            "archive_read_support_format_all",
+            src,
+            "rar5/7z coverage depends on the all-formats reader; a narrowed "
+            "reader set passes the v2.0 fixture and fails 87% of the batch",
+        )
 
     def test_zipfile_blind_to_rar(self) -> None:
         """Prove zip-only reader cannot open rar (libarchive can)."""
