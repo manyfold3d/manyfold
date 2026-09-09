@@ -24,8 +24,9 @@ LIBRARY="${LIBRARY:-/mnt/backups/3D-Prints}"
 DRY_RUN=1
 COPY=0
 WORK_DIR=""
-FLOOR_BYTES=$((2 * 1024 * 1024 * 1024 * 1024))  # 2 TiB, same as space-check
-MIN_INODES=10000
+# Overridable for fixture tests (INIT-021/SPEC-011). Production default 2 TiB.
+FLOOR_BYTES="${FLOOR_BYTES:-$((2 * 1024 * 1024 * 1024 * 1024))}"
+MIN_INODES="${MIN_INODES:-10000}"
 
 usage() {
   cat <<'EOF'
@@ -39,7 +40,7 @@ Move (or --copy) verdict=new packs for one slice. Default is --dry-run.
   --library DIR       Live library root (move destination after unfreeze)
   --work-dir DIR      Where reverse manifest + markers land (default: batch .spark-curate)
   --dry-run           Print planned moves; write reverse manifest draft (default)
-  --apply             Perform mv or cp. Requires unfreeze record. Not for Mega.
+  --apply             Perform mv or cp. Requires unfreeze-approved-<slice> (D-7). Not for Mega.
   --copy              Safer first slice: copy, retain Unorg (documented default for slice 1)
   -h, --help
 
@@ -117,6 +118,24 @@ trap 'rm -f "$PLAN_JSONL"' EXIT
 python3 - "$ADMISSIONS" "$SLICE" "$INTAKE" "$LIBRARY" "$PLAN_JSONL" <<'PY'
 import json, sys
 from pathlib import Path
+
+def _under(path: Path, jail: Path) -> bool:
+    """Containment — not startswith (avoids 3D-Prints vs 3D-Prints-Unorg)."""
+    try:
+        pr = path.resolve()
+        jr = jail.resolve()
+    except OSError:
+        return False
+    return pr == jr or pr.is_relative_to(jr)
+
+def _two_seg(rel: str) -> bool:
+    if not rel or any(ord(c) < 32 or ord(c) == 127 for c in rel):
+        return False
+    parts = rel.replace("\\", "/").split("/")
+    if len(parts) != 2:
+        return False
+    return all(p and p not in {".", ".."} for p in parts)
+
 adm, slice_name, intake, library, out_path = sys.argv[1:6]
 intake_p = Path(intake).resolve()
 library_p = Path(library).resolve()
@@ -135,8 +154,8 @@ with open(adm, encoding="utf-8") as fh, open(out_path, "w", encoding="utf-8") as
         if not (rel == slice_n or rel.startswith(slice_n + "/") or f"/{slice_n}/" in f"/{rel}/"):
             continue
         src = Path(rec.get("source_path") or (intake_p / rel))
-        if not dest_rel or dest_rel.count("/") != 1:
-            print(f"ERROR: intake_jail or dest not Category/Pack: {dest_rel}", file=sys.stderr)
+        if not _two_seg(dest_rel):
+            print(f"ERROR: dest not jailed Category/Pack: {dest_rel!r}", file=sys.stderr)
             sys.exit(2)
         dest = library_p / dest_rel
         try:
@@ -146,12 +165,10 @@ with open(adm, encoding="utf-8") as fh, open(out_path, "w", encoding="utf-8") as
         if "intake/Mega" in str(src_r).replace("\\", "/"):
             print("ERROR: mega_frozen: source under intake/Mega", file=sys.stderr)
             sys.exit(2)
-        if not str(src_r).startswith(str(intake_p)):
-            # source_path may already be absolute under the batch
-            if "/3D-Prints-Unorg/" not in str(src_r):
-                print(f"ERROR: intake_jail: {src_r}", file=sys.stderr)
-                sys.exit(2)
-        if not str(dest.resolve()).startswith(str(library_p)):
+        if not _under(src_r, intake_p):
+            print(f"ERROR: intake_jail: {src_r}", file=sys.stderr)
+            sys.exit(2)
+        if not _under(dest, library_p):
             print(f"ERROR: library_jail: {dest}", file=sys.stderr)
             sys.exit(2)
         out.write(json.dumps({"src": str(src_r), "dest": str(dest), "rel": rel, "dest_rel": dest_rel}) + "\n")
@@ -172,6 +189,12 @@ REVERSE="${WORK_DIR}/move-manifests/reverse-${SLICE_KEY}-${RUN_ID}.tsv"
   done < "$PLAN_JSONL"
 } >"$REVERSE"
 log "reverse manifest written (before any mv): $REVERSE"
+
+# D-7 box 8 / INIT-021/SPEC-011 — --apply refuses without a written unfreeze record.
+UNFREEZE_RECORD="${UNFREEZE_RECORD:-${WORK_DIR}/unfreeze-approved-${SLICE_KEY}}"
+if [[ "$DRY_RUN" -eq 0 ]]; then
+  [[ -s "$UNFREEZE_RECORD" ]] || die "unfreeze_missing: write $UNFREEZE_RECORD (D-7 box 8) before --apply"
+fi
 
 MARKER_DIR="${WORK_DIR}/move-complete/${SLICE_KEY}"
 moved=0
