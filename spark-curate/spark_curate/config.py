@@ -51,6 +51,10 @@ class SparkConfig:
     max_tokens_vision: int = 1200
     max_tokens_curator: int = 800
     temperature: float = 0.15
+    # Curator retry/backoff and concurrency ceiling (<= the curator's max_num_seqs)
+    curator_max_retries: int = 2
+    curator_retry_backoff: float = 1.5
+    curator_max_concurrency: int = 8
 
 
 @dataclass
@@ -85,6 +89,10 @@ class CurateConfig:
     max_merge_pairs: int = 200
     # Graduated HITL apply policy (INIT-018/SPEC-006). Default hitl_all — never silent hitl_off.
     merge_hitl: str = "hitl_all"
+    # Curator classification (INIT-021/SPEC-005): below this, a pack is needs_review
+    min_curator_confidence: float = 0.70
+    # Operator-added categories beyond the live library's top-level folders (aud-2)
+    category_extensions: list[str] = field(default_factory=list)
 
     def resolved_work_dir(self) -> Path:
         if self.work_dir:

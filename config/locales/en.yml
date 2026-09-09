@@ -453,6 +453,9 @@ en:
       check_results:
         confirm: Are you sure you want to start a rescan of all filtered models? This may take a long time!
         label: Rescan filtered models
+      dedup:
+        confirm: This finds duplicate models and queues reviewable merge plans. Nothing is merged automatically.
+        label: Dedup
       developer: Developers
       favorites: Favorites
       home: Homepage
@@ -1539,6 +1542,7 @@ en:
   scans:
     create:
       success: Scan started.
+      dedup_success: Dedup started. Duplicate plans will be queued for review; nothing is merged automatically.
   security:
     running_as_root_html: The application is running as root, which is a security risk. Run as a different system user by setting the <code>PUID</code> and <code>PGID</code> environment variables.
   sites:

@@ -15,16 +15,22 @@ if str(_PKG_ROOT) not in sys.path:
 
 from spark_curate.apply_merges import write_merge_plans  # noqa: E402
 from spark_curate.apply_moves import apply_decision  # noqa: E402
+from spark_curate.promote import run_promote_cli  # noqa: E402
 from spark_curate.archive_index import (  # noqa: E402
     DEFAULT_MAX_MEMBERS_PER_ARCHIVE,
     build_archive_index,
     run_archive_match,
+    run_cross_root_archive_recall,
     summary_dict as archive_match_summary,
 )
-from spark_curate.candidates import build_merge_candidates  # noqa: E402
+from spark_curate.candidates import MergeCandidate, build_merge_candidates  # noqa: E402
+from spark_curate.composition_map import map_signals_for_judge  # noqa: E402
+from spark_curate.admission import run_admit_cli  # noqa: E402
+from spark_curate.classify import run_classify_cli  # noqa: E402
 from spark_curate.config import CurateConfig, SparkConfig, load_config, save_example_config  # noqa: E402
 from spark_curate.decide import decide_one  # noqa: E402
 from spark_curate.decide_merge import decide_merge_pair_safe  # noqa: E402
+from spark_curate.unorganize import run_unorganize_cli  # noqa: E402
 from spark_curate.walk import iter_model_folders  # noqa: E402
 
 
@@ -49,12 +55,130 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--mode",
-        choices=("organize", "merge", "match"),
+        choices=(
+            "organize",
+            "merge",
+            "match",
+            "unorganize",
+            "classify",
+            "archive-recall",
+            "admit",
+            "promote",
+            "mesh-fingerprint",
+        ),
         default="organize",
         help=(
             "organize=folder rearrange (default); merge=duplicate pack merge plans; "
-            "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004)"
+            "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004); "
+            "unorganize=intake bucket dismantle + pack-root plan (INIT-021/SPEC-004); "
+            "classify=curator category/creator/name pass over an unorganize plan "
+            "(INIT-021/SPEC-005); "
+            "archive-recall=cross-root batch↔library recall (INIT-021/SPEC-006); "
+            "admit=new|hold verdicts into admissions JSONL (INIT-021/SPEC-008); "
+            "promote=Unorg→library path-list promote (INIT-021/SPEC-013); "
+            "mesh-fingerprint=gated residual stream SHA-256 + trimesh identifier "
+            "(INIT-022/SPEC-003; not a full-library extract)"
         ),
+    )
+    p.add_argument(
+        "--plan",
+        default=None,
+        help="classify-plan-*.jsonl for --mode admit, or unorganize-plan for --mode classify",
+    )
+    p.add_argument(
+        "--paths-file",
+        action="append",
+        dest="paths_files",
+        default=[],
+        help="Promote batch path-list (repeatable). MODE=promote.",
+    )
+    p.add_argument(
+        "--copy",
+        action="store_true",
+        help="Promote by copy instead of move (retain Unorg). MODE=promote.",
+    )
+    p.add_argument(
+        "--allow-live",
+        action="store_true",
+        help="Permit writes touching the live library / intake Mega (SPEC-010 gate only)",
+    )
+    p.add_argument(
+        "--kubectl-retries",
+        type=int,
+        default=5,
+        help="Bounded kubectl exec attempts (default 5, single-digit)",
+    )
+    p.add_argument(
+        "--kubectl-backoff",
+        type=float,
+        default=1.0,
+        help="kubectl transient backoff base seconds (default 1.0)",
+    )
+    p.add_argument(
+        "--batch-root",
+        default=None,
+        help="Intake batch root for MODE=archive-recall / MODE=admit",
+    )
+    p.add_argument(
+        "--slice-top",
+        default=None,
+        help="Optional top-level folder under --batch-root for archive-recall slice",
+    )
+    p.add_argument(
+        "--candidates",
+        default=None,
+        help="Precomputed cross-root-candidates-*.jsonl for --mode admit (hermetic)",
+    )
+    p.add_argument(
+        "--residual-list",
+        default=None,
+        help=(
+            "Path list of residual new packs (and optional archives/loose meshes) "
+            "for MODE=mesh-fingerprint. Required — refuses a full-library scan."
+        ),
+    )
+    p.add_argument(
+        "--library-candidates",
+        default=None,
+        help=(
+            "Optional extra path list of already-surfaced library candidate folders "
+            "for MODE=mesh-fingerprint (INIT-022/SPEC-003)."
+        ),
+    )
+    p.add_argument(
+        "--work-dir",
+        default=None,
+        help=(
+            "Where run artifacts are written (default: alongside the input plan). "
+            "Required when the input tree is frozen read-only."
+        ),
+    )
+    p.add_argument(
+        "--vocabulary-root",
+        default=None,
+        help=(
+            "Live library root whose top-level folders are the category "
+            "vocabulary for --mode classify (default: --library)"
+        ),
+    )
+    p.add_argument(
+        "--category-extension",
+        action="append",
+        dest="category_extensions",
+        default=[],
+        help="Operator-added category beyond the live library's folders (repeatable)",
+    )
+    p.add_argument(
+        "--intake",
+        default=None,
+        help="Intake/Unorg root for MODE=unorganize (defaults to --library)",
+    )
+    p.add_argument(
+        "--unorganize-slice",
+        action="append",
+        dest="unorganize_slice",
+        default=[],
+        help="Limit unorganize pass to these top-level folder names (repeatable)",
     )
     p.add_argument(
         "--max-archive-members",
@@ -328,11 +452,16 @@ def run_merge(args: argparse.Namespace, spark: SparkConfig, curate: CurateConfig
         print("Nothing to do.")
         return 0
 
+    # INIT-022/SPEC-005: map identity + composition at the merge-plan boundary.
+    mapped_candidates = [
+        MergeCandidate(a=c.a, b=c.b, signals=map_signals_for_judge(c.signals))
+        for c in candidates
+    ]
     decisions = []
     with ThreadPoolExecutor(max_workers=curate.workers) as ex:
         futs = {
             ex.submit(decide_merge_pair_safe, c, spark, curate, thumb_cache): c
-            for c in candidates
+            for c in mapped_candidates
         }
         done = 0
         for fut in as_completed(futs):
@@ -383,6 +512,39 @@ def run_merge(args: argparse.Namespace, spark: SparkConfig, curate: CurateConfig
     return 0 if result.get("errors", 0) == 0 else 2
 
 
+def run_archive_recall(args: argparse.Namespace, curate: CurateConfig) -> int:
+    """MODE=archive-recall — batch libarchive listing + library archive_entries recall."""
+    from spark_curate.library_members import load_library_members_index
+    from spark_curate.manyfold_client import ManyfoldClient
+
+    batch_root = args.batch_root or curate.library_root
+    work = Path(curate.work_dir) if curate.work_dir else Path(batch_root) / ".spark-curate"
+    work.mkdir(parents=True, exist_ok=True)
+    run_id = time.strftime("%Y%m%d-%H%M%S")
+    max_members = max(1, int(args.max_archive_members))
+    workers = max(1, int(getattr(args, "workers", None) or 1))
+
+    print(f"Batch:    {batch_root}")
+    print(f"Work dir: {work}")
+    print(f"Mode:     archive-recall (listing only; INIT-021/SPEC-006)")
+    print(f"Workers:  {workers} (NFS archive open cap)")
+    if args.slice_top:
+        print(f"Slice:    {args.slice_top}")
+
+    client = ManyfoldClient(timeout=180.0)
+    library_index = load_library_members_index(client)
+    result = run_cross_root_archive_recall(
+        batch_root=batch_root,
+        work_dir=work,
+        library_index=library_index,
+        max_members_per_archive=max_members,
+        slice_top=args.slice_top,
+        run_id=run_id,
+    )
+    print(json.dumps(json.loads(Path(result.summary_path or "").read_text()), indent=2))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
 
@@ -395,6 +557,10 @@ def main(argv: list[str] | None = None) -> int:
     spark, curate = load_config(args.config)
     if args.library:
         curate.library_root = args.library
+    if args.work_dir:
+        curate.work_dir = args.work_dir
+    if getattr(args, "batch_root", None):
+        curate.library_root = args.batch_root
     if args.limit:
         curate.limit = args.limit
     if args.categories:
@@ -419,8 +585,33 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.mode == "match":
         return run_match(args, curate)
+    if args.mode == "archive-recall":
+        return run_archive_recall(args, curate)
     if args.mode == "merge":
         return run_merge(args, spark, curate)
+    if args.mode == "unorganize":
+        return run_unorganize_cli(args, curate)
+    if args.mode == "classify":
+        return run_classify_cli(args, spark, curate)
+    if args.mode == "admit":
+        return run_admit_cli(args, spark, curate)
+    if args.mode == "promote":
+        return run_promote_cli(args, curate)
+    if args.mode == "mesh-fingerprint":
+        from spark_curate.mesh_fingerprint import (
+            MegaFenceRefused,
+            ResidualListRequired,
+            run_mesh_fingerprint_cli,
+        )
+
+        try:
+            return run_mesh_fingerprint_cli(args, curate)
+        except ResidualListRequired as exc:
+            print(f"mesh-fingerprint refused: {exc}", file=sys.stderr)
+            return 2
+        except MegaFenceRefused as exc:
+            print(f"mesh-fingerprint refused: {exc}", file=sys.stderr)
+            return 2
     return run_organize(args, spark, curate)
 
 

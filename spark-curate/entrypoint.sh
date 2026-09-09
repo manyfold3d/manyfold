@@ -87,6 +87,45 @@ if [[ ${#ARGS[@]} -eq 0 ]] || [[ "${ARGS[*]}" == "--library /library" ]]; then
   if [[ -n "${MAX_MERGE_PAIRS:-}" ]]; then
     ARGS+=(--max-merge-pairs "${MAX_MERGE_PAIRS}")
   fi
+  if [[ -n "${PATHS_FILE:-}" ]]; then
+    IFS=',' read -ra PFS <<< "${PATHS_FILE}"
+    for pf in "${PFS[@]}"; do
+      pf="$(echo "$pf" | xargs)"
+      [[ -n "$pf" ]] && ARGS+=(--paths-file "$pf")
+    done
+  fi
+  if [[ -n "${INTAKE:-}" ]]; then
+    ARGS+=(--intake "${INTAKE}")
+  fi
+  if [[ "${PROMOTE_COPY:-0}" == "1" || "${PROMOTE_COPY:-}" == "true" ]]; then
+    ARGS+=(--copy)
+  fi
+  if [[ -n "${WORK_DIR:-}" ]]; then
+    ARGS+=(--work-dir "${WORK_DIR}")
+  fi
+  if [[ -n "${BATCH_ROOT:-}" ]]; then
+    ARGS+=(--batch-root "${BATCH_ROOT}")
+  fi
+  if [[ -n "${PLAN:-}" ]]; then
+    ARGS+=(--plan "${PLAN}")
+  fi
+  if [[ -n "${RESIDUAL_LIST:-}" ]]; then
+    ARGS+=(--residual-list "${RESIDUAL_LIST}")
+  fi
+  if [[ -n "${LIBRARY_CANDIDATES:-}" ]]; then
+    ARGS+=(--library-candidates "${LIBRARY_CANDIDATES}")
+  fi
+  SLICE_VAL="${UNORGANIZE_SLICE:-${SLICE:-}}"
+  if [[ -n "$SLICE_VAL" ]]; then
+    IFS=',' read -ra SLICES <<< "$SLICE_VAL"
+    for s in "${SLICES[@]}"; do
+      s="$(echo "$s" | xargs)"
+      [[ -n "$s" ]] && ARGS+=(--unorganize-slice "$s")
+    done
+  fi
+  if [[ -n "${SLICE_TOP:-}" ]]; then
+    ARGS+=(--slice-top "${SLICE_TOP}")
+  fi
 else
   has_config=0
   for a in "${ARGS[@]}"; do
