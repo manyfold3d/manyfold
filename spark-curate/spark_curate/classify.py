@@ -1193,7 +1193,11 @@ def classify_plan_record(
         ):
             normalized = f"{prefix} - {normalized}"
             reasons.append("franchise_prefixed")
-        confidence = 0.85 if derived.reason == "shared_member_stem" else 0.6
+        # A single named archive (Levi.rar in folder "1") is a real name.
+        confidence = 0.85 if derived.reason in (
+            "shared_member_stem",
+            "single_member_stem",
+        ) else 0.6
         name_source = "derived_from_members"
         # The derived stem — not the Drive id — is what the curator may enrich.
         enrich = client.classify_pack_name(normalized, [a.name for a in ancestors])
