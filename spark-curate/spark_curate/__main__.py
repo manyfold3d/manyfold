@@ -15,6 +15,7 @@ if str(_PKG_ROOT) not in sys.path:
 
 from spark_curate.apply_merges import write_merge_plans  # noqa: E402
 from spark_curate.apply_moves import apply_decision  # noqa: E402
+from spark_curate.promote import run_promote_cli  # noqa: E402
 from spark_curate.archive_index import (  # noqa: E402
     DEFAULT_MAX_MEMBERS_PER_ARCHIVE,
     build_archive_index,
@@ -61,6 +62,7 @@ def build_parser() -> argparse.ArgumentParser:
             "classify",
             "archive-recall",
             "admit",
+            "promote",
         ),
         default="organize",
         help=(
@@ -70,13 +72,43 @@ def build_parser() -> argparse.ArgumentParser:
             "classify=curator category/creator/name pass over an unorganize plan "
             "(INIT-021/SPEC-005); "
             "archive-recall=cross-root batch↔library recall (INIT-021/SPEC-006); "
-            "admit=new|hold verdicts into admissions JSONL (INIT-021/SPEC-008)"
+            "admit=new|hold verdicts into admissions JSONL (INIT-021/SPEC-008); "
+            "promote=Unorg→library path-list promote (INIT-021/SPEC-013)"
         ),
     )
     p.add_argument(
         "--plan",
         default=None,
         help="classify-plan-*.jsonl for --mode admit, or unorganize-plan for --mode classify",
+    )
+    p.add_argument(
+        "--paths-file",
+        action="append",
+        dest="paths_files",
+        default=[],
+        help="Promote batch path-list (repeatable). MODE=promote.",
+    )
+    p.add_argument(
+        "--copy",
+        action="store_true",
+        help="Promote by copy instead of move (retain Unorg). MODE=promote.",
+    )
+    p.add_argument(
+        "--allow-live",
+        action="store_true",
+        help="Permit writes touching the live library / intake Mega (SPEC-010 gate only)",
+    )
+    p.add_argument(
+        "--kubectl-retries",
+        type=int,
+        default=5,
+        help="Bounded kubectl exec attempts (default 5, single-digit)",
+    )
+    p.add_argument(
+        "--kubectl-backoff",
+        type=float,
+        default=1.0,
+        help="kubectl transient backoff base seconds (default 1.0)",
     )
     p.add_argument(
         "--batch-root",
@@ -538,6 +570,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_classify_cli(args, spark, curate)
     if args.mode == "admit":
         return run_admit_cli(args, spark, curate)
+    if args.mode == "promote":
+        return run_promote_cli(args, curate)
     return run_organize(args, spark, curate)
 
 

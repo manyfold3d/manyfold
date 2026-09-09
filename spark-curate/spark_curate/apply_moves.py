@@ -8,6 +8,7 @@ from typing import Any
 
 from .config import CurateConfig
 from .decide import Decision
+from .pathsafe import PathUnsafeError, assert_jailed_destination, safe_label
 
 
 def unique_dest(dest_root: Path, category: str, model_name: str) -> Path:
@@ -90,8 +91,18 @@ def apply_decision(
         _log(log_fh, f"SKIP missing {src}")
         return rec
 
+    try:
+        # Move-time jail check (INIT-021/SPEC-013) — not only at plan time.
+        assert_jailed_destination(dest, Path(cfg.library_root))
+    except PathUnsafeError as e:
+        rec["error"] = f"{type(e).__name__}: {e}"
+        rec["skipped_reason"] = "unsafe_destination"
+        rec["applied"] = False
+        _log(log_fh, f"ERROR unsafe dest {type(e).__name__} {safe_label(str(dest))}")
+        return rec
+
     mode = "MOVE" if do_apply else "DRY"
-    _log(log_fh, f"{mode} {src} -> {dest}")
+    _log(log_fh, f"{mode} {safe_label(str(src))} -> {safe_label(str(dest))}")
 
     if not do_apply:
         rec["applied"] = False
@@ -104,6 +115,14 @@ def apply_decision(
             rec["skipped_reason"] = "dest_exists"
             return rec
         shutil.move(str(src), str(dest))
+        try:
+            assert_jailed_destination(dest, Path(cfg.library_root))
+        except PathUnsafeError as e:
+            rec["error"] = f"{type(e).__name__}: {e}"
+            rec["applied"] = False
+            rec["skipped_reason"] = "unsafe_destination"
+            _log(log_fh, f"ERROR unsafe dest after move {type(e).__name__} {safe_label(str(dest))}")
+            return rec
         rec["applied"] = True
         # Write sidecar metadata for Manyfold humans / later import
         meta = {
