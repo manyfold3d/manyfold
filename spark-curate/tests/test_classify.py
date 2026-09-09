@@ -36,6 +36,7 @@ from spark_curate.classify import (
     member_stem,
     normalize_pack_name,
     opaque_name_reason,
+    raw_name_span,
     resolve_curator_endpoint,
     run_classify,
     strip_volume_numbering,
@@ -437,6 +438,38 @@ class TestAc4Normalization(unittest.TestCase):
         proposal = client.classify_pack_name("Nezuko")
         self.assertEqual(proposal.normalized_name, "Nezuko")
         self.assertIn("numeric_suffix_stripped", proposal.reasons)
+
+    def test_ac4_normalized_name_is_a_span_of_the_raw_name(self):
+        # Live wart: the 1.5B curator returned this raw name with spaces dropped.
+        raw = "2B Nier Automata Full Body - AdultFreeSTL"
+        client = make_client(
+            scripted_responder(
+                '{"normalized_name":"2BNierAutomataFullBody","confidence":0.95}'
+            )
+        )
+        proposal = client.classify_pack_name(raw)
+        self.assertEqual(proposal.normalized_name, "2B Nier Automata Full Body")
+
+    def test_ac4_invented_name_is_rejected_for_the_deterministic_one(self):
+        client = make_client(
+            scripted_responder(
+                '{"normalized_name":"Totally Different Model","confidence":0.99}'
+            )
+        )
+        proposal = client.classify_pack_name("Nezuko_FINAL_v2")
+        self.assertEqual(proposal.normalized_name, "Nezuko")
+        self.assertIn("curator_name_not_a_span_of_raw", proposal.reasons)
+
+    def test_ac4_span_alignment_helper(self):
+        self.assertEqual(
+            raw_name_span("Nezuko_FINAL_v2 [Patreon]", "Nezuko"), "Nezuko"
+        )
+        self.assertEqual(
+            raw_name_span("Alice in Wonderland - ArchivSTL", "AliceinWonderland"),
+            "Alice in Wonderland",
+        )
+        self.assertIsNone(raw_name_span("Nezuko", "Goku"))
+        self.assertIsNone(raw_name_span("Nezuko", "---"))
 
     def test_ac4_normalization_is_stable_under_reapplication(self):
         once = normalize_pack_name("Nezuko_FINAL_v2 (1) [Patreon] 2024-05")
@@ -982,6 +1015,56 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(
             summary["curator_endpoint"],
             "http://192.168.11.161:11436/v1/chat/completions",
+        )
+
+    def test_within_batch_name_collision_holds_both_packs(self):
+        # ADR D-5: a collision is never resolved by suffixing Name (N).
+        chat = recorded_responder(
+            default_name='{"normalized_name":"Android 18","category":null,"confidence":0.95}'
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            result = _run_end_to_end(
+                tmp,
+                [
+                    plan_record(
+                        pack_name="Android 18 - AdultFreeSTL",
+                        rel_pack_root="Anime/Android 18 - AdultFreeSTL",
+                        levels=[level("Anime", "category")],
+                    ),
+                    plan_record(
+                        pack_name="Android 18 - Full Body",
+                        rel_pack_root="Anime/Android 18 - Full Body",
+                        levels=[level("Anime", "category")],
+                    ),
+                ],
+                chat=chat,
+            )
+        self.assertEqual(result.summary_dict()["name_collisions_within_batch"], 2)
+        for pack in result.packs:
+            self.assertEqual(pack.status, "needs_review")
+            self.assertIn("name_collides_within_batch", pack.reasons)
+            self.assertNotRegex(str(pack.normalized_name), r"\(\d+\)$")
+
+    def test_distinct_names_in_one_category_do_not_collide(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = _run_end_to_end(
+                tmp,
+                [
+                    plan_record(
+                        pack_name="Nezuko_FINAL_v2",
+                        rel_pack_root="Anime/Nezuko_FINAL_v2",
+                        levels=[level("Anime", "category")],
+                    ),
+                    plan_record(
+                        pack_name="Goku [Patreon] 2024-05",
+                        rel_pack_root="Anime/Goku [Patreon] 2024-05",
+                        levels=[level("Anime", "category")],
+                    ),
+                ],
+            )
+        self.assertEqual(result.summary_dict()["name_collisions_within_batch"], 0)
+        self.assertEqual(
+            sorted(p.normalized_name for p in result.packs), ["Goku", "Nezuko"]
         )
 
     def test_upstream_signals_are_carried_to_spec_008(self):

@@ -302,6 +302,30 @@ _SEPARATOR_RUN_RE = re.compile(r"[\s_]+")
 _EDGE_JUNK_RE = re.compile(r"^[\s_\-–—.,;:]+|[\s_\-–—.,;:]+$")
 
 
+def raw_name_span(raw: str, proposal: str) -> str | None:
+    """Map a curator proposal back onto the span of *raw* it names, or None.
+
+    The curator chooses which noise to drop; it does not get to spell the name.
+    Aligning its answer to a span of the on-disk name means it can only remove
+    characters, never invent them — which matters because this string becomes a
+    filesystem path, and because a 1.5B model drops spaces
+    (``2B Nier Automata Full Body`` came back as ``2BNierAutomataFullBody``).
+    """
+    indices: list[int] = []
+    reduced: list[str] = []
+    for i, ch in enumerate(str(raw)):
+        if ch.isalnum():
+            reduced.append(ch.casefold())
+            indices.append(i)
+    needle = "".join(c.casefold() for c in str(proposal) if c.isalnum())
+    if not needle or not reduced:
+        return None
+    pos = "".join(reduced).find(needle)
+    if pos < 0:
+        return None
+    return raw[indices[pos] : indices[pos + len(needle) - 1] + 1]
+
+
 def normalize_pack_name(raw: str) -> str:
     """Strip marketplace noise from a pack name. The raw name is kept by the caller."""
     if not isinstance(raw, str):
@@ -820,7 +844,12 @@ class CuratorClient:
                 # ADR D-5: a numeric distinguisher is never an outcome, not even
                 # one the model asks for.
                 reasons.append("numeric_suffix_stripped")
-            normalized = normalize_pack_name(proposed) or deterministic or None
+            span = raw_name_span(raw_name, proposed)
+            if span is None:
+                reasons.append("curator_name_not_a_span_of_raw")
+                normalized = deterministic or None
+            else:
+                normalized = normalize_pack_name(span) or deterministic or None
         if normalized and re.search(r"\(\s*\d+\s*\)\s*$", normalized):
             normalized = normalize_pack_name(
                 re.sub(r"\(\s*\d+\s*\)\s*$", "", normalized)
@@ -1191,6 +1220,31 @@ def classify_plan_record(
     )
 
 
+def flag_within_batch_collisions(packs: Sequence[ClassifiedPack]) -> int:
+    """Hold packs that would claim the same ``<Category>/<Pack>`` destination.
+
+    Live on the Google batch, ``Android 18 - AdultFreeSTL`` and ``Android 18 -
+    Full Body`` both normalized to ``Android 18``. ADR D-5 forbids resolving that
+    by suffixing, and two packs claiming one destination without evidence they
+    are the same pack is exactly the ambiguity ``hold`` exists to absorb.
+    """
+    groups: dict[tuple[str, str], list[ClassifiedPack]] = {}
+    for pack in packs:
+        if pack.normalized_name and pack.category:
+            groups.setdefault(
+                (pack.category.casefold(), pack.normalized_name.casefold()), []
+            ).append(pack)
+    flagged = 0
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        for pack in group:
+            pack.reasons.append("name_collides_within_batch")
+            pack.status = "needs_review"
+            flagged += 1
+    return flagged
+
+
 def _upstream(record: dict[str, Any]) -> dict[str, Any]:
     return {
         "provenance": record.get("provenance"),
@@ -1268,6 +1322,9 @@ class ClassifyResult:
             "names_derived_from_members": sum(
                 1 for p in self.packs if p.name_source == "derived_from_members"
             ),
+            "name_collisions_within_batch": sum(
+                1 for p in self.packs if "name_collides_within_batch" in p.reasons
+            ),
             "curator_calls": self.curator_calls,
             "level_cache_hits": self.cache.hits,
             "level_cache_misses": self.cache.misses,
@@ -1337,6 +1394,7 @@ def run_classify(
             errors.append(str(e))
 
     packs.sort(key=lambda p: p.rel_pack_root.lower())
+    flag_within_batch_collisions(packs)
     with out_path.open("w", encoding="utf-8") as fh:
         for pack in packs:
             fh.write(json.dumps(pack.to_dict(), ensure_ascii=False) + "\n")
