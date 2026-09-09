@@ -386,6 +386,25 @@ def opaque_name_reason(name: str) -> str | None:
     return None
 
 
+def franchise_from_ancestors(
+    ancestors: Sequence[LevelProposal], category: str | None
+) -> str | None:
+    """Nearest named ancestor that is not the category and not a date/id bucket."""
+    cat_cf = (category or "").casefold()
+    for lp in reversed(ancestors):
+        n = (lp.name or "").strip()
+        if not n or opaque_name_reason(n):
+            continue
+        if n.casefold() == cat_cf:
+            continue
+        if lp.role == "bucket":
+            continue
+        cleaned = normalize_pack_name(n)
+        if cleaned and any(c.isalpha() for c in cleaned):
+            return cleaned
+    return None
+
+
 _VOLUME_TAIL_RE = re.compile(
     r"(?:[\s_\-.]*"
     r"(?:part|pt|vol|volume|disc|disk|cd|archive|file|no)?"
@@ -1166,6 +1185,14 @@ def classify_plan_record(
             )
         reasons.append(f"name_derived:{derived.reason}")
         normalized = derived.name
+        prefix = franchise_from_ancestors(ancestors, category)
+        if (
+            prefix
+            and normalized
+            and prefix.casefold() not in normalized.casefold()
+        ):
+            normalized = f"{prefix} - {normalized}"
+            reasons.append("franchise_prefixed")
         confidence = 0.85 if derived.reason == "shared_member_stem" else 0.6
         name_source = "derived_from_members"
         # The derived stem — not the Drive id — is what the curator may enrich.

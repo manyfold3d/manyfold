@@ -492,7 +492,28 @@ class TestAc4bOpaqueNames(unittest.TestCase):
             opaque_name_reason("3f2504e0-4f89-11d3-9a0c-0305e82c3301"), "uuid"
         )
         self.assertEqual(opaque_name_reason("20240513"), "numeric_only")
+        self.assertEqual(opaque_name_reason("1"), "numeric_only")
         self.assertEqual(opaque_name_reason("   "), "empty_name")
+
+    def test_numeric_folder_prefixes_franchise_from_ancestor(self):
+        from spark_curate.classify import LevelProposal, franchise_from_ancestors
+
+        ancestors = [
+            LevelProposal("Anime", "Anime", "category", "Anime", None, 1.0, "prior"),
+            LevelProposal(
+                "Anime/Attack on titan",
+                "Attack on titan",
+                "unknown",
+                None,
+                None,
+                0.0,
+                "unknown",
+            ),
+        ]
+        self.assertEqual(
+            franchise_from_ancestors(ancestors, "Anime"),
+            "Attack on titan",
+        )
 
     def test_ac4b_real_pack_names_are_not_opaque(self):
         for name in ("Nezuko", "Batman Bust", "Articulated 1000+ STL files", "D&D"):
