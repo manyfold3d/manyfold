@@ -270,6 +270,34 @@ class Ac3NameSuffixTests(unittest.TestCase):
             self.assertEqual(rec.reason, "name_suffix_forbidden")
             self.assertIsNone(rec.destination)
 
+    def test_source_folder_already_in_library_holds(self) -> None:
+        """Normalized dest misses Mega-imported marketplace names; source name must hold."""
+        with tempfile.TemporaryDirectory() as tmp:
+            pack = _pack(
+                rel="Anime/2B Nier Automata Full Body - AdultFreeSTL",
+                name="2B Nier Automata Full Body",
+            )
+            pack.normalized_name = "2B Nier Automata Full Body"
+            result = run_admit(
+                _spark(),
+                _cfg(),
+                packs=[pack],
+                candidates=[],
+                work_dir=Path(tmp) / ".spark-curate",
+                library_root=Path(tmp) / "library",
+                library_paths={"Anime/2B Nier Automata Full Body - AdultFreeSTL"},
+                recall_health=_health(packs=1, candidates=0),
+                run_id="src-lib",
+            )
+            rec = result.records[0]
+            self.assertEqual(rec.verdict, "hold")
+            self.assertEqual(rec.reason, "name_collision")
+            self.assertEqual(
+                rec.matched_library_path,
+                "Anime/2B Nier Automata Full Body - AdultFreeSTL",
+            )
+            self.assertIn("source_folder_already_in_library", rec.signals)
+
     def test_ac3_planted_suffix_raises_if_record_slips_through(self) -> None:
         rec = run_admit.__annotations__
         self.assertIn("AdmitResult", str(rec) or "AdmitResult")

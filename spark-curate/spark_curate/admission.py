@@ -705,7 +705,29 @@ def decide_pack(
             destination=None,
         )
 
-    dest_collision = dest in library_paths if dest else False
+    lib_cf = {p.casefold() for p in library_paths}
+    lib_by_model = {}
+    for p in library_paths:
+        _cat, _sep, model = p.partition("/")
+        if model:
+            lib_by_model.setdefault(model.casefold(), p)
+    dest_collision = bool(dest and dest.casefold() in lib_cf)
+    src_basename = Path(pack.rel_pack_root).name
+    src_already = lib_by_model.get(src_basename.casefold())
+    if src_already:
+        # Marketplace-noisy source folder already sits in the library (Mega
+        # import). Normalized dest would miss it and emit a second copy.
+        return _empty_record(
+            pack,
+            run_id=run_id,
+            merge_hitl=merge_hitl,
+            auto_applicable=False,
+            verdict="hold",
+            reason="name_collision",
+            destination=dest,
+            signals=["source_folder_already_in_library"],
+            matched=src_already,
+        )
     collected_signals: list[str] = []
     best_band: str | None = None
     best_conf = 0.0
