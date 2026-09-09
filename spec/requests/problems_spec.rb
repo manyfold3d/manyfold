@@ -33,6 +33,13 @@ RSpec.describe "Problems" do
         expect(assigns(:problems).length).to eq 5
       end
 
+      it "renders card rows instead of a staggered table" do
+        get "/problems/index"
+        expect(response.body).to include("problem-row")
+        expect(response.body).to include("problem-list-filter")
+        expect(response.body).not_to match(/<table[^>]*data-controller="bulk-edit/)
+      end
+
       context "with silenced problems" do
         before do
           u = User.first
@@ -44,6 +51,19 @@ RSpec.describe "Problems" do
         it "doesn't show problems with silent severity" do
           get "/problems/index"
           expect(assigns(:problems).length).to eq 2
+        end
+      end
+
+      context "when the page is only duplicate files" do
+        before do
+          Problem.destroy_all
+          create(:problem, category: :duplicate)
+        end
+
+        it "uses the merge-duplicates header" do
+          get "/problems/index", params: {"category[]": "duplicate"}
+          expect(assigns(:duplicate_list)).to be true
+          expect(response.body).to include(I18n.t("problems.index.merge_title"))
         end
       end
 

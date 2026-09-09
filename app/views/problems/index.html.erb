@@ -1,4 +1,4 @@
-<%= PageTitle title: Problem.model_name.human(count: 100) %>
+<%= PageTitle title: @duplicate_list ? t(".merge_title") : Problem.model_name.human(count: 100), heading: false %>
 
 <%= render "filters" %>
 
@@ -11,68 +11,78 @@
   </div>
 <% end %>
 
-<%= paginate @problems %>
-
 <% if @problems.empty? %>
   <%= render "application/empty_state", message: t(".no_problems"), icon: "check-circle" do %>
     <p><%= link_to Model.model_name.human(count: 100), models_path, class: "#{primary_button_class} no-underline" %></p>
   <% end %>
 <% else %>
-<div class="rounded-xl border border-secondary-200 dark:border-secondary-600 overflow-hidden bg-surface dark:bg-surface-dark shadow-sm">
-<%= form_with url: resolve_problems_path(format: :turbo_stream), method: :post, class: "mb-0" do |form| %>
-  <table class="w-full border-collapse border-0" data-controller="bulk-edit collapse" data-action="change->bulk-edit#handleCheckboxChange">
-    <thead>
-      <tr class="border-b border-secondary-200 dark:border-secondary-600 bg-secondary-50 dark:bg-secondary-800/50">
-        <th class="px-4 py-2 text-left"><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
-        <th class="px-4 py-2 text-left" colspan=2><%= t(".item") %></th>
-        <th class="px-4 py-2 text-left"><%= t(".description") %></th>
-        <th class="px-4 py-2 text-left"><span id="resolve-heading"><%= t(".resolve") %></span></th>
-        <th class="px-4 py-2 text-left"><%= t(".ignore") %></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @problems.each do |problem| %>
-      <% next unless problem.problematic %>
-      <tr id="problem-<%= problem.id %>" class="border-b border-secondary-200 dark:border-secondary-600 even:bg-secondary-50 dark:even:bg-secondary-800/30 show problem-severity-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>" data-collapse-target="content">
-        <td class="px-4 py-2"><%= form.check_box "problems[#{problem.to_param}]", data: {resolution_strategy: problem.resolution_strategy, bulk_item: problem.to_param}, "aria-label": translate(".select"), class: "rounded border-secondary-300 text-primary-600 focus:ring-primary-500 h-4 w-4" %></td>
-        <% if problem.parent %>
-          <td class="px-4 py-2"><%= link_to problem.parent.name, problem.parent, class: "text-primary-600 dark:text-primary-400 hover:underline" %></td>
-          <% if problem.problematic.is_a? ModelFile %>
-            <td class="px-4 py-2"><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "text-primary-600 dark:text-primary-400 hover:underline" %></td>
-          <% elsif problem.problematic.is_a? Link %>
-            <td class="px-4 py-2"><%= link_to problem.problematic.url, problem.problematic.url, class: "text-primary-600 dark:text-primary-400 hover:underline" %></td>
-          <% else %>
-            <td class="px-4 py-2"></td>
-          <% end %>
-        <% else %>
-          <td class="px-4 py-2" colspan=2><%= link_to problem.problematic.name, problem.problematic, class: "text-primary-600 dark:text-primary-400 hover:underline" %></td>
-        <% end %>
-        <td class="px-4 py-2">
-          <%= t "problems.%{type}.%{category}.title" % {type: problem.problematic_type.underscore, category: problem.category} %>
-          <% if problem.note %>
-            <br>
-            <small class="text-secondary-600 dark:text-secondary-400"><%= problem.note %></small>
-          <% end %>
-        </td>
-        <td class="px-4 py-2"><%= ResolveButton(problem: problem, user: current_user) %></td>
-        <td class="px-4 py-2">
-          <% if problem.ignored %>
-            <%= link_to Icon(icon: "eye-fill", label: t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "inline-flex items-center px-3 py-1.5 rounded-lg border border-secondary-300 dark:border-secondary-500 bg-white dark:bg-secondary-800 text-secondary-700 dark:text-secondary-100 hover:bg-secondary-50 dark:hover:bg-secondary-700 focus-visible:ring-2 focus-visible:ring-primary-500 no-underline text-sm" %>
-          <% else %>
-            <%= link_to Icon(icon: "eye-slash", label: t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "inline-flex items-center px-3 py-1.5 rounded-lg border border-secondary-300 dark:border-secondary-500 bg-white dark:bg-secondary-800 text-secondary-700 dark:text-secondary-100 hover:bg-secondary-50 dark:hover:bg-secondary-700 focus-visible:ring-2 focus-visible:ring-primary-500 no-underline text-sm", data: {action: "click->collapse#hideContaining"} %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <% bulk_resolve_class = [Components::BaseButton::BASE_CLASSES, (@duplicate_list ? Components::BaseButton::VARIANT_CLASSES["outline-danger"] : Components::BaseButton::VARIANT_CLASSES["danger"])].join(" ") %>
+  <div class="flex flex-col gap-6" data-controller="problem-list-filter">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-4">
+        <h1 class="text-2xl font-bold text-secondary-900 dark:text-secondary-50 m-0">
+          <%= @duplicate_list ? t(".merge_title") : Problem.model_name.human(count: 100) %>
+        </h1>
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-sm font-semibold text-primary-600 dark:text-primary-400 bg-secondary-100 dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-600">
+          <%= t(".groups_found", count: @problems.total_count) %>
+        </span>
+      </div>
+      <% if @recoverable_bytes.to_i.positive? %>
+        <p class="text-sm text-secondary-500 dark:text-secondary-400 m-0">
+          <%= t(".space_recoverable") %>
+          <span class="font-semibold text-secondary-900 dark:text-secondary-100"><%= number_to_human_size(@recoverable_bytes) %></span>
+        </p>
+      <% end %>
+    </div>
 
-  <div class="flex flex-wrap gap-2 p-4 border-t border-secondary-200 dark:border-secondary-600 bg-secondary-50/80 dark:bg-secondary-800/40">
-    <%= form.submit translate(".bulk_resolve"), name: "resolve", class: "inline-flex items-center px-4 py-2 rounded-lg bg-danger text-white hover:opacity-90 focus-visible:ring-2 focus-visible:ring-primary-500", data: {confirm: translate(".bulk_confirm")} %>
-    <%= form.submit translate(".bulk_ignore"), name: "ignore", class: secondary_button_class %>
+    <p class="text-sm text-secondary-500 dark:text-secondary-400 m-0">
+      <%= @duplicate_list ? t(".merge_explainer") : t(".explainer") %>
+    </p>
+
+    <%= form_with url: resolve_problems_path(format: :turbo_stream), method: :post, class: "mb-0", data: {controller: "bulk-edit collapse", action: "change->bulk-edit#handleCheckboxChange"} do |form| %>
+      <div class="flex flex-wrap items-center justify-between gap-3 p-4 mb-3 rounded-lg border border-secondary-200 dark:border-secondary-600 bg-secondary-50 dark:bg-secondary-800/50">
+        <div class="flex flex-wrap items-center gap-4">
+          <label class="inline-flex items-center gap-2 text-sm text-secondary-800 dark:text-secondary-100 cursor-pointer">
+            <input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all" class="rounded border-secondary-300 text-primary-600 focus:ring-primary-500 h-4 w-4">
+            <%= t(".select_all") %>
+          </label>
+          <span class="hidden sm:block w-px h-4 bg-secondary-300 dark:bg-secondary-600" aria-hidden="true"></span>
+          <div class="flex flex-wrap gap-2">
+            <%= form.submit(@duplicate_list ? translate(".bulk_delete") : translate(".bulk_resolve"), name: "resolve", class: bulk_resolve_class, data: {confirm: translate(".bulk_confirm")}) %>
+            <%= form.submit translate(".bulk_ignore"), name: "ignore", class: secondary_button_class %>
+          </div>
+        </div>
+        <label class="relative w-full sm:w-64">
+          <span class="absolute inset-y-0 left-3 flex items-center text-secondary-400 pointer-events-none">
+            <%= Icon(icon: "search", label: t(".filter_names")) %>
+          </span>
+          <input type="search"
+            autocomplete="off"
+            data-problem-list-filter-target="query"
+            data-action="input->problem-list-filter#filter"
+            placeholder="<%= t(".filter_names") %>"
+            class="w-full rounded-md border border-secondary-300 dark:border-secondary-600 bg-white dark:bg-secondary-900 pl-9 pr-3 py-2 text-sm text-secondary-800 dark:text-secondary-100 placeholder:text-secondary-400 focus:ring-2 focus:ring-primary-500">
+        </label>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <% @problems.each do |problem| %>
+          <% next unless problem.problematic %>
+          <%= render Components::ProblemRow.new(problem: problem, user: current_user) do %>
+            <%= form.check_box "problems[#{problem.to_param}]", data: {resolution_strategy: problem.resolution_strategy, bulk_item: problem.to_param}, "aria-label": translate(".select"), class: "rounded border-secondary-300 text-primary-600 focus:ring-primary-500 h-[18px] w-[18px] shrink-0" %>
+          <% end %>
+        <% end %>
+        <p class="hidden text-sm text-secondary-500 dark:text-secondary-400 m-0 py-6 text-center" data-problem-list-filter-target="empty">
+          <%= t(".no_filter_matches") %>
+        </p>
+      </div>
+    <% end %>
+
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="text-sm text-secondary-500 dark:text-secondary-400 m-0">
+        <%= t(".showing", from: @problems.offset_value + 1, to: @problems.offset_value + @problems.length, total: @problems.total_count) %>
+      </p>
+      <%= paginate @problems %>
+    </div>
   </div>
 <% end %>
-</div>
-<% end %>
-
-<%= paginate @problems %>

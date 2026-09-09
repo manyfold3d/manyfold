@@ -17,13 +17,13 @@ class Components::ResolveButton < Components::Base
     destroy: {
       icon: "trash",
       i18n_key: "general.delete", # i18n-tasks-use t('general.delete')
-      button_type: "danger",
+      button_type: "outline-danger",
       confirm: "%{type}s.destroy.confirm"
     },
     merge: {
       icon: "box-arrow-in-up-left",
       i18n_key: "models.problem.merge_all", # i18n-tasks-use t('models.problem.merge_all')
-      button_type: "danger"
+      button_type: "success"
     },
     upload: {
       icon: "upload",

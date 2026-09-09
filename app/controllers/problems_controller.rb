@@ -26,7 +26,10 @@ class ProblemsController < ApplicationController
     # Don't show types ignored in user settings
     query = query.visible(helpers.problem_settings)
     query = query.includes([:problematic])
+    @counts_by_category = query.unscope(:includes, :order).group(:category).count
     @problems = query.page(page).per(params[:per_page]&.to_i || 50).order([:category, :problematic_type]).includes(problematic: [:library, :model])
+    @duplicate_list = @problems.any? && @problems.all? { |problem| problem.category == "duplicate" }
+    @recoverable_bytes = recoverable_bytes_for(@problems)
     # Do we have any filters at all?
     @filters_applied = [:show_ignored, :severity, :category, :type].any? { |k| params.has_key?(k) }
   end
@@ -99,5 +102,12 @@ class ProblemsController < ApplicationController
     params.expect(problem: [
       :ignored
     ])
+  end
+
+  def recoverable_bytes_for(problems)
+    file_ids = problems.filter_map { |problem| problem.problematic_id if problem.problematic_type == "ModelFile" }
+    return 0 if file_ids.empty?
+
+    policy_scope(ModelFile).where(id: file_ids).sum(:size).to_i
   end
 end

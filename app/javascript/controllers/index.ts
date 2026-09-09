@@ -35,6 +35,7 @@ import SendPrintController from './send_print_controller'
 import ResinAdjustController from './resin_adjust_controller'
 import PrinterStorageController from './printer_storage_controller'
 import PrinterCameraSettingsController from './printer_camera_settings_controller'
+import ProblemListFilterController from './problem_list_filter_controller'
 
 application.register('bulk-edit', BulkEditController)
 application.register('caber-advanced', CaberAdvancedController)
@@ -67,3 +68,4 @@ application.register('send-print', SendPrintController)
 application.register('resin-adjust', ResinAdjustController)
 application.register('printer-storage', PrinterStorageController)
 application.register('printer-camera-settings', PrinterCameraSettingsController)
+application.register('problem-list-filter', ProblemListFilterController)

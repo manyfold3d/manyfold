@@ -8,6 +8,7 @@ class Components::BaseButton < Components::Base
   VARIANT_CLASSES = {
     "primary" => "bg-primary-600 text-white hover:bg-primary-700",
     "secondary" => "bg-white border border-secondary-300 text-secondary-900 hover:bg-secondary-50 dark:bg-secondary-800 dark:border-secondary-600 dark:text-secondary-100 dark:hover:bg-secondary-700",
+    "success" => "bg-success text-white hover:opacity-90",
     "danger" => "bg-danger text-white hover:opacity-90",
     "warning" => "bg-warning text-secondary-900 hover:opacity-90",
     "outline-primary" => "bg-transparent border border-primary-600 text-primary-600 hover:bg-primary-50 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-900/30",
