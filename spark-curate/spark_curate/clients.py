@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import json
 import re
+import time
 import urllib.error
 import urllib.request
 from typing import Any
@@ -142,6 +143,51 @@ def curator_json(cfg: SparkConfig, system: str, user: str) -> str:
         max_tokens=cfg.max_tokens_curator,
         timeout=cfg.curator_timeout,
     )
+
+
+def curator_chat(
+    base_url: str,
+    model: str,
+    system: str,
+    user: str,
+    *,
+    max_tokens: int,
+    timeout: float,
+    retries: int = 2,
+    backoff: float = 1.5,
+    sleep: Any = None,
+) -> str:
+    """Curator call with bounded retry-with-backoff (INIT-021/SPEC-005).
+
+    Deterministic sampling (temperature 0) so reruns are stable and diffable.
+    The endpoint and model are resolved by the caller — this function never
+    supplies a default for either.
+    """
+    if not base_url or not model:
+        raise HttpError("curator base_url and model are required")
+    napper = sleep if sleep is not None else time.sleep
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+    attempts = max(1, int(retries) + 1)
+    last: HttpError | None = None
+    for attempt in range(attempts):
+        try:
+            return chat_completions(
+                base_url,
+                model,
+                messages,
+                temperature=0.0,
+                max_tokens=max_tokens,
+                timeout=timeout,
+            )
+        except HttpError as e:
+            last = e
+            if attempt + 1 >= attempts:
+                break
+            napper(float(backoff) * (2**attempt))
+    raise last if last is not None else HttpError("curator call failed")
 
 
 def nudenet_detect_bytes(cfg: SparkConfig, image_bytes: bytes, filename: str = "preview.jpg") -> dict[str, Any]:

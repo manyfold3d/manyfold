@@ -22,6 +22,7 @@ from spark_curate.archive_index import (  # noqa: E402
     summary_dict as archive_match_summary,
 )
 from spark_curate.candidates import build_merge_candidates  # noqa: E402
+from spark_curate.classify import run_classify_cli  # noqa: E402
 from spark_curate.config import CurateConfig, SparkConfig, load_config, save_example_config  # noqa: E402
 from spark_curate.decide import decide_one  # noqa: E402
 from spark_curate.decide_merge import decide_merge_pair_safe  # noqa: E402
@@ -50,13 +51,43 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--mode",
-        choices=("organize", "merge", "match", "unorganize"),
+        choices=("organize", "merge", "match", "unorganize", "classify"),
         default="organize",
         help=(
             "organize=folder rearrange (default); merge=duplicate pack merge plans; "
             "match=archive-member inverted index (zip infolist only, INIT-018/SPEC-004); "
-            "unorganize=intake bucket dismantle + pack-root plan (INIT-021/SPEC-004)"
+            "unorganize=intake bucket dismantle + pack-root plan (INIT-021/SPEC-004); "
+            "classify=curator category/creator/name pass over an unorganize plan "
+            "(INIT-021/SPEC-005)"
         ),
+    )
+    p.add_argument(
+        "--plan",
+        default=None,
+        help="unorganize-plan-*.jsonl to enrich (required for --mode classify)",
+    )
+    p.add_argument(
+        "--work-dir",
+        default=None,
+        help=(
+            "Where run artifacts are written (default: alongside the input plan). "
+            "Required when the input tree is frozen read-only."
+        ),
+    )
+    p.add_argument(
+        "--vocabulary-root",
+        default=None,
+        help=(
+            "Live library root whose top-level folders are the category "
+            "vocabulary for --mode classify (default: --library)"
+        ),
+    )
+    p.add_argument(
+        "--category-extension",
+        action="append",
+        dest="category_extensions",
+        default=[],
+        help="Operator-added category beyond the live library's folders (repeatable)",
     )
     p.add_argument(
         "--intake",
@@ -409,6 +440,8 @@ def main(argv: list[str] | None = None) -> int:
     spark, curate = load_config(args.config)
     if args.library:
         curate.library_root = args.library
+    if args.work_dir:
+        curate.work_dir = args.work_dir
     if args.limit:
         curate.limit = args.limit
     if args.categories:
@@ -437,6 +470,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_merge(args, spark, curate)
     if args.mode == "unorganize":
         return run_unorganize_cli(args, curate)
+    if args.mode == "classify":
+        return run_classify_cli(args, spark, curate)
     return run_organize(args, spark, curate)
 
 

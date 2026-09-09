@@ -694,8 +694,9 @@ def run_unorganize_cli(args, cfg: CurateConfig) -> int:
     intake = args.intake or args.library or cfg.library_root
     slice_folders = args.unorganize_slice if args.unorganize_slice else None
 
+    work_dir = Path(cfg.work_dir) if cfg.work_dir else Path(intake) / ".spark-curate"
     print(f"Intake:   {intake}")
-    print(f"Work dir: {Path(intake) / '.spark-curate'}")
+    print(f"Work dir: {work_dir}")
     print("Mode:     unorganize PLAN-ONLY (no moves)")
     if slice_folders:
         print(f"Slice:    {', '.join(slice_folders)}")

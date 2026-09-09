@@ -1,0 +1,52 @@
+{
+  "provenance": "INIT-021/SPEC-005",
+  "recorded_from": "http://192.168.11.161:11436/v1/chat/completions",
+  "model": "qwen2.5-1.5b-instruct",
+  "source_tree": "/mnt/backups/3D-Prints-Unorg/intake/Mega",
+  "vocabulary": [
+    "Anime",
+    "AnySTL",
+    "B3dserk",
+    "Cartoons",
+    "Cosplay",
+    "Cults3D",
+    "D&D",
+    "DC",
+    "Games",
+    "Gumroad",
+    "Movie TV",
+    "Unknown",
+    "WICKED"
+  ],
+  "levels": {
+    "3DXM Art": "{\"role\": \"bucket\", \"category\": null, \"creator\": null, \"confidence\": 0.9}",
+    "APRIL 2024": "{\"role\": \"bucket\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "AUGUST 2023": "{\"role\": \"bucket\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "Anime": "{\"role\": \"category\", \"category\": \"Anime\", \"creator\": null, \"confidence\": 1.0}",
+    "AnySTL": "{\"role\": \"category\", \"category\": \"AnySTL\", \"creator\": null, \"confidence\": 1.0}",
+    "Articulated Figures": "{\"role\": \"category\", \"category\": \"Unknown\", \"creator\": null, \"confidence\": 0.0}",
+    "B3Dserk Studios Art": "{\"role\": \"creator\", \"category\": null, \"creator\": \"B3Dserk Studios\", \"confidence\": 1.0}",
+    "CFD Art": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": null}",
+    "CGTrader Models": "{\"role\": \"bucket\", \"category\": null, \"creator\": null, \"confidence\": 0.9}",
+    "Cartoons": "{\"role\": \"category\", \"category\": \"Cartoons\", \"creator\": null, \"confidence\": 1.0}",
+    "Chibi": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "Cosplay": "{\"role\": \"category\", \"category\": \"Cosplay\", \"creator\": null, \"confidence\": 1.0}",
+    "Cults3D": "{\"role\": \"category\", \"category\": \"Cults3D\", \"creator\": null, \"confidence\": 1.0}",
+    "D&D": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "DC": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "DECEMBER 2024": "{\"role\": \"bucket\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "DTR": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "Dragon Ball": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "Gumroad": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": null}",
+    "Movie TV": "{\"role\": \"bucket\", \"category\": null, \"creator\": null, \"confidence\": 0.9}",
+    "Rober Rollin Art": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": null}",
+    "Star Wars": "{\"role\": \"unknown\", \"category\": null, \"creator\": null, \"confidence\": 0.0}",
+    "Wicked Art": "{\"role\": \"bucket\", \"category\": null, \"creator\": \"WICKED\", \"confidence\": 0.95}"
+  },
+  "names": {
+    "Nezuko_FINAL_v2": "```json\n{\n  \"normalized_name\": \"Nezuko\",\n  \"category\": null,\n  \"creator\": null,\n  \"franchise\": null,\n  \"confidence\": 0.95\n}\n```",
+    "Batman Bust (1)": "```json\n{\n  \"normalized_name\": \"Batman Bust\",\n  \"category\": null,\n  \"creator\": null,\n  \"franchise\": null,\n  \"confidence\": 0.95\n}\n```",
+    "Goku [Patreon] 2024-05": "```json\n{\n  \"normalized_name\": \"Goku\",\n  \"category\": null,\n  \"creator\": null,\n  \"franchise\": null,\n  \"confidence\": 0.98\n}\n```",
+    "Articulated 1000+ STL files": "```json\n{\n  \"normalized_name\": \"Articulated 1000+ STL files\",\n  \"category\": null,\n  \"creator\": null,\n  \"franchise\": null,\n  \"confidence\": 0.95\n}\n```"
+  }
+}
