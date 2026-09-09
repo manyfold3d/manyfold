@@ -1,9 +1,6 @@
-"""Manyfold-aligned indexable extensions and pack-root helpers (INIT-021/SPEC-004).
+"""Manyfold-aligned indexable extensions and junk-path semantics.
 
-Ground truth:
-- ``ApplicationJob.common_subfolders`` — fifteen closed folder names
-- ``SupportedMimeTypes.indexable_extensions`` — image + model + video + document + archive
-- ``SiteSettings.model_ignored_files`` — junk path semantics
+Shared by INIT-021/SPEC-004 (unorganize) and SPEC-006 (archive index).
 """
 from __future__ import annotations
 
@@ -13,6 +10,7 @@ from pathlib import Path
 
 PROVENANCE = "INIT-021/SPEC-004"
 
+# Closed set — manyfold-ai/app/jobs/application_job.rb:64-82
 COMMON_SUBFOLDERS: frozenset[str] = frozenset(
     {
         "3mf",
@@ -64,6 +62,10 @@ MESH_EXTENSIONS: frozenset[str] = frozenset(
         ".ctb",
         ".sl1s",
         ".3dm",
+        ".drc",
+        ".3ds",
+        ".mpd",
+        ".ldr",
     }
 )
 
@@ -79,12 +81,24 @@ DOCUMENT_EXTENSIONS: frozenset[str] = frozenset(
     {".pdf", ".txt", ".md", ".html", ".htm", ".doc", ".docx"}
 )
 
+# SupportedMimeTypes.indexable_extensions = image + model + video + document + archive
 INDEXABLE_EXTENSIONS: frozenset[str] = (
     MESH_EXTENSIONS
     | IMAGE_EXTENSIONS
     | VIDEO_EXTENSIONS
     | DOCUMENT_EXTENSIONS
     | ARCHIVE_EXTENSIONS
+)
+
+README_NAMES: frozenset[str] = frozenset(
+    {
+        "readme.txt",
+        "readme.md",
+        "read.me",
+        "license.txt",
+        "licence.txt",
+        "info.txt",
+    }
 )
 
 _HIDDEN_FILE_RE = re.compile(r"^\.[^.]")
@@ -96,6 +110,7 @@ _MULTIPART_PART_RAR = re.compile(r"^(.+)\.part(\d+)\.rar$", re.I)
 _MULTIPART_Z_SPLIT = re.compile(r"^(.+)\.z(\d+)$", re.I)
 _MULTIPART_7Z = re.compile(r"^(.+)\.7z\.(\d+)$", re.I)
 
+# Bucket / creator name hints (secondary to structure — aud-1).
 _BUCKET_MONTH_YEAR = re.compile(
     r"^(january|february|march|april|may|june|july|august|september|october|"
     r"november|december)\s+\d{4}$",
@@ -142,6 +157,14 @@ class MultipartSet:
             return missing[0]
         return None
 
+    @property
+    def first_volume_path(self) -> Path:
+        return self.volumes[0].path
+
+    @property
+    def all_part_paths(self) -> tuple[str, ...]:
+        return tuple(str(v.path) for v in self.volumes)
+
 
 def extension_of(name: str) -> str:
     lower = name.lower()
@@ -155,20 +178,8 @@ def is_indexable_filename(name: str) -> bool:
     return extension_of(name) in INDEXABLE_EXTENSIONS
 
 
-def is_ignored_path(rel_posix: str, basename: str) -> bool:
-    if _HIDDEN_FILE_RE.match(basename):
-        return True
-    if _DATAPACKAGE_RE.match(basename):
-        return True
-    norm = rel_posix.replace("\\", "/")
-    if _MACOSX_RE.search(norm):
-        return True
-    if _EADIR_RE.match(norm):
-        return True
-    return False
-
-
 def should_skip_dir_name(name: str) -> bool:
+    """Do not descend into filesystem junk trees (ac-9)."""
     if name.startswith("."):
         return True
     if name.lower() == "__macosx":
@@ -187,6 +198,48 @@ def bucket_name_hint(name: str) -> bool:
 
 def creator_name_hint(name: str) -> bool:
     return bool(_CREATOR_SUFFIX.search(name.strip()))
+
+
+def is_mesh_extension(name: str) -> bool:
+    return Path(name).suffix.lower() in MESH_EXTENSIONS
+
+
+def is_image_extension(name: str) -> bool:
+    return Path(name).suffix.lower() in IMAGE_EXTENSIONS
+
+
+def is_archive_path(path: Path) -> bool:
+    lower = path.name.lower()
+    for ext in sorted(ARCHIVE_EXTENSIONS, key=len, reverse=True):
+        if lower.endswith(ext):
+            return True
+    return path.suffix.lower() in ARCHIVE_EXTENSIONS
+
+
+def is_ignored_path(rel_posix: str, basename: str) -> bool:
+    """SiteSettings.model_ignored_files semantics."""
+    if _HIDDEN_FILE_RE.match(basename):
+        return True
+    if _DATAPACKAGE_RE.match(basename):
+        return True
+    norm = rel_posix.replace("\\", "/")
+    if _MACOSX_RE.search(norm):
+        return True
+    if _EADIR_RE.match(norm):
+        return True
+    return False
+
+
+def is_admission_relevant_member(basename: str, *, is_mesh: bool, is_image: bool) -> bool:
+    """Exclude image-only and readme-only from admission-relevant overlap counts."""
+    lower = basename.lower()
+    if is_mesh:
+        return True
+    if is_image:
+        return False
+    if lower in README_NAMES:
+        return False
+    return False
 
 
 def parse_multipart_volume(path: Path) -> MultipartVolume | None:
