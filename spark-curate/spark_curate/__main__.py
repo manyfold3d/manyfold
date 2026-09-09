@@ -23,7 +23,8 @@ from spark_curate.archive_index import (  # noqa: E402
     run_cross_root_archive_recall,
     summary_dict as archive_match_summary,
 )
-from spark_curate.candidates import build_merge_candidates  # noqa: E402
+from spark_curate.candidates import MergeCandidate, build_merge_candidates  # noqa: E402
+from spark_curate.composition_map import map_signals_for_judge  # noqa: E402
 from spark_curate.admission import run_admit_cli  # noqa: E402
 from spark_curate.classify import run_classify_cli  # noqa: E402
 from spark_curate.config import CurateConfig, SparkConfig, load_config, save_example_config  # noqa: E402
@@ -63,6 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
             "archive-recall",
             "admit",
             "promote",
+            "mesh-fingerprint",
         ),
         default="organize",
         help=(
@@ -73,7 +75,9 @@ def build_parser() -> argparse.ArgumentParser:
             "(INIT-021/SPEC-005); "
             "archive-recall=cross-root batch↔library recall (INIT-021/SPEC-006); "
             "admit=new|hold verdicts into admissions JSONL (INIT-021/SPEC-008); "
-            "promote=Unorg→library path-list promote (INIT-021/SPEC-013)"
+            "promote=Unorg→library path-list promote (INIT-021/SPEC-013); "
+            "mesh-fingerprint=gated residual stream SHA-256 + trimesh identifier "
+            "(INIT-022/SPEC-003; not a full-library extract)"
         ),
     )
     p.add_argument(
@@ -124,6 +128,22 @@ def build_parser() -> argparse.ArgumentParser:
         "--candidates",
         default=None,
         help="Precomputed cross-root-candidates-*.jsonl for --mode admit (hermetic)",
+    )
+    p.add_argument(
+        "--residual-list",
+        default=None,
+        help=(
+            "Path list of residual new packs (and optional archives/loose meshes) "
+            "for MODE=mesh-fingerprint. Required — refuses a full-library scan."
+        ),
+    )
+    p.add_argument(
+        "--library-candidates",
+        default=None,
+        help=(
+            "Optional extra path list of already-surfaced library candidate folders "
+            "for MODE=mesh-fingerprint (INIT-022/SPEC-003)."
+        ),
     )
     p.add_argument(
         "--work-dir",
@@ -432,11 +452,16 @@ def run_merge(args: argparse.Namespace, spark: SparkConfig, curate: CurateConfig
         print("Nothing to do.")
         return 0
 
+    # INIT-022/SPEC-005: map identity + composition at the merge-plan boundary.
+    mapped_candidates = [
+        MergeCandidate(a=c.a, b=c.b, signals=map_signals_for_judge(c.signals))
+        for c in candidates
+    ]
     decisions = []
     with ThreadPoolExecutor(max_workers=curate.workers) as ex:
         futs = {
             ex.submit(decide_merge_pair_safe, c, spark, curate, thumb_cache): c
-            for c in candidates
+            for c in mapped_candidates
         }
         done = 0
         for fut in as_completed(futs):
@@ -572,6 +597,21 @@ def main(argv: list[str] | None = None) -> int:
         return run_admit_cli(args, spark, curate)
     if args.mode == "promote":
         return run_promote_cli(args, curate)
+    if args.mode == "mesh-fingerprint":
+        from spark_curate.mesh_fingerprint import (
+            MegaFenceRefused,
+            ResidualListRequired,
+            run_mesh_fingerprint_cli,
+        )
+
+        try:
+            return run_mesh_fingerprint_cli(args, curate)
+        except ResidualListRequired as exc:
+            print(f"mesh-fingerprint refused: {exc}", file=sys.stderr)
+            return 2
+        except MegaFenceRefused as exc:
+            print(f"mesh-fingerprint refused: {exc}", file=sys.stderr)
+            return 2
     return run_organize(args, spark, curate)
 
 

@@ -23,6 +23,11 @@ from . import decide_merge as decide_merge_mod
 from .candidates import DEFAULT_MESH_OVERLAP_T, MergeCandidate
 from .classify import ChatFn, CuratorEndpoint, resolve_curator_endpoint, sanitize_for_prompt
 from .clients import HttpError, extract_json_object
+from .composition_map import (  # INIT-022/SPEC-005 — map at this boundary, not in decide_merge
+    composition_is_refuse,
+    intake_admit_from_composition,
+    map_signals_for_judge,
+)
 from .config import CurateConfig, SparkConfig
 from .decide_merge import MergeDecision, decide_merge_pair
 from .merge_hitl import parse_merge_hitl
@@ -52,6 +57,7 @@ HOLD_REASONS = frozenset(
         "destination_unsafe",
         "incomplete_multipart",
         "uncertain_unresolved",
+        "composition_refuse",
     }
 )
 
@@ -276,26 +282,6 @@ def nocrc_overlap_count(signals: Sequence[str]) -> int:
             except ValueError:
                 return 0
     return 0
-
-
-def map_signals_for_judge(signals: Sequence[str]) -> list[str]:
-    """Map ``archive_member_overlap_nocrc:N`` → ``archive_member_overlap:N``.
-
-    Keeps the original ``_nocrc`` key and adds ``overlap_provenance:nocrc``
-    so the weaker cross-root evidence stays visible (ac-12). Does not edit
-    ``decide_merge.py``.
-    """
-    out = list(signals)
-    for s in signals:
-        if not s.startswith(NOCRC_PREFIX):
-            continue
-        n = s.split(":", 1)[1]
-        mapped = f"{OVERLAP_PREFIX}{n}"
-        if mapped not in out:
-            out.append(mapped)
-        if PROVENANCE_NOCRC not in out:
-            out.append(PROVENANCE_NOCRC)
-    return out
 
 
 def is_name_n(name: str | None) -> bool:
@@ -748,7 +734,11 @@ def decide_pack(
         )
         band = band_from_decision(judged)
         lib_rel = cand.b.rel_posix
-        if "exact_file_digest" in cand.signals or "exact_file_digest" in mapped:
+        refuses_comp = composition_is_refuse(mapped)
+        if (
+            not refuses_comp
+            and ("exact_file_digest" in cand.signals or "exact_file_digest" in mapped)
+        ):
             return _empty_record(
                 pack,
                 run_id=run_id,
@@ -762,7 +752,7 @@ def decide_pack(
                 confidence=max(judged.confidence, 0.85),
                 matched=lib_rel,
             )
-        if judged.decision == "merge":
+        if judged.decision == "merge" and not refuses_comp:
             return _empty_record(
                 pack,
                 run_id=run_id,
@@ -795,6 +785,23 @@ def decide_pack(
 
     # Unique, deterministic signal list for the record.
     signals = sorted(set(collected_signals))
+
+    # INIT-022/SPEC-005: composition refuse / commons-new before listing fallback.
+    comp_override = intake_admit_from_composition(signals, dest_collision=dest_collision)
+    if comp_override is not None:
+        verdict, reason, band = comp_override
+        return _empty_record(
+            pack,
+            run_id=run_id,
+            merge_hitl=merge_hitl,
+            auto_applicable=False if verdict == "hold" else auto_applicable,
+            verdict=verdict,
+            reason=reason,
+            destination=dest,
+            signals=signals,
+            band=band,
+            matched=matched,
+        )
 
     only_low_nocrc = saw_low_nocrc and not any(
         s == "name_near_dupe"

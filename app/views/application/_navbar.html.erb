@@ -113,6 +113,7 @@
                   <%= DropdownItem label: t(".scan_changes.label"), path: scans_path, method: :post, confirm: translate(".scan_changes.confirm") %>
                   <%= DropdownItem label: t(".check_existing.label"), path: scans_path(type: :check), method: :post, confirm: translate(".check_existing.confirm") %>
                   <%= DropdownItem label: t(".check_results.label"), path: scans_path({type: :check}.merge(@filter.to_params)), method: :post, confirm: translate(".check_results.confirm") if @filter&.any? %>
+                  <%= DropdownItem label: t(".dedup.label"), path: scans_path(type: :dedup), method: :post, confirm: translate(".dedup.confirm") %>
                 </ul>
               </div>
             <% end %>

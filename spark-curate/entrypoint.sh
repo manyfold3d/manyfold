@@ -109,6 +109,12 @@ if [[ ${#ARGS[@]} -eq 0 ]] || [[ "${ARGS[*]}" == "--library /library" ]]; then
   if [[ -n "${PLAN:-}" ]]; then
     ARGS+=(--plan "${PLAN}")
   fi
+  if [[ -n "${RESIDUAL_LIST:-}" ]]; then
+    ARGS+=(--residual-list "${RESIDUAL_LIST}")
+  fi
+  if [[ -n "${LIBRARY_CANDIDATES:-}" ]]; then
+    ARGS+=(--library-candidates "${LIBRARY_CANDIDATES}")
+  fi
   SLICE_VAL="${UNORGANIZE_SLICE:-${SLICE:-}}"
   if [[ -n "$SLICE_VAL" ]]; then
     IFS=',' read -ra SLICES <<< "$SLICE_VAL"
