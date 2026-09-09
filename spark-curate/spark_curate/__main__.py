@@ -23,6 +23,7 @@ from spark_curate.archive_index import (  # noqa: E402
     summary_dict as archive_match_summary,
 )
 from spark_curate.candidates import build_merge_candidates  # noqa: E402
+from spark_curate.admission import run_admit_cli  # noqa: E402
 from spark_curate.classify import run_classify_cli  # noqa: E402
 from spark_curate.config import CurateConfig, SparkConfig, load_config, save_example_config  # noqa: E402
 from spark_curate.decide import decide_one  # noqa: E402
@@ -52,7 +53,15 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--mode",
-        choices=("organize", "merge", "match", "unorganize", "classify", "archive-recall"),
+        choices=(
+            "organize",
+            "merge",
+            "match",
+            "unorganize",
+            "classify",
+            "archive-recall",
+            "admit",
+        ),
         default="organize",
         help=(
             "organize=folder rearrange (default); merge=duplicate pack merge plans; "
@@ -60,23 +69,29 @@ def build_parser() -> argparse.ArgumentParser:
             "unorganize=intake bucket dismantle + pack-root plan (INIT-021/SPEC-004); "
             "classify=curator category/creator/name pass over an unorganize plan "
             "(INIT-021/SPEC-005); "
-            "archive-recall=cross-root batch↔library recall (INIT-021/SPEC-006)"
+            "archive-recall=cross-root batch↔library recall (INIT-021/SPEC-006); "
+            "admit=new|hold verdicts into admissions JSONL (INIT-021/SPEC-008)"
         ),
     )
     p.add_argument(
         "--plan",
         default=None,
-        help="unorganize-plan-*.jsonl to enrich (required for --mode classify)",
+        help="classify-plan-*.jsonl for --mode admit, or unorganize-plan for --mode classify",
     )
     p.add_argument(
         "--batch-root",
         default=None,
-        help="Intake batch root for MODE=archive-recall",
+        help="Intake batch root for MODE=archive-recall / MODE=admit",
     )
     p.add_argument(
         "--slice-top",
         default=None,
         help="Optional top-level folder under --batch-root for archive-recall slice",
+    )
+    p.add_argument(
+        "--candidates",
+        default=None,
+        help="Precomputed cross-root-candidates-*.jsonl for --mode admit (hermetic)",
     )
     p.add_argument(
         "--work-dir",
@@ -521,6 +536,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_unorganize_cli(args, curate)
     if args.mode == "classify":
         return run_classify_cli(args, spark, curate)
+    if args.mode == "admit":
+        return run_admit_cli(args, spark, curate)
     return run_organize(args, spark, curate)
 
 
