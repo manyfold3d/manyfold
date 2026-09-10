@@ -192,17 +192,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-contrast-color-function@npm:^3.0.10":
-  version: 3.0.10
-  resolution: "@csstools/postcss-contrast-color-function@npm:3.0.10"
+  version: 3.0.11
+  resolution: "@csstools/postcss-contrast-color-function@npm:3.0.11"
   dependencies:
     "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.2
+    "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 5f881e5b28a5fd23e585f29ac0ac2dd208b5f67b020cd794b452751fe6aeb0b9037413f69158bae53752ada2074920f12e127709a27f5071ce941278bc08b406
+  checksum: db788d7354fa34ca10e09feea44e6c6a2d7f403c41e00e2381b00641a05496aa6a0c6967539b3aaa07a56ddbb67ba4e248f8d8a979eebd282f86a9db52697c4b
   languageName: node
   linkType: hard
 
