@@ -4710,14 +4710,14 @@ __metadata:
   linkType: hard
 
 "postcss-color-hex-alpha@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "postcss-color-hex-alpha@npm:11.0.0"
+  version: 11.0.1
+  resolution: "postcss-color-hex-alpha@npm:11.0.1"
   dependencies:
     "@csstools/utilities": ^3.0.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 72faeb0068ea14e6513fd754b8572aa61c892439377e171f21deef5aa1d64edbae07762dad857412373a73987407227dde4398e05faf926bb2b0c1cd5b260fd8
+  checksum: 14e5c3c4dc488c1b60eaf500bae36a01612046928207611b859dc57b90cd00ddb941b15725cddbb81fe0b97a3b5850e1ea67e5447baa967103d689cc94ad683b
   languageName: node
   linkType: hard
 
