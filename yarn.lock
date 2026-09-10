@@ -446,14 +446,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-nested-calc@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@csstools/postcss-nested-calc@npm:5.0.0"
+  version: 5.0.1
+  resolution: "@csstools/postcss-nested-calc@npm:5.0.1"
   dependencies:
     "@csstools/utilities": ^3.0.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: a839c6315aed8eb5fef3c360edcad179f674289c11043c6ab8031fecb0403f10aebe8dc4ba8905f9e8782d76c26c48119fcea7f4bd45a08a8ceffe418836f2df
+  checksum: 1efbd8dff2a4e6709a08d42dcbaa61f9b65bd85ef2c5c251584e51558b8e78a5aa56e2fbf88e7d2fd208b80b536a32ac4691601112efba35314a02c25d0f8340
   languageName: node
   linkType: hard
 
