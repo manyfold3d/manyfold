@@ -4695,17 +4695,17 @@ __metadata:
   linkType: hard
 
 "postcss-color-functional-notation@npm:^8.0.10":
-  version: 8.0.10
-  resolution: "postcss-color-functional-notation@npm:8.0.10"
+  version: 8.0.11
+  resolution: "postcss-color-functional-notation@npm:8.0.11"
   dependencies:
     "@csstools/css-color-parser": ^4.2.2
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.2
+    "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 346f503d22da66dadb31dcde7fcbcb2d18c8c75a23e2612d7ee4ba26deaa864d8d36d53a3be1fc1952cb199e674a0ef5e93da56704e012d6a0b19b3f96855532
+  checksum: 0dce1ea22c0e61034f225382e6c0f7d7b7205ca4c7065c088ddf7b0b1a4e2e70a44c9cce42e5ad9e8f7298d04ad7ece38151fd1b55c37fe0964d72f3fff5a2ae
   languageName: node
   linkType: hard
 
