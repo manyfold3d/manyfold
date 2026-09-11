@@ -4722,14 +4722,14 @@ __metadata:
   linkType: hard
 
 "postcss-color-rebeccapurple@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "postcss-color-rebeccapurple@npm:11.0.0"
+  version: 11.0.1
+  resolution: "postcss-color-rebeccapurple@npm:11.0.1"
   dependencies:
     "@csstools/utilities": ^3.0.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 281027711d2779772f969ac4df143a38f84f29b6fda84a3e71bac8c2f7ae2ed9c4618c5f716fab739b91589257430f11336f48bd274e73586f8e84a5f99e79e0
+  checksum: 46a7a789df7437d72da5ff8c33fe22f27d0f8260b213df2d7f5f0e0cf594e6ce725b412c3d223eb50412d5f9d711ff02a791491ea1e51d4987135a424fab259a
   languageName: node
   linkType: hard
 
