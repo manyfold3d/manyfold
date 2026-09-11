@@ -220,11 +220,11 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-fit-tolerance-property@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@csstools/postcss-fit-tolerance-property@npm:1.0.0"
+  version: 1.0.1
+  resolution: "@csstools/postcss-fit-tolerance-property@npm:1.0.1"
   peerDependencies:
     postcss: ^8.4
-  checksum: f50cbbfd96bc3027ca4322c8c9eb4ecfaa5977b78dd1ebb37d02aa2d32dc46f248ff825a13519275990b533098e57736fc29a287efa7aeb61abdd33775ac8dd9
+  checksum: 816e4370a6df32dec79da0a9a8a4d558df67ff8c5b50303a8000c954b3180f0184b296a06ca11ffd299b60b6e6c84809fdff535685b280dbdc0811907f808449
   languageName: node
   linkType: hard
 
