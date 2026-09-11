@@ -207,15 +207,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-exponential-functions@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "@csstools/postcss-exponential-functions@npm:3.0.4"
+  version: 3.0.5
+  resolution: "@csstools/postcss-exponential-functions@npm:3.0.5"
   dependencies:
     "@csstools/css-calc": ^3.3.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: a35e412b5e0bcaca6a607c0d2bd476663314d08a64c6e892e143969d26d19cd980ee26e06f17ca8d6a0786e2ccf45a7663963168179f203abf67cddd8c57edaf
+  checksum: 9c7e201d9e58d0892fbd8eb6b19c4bccfea106188e42375f95bbefb95dc534354c9aca0e9373257ff6a4cb7dc1c21cbfae7b765c781d5194928c3155e130a2c9
   languageName: node
   linkType: hard
 
