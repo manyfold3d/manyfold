@@ -178,16 +178,16 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-content-alt-text@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "@csstools/postcss-content-alt-text@npm:3.0.3"
+  version: 3.0.4
+  resolution: "@csstools/postcss-content-alt-text@npm:3.0.4"
   dependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/postcss-progressive-custom-properties": ^5.1.2
+    "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 315b1df1d32bc24b40e2132d0d9f85d41df9496948140b7df01407a5bec252e74176bd58601fae501d992490e89f7cb7db8ff8462b10a788d21490c631210e01
+  checksum: de05154cfac95587a5b72f76b09d25a301cc2cc0dc9558b236780e39c8e0553e2b9077f26c31bb452fb7b5cc71f1e012358e2ff017db03509d89ad801bb8c5f8
   languageName: node
   linkType: hard
 
