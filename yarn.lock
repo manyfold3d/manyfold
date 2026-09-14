@@ -1957,8 +1957,8 @@ __metadata:
   linkType: hard
 
 "autoprefixer@npm:^10.5.0":
-  version: 10.5.5
-  resolution: "autoprefixer@npm:10.5.5"
+  version: 10.6.0
+  resolution: "autoprefixer@npm:10.6.0"
   dependencies:
     browserslist: ^4.28.9
     caniuse-lite: ^1.0.30001810
@@ -1969,7 +1969,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: dbcfc21c890d1c04620536eb310837b864c50ea61fa13459c3859034f192053595cb043cad013e68dcd677261f8726b0b3556a53ffd37a002d9a6525ef6e3dd1
+  checksum: bd5d2310cab2a6c4a6d0eb8e84563e0f08714f60acc7cd1edc25c153a8f6f5d0e6faaae29eb463f91f7a3895fb4ec5ed21bd30850be7a5474bcf0d2e4b0208b2
   languageName: node
   linkType: hard
 
