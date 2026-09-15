@@ -711,7 +711,7 @@ es:
       never: Nunca
       revoked: Revocado
   errors:
-    connection_refused:
+    connection_refused: "¡Ups! No se pudo conectar con la consola web de desarrollo. Asegúrate de que el servidor de desarrollo esté en funcionamiento.\n"
     format: "%{attribute} %{message}"
     messages:
       accepted: debe ser aceptado
@@ -726,7 +726,7 @@ es:
       expired: ha expirado, por favor solicita una nueva
       greater_than: debe ser mayor que %{count}
       greater_than_or_equal_to: debe ser mayor que o igual a %{count}
-      in:
+      in: debe estar en %{count}
       inclusion: no está incluido en la lista
       invalid: no es válido
       less_than: debe ser menor que %{count}
@@ -741,7 +741,7 @@ es:
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
       odd: debe ser impar
       other_than: debe ser distinto de %{count}
-      password_too_long:
+      password_too_long: es demasiado largo
       present: debe estar en blanco
       required: debe existir
       taken: ya está en uso
@@ -751,8 +751,8 @@ es:
       too_short:
         one: es demasiado corto (1 carácter mínimo)
         other: es demasiado corto (%{count} caracteres mínimo)
-      url:
-      weak_password:
+      url: No es una URL válida
+      weak_password: No es lo suficientemente segura. Considera la posibilidad de añadir un número, símbolos o más letras para que sea más segura.
       wrong_length:
         one: no tiene la longitud correcta (1 carácter exactos)
         other: no tiene la longitud correcta (%{count} caracteres exactos)
@@ -761,8 +761,12 @@ es:
       header:
         one: No se pudo guardar este/a %{model} porque se encontró 1 error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
-    unacceptable_request:
-    unavailable_session:
+    unacceptable_request: Se esperaba una versión compatible en la cabecera Accept.
+    unavailable_session: |
+      La sesión %{id} ya no está disponible en memoria.
+
+      Si estás ejecutando la aplicación en un servidor multiproceso (como Unicorn o Puma), el proceso
+      al que ha llegado esta solicitud no almacena %{id} en memoria. Considera la posibilidad de reducir el número de procesos/trabajos a uno (1) o de utilizar un servidor diferente en el entorno de desarrollo.
   fasp_client:
     providers:
       edit:
