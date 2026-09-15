@@ -6,9 +6,9 @@ __metadata:
   cacheKey: 8
 
 "@bufbuild/protobuf@npm:^2.5.0":
-  version: 2.14.1
-  resolution: "@bufbuild/protobuf@npm:2.14.1"
-  checksum: 607dfab401fe87b050565a7cc8c1009d5566993d9b25bdae381367648f43c0ff280f1ce48fd27eaa14660a50a8bef9fdf58987670732cd410c0d478c0bd7afff
+  version: 2.15.0
+  resolution: "@bufbuild/protobuf@npm:2.15.0"
+  checksum: 38874541154bfe2e32c1edb704420dabec87f0965589928b50a2112f8ce39ca0a50a0159fcaa3562bc1ce0ea6d1018b40e279ec3238844f94f4a7cca1784a840
   languageName: node
   linkType: hard
 
