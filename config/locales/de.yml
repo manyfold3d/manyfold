@@ -748,20 +748,20 @@ de:
       required: muss ausgefüllt werden
       taken: ist bereits vergeben
       too_long:
-        one: ist zu lang (mehr als 1 Zeichen)
+        one: ist zu lang (maximal %{count} Zeichen)
         other: ist zu lang (mehr als %{count} Zeichen)
       too_short:
-        one: ist zu kurz (weniger als 1 Zeichen)
+        one: 'ist zu kurz (Mindestlänge: %{count} Zeichen)'
         other: ist zu kurz (weniger als %{count} Zeichen)
       url:
       weak_password:
       wrong_length:
-        one: hat die falsche Länge (muss genau 1 Zeichen haben)
+        one: hat die falsche Länge (sollte %{count} Zeichen lang sein)
         other: hat die falsche Länge (muss genau %{count} Zeichen haben)
     template:
       body: 'Bitte überprüfen Sie die folgenden Felder:'
       header:
-        one: 'Konnte %{model} nicht speichern: ein Fehler.'
+        one: "%{count} Fehler verhindert, dass dieses %{model} gespeichert wird"
         other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
     unacceptable_request:
     unavailable_session:
