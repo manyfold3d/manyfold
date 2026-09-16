@@ -526,15 +526,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-random-function@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@csstools/postcss-random-function@npm:4.0.1"
+  version: 4.0.2
+  resolution: "@csstools/postcss-random-function@npm:4.0.2"
   dependencies:
-    "@csstools/css-calc": ^3.3.0
+    "@csstools/css-calc": ^3.4.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: a35de5433ebecbe277de671d51963ac864c3d4a9336fa5189f844c57fe21aeb9d15f339ef676cee46bf21481f2b636071e5d517ad97a41a31f15150a84f7b83d
+  checksum: 1e0c6541cd8af8a1fdbbb30467299419c49b7d726ac1f9d18ae49ba45c62747868b5a189a7325cd1d6ca4112b9f7de74415cc70a2fd1aabffb19d37a5f0efde6
   languageName: node
   linkType: hard
 
