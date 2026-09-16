@@ -565,15 +565,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-sign-functions@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "@csstools/postcss-sign-functions@npm:2.0.5"
+  version: 2.0.6
+  resolution: "@csstools/postcss-sign-functions@npm:2.0.6"
   dependencies:
-    "@csstools/css-calc": ^3.3.0
+    "@csstools/css-calc": ^3.4.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 956d0bb6388beb1f8fd07614912443defa750b29a80d6a1788661dab7e1b676fdb13a7c322f1d30ad6b60e081044c38f597eebbeed65cffce2060fd624c04e55
+  checksum: 0fb89669a1b23f96532758b2a655bc939b354cd94af575b3b26d4c7a027acf55a154dfe93aae6e5cbd450defaf9acf03b76bf347c2af7cbf2e9523e145e47d7c
   languageName: node
   linkType: hard
 
