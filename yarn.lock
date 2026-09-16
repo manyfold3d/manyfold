@@ -29,7 +29,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.3.0, @csstools/css-calc@npm:^3.4.0":
+"@csstools/css-calc@npm:^3.4.0":
   version: 3.4.0
   resolution: "@csstools/css-calc@npm:3.4.0"
   peerDependencies:
@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.2, @csstools/css-color-parser@npm:^4.2.3":
+"@csstools/css-color-parser@npm:^4.2.3":
   version: 4.2.3
   resolution: "@csstools/css-color-parser@npm:4.2.3"
   dependencies:
@@ -78,7 +78,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-alpha-function@npm:^2.0.12":
+"@csstools/postcss-alpha-function@npm:^2.0.13":
   version: 2.0.13
   resolution: "@csstools/postcss-alpha-function@npm:2.0.13"
   dependencies:
@@ -105,7 +105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-color-function-display-p3-linear@npm:^2.0.11":
+"@csstools/postcss-color-function-display-p3-linear@npm:^2.0.12":
   version: 2.0.12
   resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.12"
   dependencies:
@@ -120,7 +120,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-color-function@npm:^5.0.11":
+"@csstools/postcss-color-function@npm:^5.0.12":
   version: 5.0.12
   resolution: "@csstools/postcss-color-function@npm:5.0.12"
   dependencies:
@@ -135,7 +135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-color-mix-function@npm:^4.0.11":
+"@csstools/postcss-color-mix-function@npm:^4.0.12":
   version: 4.0.12
   resolution: "@csstools/postcss-color-mix-function@npm:4.0.12"
   dependencies:
@@ -150,18 +150,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-color-mix-variadic-function-arguments@npm:^2.0.11":
-  version: 2.0.11
-  resolution: "@csstools/postcss-color-mix-variadic-function-arguments@npm:2.0.11"
+"@csstools/postcss-color-mix-variadic-function-arguments@npm:^2.0.12":
+  version: 2.0.12
+  resolution: "@csstools/postcss-color-mix-variadic-function-arguments@npm:2.0.12"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.2
+    "@csstools/css-color-parser": ^4.2.3
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: c8620466dafdeb21f48945b9779bb4e7c44b1c5700f671db33d7a786d6962dd4e4bdccc2f637f5f512b534d2093049d2d44433390ccfedd089fa3e8870fe682a
+  checksum: f6315dedc49dd0811ee20bcf369f38c2eaa35daf26b9de84a75ec229ca701cfc2fc1a781777b8992668ea47aa126ceda9acb4057c7f8f1b7b9237d28d831a046
   languageName: node
   linkType: hard
 
@@ -191,7 +191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-contrast-color-function@npm:^3.0.11":
+"@csstools/postcss-contrast-color-function@npm:^3.0.12":
   version: 3.0.12
   resolution: "@csstools/postcss-contrast-color-function@npm:3.0.12"
   dependencies:
@@ -206,7 +206,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-exponential-functions@npm:^3.0.5":
+"@csstools/postcss-exponential-functions@npm:^3.0.6":
   version: 3.0.6
   resolution: "@csstools/postcss-exponential-functions@npm:3.0.6"
   dependencies:
@@ -251,7 +251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-gamut-mapping@npm:^3.0.11":
+"@csstools/postcss-gamut-mapping@npm:^3.0.12":
   version: 3.0.12
   resolution: "@csstools/postcss-gamut-mapping@npm:3.0.12"
   dependencies:
@@ -264,7 +264,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-gradients-interpolation-method@npm:^6.0.11":
+"@csstools/postcss-gradients-interpolation-method@npm:^6.0.12":
   version: 6.0.12
   resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.12"
   dependencies:
@@ -279,18 +279,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-hwb-function@npm:^5.0.11":
-  version: 5.0.11
-  resolution: "@csstools/postcss-hwb-function@npm:5.0.11"
+"@csstools/postcss-hwb-function@npm:^5.0.12":
+  version: 5.0.12
+  resolution: "@csstools/postcss-hwb-function@npm:5.0.12"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.2
+    "@csstools/css-color-parser": ^4.2.3
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 500a2655a6e512b8df9c88003d0d2c3c067a61128f91af40163231f9ce8c78723b4c803192c57a3c677eae85d8f9916539f33e9597ca918cee73d5c10a38b196
+  checksum: cc778d2400203088d8d690996046fa7f49e772141a92f95dc7f229fd540bbf3c8fd9251c33e11244188b9cd4756da1209b2775bfa43ebcd1b708867766e0beb1
   languageName: node
   linkType: hard
 
@@ -407,7 +407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-media-minmax@npm:^3.0.4":
+"@csstools/postcss-media-minmax@npm:^3.0.5":
   version: 3.0.5
   resolution: "@csstools/postcss-media-minmax@npm:3.0.5"
   dependencies:
@@ -469,7 +469,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-oklab-function@npm:^5.0.11":
+"@csstools/postcss-oklab-function@npm:^5.0.12":
   version: 5.0.12
   resolution: "@csstools/postcss-oklab-function@npm:5.0.12"
   dependencies:
@@ -525,7 +525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-random-function@npm:^4.0.1":
+"@csstools/postcss-random-function@npm:^4.0.2":
   version: 4.0.2
   resolution: "@csstools/postcss-random-function@npm:4.0.2"
   dependencies:
@@ -538,7 +538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-relative-color-syntax@npm:^4.0.11":
+"@csstools/postcss-relative-color-syntax@npm:^4.0.12":
   version: 4.0.12
   resolution: "@csstools/postcss-relative-color-syntax@npm:4.0.12"
   dependencies:
@@ -564,7 +564,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-sign-functions@npm:^2.0.5":
+"@csstools/postcss-sign-functions@npm:^2.0.6":
   version: 2.0.6
   resolution: "@csstools/postcss-sign-functions@npm:2.0.6"
   dependencies:
@@ -577,7 +577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-stepped-value-functions@npm:^5.0.5":
+"@csstools/postcss-stepped-value-functions@npm:^5.0.6":
   version: 5.0.6
   resolution: "@csstools/postcss-stepped-value-functions@npm:5.0.6"
   dependencies:
@@ -625,7 +625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-trigonometric-functions@npm:^5.0.5":
+"@csstools/postcss-trigonometric-functions@npm:^5.0.6":
   version: 5.0.6
   resolution: "@csstools/postcss-trigonometric-functions@npm:5.0.6"
   dependencies:
@@ -4093,7 +4093,7 @@ __metadata:
     postcss: ^8.5.28
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^17.0.0
-    postcss-preset-env: ^11.5.2
+    postcss-preset-env: ^11.5.3
     rollup: ^4.63.2
     sass-embedded: ^1.104.1
     three: ^0.186.0
@@ -4695,7 +4695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-color-functional-notation@npm:^8.0.11":
+"postcss-color-functional-notation@npm:^8.0.12":
   version: 8.0.12
   resolution: "postcss-color-functional-notation@npm:8.0.12"
   dependencies:
@@ -4875,7 +4875,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-lab-function@npm:^8.0.11":
+"postcss-lab-function@npm:^8.0.12":
   version: 8.0.12
   resolution: "postcss-lab-function@npm:8.0.12"
   dependencies:
@@ -4954,26 +4954,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:^11.5.2":
-  version: 11.5.2
-  resolution: "postcss-preset-env@npm:11.5.2"
+"postcss-preset-env@npm:^11.5.3":
+  version: 11.5.3
+  resolution: "postcss-preset-env@npm:11.5.3"
   dependencies:
-    "@csstools/postcss-alpha-function": ^2.0.12
+    "@csstools/postcss-alpha-function": ^2.0.13
     "@csstools/postcss-cascade-layers": ^6.0.0
-    "@csstools/postcss-color-function": ^5.0.11
-    "@csstools/postcss-color-function-display-p3-linear": ^2.0.11
-    "@csstools/postcss-color-mix-function": ^4.0.11
-    "@csstools/postcss-color-mix-variadic-function-arguments": ^2.0.11
+    "@csstools/postcss-color-function": ^5.0.12
+    "@csstools/postcss-color-function-display-p3-linear": ^2.0.12
+    "@csstools/postcss-color-mix-function": ^4.0.12
+    "@csstools/postcss-color-mix-variadic-function-arguments": ^2.0.12
     "@csstools/postcss-container-rule-prelude-list": ^1.0.1
     "@csstools/postcss-content-alt-text": ^3.0.4
-    "@csstools/postcss-contrast-color-function": ^3.0.11
-    "@csstools/postcss-exponential-functions": ^3.0.5
+    "@csstools/postcss-contrast-color-function": ^3.0.12
+    "@csstools/postcss-exponential-functions": ^3.0.6
     "@csstools/postcss-fit-tolerance-property": ^1.0.1
     "@csstools/postcss-font-format-keywords": ^5.0.0
     "@csstools/postcss-font-width-property": ^1.0.0
-    "@csstools/postcss-gamut-mapping": ^3.0.11
-    "@csstools/postcss-gradients-interpolation-method": ^6.0.11
-    "@csstools/postcss-hwb-function": ^5.0.11
+    "@csstools/postcss-gamut-mapping": ^3.0.12
+    "@csstools/postcss-gradients-interpolation-method": ^6.0.12
+    "@csstools/postcss-hwb-function": ^5.0.12
     "@csstools/postcss-ic-unit": ^5.0.4
     "@csstools/postcss-image-function": ^1.0.3
     "@csstools/postcss-initial": ^3.0.0
@@ -4984,25 +4984,25 @@ __metadata:
     "@csstools/postcss-logical-overscroll-behavior": ^3.0.0
     "@csstools/postcss-logical-resize": ^4.0.0
     "@csstools/postcss-logical-viewport-units": ^4.0.1
-    "@csstools/postcss-media-minmax": ^3.0.4
+    "@csstools/postcss-media-minmax": ^3.0.5
     "@csstools/postcss-media-queries-aspect-ratio-number-values": ^4.0.0
     "@csstools/postcss-mixins": ^1.0.0
     "@csstools/postcss-nested-calc": ^5.0.1
     "@csstools/postcss-normalize-display-values": ^5.0.1
-    "@csstools/postcss-oklab-function": ^5.0.11
+    "@csstools/postcss-oklab-function": ^5.0.12
     "@csstools/postcss-position-area-property": ^2.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/postcss-property-rule-optional-descriptors": ^1.0.0
     "@csstools/postcss-property-rule-prelude-list": ^2.0.0
-    "@csstools/postcss-random-function": ^4.0.1
-    "@csstools/postcss-relative-color-syntax": ^4.0.11
+    "@csstools/postcss-random-function": ^4.0.2
+    "@csstools/postcss-relative-color-syntax": ^4.0.12
     "@csstools/postcss-scope-pseudo-class": ^5.0.0
-    "@csstools/postcss-sign-functions": ^2.0.5
-    "@csstools/postcss-stepped-value-functions": ^5.0.5
+    "@csstools/postcss-sign-functions": ^2.0.6
+    "@csstools/postcss-stepped-value-functions": ^5.0.6
     "@csstools/postcss-syntax-descriptor-syntax-production": ^2.0.0
     "@csstools/postcss-system-ui-font-family": ^2.0.0
     "@csstools/postcss-text-decoration-shorthand": ^5.0.5
-    "@csstools/postcss-trigonometric-functions": ^5.0.5
+    "@csstools/postcss-trigonometric-functions": ^5.0.6
     "@csstools/postcss-unset-value": ^5.0.0
     autoprefixer: ^10.5.0
     browserslist: ^4.28.1
@@ -5012,7 +5012,7 @@ __metadata:
     cssdb: ^8.10.0
     postcss-attribute-case-insensitive: ^8.0.0
     postcss-clamp: ^4.1.0
-    postcss-color-functional-notation: ^8.0.11
+    postcss-color-functional-notation: ^8.0.12
     postcss-color-hex-alpha: ^11.0.1
     postcss-color-rebeccapurple: ^11.0.1
     postcss-custom-media: ^12.0.1
@@ -5025,7 +5025,7 @@ __metadata:
     postcss-font-variant: ^5.0.0
     postcss-gap-properties: ^7.0.0
     postcss-image-set-function: ^8.0.1
-    postcss-lab-function: ^8.0.11
+    postcss-lab-function: ^8.0.12
     postcss-logical: ^9.0.0
     postcss-nesting: ^14.0.1
     postcss-opacity-percentage: ^3.0.0
@@ -5037,7 +5037,7 @@ __metadata:
     postcss-selector-not: ^9.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 9aedb5ad85084e37b538de37259ca02e4a5452162c55b828ef47cd3b66d9cfd3dea9c61dbe846dc186cc94ec8906d8eb8d7e0063c4c35ee8759c123a936f1a90
+  checksum: 0870e2cf18bc6bdfac2f074ce60cb99f2afc4007257dbb2ad96b29e28839ec030080fac045fa702c4910939f831350e892267abed40f6e500ade0b841d10b8c3
   languageName: node
   linkType: hard
 
