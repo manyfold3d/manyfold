@@ -29,26 +29,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@csstools/css-calc@npm:3.3.0"
+"@csstools/css-calc@npm:^3.3.0, @csstools/css-calc@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@csstools/css-calc@npm:3.4.0"
   peerDependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-  checksum: 77bac1965896a983d927d4f39c51018bdfd80a33fe7ed6f2ab8fb60c450ce26543ec9b5f35c4c06802c3818c0a60acb312d9e81e2d18239dc2cc5814d22147cd
+  checksum: 5d6b1191e908eb399e428275c2af9d28d3c4ace9e96424d0451adda4e6379333629278a33bc77453b9e9ae97537fb86352fe400f2d4c224937b612b88857597f
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@csstools/css-color-parser@npm:4.2.2"
+"@csstools/css-color-parser@npm:^4.2.2, @csstools/css-color-parser@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "@csstools/css-color-parser@npm:4.2.3"
   dependencies:
     "@csstools/color-helpers": ^6.1.1
-    "@csstools/css-calc": ^3.3.0
+    "@csstools/css-calc": ^3.4.0
   peerDependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-  checksum: d50c0c6e888392df3610802c659ece14eda5bee34e55d49fb3bf9ccbab7abde4b695e3c0692d21e4f90c77fa68a22f70ae13b3f7ccb753c01c63ca4e0443f22a
+  checksum: b69f0e9f19aa88392115cc59748fa0352387111738723c2b5baf3a44fc5e5cbe1f9d2a77eede3c84ed8eb632097f384feabcaa5d0ec96b49a03d7c1a59e39932
   languageName: node
   linkType: hard
 
@@ -252,15 +252,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-gamut-mapping@npm:^3.0.11":
-  version: 3.0.11
-  resolution: "@csstools/postcss-gamut-mapping@npm:3.0.11"
+  version: 3.0.12
+  resolution: "@csstools/postcss-gamut-mapping@npm:3.0.12"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.2
+    "@csstools/css-color-parser": ^4.2.3
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 6050174ac5ba123eca74d64eef85f45c83aa1aa7ba716296cb390893295940e1defcfd2f5e84fa4284810556013922fa1da2bb875001e60b160d2812cb1e4312
+  checksum: f6a4329c4315c5f6278683eb11e60800be0db56626fdea9cf0ff38a3882495dd12ffdaa48eb1e07cc3e13c25722c4bc7792f14255eb91591e2b05c787123a2a8
   languageName: node
   linkType: hard
 
