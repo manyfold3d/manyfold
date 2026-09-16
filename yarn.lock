@@ -29,13 +29,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@csstools/css-calc@npm:3.3.0"
+"@csstools/css-calc@npm:^3.3.0, @csstools/css-calc@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@csstools/css-calc@npm:3.4.0"
   peerDependencies:
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
-  checksum: 77bac1965896a983d927d4f39c51018bdfd80a33fe7ed6f2ab8fb60c450ce26543ec9b5f35c4c06802c3818c0a60acb312d9e81e2d18239dc2cc5814d22147cd
+  checksum: 5d6b1191e908eb399e428275c2af9d28d3c4ace9e96424d0451adda4e6379333629278a33bc77453b9e9ae97537fb86352fe400f2d4c224937b612b88857597f
   languageName: node
   linkType: hard
 
@@ -578,15 +578,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-stepped-value-functions@npm:^5.0.5":
-  version: 5.0.5
-  resolution: "@csstools/postcss-stepped-value-functions@npm:5.0.5"
+  version: 5.0.6
+  resolution: "@csstools/postcss-stepped-value-functions@npm:5.0.6"
   dependencies:
-    "@csstools/css-calc": ^3.3.0
+    "@csstools/css-calc": ^3.4.0
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 93c07a6c426a32d27f59546af06de116a088d7e2b317caf1f4e98888389ed245373f706dee6854e0c988386fc113ab05b297406a65fb7a768df05887a8b8a2ce
+  checksum: e53ccdbd8e095be9b6d28d2d1eca85a353dcfe20b6dbecf47d82313e29d585f9331447ddea7d01a3957022d93222279391a3daa27c671f18ced6d54e69e2ed19
   languageName: node
   linkType: hard
 
