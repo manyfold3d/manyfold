@@ -79,17 +79,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-alpha-function@npm:^2.0.12":
-  version: 2.0.12
-  resolution: "@csstools/postcss-alpha-function@npm:2.0.12"
+  version: 2.0.13
+  resolution: "@csstools/postcss-alpha-function@npm:2.0.13"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.2
+    "@csstools/css-color-parser": ^4.2.3
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 510b2a649f3d3fddd4867de0cadc86bc123c7ca90fa2602c522a11d9208cf3bc1c8afcb671925c9a426dd947c6ad7e4e2891c10d3642b379f019b9b9833b8a82
+  checksum: 28d83b2c4f965dce65be9f5daff116a08c3b04e4fab760cb6ee5a8a8e97ff7fc0ec81d3d545abcd21908e303489bade5b188e6485f8b1ff5f08c9bf650aa526b
   languageName: node
   linkType: hard
 
