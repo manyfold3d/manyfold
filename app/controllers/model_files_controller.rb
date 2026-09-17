@@ -60,8 +60,8 @@ class ModelFilesController < ApplicationController
   def create
     authorize @model, :edit?
     if params[:convert]
-      file = ModelFile.find_param(params[:convert][:id])
-      authorize(file, :show?)
+      file = @model.model_files.find_param(params[:convert][:id])
+      authorize(file, :convert?)
       file.convert_later params[:convert][:to]
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif !(p = upload_params).empty?
