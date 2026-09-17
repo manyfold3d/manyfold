@@ -345,7 +345,7 @@ RSpec.describe "Model Files" do
     end
   end
 
-  context "without permission on a model", :as_contributor do
+  context "without view permission on a model", :as_contributor do
     let(:forbidden_model) { create(:model) }
     let(:forbidden_file) { create(:model_file, model: forbidden_model) }
 
@@ -356,6 +356,20 @@ RSpec.describe "Model Files" do
     it "cannot view the file" do
       get model_model_file_path(forbidden_model, forbidden_file)
       expect(response).to have_http_status :forbidden
+    end
+  end
+
+  context "with view but without edit permission on a model", :as_contributor do
+    let(:forbidden_model) { create(:model) }
+    let(:forbidden_file) { create(:model_file, model: forbidden_model) }
+
+    before do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(:public)
+    end
+
+    it "can view the file" do
+      get model_model_file_path(forbidden_model, forbidden_file)
+      expect(response).to have_http_status :ok
     end
 
     it "cannot edit the file" do
@@ -389,6 +403,19 @@ RSpec.describe "Model Files" do
       params = {model_files: {forbidden_file.public_id => "1", :printed => "1"}}
       patch bulk_update_model_model_files_path(forbidden_model, params: params)
       expect(response).to have_http_status :forbidden
+    end
+  end
+
+  # Regression test for https://github.com/manyfold3d/manyfold/security/advisories/GHSA-v5cc-4c8x-p9ch
+  context "when converting a file via a different non-editable model", :as_contributor do
+    let(:model) { create(:model, owner: current_user) }
+    let(:forbidden_file) { create(:model_file) }
+
+    it "cannot convert file to different format" do # rubocop:disable RSpec/MultipleExpectations
+      params = {convert: {id: forbidden_file.to_param, to: "threemf"}}
+      post model_model_files_path(model, params: params)
+      expect(Analysis::FileConversionJob).not_to have_been_enqueued
+      expect(response).to have_http_status :not_found
     end
   end
 end
