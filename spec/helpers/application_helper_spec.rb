@@ -79,4 +79,26 @@ RSpec.describe ApplicationHelper do
       expect(attrs["tour-id-completed"]).to eq "true"
     end
   end
+
+  describe "#markdownify" do
+    it "removes javascript: URLs from rendered markdown" do
+      text = "[text](javascript:alert(1))"
+      expect(helper.markdownify(text)).not_to include "javascript:"
+    end
+
+    it "allows some safe HTML tags" do
+      text = "*test*"
+      expect(helper.markdownify(text)).to include "<em>"
+    end
+
+    it "allows max h3 headings" do
+      text = "# Heading"
+      expect(helper.markdownify(text)).to include "<h3"
+    end
+
+    it "produces HTML-safe output" do
+      text = "# Heading"
+      expect(helper.markdownify(text).html_safe?).to be true
+    end
+  end
 end

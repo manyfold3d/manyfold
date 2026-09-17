@@ -56,11 +56,13 @@ module ApplicationHelper
   end
 
   def markdownify(text)
-    Kramdown::Document.new(
-      sanitize(text),
-      header_offset: 2,
-      input: "GFM"
-    ).to_html.html_safe # rubocop:disable Rails/OutputSafety
+    sanitize(
+      Kramdown::Document.new(
+        text,
+        header_offset: 2,
+        input: "GFM"
+      ).to_html
+    )
   end
 
   def card(style, title = nil, options = {}, &content)
