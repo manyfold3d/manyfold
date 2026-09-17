@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   before_action :get_creator
   before_action :get_group, except: [:index, :new, :create]
-  before_action :find_members, only: [:create, :update] # rubocop:todo Rails/LexicallyScopedActionFilter
   after_action :send_notifications, only: [:create, :update]
 
   def index
@@ -35,9 +34,11 @@ class GroupsController < ApplicationController
   end
 
   def create
+    group = @creator.groups.new
+    authorize group
+    find_members
     @group = @creator.groups.create group_params
     @new_memberships = @group.reload.memberships if @group.valid?
-    authorize @group
     respond_to do |format|
       format.html do
         if @group.valid?
@@ -57,6 +58,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+    find_members
     previous_membership_ids = @group.memberships.pluck(:id)
     @group.update group_params
     @new_memberships = @group.reload.memberships.where.not(id: previous_membership_ids) if @group.valid?
@@ -95,7 +97,7 @@ class GroupsController < ApplicationController
   end
 
   def get_creator
-    @creator = Creator.find_param(params[:creator_id])
+    @creator = policy_scope(Creator).find_param(params[:creator_id])
   end
 
   def get_group

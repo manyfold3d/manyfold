@@ -1,10 +1,11 @@
 require "rails_helper"
 
-RSpec.describe "Groups", :after_first_run do
+RSpec.describe "Groups", :after_first_run, :multiuser do
   let(:owner) { create(:user) }
-  let(:creator) { create(:creator, owner: owner) }
 
   context "when signed in as an owner of the creator" do
+    let(:creator) { create(:creator, owner: owner) }
+
     before do
       sign_in owner
     end
@@ -152,8 +153,49 @@ RSpec.describe "Groups", :after_first_run do
     end
   end
 
+  # Regression test for https://github.com/manyfold3d/manyfold/security/advisories/GHSA-rr5p-5cjh-2hgr
+  context "when not signed in and looking at a public creator" do
+    let(:creator) { create(:creator, owner: owner, permission_preset: :public) }
+
+    describe "GET /creators/{creator_id}/groups" do
+      it "doesn't show group list without login" do
+        get "/creators/#{creator.to_param}/groups"
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+
+    describe "POST /creators/{creator_id}/groups" do
+      let(:params) { {group: {name: "Group name", memberships_attributes: {"0" => {user_id: "newuser@example.com"}}}} }
+
+      before do
+        allow(User).to receive(:match!)
+        # Make sure everything is set up first
+        creator.reload
+      end
+
+      it "is forbidden" do
+        post "/creators/#{creator.to_param}/groups", params: params
+        expect(response).to have_http_status(:forbidden)
+      end
+
+      it "doesn't attempt to match any users" do
+        post "/creators/#{creator.to_param}/groups", params: params
+        expect(User).not_to have_received(:match!)
+      end
+
+      it "doesn't create new users" do
+        expect { post "/creators/#{creator.to_param}/groups", params: params }.not_to change(User, :count)
+      end
+
+      it "doesn't create new group" do
+        expect { post "/creators/#{creator.to_param}/groups", params: params }.not_to change(Group, :count)
+      end
+    end
+  end
+
   context "when signed in as a moderator" do
     let(:group) { create(:group, creator: creator) }
+    let(:creator) { create(:creator, owner: owner) }
 
     before do
       sign_in create :moderator
@@ -169,6 +211,7 @@ RSpec.describe "Groups", :after_first_run do
 
   context "when signed in as a member" do
     let(:group) { create(:group, creator: creator) }
+    let(:creator) { create(:creator, owner: owner) }
 
     before do
       sign_in create :user
