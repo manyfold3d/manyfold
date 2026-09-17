@@ -33,7 +33,11 @@ class UserPolicy < ApplicationPolicy
   def update?
     one_of(
       user == record,
-      user&.is_moderator?
+      user.is_administrator?, # Admins can update everyone including other admins
+      all_of(
+        user.is_moderator?, # Mods can update everyone except admins
+        !record.is_administrator?
+      )
     )
   end
 

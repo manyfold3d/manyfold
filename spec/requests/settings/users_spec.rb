@@ -154,5 +154,41 @@ RSpec.describe "/settings/users", :after_first_run, :multiuser do
         expect(response).to redirect_to("/settings/users/#{user.to_param}")
       end
     end
+
+    context "when setting passwords" do
+      let(:new_password) { SecureRandom.hex(32) }
+      let(:params) { {user: {password: new_password, password_confirmation: new_password}} }
+
+      it "request succeeds" do
+        patch "/settings/users/#{user.to_param}", params: params
+        expect(response).to have_http_status(:found)
+      end
+
+      it "can update a standard user" do
+        expect {
+          patch "/settings/users/#{user.to_param}", params: params
+        }.to change { user.reload.encrypted_password }
+      end
+
+      it "can update a moderator" do
+        mod = create(:moderator)
+        expect {
+          patch "/settings/users/#{mod.to_param}", params: params
+        }.to change { mod.reload.encrypted_password }
+      end
+
+      it "cannot update an administrator" do
+        admin = create(:admin)
+        expect {
+          patch "/settings/users/#{admin.to_param}", params: params
+        }.not_to change { admin.reload.encrypted_password }
+      end
+
+      it "gets access denied when updating an administrator" do
+        admin = create(:admin)
+        patch "/settings/users/#{admin.to_param}", params: params
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
   end
 end
