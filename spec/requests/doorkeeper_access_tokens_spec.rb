@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "OAuth access token request", :after_first_run do
+RSpec.describe "OAuth access token request", :after_first_run, :multiuser do
   context "when using client_credentials grant" do
     let(:oauth_app) { Doorkeeper::Application.create! owner: User.first, name: "test app" }
     let(:client_credentials_params) do
