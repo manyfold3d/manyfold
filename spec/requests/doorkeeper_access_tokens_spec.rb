@@ -80,4 +80,42 @@ RSpec.describe "OAuth access token request", :after_first_run, :multiuser do
       expect(response).to have_http_status :too_many_requests
     end
   end
+
+  context "when using read tokens to perform actions" do
+    let(:owner) { create(:contributor) }
+    let(:application) { Doorkeeper::Application.create! owner: owner, name: "test app" }
+    let(:read_token) { create(:oauth_access_token, application: application, scopes: "read") }
+    let(:model) { create(:model, owner: owner) }
+    let(:file) { create(:model_file, model: model, filename: "test.zip") }
+
+    it "fails safe for non-standard actions" do
+      post extract_model_model_file_path(model, file), headers: {
+        "Authorization" => "Bearer #{read_token.plaintext_token}",
+        "Accept" => Mime[:manyfold_api_v0].to_s
+      }
+      expect(response).to have_http_status :forbidden
+    end
+  end
+
+  context "when using public tokens" do
+    let(:owner) { create(:contributor) }
+    let(:application) { Doorkeeper::Application.create! owner: create(:user), name: "test app" }
+    let(:token) { create(:oauth_access_token, application: application, scopes: ["public", "upload"]) }
+
+    it "fails on non-public models" do
+      get model_path(create(:model, owner: owner)), headers: {
+        "Authorization" => "Bearer #{token.plaintext_token}",
+        "Accept" => Mime[:manyfold_api_v0].to_s
+      }
+      expect(response).to have_http_status :not_found
+    end
+
+    it "succeeds on public models" do
+      get model_path(create(:model, :public)), headers: {
+        "Authorization" => "Bearer #{token.plaintext_token}",
+        "Accept" => Mime[:manyfold_api_v0].to_s
+      }
+      expect(response).to have_http_status :success
+    end
+  end
 end
