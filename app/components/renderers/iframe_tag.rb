@@ -8,7 +8,8 @@ module Components::Renderers
       iframe(
         src: model_model_file_raw_path(@file.model, @file.filename),
         alt: @file.name,
-        style: "width: 100%; aspect-ratio: 0.707"
+        style: "width: 100%; aspect-ratio: 0.707",
+        sandbox: safe("true")
       )
     end
   end
