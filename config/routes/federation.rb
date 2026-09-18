@@ -7,18 +7,17 @@ if SiteSettings.federation_enabled? || Rails.env.test?
     resources :quote_authorizations, only: [:show]
   end
 
-  # Remote follow routes
-
-  get "/authorize_interaction" => "follows#new" # for compatibility with Mastodon, which assumes this URL
+  # Remote follow routes for unauthenticated users
   post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
   post "/perform_remote_follow" => "follows#perform_remote_follow", :as => :perform_remote_follow
+
   authenticate :user do
+    get "/authorize_interaction" => "follows#new" # for compatibility with Mastodon, which assumes this URL
     post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
     delete "/follow_remote_actor/:id" => "follows#unfollow_remote_actor", :as => :unfollow_remote_actor
   end
 
   # Moderation
-
   authenticate :user, lambda { |u| u.is_moderator? } do
     namespace :settings do
       resources :domain_blocks
@@ -26,7 +25,6 @@ if SiteSettings.federation_enabled? || Rails.env.test?
   end
 
   # FASP integration
-
   mount FaspClient::Engine => "/fasp"
 
 end
