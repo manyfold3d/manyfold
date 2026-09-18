@@ -1,0 +1,28 @@
+# Depot CI Migration
+# Source: .github/workflows/lint.yml
+#
+# Changes made:
+# - Rewrote .github/ path references to .depot/
+# - Changed GitHub runs-on labels to their Depot equivalents
+
+name: Lint
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  lint:
+    if: github.triggering_actor != 'allcontributors[bot]'
+    runs-on: depot-ubuntu-latest # was: ubuntu-latest. Mapped standard GitHub runner to Depot equivalent.
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.depot/actions/setup
+      - name: Lint Ruby code
+        run: bundle exec rake rubocop
+      - name: Lint ERB templates
+        run: bundle exec erb_lint --lint-all
+      - name: Lint Typescript code
+        run: yarn run lint:ts
+      - name: Check typescript
+        run: yarn typecheck

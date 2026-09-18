@@ -1,0 +1,22 @@
+# Depot CI Migration
+# Source: .github/workflows/i18n_health.yml
+#
+# Changes made:
+# - Rewrote .github/ path references to .depot/
+# - Changed GitHub runs-on labels to their Depot equivalents
+
+name: Check translations
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  i18n:
+    if: github.triggering_actor != 'allcontributors[bot]'
+    runs-on: depot-ubuntu-latest # was: ubuntu-latest. Mapped standard GitHub runner to Depot equivalent.
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.depot/actions/setup
+      - name: Check translations
+        run: bundle exec i18n-tasks health -l en
