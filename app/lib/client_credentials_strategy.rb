@@ -16,6 +16,8 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
       ["delete"]
     when "/upload"
       ["upload"]
+    else
+      [""]
     end
     fail! and throw(:warden, status: :forbidden) unless token.acceptable?(scopes)
 
