@@ -21,17 +21,17 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     end
     fail! and throw(:warden, status: :forbidden) unless token.acceptable?(scopes)
 
-    # If scope is :public, we need no resource owner
-    resource_owner = if token.scopes == ["public"]
-      nil
-    else
+    scopes_required_for_this_action = token.scopes & scopes
+
+    # If an owner-specific scope is in use, set the resource owner
+    if (scopes_required_for_this_action & ["read", "write", "delete", "upload"]).any?
       # If this is a client credentials flow, the resource owner should be the owner of the application
-      token.application&.owner
-    end
-    # Sign in resource owner
-    if resource_owner&.active_for_authentication?
-      request.session_options[:skip] = true
-      success! resource_owner
+      resource_owner = token.application&.owner
+      # Sign in resource owner
+      if resource_owner&.active_for_authentication?
+        request.session_options[:skip] = true
+        success! resource_owner
+      end
     end
   end
 end
