@@ -14,7 +14,8 @@ class DoorkeeperAccessTokensController < ApplicationController
   end
 
   def new
-    @token = Doorkeeper::AccessToken.build
+    @token = @application.access_tokens.new
+    authorize @token
   end
 
   def create
@@ -22,11 +23,13 @@ class DoorkeeperAccessTokensController < ApplicationController
       :expires_in, # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.expires_in")
       scopes: [] # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.scopes")
     ])
-    @token = @application.access_tokens.create(
+    @token = @application.access_tokens.new(
       expires_in: token_params[:expires_in].to_i,
       resource_owner_id: @application.owner.id,
       scopes: token_params[:scopes].compact_blank.join(" ")
     )
+    authorize @token
+    @token.save
     if @token&.valid?
       flash[:plaintext_token] = @token.plaintext_token
       redirect_to [@application, @token], notice: t(".success")

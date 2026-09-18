@@ -1,6 +1,54 @@
 require "rails_helper"
 
 RSpec.describe "OAuth access token request", :after_first_run, :multiuser do
+  context "when interactively creating tokens as moderator", :as_moderator do
+    describe "GET /oauth/applications/{id}/tokens/new" do
+      it "can issue new tokens for most users" do
+        app = Doorkeeper::Application.create! owner: create(:contributor), name: "test app"
+        get "/oauth/applications/#{app.to_param}/tokens/new"
+        expect(response).to have_http_status :success
+      end
+
+      it "cannot issue new tokens for admin-owned apps" do
+        app = Doorkeeper::Application.create! owner: create(:admin), name: "test app"
+        get "/oauth/applications/#{app.to_param}/tokens/new"
+        expect(response).to have_http_status :forbidden
+      end
+    end
+
+    describe "POST /oauth/applications/{id}/tokens" do
+      let(:params) { {doorkeeper_access_token: {expiry: "7", scopes: ["read"]}} }
+
+      it "can issue new tokens for most users" do
+        app = Doorkeeper::Application.create! owner: create(:contributor), name: "test app"
+        post "/oauth/applications/#{app.to_param}/tokens", params: params
+        expect(response).to redirect_to("http://www.example.com/oauth/applications/1/tokens/1")
+      end
+
+      it "cannot issue new tokens for admin-owned apps" do
+        app = Doorkeeper::Application.create! owner: create(:admin), name: "test app"
+        post "/oauth/applications/#{app.to_param}/tokens", params: params
+        expect(response).to have_http_status :forbidden
+      end
+    end
+
+    describe "DELETE /oauth/applications/{application_id}/tokens/{id}" do
+      it "can revoke tokens for most users" do
+        app = Doorkeeper::Application.create! owner: create(:contributor), name: "test app"
+        token = app.access_tokens.create
+        delete "/oauth/applications/#{app.to_param}/tokens/#{token.to_param}"
+        expect(response).to redirect_to("http://www.example.com/oauth/applications/1")
+      end
+
+      it "cannot revoke tokens for admin-owned apps" do
+        app = Doorkeeper::Application.create! owner: create(:admin), name: "test app"
+        token = app.access_tokens.create
+        delete "/oauth/applications/#{app.to_param}/tokens/#{token.to_param}"
+        expect(response).to have_http_status :forbidden
+      end
+    end
+  end
+
   context "when using client_credentials grant" do
     let(:oauth_app) { Doorkeeper::Application.create! owner: User.first, name: "test app" }
     let(:client_credentials_params) do

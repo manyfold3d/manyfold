@@ -6,7 +6,7 @@ class Doorkeeper::ApplicationPolicy < ApplicationPolicy
   def show?
     one_of(
       record.owner == user,
-      user&.is_moderator?
+      user&.is_moderator? && !record.owner&.is_administrator?
     )
   end
 
@@ -23,7 +23,7 @@ class Doorkeeper::ApplicationPolicy < ApplicationPolicy
     all_of(
       one_of(
         record.owner == user,
-        user&.is_administrator?
+        user&.is_moderator? && !record.owner&.is_administrator?
       ),
       SiteSettings.multiuser_enabled?,
       none_of(
