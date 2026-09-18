@@ -1,3 +1,5 @@
 if SiteSettings.social_enabled? || Rails.env.test?
-  resources :follows, only: [:index, :new]
+  authenticate :user do
+    resources :follows, only: [:index, :new]
+  end
 end
