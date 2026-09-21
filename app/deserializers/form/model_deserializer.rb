@@ -32,7 +32,7 @@ module Form
           attrs
         end
       end
-      allowed[:collections] = CollectionPolicy::Scope.new(@user, Collection).resolve.where(public_id: allowed.delete(:collection_ids)) if allowed[:collection_ids]
+      allowed = resolve_collections(allowed)
       allowed = resolve_creator(allowed)
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :model))
