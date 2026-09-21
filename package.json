@@ -53,7 +53,7 @@
     "typescript": "~5.9.3",
     "vite": "^8.3.0",
     "vite-plugin-rails": "^0.6.0",
-    "vite-plugin-ruby": "^5.2.3",
+    "vite-plugin-ruby": "^5.2.4",
     "vite-plugin-wasm": "^3.6.0"
   },
   "packageManager": "yarn@3.8.5",
