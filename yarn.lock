@@ -62,9 +62,9 @@ __metadata:
   linkType: hard
 
 "@csstools/css-tokenizer@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@csstools/css-tokenizer@npm:4.0.0"
-  checksum: 924d1223561c035c7e9d8cde747d0ea37c4cba5b635b401901fe3f67ef0ccc33106a7c78b9751e80519457e432d950954717497093a5df56900f258ab4a50641
+  version: 4.0.1
+  resolution: "@csstools/css-tokenizer@npm:4.0.1"
+  checksum: bd75d18fad7939e27ad5eac61c0cb307a7a8e04555872850c6a03c8e4d7cce13f408c733ff17c6544d7fd669ce9f22396e9f1e881a9deff603b3585122e876b4
   languageName: node
   linkType: hard
 
