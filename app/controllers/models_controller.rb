@@ -88,14 +88,14 @@ class ModelsController < ApplicationController
     common_attributes = {
       name: multi_model ? nil : (p[:name]&.presence || File.basename(p.dig(:file, "0", :name), ".*").careful_titleize),
       owner: current_user,
-      creator_id: p[:creator_id],
-      collection_ids: p[:collections]&.map(&:id),
+      creator: p[:creator],
+      collections: p[:collections],
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
       permission_preset: p[:permission_preset],
       library: SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    }
+    }.compact
     @model = Model.new(common_attributes) # dummy model object
     if @model.valid?(multi_model ? :multi_upload : :single_upload)
       # Create model if there's just one
@@ -243,18 +243,7 @@ class ModelsController < ApplicationController
   end
 
   def bulk_update_params
-    allowed = params.permit(
-      :creator_id,
-      :new_library_id,
-      :organize,
-      :license,
-      :sensitive,
-      collection_ids: [],
-      add_tags: [],
-      remove_tags: []
-    )
-    allowed[:collections] = CollectionPolicy::UpdateScope.new(current_user, Collection).resolve.where(public_id: allowed.delete(:collection_ids))
-    allowed.compact_blank
+    Form::BulkModelDeserializer.new(params: params, user: current_user).deserialize
   end
 
   def model_params

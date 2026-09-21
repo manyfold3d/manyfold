@@ -1,16 +1,13 @@
 require "rails_helper"
 
-RSpec.describe Form::UploadedModelDeserializer do
-  subject(:deserializer) { described_class.new(params: params, user: user, record: record) }
+RSpec.describe Form::BulkModelDeserializer do
+  subject(:deserializer) { described_class.new(params: params, user: user) }
 
   context "when setting a creator" do
     let(:user) { create(:contributor) }
-    let(:record) { create(:model, owner: user) }
     let(:params) {
       ActionController::Parameters.new(
-        "model" => ActionController::Parameters.new({
-          "creator_id" => creator.id
-        })
+        "creator_id" => creator.id
       )
     }
 
@@ -41,12 +38,9 @@ RSpec.describe Form::UploadedModelDeserializer do
 
   context "when setting collections" do
     let(:user) { create(:contributor) }
-    let(:record) { create(:model, owner: user) }
     let(:params) {
       ActionController::Parameters.new(
-        "model" => ActionController::Parameters.new({
-          "collection_ids" => [collection.to_param]
-        })
+        "collection_ids" => [collection.to_param]
       )
     }
 
@@ -54,7 +48,7 @@ RSpec.describe Form::UploadedModelDeserializer do
       let(:collection) { create(:collection) }
 
       it "does not set collections" do
-        expect(deserializer.deserialize[:collections]).to be_empty
+        expect(deserializer.deserialize[:collections]).to be_nil
       end
 
       it "strips collection_ids param" do

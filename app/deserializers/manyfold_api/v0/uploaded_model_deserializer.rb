@@ -5,7 +5,7 @@ module ManyfoldApi::V0
       {
         name: @object["name"],
         file: @object.expect("files" => [["id", "name"]])&.each_with_index.to_h.invert,
-        creator_id: dereference(@object.dig("creator", "@id"), Creator)&.id,
+        creator: dereference(@object.dig("creator", "@id"), CreatorPolicy::UpdateScope.new(@user, Creator).resolve),
         collections: @object["isPartOf"]&.filter_map { dereference(it["@id"], Collection) },
         license: @object.dig("spdx:license", "licenseId"),
         sensitive: @object["sensitive"] ? "1" : "0",

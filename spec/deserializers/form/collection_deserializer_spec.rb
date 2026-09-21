@@ -1,14 +1,14 @@
 require "rails_helper"
 
-RSpec.describe Form::UploadedModelDeserializer do
+RSpec.describe Form::CollectionDeserializer do
   subject(:deserializer) { described_class.new(params: params, user: user, record: record) }
 
   context "when setting a creator" do
     let(:user) { create(:contributor) }
-    let(:record) { create(:model, owner: user) }
+    let(:record) { create(:collection, owner: user) }
     let(:params) {
       ActionController::Parameters.new(
-        "model" => ActionController::Parameters.new({
+        "collection" => ActionController::Parameters.new({
           "creator_id" => creator.id
         })
       )
@@ -39,13 +39,13 @@ RSpec.describe Form::UploadedModelDeserializer do
     end
   end
 
-  context "when setting collections" do
+  context "when setting collection" do
     let(:user) { create(:contributor) }
-    let(:record) { create(:model, owner: user) }
+    let(:record) { create(:collection, owner: user) }
     let(:params) {
       ActionController::Parameters.new(
-        "model" => ActionController::Parameters.new({
-          "collection_ids" => [collection.to_param]
+        "collection" => ActionController::Parameters.new({
+          "collection_id" => collection.to_param
         })
       )
     }
@@ -54,11 +54,11 @@ RSpec.describe Form::UploadedModelDeserializer do
       let(:collection) { create(:collection) }
 
       it "does not set collections" do
-        expect(deserializer.deserialize[:collections]).to be_empty
+        expect(deserializer.deserialize[:collection]).to be_nil
       end
 
       it "strips collection_ids param" do
-        expect(deserializer.deserialize[:collection_ids]).to be_nil
+        expect(deserializer.deserialize[:collection_id]).to be_nil
       end
     end
 
@@ -66,11 +66,11 @@ RSpec.describe Form::UploadedModelDeserializer do
       let(:collection) { create(:collection, owner: user) }
 
       it "finds proper collection record" do
-        expect(deserializer.deserialize[:collections]).to eq [collection]
+        expect(deserializer.deserialize[:collection]).to eq collection
       end
 
       it "strips collection_ids param" do
-        expect(deserializer.deserialize[:collection_ids]).to be_nil
+        expect(deserializer.deserialize[:collection_id]).to be_nil
       end
     end
   end

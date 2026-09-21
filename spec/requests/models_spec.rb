@@ -613,8 +613,8 @@ RSpec.describe "Models", :after_first_run do
           allow(SiteSettings).to receive(:show_libraries).and_return(true)
         end
 
-        let(:creator) { create(:creator) }
-        let(:collection) { create(:collection) }
+        let(:creator) { create(:creator, owner: @current_user) } # rubocop:todo RSpec/InstanceVariable
+        let(:collection) { create(:collection, owner: @current_user) } # rubocop:todo RSpec/InstanceVariable
         let(:post_models) {
           post "/models", params: {
             model: {

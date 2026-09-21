@@ -15,6 +15,8 @@ module Form
         :remove_cover,
         links_attributes: [:id, :url, :text, :_destroy]
       )
+      allowed = resolve_creator(allowed)
+      allowed = resolve_collection(allowed)
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :collection))
     end

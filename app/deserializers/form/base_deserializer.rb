@@ -19,6 +19,31 @@ module Form
       )
     end
 
+    def resolve_creator(params)
+      return params unless params[:creator_id]
+
+      params[:creator] = CreatorPolicy::UpdateScope.new(@user, Creator).resolve.find_by(id: params.delete(:creator_id))
+      params
+    rescue ActiveRecord::RecordNotFound
+      params
+    end
+
+    def resolve_collections(params)
+      return params unless params[:collection_ids]
+
+      params[:collections] = CollectionPolicy::UpdateScope.new(@user, Collection).resolve.where(public_id: params.delete(:collection_ids))
+      params
+    end
+
+    def resolve_collection(params)
+      return params unless params[:collection_id]
+
+      params[:collection] = CollectionPolicy::UpdateScope.new(@user, Collection).resolve.find_param(params.delete(:collection_id))
+      params
+    rescue ActiveRecord::RecordNotFound
+      params
+    end
+
     def user_can_set_permissions?
       @user.is_moderator? || (@record && @user&.owns?(@record))
     end
