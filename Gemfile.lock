@@ -402,7 +402,7 @@ GEM
     i18n_data (1.1.0)
       simple_po_parser (~> 1.1)
     image_processing (2.1.0)
-    io-console (0.9.3)
+    io-console (0.9.4)
     irb (1.18.0)
       pp (>= 0.6.0)
       prism (>= 1.3.0)
@@ -670,9 +670,9 @@ GEM
     rails-i18n (8.0.1)
       i18n (>= 0.7, < 2)
       railties (>= 8.0.0, < 9)
-    rails-settings-cached (2.9.6)
-      activerecord (>= 5.0.0)
-      railties (>= 5.0.0)
+    rails-settings-cached (2.10.0)
+      activerecord (>= 7.0.0)
+      railties (>= 7.0.0)
     rails_performance (1.6.0)
       browser
       railties
@@ -1074,7 +1074,7 @@ DEPENDENCIES
   rails (~> 8.0.5)
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 8.0.0)
-  rails-settings-cached (~> 2.9)
+  rails-settings-cached (~> 2.10)
   rails_performance (~> 1.6)
   redis (~> 5.4)
   redis-namespace
@@ -1263,7 +1263,7 @@ CHECKSUMS
   i18n-tasks (1.1.2) sha256=4dcfba49e52a623f30661cb316cb80d84fbba5cb8c6d88ef5e02545fffa3637a
   i18n_data (1.1.0) sha256=fb7ae43bd03ec4dc2e6e62e726aac05aa868c170ba1444c056e2ab0d872bb2ed
   image_processing (2.1.0) sha256=ca3814b1b909fc5fab68b261c50eaffef11e29a6907143e9cf1efc14b6dc6f47
-  io-console (0.9.3) sha256=f555049461b0afb78a5448b5be8e7c7b48371347cd48abfc22814764160000dd
+  io-console (0.9.4) sha256=a403304f32928ee85e56d457b4612ca43f2703b561a3258844992bd24085fbb1
   irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
   jbuilder (2.15.1) sha256=2430bec28fb0cebacb5875b1009cf9d8bc3c303ccb810c4c8b062a4b51457637
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
@@ -1372,7 +1372,7 @@ CHECKSUMS
   rails-dom-testing (2.3.0) sha256=8acc7953a7b911ca44588bf08737bc16719f431a1cc3091a292bca7317925c1d
   rails-html-sanitizer (1.7.1) sha256=e797a7c9b01e567307e317c576b49ab4168017e63eea4dba9ce3cb587e2f22c2
   rails-i18n (8.0.1) sha256=15303195450bdac9a80636cf14c7e5ada2f43907cc60fcd19bbb3f81ab45be0d
-  rails-settings-cached (2.9.6) sha256=761d6128221f1a162950b8b3911e233f3a49c6ecfd8b421110ed060e8c58a9b8
+  rails-settings-cached (2.10.0) sha256=22fcf0b0d645f20139f55fb07410e621370208c0c8f51de992566f3700301793
   rails_performance (1.6.0) sha256=712029a95c051ba98da362da98307a855bbf37f458e3cf186425bfea1ee37c48
   railties (8.0.5.1) sha256=da1958e1d9dab04691a2f8721b3ff7fab323715d37f103c19972dedfd644d5c7
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
