@@ -88,8 +88,8 @@ class ModelsController < ApplicationController
     common_attributes = {
       name: multi_model ? nil : (p[:name]&.presence || File.basename(p.dig(:file, "0", :name), ".*").careful_titleize),
       owner: current_user,
-      creator_id: p[:creator_id],
-      collection_ids: p[:collections]&.map(&:id),
+      creator: p[:creator],
+      collections: p[:collections],
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
