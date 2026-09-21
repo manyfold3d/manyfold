@@ -15,8 +15,8 @@ module Form
           [:id, :name]
         ]
       )
-      allowed[:collections] = CollectionPolicy::Scope.new(@user, Collection).resolve.where(public_id: allowed.delete(:collection_ids))
-      allowed
+      allowed = resolve_collections(allowed)
+      resolve_creator(allowed)
     end
   end
 end
