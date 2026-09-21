@@ -35,6 +35,15 @@ module Form
       params
     end
 
+    def resolve_collection(params)
+      return params unless params[:collection_id]
+
+      params[:collection] = CollectionPolicy::UpdateScope.new(@user, Collection).resolve.find_param(params.delete(:collection_id))
+      params
+    rescue ActiveRecord::RecordNotFound
+      params
+    end
+
     def user_can_set_permissions?
       @user.is_moderator? || (@record && @user&.owns?(@record))
     end
