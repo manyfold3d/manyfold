@@ -4,7 +4,7 @@ module ManyfoldApi::V0
       return unless @object
       {
         name: @object["name"],
-        creator: dereference(@object.dig("creator", "@id"), Creator),
+        creator: dereference(@object.dig("creator", "@id"), CreatorPolicy::UpdateScope.new(@user, Creator).resolve),
         collections: @object.dig("isPartOf")&.map { CollectionDeserializer.new(object: it).deserialize },
         caption: @object["caption"],
         notes: @object["description"],
