@@ -19,6 +19,15 @@ module Form
       )
     end
 
+    def resolve_creator(params)
+      return params unless params[:creator_id]
+
+      params[:creator] = CreatorPolicy::UpdateScope.new(@user, Creator).resolve.find_by(id: params.delete(:creator_id))
+      params
+    rescue ActiveRecord::RecordNotFound
+      params
+    end
+
     def user_can_set_permissions?
       @user.is_moderator? || (@record && @user&.owns?(@record))
     end

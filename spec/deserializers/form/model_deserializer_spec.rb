@@ -52,6 +52,42 @@ RSpec.describe Form::ModelDeserializer do
     end
   end
 
+  context "when setting a creator" do
+    let(:user) { create(:contributor) }
+    let(:record) { create(:model, owner: user) }
+    let(:params) {
+      ActionController::Parameters.new(
+        "model" => ActionController::Parameters.new({
+          "creator_id" => creator.id
+        })
+      )
+    }
+
+    context "when the user doesn't have update permission on the creator" do
+      let(:creator) { create(:creator) }
+
+      it "does not set creator" do
+        expect(deserializer.deserialize[:creator]).to be_nil
+      end
+
+      it "strips creator_id param" do
+        expect(deserializer.deserialize[:creator_id]).to be_nil
+      end
+    end
+
+    context "when the user does have update permission on the creator" do
+      let(:creator) { create(:creator, owner: user) }
+
+      it "finds proper creator record" do
+        expect(deserializer.deserialize[:creator]).to eq creator
+      end
+
+      it "strips creator_id param" do
+        expect(deserializer.deserialize[:creator_id]).to be_nil
+      end
+    end
+  end
+
   context "when the user is the owner of the model" do
     let(:user) { create(:contributor) }
     let(:record) { create(:model, owner: user) }
