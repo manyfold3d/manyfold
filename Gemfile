@@ -105,7 +105,7 @@ gem "devise", "~> 5.0"
 
 gem "data_migrate", "~> 11.3"
 
-gem "rails-settings-cached", "~> 2.9"
+gem "rails-settings-cached", "~> 2.10"
 
 gem "pagy", "~> 43.6"
 
