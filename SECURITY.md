@@ -12,3 +12,5 @@ If you find a security vulnerability in Manyfold, please fill in the [vulnerabil
 to let us know confidentially.
 
 We will publicise and credit all security advisories and issues when safe to do so.
+
+NOTE: *Anyone* explicitly asking for a CVE ID to be issued after filing a security report will be assumed to be a CVE-fishing LLM and banned. If a CVE is necessary, one will be requested, you don't need to remind me.
