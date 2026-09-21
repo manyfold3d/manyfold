@@ -95,7 +95,7 @@ class ModelsController < ApplicationController
       tag_list: p[:tag_list],
       permission_preset: p[:permission_preset],
       library: SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    }
+    }.compact
     @model = Model.new(common_attributes) # dummy model object
     if @model.valid?(multi_model ? :multi_upload : :single_upload)
       # Create model if there's just one
