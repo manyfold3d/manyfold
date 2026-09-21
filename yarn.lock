@@ -1452,12 +1452,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:~24.13":
-  version: 24.13.2
-  resolution: "@types/node@npm:24.13.2"
+"@types/node@npm:~26.6":
+  version: 26.6.1
+  resolution: "@types/node@npm:26.6.1"
   dependencies:
-    undici-types: ~7.18.0
-  checksum: a1cdc5f2e2ee1fd38cfad3c2b548b8a9b5cb7edc2fb0524fabe62d27b8d9a247d9e781d7b4698bae7de8817743870a1a9ebef987dcda7e20545ff66a3828365b
+    undici-types: ~8.9.0
+  checksum: 73952ba62826a5aaec2457d429357d7be72213527a1af322596b261620b98bb6b89a602e701f4e8427d2e85587120f766fdc9f9e02d1045d7685985a12d649ac
   languageName: node
   linkType: hard
 
@@ -4070,7 +4070,7 @@ __metadata:
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^4.0.1
     "@types/lodash": ^4.17.25
-    "@types/node": ~24.13
+    "@types/node": ~26.6
     "@types/three": ^0.186.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
@@ -6318,10 +6318,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~7.18.0":
-  version: 7.18.2
-  resolution: "undici-types@npm:7.18.2"
-  checksum: 23da306c8366574adec305b06a8519ab5c7d09e3f5d16c1a98709a34fae17da09ec95198f30f86c00055e02efa8bfcc843e84e8aebeb9b8d6bb3e06afccae07a
+"undici-types@npm:~8.9.0":
+  version: 8.9.0
+  resolution: "undici-types@npm:8.9.0"
+  checksum: 78c081bf592406e4bb8bbcbd6baa5c395b5998b9a6a22786e6df4bb5bc90a86aaaaa43a447b455d90589c8b5f36a5827942c20d5c7248efb66675feec1a7bb02
   languageName: node
   linkType: hard
 
