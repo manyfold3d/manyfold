@@ -178,6 +178,7 @@ class Model < ApplicationRecord
     file
   rescue URI::InvalidURIError
     Rails.logger.info("invalid file import URI: #{url}")
+    raise
   end
 
   def delete_from_disk_and_destroy
