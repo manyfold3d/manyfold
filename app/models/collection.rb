@@ -34,6 +34,8 @@ class Collection < ApplicationRecord
   belongs_to :creator, optional: true
   belongs_to :preview_model, class_name: "Model", optional: true
 
+  accepts_nested_attributes_for :creator
+
   validates :name, uniqueness: {case_sensitive: false}, length: SAFE_NAME_LENGTH
   validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FedipubCommon::FEDIVERSE_USERNAMES}
   validates :collection_id, exclusion: {in: -> { Array(it.id) }}
