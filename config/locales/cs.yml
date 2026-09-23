@@ -1049,6 +1049,7 @@ cs:
     print:
       sent:
     protocols:
+      duet:
       moonraker:
       octoprint:
       odyssey:

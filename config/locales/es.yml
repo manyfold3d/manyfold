@@ -1053,6 +1053,7 @@ es:
     print:
       sent: Archivo enviado a la impresora
     protocols:
+      duet:
       moonraker: Moonraker / Klipper
       octoprint: Octoprint
       odyssey: Odisea
