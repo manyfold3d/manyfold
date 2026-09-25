@@ -1,6 +1,9 @@
 {
   "all": {
-    "watchAdditionalPaths": []
+    "additionalEntrypoints": [
+      "~/{assets,fonts,icons,images}/**/*",
+      "pghero/*.{css,js,png}"
+    ]
   },
   "development": {
     "autoBuild": true,
