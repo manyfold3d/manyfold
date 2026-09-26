@@ -21,11 +21,10 @@ module ModelFilesHelper
             ], " "
           ),
             print_print_host_path(print_host, file_id: file.public_id),
-            method: "post",
             role: "menuitem",
             class: "dropdown-item",
             data: {
-              confirm: translate("model_files.print.confirm")
+              turbo_frame: "print-options"
             }
         }
       end
