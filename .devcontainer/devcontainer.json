@@ -8,8 +8,12 @@
         "ghcr.io/rails/devcontainer/features/activestorage": {},
         "ghcr.io/itsmechlark/features/redis-server:1": {}
     },
-    "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install libpq-dev libmariadb-dev libarchive13 -y && export COREPACK_ENABLE_DOWNLOAD_PROMPT=0 && corepack enable && bundle install && yarn install",
-    "postStartCommand": "bash ./bin/dev",
+    "initializeCommand": "mkdir -p ${localEnv:HOME}/manyfold-data",
+    "mounts": [
+      "source=${localEnv:HOME}/manyfold-data,target=/libraries,type=bind,consistency=cached"
+   ],
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "postStartCommand": "redis-server --daemonize yes && bash ./bin/dev",
     "customizations": {
         "vscode": {
             "extensions": [
