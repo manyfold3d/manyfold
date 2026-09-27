@@ -73,12 +73,24 @@ endpoints:
 
 ### Using the Devcontainer
 
-To simplify the development environment setup, Manyfold includes a devcontainer configuration. This allows you to use Visual Studio Code's Remote - Containers extension to develop inside a container.
+To simplify the development environment setup, Manyfold includes a devcontainer configuration. This allows you to use Visual Studio Code to develop inside a container.
 
-#### Prerequisites
+#### Prerequisites 
 
-- Docker installed on your machine
-- Visual Studio Code with the Remote - Containers extension
+- [Visual Studio Code Dev Containers (Remote Containers)](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+- Docker (you don't need Docker on your Host when you use WSL)
+
+#### If you use Windows with WSL you need these extra
+
+- [Visual Studio Code WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- A WSL (with Docker)
+
+> [!WARNING] Warning for Windows
+> You want to clone the repo into WSL, run the devcontainer from there and just connect to it with VS Code.  
+> If you clone the repo into Windows, every file access (from the devcontainer to the Windows filesystem) has to go through the WSL's Windows filesystem integration, which involves the 9P-Protocol and that can slow everything down significantly.  
+> Manyfold / Devontainer -> WSL2 -> 9P -> Windows  
+> For more information: [Performance considerations](https://learn.microsoft.com/en-us/windows/dev-environment/wsl-interop?utm_source=chatgpt.com#performance-considerations)
 
 #### Steps
 
@@ -98,8 +110,8 @@ To simplify the development environment setup, Manyfold includes a devcontainer 
 4. Once the container is running, you can use the integrated terminal in Visual Studio Code to run commands as usual.
 
 > [!NOTE]
-> It can happen that Ruby terminates with an error because some gems are allegedly missing. That not true (mostly)! Ruby LSP starts parallel with our Devcontainer and tries to build it's own composed bundle, that fails because our setup.sh is still running and is installing stuff. Just wait until that is finished and then reload the window.
-> F1 -> Developer: Reload Window
+> It can happen that Ruby terminates with an error because some gems are allegedly missing. **That not true (most of the time)!** Ruby LSP starts parallel with our Devcontainer and tries to build it's own composed bundle, that fails because our setup.sh is still running and is installing stuff. Just wait until that is finished and then reload the window.  
+>```F1 or STRG + Shift + P -> Developer: Reload Window```
 
 ### Coding standards
 
