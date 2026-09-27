@@ -187,7 +187,7 @@ end
 
 gem "to_regexp", "~> 0.2"
 
-gem "activejob-uniqueness", "~> 0.4", require: "active_job/uniqueness/sidekiq_patch"
+gem "activejob-unique", "~> 0.5"
 
 gem "job-iteration", "~> 1.15"
 gem "rswag", "~> 2.17"
