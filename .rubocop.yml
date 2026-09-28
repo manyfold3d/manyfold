@@ -46,3 +46,6 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/NoExpectationExample:
   Exclude:
     - spec/system/documentation_screenshots_spec.rb
+Rails/StrongParametersExpect:
+  Exclude:
+    - app/controllers/**/*
