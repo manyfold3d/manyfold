@@ -14,8 +14,8 @@ class Scan::Library::CreateModelFromPathJob < ApplicationJob
     if model.valid?
       model.add_new_files_later(include_all_subfolders: include_all_subfolders)
     else
-      Amiko.logger.error(model.inspect)
-      Amiko.logger.error(model.errors.full_messages.inspect)
+      Mosscap.logger.error(model.inspect)
+      Mosscap.logger.error(model.errors.full_messages.inspect)
     end
   end
 end

@@ -28,12 +28,12 @@ class Upgrade::FileTypeIterationJob < Upgrade::IterationJob
   def each_iteration(modelfile)
     apply(modelfile)
   rescue Errno::EACCES => ex
-    Amiko.logger.error ex.message
+    Mosscap.logger.error ex.message
   rescue Shrine::FileNotFound
-    Amiko.logger.error("File not found: #{modelfile.path_within_library}")
+    Mosscap.logger.error("File not found: #{modelfile.path_within_library}")
   rescue Shrine::Error => ex
-    Amiko.logger.error("File error: #{ex.message} #{modelfile.path_within_library}")
+    Mosscap.logger.error("File error: #{ex.message} #{modelfile.path_within_library}")
   rescue MiniMagick::Error => ex
-    Amiko.logger.error ex.message
+    Mosscap.logger.error ex.message
   end
 end

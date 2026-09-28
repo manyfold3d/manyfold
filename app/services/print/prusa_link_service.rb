@@ -32,7 +32,7 @@ module Print
           legacy_upload(file: file, start_print: start_print)
         end
 
-      Amiko.logger.warn(response.inspect) unless response.success?
+      Mosscap.logger.warn(response.inspect) unless response.success?
       response.success?
     end
 
@@ -49,13 +49,13 @@ module Print
       response = connection.get(version_uri, {}, headers)
 
       unless response.success?
-        Amiko.logger.warn(response.inspect)
+        Mosscap.logger.warn(response.inspect)
         return nil
       end
 
       JSON.parse(response.body)
     rescue => ex
-      Amiko.logger.warn(ex.message)
+      Mosscap.logger.warn(ex.message)
       nil
     end
 

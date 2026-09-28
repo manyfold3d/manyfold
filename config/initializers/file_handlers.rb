@@ -1,10 +1,10 @@
-Amiko.application.config.after_initialize do
+Mosscap.application.config.after_initialize do
   # Clear handler caches
   begin
     [
       "FileHandlers_handlers_for_*"
     ].each do
-      Amiko.cache.delete_matched it
+      Mosscap.cache.delete_matched it
     end
   rescue
   end

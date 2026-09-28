@@ -2,4 +2,4 @@
 require_relative "application"
 
 # Initialize the Rails application.
-Amiko.application.initialize!
+Mosscap.application.initialize!

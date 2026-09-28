@@ -14,10 +14,10 @@ module Print
 
     def ok?
       response = connection.get(info_uri, {}, headers)
-      Amiko.logger.warn(response.inspect) unless response.success?
+      Mosscap.logger.warn(response.inspect) unless response.success?
       response.success?
     rescue => ex
-      Amiko.logger.warn(ex.message)
+      Mosscap.logger.warn(ex.message)
       false
     end
 
@@ -25,7 +25,7 @@ module Print
       raise ArgumentError unless file.mime_type.in? INPUT_TYPES
       raise PrintHost::NotReady unless ok?
       response = connection.post(upload_uri, payload(file: file, start_print: start_print), headers)
-      Amiko.logger.warn(response.inspect) unless response.success?
+      Mosscap.logger.warn(response.inspect) unless response.success?
       response.success?
     end
 

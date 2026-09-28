@@ -13,7 +13,7 @@ module Components
     register_value_helper :current_user
     register_value_helper :policy
 
-    if Amiko.env.development?
+    if Mosscap.env.development?
       def before_template
         comment { "Before #{self.class.name}" }
         super

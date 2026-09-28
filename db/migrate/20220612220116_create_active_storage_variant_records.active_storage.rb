@@ -16,7 +16,7 @@ class CreateActiveStorageVariantRecords < ActiveRecord::Migration[6.0]
   private
 
   def primary_key_type
-    config = Amiko.configuration.generators
+    config = Mosscap.configuration.generators
     config.options[config.orm][:primary_key_type] || :primary_key
   end
 

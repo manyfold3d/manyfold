@@ -60,7 +60,7 @@ class SiteSettings < RailsSettings::Base
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
-    !Amiko.env.production? || ENV.fetch("SMTP_SERVER", false)
+    !Mosscap.env.production? || ENV.fetch("SMTP_SERVER", false)
   end
 
   def self.max_file_upload_size
@@ -72,19 +72,19 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.demo_mode_enabled?
-    Amiko.application.config.manyfold_features[:demo_mode]
+    Mosscap.application.config.manyfold_features[:demo_mode]
   end
 
   def self.multiuser_enabled?
-    Amiko.application.config.manyfold_features[:multiuser]
+    Mosscap.application.config.manyfold_features[:multiuser]
   end
 
   def self.federation_enabled?
-    Amiko.application.config.manyfold_features[:federation]
+    Mosscap.application.config.manyfold_features[:federation]
   end
 
   def self.oidc_enabled?
-    Amiko.application.config.manyfold_features[:oidc]
+    Mosscap.application.config.manyfold_features[:oidc]
   end
 
   def self.social_enabled?

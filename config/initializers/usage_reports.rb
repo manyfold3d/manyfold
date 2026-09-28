@@ -1,4 +1,4 @@
-Amiko.application.config.after_initialize do
+Mosscap.application.config.after_initialize do
   # Make sure the schedule is loaded correctly
   UsageReport.set_schedule!
 rescue RedisClient::CannotConnectError

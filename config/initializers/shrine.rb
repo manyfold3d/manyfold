@@ -1,7 +1,7 @@
 require "tus/server"
 require "tus/storage/filesystem"
 
-Amiko.application.config.after_initialize do
+Mosscap.application.config.after_initialize do
   Library.register_all_storage
 
   Tus::Server.opts[:storage] = Tus::Storage::Filesystem.new("tmp/shrine")
@@ -12,7 +12,7 @@ Amiko.application.config.after_initialize do
     Library.all.map do |l|
       upload_options[l.storage_key] = {move: true} if l.storage_service == "filesystem"
     end
-    ModelFileUploader.plugin :upload_options, **upload_options unless Amiko.env.test?
+    ModelFileUploader.plugin :upload_options, **upload_options unless Mosscap.env.test?
   rescue ActiveRecord::StatementInvalid, NameError
     nil # migrations probably haven't run yet to create library table
   end

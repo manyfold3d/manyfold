@@ -29,27 +29,27 @@ module ManyfoldApi::V0
 
     def collection_ref(collection)
       return if collection.nil?
-      ref id: Amiko.application.routes.url_helpers.collection_url(collection), type: "Collection"
+      ref id: Mosscap.application.routes.url_helpers.collection_url(collection), type: "Collection"
     end
 
     def creator_ref(creator)
       return if creator.nil?
-      ref id: Amiko.application.routes.url_helpers.creator_url(creator), type: "Organization"
+      ref id: Mosscap.application.routes.url_helpers.creator_url(creator), type: "Organization"
     end
 
     def group_ref(group)
       return if group.nil?
-      ref id: Amiko.application.routes.url_helpers.creator_group_url(group.creator, group), type: "Group"
+      ref id: Mosscap.application.routes.url_helpers.creator_group_url(group.creator, group), type: "Group"
     end
 
     def model_ref(model)
       return if model.nil?
-      ref id: Amiko.application.routes.url_helpers.model_url(model), type: "3DModel"
+      ref id: Mosscap.application.routes.url_helpers.model_url(model), type: "3DModel"
     end
 
     def file_ref(file)
       return if file.nil?
-      ref id: Amiko.application.routes.url_helpers.model_model_file_url(file.model, file), type: "3DModel"
+      ref id: Mosscap.application.routes.url_helpers.model_model_file_url(file.model, file), type: "3DModel"
     end
 
     def ref(id:, type:)

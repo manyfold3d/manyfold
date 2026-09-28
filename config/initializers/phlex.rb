@@ -7,12 +7,12 @@ module Components
   extend Phlex::Kit
 end
 
-Amiko.application.config.before_initialize do
-  Amiko.autoloaders.main.push_dir(
-    Amiko.root.join("app/views"), namespace: Views
+Mosscap.application.config.before_initialize do
+  Mosscap.autoloaders.main.push_dir(
+    Mosscap.root.join("app/views"), namespace: Views
   )
 
-  Amiko.autoloaders.main.push_dir(
-    Amiko.root.join("app/components"), namespace: Components
+  Mosscap.autoloaders.main.push_dir(
+    Mosscap.root.join("app/components"), namespace: Components
   )
 end

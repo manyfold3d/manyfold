@@ -56,7 +56,7 @@ module ActivityPub
         {
           type: "Hashtag",
           name: tag,
-          href: Amiko.application.routes.url_helpers.models_url(tag: tag)
+          href: Mosscap.application.routes.url_helpers.models_url(tag: tag)
         }
       end
     end

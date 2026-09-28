@@ -1,3 +1,3 @@
-web: bundle exec amiko server -p $PORT -b [::]
+web: bundle exec mosscap server -p $PORT -b [::]
 default_worker: bundle exec sidekiq -C config/workers/default.yml
 performance_worker: bundle exec sidekiq -C config/workers/performance.yml

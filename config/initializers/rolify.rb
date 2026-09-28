@@ -6,7 +6,7 @@ Rolify.configure do |config|
   # config.remove_role_if_empty = false
 end
 
-Amiko.application.config.after_initialize do
+Mosscap.application.config.after_initialize do
   Role::ROLES.each do |r|
     Role.find_or_create_by name: r
   end

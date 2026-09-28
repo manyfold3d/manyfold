@@ -27,7 +27,7 @@ RUN yarn install
 
 COPY .ruby-version .
 COPY Gemfile* ./
-COPY .amiko-compat ./.amiko-compat
+COPY .mosscap-compat ./.mosscap-compat
 RUN bundle install
 
 COPY . .

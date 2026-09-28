@@ -3,11 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-gem "amiko", git: "https://codeberg.org/amiko/experimental-amiko-metapackage"
-gem "amiko-core", git: "https://codeberg.org/amiko/experimental-amiko-core"
+gem "mosscap", git: "https://codeberg.org/mosscap/mosscap", branch: "basic-rename"
+gem "mosscap-core", git: "https://codeberg.org/mosscap/mosscap-core", branch: "rename-to-mosscap"
 
-# Enable Amiko / Rails compatibility for gem resolution
-eval_gemfile(".amiko-compat/Gemfile")
+# Enable Mosscap / Rails compatibility for gem resolution
+eval_gemfile(".mosscap-compat/Gemfile")
 
 # Use Puma as the app server
 gem "puma", "~> 8.0"

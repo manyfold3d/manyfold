@@ -1,6 +1,6 @@
-if defined?(RailsPerformance) && !Amiko.env.test? && ENV["RAILS_ASSETS_PRECOMPILE"].blank?
+if defined?(RailsPerformance) && !Mosscap.env.test? && ENV["RAILS_ASSETS_PRECOMPILE"].blank?
   RailsPerformance.setup do |config|
-    config.redis = Redis::Namespace.new("#{Amiko.env}-rails-performance", redis: Redis.new)
+    config.redis = Redis::Namespace.new("#{Mosscap.env}-rails-performance", redis: Redis.new)
     config.duration = 4.hours
 
     config.enabled = true
