@@ -9,7 +9,7 @@ class UsageReportingJob < ApplicationJob
     # Prepare the report
     data = UsageReport.generate
     # Tell the user what we're doing
-    Amiko.logger.info("Sending anonymous usage report to #{uri}: #{data}")
+    Mosscap.logger.info("Sending anonymous usage report to #{uri}: #{data}")
     # Send
     headers = {
       "Content-Type": "application/json",

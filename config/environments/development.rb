@@ -1,6 +1,6 @@
 require "active_support/core_ext/integer/time"
 
-Amiko.application.configure do
+Mosscap.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Make code changes take effect immediately without server restart.
@@ -23,7 +23,7 @@ Amiko.application.configure do
 
   # Enable/disable Action Controller caching. By default Action Controller caching is disabled.
   # Run rails dev:cache to toggle Action Controller caching.
-  if Amiko.root.join("tmp/caching-dev.txt").exist?
+  if Mosscap.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 

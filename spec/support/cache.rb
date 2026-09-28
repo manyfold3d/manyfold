@@ -1,5 +1,5 @@
 RSpec.configure do |config|
   config.after do
-    Amiko.cache.clear
+    Mosscap.cache.clear
   end
 end

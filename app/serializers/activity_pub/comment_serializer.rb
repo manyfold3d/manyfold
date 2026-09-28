@@ -28,7 +28,7 @@ module ActivityPub
         "attributedTo" => @object.fedipub_actor.federated_url,
         "published" => @object.created_at,
         "updated" => @object.updated_at,
-        "context" => Amiko.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
+        "context" => Mosscap.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
         "sensitive" => @object.sensitive,
         "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
         "content" => content,
@@ -64,7 +64,7 @@ module ActivityPub
         {
           type: "Hashtag",
           name: "##{tag.tr(" ", "_").camelize}",
-          href: Amiko.application.routes.url_helpers.url_for([@object.commentable.class, {tag: tag}])
+          href: Mosscap.application.routes.url_helpers.url_for([@object.commentable.class, {tag: tag}])
         }
       end
     end
@@ -75,7 +75,7 @@ module ActivityPub
 
     def url
       anchor = @object.system ? nil : "comment-#{@object.to_param}"
-      Amiko.application.routes.url_helpers.url_for([@object.commentable, {only_path: false, anchor: anchor}.compact])
+      Mosscap.application.routes.url_helpers.url_for([@object.commentable, {only_path: false, anchor: anchor}.compact])
     end
 
     def in_reply_to

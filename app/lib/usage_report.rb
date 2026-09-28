@@ -7,8 +7,8 @@ module UsageReport
     Jbuilder.encode do |report|
       report.id SiteSettings.anonymous_usage_id
       report.version do |version|
-        version.app Amiko.application.config.app_version.gsub(/^v/, "")
-        version.sha Amiko.application.config.git_sha
+        version.app Mosscap.application.config.app_version.gsub(/^v/, "")
+        version.sha Mosscap.application.config.git_sha
         version.image ENV.fetch("DOCKER_TAG", nil)&.split(":")&.first
         version.arch RUBY_PLATFORM
       end

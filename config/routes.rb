@@ -2,7 +2,7 @@ require "sidekiq/web"
 require "sidekiq/cron/web"
 require "fedipub"
 
-Amiko.application.routes.draw do
+Mosscap.application.routes.draw do
   draw(:auth)
   draw(:meta)
   draw(:admin)

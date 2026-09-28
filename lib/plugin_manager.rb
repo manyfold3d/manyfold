@@ -44,7 +44,7 @@ class PluginManager
 
   # Check whether we can self-install plugins
   def self.can_install_plugins?
-    Amiko.root.join("plugins").writable?
+    Mosscap.root.join("plugins").writable?
   end
 
   private

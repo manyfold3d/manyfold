@@ -14,10 +14,10 @@ module Print
 
     def ok?
       response = connection.get(info_uri, {}, {})
-      Amiko.logger.warn(response.inspect) unless response.success?
+      Mosscap.logger.warn(response.inspect) unless response.success?
       response.success?
     rescue => ex
-      Amiko.logger.warn(ex.message)
+      Mosscap.logger.warn(ex.message)
       false
     end
 
@@ -28,7 +28,7 @@ module Print
         upload_uri,
         payload(file: file)
       )
-      Amiko.logger.warn(response.inspect) unless response.success?
+      Mosscap.logger.warn(response.inspect) unless response.success?
       uploaded = response.success?
       print(file: file) if start_print
       uploaded
@@ -36,7 +36,7 @@ module Print
 
     def print(file:)
       response = Faraday.new.post("#{@print_host.endpoint}/print/start?filename=#{CGI.escapeURIComponent(file.filename)}")
-      Amiko.logger.warn(response.inspect) unless response.success?
+      Mosscap.logger.warn(response.inspect) unless response.success?
     end
 
     private

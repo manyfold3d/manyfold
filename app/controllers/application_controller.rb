@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     redirect_back_or_to helpers.landing_page_path
   }
 
-  unless Amiko.env.test?
+  unless Mosscap.env.test?
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   end
 
@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_content_security_policy
-    return if Amiko.env.test?
+    return if Mosscap.env.test?
 
     # Standard security policy
     content_security_policy.default_src :self
@@ -118,12 +118,12 @@ class ApplicationController < ActionController::Base
     content_security_policy.img_src(*origins)
     content_security_policy.connect_src(*origins)
     # Allow vite connection in dev
-    if Amiko.env.development?
+    if Mosscap.env.development?
       content_security_policy.connect_src("wss:", "ws:")
     end
     # If we're using Scout DevTrace in local development, we need to allow a load
     # of inline stuff, so we need to add that and NOT add the nonce
-    if Amiko.env.development? && ENV.fetch("SCOUT_DEV_TRACE", false) === "true"
+    if Mosscap.env.development? && ENV.fetch("SCOUT_DEV_TRACE", false) === "true"
       scout_csp = [:unsafe_inline, "https://apm.scoutapp.com", "https://scoutapm.com"]
       content_security_policy.img_src(*scout_csp)
       content_security_policy.script_src(*scout_csp)

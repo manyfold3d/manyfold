@@ -177,7 +177,7 @@ class Model < ApplicationRecord
     file.update_from_url!(url: uri.to_s)
     file
   rescue URI::InvalidURIError
-    Amiko.logger.info("invalid file import URI: #{url}")
+    Mosscap.logger.info("invalid file import URI: #{url}")
     raise
   end
 

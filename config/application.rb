@@ -1,6 +1,6 @@
 require_relative "boot"
 
-require "amiko"
+require "mosscap"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -18,13 +18,13 @@ require "rack/contrib"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:sqlite3, :postgres, :mysql, *Amiko.groups)
+Bundler.require(:sqlite3, :postgres, :mysql, *Mosscap.groups)
 
 # Manually pull in the plugin manager for early initialization
 require "./lib/plugin_manager"
 
 module Manyfold
-  class Application < Amiko::Application
+  class Application < Mosscap::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
@@ -49,14 +49,14 @@ module Manyfold
     config.autoload_once_paths << "#{root}/app/lib"
 
     # Load locale files in nested folders as well as locale root
-    config.i18n.load_path += Amiko.root.glob("config/locales/**/*.{rb,yml}")
+    config.i18n.load_path += Mosscap.root.glob("config/locales/**/*.{rb,yml}")
     config.i18n.fallbacks = true
     config.i18n.default_locale = :en
     config.i18n.available_locales = begin
       if ENV.fetch("EXPERIMENTAL_LANGUAGES", nil) == "enabled"
-        YAML.load_file(Amiko.root.join("config/locales.yml")).values.flatten
+        YAML.load_file(Mosscap.root.join("config/locales.yml")).values.flatten
       else
-        YAML.load_file(Amiko.root.join("config/locales.yml"))["ready"]
+        YAML.load_file(Mosscap.root.join("config/locales.yml"))["ready"]
       end
     end
 
@@ -93,8 +93,8 @@ end
 
 # Set default URL options from env vars
 # This is done *very* early, so that it cascades to all components
-require Amiko.root.join("app/lib/public_url")
-Amiko.application.default_url_options = {
+require Mosscap.root.join("app/lib/public_url")
+Mosscap.application.default_url_options = {
   host: PublicUrl.hostname,
   port: PublicUrl.nonstandard_port
 }.compact

@@ -26,7 +26,7 @@ module ManyfoldApi
       def dereference(id, type)
         return if id.nil?
 
-        route_options = Amiko.application.routes.recognize_path(id)
+        route_options = Mosscap.application.routes.recognize_path(id)
         if route_options[:controller] == type.name.underscore.pluralize
           type.find_param(route_options[:id])
         end
