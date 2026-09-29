@@ -4891,13 +4891,13 @@ __metadata:
   linkType: hard
 
 "postcss-logical@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "postcss-logical@npm:9.0.0"
+  version: 9.0.1
+  resolution: "postcss-logical@npm:9.0.1"
   dependencies:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: d062cdb2d6226d097097821b77d94f103898c42ec0d0628f4c037225665a4925ca9b02313ec150e6b2d91e5f6c146898b26a4bbea7e0593c17c11bde5fc8d36b
+  checksum: 0cf2dbbd26cee36d3d6d59e14d88110369184cc6bab3cb36b50cbc7e1ef43d04d6123cf6b0d0818b600c5053220055d52f72adb038b64867f47a792b02a9a144
   languageName: node
   linkType: hard
 
