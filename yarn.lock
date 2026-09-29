@@ -602,14 +602,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-system-ui-font-family@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@csstools/postcss-system-ui-font-family@npm:2.0.0"
+  version: 2.0.1
+  resolution: "@csstools/postcss-system-ui-font-family@npm:2.0.1"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: 32eae909142d81a184352035681aa7e61f77405acc50be0f8eb7ee081fccb0ef7ba64628c866b048d59e28c062d6928e0e6d4e8cc2ec85605fb85d8bc94beb3d
+  checksum: 864e9c6c398720f6e10332519e165c6511bec3f1e4b9809d42c400b0a9c608ee9c8e5beffa0640eb406ec2b1fde1b518e3f1cb22510ad146c811fb253dceb6e1
   languageName: node
   linkType: hard
 
