@@ -52,19 +52,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@csstools/css-parser-algorithms@npm:4.0.0"
+"@csstools/css-parser-algorithms@npm:^4.0.0, @csstools/css-parser-algorithms@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@csstools/css-parser-algorithms@npm:4.0.1"
   peerDependencies:
-    "@csstools/css-tokenizer": ^4.0.0
-  checksum: 5e7003224ac756586163f36d64d5c8fd49af24d2ec218b084a22026b4e8a6d652cbffcaf042f542cf3d2662becea2fc112f5ab2c5a61355a4a2e0f6ebeebffb2
+    "@csstools/css-tokenizer": ^4.0.2
+  checksum: d5aa579129c763e92d4ccea7530ca6037aa6e646af66f80c696439a70c082ca7a4dc0e3d97fa43d18fcf6bf0b73cf8f1f803e0719a042d0b102c5d68e6393e0c
   languageName: node
   linkType: hard
 
-"@csstools/css-tokenizer@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "@csstools/css-tokenizer@npm:4.0.1"
-  checksum: bd75d18fad7939e27ad5eac61c0cb307a7a8e04555872850c6a03c8e4d7cce13f408c733ff17c6544d7fd669ce9f22396e9f1e881a9deff603b3585122e876b4
+"@csstools/css-tokenizer@npm:^4.0.0, @csstools/css-tokenizer@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@csstools/css-tokenizer@npm:4.0.2"
+  checksum: dde9afeecb6072ed20ff78b7ef67ab34ad6645679b431aae024b1b96c8957027b734721987d97d9abb5ddc45141358fb804f2849c862f5d368418d32861c4315
   languageName: node
   linkType: hard
 
@@ -343,16 +343,16 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-light-dark-function@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "@csstools/postcss-light-dark-function@npm:3.0.4"
+  version: 3.0.5
+  resolution: "@csstools/postcss-light-dark-function@npm:3.0.5"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
     "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: d7c2dfb18c5e8515b17b1a5e76e61900784f76f62b01932d2ea777f9068647245387ca35dfcda0f56037760cc0a64a9f24a1574d6daef52f4ae78514828ab5ed
+  checksum: e4741fa79e6e41fef56885304ff98b288d5c05c00676c7f4073f02a7927a9059c671d1c591747ace3b379de6ae327904641281c7c167477cdd87c6791b67b8f5
   languageName: node
   linkType: hard
 
