@@ -435,14 +435,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-mixins@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@csstools/postcss-mixins@npm:1.0.0"
+  version: 1.0.1
+  resolution: "@csstools/postcss-mixins@npm:1.0.1"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: 5a4bb348de470d8476ab7b72eb902c4026c230d3b64ec456166b4f655b1372160ea9795ff6150a49e457add688cdb0af4508b0231f80c64f3927218ed241f712
+  checksum: ce92898f7776c8217627bb1f35c84642c786151f322a6d5a7ed37094fc058b0588d63dacbec4ac57ecc90af709f27ff92825b3a3d6fd07f4c7f5e6d94bbcebc2
   languageName: node
   linkType: hard
 
