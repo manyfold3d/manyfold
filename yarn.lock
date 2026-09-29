@@ -265,17 +265,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-gradients-interpolation-method@npm:^6.0.12":
-  version: 6.0.12
-  resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.12"
+  version: 6.0.13
+  resolution: "@csstools/postcss-gradients-interpolation-method@npm:6.0.13"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.3
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-color-parser": ^4.2.4
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
     "@csstools/postcss-progressive-custom-properties": ^5.1.3
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 002ad34288661f387a69b4eabdfccae5d1e464d3764e931201766e3fafcf65add9b4288faf019dce6528753486f1848f6c1c930f17a4d41b37d037a595506865
+  checksum: 0ec1b34ec5b6a5caaee7b2c67fbc50c7dc6286084b15f19e90fc6267d57d3129a5c17b95a56d8ac10412b5d394da34b50f3b7bd5db34b1a6ed308480d2f4795e
   languageName: node
   linkType: hard
 
