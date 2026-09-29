@@ -12,13 +12,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/cascade-layer-name-parser@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@csstools/cascade-layer-name-parser@npm:3.0.0"
+"@csstools/cascade-layer-name-parser@npm:^3.0.0, @csstools/cascade-layer-name-parser@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@csstools/cascade-layer-name-parser@npm:3.0.1"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
-  checksum: 271e3e76c9543e7a41ef8e05a0c680619bd8655e2cbb242635a45c3963bdd0b5b8d8e4509ce645917e870572f2064a4700afcb3e9ce2af2b4fa35b8198ad2d77
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
+  checksum: a18a139a6cb878e8941a62f1882081ca5b6bdf9bc8e07da8a0acb44e34bc11409b820d617e2a23a13bc4862e2a138697408e77d6e18a9b3f59ef2fdc3e2c4c93
   languageName: node
   linkType: hard
 
@@ -68,13 +68,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/media-query-list-parser@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@csstools/media-query-list-parser@npm:5.0.0"
+"@csstools/media-query-list-parser@npm:^5.0.0, @csstools/media-query-list-parser@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@csstools/media-query-list-parser@npm:5.0.1"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
-  checksum: a08407ea2c7435505b4022501e4574ca458f702a9335ca8f68b69536ea4f71efc090f54d0f4b2b1055ac02b2e33aa85a0bff7c6b895b910825a6a0b97e92afa8
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
+  checksum: b1930199dc04a46e7e877b516b8cf00af87c4b5542a96b2c3bab1bb0356b1258917abf39d390d25876fa2a48dcb6783734475d1ce157712fe2aa5b5212d566f2
   languageName: node
   linkType: hard
 
@@ -4744,16 +4744,16 @@ __metadata:
   linkType: hard
 
 "postcss-custom-media@npm:^12.0.1":
-  version: 12.0.1
-  resolution: "postcss-custom-media@npm:12.0.1"
+  version: 12.0.2
+  resolution: "postcss-custom-media@npm:12.0.2"
   dependencies:
-    "@csstools/cascade-layer-name-parser": ^3.0.0
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/media-query-list-parser": ^5.0.0
+    "@csstools/cascade-layer-name-parser": ^3.0.1
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/media-query-list-parser": ^5.0.1
   peerDependencies:
     postcss: ^8.4
-  checksum: bda800b713e08a85ab1e1e74babacd0cfceb3e4af469ec094f8d8774eb6f45efb285ce80b1e918842ac75b5691f414b303efc88a5c0dfe1818c96aebf1bf2682
+  checksum: 644c17ff5a7365ce10260fe565ee1e4a8a50caed9e21abc5240bb90c2bbe82a3a5b51014e09f07de72917315c65988e8b771368addbb6df1cf7cc102dd5afa25
   languageName: node
   linkType: hard
 
