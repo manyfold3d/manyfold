@@ -1638,20 +1638,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^6.0.0, @uppy/core@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "@uppy/core@npm:6.0.1"
+"@uppy/core@npm:^6.0.2":
+  version: 6.1.0
+  resolution: "@uppy/core@npm:6.1.0"
   dependencies:
     "@transloadit/prettier-bytes": ^2.0.0
     classnames: ^2.5.1
     lodash: ^4.18.1
     mime-match: ^1.0.2
     namespace-emitter: ^2.0.1
-    nanoid: ^5.1.11
+    nanoid: ^6.0.1
     p-queue: ^9.3.3
     p-retry: ^6.1.0
     preact: ^10.29.2
-  checksum: 5ec63daafde47eda49ab75fe1c10699326018c680f4b09c7c1f2306ad056b5d91bb0b53ecfe20a7c780121fed2d8338646db13dba30e71b9978019f0f2fcb320
+  checksum: 9968df7bc998764a4a1f73ec909bf28fb04aad37d0722cbaf04ed298014eb6e0c54cf0965708e71f4c7f7231e007190f166220e95a8e82182ab26b34da6fd95e
   languageName: node
   linkType: hard
 
@@ -1685,12 +1685,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/locales@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "@uppy/locales@npm:5.2.0"
+"@uppy/locales@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "@uppy/locales@npm:5.2.1"
   dependencies:
-    "@uppy/core": ^6.0.0
-  checksum: 17c95a220df6d0dd7c3c5fbb47241ad143f719daf90c77b03b33bda5eab5565c964617dadbc75f465e0d56227753ce35a98c33d9ba866fbdcedf8daa4bcbc8d3
+    "@uppy/core": ^6.0.2
+  checksum: 9b1cb34bc5f1a918736e521847a7e6b163d4d173c68ca574da82684c68c44df7b1c8b82a6464e3381de9e6a4da8c9399e67602b786e042d43a7161ff446ad4e0
   languageName: node
   linkType: hard
 
@@ -4074,10 +4074,10 @@ __metadata:
     "@types/three": ^0.186.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
-    "@uppy/core": ^6.0.1
+    "@uppy/core": ^6.0.2
     "@uppy/dashboard": 5.1.0
     "@uppy/form": ^6.0.0
-    "@uppy/locales": ^5.2.0
+    "@uppy/locales": ^5.2.1
     "@uppy/tus": ^6.0.0
     altcha: ^3.2.2
     bootstrap: ^5.3.8
@@ -4283,12 +4283,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^5.0.9, nanoid@npm:^5.1.11":
+"nanoid@npm:^5.0.9":
   version: 5.1.16
   resolution: "nanoid@npm:5.1.16"
   bin:
     nanoid: bin/nanoid.js
   checksum: b1e702e2b7072e74ac2ae880907d0a291853a36617ec5c3d27d81ab04965ebc0d4d0f707cf9220928cf93d5370b1f561c930efee853dc9c1a3facaefdf1a42ee
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "nanoid@npm:6.0.1"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: e49582351f6fff22c275a58504950e923b74c611fc1eac9589a98e89506270d2d1e3b61ed6429df6e7529e54ff71d9f0c5fbb1c540aaee81ae33a523e88ca668
   languageName: node
   linkType: hard
 
