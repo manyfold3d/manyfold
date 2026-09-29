@@ -578,15 +578,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-stepped-value-functions@npm:^5.0.6":
-  version: 5.0.6
-  resolution: "@csstools/postcss-stepped-value-functions@npm:5.0.6"
+  version: 5.0.7
+  resolution: "@csstools/postcss-stepped-value-functions@npm:5.0.7"
   dependencies:
-    "@csstools/css-calc": ^3.4.0
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-calc": ^3.4.1
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: e53ccdbd8e095be9b6d28d2d1eca85a353dcfe20b6dbecf47d82313e29d585f9331447ddea7d01a3957022d93222279391a3daa27c671f18ced6d54e69e2ed19
+  checksum: d47b892895a491e96eb8f5755dd8a0ce2bd52e7431f38d8a42f46d3e8ad9f5f270f65fd7a35430811de1d8fd55a61d62ddb3798b9defc5eeb8c3f05f9de24d8f
   languageName: node
   linkType: hard
 
