@@ -5051,13 +5051,13 @@ __metadata:
   linkType: hard
 
 "postcss-pseudo-class-any-link@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "postcss-pseudo-class-any-link@npm:11.0.0"
+  version: 11.0.1
+  resolution: "postcss-pseudo-class-any-link@npm:11.0.1"
   dependencies:
     postcss-selector-parser: ^7.1.1
   peerDependencies:
     postcss: ^8.4
-  checksum: 911b203efc1d15ee34febfcba784d85b2f45fd8ad62ed47dd00448fa56fdbb1a309437bca93f5caa2dcf3c9f0f7d769c8bb9518d50b92d73132afd30406f854e
+  checksum: 5e5233d52093166e56ea199e412c4e1d2678123ece199a33c284f185dd076cca75e8339183eb5e624a3642c27437a2683774692dcd31f6b82eaa5081632d0bd5
   languageName: node
   linkType: hard
 
