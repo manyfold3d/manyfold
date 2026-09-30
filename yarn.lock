@@ -166,14 +166,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-container-rule-prelude-list@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@csstools/postcss-container-rule-prelude-list@npm:1.0.1"
+  version: 1.0.2
+  resolution: "@csstools/postcss-container-rule-prelude-list@npm:1.0.2"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: 4cb206ab6bc9f82038abd1c369a497b0bed62d8a77eb67f7a764b072c3a5d55a52ecf83307dc38f49e6d5ebde38591c95d520a5676eb47c5460e9e141dde0feb
+  checksum: 68141a6c2f6f4c7d3ec799e4822cdabce7e4382b510b4b8f7adc6a9701351a3a0076a49d2bbf9144089350acaa0149de36f219cd281e7538d411ecbdfd40a1ac
   languageName: node
   linkType: hard
 
