@@ -94,14 +94,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-cascade-layers@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@csstools/postcss-cascade-layers@npm:6.0.0"
+  version: 6.0.1
+  resolution: "@csstools/postcss-cascade-layers@npm:6.0.1"
   dependencies:
     "@csstools/selector-specificity": ^6.0.0
     postcss-selector-parser: ^7.1.1
   peerDependencies:
     postcss: ^8.4
-  checksum: 0e341a08eaa85e0b3a97a696778c286a9f5fa53604d2129f0984aae34d073df50fb8dd78c0d605222f20de014144aec6805587a50c7acda970323625a8186d3d
+  checksum: 75839a10ad3e70d7d845cd5b8606e54ddb778a91f9c79a6eb6cb3d4d76676a2e1568b8937027dc31af84751fe954dfefde61da32652b80bb4729ac875d617cdd
   languageName: node
   linkType: hard
 
