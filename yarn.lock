@@ -514,14 +514,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-property-rule-prelude-list@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@csstools/postcss-property-rule-prelude-list@npm:2.0.0"
+  version: 2.0.1
+  resolution: "@csstools/postcss-property-rule-prelude-list@npm:2.0.1"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: 4f6e5ed8816ab1f847e30895346bce440d948cc959d839992f4d1b715373d04c264b8f8c9def7be60fc77e9e4b945df42c9a1ff2362ee953534c78d3c4b138b5
+  checksum: 1c6b989dbbcc6414cde3c6ed55cc4af3c1305baf4daf3981948b59614ae6c4e4b1cbb2b040653735b35c9422d98af1af573441409a66871dd970328290668a01
   languageName: node
   linkType: hard
 
