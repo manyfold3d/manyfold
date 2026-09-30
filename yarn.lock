@@ -591,13 +591,13 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-syntax-descriptor-syntax-production@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@csstools/postcss-syntax-descriptor-syntax-production@npm:2.0.0"
+  version: 2.0.1
+  resolution: "@csstools/postcss-syntax-descriptor-syntax-production@npm:2.0.1"
   dependencies:
-    "@csstools/css-tokenizer": ^4.0.0
+    "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: a3a3907516f84e3e46960b4019ee1d86ba50fa380eab6e09d9c464c78781d3a8de9a537eed630dac4c7045be4989df58239dc6b168223fe9b0eab0c54eac2f62
+  checksum: cc79e853eb99829fe760daac194064d64f0ee5dcae91fb9ef63b8529d2880f59107b33f99e0ab5cbce6681d776fb30e617873826fb1c297e95c2eeb8b09d566c
   languageName: node
   linkType: hard
 
