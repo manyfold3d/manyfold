@@ -422,15 +422,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-media-queries-aspect-ratio-number-values@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@csstools/postcss-media-queries-aspect-ratio-number-values@npm:4.0.0"
+  version: 4.0.1
+  resolution: "@csstools/postcss-media-queries-aspect-ratio-number-values@npm:4.0.1"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
-    "@csstools/media-query-list-parser": ^5.0.0
+    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/media-query-list-parser": ^5.0.1
   peerDependencies:
     postcss: ^8.4
-  checksum: 8e050a4f9934f65aec688226ba85158067ab6250b5a454b395435f2ac75c6ef67938a107ed8a344c51bf8beeb86d6752c89146bdb899f4265d244eb927b69593
+  checksum: 5ad102d0f988bb3a090ac094573dca81168976e0f6d0bec16349642e280b721b27283ea293606ad20f26ce5eb40f4dcb4c2097c7988dd168e6f41f05fe1b2da0
   languageName: node
   linkType: hard
 
