@@ -1,0 +1,37 @@
+# Depot CI Migration
+# Source: .github/workflows/auto_merge.yml
+#
+# Changes made:
+# - Changed GitHub runs-on labels to their Depot equivalents
+
+name: auto-merge
+on:
+  pull_request:
+permissions:
+  pull-requests: write
+  contents: write
+jobs:
+  dependabot:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: depot-ubuntu-22.04 # was: ubuntu-22.04. Mapped standard GitHub runner to Depot equivalent.
+    steps:
+      - name: Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Check if auto-merge applicable
+        id: check
+        run: |
+          if [[ "${{ steps.meta.outputs.update-type }}" == "version-update:semver-patch" ]] || \
+             [[ "${{ steps.meta.outputs.update-type }}" == "version-update:semver-minor" ]]; then
+            echo "should_merge=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_merge=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Enable auto-merge
+        if: steps.check.outputs.should_merge == 'true'
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
