@@ -7,12 +7,12 @@ module Components
   extend Phlex::Kit
 end
 
-Rails.application.config.before_initialize do
-  Rails.autoloaders.main.push_dir(
-    Rails.root.join("app/views"), namespace: Views
+Mosscap.application.config.before_initialize do
+  Mosscap.autoloaders.main.push_dir(
+    Mosscap.root.join("app/views"), namespace: Views
   )
 
-  Rails.autoloaders.main.push_dir(
-    Rails.root.join("app/components"), namespace: Components
+  Mosscap.autoloaders.main.push_dir(
+    Mosscap.root.join("app/components"), namespace: Components
   )
 end

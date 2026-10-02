@@ -1,4 +1,4 @@
-if SiteSettings.federation_enabled? || Rails.env.test?
+if SiteSettings.federation_enabled? || Mosscap.env.test?
 
   # Core federation capability
 

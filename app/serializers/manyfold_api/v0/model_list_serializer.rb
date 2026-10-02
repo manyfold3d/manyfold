@@ -3,7 +3,7 @@ module ManyfoldApi::V0
     def serialize
       {
         "@context": context,
-        "@id": Rails.application.routes.url_helpers.models_path,
+        "@id": Mosscap.application.routes.url_helpers.models_path,
         "@type": "hydra:Collection",
         totalItems: @pager.count,
         member: @object.map { |model|
@@ -12,12 +12,12 @@ module ManyfoldApi::V0
           )
         },
         view: {
-          "@id": Rails.application.routes.url_helpers.models_path(page: @pager.page),
+          "@id": Mosscap.application.routes.url_helpers.models_path(page: @pager.page),
           "@type": "hydra:PartialCollectionView",
-          first: Rails.application.routes.url_helpers.models_path(page: 1),
-          previous: (Rails.application.routes.url_helpers.models_path(page: @pager.previous) if @pager.previous),
-          next: (Rails.application.routes.url_helpers.models_path(page: @pager.next) if @pager.next),
-          last: Rails.application.routes.url_helpers.models_path(page: @pager.pages)
+          first: Mosscap.application.routes.url_helpers.models_path(page: 1),
+          previous: (Mosscap.application.routes.url_helpers.models_path(page: @pager.previous) if @pager.previous),
+          next: (Mosscap.application.routes.url_helpers.models_path(page: @pager.next) if @pager.next),
+          last: Mosscap.application.routes.url_helpers.models_path(page: @pager.pages)
         }.compact
       }
     end

@@ -1,5 +1,5 @@
-Rails.application.config.after_initialize do
-  if Rails.env.development?
+Mosscap.application.config.after_initialize do
+  if Mosscap.env.development?
     Bullet.enable = true
     Bullet.rails_logger = true
 

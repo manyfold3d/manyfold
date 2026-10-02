@@ -1,3 +1,3 @@
-Rails.application.config.after_initialize do
-  Rails.cache.delete("restart_required")
+Mosscap.application.config.after_initialize do
+  Mosscap.cache.delete("restart_required")
 end
