@@ -17,7 +17,7 @@
     "@uppy/core": "^6.0.2",
     "@uppy/dashboard": "5.1.0",
     "@uppy/form": "^6.0.0",
-    "@uppy/locales": "^5.2.1",
+    "@uppy/locales": "^5.3.0",
     "@uppy/tus": "^6.0.0",
     "altcha": "^3.2.3",
     "bootstrap": "^5.3.8",
