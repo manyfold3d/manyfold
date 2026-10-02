@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://codeberg.org/mosscap/mosscap-core
-  revision: f0c836b259b9d5647a66d094c4a3dff33b24bbce
+  revision: 0d51c4dcfa0badb9145ffdc20238e05ff3a36d42
   branch: rename-to-mosscap
   specs:
     mosscap-core (8.1.4)
