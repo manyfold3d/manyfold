@@ -42,10 +42,18 @@ class SiteSettings < RailsSettings::Base
   field :enable_user_quota, type: :boolean, default: false
   field :default_user_quota, type: :integer, default: 0
 
+  PREVIEW_RESOLUTIONS = [
+    "128,128",
+    "256,256",
+    "512,512",
+    "1024,1024",
+    "2048,2048"
+  ]
   field :pregenerate_downloads, type: :boolean, default: false
   field :download_expiry_time_in_hours, type: :integer, default: 24
   field :generate_image_derivatives, type: :boolean, default: false
   field :generate_model_renders, type: :boolean, default: false
+  field :model_renders_size, type: :string, default: "512,512", validates: {inclusion: {in: PREVIEW_RESOLUTIONS}}
 
   field :allow_robots, type: :boolean, default: false
   field :allow_ai_bots, type: :boolean, default: false
@@ -56,6 +64,8 @@ class SiteSettings < RailsSettings::Base
   field :thingiverse_api_key, type: :string
   field :cults3d_api_key, type: :string
   field :cults3d_api_username, type: :string
+
+  field :web_sub_hub, type: :string, default: nil
 
   validates :model_ignored_files, regex_array: {strict: true}
 

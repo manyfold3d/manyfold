@@ -51,6 +51,9 @@ en:
       model_renders:
         help: Renders static images of 3D models to help users see a model quickly. This will use plenty of CPU power when turned on, until all models are rendered!
         label: 3D Renders
+      model_renders_size:
+        help: 'Set the resolution of the 3D renders (Default value: 512x512)'
+        label: 3D Renders resolution
       pregenerate_downloads:
         help: If enabled, ZIP files are created whenever a model is added or updated. If disabled, ZIP files are only created when requested.
         label: Proactively create downloadable ZIP files

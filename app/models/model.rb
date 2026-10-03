@@ -15,6 +15,7 @@ class Model < ApplicationRecord
   include FaspClient::DataSharing::Lifecycle
   include Likeable
   include Relatable
+  include WebSubbable
 
   broadcasts_refreshes
 

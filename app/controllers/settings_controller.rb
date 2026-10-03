@@ -91,6 +91,7 @@ class SettingsController < ApplicationController
     SiteSettings.download_expiry_time_in_hours = (settings[:download_expiry].to_i)
     SiteSettings.generate_image_derivatives = (settings[:image_derivatives] == "1")
     SiteSettings.generate_model_renders = (settings[:model_renders] == "1")
+    SiteSettings.model_renders_size = settings[:model_renders_size]
     # Trigger background jobs if enabled
     Upgrade::BackfillImageDerivatives.perform_later if SiteSettings.generate_image_derivatives
     Upgrade::BackfillModelRenders.perform_later if SiteSettings.generate_model_renders
