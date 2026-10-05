@@ -47,7 +47,7 @@ export default class extends Controller {
       // default to +Z
       options.setAsString('scene.up_direction', '+Z')
 
-      const canvas = this.element
+      const canvas = this.element as HTMLCanvasElement
       const scale = window.devicePixelRatio
       console.log(scale * canvas.clientWidth)
       console.log(scale * canvas.clientHeight)
