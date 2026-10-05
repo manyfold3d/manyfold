@@ -231,7 +231,7 @@ gem "zaru", "~> 1.1"
 # v3 causes us problems
 gem "connection_pool", ">= 2.2.5", "< 4.0"
 
-gem "noticed", "~> 3.0"
+gem "noticed", "~> 3.1"
 
 gem "devise_invitable", "~> 2.0"
 
