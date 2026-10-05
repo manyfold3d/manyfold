@@ -29,13 +29,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "@csstools/css-calc@npm:3.4.1"
+"@csstools/css-calc@npm:^3.4.1, @csstools/css-calc@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "@csstools/css-calc@npm:3.4.3"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-  checksum: cc4f70be1b977467bd5cbea60a561ccd6063940eda50e9355d11019b6b4c260bb97fa5520a36e8df614c1dab18c621937ce8afc362391b123a85dd20d2b5b477
+  checksum: c28326b942ded0b28e6d4a6c8f18cd5481d71e72c5e8e5604fbde8c418a77723fb404786aa59a580a1ef37edb7dbe06043bc2421a79d2703dc5a6f7761242570
   languageName: node
   linkType: hard
 
@@ -52,12 +52,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@csstools/css-parser-algorithms@npm:4.0.1"
+"@csstools/css-parser-algorithms@npm:^4.0.1, @csstools/css-parser-algorithms@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@csstools/css-parser-algorithms@npm:4.0.2"
   peerDependencies:
     "@csstools/css-tokenizer": ^4.0.2
-  checksum: d5aa579129c763e92d4ccea7530ca6037aa6e646af66f80c696439a70c082ca7a4dc0e3d97fa43d18fcf6bf0b73cf8f1f803e0719a042d0b102c5d68e6393e0c
+  checksum: 7ac83b764c7acb49a700508f7c6ade6a50075f27b0ed8a86ed7b3f632cd0a9f1dcb9df113aa0c74d2021ea7d7b4f80ec69e93866cd272cd078f88d23980ba732
   languageName: node
   linkType: hard
 
@@ -207,15 +207,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-exponential-functions@npm:^3.0.7":
-  version: 3.0.7
-  resolution: "@csstools/postcss-exponential-functions@npm:3.0.7"
+  version: 3.0.9
+  resolution: "@csstools/postcss-exponential-functions@npm:3.0.9"
   dependencies:
-    "@csstools/css-calc": ^3.4.1
-    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-calc": ^3.4.3
+    "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: 8bed058738139e4a1865d4a3d8c47c13b7da8faae2c36df2d2a02186d294bb5a802c3100b439b2c30cb19af9724b628add996d697001c2317a6413b3415a4de8
+  checksum: 2b1c32cd975f6da8df845be38ee73567f1b3cf1ec666b3d6359a59a525c3ae608ea50a6f9485e95ec65efbbc6c0c5ddf5070186d74507a0e736f750d1a710250
   languageName: node
   linkType: hard
 
