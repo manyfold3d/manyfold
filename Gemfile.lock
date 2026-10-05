@@ -462,7 +462,7 @@ GEM
       net-http (>= 0.6, < 0.10)
       starry (~> 0.2)
       uri (~> 1.0, >= 1.0.2)
-    listen (3.10.0)
+    listen (3.10.1)
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -1279,7 +1279,7 @@ CHECKSUMS
   link_header (0.0.8) sha256=15c65ce43b29f739b30d05e5f25c22c23797e89cf6f905dbb595fb4c70cb55f9
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   linzer (0.8.1) sha256=e46100047dec27c9b801a07762ca80ebf3e026a9b51b29a32abb628d80e1ef9b
-  listen (3.10.0) sha256=c6e182db62143aeccc2e1960033bebe7445309c7272061979bb098d03760c9d2
+  listen (3.10.1) sha256=4c3f32855657f348747da4dd2372ff3790d90a6b1d3e4f21a3706adb2d04783c
   llhttp (0.6.2) sha256=3c3c59aafb1e1594ab2f45293478f697458f5a91eb0f0db4b27f61a064024982
   locale (2.1.4) sha256=522f9973ef3eee64aac9bca06d21db2fba675fa3d2cf61d21f42d1ca18a9f780
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
