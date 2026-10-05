@@ -144,7 +144,7 @@ gem "gitlab-sidekiq-fetcher", require: "sidekiq-reliable-fetch", git: "https://g
 # gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
 
-gem "brakeman", "~> 8.0"
+gem "brakeman", "~> 8.1"
 
 gem "i18n_data", "~> 1.1"
 gem "bullet", "~> 8.2", group: :development
