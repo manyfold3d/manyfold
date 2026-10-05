@@ -68,7 +68,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/media-query-list-parser@npm:^5.0.1":
+"@csstools/media-query-list-parser@npm:^5.0.1, @csstools/media-query-list-parser@npm:^5.0.2":
   version: 5.0.2
   resolution: "@csstools/media-query-list-parser@npm:5.0.2"
   peerDependencies:
@@ -4735,16 +4735,16 @@ __metadata:
   linkType: hard
 
 "postcss-custom-media@npm:^12.0.2":
-  version: 12.0.2
-  resolution: "postcss-custom-media@npm:12.0.2"
+  version: 12.0.3
+  resolution: "postcss-custom-media@npm:12.0.3"
   dependencies:
-    "@csstools/cascade-layer-name-parser": ^3.0.1
-    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/cascade-layer-name-parser": ^3.0.2
+    "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/media-query-list-parser": ^5.0.1
+    "@csstools/media-query-list-parser": ^5.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: 644c17ff5a7365ce10260fe565ee1e4a8a50caed9e21abc5240bb90c2bbe82a3a5b51014e09f07de72917315c65988e8b771368addbb6df1cf7cc102dd5afa25
+  checksum: ed9f1efb54a035c75a4e111d0651cad317fe272d68dd47a0877afc0583527908e7aea91c1bc93111c064584b37cbec0e0662555f1ec7d9783ca042920f0b9d59
   languageName: node
   linkType: hard
 
