@@ -19,10 +19,6 @@ export default class extends Controller {
       canvas: this.element
     }
     await f3d(settings).then(async (F3D) => {
-      this.progressBar?.parentElement?.remove()
-      this.progressBar = null
-      this.progressLabel = null
-
       F3D.Engine.autoloadPlugins()
       // Uncomment this to get an updated list of formats in dev
       // console.log(`F3D supported types: ${F3D.Engine.getReadersInfo().map((reader) => (`${reader["extensions"][0]}: ${reader["mimeTypes"][0]}`)).flat()}`);
@@ -55,8 +51,19 @@ export default class extends Controller {
       try {
         scene.addBuffer(data)
       } catch (e) {
-        console.log('Unsupported file')
+        console.log(e)
+        if (this.progressBar && this.progressLabel) {
+          this.progressBar.classList.add('bg-danger')
+          this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
+          this.progressLabel.textContent = window.i18n.t('renderer.errors.load') // i18n-tasks-use t('renderer.errors.load')
+        }
+        return
       }
+
+      this.progressBar?.parentElement?.remove()
+      this.progressBar = null
+      this.progressLabel = null
+      canvas.style.backgroundColor = 'black'
 
       const camera = this.engine.getWindow().getCamera()
       const foc = camera.focalPoint
@@ -68,7 +75,6 @@ export default class extends Controller {
       }
       camera.position = pos
       camera.resetToBounds(0.9)
-      canvas.style.backgroundColor = 'black'
       this.engine.getWindow().render()
       this.engine.getInteractor().start()
     })
