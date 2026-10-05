@@ -4095,7 +4095,7 @@ __metadata:
     typescript: ~5.9.3
     vite: ^8.3.1
     vite-plugin-rails: ^0.6.0
-    vite-plugin-ruby: ^5.2.4
+    vite-plugin-ruby: ^5.2.5
     vite-plugin-wasm: ^3.6.0
   languageName: unknown
   linkType: soft
@@ -6431,15 +6431,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-ruby@npm:^5.0.0, vite-plugin-ruby@npm:^5.2.4":
-  version: 5.2.4
-  resolution: "vite-plugin-ruby@npm:5.2.4"
+"vite-plugin-ruby@npm:^5.0.0, vite-plugin-ruby@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "vite-plugin-ruby@npm:5.2.5"
   dependencies:
     obug: ^2.0
     tinyglobby: ^0.2.12
   peerDependencies:
     vite: ">=5.0.0"
-  checksum: 488507bfec15830d3580634b1b1b0bd96938562a11bb239951c6915a5041ff00f350e2afa3daff13b2ce920bba04014a8e07222a25ce71032d47190a89b6b117
+  checksum: b8f9bd0d6e9ae3055c14a5caad3a87cbf329d29ecc5a898af86cdf3b450d9a8ebf523bd4f27cbcfa124471e4d65346c03816589ff08e747e0b464f9b67adc429
   languageName: node
   linkType: hard
 
