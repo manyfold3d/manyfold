@@ -17,7 +17,7 @@ class Components::Renderers::F3d < Components::Renderers::Base
   def view_template
     div class: "position-relative", data: {turbo_permanent: true} do
       img src: model_model_file_path(@file.model, @file, format: @file.extension, derivative: :render), class: "card-img-top image-preview", alt: @file.name if @file.has_render?
-      canvas id: "canvas",
+      canvas id: "file-#{@file.to_param}",
         class: "object-preview position-relative",
         tabindex: "0",
         data: {
