@@ -32,14 +32,14 @@ export default class extends Controller {
       options.setAsString('render.background.color', '#000000')
 
       // make it look nice
-      options.toggle('render.effect.antialiasing.enable')
+      // options.setAsString('render.effect.antialiasing.enable', 'true')
       options.toggle('render.effect.tone_mapping')
       options.toggle('render.effect.ambient_occlusion')
 
-      options.toggle('scene.animation.autoplay', true)
+      options.toggle('scene.animation.autoplay')
 
       // display widgets
-      options.toggle('render.grid.enable', true)
+      options.toggle('render.grid.enable')
       options.setAsString('render.grid.color', '#00ffff')
       options.setAsString('render.grid.subdivisions', '0')
       options.setAsString('render.grid.unit', '10')
