@@ -70,6 +70,7 @@ export default class extends Controller {
       }
       camera.position = pos
       camera.resetToBounds(0.9)
+      canvas.style.backgroundColor = 'black'
       this.engine.getWindow().render()
       this.engine.getInteractor().start()
     })
