@@ -252,15 +252,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-gamut-mapping@npm:^3.0.13":
-  version: 3.0.13
-  resolution: "@csstools/postcss-gamut-mapping@npm:3.0.13"
+  version: 3.0.15
+  resolution: "@csstools/postcss-gamut-mapping@npm:3.0.15"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.4
-    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-color-parser": ^4.2.6
+    "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
   peerDependencies:
     postcss: ^8.4
-  checksum: fb67d3addb65fbe193b1ab735a454ac66f23a67346fcaea9858fa388720351d4b4c3d297ea5aef720aa001816955c8af697ff916aa1efa196ee3b8cb901fd7cd
+  checksum: 3897e0e4fe4005dea52aa659346648e81121f49a97644d085fa6492df6358e5b2ad37180043cc640e489176549c8c5de762907fd1a9f2dc88ce32ba85baf6184
   languageName: node
   linkType: hard
 
