@@ -28,21 +28,18 @@ export default class extends Controller {
       // console.log(`F3D supported types: ${F3D.Engine.getReadersInfo().map((reader) => (`${reader["extensions"][0]}: ${reader["mimeTypes"][0]}`)).flat()}`);
       this.engine = F3D.Engine.create(`#${this.element.id}`)
       const options = this.engine.getOptions()
-      // background must be set to black for proper blending with transparent canvas
+
+      // Set renderer options the same as the CLI version
+      options.setAsString('render.effect.ambient_occlusion', 'true')
+      options.setAsString('render.effect.antialiasing.mode', 'fxaa')
+      options.setAsString('render.effect.blending.mode', 'ddp')
       options.setAsString('render.background.color', '#000000')
-
-      // make it look nice
-      // options.setAsString('render.effect.antialiasing.enable', 'true')
-      options.toggle('render.effect.tone_mapping')
-      options.toggle('render.effect.ambient_occlusion')
-
-      options.toggle('scene.animation.autoplay')
-
-      // display widgets
-      options.toggle('render.grid.enable')
+      options.setAsString('render.grid.enable', 'true')
       options.setAsString('render.grid.color', '#00ffff')
       options.setAsString('render.grid.subdivisions', '0')
       options.setAsString('render.grid.unit', '10')
+      options.setAsString('render.effect.tone_mapping', 'true')
+      options.setAsString('scene.animation.autoplay', 'true')
 
       const canvas = this.element as HTMLCanvasElement
 
