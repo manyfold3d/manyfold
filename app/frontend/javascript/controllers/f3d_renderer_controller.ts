@@ -44,10 +44,10 @@ export default class extends Controller {
       options.setAsString('render.grid.subdivisions', '0')
       options.setAsString('render.grid.unit', '10')
 
-      // default to +Z
-      options.setAsString('scene.up_direction', '+Z')
-
       const canvas = this.element as HTMLCanvasElement
+
+      options.setAsString('scene.up_direction', canvas.dataset.yUp === 'true' ? '+Y' : '+Z')
+
       const scale = window.devicePixelRatio
       console.log(scale * canvas.clientWidth)
       console.log(scale * canvas.clientHeight)
@@ -63,7 +63,8 @@ export default class extends Controller {
 
       const camera = this.engine.getWindow().getCamera()
       const foc = camera.focalPoint
-      const dir = [-1, 1, -0.5]
+
+      const dir = canvas.dataset.yUp === 'true' ? [-1, -0.5, -1] : [-1, 1, -0.5]
       const pos = [0, 0, 0]
       for (let i = 0; i < 3; i++) {
         pos[i] = foc[i] - dir[i]
