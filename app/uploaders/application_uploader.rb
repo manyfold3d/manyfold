@@ -90,7 +90,7 @@ class ApplicationUploader < Shrine
   end
 
   add_metadata :object do |io, context|
-    if context[:record]&.try(:is_3d_model?) && FileHandlers::F3d.can_load?(context[:record].mime_type)
+    if context[:record]&.try(:is_3d_model?) && FileHandlers::F3dCli.can_load?(context[:record].mime_type)
       bounds = Shrine.with_file(io) do |file|
         if file.path
           options = {
