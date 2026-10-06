@@ -343,16 +343,16 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-light-dark-function@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@csstools/postcss-light-dark-function@npm:3.0.5"
+  version: 3.0.7
+  resolution: "@csstools/postcss-light-dark-function@npm:3.0.7"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.1
+    "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/postcss-progressive-custom-properties": ^5.1.3
+    "@csstools/postcss-progressive-custom-properties": ^5.1.4
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: e4741fa79e6e41fef56885304ff98b288d5c05c00676c7f4073f02a7927a9059c671d1c591747ace3b379de6ae327904641281c7c167477cdd87c6791b67b8f5
+  checksum: 8770f3fdfb6d5f7eeab3c438a1cca51e3d1899af8567061062cb6b28e85394453aa4af52ca4398c39298a853c8cf52dbbc84e66780a189bf64ca58395a6a3688
   languageName: node
   linkType: hard
 
