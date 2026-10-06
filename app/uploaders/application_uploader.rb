@@ -43,7 +43,6 @@ class ApplicationUploader < Shrine
     "grid-unit" => "10",
     "no-config" => "1",
     "output" => "-",
-    "resolution" => "512,512",
     "tone-mapping" => "1",
     "translucency-support" => "1"
   }.freeze
@@ -146,7 +145,8 @@ class ApplicationUploader < Shrine
         up = context[:record]&.up_direction
         options = F3D_OPTS.merge(
           "up" => up,
-          "camera-direction" => CAMERA_OPTS[up]
+          "camera-direction" => CAMERA_OPTS[up],
+          "resolution" => SiteSettings.model_renders_size
         )
         options["color"] = "1,1,1" if context[:record].mime_type.to_s == "model/obj"
         if (plane = context[:record]&.planar?)

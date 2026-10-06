@@ -51,6 +51,9 @@ es:
       model_renders:
         help: Renderiza imágenes estáticas de modelos 3D para ayudar a los usuarios a ver un modelo rápidamente. Esta función consume mucha potencia de la CPU cuando está activada, ¡hasta que se renderizan todos los modelos!
         label: Renderizado 3D
+      model_renders_size:
+        help:
+        label:
       pregenerate_downloads:
         help: Si está activada, los archivos ZIP se crean cada vez que se añade o actualiza un modelo. Si se desactiva, los archivos ZIP sólo se crean cuando se solicitan.
         label: Crear proactivamente archivos ZIP descargables
