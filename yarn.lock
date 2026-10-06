@@ -4682,13 +4682,13 @@ __metadata:
   linkType: hard
 
 "postcss-attribute-case-insensitive@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "postcss-attribute-case-insensitive@npm:8.0.1"
+  version: 8.0.2
+  resolution: "postcss-attribute-case-insensitive@npm:8.0.2"
   dependencies:
     postcss-selector-parser: ^7.1.1
   peerDependencies:
     postcss: ^8.4
-  checksum: 9b9510c5998215f9b6d33634c878a2ce8a6e542ac5e8460309dd1ee36979ab2974b3cfb9bbd9f8ac70607b9e9d5aa71108fd775190d48f0b6d64e3f29cf4eea4
+  checksum: 70dd795de0d698104df49000e73c83dd84109d9814bee782d8643b6869b0049057e7e044cbc93a647fe9e64cefefe47664f43f0958e7b4f6ecf03a8639c38cfe
   languageName: node
   linkType: hard
 
