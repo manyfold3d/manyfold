@@ -395,15 +395,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-logical-viewport-units@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@csstools/postcss-logical-viewport-units@npm:4.0.2"
+  version: 4.0.3
+  resolution: "@csstools/postcss-logical-viewport-units@npm:4.0.3"
   dependencies:
     "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/postcss-progressive-custom-properties": ^5.1.3
+    "@csstools/postcss-progressive-custom-properties": ^5.1.4
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: db43840416a39fc1375995559c90f5062377ee8a6f6740ebbfa51722a7d7f7dd85434afc46c52cd879047b7584c89bca71931591cbce5da039d8cda735246f25
+  checksum: fe1543ba9e29bbf9840d21d770e206f1707a8e0b19f67c4481550e06d8a6c6dbda2937d98492fd7d2e8cb93054579d3b62bc6b350be5af7fdc39df8437f81b74
   languageName: node
   linkType: hard
 
