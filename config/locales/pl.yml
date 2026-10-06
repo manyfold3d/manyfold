@@ -536,6 +536,11 @@ pl:
       menu_header: Opcje Pobierania
       supported: Tylko Obsługiwane Pliki
       unsupported: Tylko Nieobsługiwane Pliki
+    file_format_list:
+      description:
+      extensions:
+      file_type:
+      title:
     follow_button:
       follow: Obserwuj %{name}
       pending: Żądane
@@ -783,6 +788,23 @@ pl:
         heading:
         provider_list_title:
         search_3dprint_social_html:
+  file_handlers:
+    environments:
+      browser:
+      client:
+      preview_frame:
+      server:
+    handlers:
+      assimp:
+      f3d_cli:
+      f3d_wasm:
+      freecad_thumbnail_extractor:
+      gcode_thumbnail_extractor:
+      iframe_tag:
+      image_tag:
+      rouge:
+      three:
+      video_tag:
   follows:
     actor_table:
       actions: Akcje
@@ -1006,6 +1028,110 @@ pl:
       liked:
     update:
       success:
+  media_types:
+    abc:
+    amf:
+    avif:
+    bin:
+    blend:
+    bmp:
+    brep:
+    bz2:
+    categories:
+      document:
+      image:
+      model:
+      slicer:
+      video:
+    cheetah3d:
+    chitubox:
+    collada:
+    crealitybox:
+    ctb:
+    dcm:
+    doc:
+    docx:
+    draco:
+    drl:
+    dwg:
+    dxf:
+    f3d:
+    fbx:
+    fcstd:
+    flock:
+    gbr:
+    gbrjob:
+    gcode:
+    gif:
+    gltf:
+    gml:
+    goo:
+    gzip:
+    hfp:
+    html:
+    iam:
+    ifc:
+    iges:
+    ipt:
+    jpeg:
+    js:
+    kicad_mod:
+    kicad_pcb:
+    kicad_pro:
+    kicad_sch:
+    kicad_sym:
+    kicad_wks:
+    ldr:
+    lumen:
+    lychee:
+    max:
+    maya:
+    md:
+    mdl:
+    mha:
+    mix:
+    modo:
+    mp4:
+    mpeg:
+    mtl:
+    nanodlp:
+    nrrd:
+    obj:
+    'off':
+    pdf:
+    photon:
+    ply:
+    png:
+    prz:
+    pts:
+    rar:
+    scad:
+    sevenz:
+    sketchup:
+    sl1:
+    sldasm:
+    sldprt:
+    speedtree:
+    splat:
+    spz:
+    step:
+    stl:
+    svg:
+    text:
+    threedm:
+    threeds:
+    threemf:
+    tiff:
+    voxl:
+    vrml:
+    vtk:
+    vtp:
+    webm:
+    webp:
+    x:
+    x3d:
+    xbf:
+    zip:
   moderator_mailer:
     new_approval:
       message: Ktoś nowy zarejestrował konto i wymaga zatwierdzenia. Zatwierdź konto pod adresem %{link}
