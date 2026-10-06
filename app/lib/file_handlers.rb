@@ -10,4 +10,8 @@ module FileHandlers
         .sort { |a, b| b&.priority <=> a&.priority }
     end
   end
+
+  def self.environments
+    ALL_HANDLERS.map { it.const_get(:ENVIRONMENTS) }.flatten.uniq
+  end
 end
