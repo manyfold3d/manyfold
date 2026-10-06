@@ -1,4 +1,4 @@
-class FileHandlers::F3d < FileHandlers::Base
+class FileHandlers::F3dCli < FileHandlers::Base
   def self.readers
     `f3d --list-readers`
   end

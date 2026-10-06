@@ -4,6 +4,10 @@ class FileHandlers::Three < FileHandlers::Base
     "stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr", "3dm"
   ).values.freeze
 
+  def self.priority
+    100
+  end
+
   def self.component
     Components::Renderers::Three
   end

@@ -90,7 +90,7 @@ class ApplicationUploader < Shrine
   end
 
   add_metadata :object do |io, context|
-    if context[:record]&.try(:is_3d_model?) && FileHandlers::F3d.can_load?(context[:record].mime_type)
+    if context[:record]&.try(:is_3d_model?) && FileHandlers::F3dCli.can_load?(context[:record].mime_type)
       bounds = Shrine.with_file(io) do |file|
         if file.path
           options = {
@@ -141,7 +141,7 @@ class ApplicationUploader < Shrine
       Shrine.with_file(original) do
         {render: FreecadThumbnailExtractorService.new(file: it).call}.compact
       end
-    elsif SiteSettings.generate_model_renders && FileHandlers::F3d.can_load?(context[:record].mime_type) && context[:record]&.is_3d_model?
+    elsif SiteSettings.generate_model_renders && FileHandlers::F3dCli.can_load?(context[:record].mime_type) && context[:record]&.is_3d_model?
       Shrine.with_file(original) do
         up = context[:record]&.up_direction
         options = F3D_OPTS.merge(
