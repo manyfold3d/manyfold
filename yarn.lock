@@ -2395,10 +2395,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"driver.js@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "driver.js@npm:1.8.0"
-  checksum: ae52d0948636f2ec27ec9fd34699a342912cf384b024e55ee5812c0a4ace3ff20d0acadf41ada1aa6883c01e952f977b81cb8c67fc0ccabe5abee17061182655
+"driver.js@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "driver.js@npm:1.9.0"
+  checksum: dfc37739784d04ef54722eaadf4a77023e0ec7004050257774bf1b3b3a13b3c16ad1f8e7a68fac1957525e075982d861e31a75355fe9e5f44d1d97073fe93de6
   languageName: node
   linkType: hard
 
@@ -4084,7 +4084,7 @@ __metadata:
     bootstrap-icons: ^1.13.1
     bootswatch: ^5.3.8
     comlink: ^4.4.2
-    driver.js: ^1.8.0
+    driver.js: ^1.9.0
     eslint: ^9.0.0
     f3d: 3.5.0-nightly.20261003
     husky: ^9.1.7
