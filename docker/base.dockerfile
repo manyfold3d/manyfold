@@ -4,7 +4,7 @@ FROM ruby:3.4.9-alpine3.24 AS base
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
-  tzdata=2026c-r0
+  tzdata=2026d-r0
 
 RUN gem install bundler -v 2.5.23
 RUN bundle config set --local deployment 'true'
@@ -15,12 +15,12 @@ RUN apk add --no-cache \
   s6-overlay=3.2.3.0-r0 \
   gcompat=1.1.0-r4 \
   jemalloc=5.3.0-r6 \
-  imagemagick=7.1.2.27-r0 \
-  imagemagick-jpeg=7.1.2.27-r0 \
-  imagemagick-webp=7.1.2.27-r0 \
-  imagemagick-heic=7.1.2.27-r0 \
+  imagemagick=7.1.2.30-r0 \
+  imagemagick-jpeg=7.1.2.30-r0 \
+  imagemagick-webp=7.1.2.30-r0 \
+  imagemagick-heic=7.1.2.30-r0 \
   assimp-dev=6.0.4-r0 \
-  mesa-egl=26.1.1-r1 \
+  mesa-egl=26.1.6-r0 \
   vtk=9.5.2-r2 \
   opencascade=7.9.3-r2
 
