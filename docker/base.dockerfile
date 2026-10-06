@@ -20,7 +20,7 @@ RUN apk add --no-cache \
   imagemagick-webp=7.1.2.30-r0 \
   imagemagick-heic=7.1.2.30-r0 \
   assimp-dev=6.0.4-r0 \
-  mesa-egl=26.1.1-r1 \
+  mesa-egl=26.1.6-r0 \
   vtk=9.5.2-r2 \
   opencascade=7.9.3-r2
 
