@@ -4859,14 +4859,14 @@ __metadata:
   linkType: hard
 
 "postcss-image-set-function@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "postcss-image-set-function@npm:8.0.1"
+  version: 8.0.2
+  resolution: "postcss-image-set-function@npm:8.0.2"
   dependencies:
     "@csstools/utilities": ^3.0.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 272d2aea160fa933673b4cfb102b5ee21f36e2c8b2a7e072affdc22a0c6c24b40f327374dfa36d03e18e0a1c07347972c177c0aade592a1c5d5a015aee0c104e
+  checksum: 190c125a80705b69e0fe145ed7b0556b25a0e70889ab82c876cbb27186f5ff5fb641b06d42b1365d2877d55ae417b89ec500a58649a98dbbd64efa812d5a208c
   languageName: node
   linkType: hard
 
