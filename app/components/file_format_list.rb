@@ -2,51 +2,80 @@
 
 class Components::FileFormatList < Components::Base
   def before_template
+    @categories = [:model, :slicer, :image, :video, :archive, :document]
+    @environments = [:server, :preview_frame, :browser, :client]
   end
 
   def view_template
-    h2 { t(".title") }
-    p { t(".description") }
-    table class: "table table-striped" do
-      [:model, :slicer, :image, :video, :archive, :document].each do |category|
+    h2 { t("components.file_format_list.title") }
+    p { t("components.file_format_list.description") }
+    @categories.map { category_section(it) }
+  end
+
+  def category_section(category)
+    media_types = MediaType::CATEGORIES[category].map { {name: t("media_types.%{type}" % {type: it}), media_type: it} }
+    h3 { t("media_types.categories.%{category}" % {category: category}) }
+    table class: "table table-striped table-sm table-hover table-fixed" do
+      thead do
         tr do
-          th { category }
-        end
-        tr do
-          th { t(".name") }
-          FileHandlers.environments.each do |environment|
-            th { t("file_handlers.environments.#{environment}") }
+          th { t("components.file_format_list.file_type") }
+          th(class: "d-none d-md-table-cell") { t("components.file_format_list.extensions") }
+          @environments.each do |environment|
+            th { t("file_handlers.environments.%{environment}" % {environment: environment}) }
           end
         end
-        MediaType::CATEGORIES[category].map do |type|
-          tr do
-            td { t("media_types.#{type}") }
-            FileHandlers.environments.map do |environment|
-              handlers = FileHandlers.handlers_for(environment: environment, mime_type: type)
-              td do
-                if handlers.empty?
-                  span { "❌" }
-                elsif environment.in?([:client])
-                  span { "✅" }
-                  whitespace
-                  span { t("model_files.download.#{FileHandlers.handlers_for(environment: environment, mime_type: type).first.class_name.underscore}") }
-                elsif environment.in?([:browser, :preview_frame])
-                  span { "✅" }
-                  whitespace
-                  span { t("file_handlers.handlers.#{FileHandlers.handlers_for(environment: environment, mime_type: type).first.class_name.underscore}") }
-                else
-                  FileHandlers.handlers_for(environment: environment, mime_type: type).each do |it|
-                    span { "✅" }
-                    whitespace
-                    span { t("file_handlers.handlers.#{it.class_name.underscore}") }
-                    br
-                  end
-                end
-              end
-            end
+      end
+      tbody do
+        Naturally.sort_by(media_types) { it[:name].downcase }.map do
+          media_type_row(name: it[:name], media_type: it[:media_type])
+        end
+      end
+    end
+  end
+
+  def media_type_row(name:, media_type:)
+    extensions = [media_type, MediaType::EXTENSIONS[media_type]].flatten.uniq.compact
+    extensions.reject! { it.starts_with?("three") || it.starts_with?("seven") } # Ugh
+    tr do
+      td { name }
+      td(class: "d-none d-md-table-cell") do
+        extensions.map { "*.#{it}" }.join(", ")
+      end
+      @environments.map do |environment|
+        handlers = FileHandlers.handlers_for(environment: environment, mime_type: media_type)
+        td do
+          if handlers.empty?
+            none
+          elsif environment.in?([:client])
+            all(environment: environment, media_type: media_type)
+          else
+            preferred(environment: environment, media_type: media_type)
           end
         end
       end
     end
+  end
+
+  def none
+    span { "❌" }
+  end
+
+  def all(environment:, media_type:)
+    translations = FileHandlers.handlers_for(environment: environment, mime_type: media_type).map { t("model_files.download.%{name}" % {name: it.class_name.underscore}) }
+    Naturally.sort(translations).each do |item|
+      span { "✅" }
+      whitespace
+      span(class: "d-none d-md-inline") do
+        span { item }
+        br
+      end
+    end
+  end
+
+  def preferred(environment:, media_type:)
+    best = FileHandlers.handlers_for(environment: environment, mime_type: media_type).first
+    span { "✅" }
+    whitespace
+    span(class: "d-none d-xl-inline") { t("file_handlers.handlers.%{name}" % {name: best.class_name.underscore}) }
   end
 end

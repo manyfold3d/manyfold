@@ -536,6 +536,11 @@ en:
       menu_header: Download Options
       supported: Supported Files Only
       unsupported: Unsupported Files Only
+    file_format_list:
+      description: The following table shows which file formats are supported by this Manyfold instance, and what functions are available for each one. All formats listed here are indexed, will appear in models, and be available for download.
+      extensions: File extensions
+      file_type: File type
+      title: Supported File Formats
     follow_button:
       follow: Follow %{name}
       pending: Requested
@@ -741,6 +746,23 @@ en:
         heading: FASP Services
         provider_list_title: Registered FASPs
         search_3dprint_social_html: We recommend connecting the <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP; it's run by the Manyfold developers, and is specifically configured for 3d content search.
+  file_handlers:
+    environments:
+      browser: Show on file page
+      client: Open on client
+      preview_frame: Show in cards
+      server: Server-side processing
+    handlers:
+      assimp: Assimp
+      f3d_cli: F3D
+      f3d_wasm: F3D
+      freecad_thumbnail_extractor: Loaded from file
+      gcode_thumbnail_extractor: Loaded from file
+      iframe_tag: Browser-native
+      image_tag: Browser-native
+      rouge: Source code
+      three: THREE.js
+      video_tag: Browser-native
   follows:
     actor_table:
       actions: Actions
@@ -964,6 +986,110 @@ en:
       liked: Liked Items
     update:
       success: List updated successfully
+  media_types:
+    abc: Alembic
+    amf: AMF
+    avif: AVIF
+    bin: Binary blobs
+    blend: Blender
+    bmp: BMP
+    brep: BRep
+    bz2: bzip2
+    categories:
+      document: Documents & other files
+      image: Images
+      model: 3D Models
+      slicer: Sliced files for printing
+      video: Videos
+    cheetah3d: Cheetah3D
+    chitubox: Chitubox
+    collada: Collada
+    crealitybox: Creality Box
+    ctb: Chitu
+    dcm: DICOM
+    doc: Microsoft Word
+    docx: Microsoft Word
+    draco: Draco
+    drl: Excellon
+    dwg: Autodesk DWG
+    dxf: Autodesk DXF
+    f3d: Fusion360
+    fbx: Filmbox
+    fcstd: FreeCAD
+    flock: FlockXR
+    gbr: Gerber
+    gbrjob: Gerber
+    gcode: GCode
+    gif: GIF
+    gltf: glTF
+    gml: CityGML
+    goo: Elegoo
+    gzip: gzip
+    hfp: HueForge
+    html: HTML
+    iam: Autodesk Inventor
+    ifc: Industry Foundation Classes
+    iges: IGES
+    ipt: Autodesk Inventor
+    jpeg: JPEG
+    js: Javascript
+    kicad_mod: KiCad
+    kicad_pcb: KiCad
+    kicad_pro: KiCad
+    kicad_sch: KiCad
+    kicad_sym: KiCad
+    kicad_wks: KiCad
+    ldr: LDraw
+    lumen: Lumen
+    lychee: Lychee
+    max: 3D Studio Max
+    maya: Maya
+    md: Markdown
+    mdl: Quake MDL
+    mha: MetaHeader MetaIO
+    mix: Meshmixer
+    modo: Modo
+    mp4: MP4
+    mpeg: MPEG
+    mtl: Wavefront MTL
+    nanodlp: NanoDLP
+    nrrd: NRRD ("nearly raw raster data")
+    obj: Wavefront OBJ
+    'off': Object File Format
+    pdf: PDF
+    photon: Photon
+    ply: PLY
+    png: PNG
+    prz: Phrozen
+    pts: Point Cloud
+    rar: RAR
+    scad: OpenSCAD
+    sevenz: 7-Zip
+    sketchup: Sketchup
+    sl1: Prusa SL1
+    sldasm: Solidworks
+    sldprt: Solidworks
+    speedtree: Speedtree
+    splat: 3D Gaussian Splatting
+    spz: 3D Gaussian Splatting
+    step: STEP
+    stl: STL
+    svg: SVG
+    text: Plain Text
+    threedm: 3DM
+    threeds: 3D Studio
+    threemf: 3MF
+    tiff: TIFF
+    voxl: Dragonfruit
+    vrml: VRML
+    vtk: VTK Legacy
+    vtp: VTK XML
+    webm: WebM
+    webp: WebP
+    x: DirectX
+    x3d: X3D
+    xbf: Open CASCADE XBF
+    zip: ZIP
   moderator_mailer:
     new_approval:
       message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}
