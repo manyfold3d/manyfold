@@ -7,7 +7,7 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     token = ::Doorkeeper::OAuth::Token.authenticate(request, :from_bearer_authorization)
     fail! and throw(:warden, status: :unauthorized) unless token&.accessible?
 
-    scopes = case request.env.dig("action_dispatch.request.parameters", "action") || request.env.dig("action_dispatch.route_uri_pattern")
+    scopes = case request.env.dig("action_dispatch.request.parameters", "action") || request.route_uri_pattern
     when "index", "show", "raw"
       ["public", "read"]
     when "create", "update", "raw_put"
