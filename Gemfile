@@ -107,7 +107,7 @@ gem "data_migrate", "~> 11.3"
 
 gem "rails-settings-cached", "~> 2.10"
 
-gem "pagy", "~> 43.6"
+gem "pagy", "~> 43.7"
 
 gem "lograge", "~> 0.15"
 
