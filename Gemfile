@@ -38,7 +38,7 @@ group :mysql do
   gem "mysql2", "~> 0.5"
 end
 group :postgres do
-  gem "pg", "~> 1.6"
+  gem "pg", "~> 1.7"
   gem "pghero", "~> 4.0"
   gem "pg_query", "~> 6.2"
 end
