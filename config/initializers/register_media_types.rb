@@ -1,119 +1,124 @@
+# i18n-tasks-use t("media_types.categories.document")
+# i18n-tasks-use t("media_types.categories.image")
+# i18n-tasks-use t("media_types.categories.model")
+# i18n-tasks-use t("media_types.categories.slicer")
+# i18n-tasks-use t("media_types.categories.video")
+
 # Categorise built-in types
+MediaType.categorize(:html, :document) # i18n-tasks-use t("media_types.html")
+MediaType.categorize(:text, :document) # i18n-tasks-use t("media_types.text")
+MediaType.categorize(:js, :document) # i18n-tasks-use t("media_types.js")
+MediaType.categorize(:pdf, :document) # i18n-tasks-use t("media_types.pdf")
 
-MediaType.categorize(:html, :document)
-MediaType.categorize(:text, :document)
-MediaType.categorize(:js, :document)
-MediaType.categorize(:pdf, :document)
+MediaType.categorize(:png, :image) # i18n-tasks-use t("media_types.png")
+MediaType.categorize(:jpeg, :image) # i18n-tasks-use t("media_types.jpeg")
+MediaType.categorize(:gif, :image) # i18n-tasks-use t("media_types.gif")
+MediaType.categorize(:bmp, :image) # i18n-tasks-use t("media_types.bmp")
+MediaType.categorize(:tiff, :image) # i18n-tasks-use t("media_types.tiff")
+MediaType.categorize(:svg, :image) # i18n-tasks-use t("media_types.svg")
+MediaType.categorize(:webp, :image) # i18n-tasks-use t("media_types.webp")
 
-MediaType.categorize(:png, :image)
-MediaType.categorize(:jpeg, :image)
-MediaType.categorize(:gif, :image)
-MediaType.categorize(:bmp, :image)
-MediaType.categorize(:tiff, :image)
-MediaType.categorize(:svg, :image)
-MediaType.categorize(:webp, :image)
+MediaType.categorize(:mpeg, :video) # i18n-tasks-use t("media_types.mpeg")
+MediaType.categorize(:webm, :video) # i18n-tasks-use t("media_types.webm")
+MediaType.categorize(:mp4, :video) # i18n-tasks-use t("media_types.mp4")
 
-MediaType.categorize(:mpeg, :video)
-MediaType.categorize(:webm, :video)
-MediaType.categorize(:mp4, :video)
-
-MediaType.categorize(:zip, :archive)
-MediaType.categorize(:gzip, :archive)
+MediaType.categorize(:zip, :archive) # i18n-tasks-use t("media_types.zip")
+MediaType.categorize(:gzip, :archive) # i18n-tasks-use t("media_types.gzip")
 
 # Add extra MIME types that Rails doesn't already know about
 
 # 3D Models
-MediaType.register "application/vnd.flock+json", :flock, category: :model
-MediaType.register "application/vnd.dragonfruit.voxl", :voxl, category: :model
-MediaType.register "application/x-3ds", :threeds, additional_types: ["image/x-3ds", "application/vnd.3ds"], additional_extensions: ["3ds"], category: :model
-MediaType.register "application/x-3dsmax", :max, category: :model
-MediaType.register "application/x-amf", :amf, category: :model
-MediaType.register "application/x-ldraw", :ldr, additional_extensions: ["mpd"], category: :model
-MediaType.register "application/x-openscad", :scad, category: :model
-MediaType.register "image/vnd.dwg", :dwg, category: :model
-MediaType.register "image/vnd.dxf", :dxf, category: :model
-MediaType.register "model/3mf", :threemf, additional_extensions: ["3mf"], category: :model
-MediaType.register "model/3dm", :threedm, additional_types: ["model/vnd.3dm"], additional_extensions: ["3dm"], category: :model
-MediaType.register "model/gltf", :gltf, additional_types: ["model/gltf+json", "model/gltf+binary", "model/gltf-binary"], additional_extensions: ["glb"], category: :model
-MediaType.register "model/iges", :iges, additional_extensions: ["igs"], category: :model
-MediaType.register "model/mtl", :mtl, category: :model
-MediaType.register "model/obj", :obj, category: :model
-MediaType.register "model/step", :step, additional_types: ["model/step+xml", "model/step+zip", "model/step-xml+zip", "application/vnd.step"], additional_extensions: ["stp", "stpnc", "p21", "210"], category: :model
-MediaType.register "model/stl", :stl, category: :model
-MediaType.register "model/vnd.collada+xml", :collada, additional_types: ["application/vnd.dae"], additional_extensions: ["dae"], category: :model
-MediaType.register "model/vnd.google.draco", :draco, additional_extensions: ["drc"], category: :model
-MediaType.register "model/vrml", :vrml, additional_extensions: ["wrl"], category: :model
-MediaType.register "model/x-alembic", :abc, additional_types: ["application/vnd.abc"], category: :model
-MediaType.register "model/x-blender", :blend, category: :model
-MediaType.register "model/x-brep", :brep, category: :model
-MediaType.register "model/x-cheetah3d", :cheetah3d, additional_extensions: ["jas"], category: :model
-MediaType.register "model/x-fbx", :fbx, additional_types: ["application/vnd.fbx"], category: :model
-MediaType.register "model/x-freecad", :fcstd, category: :model
-MediaType.register "model/x-fusion", :f3d, additional_extensions: ["f3z"], category: :model
-MediaType.register "model/x-inventor-part", :ipt, category: :model
-MediaType.register "model/x-inventor-assembly", :iam, category: :model
-MediaType.register "model/x-maya", :maya, additional_extensions: ["ma", "mb"], category: :model
-MediaType.register "model/x-meshmixer", :mix, category: :model
-MediaType.register "model/x-modo", :modo, additional_extensions: ["lxo"], category: :model
-MediaType.register "model/x-ply", :ply, additional_types: ["application/vnd.ply"], category: :model
-MediaType.register "model/x-sketchup", :sketchup, additional_extensions: ["skp"], category: :model
-MediaType.register "model/x-solidworks-assembly", :sldasm, category: :model
-MediaType.register "model/x-solidworks-part", :sldprt, category: :model
-MediaType.register "model/x-hfp", :hfp, category: :model
-MediaType.register "model/x-speedtree", :speedtree, additional_extensions: ["spm"], category: :model
-MediaType.register "model/x3d", :x3d, additional_types: ["model/x3d+xml", "model/x3d-vrml", "model/x3d+fastinfoset"], category: :model
+MediaType.register "application/vnd.flock+json", :flock, category: :model # i18n-tasks-use t("media_types.flock")
+MediaType.register "application/vnd.dragonfruit.voxl", :voxl, category: :model # i18n-tasks-use t("media_types.voxl")
+MediaType.register "application/x-3ds", :threeds, additional_types: ["image/x-3ds", "application/vnd.3ds"], additional_extensions: ["3ds"], category: :model # i18n-tasks-use t("media_types.threeds")
+MediaType.register "application/x-3dsmax", :max, category: :model # i18n-tasks-use t("media_types.max")
+MediaType.register "application/x-amf", :amf, category: :model # i18n-tasks-use t("media_types.amf")
+MediaType.register "application/x-ldraw", :ldr, additional_extensions: ["mpd"], category: :model # i18n-tasks-use t("media_types.ldr")
+MediaType.register "application/x-openscad", :scad, category: :model # i18n-tasks-use t("media_types.scad")
+MediaType.register "image/vnd.dwg", :dwg, category: :model # i18n-tasks-use t("media_types.dwg")
+MediaType.register "image/vnd.dxf", :dxf, category: :model # i18n-tasks-use t("media_types.dxf")
+MediaType.register "model/3mf", :threemf, additional_extensions: ["3mf"], category: :model # i18n-tasks-use t("media_types.threemf")
+MediaType.register "model/3dm", :threedm, additional_types: ["model/vnd.3dm"], additional_extensions: ["3dm"], category: :model # i18n-tasks-use t("media_types.threedm")
+MediaType.register "model/gltf", :gltf, additional_types: ["model/gltf+json", "model/gltf+binary", "model/gltf-binary"], additional_extensions: ["glb"], category: :model # i18n-tasks-use t("media_types.gltf")
+MediaType.register "model/iges", :iges, additional_extensions: ["igs"], category: :model # i18n-tasks-use t("media_types.iges")
+MediaType.register "model/mtl", :mtl, category: :model # i18n-tasks-use t("media_types.mtl")
+MediaType.register "model/obj", :obj, category: :model # i18n-tasks-use t("media_types.obj")
+MediaType.register "model/step", :step, additional_types: ["model/step+xml", "model/step+zip", "model/step-xml+zip", "application/vnd.step"], additional_extensions: ["stp", "stpnc", "p21", "210"], category: :model # i18n-tasks-use t("media_types.step")
+MediaType.register "model/stl", :stl, category: :model # i18n-tasks-use t("media_types.stl")
+MediaType.register "model/vnd.collada+xml", :collada, additional_types: ["application/vnd.dae"], additional_extensions: ["dae"], category: :model # i18n-tasks-use t("media_types.collada")
+MediaType.register "model/vnd.google.draco", :draco, additional_extensions: ["drc"], category: :model # i18n-tasks-use t("media_types.draco")
+MediaType.register "model/vrml", :vrml, additional_extensions: ["wrl"], category: :model # i18n-tasks-use t("media_types.vrml")
+MediaType.register "model/x-alembic", :abc, additional_types: ["application/vnd.abc"], category: :model # i18n-tasks-use t("media_types.abc")
+MediaType.register "model/x-blender", :blend, category: :model # i18n-tasks-use t("media_types.blend")
+MediaType.register "model/x-brep", :brep, category: :model # i18n-tasks-use t("media_types.brep")
+MediaType.register "model/x-cheetah3d", :cheetah3d, additional_extensions: ["jas"], category: :model # i18n-tasks-use t("media_types.cheetah3d")
+MediaType.register "model/x-fbx", :fbx, additional_types: ["application/vnd.fbx"], category: :model # i18n-tasks-use t("media_types.fbx")
+MediaType.register "model/x-freecad", :fcstd, category: :model # i18n-tasks-use t("media_types.fcstd")
+MediaType.register "model/x-fusion", :f3d, additional_extensions: ["f3z"], category: :model # i18n-tasks-use t("media_types.f3d")
+MediaType.register "model/x-inventor-part", :ipt, category: :model # i18n-tasks-use t("media_types.ipt")
+MediaType.register "model/x-inventor-assembly", :iam, category: :model # i18n-tasks-use t("media_types.iam")
+MediaType.register "model/x-maya", :maya, additional_extensions: ["ma", "mb"], category: :model # i18n-tasks-use t("media_types.maya")
+MediaType.register "model/x-meshmixer", :mix, category: :model # i18n-tasks-use t("media_types.mix")
+MediaType.register "model/x-modo", :modo, additional_extensions: ["lxo"], category: :model # i18n-tasks-use t("media_types.modo")
+MediaType.register "model/x-ply", :ply, additional_types: ["application/vnd.ply"], category: :model # i18n-tasks-use t("media_types.ply")
+MediaType.register "model/x-sketchup", :sketchup, additional_extensions: ["skp"], category: :model # i18n-tasks-use t("media_types.sketchup")
+MediaType.register "model/x-solidworks-assembly", :sldasm, category: :model # i18n-tasks-use t("media_types.sldprt")
+MediaType.register "model/x-solidworks-part", :sldprt, category: :model # i18n-tasks-use t("media_types.sldasm")
+MediaType.register "model/x-hfp", :hfp, category: :model # i18n-tasks-use t("media_types.hfp")
+MediaType.register "model/x-speedtree", :speedtree, additional_extensions: ["spm"], category: :model # i18n-tasks-use t("media_types.speedtree")
+MediaType.register "model/x3d", :x3d, additional_types: ["model/x3d+xml", "model/x3d-vrml", "model/x3d+fastinfoset"], category: :model # i18n-tasks-use t("media_types.x3d")
 
-MediaType.register "application/dicom", :dcm, category: :model # DICOM
-MediaType.register "application/gml+xml", :gml, category: :model # CityGML
-MediaType.register "application/vnd.pts", :pts, category: :model # Point Cloud
-MediaType.register "application/vnd.vtk", :vtk, category: :model # VTK Legacy
-MediaType.register "application/vnd.vtp", :vtp, additional_types: ["application/vnd.vtu", "application/vnd.vti", "application/vnd.vtr", "application/vnd.vts"], additional_extensions: ["vtu", "vti", "vtr", "vts"], category: :model # VTK XML
-MediaType.register "application/vnd.off", :off, category: :model # Object File Format
-MediaType.register "application/vnd.x", :x, category: :model # DirectX
-MediaType.register "application/vnd.xbf", :xbf, category: :model # Open CASCADE Technology XBF format
-MediaType.register "application/vnd.mdl", :mdl, category: :model # QuakeMDL
-MediaType.register "application/vnd.ifc", :ifc, category: :model # Industry Foundation Classes
-MediaType.register "application/vnd.mhd", :mha, additional_extensions: ["mhd"], category: :model # MetaHeader MetaIO
-MediaType.register "application/vnd.nrrd", :nrrd, additional_extensions: ["nhdr"], category: :model # NRRD ("nearly raw raster data")
-MediaType.register "application/vnd.splat", :splat, category: :model # 3D Gaussian Splatting
-MediaType.register "application/vnd.spz", :spz, category: :model # Compressed 3D Gaussian Splatting
-MediaType.register "model/x-lychee", :lychee, additional_extensions: ["lys", "lyt"], category: :model
-MediaType.register "model/x-chitubox", :chitubox, category: :model
+MediaType.register "application/dicom", :dcm, category: :model # i18n-tasks-use t("media_types.dcm")
+MediaType.register "application/gml+xml", :gml, category: :model # i18n-tasks-use t("media_types.gml")
+MediaType.register "application/vnd.pts", :pts, category: :model # i18n-tasks-use t("media_types.pts")
+MediaType.register "application/vnd.vtk", :vtk, category: :model # i18n-tasks-use t("media_types.vtk")
+MediaType.register "application/vnd.vtp", :vtp, additional_types: ["application/vnd.vtu", "application/vnd.vti", "application/vnd.vtr", "application/vnd.vts"], additional_extensions: ["vtu", "vti", "vtr", "vts"], category: :model # i18n-tasks-use t("media_types.vtp")
+MediaType.register "application/vnd.off", :off, category: :model # i18n-tasks-use t("media_types.off")
+MediaType.register "application/vnd.x", :x, category: :model # i18n-tasks-use t("media_types.x")
+MediaType.register "application/vnd.xbf", :xbf, category: :model # i18n-tasks-use t("media_types.xbf")
+MediaType.register "application/vnd.mdl", :mdl, category: :model # i18n-tasks-use t("media_types.mdl")
+MediaType.register "application/vnd.ifc", :ifc, category: :model # i18n-tasks-use t("media_types.ifc")
+MediaType.register "application/vnd.mhd", :mha, additional_extensions: ["mhd"], category: :model # i18n-tasks-use t("media_types.mha")
+MediaType.register "application/vnd.nrrd", :nrrd, additional_extensions: ["nhdr"], category: :model # i18n-tasks-use t("media_types.nrrd")
+MediaType.register "application/vnd.splat", :splat, category: :model # i18n-tasks-use t("media_types.splat")
+MediaType.register "application/vnd.spz", :spz, category: :model # i18n-tasks-use t("media_types.spz")
+MediaType.register "model/x-lychee", :lychee, additional_extensions: ["lys", "lyt"], category: :model # i18n-tasks-use t("media_types.lychee")
+MediaType.register "model/x-chitubox", :chitubox, category: :model # i18n-tasks-use t("media_types.chitubox")
 
 # Slicer formats
-MediaType.register "text/x-gcode", :gcode, additional_extensions: ["bgcode"], category: :slicer
-MediaType.register "application/x-chitu-slices", :ctb, additional_extensions: ["cbddlp"], category: :slicer
-MediaType.register "application/x-prusa-sl1", :sl1, additional_extensions: ["sl1s"], category: :slicer
-MediaType.register "application/x-phrozen", :prz, additional_extensions: ["phz"], category: :slicer
-MediaType.register "application/x-photon", :photon, additional_extensions: ["photons"], category: :slicer
-MediaType.register "application/x-crealitybox", :crealitybox, additional_extensions: ["cxdlp", "cxdlpv4"], category: :slicer
-MediaType.register "application/x-elegoo", :goo, category: :slicer
-MediaType.register "application/x-lumen", :lumen, category: :slicer
-MediaType.register "application/x-nanodlp", :nanodlp, category: :slicer
+MediaType.register "text/x-gcode", :gcode, additional_extensions: ["bgcode"], category: :slicer # i18n-tasks-use t("media_types.gcode")
+MediaType.register "application/x-chitu-slices", :ctb, additional_extensions: ["cbddlp"], category: :slicer # i18n-tasks-use t("media_types.ctb")
+MediaType.register "application/x-prusa-sl1", :sl1, additional_extensions: ["sl1s"], category: :slicer # i18n-tasks-use t("media_types.sl1")
+MediaType.register "application/x-phrozen", :prz, additional_extensions: ["phz"], category: :slicer # i18n-tasks-use t("media_types.prz")
+MediaType.register "application/x-photon", :photon, additional_extensions: ["photons"], category: :slicer # i18n-tasks-use t("media_types.photon")
+MediaType.register "application/x-crealitybox", :crealitybox, additional_extensions: ["cxdlp", "cxdlpv4"], category: :slicer # i18n-tasks-use t("media_types.crealitybox")
+MediaType.register "application/x-elegoo", :goo, category: :slicer # i18n-tasks-use t("media_types.goo")
+MediaType.register "application/x-lumen", :lumen, category: :slicer # i18n-tasks-use t("media_types.lumen")
+MediaType.register "application/x-nanodlp", :nanodlp, category: :slicer # i18n-tasks-use t("media_types.nanodlp")
 
 # Images
-MediaType.register "image/webp", :webp, category: :image
-MediaType.register "image/avif", :avif, category: :image
+MediaType.register "image/webp", :webp, category: :image # i18n-tasks-use t("media_types.webp")
+MediaType.register "image/avif", :avif, category: :image # i18n-tasks-use t("media_types.avif")
 
 # Archive formats
-MediaType.register "application/vnd.rar", :rar, category: :archive
-MediaType.register "application/x-7z-compressed", :sevenz, additional_extensions: ["7z"], category: :archive
-MediaType.register "application/x-bzip2", :bz2, category: :archive
+MediaType.register "application/vnd.rar", :rar, category: :archive # i18n-tasks-use t("media_types.rar")
+MediaType.register "application/x-7z-compressed", :sevenz, additional_extensions: ["7z"], category: :archive # i18n-tasks-use t("media_types.sevenz")
+MediaType.register "application/x-bzip2", :bz2, category: :archive # i18n-tasks-use t("media_types.bz2")
 
 # Document formats
-MediaType.register "text/markdown", :md, category: :document
-MediaType.register "application/msword", :doc, category: :document
-MediaType.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx, category: :document
-MediaType.register "application/octet-stream", :bin, category: :document
+MediaType.register "text/markdown", :md, category: :document # i18n-tasks-use t("media_types.md")
+MediaType.register "application/msword", :doc, category: :document # i18n-tasks-use t("media_types.doc")
+MediaType.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx, category: :document # i18n-tasks-use t("media_types.docx")
+MediaType.register "application/octet-stream", :bin, category: :document # i18n-tasks-use t("media_types.bin")
 
 # Hardware files, using types from KiCad source:
 # https://gitlab.com/kicad/code/kicad/-/tree/master/resources/linux/mime
-MediaType.register "application/x-gerber", :gbr, additional_types: ["application/vnd.gerber"], additional_extensions: ["gerber", "geb", "gb"], category: :document
-MediaType.register "application/x-gerber-job", :gbrjob, category: :document
-MediaType.register "application/x-excellon", :drl, category: :document
-MediaType.register "application/x-kicad-project", :kicad_pro, additional_extensions: ["pro"], category: :document
-MediaType.register "application/x-kicad-footprint", :kicad_mod, category: :document
-MediaType.register "application/x-kicad-pcb", :kicad_pcb, category: :document
-MediaType.register "application/x-kicad-symbol", :kicad_sym, category: :document
-MediaType.register "application/x-kicad-schematic", :kicad_sch, additional_extensions: ["sch"], category: :document
-MediaType.register "application/x-kicad-worksheet", :kicad_wks, category: :document
+MediaType.register "application/x-gerber", :gbr, additional_types: ["application/vnd.gerber"], additional_extensions: ["gerber", "geb", "gb"], category: :document # i18n-tasks-use t("media_types.gbr")
+MediaType.register "application/x-gerber-job", :gbrjob, category: :document # i18n-tasks-use t("media_types.gbrjob")
+MediaType.register "application/x-excellon", :drl, category: :document # i18n-tasks-use t("media_types.drl")
+MediaType.register "application/x-kicad-project", :kicad_pro, additional_extensions: ["pro"], category: :document # i18n-tasks-use t("media_types.kicad_pro")
+MediaType.register "application/x-kicad-footprint", :kicad_mod, category: :document # i18n-tasks-use t("media_types.kicad_mod")
+MediaType.register "application/x-kicad-pcb", :kicad_pcb, category: :document # i18n-tasks-use t("media_types.kicad_pcb")
+MediaType.register "application/x-kicad-symbol", :kicad_sym, category: :document # i18n-tasks-use t("media_types.kicad_sym")
+MediaType.register "application/x-kicad-schematic", :kicad_sch, additional_extensions: ["sch"], category: :document # i18n-tasks-use t("media_types.kicad_sch")
+MediaType.register "application/x-kicad-worksheet", :kicad_wks, category: :document # i18n-tasks-use t("media_types.kicad_wks")
