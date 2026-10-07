@@ -103,11 +103,9 @@ class ApplicationUploader < Shrine
   Attacher.derivatives do |original|
     if (
       (SiteSettings.generate_image_derivatives && context[:record]&.is_image?) ||
-      (SiteSettings.generate_model_renders && context[:record]&.is_3d_model?)
-    ) &&
-        (
-          handler = FileHandlers.handlers_for(environment: :thumbnail, mime_type: context[:record].mime_type).first
-        )
+      (SiteSettings.generate_model_renders && context[:record]&.is_3d_model?) ||
+      (SiteSettings.generate_model_renders && context[:record]&.is_slicer_file?)
+    ) && (handler = FileHandlers.handlers_for(environment: :thumbnail, mime_type: context[:record].mime_type).first)
       Shrine.with_file(original) { handler.thumbnailer.new(file: it, record: context[:record]).call }
     else
       {}
