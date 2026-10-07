@@ -97,7 +97,6 @@ MediaType.register "application/x-lumen", :lumen, category: :slicer # i18n-tasks
 MediaType.register "application/x-nanodlp", :nanodlp, category: :slicer # i18n-tasks-use t("media_types.nanodlp")
 
 # Images
-MediaType.register "image/webp", :webp, category: :image # i18n-tasks-use t("media_types.webp")
 MediaType.register "image/avif", :avif, category: :image # i18n-tasks-use t("media_types.avif")
 
 # Archive formats
