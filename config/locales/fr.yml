@@ -796,6 +796,7 @@ fr:
       client:
       preview_frame:
       server:
+      thumbnail:
     handlers:
       assimp:
       f3d_cli:
@@ -804,6 +805,7 @@ fr:
       gcode_thumbnail_extractor:
       iframe_tag:
       image_tag:
+      imagemagick:
       rouge:
       three:
       video_tag:
