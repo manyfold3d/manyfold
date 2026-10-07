@@ -748,22 +748,22 @@ en:
         search_3dprint_social_html: We recommend connecting the <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP; it's run by the Manyfold developers, and is specifically configured for 3d content search.
   file_handlers:
     environments:
-      browser: Show on file page
-      client: Open on client
-      preview_frame: Show in cards
-      server: Server-side processing
+      browser: File view
+      client: Open in...
+      preview_frame: Show as preview
+      server: Mesh processing
       thumbnail: Thumbnail images
     handlers:
       assimp: Assimp
       f3d_cli: F3D
       f3d_wasm: F3D
-      freecad_thumbnail_extractor: Loaded from file
-      gcode_thumbnail_extractor: Loaded from file
-      iframe_tag: Browser-native
-      image_tag: Browser-native
+      freecad_thumbnail_extractor: From file
+      gcode_thumbnail_extractor: From file
+      iframe_tag: Framed HTML
+      image_tag: HTML tag
       rouge: Source code
       three: THREE.js
-      video_tag: Browser-native
+      video_tag: Video player
   follows:
     actor_table:
       actions: Actions
