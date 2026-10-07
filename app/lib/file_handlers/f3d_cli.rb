@@ -5,7 +5,11 @@ class FileHandlers::F3dCli < FileHandlers::Base
     `f3d --list-readers`
   end
 
-  ENVIRONMENTS = [:server].freeze
+  def self.thumbnailer
+    Thumbnailers::F3d
+  end
+
+  ENVIRONMENTS = [:thumbnail].freeze
   INPUT_TYPES = readers.lines
     .filter_map { it.match(/\w[a-z]*\/[0-9a-z.+-]*\w/)&.to_s }
     .filter_map { Mime::Type.lookup(it) }
