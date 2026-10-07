@@ -1,4 +1,9 @@
 module FileHandlers
+  # i18n-tasks-use t("file_handlers.environments.browser")
+  # i18n-tasks-use t("file_handlers.environments.client")
+  # i18n-tasks-use t("file_handlers.environments.preview_frame")
+  # i18n-tasks-use t("file_handlers.environments.server")
+
   ALL_HANDLERS = []
 
   def self.handlers_for(environment:, mime_type:)
@@ -9,5 +14,9 @@ module FileHandlers
         .select { it.can_load? mime_type }
         .sort { |a, b| b&.priority <=> a&.priority }
     end
+  end
+
+  def self.environments
+    ALL_HANDLERS.map { it.const_get(:ENVIRONMENTS) }.flatten.uniq
   end
 end

@@ -1,4 +1,6 @@
 class FileHandlers::F3dCli < FileHandlers::Base
+  # i18n-tasks-use t("file_handlers.handlers.f3d_cli")
+
   def self.readers
     `f3d --list-readers`
   end

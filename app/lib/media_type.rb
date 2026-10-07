@@ -1,11 +1,13 @@
 module MediaType
   CATEGORIES = {}
+  EXTENSIONS = {}
 
   class << self
     prepend MemoWise
 
     def register(type, symbol, category:, additional_types: [], additional_extensions: [])
       Mime::Type.register type, symbol, additional_types, additional_extensions
+      EXTENSIONS[symbol] = [symbol, additional_extensions].flatten.compact
       categorize(symbol, category)
     end
 
