@@ -1,4 +1,4 @@
-class GcodeThumbnailExtractorService
+class Thumbnailers::Gcode
   def initialize(file:, record:)
     @file = file
     @record = record

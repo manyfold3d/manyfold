@@ -10,7 +10,7 @@ class FileHandlers::ImageMagick < FileHandlers::Base
   end
 
   def self.thumbnailer
-    ImageMagickThumbnailer
+    Thumbnailers::ImageMagick
   end
 
   ENVIRONMENTS = [:thumbnail].freeze

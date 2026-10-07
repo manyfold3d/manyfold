@@ -6,7 +6,7 @@ class FileHandlers::F3dCli < FileHandlers::Base
   end
 
   def self.thumbnailer
-    F3dThumbnailer
+    Thumbnailers::F3d
   end
 
   ENVIRONMENTS = [:thumbnail].freeze

@@ -1,4 +1,4 @@
-class F3dThumbnailer
+class Thumbnailers::F3d
   F3D_OPTS = {
     "ambient-occlusion" => "1",
     "anti-aliasing" => "true",
@@ -46,12 +46,7 @@ class F3dThumbnailer
         z: "0,-1,0"
       }[plane]
     end
-    puts @record.inspect
-    puts options.inspect
-    puts @file.path
     output, _err = Open3.capture3("f3d", @file.path, *options.map { |k, v| "--#{k}=#{v}" })
-    puts output
-    byebug
     {
       render: (output.length > 0) ? StringIO.new(output) : nil
     }.compact

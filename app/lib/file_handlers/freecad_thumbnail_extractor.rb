@@ -5,6 +5,6 @@ class FileHandlers::FreecadThumbnailExtractor < FileHandlers::Base
   INPUT_TYPES = [Mime[:fcstd]].freeze
 
   def self.thumbnailer
-    FreecadThumbnailExtractorService
+    Thumbnailers::Freecad
   end
 end

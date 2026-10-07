@@ -1,6 +1,6 @@
 require "image_processing/mini_magick"
 
-class ImageMagickThumbnailer
+class Thumbnailers::ImageMagick
   def initialize(file:, record:)
     @file = file
     @record = record

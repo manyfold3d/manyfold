@@ -1,4 +1,4 @@
-class FreecadThumbnailExtractorService
+class Thumbnailers::Freecad
   def initialize(file:, record:)
     @file = file
     @record = record
