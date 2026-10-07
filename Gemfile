@@ -3,8 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "8.1.4"
+gem "mosscap", git: "https://codeberg.org/mosscap/mosscap", branch: "basic-rename"
+gem "mosscap-core", git: "https://codeberg.org/mosscap/mosscap-core", branch: "rename-to-mosscap"
+
+# Enable Mosscap / Rails compatibility for gem resolution
+eval_gemfile(".mosscap-compat/Gemfile")
+
 # Use Puma as the app server
 gem "puma", "~> 8.0"
 # Bundle and deliver assets
