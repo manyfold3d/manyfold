@@ -752,6 +752,7 @@ en:
       client: Open on client
       preview_frame: Show in cards
       server: Server-side processing
+      thumbnail: Thumbnail images
     handlers:
       assimp: Assimp
       f3d_cli: F3D
