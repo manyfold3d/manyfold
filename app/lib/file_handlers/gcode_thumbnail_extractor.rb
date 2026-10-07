@@ -3,4 +3,8 @@ class FileHandlers::GcodeThumbnailExtractor < FileHandlers::Base
 
   ENVIRONMENTS = [:thumbnail].freeze
   INPUT_TYPES = [Mime[:gcode]].freeze
+
+  def self.thumbnailer
+    GcodeThumbnailExtractorService
+  end
 end

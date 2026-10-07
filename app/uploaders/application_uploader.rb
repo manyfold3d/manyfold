@@ -101,22 +101,14 @@ class ApplicationUploader < Shrine
   end
 
   Attacher.derivatives do |original|
-    if SiteSettings.generate_image_derivatives && FileHandlers::ImageMagick.can_load?(context[:record].mime_type)
-      Shrine.with_file(original) do
-        ImageMagickThumbnailer.new(file: it, record: context[:record]).call
-      end
-    elsif SiteSettings.generate_model_renders && FileHandlers::GcodeThumbnailExtractor.can_load?(context[:record].mime_type)
-      Shrine.with_file(original) do
-        GcodeThumbnailExtractorService.new(file: it, record: context[:record]).call
-      end
-    elsif SiteSettings.generate_model_renders && FileHandlers::FreecadThumbnailExtractor.can_load?(context[:record].mime_type)
-      Shrine.with_file(original) do
-        FreecadThumbnailExtractorService.new(file: it, record: context[:record]).call
-      end
-    elsif SiteSettings.generate_model_renders && FileHandlers::F3dCli.can_load?(context[:record].mime_type) && context[:record]&.is_3d_model?
-      Shrine.with_file(original) do
-        F3dThumbnailer.new(file: it, record: context[:record]).call
-      end
+    if (
+      (SiteSettings.generate_image_derivatives && context[:record]&.is_image?) ||
+      (SiteSettings.generate_model_renders && context[:record]&.is_3d_model?)
+    ) &&
+        (
+          handler = FileHandlers.handlers_for(environment: :thumbnail, mime_type: context[:record].mime_type).first
+        )
+      Shrine.with_file(original) { handler.thumbnailer.new(file: it, record: context[:record]).call }
     else
       {}
     end

@@ -9,6 +9,10 @@ class FileHandlers::ImageMagick < FileHandlers::Base
     2000
   end
 
+  def self.thumbnailer
+    ImageMagickThumbnailer
+  end
+
   ENVIRONMENTS = [:thumbnail].freeze
   INPUT_TYPES = readers.lines
     .filter_map { it.match(/^\s*(?<format>[A-Z]{2,})/) }
