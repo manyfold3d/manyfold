@@ -125,7 +125,7 @@ class ApplicationUploader < Shrine
   end
 
   Attacher.derivatives do |original|
-    if SiteSettings.generate_image_derivatives && context[:record]&.is_image?
+    if SiteSettings.generate_image_derivatives && FileHandlers::ImageMagick.can_load?(context[:record].mime_type)
       Shrine.with_file(original) do
         magick = ImageProcessing::MiniMagick.source(it)
         {
