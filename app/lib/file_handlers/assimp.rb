@@ -1,4 +1,6 @@
 class FileHandlers::Assimp < FileHandlers::Base
+  # i18n-tasks-use t("file_handlers.handlers.assimp")
+
   ENVIRONMENTS = [:server].freeze
 
   INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice(

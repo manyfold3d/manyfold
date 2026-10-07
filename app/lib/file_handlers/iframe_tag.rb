@@ -1,4 +1,6 @@
 class FileHandlers::IframeTag < FileHandlers::Base
+  # i18n-tasks-use t("file_handlers.handlers.iframe_tag")
+
   ENVIRONMENTS = [:browser].freeze
   INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice("pdf", "html", "text", "md").values.freeze
 
