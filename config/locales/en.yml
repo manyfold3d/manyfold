@@ -1007,7 +1007,7 @@ en:
     crealitybox: Creality Box
     ctb: Chitu
     dcm: DICOM
-    doc: Microsoft Word
+    doc: Microsoft Word (Legacy)
     docx: Microsoft Word
     draco: Draco
     drl: Excellon
@@ -1018,7 +1018,7 @@ en:
     fcstd: FreeCAD
     flock: FlockXR
     gbr: Gerber
-    gbrjob: Gerber
+    gbrjob: Gerber Job Data
     gcode: GCode
     gif: GIF
     gltf: glTF
@@ -1027,18 +1027,18 @@ en:
     gzip: gzip
     hfp: HueForge
     html: HTML
-    iam: Autodesk Inventor
+    iam: Autodesk Inventor assembly
     ifc: Industry Foundation Classes
     iges: IGES
-    ipt: Autodesk Inventor
+    ipt: Autodesk Inventor part
     jpeg: JPEG
     js: Javascript
-    kicad_mod: KiCad
-    kicad_pcb: KiCad
-    kicad_pro: KiCad
-    kicad_sch: KiCad
-    kicad_sym: KiCad
-    kicad_wks: KiCad
+    kicad_mod: KiCad Footprint Library
+    kicad_pcb: KiCad Board
+    kicad_pro: KiCad Project
+    kicad_sch: KiCad Schematic
+    kicad_sym: KiCad Symbol Library
+    kicad_wks: KiCad Work Sheet
     ldr: LDraw
     lumen: Lumen
     lychee: Lychee
@@ -1067,11 +1067,11 @@ en:
     sevenz: 7-Zip
     sketchup: Sketchup
     sl1: Prusa SL1
-    sldasm: Solidworks
-    sldprt: Solidworks
+    sldasm: Solidworks assembly
+    sldprt: Solidworks part
     speedtree: Speedtree
-    splat: 3D Gaussian Splatting
-    spz: 3D Gaussian Splatting
+    splat: Gaussian Splatting PLY
+    spz: Niantic SPZ
     step: STEP
     stl: STL
     svg: SVG
