@@ -2,8 +2,6 @@ require "shrine/storage/file_system"
 require "shrine/storage/s3"
 require "shrine/storage/tus"
 
-require "image_processing/mini_magick"
-
 class ApplicationUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
@@ -29,28 +27,6 @@ class ApplicationUploader < Shrine
   self.storages = {
     cache: Shrine::Storage::FileSystem.new("tmp/shrine"),
     downloads: Shrine::Storage::FileSystem.new("tmp/downloads")
-  }
-
-  F3D_OPTS = {
-    "ambient-occlusion" => "1",
-    "anti-aliasing" => "true",
-    "axis" => "0",
-    "background-color" => "0,0,0",
-    "filename" => "0",
-    "grid" => "1",
-    "grid-color" => "0,255,255",
-    "grid-subdivisions" => 0,
-    "grid-unit" => "10",
-    "no-config" => "1",
-    "output" => "-",
-    "resolution" => "512,512",
-    "tone-mapping" => "1",
-    "translucency-support" => "1"
-  }.freeze
-
-  CAMERA_OPTS = {
-    "+z" => "-1,1,-0.5",
-    "+y" => "-1,-0.5,-1"
   }
 
   storage(/library_(\d+)/) do |m|
@@ -127,45 +103,19 @@ class ApplicationUploader < Shrine
   Attacher.derivatives do |original|
     if SiteSettings.generate_image_derivatives && FileHandlers::ImageMagick.can_load?(context[:record].mime_type)
       Shrine.with_file(original) do
-        magick = ImageProcessing::MiniMagick.source(it)
-        {
-          preview: magick.resize_to_limit!(320, 320),
-          carousel: magick.resize_to_limit!(1024, 768)
-        }
+        ImageMagickThumbnailer.new(file: it, record: context[:record]).call
       end
     elsif SiteSettings.generate_model_renders && FileHandlers::GcodeThumbnailExtractor.can_load?(context[:record].mime_type)
       Shrine.with_file(original) do
-        {render: GcodeThumbnailExtractorService.new(file: it).call}.compact
+        GcodeThumbnailExtractorService.new(file: it, record: context[:record]).call
       end
     elsif SiteSettings.generate_model_renders && FileHandlers::FreecadThumbnailExtractor.can_load?(context[:record].mime_type)
       Shrine.with_file(original) do
-        {render: FreecadThumbnailExtractorService.new(file: it).call}.compact
+        FreecadThumbnailExtractorService.new(file: it, record: context[:record]).call
       end
     elsif SiteSettings.generate_model_renders && FileHandlers::F3dCli.can_load?(context[:record].mime_type) && context[:record]&.is_3d_model?
       Shrine.with_file(original) do
-        up = context[:record]&.up_direction
-        options = F3D_OPTS.merge(
-          "up" => up,
-          "camera-direction" => CAMERA_OPTS[up]
-        )
-        options["color"] = "1,1,1" if context[:record].mime_type.to_s == "model/obj"
-        if (plane = context[:record]&.planar?)
-          options["grid"] = "0"
-          options["up"] = {
-            x: "-x",
-            y: "-y",
-            z: "-z"
-          }[plane]
-          options["camera-direction"] = {
-            x: "0,0,-1",
-            y: "-1,0,0",
-            z: "0,-1,0"
-          }[plane]
-        end
-        output, _err = Open3.capture3("f3d", it.path, *options.map { |k, v| "--#{k}=#{v}" })
-        {
-          render: (output.length > 0) ? StringIO.new(output) : nil
-        }.compact
+        F3dThumbnailer.new(file: it, record: context[:record]).call
       end
     else
       {}

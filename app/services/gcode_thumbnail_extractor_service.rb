@@ -1,6 +1,7 @@
 class GcodeThumbnailExtractorService
-  def initialize(file:)
+  def initialize(file:, record:)
     @file = file
+    @record = record
     @remaining = nil
   end
 
@@ -20,6 +21,6 @@ class GcodeThumbnailExtractorService
         @remaining -= new_data.length
       end
     end
-    StringIO.new(Base64.strict_decode64(data))
+    data.blank? ? {} : {render: StringIO.new(Base64.strict_decode64(data))}
   end
 end
