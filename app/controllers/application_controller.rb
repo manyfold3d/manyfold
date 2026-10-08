@@ -70,9 +70,6 @@ class ApplicationController < ActionController::Base
     request.format.manyfold_api_v0?
   end
 
-  # API requests authenticate with bearer tokens, so a missing CSRF token
-  # nulls the session (preventing cookie-based auth) instead of rejecting.
-  # All other requests raise ActionController::InvalidAuthenticityToken.
   def handle_unverified_request
     if is_api_request?
       ActionController::RequestForgeryProtection::ProtectionMethods::NullSession.new(self).handle_unverified_request
