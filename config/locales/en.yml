@@ -992,6 +992,7 @@ en:
     abc: Alembic
     amf: AMF
     avif: AVIF
+    bgcode: Binary GCode
     bin: Binary blobs
     blend: Blender
     bmp: BMP
