@@ -86,7 +86,8 @@ MediaType.register "model/x-lychee", :lychee, additional_extensions: ["lys", "ly
 MediaType.register "model/x-chitubox", :chitubox, category: :model # i18n-tasks-use t("media_types.chitubox")
 
 # Slicer formats
-MediaType.register "text/x-gcode", :gcode, additional_extensions: ["bgcode"], category: :slicer # i18n-tasks-use t("media_types.gcode")
+MediaType.register "text/x-gcode", :gcode, category: :slicer # i18n-tasks-use t("media_types.gcode")
+MediaType.register "text/x-gcode+binary", :bgcode, category: :slicer # i18n-tasks-use t("media_types.bgcode")
 MediaType.register "application/x-chitu-slices", :ctb, additional_extensions: ["cbddlp"], category: :slicer # i18n-tasks-use t("media_types.ctb")
 MediaType.register "application/x-prusa-sl1", :sl1, additional_extensions: ["sl1s"], category: :slicer # i18n-tasks-use t("media_types.sl1")
 MediaType.register "application/x-phrozen", :prz, additional_extensions: ["phz"], category: :slicer # i18n-tasks-use t("media_types.prz")
