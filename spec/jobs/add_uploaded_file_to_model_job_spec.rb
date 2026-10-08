@@ -36,6 +36,23 @@ RSpec.describe AddUploadedFileToModelJob do
     it "queues up file metadata parsing" do
       expect { job.perform(model.id, upload) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).once
     end
+
+    context "with path traversal in tus ID" do
+      let(:upload) {
+        {
+          id: "../../../etc/passwd",
+          name: "passwd.txt"
+        }
+      }
+
+      it "does not add the file to the model" do
+        expect { job.perform(model.id, upload) rescue Shrine::Error }.not_to change(model.model_files, :count) # rubocop:disable Style/RescueModifier
+      end
+
+      it "raises a shrine error" do
+        expect { job.perform(model.id, upload) }.to raise_error(Shrine::Error)
+      end
+    end
   end
 
   context "when extracting a zip file" do
