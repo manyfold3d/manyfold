@@ -1,7 +1,9 @@
 require "rails_helper"
 
-# Forgery protection is disabled in the test environment (config/environments/test.rb),
-# so these examples turn it back on to check that it actually protects the app.
+# Per-resource rejection checks live in the "CSRF protected" shared example
+# (spec/requests/csrf_protected_shared.rb). This file covers the app-wide
+# behaviour: valid tokens are accepted, and API requests using bearer tokens
+# don't need one.
 RSpec.describe "CSRF protection", :after_first_run do
   around do |example|
     original = ActionController::Base.allow_forgery_protection
@@ -12,22 +14,6 @@ RSpec.describe "CSRF protection", :after_first_run do
   end
 
   context "with a signed-in browser session", :as_contributor do
-    it "rejects a state-changing request without an authenticity token" do
-      post "/collections", params: {collection: {name: "forged"}}
-      expect(response).to have_http_status(:unprocessable_content)
-    end
-
-    it "does not change anything when the authenticity token is missing" do
-      expect {
-        post "/collections", params: {collection: {name: "forged"}}
-      }.not_to change(Collection, :count)
-    end
-
-    it "rejects a state-changing request with an invalid authenticity token" do
-      post "/collections", params: {collection: {name: "forged"}, authenticity_token: "invalid"}
-      expect(response).to have_http_status(:unprocessable_content)
-    end
-
     it "accepts a state-changing request with the authenticity token from the form" do
       get "/collections/new"
       token = response.parsed_body.at_css("form input[name='authenticity_token']")["value"]
