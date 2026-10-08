@@ -6,7 +6,7 @@ module Print
     # i18n-tasks-use t("print_hosts.protocols.octoprint")
     PROTOCOL = "octoprint".freeze
 
-    INPUT_TYPES = [Mime[:gcode]].freeze
+    INPUT_TYPES = [Mime[:gcode], Mime[:bgcode]].freeze
 
     def initialize(print_host:)
       @print_host = print_host
