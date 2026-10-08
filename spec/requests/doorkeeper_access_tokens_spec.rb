@@ -30,6 +30,12 @@ RSpec.describe "OAuth access token request", :after_first_run, :multiuser do
         post "/oauth/applications/#{app.to_param}/tokens", params: params
         expect(response).to have_http_status :forbidden
       end
+
+      it "only issue scopes from the application scope" do
+        app = Doorkeeper::Application.create! owner: create(:contributor), name: "test app", scopes: ["write", "read"]
+        post "/oauth/applications/#{app.to_param}/tokens", params: params
+        expect(app.reload.access_tokens.last.scopes).not_to include "write"
+      end
     end
 
     describe "DELETE /oauth/applications/{application_id}/tokens/{id}" do
