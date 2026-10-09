@@ -20,7 +20,7 @@ class Analysis::FileConversionJob < ApplicationJob
     extension = Mime::EXTENSION_LOOKUP.select { |k, v| v.symbol == output_format }.keys.last
 
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')
-    scene = file.scene
+    scene = scene(file)
 
     # Manifold check for 3MF files
     # raise NonManifoldError.new if output_format == :threemf && !file.manifold?
@@ -73,6 +73,18 @@ class Analysis::FileConversionJob < ApplicationJob
       file.problems.where(category: :inefficient, in_progress: true).find_each do
         it.update(in_progress: false)
       end
+    end
+  end
+
+  private
+
+  def scene(file)
+    Shrine.with_file(file.attachment.open) do
+      scene = Assimp.import_file(it.path)
+      scene.apply_post_processing(Assimp::PostProcessSteps[
+        :JoinIdenticalVertices,
+        :Triangulate
+      ])
     end
   end
 end
