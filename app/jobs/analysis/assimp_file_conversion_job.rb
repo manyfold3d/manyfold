@@ -6,7 +6,7 @@ end
 class NonManifoldError < StandardError
 end
 
-class Analysis::FileConversionJob < ApplicationJob
+class Analysis::AssimpFileConversionJob < ApplicationJob
   queue_as :performance
   sidekiq_options retry: false
   unique :until_executed

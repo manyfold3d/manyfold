@@ -11,7 +11,7 @@ class FileHandlers::Assimp < FileHandlers::Base
       *(0...::Assimp.aiGetExportFormatCount).map { ::Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
     ).values.freeze
 
-  def convert(file:, to:)
-    Analysis::FileConversionJob.perform_later(file.id, format.to_sym)
+  def self.convert(file:, to:)
+    Analysis::AssimpFileConversionJob.perform_later(file.id, to.to_sym)
   end
 end
