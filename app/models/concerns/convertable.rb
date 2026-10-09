@@ -1,8 +1,8 @@
 module Convertable
   extend ActiveSupport::Concern
 
-  def convert_later(format, delay: 0.seconds)
-    Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
+  def convert_later(format)
+    converter(to: format)&.convert(file: self, to: format)
   end
 
   def convertable?(to: nil)
