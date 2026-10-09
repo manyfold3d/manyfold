@@ -6,7 +6,12 @@ module Convertable
   end
 
   def convertable?(to: nil)
-    return false unless FileHandlers::Assimp.can_load? mime_type
-    to.nil? || FileHandlers::Assimp.can_save?(to)
+    converter(to: to).present?
+  end
+
+  private
+
+  def converter(to:)
+    FileHandlers.handlers_for(environment: :convert, mime_type: mime_type, output_type: to&.to_sym).first
   end
 end
