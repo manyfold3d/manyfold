@@ -103,7 +103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-cascade-layers@npm:^6.0.1":
+"@csstools/postcss-cascade-layers@npm:^6.0.2":
   version: 6.0.2
   resolution: "@csstools/postcss-cascade-layers@npm:6.0.2"
   dependencies:
@@ -354,7 +354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-is-pseudo-class@npm:^6.0.2":
+"@csstools/postcss-is-pseudo-class@npm:^6.0.3":
   version: 6.0.3
   resolution: "@csstools/postcss-is-pseudo-class@npm:6.0.3"
   dependencies:
@@ -2290,7 +2290,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-has-pseudo@npm:^8.0.1":
+"css-has-pseudo@npm:^8.0.2":
   version: 8.0.2
   resolution: "css-has-pseudo@npm:8.0.2"
   dependencies:
@@ -4131,7 +4131,7 @@ __metadata:
     postcss: ^8.5.29
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^17.0.0
-    postcss-preset-env: ^11.6.0
+    postcss-preset-env: ^11.6.1
     rollup: ^4.64.0
     sass-embedded: ^1.105.1
     three: ^0.186.1
@@ -4946,7 +4946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-nesting@npm:^14.0.2":
+"postcss-nesting@npm:^14.0.3":
   version: 14.0.3
   resolution: "postcss-nesting@npm:14.0.3"
   dependencies:
@@ -4999,12 +4999,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:^11.6.0":
-  version: 11.6.0
-  resolution: "postcss-preset-env@npm:11.6.0"
+"postcss-preset-env@npm:^11.6.1":
+  version: 11.6.1
+  resolution: "postcss-preset-env@npm:11.6.1"
   dependencies:
     "@csstools/postcss-alpha-function": ^2.0.16
-    "@csstools/postcss-cascade-layers": ^6.0.1
+    "@csstools/postcss-cascade-layers": ^6.0.2
     "@csstools/postcss-color-function": ^5.0.15
     "@csstools/postcss-color-function-display-p3-linear": ^2.0.15
     "@csstools/postcss-color-mix-function": ^4.0.15
@@ -5023,7 +5023,7 @@ __metadata:
     "@csstools/postcss-ic-unit": ^5.0.5
     "@csstools/postcss-image-function": ^1.0.6
     "@csstools/postcss-initial": ^3.0.0
-    "@csstools/postcss-is-pseudo-class": ^6.0.2
+    "@csstools/postcss-is-pseudo-class": ^6.0.3
     "@csstools/postcss-light-dark-function": ^3.0.7
     "@csstools/postcss-logical-float-and-clear": ^4.0.0
     "@csstools/postcss-logical-overflow": ^3.0.0
@@ -5053,7 +5053,7 @@ __metadata:
     autoprefixer: ^10.6.1
     browserslist: ^4.29.0
     css-blank-pseudo: ^8.0.2
-    css-has-pseudo: ^8.0.1
+    css-has-pseudo: ^8.0.2
     css-prefers-color-scheme: ^11.0.1
     cssdb: ^8.10.0
     postcss-attribute-case-insensitive: ^8.0.2
@@ -5073,7 +5073,7 @@ __metadata:
     postcss-image-set-function: ^8.0.2
     postcss-lab-function: ^8.0.15
     postcss-logical: ^9.0.2
-    postcss-nesting: ^14.0.2
+    postcss-nesting: ^14.0.3
     postcss-opacity-percentage: ^3.0.0
     postcss-overflow-shorthand: ^7.0.1
     postcss-page-break: ^3.0.4
@@ -5083,7 +5083,7 @@ __metadata:
     postcss-selector-not: ^9.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 0d40f59e7d0ef85fc25c415a7a0bc21859bdcc1437e6c9cfa14392f52fc6d5ef564a9b1ed556a26d9237cdc0b9b94bbb7aee48a40402dd32d58125d67368a025
+  checksum: 7f823d1fd48c02c49b74446d392ac7539c256d74dcd9674cbb8d333a10643dc434a80982b4a5b587be0ffcd361a8bf108815a00699ef123337c7a98a1ec9c495
   languageName: node
   linkType: hard
 
