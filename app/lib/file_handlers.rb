@@ -2,7 +2,7 @@ module FileHandlers
   # i18n-tasks-use t("file_handlers.environments.browser")
   # i18n-tasks-use t("file_handlers.environments.client")
   # i18n-tasks-use t("file_handlers.environments.preview_frame")
-  # i18n-tasks-use t("file_handlers.environments.server")
+  # i18n-tasks-use t("file_handlers.environments.convert")
   # i18n-tasks-use t("file_handlers.environments.thumbnail")
 
   ALL_HANDLERS = []

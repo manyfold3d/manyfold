@@ -792,8 +792,8 @@ nl:
     environments:
       browser:
       client:
+      convert:
       preview_frame:
-      server:
       thumbnail:
     handlers:
       assimp:

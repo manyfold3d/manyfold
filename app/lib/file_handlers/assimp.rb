@@ -1,7 +1,7 @@
 class FileHandlers::Assimp < FileHandlers::Base
   # i18n-tasks-use t("file_handlers.handlers.assimp")
 
-  ENVIRONMENTS = [:server].freeze
+  ENVIRONMENTS = [:convert].freeze
 
   INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice(
     *::Assimp.extension_list.to_s.delete("*.").split(";")
