@@ -182,7 +182,7 @@ RSpec.describe "Model Files" do
         let(:params) { {convert: {id: stl_file.to_param, to: "threemf"}} }
 
         it "queues a conversion job" do
-          expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(Analysis::FileConversionJob).with(stl_file.id, :threemf)
+          expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(Analysis::AssimpFileConversionJob).with(stl_file.id, :threemf)
         end
 
         it "redirects back to file list" do
@@ -385,7 +385,7 @@ RSpec.describe "Model Files" do
     it "cannot convert file to different format" do # rubocop:disable RSpec/MultipleExpectations
       params = {convert: {id: forbidden_file.to_param, to: "threemf"}}
       post model_model_files_path(forbidden_model, params: params)
-      expect(Analysis::FileConversionJob).not_to have_been_enqueued
+      expect(Analysis::AssimpFileConversionJob).not_to have_been_enqueued
       expect(response).to have_http_status :forbidden
     end
 
@@ -414,7 +414,7 @@ RSpec.describe "Model Files" do
     it "cannot convert file to different format" do # rubocop:disable RSpec/MultipleExpectations
       params = {convert: {id: forbidden_file.to_param, to: "threemf"}}
       post model_model_files_path(model, params: params)
-      expect(Analysis::FileConversionJob).not_to have_been_enqueued
+      expect(Analysis::AssimpFileConversionJob).not_to have_been_enqueued
       expect(response).to have_http_status :not_found
     end
   end

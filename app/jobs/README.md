@@ -15,7 +15,7 @@ flowchart TD
     OM[OrganizeModelJob]
     PUF[AddUploadedFileToModelJob]
     AMF[Analysis::AnalyseModelFileJob]
-    FC[Analysis::FileConversionJob]
+    FC[Analysis::AssimpFileConversionJob]
     GA[Analysis::GeometricAnalysisJob]
 
     ModelEdit([fa:fa-person Model edited])

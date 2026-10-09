@@ -750,8 +750,8 @@ en:
     environments:
       browser: File view
       client: Open in...
+      convert: File conversion
       preview_frame: Show as preview
-      server: Mesh processing
       thumbnail: Thumbnail images
     handlers:
       assimp: Assimp

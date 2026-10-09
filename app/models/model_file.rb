@@ -6,6 +6,7 @@ class ModelFile < ApplicationRecord
   include PublicIDable
   include Problematic
   include Relatable
+  include Convertable
 
   prepend MemoWise
 
@@ -177,16 +178,6 @@ class ModelFile < ApplicationRecord
     digest
   end
 
-  def scene
-    Shrine.with_file(attachment.open) do
-      scene = Assimp.import_file(it.path)
-      scene.apply_post_processing(Assimp::PostProcessSteps[
-        :JoinIdenticalVertices,
-        :Triangulate
-      ])
-    end
-  end
-
   def reattach!
     if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
       old_path = attachment.id
@@ -201,15 +192,6 @@ class ModelFile < ApplicationRecord
 
   def name_and_filename
     "#{name} (#{filename})"
-  end
-
-  def convert_later(format, delay: 0.seconds)
-    Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
-  end
-
-  def convertable?(to: nil)
-    return false unless FileHandlers::Assimp.can_load? mime_type
-    to.nil? || FileHandlers::Assimp.can_save?(to)
   end
 
   def delete_from_disk_and_destroy
