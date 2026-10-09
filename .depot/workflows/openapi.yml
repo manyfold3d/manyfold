@@ -1,0 +1,33 @@
+# Depot CI Migration
+# Source: .github/workflows/openapi.yml
+#
+# Changes made:
+# - Rewrote .github/ path references to .depot/
+# - Changed GitHub runs-on labels to their Depot equivalents
+
+name: OpenAPI Definition
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  generate:
+    if: github.triggering_actor != 'allcontributors[bot]'
+    runs-on: depot-ubuntu-latest # was: ubuntu-latest. Mapped standard GitHub runner to Depot equivalent.
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.depot/actions/setup
+      - name: Generate latest API docs
+        run: bundle exec rake db:migrate
+      - name: Generate latest API docs
+        run: bundle exec rake rswag
+      - name: Open pull request with changes
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: "${{ secrets.TRANSLATION_SYNC_PAT }}"
+          commit-message: "Updated OpenAPI definition"
+          branch: "openapi/autogenerate"
+          labels: improvement
+          title: "OpenAPI definition updated"
+          delete-branch: true
+          add-paths: app/api
