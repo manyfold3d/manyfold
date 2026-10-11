@@ -3,7 +3,6 @@ set -euo pipefail
 
 # Install System packages
 sudo apt-get update
-sudo apt-get upgrade -y
 sudo apt-get install -y \
     libpq-dev \
     libmariadb-dev \
