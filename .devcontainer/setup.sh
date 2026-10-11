@@ -9,7 +9,8 @@ sudo apt-get install -y \
     libmariadb-dev \
     libarchive13 \
     libassimp-dev \
-    f3d
+    f3d \
+    imagemagick
 
 # JS toolchain
 export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
