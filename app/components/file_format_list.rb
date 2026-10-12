@@ -61,7 +61,7 @@ class Components::FileFormatList < Components::Base
   end
 
   def all(environment:, media_type:)
-    translations = FileHandlers.handlers_for(environment: environment, mime_type: media_type).map { t("model_files.download.%{name}" % {name: it.class_name.underscore}) }
+    translations = FileHandlers.handlers_for(environment: environment, mime_type: media_type).map { t("model_files.download.%{name}" % {name: it.to_s.demodulize.underscore}) }
     Naturally.sort(translations).each do |item|
       span { "✅" }
       whitespace
@@ -76,6 +76,6 @@ class Components::FileFormatList < Components::Base
     best = FileHandlers.handlers_for(environment: environment, mime_type: media_type).first
     span { "✅" }
     whitespace
-    span(class: "d-none d-xl-inline") { t("file_handlers.handlers.%{name}" % {name: best.class_name.underscore}) }
+    span(class: "d-none d-xl-inline") { t("file_handlers.handlers.%{name}" % {name: best.to_s.demodulize.underscore}) }
   end
 end
