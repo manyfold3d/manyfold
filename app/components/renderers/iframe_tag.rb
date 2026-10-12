@@ -9,7 +9,7 @@ module Components::Renderers
         src: model_model_file_raw_path(@file.model, @file.filename),
         alt: @file.name,
         style: "width: 100%; aspect-ratio: 0.707",
-        sandbox: safe("true")
+        sandbox: (@file.mime_type == Mime[:pdf]) ? nil : safe("") # Don't need to sandbox PDFs apparently
       )
     end
   end
