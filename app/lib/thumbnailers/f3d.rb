@@ -6,7 +6,7 @@ class Thumbnailers::F3d
     "background-color" => "0,0,0",
     "filename" => "0",
     "grid" => "1",
-    "grid-color" => "0,255,255",
+    "grid-color" => "#00ffff",
     "grid-subdivisions" => 0,
     "grid-unit" => "10",
     "no-config" => "1",
