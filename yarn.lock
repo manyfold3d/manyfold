@@ -3359,14 +3359,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-js@npm:*, i18n-js@npm:^4.5.3":
-  version: 4.5.3
-  resolution: "i18n-js@npm:4.5.3"
+"i18n-js@npm:*, i18n-js@npm:^4.5.4":
+  version: 4.5.4
+  resolution: "i18n-js@npm:4.5.4"
   dependencies:
     bignumber.js: "*"
     lodash: "*"
     make-plural: 7.5.0
-  checksum: c7929ed8e7fb7121b136bf8f734881a49d0ba55ed285c7be59b63d41e8083f62aed4b55b6a4e5900ec9de955d32cf42a621f54cb63e8128c088b4c4f3e818b8e
+  checksum: 4f2f38f7abfe1cc178199aa42ef2e44e765ff8b93e5df01c211d18609e3f1630c91bf7525efa3aeeabc6e060a585515c32d1cc595f0781bde2e3c6dfbecd06bf
   languageName: node
   linkType: hard
 
@@ -4125,7 +4125,7 @@ __metadata:
     eslint: ^9.0.0
     f3d: 3.5.0-nightly.20261003
     husky: ^9.1.7
-    i18n-js: ^4.5.3
+    i18n-js: ^4.5.4
     masonry-layout: ^4.2.2
     neostandard: ^0.13.0
     postcss: ^8.5.29
