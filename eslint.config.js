@@ -4,9 +4,9 @@ export default [
   ...neostandard({
     ts: true,
     ignores: [
-      'public/vite*/*',
-      'coverage/*',
-      'vendor/bundle/*'
+      './public/vite*/*',
+      './coverage/**/*',
+      './vendor/**/*'
     ]
   }),
   {
