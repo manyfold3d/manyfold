@@ -2042,10 +2042,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.13.1":
-  version: 1.13.1
-  resolution: "bootstrap-icons@npm:1.13.1"
-  checksum: 7ca8735db00a2e78349fdac786982a4cd6b4a7346f6c7eaf3d06314d5d9d7f5e6728dc594a80e5502aa0d2d164ad91df44084ea9d5879775a0338443b3e68476
+"bootstrap-icons@npm:^1.13.2":
+  version: 1.13.2
+  resolution: "bootstrap-icons@npm:1.13.2"
+  checksum: c4a50a7242fdfba0e260d6f1275dabba55ca38c47d82417131c82d4aadb02c14bd0756ce6403b58f7f8b742118efb417b2e872f5d7a3a6e70525054592e40020
   languageName: node
   linkType: hard
 
@@ -4118,7 +4118,7 @@ __metadata:
     "@uppy/tus": ^6.0.0
     altcha: ^3.3.0
     bootstrap: ^5.3.8
-    bootstrap-icons: ^1.13.1
+    bootstrap-icons: ^1.13.2
     bootswatch: ^5.3.8
     comlink: ^4.4.2
     driver.js: ^1.9.0
