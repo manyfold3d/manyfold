@@ -3492,7 +3492,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.16.1, is-core-module@npm:^2.16.2":
+"is-core-module@npm:^2.16.2, is-core-module@npm:^2.17.0":
   version: 2.17.0
   resolution: "is-core-module@npm:2.17.0"
   dependencies:
@@ -5291,16 +5291,16 @@ __metadata:
   linkType: hard
 
 "resolve@npm:^1.1.7":
-  version: 1.22.12
-  resolution: "resolve@npm:1.22.12"
+  version: 1.22.13
+  resolution: "resolve@npm:1.22.13"
   dependencies:
     es-errors: ^1.3.0
-    is-core-module: ^2.16.1
+    is-core-module: ^2.17.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 4dc5a614b32142ef9ab455b242ed33c472c4ea50df17dbe1e9dac5fe0eebd7d5fdb7cb9cc8ad2165e5e0f07694498a74e7fbd6cc1599e20d84682cce1b80a4dc
+  checksum: a661b1755171f58a6c45c1d242db0e8555b9b7530b939318a041612511127f185012ef2769807c0c7cd3e249b0262a938fd100bb6f2596efaa8b921f5ce58c49
   languageName: node
   linkType: hard
 
@@ -5321,16 +5321,16 @@ __metadata:
   linkType: hard
 
 "resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>":
-  version: 1.22.12
-  resolution: "resolve@patch:resolve@npm%3A1.22.12#~builtin<compat/resolve>::version=1.22.12&hash=c3c19d"
+  version: 1.22.13
+  resolution: "resolve@patch:resolve@npm%3A1.22.13#~builtin<compat/resolve>::version=1.22.13&hash=c3c19d"
   dependencies:
     es-errors: ^1.3.0
-    is-core-module: ^2.16.1
+    is-core-module: ^2.17.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 0cc5b060cbe081c85c331ac2eb08e8a54f0a195b899d5001822e5d3e2b335da651b1eed3d259fea904c22a0da9324a061e0e7ceab5dbeb5bcab5250b625754e1
+  checksum: b7766481246c1ccac341e5971e06e628e1ec4118dc8c7e2a97b29316bce7440913af1f4c7cc3044ced74161c6af55301879e7cd6a67bbb55618277ae457d20f3
   languageName: node
   linkType: hard
 
