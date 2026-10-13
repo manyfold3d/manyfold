@@ -3309,9 +3309,9 @@ __metadata:
   linkType: hard
 
 "globals@npm:^17.3.0":
-  version: 17.7.0
-  resolution: "globals@npm:17.7.0"
-  checksum: cdedb484e093bf34e819d571de7ae659fa85fa5fc0d51b99f6b23397cf6511982658d4b9bdc90e967acd7ca9704e12d5c8c117c281db757fec90e2ad83117347
+  version: 17.14.0
+  resolution: "globals@npm:17.14.0"
+  checksum: dad7cb5959e5588c53e72b3519ccddbd9e0c95da5fad7e369e94da14e1ae58a6628ac48ce81347b0d1f6f30d6ee0cff69fa4be3d0649fbc68f6c84d7b1f391cd
   languageName: node
   linkType: hard
 
@@ -4214,7 +4214,7 @@ __metadata:
     husky: ^9.1.7
     i18n-js: ^4.5.4
     masonry-layout: ^4.2.2
-    neostandard: ^0.13.0
+    neostandard: ^0.14.1
     postcss: ^8.5.33
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^17.0.1
@@ -4441,9 +4441,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"neostandard@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "neostandard@npm:0.13.0"
+"neostandard@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "neostandard@npm:0.14.1"
   dependencies:
     "@humanwhocodes/gitignore-to-minimatch": ^1.0.2
     "@stylistic/eslint-plugin": 2.11.0
@@ -4457,8 +4457,8 @@ __metadata:
   peerDependencies:
     eslint: ^9.0.0
   bin:
-    neostandard: cli.mjs
-  checksum: fd3954fcab8a17f1fe8495570229345c3112e101e0df0b698eaa3259eb2c23e33d9ce73bcc509f31bc5a69cb9c22317f2665a138403b712d597809640c3ee1c0
+    neostandard: cli.js
+  checksum: 0f48e8318c1ec4322344b502cd2456739d92dda659627c05000724ce3de0dcb30b594ed58887ec87363b243ea4244a91278b06c883a9a2058db45c42d1d9b374
   languageName: node
   linkType: hard
 
