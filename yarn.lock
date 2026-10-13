@@ -1482,10 +1482,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.17.25":
-  version: 4.17.25
-  resolution: "@types/lodash@npm:4.17.25"
-  checksum: e21145f494b0e4a2f8bf693c8bc54b4abfef11dcf2197de40ba8222aa8469d723c3fab565771c78262e75132084e144d6b7cc576fdd84245c9a31239ee95695e
+"@types/lodash@npm:^4.17.26":
+  version: 4.17.26
+  resolution: "@types/lodash@npm:4.17.26"
+  checksum: 449862ddda3ef4bcd9abda53118b54320e020fa969f6268baf5f908b31ceac8a8ae12a5198075e390b21e97057cc21a6efffb3df14b94c89d9bc03eb68a271da
   languageName: node
   linkType: hard
 
@@ -4106,7 +4106,7 @@ __metadata:
     "@types/bootstrap": ^5.2.11
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^4.0.1
-    "@types/lodash": ^4.17.25
+    "@types/lodash": ^4.17.26
     "@types/node": ~24.13
     "@types/three": ^0.186.0
     "@types/webpack-env": ^1.18.8
