@@ -4138,7 +4138,7 @@ __metadata:
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=d65e59e7e3955912efcd96576382ee736a62a36f"
     tom-select: ^2.6.2
     typescript: ~5.9.3
-    vite: ^8.3.3
+    vite: ^8.3.4
     vite-plugin-rails: ^0.6.0
     vite-plugin-ruby: ^5.2.5
     vite-plugin-wasm: ^3.6.0
@@ -5135,7 +5135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.28, postcss@npm:^8.5.29":
+"postcss@npm:^8.5.29":
   version: 8.5.29
   resolution: "postcss@npm:8.5.29"
   dependencies:
@@ -5357,7 +5357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rolldown@npm:~1.2.11":
+"rolldown@npm:~1.2.12":
   version: 1.2.13
   resolution: "rolldown@npm:1.2.13"
   dependencies:
@@ -6508,15 +6508,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^8.3.3":
-  version: 8.3.3
-  resolution: "vite@npm:8.3.3"
+"vite@npm:^8.3.4":
+  version: 8.3.4
+  resolution: "vite@npm:8.3.4"
   dependencies:
     fsevents: ~2.3.3
     lightningcss: ^1.33.0
     picomatch: ^4.0.7
-    postcss: ^8.5.28
-    rolldown: ~1.2.11
+    postcss: ^8.5.29
+    rolldown: ~1.2.12
     tinyglobby: ^0.2.17
   peerDependencies:
     "@types/node": ^20.19.0 || >=22.12.0
@@ -6561,7 +6561,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: efe14ff90d56adf9191dc3a9bee97bb0918b4554ab5def0a25e6136c26e76644a8cfe5179f516a9c48dbe002c52077aa877602dea9a3b918ba5be73239cd2264
+  checksum: b9937a1bc7e4fe478bd72ab324591bfec55db382103bf0f46f65c295f5586a98c4bcde9b9fdf0f92be3157b29b481c9d3a559dac6dabe4b507691c3bfdab2112
   languageName: node
   linkType: hard
 
