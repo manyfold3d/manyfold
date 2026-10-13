@@ -4416,9 +4416,9 @@ __metadata:
   linkType: hard
 
 "node-releases@npm:^2.0.57":
-  version: 2.0.57
-  resolution: "node-releases@npm:2.0.57"
-  checksum: eced033901bf62260f79fd62e1898883d16f912e7d00d680e94ea6e088e808bc232dd23d475fc07ce012b0260844f1a631a91bbdc6350b5314add2caf407e158
+  version: 2.0.58
+  resolution: "node-releases@npm:2.0.58"
+  checksum: 37045b20bbdd9e3bd7103ada92601566c4ed8ec3d0270c4006a6c21a55acb167d21027e65a1cbf39ed64bb63c392bdc12c5a140e2366e1246656d6c0cf8554be
   languageName: node
   linkType: hard
 
