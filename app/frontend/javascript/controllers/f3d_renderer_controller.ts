@@ -6,12 +6,25 @@ export default class extends Controller {
   engine: any
   progressBar: HTMLDivElement | null
   progressLabel: HTMLSpanElement | null
+  observer: IntersectionObserver | null
 
   connect (): void {
     this.progressBar = this.element.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     this.progressLabel = this.element.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
+    // Monitor visibility
+    this.observer = new window.IntersectionObserver(
+      this.onIntersectionChanged.bind(this), {}
+    )
+    this.observer.observe(this.element)
+    // Handle load button click
     const loadButton = this.element.parentElement?.getElementsByClassName('object-preview-progress')[0] as HTMLDivElement
     loadButton.addEventListener('click', this.load.bind(this))
+  }
+
+  onIntersectionChanged (entries, observer): void {
+    if (((this.element as HTMLCanvasElement).dataset.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
+      void this.load()
+    }
   }
 
   async init (data: Uint8Array): Promise<void> {
