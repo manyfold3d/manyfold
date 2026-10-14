@@ -47,8 +47,14 @@ class ModelFilesController < ApplicationController
   end
 
   def raw_put
-    if request.content_length > 0 && request.content_type == @file.mime_type.to_s
-      @file.attachment = request.body
+    body = case request.content_type.split(";",2).first
+    when @file.mime_type.to_s
+      request.body
+    when Mime[:url_encoded_form].to_s
+      params.expect(:body)
+    end
+    if request.content_length > 0 && body
+      @file.attachment_attacher.attach(StringIO.new(body), metadata: {"mime_type" => @file.mime_type.to_s})
       @file.save!
       @file.parse_metadata_later
       head :ok
