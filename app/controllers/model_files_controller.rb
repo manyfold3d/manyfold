@@ -52,10 +52,10 @@ class ModelFilesController < ApplicationController
     when @file.mime_type.to_s
       request.body
     when Mime[:url_encoded_form].to_s
-      params.expect(:body)
+      StringIO.new(params.expect(:body))
     end
     if request.content_length > 0 && body
-      @file.attachment_attacher.attach(StringIO.new(body), metadata: {"mime_type" => @file.mime_type.to_s})
+      @file.attachment_attacher.attach(body, metadata: {"mime_type" => @file.mime_type&.to_s}.compact)
       @file.save!
       @file.parse_metadata_later
       if body_type == Mime[:url_encoded_form].to_s
