@@ -5,7 +5,7 @@
     } %>
 
 <%= form_tag model_model_file_raw_path(@file.model, @file.filename), method: :put, class: "container-md" do %>
-  <%= text_area_tag :body, @file.attachment.read, class: "form-control" %>
+  <%= text_area_tag :body, @file.attachment.read, class: "form-control", rows: "20" %>
 
   <div class="form-save-button">
     <%= submit_tag %>
