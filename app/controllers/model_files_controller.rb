@@ -47,7 +47,8 @@ class ModelFilesController < ApplicationController
   end
 
   def raw_put
-    body = case request.content_type.split(";",2).first
+    body_type = request.content_type.split(";", 2).first
+    body = case body_type
     when @file.mime_type.to_s
       request.body
     when Mime[:url_encoded_form].to_s
@@ -57,7 +58,11 @@ class ModelFilesController < ApplicationController
       @file.attachment_attacher.attach(StringIO.new(body), metadata: {"mime_type" => @file.mime_type.to_s})
       @file.save!
       @file.parse_metadata_later
-      head :ok
+      if body_type == Mime[:url_encoded_form].to_s
+        redirect_to [@file.model, @file] # Redirect if this came from a form
+      else
+        head :ok
+      end
     else
       head :bad_request
     end
