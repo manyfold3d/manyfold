@@ -110,7 +110,8 @@ class ModelFilesController < ApplicationController
   end
 
   def edit_content
-    raise ActionController::BadRequest unless @file.mime_type.to_sym.in? [:html, :text, :js, :md]
+    @editor = FileHandlers.handlers_for(environment: :edit, mime_type: @file.mime_type).first
+    raise ActionController::BadRequest unless @editor
   end
 
   def extract
