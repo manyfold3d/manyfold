@@ -1,0 +1,13 @@
+<%= PageTitle title: t("model_files.general.edit_content"), breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path,
+      @file.model.name => model_path(@file.model),
+      @file.name => model_model_file_path(@file.model, @file)
+    } %>
+
+<%= form_tag model_model_file_raw_path(@file.model, @file.filename), method: :put, class: "container-md" do %>
+  <%= text_area_tag :body, @file.attachment.read, class: "form-control" %>
+
+  <div class="form-save-button">
+    <%= submit_tag %>
+  </div>
+<% end %>

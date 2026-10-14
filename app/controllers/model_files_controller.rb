@@ -98,6 +98,10 @@ class ModelFilesController < ApplicationController
     end
   end
 
+  def edit_content
+    raise ActionController::BadRequest unless @file.mime_type.to_sym.in? [:html, :text, :js, :md]
+  end
+
   def extract
     ExtractArchiveJob.perform_later(@file.id)
     respond_to do |format|
