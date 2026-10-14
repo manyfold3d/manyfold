@@ -30,6 +30,8 @@ lt:
       orca_slicer:
       prusa_slicer:
       super_slicer:
+    edit_content:
+      title:
     extract:
       extraction_started:
     form:
