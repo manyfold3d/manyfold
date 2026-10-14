@@ -2,6 +2,7 @@
   <%= tag.meta property: "og:type", content: "website" %>
   <%= tag.meta name: "description", content: truncate(sanitize(@collection.caption), length: 80) if @collection.caption.present? %>
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: collection_url(@collection, format: :oembed), title: @collection.name %>
+  <%= tag.link rel: "alternate", type: CGI.escapeHTML(Mime[:activitypub]), href: @collection.fedipub_actor&.federated_url if SiteSettings.federation_enabled? %>
 <% end %>
 
 <%= content_for :page_header do %>
