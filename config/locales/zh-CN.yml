@@ -793,6 +793,7 @@ zh-CN:
       browser:
       client:
       convert:
+      edit:
       preview_frame:
       thumbnail:
     handlers:
@@ -804,6 +805,7 @@ zh-CN:
       iframe_tag:
       image_tag:
       imagemagick:
+      plaintext_form:
       rouge:
       three:
       video_tag:

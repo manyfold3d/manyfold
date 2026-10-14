@@ -751,6 +751,7 @@ en:
       browser: File view
       client: Open in...
       convert: File conversion
+      edit: Edit content
       preview_frame: Show as preview
       thumbnail: Thumbnail images
     handlers:
@@ -762,6 +763,7 @@ en:
       iframe_tag: Framed HTML
       image_tag: HTML tag
       imagemagick: ImageMagick
+      plaintext_form: Simple form
       rouge: Source code
       three: Three.js
       video_tag: Video player
