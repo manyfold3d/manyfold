@@ -803,6 +803,7 @@ de:
       browser:
       client:
       convert:
+      edit:
       preview_frame:
       thumbnail:
     handlers:
@@ -814,6 +815,7 @@ de:
       iframe_tag:
       image_tag:
       imagemagick:
+      plaintext_form:
       rouge:
       three:
       video_tag:

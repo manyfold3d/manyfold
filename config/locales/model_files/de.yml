@@ -30,6 +30,8 @@ de:
       orca_slicer: in OrcaSlicer öffnen
       prusa_slicer: in PrusaSlicer öffnen
       super_slicer: Im SuperSlicer öffnen
+    edit_content:
+      title:
     extract:
       extraction_started: Archiv wird entpackt.
     form:

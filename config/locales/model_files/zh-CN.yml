@@ -30,6 +30,8 @@ zh-CN:
       orca_slicer: 在 OrcaSlicer 中打开
       prusa_slicer: 在 PrusaSlicer 中打开
       super_slicer: 在 SuperSlicer 中打开
+    edit_content:
+      title:
     extract:
       extraction_started:
     form:

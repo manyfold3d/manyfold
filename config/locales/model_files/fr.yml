@@ -30,6 +30,8 @@ fr:
       orca_slicer: Ouvrir dans OrcaSlicer
       prusa_slicer: Ouvrir dans PrusaSlicer
       super_slicer: Ouvrir dans SuperSlicer
+    edit_content:
+      title:
     extract:
       extraction_started:
     form:
