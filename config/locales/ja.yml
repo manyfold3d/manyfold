@@ -805,6 +805,8 @@ ja:
       iframe_tag:
       image_tag:
       imagemagick:
+      kramdown:
+      plaintext:
       plaintext_form:
       rouge:
       three:

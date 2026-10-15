@@ -809,6 +809,8 @@ es:
       iframe_tag: HTML con marcos
       image_tag: Etiqueta HTML
       imagemagick: ImageMagick
+      kramdown:
+      plaintext:
       plaintext_form:
       rouge: Código fuente
       three: THREE.js

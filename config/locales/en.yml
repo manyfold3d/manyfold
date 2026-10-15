@@ -763,6 +763,8 @@ en:
       iframe_tag: Framed HTML
       image_tag: HTML tag
       imagemagick: ImageMagick
+      kramdown: Markdown
+      plaintext: Plain text
       plaintext_form: Simple form
       rouge: Source code
       three: Three.js
