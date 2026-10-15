@@ -16,7 +16,6 @@ class Components::ImageCarousel < Components::Base
       class: "carousel slide mb-3",
       role: "group",
       data: {
-        bs_ride: "carousel",
         controller: "carousel",
         action: "mouseenter->carousel#onEnter mouseleave->carousel#onLeave"
       },
