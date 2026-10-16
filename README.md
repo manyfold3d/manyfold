@@ -86,7 +86,8 @@ To simplify the development environment setup, Manyfold includes a devcontainer 
 - [Visual Studio Code WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 - A WSL (with Docker)
 
-> [!WARNING] Warning for Windows
+> [!WARNING] 
+> Warning for Windows
 > You want to clone the repo into WSL, run the devcontainer from there and just connect to it with VS Code.  
 > If you clone the repo into Windows, every file access (from the devcontainer to the Windows filesystem) has to go through the WSL's Windows filesystem integration, which involves the 9P-Protocol and that can slow everything down significantly.  
 > Manyfold / Devontainer -> WSL2 -> 9P -> Windows  
