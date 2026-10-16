@@ -4,6 +4,7 @@
   <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), length: 80) if @model.notes.present? %>
   <%= tag.meta name: "fediverse:creator", content: @model.creator.fedipub_actor.at_address if @model.creator %>
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: model_url(@model, format: :oembed), title: @model.name %>
+  <%= tag.link rel: "alternate", type: Mime[:activitypub], href: @model.fedipub_actor&.federated_url if SiteSettings.federation_enabled? %>
   <%- if @model.entrypoint %>
     <%= tag.link rel: "alternate", as: "spatial-entrypoint", type: @model.entrypoint.mime_type, href: model_model_file_raw_url(@model, @model.entrypoint.filename, anchor: @model.entrypoint_fragment) %>
   <%- end %>

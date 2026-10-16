@@ -795,6 +795,7 @@ fr:
       browser:
       client:
       convert:
+      edit:
       preview_frame:
       thumbnail:
     handlers:
@@ -806,6 +807,9 @@ fr:
       iframe_tag:
       image_tag:
       imagemagick:
+      kramdown:
+      plaintext:
+      plaintext_form:
       rouge:
       three:
       video_tag:

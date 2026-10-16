@@ -6,12 +6,25 @@ export default class extends Controller {
   engine: any
   progressBar: HTMLDivElement | null
   progressLabel: HTMLSpanElement | null
+  observer: IntersectionObserver | null
 
   connect (): void {
     this.progressBar = this.element.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     this.progressLabel = this.element.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
+    // Monitor visibility
+    this.observer = new window.IntersectionObserver(
+      this.onIntersectionChanged.bind(this), {}
+    )
+    this.observer.observe(this.element)
+    // Handle load button click
     const loadButton = this.element.parentElement?.getElementsByClassName('object-preview-progress')[0] as HTMLDivElement
     loadButton.addEventListener('click', this.load.bind(this))
+  }
+
+  onIntersectionChanged (entries, observer): void {
+    if (((this.element as HTMLCanvasElement).dataset.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
+      void this.load()
+    }
   }
 
   async init (data: Uint8Array): Promise<void> {
@@ -25,12 +38,14 @@ export default class extends Controller {
       this.engine = F3D.Engine.create(`#${this.element.id}`)
       const options = this.engine.getOptions()
 
+      const backgroundColor = (this.element as HTMLCanvasElement).dataset?.backgroundColour?.toString() || '#000000'
+
       // Set renderer options the same as the CLI version
       options.setAsString('render.effect.ambient_occlusion', 'true')
       options.setAsString('render.effect.antialiasing.mode', 'fxaa')
       options.setAsString('render.effect.blending.mode', 'ddp')
-      options.setAsString('render.background.color', '#000000')
-      options.setAsString('render.grid.enable', 'true')
+      options.setAsString('render.background.color', backgroundColor)
+      options.setAsString('render.grid.enable', (this.element as HTMLCanvasElement).dataset?.showGrid || true)
       options.setAsString('render.grid.color', '#00ffff')
       options.setAsString('render.grid.subdivisions', '0')
       options.setAsString('render.grid.unit', '10')
@@ -63,7 +78,7 @@ export default class extends Controller {
       this.progressBar?.parentElement?.remove()
       this.progressBar = null
       this.progressLabel = null
-      canvas.style.backgroundColor = 'black'
+      canvas.style.backgroundColor = backgroundColor
 
       const camera = this.engine.getWindow().getCamera()
       const foc = camera.focalPoint

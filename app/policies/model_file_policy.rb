@@ -33,6 +33,10 @@ class ModelFilePolicy < ApplicationPolicy
     can_update_model?
   end
 
+  def edit_content?
+    raw_put?
+  end
+
   def extract?
     @record&.is_archive? && can_update_model?
   end

@@ -65,7 +65,7 @@ group :development, :test do
   gem "i18n-tasks", "~> 1.1"
   gem "simplecov", "~> 1.3", require: false
   gem "simplecov-cobertura", require: false
-  gem "with_model", "~> 2.4"
+  gem "with_model", "~> 2.5"
   gem "vcr", "~> 6.4"
 
   # system tests and custom screenshots
@@ -147,7 +147,7 @@ gem "activejob-status", "~> 1.0"
 gem "brakeman", "~> 8.1"
 
 gem "i18n_data", "~> 1.1"
-gem "bullet", "~> 8.2", group: :development
+gem "bullet", "~> 8.3", group: :development
 
 gem "logstash-event", "~> 1.2"
 
@@ -215,7 +215,7 @@ gem "reverse_markdown", "~> 3.0"
 
 gem "graphlient", "~> 0.9.0"
 
-gem "webmock", "~> 3.26", group: :test
+gem "webmock", "~> 3.30", group: :test
 
 gem "image_processing"
 gem "mini_magick"

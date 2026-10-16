@@ -47,11 +47,22 @@ class ModelFilesController < ApplicationController
   end
 
   def raw_put
-    if request.content_length > 0 && request.content_type == @file.mime_type.to_s
-      @file.attachment = request.body
+    body_type = request.content_type.split(";", 2).first
+    body = case body_type
+    when @file.mime_type.to_s
+      request.body
+    when Mime[:url_encoded_form].to_s
+      StringIO.new(params.expect(:body))
+    end
+    if request.content_length > 0 && body
+      @file.attachment_attacher.attach(body, metadata: {"mime_type" => @file.mime_type&.to_s}.compact)
       @file.save!
       @file.parse_metadata_later
-      head :ok
+      if body_type == Mime[:url_encoded_form].to_s
+        redirect_to [@file.model, @file] # Redirect if this came from a form
+      else
+        head :ok
+      end
     else
       head :bad_request
     end
@@ -96,6 +107,11 @@ class ModelFilesController < ApplicationController
         end
       end
     end
+  end
+
+  def edit_content
+    @editor = FileHandlers.handlers_for(environment: :edit, mime_type: @file.mime_type).first
+    raise ActionController::BadRequest unless @editor
   end
 
   def extract

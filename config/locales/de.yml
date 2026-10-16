@@ -189,7 +189,7 @@ de:
               secured_uri: muss ein HTTPS/SSL URI (Identifier) sein.
               unspecified_scheme: muss ein Schema angeben.
             scopes:
-              not_match_configured: stimmen nicht mit denen auf dem Server hinterlegten überein.
+              not_match_configured: stimmt nicht mit den auf dem Server konfigurierten Einstellungen überein.
         library:
           attributes:
             path:
@@ -718,7 +718,9 @@ de:
       never: Niemals
       revoked: Widerrufen
   errors:
-    connection_refused:
+    connection_refused: |-
+      Huch! Die Verbindung zur Web Console-Middleware konnte nicht hergestellt werden.
+      Bitte stelle sicher, dass ein Rails-Entwicklungsserver ausgeführt wird.
     format: "%{attribute} %{message}"
     messages:
       accepted: muss akzeptiert werden
@@ -733,7 +735,7 @@ de:
       expired: ist abgelaufen, bitte neu anfordern
       greater_than: muss größer als %{count} sein
       greater_than_or_equal_to: muss größer oder gleich %{count} sein
-      in:
+      in: muss in %{count} liegen
       inclusion: ist kein gültiger Wert
       invalid: ist nicht gültig
       less_than: muss kleiner als %{count} sein
@@ -748,7 +750,7 @@ de:
         other: "%{count} Fehler verhinderten das Speichern von %{resource}:"
       odd: muss ungerade sein
       other_than: darf nicht gleich %{count} sein
-      password_too_long:
+      password_too_long: ist zu lang
       present: darf nicht ausgefüllt werden
       required: muss ausgefüllt werden
       taken: ist bereits vergeben
@@ -758,8 +760,8 @@ de:
       too_short:
         one: 'ist zu kurz (Mindestlänge: %{count} Zeichen)'
         other: ist zu kurz (weniger als %{count} Zeichen)
-      url:
-      weak_password:
+      url: ist keine gültige URL
+      weak_password: Nicht sicher genug. Füge eine Zahl, Symbole oder weitere Buchstaben hinzu, um das Passwort sicherer zu machen.
       wrong_length:
         one: hat die falsche Länge (sollte %{count} Zeichen lang sein)
         other: hat die falsche Länge (muss genau %{count} Zeichen haben)
@@ -768,8 +770,14 @@ de:
       header:
         one: "%{count} Fehler verhindert, dass dieses %{model} gespeichert wird"
         other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
-    unacceptable_request:
-    unavailable_session:
+    unacceptable_request: 'Eine unterstützte Version wird im Accept-Header erwartet.
+
+      '
+    unavailable_session: |
+      Die Sitzung %{id} ist im Speicher nicht mehr verfügbar.
+
+      Falls du auf einem Multi-Prozess-Server (wie Unicorn oder Puma) arbeitest, speichert der Prozess, auf den diese Anfrage trifft, %{id} nicht im Speicher. Erwäge, die Anzahl der
+      Prozesse/Worker auf eins (1) zu setzen oder in der Entwicklung einen anderen Server zu verwenden.
   fasp_client:
     providers:
       edit:
@@ -795,6 +803,7 @@ de:
       browser:
       client:
       convert:
+      edit:
       preview_frame:
       thumbnail:
     handlers:
@@ -806,6 +815,9 @@ de:
       iframe_tag:
       image_tag:
       imagemagick:
+      kramdown:
+      plaintext:
+      plaintext_form:
       rouge:
       three:
       video_tag:
