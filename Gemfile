@@ -65,7 +65,7 @@ group :development, :test do
   gem "i18n-tasks", "~> 1.1"
   gem "simplecov", "~> 1.3", require: false
   gem "simplecov-cobertura", require: false
-  gem "with_model", "~> 2.4"
+  gem "with_model", "~> 2.5"
   gem "vcr", "~> 6.4"
 
   # system tests and custom screenshots
