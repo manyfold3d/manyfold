@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     resources :model_files, except: [:index, :new] do
       member do
         post "extract"
+        get "edit_content", as: :edit_content
       end
       collection do
         get "bulk_edit"

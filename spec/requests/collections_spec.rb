@@ -47,6 +47,11 @@ RSpec.describe "Collections", :after_first_run do
           get "/collections/#{collection.to_param}"
           expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
         end
+
+        it "includes alternate link to federation actor", :federated do
+          get "/collections/#{collection.to_param}"
+          expect(response.body).to include %(<link rel="alternate" type="application/ld+json; profile=&quot;https://www.w3.org/ns/activitystreams&quot;" href="#{collection.fedipub_actor.federated_url}">)
+        end
       end
     end
 

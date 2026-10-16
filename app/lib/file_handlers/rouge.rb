@@ -1,4 +1,6 @@
 class FileHandlers::Rouge < FileHandlers::Base
+  # i18n-tasks-use t("file_handlers.handlers.rouge")
+
   ENVIRONMENTS = [:browser].freeze
 
   INPUT_TYPES = ::Rouge::Lexer.all.filter_map { |lexer| # rubocop:disable Pundit/UsePolicyScope

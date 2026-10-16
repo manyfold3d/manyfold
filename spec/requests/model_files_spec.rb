@@ -182,7 +182,7 @@ RSpec.describe "Model Files" do
         let(:params) { {convert: {id: stl_file.to_param, to: "threemf"}} }
 
         it "queues a conversion job" do
-          expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(Analysis::FileConversionJob).with(stl_file.id, :threemf)
+          expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(Analysis::AssimpFileConversionJob).with(stl_file.id, :threemf)
         end
 
         it "redirects back to file list" do
@@ -343,6 +343,20 @@ RSpec.describe "Model Files" do
         end
       end
     end
+
+    describe "GET /models/:model_id/model_files/edit_content", :as_moderator do
+      let!(:txt_file) { create(:model_file, model: model, filename: "readme.txt") }
+
+      it "returns http success if file is editable" do
+        get edit_content_model_model_file_path(model, txt_file)
+        expect(response).to have_http_status(:success)
+      end
+
+      it "returns bad request if file is not editable" do
+        get edit_content_model_model_file_path(model, stl_file)
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
   end
 
   context "without view permission on a model", :as_contributor do
@@ -385,7 +399,7 @@ RSpec.describe "Model Files" do
     it "cannot convert file to different format" do # rubocop:disable RSpec/MultipleExpectations
       params = {convert: {id: forbidden_file.to_param, to: "threemf"}}
       post model_model_files_path(forbidden_model, params: params)
-      expect(Analysis::FileConversionJob).not_to have_been_enqueued
+      expect(Analysis::AssimpFileConversionJob).not_to have_been_enqueued
       expect(response).to have_http_status :forbidden
     end
 
@@ -414,7 +428,7 @@ RSpec.describe "Model Files" do
     it "cannot convert file to different format" do # rubocop:disable RSpec/MultipleExpectations
       params = {convert: {id: forbidden_file.to_param, to: "threemf"}}
       post model_model_files_path(model, params: params)
-      expect(Analysis::FileConversionJob).not_to have_been_enqueued
+      expect(Analysis::AssimpFileConversionJob).not_to have_been_enqueued
       expect(response).to have_http_status :not_found
     end
   end

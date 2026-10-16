@@ -6,7 +6,7 @@ module Print
     # i18n-tasks-use t("print_hosts.protocols.prusalink")
     PROTOCOL = "prusalink".freeze
 
-    INPUT_TYPES = [Mime[:gcode], Mime[:sl1]].freeze
+    INPUT_TYPES = [Mime[:gcode], Mime[:bgcode], Mime[:sl1]].freeze
 
     DEFAULT_STORAGE = "local".freeze
 

@@ -51,6 +51,11 @@ RSpec.describe "Models", :after_first_run do
           get "/models/#{model.to_param}"
           expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
         end
+
+        it "includes alternate link to federation actor", :federated do
+          get "/models/#{model.to_param}"
+          expect(response.body).to include %(<link rel="alternate" type="application/ld+json; profile=&quot;https://www.w3.org/ns/activitystreams&quot;" href="#{model.fedipub_actor.federated_url}">)
+        end
       end
     end
 

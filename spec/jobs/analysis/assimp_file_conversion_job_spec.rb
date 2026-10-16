@@ -1,7 +1,7 @@
 require "rails_helper"
 require "support/mock_directory"
 
-RSpec.describe Analysis::FileConversionJob do
+RSpec.describe Analysis::AssimpFileConversionJob do
   let(:library) { create(:library) }
   let(:model) { create(:model, path: "model_one", library: library) }
   let!(:file) { create(:model_file, model: model, filename: "files/awesome.obj", attachment: ModelFileUploader.upload(File.open("spec/fixtures/model_file_spec/example.obj"), :cache)) }

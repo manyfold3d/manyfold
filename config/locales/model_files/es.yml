@@ -30,6 +30,8 @@ es:
       orca_slicer: Abrir en OrcaSlicer
       prusa_slicer: Abrir en PrusaSlicer
       super_slicer: Abrir en SuperSlicer
+    edit_content:
+      title:
     extract:
       extraction_started: Se ha iniciado la extracción del archivo.
     form:

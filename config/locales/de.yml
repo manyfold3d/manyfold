@@ -189,7 +189,7 @@ de:
               secured_uri: muss ein HTTPS/SSL URI (Identifier) sein.
               unspecified_scheme: muss ein Schema angeben.
             scopes:
-              not_match_configured: stimmen nicht mit denen auf dem Server hinterlegten überein.
+              not_match_configured: stimmt nicht mit den auf dem Server konfigurierten Einstellungen überein.
         library:
           attributes:
             path:
@@ -538,6 +538,11 @@ de:
       menu_header: Download optionen
       supported: Nur Dateien mit Supportstruktur
       unsupported: Nur Dateien ohne Supportstruktur
+    file_format_list:
+      description:
+      extensions:
+      file_type:
+      title:
     follow_button:
       follow: Folgen %{name}
       pending: Angefordert
@@ -713,7 +718,9 @@ de:
       never: Niemals
       revoked: Widerrufen
   errors:
-    connection_refused:
+    connection_refused: |-
+      Huch! Die Verbindung zur Web Console-Middleware konnte nicht hergestellt werden.
+      Bitte stelle sicher, dass ein Rails-Entwicklungsserver ausgeführt wird.
     format: "%{attribute} %{message}"
     messages:
       accepted: muss akzeptiert werden
@@ -728,7 +735,7 @@ de:
       expired: ist abgelaufen, bitte neu anfordern
       greater_than: muss größer als %{count} sein
       greater_than_or_equal_to: muss größer oder gleich %{count} sein
-      in:
+      in: muss in %{count} liegen
       inclusion: ist kein gültiger Wert
       invalid: ist nicht gültig
       less_than: muss kleiner als %{count} sein
@@ -743,7 +750,7 @@ de:
         other: "%{count} Fehler verhinderten das Speichern von %{resource}:"
       odd: muss ungerade sein
       other_than: darf nicht gleich %{count} sein
-      password_too_long:
+      password_too_long: ist zu lang
       present: darf nicht ausgefüllt werden
       required: muss ausgefüllt werden
       taken: ist bereits vergeben
@@ -753,8 +760,8 @@ de:
       too_short:
         one: 'ist zu kurz (Mindestlänge: %{count} Zeichen)'
         other: ist zu kurz (weniger als %{count} Zeichen)
-      url:
-      weak_password:
+      url: ist keine gültige URL
+      weak_password: Nicht sicher genug. Füge eine Zahl, Symbole oder weitere Buchstaben hinzu, um das Passwort sicherer zu machen.
       wrong_length:
         one: hat die falsche Länge (sollte %{count} Zeichen lang sein)
         other: hat die falsche Länge (muss genau %{count} Zeichen haben)
@@ -763,8 +770,14 @@ de:
       header:
         one: "%{count} Fehler verhindert, dass dieses %{model} gespeichert wird"
         other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
-    unacceptable_request:
-    unavailable_session:
+    unacceptable_request: 'Eine unterstützte Version wird im Accept-Header erwartet.
+
+      '
+    unavailable_session: |
+      Die Sitzung %{id} ist im Speicher nicht mehr verfügbar.
+
+      Falls du auf einem Multi-Prozess-Server (wie Unicorn oder Puma) arbeitest, speichert der Prozess, auf den diese Anfrage trifft, %{id} nicht im Speicher. Erwäge, die Anzahl der
+      Prozesse/Worker auf eins (1) zu setzen oder in der Entwicklung einen anderen Server zu verwenden.
   fasp_client:
     providers:
       edit:
@@ -785,6 +798,29 @@ de:
         heading: FASP Dienstleistungen
         provider_list_title: Registrierte FASP
         search_3dprint_social_html: Wir empfehlen, den <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP zu verbinden; er wird von den Manyfold-Entwicklern betrieben und ist speziell für die Suche nach 3D-Inhalten konfiguriert.
+  file_handlers:
+    environments:
+      browser:
+      client:
+      convert:
+      edit:
+      preview_frame:
+      thumbnail:
+    handlers:
+      assimp:
+      f3d_cli:
+      f3d_wasm:
+      freecad_thumbnail_extractor:
+      gcode_thumbnail_extractor:
+      iframe_tag:
+      image_tag:
+      imagemagick:
+      kramdown:
+      plaintext:
+      plaintext_form:
+      rouge:
+      three:
+      video_tag:
   follows:
     actor_table:
       actions: Aktionen
@@ -1010,6 +1046,111 @@ de:
       liked: Beliebte Modelle
     update:
       success: Liste erfolgreich aktualisiert
+  media_types:
+    abc:
+    amf:
+    avif:
+    bgcode:
+    bin:
+    blend:
+    bmp:
+    brep:
+    bz2:
+    categories:
+      document:
+      image:
+      model:
+      slicer:
+      video:
+    cheetah3d:
+    chitubox:
+    collada:
+    crealitybox:
+    ctb:
+    dcm:
+    doc:
+    docx:
+    draco:
+    drl:
+    dwg:
+    dxf:
+    f3d:
+    fbx:
+    fcstd:
+    flock:
+    gbr:
+    gbrjob:
+    gcode:
+    gif:
+    gltf:
+    gml:
+    goo:
+    gzip:
+    hfp:
+    html:
+    iam:
+    ifc:
+    iges:
+    ipt:
+    jpeg:
+    js:
+    kicad_mod:
+    kicad_pcb:
+    kicad_pro:
+    kicad_sch:
+    kicad_sym:
+    kicad_wks:
+    ldr:
+    lumen:
+    lychee:
+    max:
+    maya:
+    md:
+    mdl:
+    mha:
+    mix:
+    modo:
+    mp4:
+    mpeg:
+    mtl:
+    nanodlp:
+    nrrd:
+    obj:
+    'off':
+    pdf:
+    photon:
+    ply:
+    png:
+    prz:
+    pts:
+    rar:
+    scad:
+    sevenz:
+    sketchup:
+    sl1:
+    sldasm:
+    sldprt:
+    speedtree:
+    splat:
+    spz:
+    step:
+    stl:
+    svg:
+    text:
+    threedm:
+    threeds:
+    threemf:
+    tiff:
+    voxl:
+    vrml:
+    vtk:
+    vtp:
+    webm:
+    webp:
+    x:
+    x3d:
+    xbf:
+    zip:
   moderator_mailer:
     new_approval:
       message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}

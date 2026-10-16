@@ -1,6 +1,7 @@
-class FreecadThumbnailExtractorService
-  def initialize(file:)
+class Thumbnailers::Freecad
+  def initialize(file:, record:)
     @file = file
+    @record = record
   end
 
   def call
@@ -14,6 +15,6 @@ class FreecadThumbnailExtractorService
         end
       end
     end
-    thumbnail ? StringIO.new(thumbnail) : nil
+    thumbnail ? {render: StringIO.new(thumbnail)} : {}
   end
 end

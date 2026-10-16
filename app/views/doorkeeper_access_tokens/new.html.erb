@@ -13,7 +13,7 @@
         ],
         label: t(".expiry.label") %>
   <%= select_input_row form, :scopes,
-        ["public", "read", "write", "delete"],
+        @application.scopes.to_a,
         label: t(".scopes.label"),
         multiple: true %>
   <div>
