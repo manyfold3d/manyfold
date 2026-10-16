@@ -65,6 +65,7 @@ dump.rdb
 
 # IDE workspace files
 *.code-workspace
+.devcontainer/devcontainer-lock.json
 
 /.yarn/*
 !/.yarn/plugins
