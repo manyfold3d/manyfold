@@ -540,9 +540,9 @@ de:
       unsupported: Nur Dateien ohne Supportstruktur
     file_format_list:
       description:
-      extensions:
-      file_type:
-      title:
+      extensions: Dateiendungen
+      file_type: Dateityp
+      title: Unterstützte Dateiformate
     follow_button:
       follow: Folgen %{name}
       pending: Angefordert
@@ -800,18 +800,18 @@ de:
         search_3dprint_social_html: Wir empfehlen, den <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP zu verbinden; er wird von den Manyfold-Entwicklern betrieben und ist speziell für die Suche nach 3D-Inhalten konfiguriert.
   file_handlers:
     environments:
-      browser:
-      client:
-      convert:
-      edit:
-      preview_frame:
-      thumbnail:
+      browser: Dateiansicht
+      client: Öffnen in...
+      convert: Dateikonvertierung
+      edit: Inhalt bearbeiten
+      preview_frame: Als Vorschau anzeigen
+      thumbnail: Miniaturbilder
     handlers:
-      assimp:
-      f3d_cli:
-      f3d_wasm:
-      freecad_thumbnail_extractor:
-      gcode_thumbnail_extractor:
+      assimp: Assimp
+      f3d_cli: F3D
+      f3d_wasm: F3D
+      freecad_thumbnail_extractor: Aus der Datei
+      gcode_thumbnail_extractor: Aus der Datei
       iframe_tag:
       image_tag:
       imagemagick:
