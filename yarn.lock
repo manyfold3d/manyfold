@@ -4130,7 +4130,7 @@ __metadata:
     neostandard: ^0.13.0
     postcss: ^8.5.30
     postcss-flexbugs-fixes: ^5.0.2
-    postcss-import: ^17.0.0
+    postcss-import: ^17.0.1
     postcss-preset-env: ^11.6.1
     rollup: ^4.64.7
     sass-embedded: ^1.105.1
@@ -4907,16 +4907,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-import@npm:^17.0.0":
-  version: 17.0.0
-  resolution: "postcss-import@npm:17.0.0"
+"postcss-import@npm:^17.0.1":
+  version: 17.0.1
+  resolution: "postcss-import@npm:17.0.1"
   dependencies:
     postcss-value-parser: ^4.0.0
     read-cache: ^1.0.0
     resolve: ^1.1.7
   peerDependencies:
     postcss: ^8.0.0
-  checksum: 959dbd4dd7e477c25879b17a7472e05c1cf60b25dc77c86bb346e2e595f9e0f8e793762243eb04c9c3d3c51f2ca6088965ce9f4958881814431e86c9a16e2017
+  checksum: 99cf86f57d0e2e26c0f3c29a84f2ad42b9b1119e9a266d2e8690ee5366c0b7b1f795c5960f7494184d25a17941f68a7e50e1bc582b3c652786957a595e1f3551
   languageName: node
   linkType: hard
 
