@@ -6133,11 +6133,11 @@ __metadata:
   linkType: hard
 
 "sync-child-process@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "sync-child-process@npm:1.0.2"
+  version: 1.1.0
+  resolution: "sync-child-process@npm:1.1.0"
   dependencies:
     sync-message-port: ^1.0.0
-  checksum: 03939c096278d6a3fc5922575ef22bca64d4105707ad4a8c04713dd56be556e2d5b485aae7af0d012493b05e99852c12a9cdfd6e2dbeabe90e76242bb8046e2f
+  checksum: abc4d35e7b3cf1af636da438ce3d47ce6c50939f1e8ee4cdd6a14b0871eacffd204a813fbf18d4daca93b6820f36bdff357c2d7d076fa91bdd88aa7777e2d10b
   languageName: node
   linkType: hard
 
