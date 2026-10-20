@@ -55,16 +55,9 @@ export default class extends Controller {
 
   // export (cb) { this.send({ function: "export", callback: (cb ? true : false) }) }
 
-  // onmessage () { }
-
   // progress (progressValue, message) { this.send({ progress: progressValue, message }) }
 
   // alert (alertValue, time) { this.send({ alert: alertValue, time }) }
 
   // emit (emitValue, message) { this.send({ emit: emitValue, message }) }
-
-  // registerEvent (event, fn) {
-  //   this.onevent[event] = fn
-  //   this.send({ event })
-  // }
 }
