@@ -3,13 +3,13 @@ set -euo pipefail
 
 # Install System packages
 sudo apt-get update
-sudo apt-get upgrade -y
 sudo apt-get install -y \
     libpq-dev \
     libmariadb-dev \
     libarchive13 \
     libassimp-dev \
-    f3d
+    f3d \
+    imagemagick
 
 # JS toolchain
 export COREPACK_ENABLE_DOWNLOAD_PROMPT=0

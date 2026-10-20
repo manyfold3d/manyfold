@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
-      - name: Generate latest API docs
+      - name: Setup database
         run: bundle exec rake db:migrate
       - name: Generate latest API docs
         run: bundle exec rake rswag

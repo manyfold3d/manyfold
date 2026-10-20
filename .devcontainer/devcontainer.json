@@ -13,7 +13,7 @@
       "source=${localEnv:HOME}/manyfold-data,target=/libraries,type=bind,consistency=cached"
    ],
     "postCreateCommand": "bash .devcontainer/setup.sh",
-    "postStartCommand": "redis-server --daemonize yes && bash ./bin/dev",
+    "postStartCommand": "rm -f tmp/pids/server.pid && redis-server --daemonize yes && bash ./bin/dev",
     "customizations": {
         "vscode": {
             "extensions": [

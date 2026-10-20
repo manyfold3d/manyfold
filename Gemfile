@@ -107,7 +107,7 @@ gem "data_migrate", "~> 11.3"
 
 gem "rails-settings-cached", "~> 2.10"
 
-gem "pagy", "~> 43.7"
+gem "pagy", "~> 43.8"
 
 gem "lograge", "~> 0.15"
 
@@ -215,7 +215,7 @@ gem "reverse_markdown", "~> 3.0"
 
 gem "graphlient", "~> 0.9.0"
 
-gem "webmock", "~> 3.30", group: :test
+gem "webmock", "~> 3.34", group: :test
 
 gem "image_processing"
 gem "mini_magick"

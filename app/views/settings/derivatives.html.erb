@@ -12,6 +12,10 @@
         label: t(".image_derivatives.label"),
         checked: SiteSettings.generate_image_derivatives,
         help: t(".image_derivatives.help") %>
+  <%= select_input_row form, "derivatives[model_renders_size]", SiteSettings::PREVIEW_RESOLUTIONS.map { [it.tr(",", "x"), it] },
+        label: t(".model_renders_size.label"),
+        selected: SiteSettings.model_renders_size,
+        help: t(".model_renders_size.help") %>
   <hr>
   <h4><%= t ".downloads.heading" %></h4>
   <p><%= t ".downloads.description" %></p>

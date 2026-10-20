@@ -8,29 +8,46 @@ on:
 
 jobs:
   test:
+    name: SQLite3
     if: github.triggering_actor != 'allcontributors[bot]'
     strategy:
       fail-fast: false
-      matrix:
-        database_url:
-          - postgresql://manyfold:manyfold@localhost:5432/manyfold
-          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
-          - sqlite3:/tmp/test.db
     runs-on: ubuntu-26.04
     env:
       RAILS_ENV: test
-      DATABASE_URL: ${{ matrix.database_url }}
+      DATABASE_URL: sqlite3:/tmp/test.db
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
-      - name: Set up database with prepare command so we catch any migration explosions
-        run: bundle exec rails db:prepare:with_data
-      - name: Run tests
-        run: bundle exec rspec --fail-fast
+      - uses: ./.github/actions/test
       - name: Upload Coverage
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        if: ${{ env.CODACY_PROJECT_TOKEN == '' }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
+    services:
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+  test_postgres:
+    name: PostgreSQL
+    if: github.triggering_actor != 'allcontributors[bot]'
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-26.04
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgresql://manyfold:manyfold@localhost:5432/manyfold
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/test
     services:
       postgres:
         image: postgres
@@ -45,6 +62,30 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+  test_mariadb:
+    name: MariaDB
+    if: github.triggering_actor != 'allcontributors[bot]'
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-26.04
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/test
+    services:
       mariadb:
         image: mariadb
         env:

@@ -60,7 +60,8 @@ RSpec.describe "Settings", :after_first_run do
           {
             derivatives: {
               image_derivatives: "1",
-              model_renders: "1"
+              model_renders: "1",
+              model_renders_size: "512,512"
             }
           }
         }
