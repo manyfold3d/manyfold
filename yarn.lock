@@ -1668,9 +1668,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^6.0.2, @uppy/core@npm:^6.1.0":
-  version: 6.2.0
-  resolution: "@uppy/core@npm:6.2.0"
+"@uppy/core@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@uppy/core@npm:6.3.0"
   dependencies:
     "@transloadit/prettier-bytes": ^2.0.0
     classnames: ^2.5.1
@@ -1681,7 +1681,7 @@ __metadata:
     p-queue: ^9.3.3
     p-retry: ^8.0.0
     preact: ^10.29.2
-  checksum: 1d178c456900b4a53a6937e954fe3b52894af5e43bf2e7fe5feb5cebb99695e9cb0d6598a0baa66e5ad8749862ecbb848fa9d2ad749a7ddc7d760669ed392139
+  checksum: 56dbcd11fddaac78facdacef61bc223cabf25c21f78ca518a9bad1f71da7f3ccd6abea3a1db6442553be51a34ae304445e9791d140659842814393570acb91f8
   languageName: node
   linkType: hard
 
@@ -1715,12 +1715,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/locales@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@uppy/locales@npm:5.3.0"
+"@uppy/locales@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@uppy/locales@npm:5.3.1"
   dependencies:
-    "@uppy/core": ^6.1.0
-  checksum: c7f43024a2bcff371dae54d02087d6999c072b1565686be57cb5f6c923bd57b0622171d4eec63f03e47d35d7a46869378b3149ea11f0175f0f66456a362d0c15
+    "@uppy/core": ^6.3.0
+  checksum: cbbf8070b1630d539e03d1ab3bac1c21562b7520a84c57498ff396c49978ee3d8039c0f831b08578ab34e1f11c18f0270c27c3b196dec54c94d730f38603346e
   languageName: node
   linkType: hard
 
@@ -4111,10 +4111,10 @@ __metadata:
     "@types/three": ^0.186.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
-    "@uppy/core": ^6.0.2
+    "@uppy/core": ^6.3.0
     "@uppy/dashboard": 5.1.0
     "@uppy/form": ^6.0.0
-    "@uppy/locales": ^5.3.0
+    "@uppy/locales": ^5.3.1
     "@uppy/tus": ^6.0.0
     altcha: ^3.3.0
     bootstrap: ^5.3.8
