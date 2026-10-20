@@ -20,10 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
-      - name: Set up database with prepare command so we catch any migration explosions
-        run: bundle exec rails db:prepare:with_data
-      - name: Run tests
-        run: bundle exec rspec --fail-fast
+      - uses: ./.github/actions/test
       - name: Upload Coverage
         if: ${{ env.CODACY_PROJECT_TOKEN == '' }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
@@ -50,10 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
-      - name: Set up database with prepare command so we catch any migration explosions
-        run: bundle exec rails db:prepare:with_data
-      - name: Run tests
-        run: bundle exec rspec --fail-fast
+      - uses: ./.github/actions/test
     services:
       postgres:
         image: postgres
@@ -90,10 +84,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
-      - name: Set up database with prepare command so we catch any migration explosions
-        run: bundle exec rails db:prepare:with_data
-      - name: Run tests
-        run: bundle exec rspec --fail-fast
+      - uses: ./.github/actions/test
     services:
       mariadb:
         image: mariadb
