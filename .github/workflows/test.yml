@@ -20,6 +20,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: ${{ matrix.database_url }}
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
@@ -28,8 +29,7 @@ jobs:
       - name: Run tests
         run: bundle exec rspec --fail-fast
       - name: Upload Coverage
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        if: ${{ env.CODACY_PROJECT_TOKEN == '' }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
     services:
       postgres:
