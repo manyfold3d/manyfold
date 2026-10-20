@@ -1,0 +1,11 @@
+name: Run tests
+description: Runs Manyfold tests
+runs:
+  using: composite
+  steps:
+    - name: Set up database with prepare command so we catch any migration explosions
+      run: bundle exec rails db:prepare:with_data
+      shell: bash
+    - name: Run tests
+      run: bundle exec rspec --fail-fast
+      shell: bash
