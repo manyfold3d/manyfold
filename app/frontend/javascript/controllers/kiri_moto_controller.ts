@@ -15,6 +15,11 @@ export default class extends Controller {
     this.load(this.urlValue)
   }
 
+  onMessage (event) {
+    switch (event.data.event) {
+    }
+  }
+
   private
 
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html

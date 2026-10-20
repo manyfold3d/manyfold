@@ -11,6 +11,15 @@ class Components::Slicers::KiriMoto < Components::Base
   end
 
   def view_template
-    iframe id: "kiri-moto", class: "slicer", src: "https://grid.space/kiri", data: {controller: "kiri-moto", kiri_moto_url_value: @url}
+    iframe(
+      id: "kiri-moto",
+      class: "slicer",
+      src: "https://grid.space/kiri",
+      data: {
+        controller: "kiri-moto",
+        kiri_moto_url_value: @url,
+        action: "message@window->kiri-moto#onMessage"
+      }
+    )
   end
 end
