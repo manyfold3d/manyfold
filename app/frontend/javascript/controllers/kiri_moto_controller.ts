@@ -9,7 +9,6 @@ export default class extends Controller {
   declare urlValue: string
 
   contentWindow: Window | null = null
-  targetOrigin = 'https://grid.space'
 
   connect () {
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
@@ -27,7 +26,7 @@ export default class extends Controller {
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html
 
   send (message) {
-    this.contentWindow?.postMessage(message, this.targetOrigin)
+    this.contentWindow?.postMessage(message, this.element.src)
   }
 
   load (message) { this.send({ load: message }) }
