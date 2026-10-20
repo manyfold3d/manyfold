@@ -12,16 +12,26 @@ export default class extends Controller {
 
   connect () {
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
+    this.progress(0.01, 'preparing')
     this.clear()
+    this.progress(0.02, 'loading')
     this.load(this.urlValue)
   }
 
   onMessage (event) {
     switch (event.data.event) {
+      case 'loaded':
+        this.onLoaded()
+        break
     }
   }
 
   private
+
+  onLoaded () {
+    // Close progress box
+    this.progress(0, '')
+  }
 
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html
 
@@ -55,7 +65,7 @@ export default class extends Controller {
 
   // export (cb) { this.send({ function: "export", callback: (cb ? true : false) }) }
 
-  // progress (progressValue, message) { this.send({ progress: progressValue, message }) }
+  progress (value, message) { this.send({ progress: value, message }) }
 
   // alert (alertValue, time) { this.send({ alert: alertValue, time }) }
 
