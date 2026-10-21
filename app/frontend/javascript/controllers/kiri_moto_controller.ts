@@ -22,6 +22,9 @@ export default class extends Controller {
   }
 
   onMessage (event) {
+    if (event.origin !== this.targetOrigin) {
+      return
+    }
     switch (event.data.event) {
       case 'loaded':
         this.onLoaded()
