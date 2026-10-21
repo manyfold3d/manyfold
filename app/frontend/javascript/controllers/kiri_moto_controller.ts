@@ -54,6 +54,9 @@ export default class extends Controller {
       case 'export.done':
         this.onExportDone(event.data.data)
         break
+      default:
+        console.log('Unhandled message:')
+        console.log(event)
     }
   }
 
