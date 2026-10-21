@@ -7,10 +7,13 @@ export default class extends Controller {
   }
 
   declare urlValue: string
+  declare targetOrigin: string
 
   contentWindow: Window | null = null
 
   connect () {
+    const parsed = new URL(this.element.src)
+    this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
     this.progress(0.01, 'preparing')
     this.clear()
@@ -58,7 +61,7 @@ export default class extends Controller {
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html
 
   send (message) {
-    this.contentWindow?.postMessage(message, this.element.src)
+    this.contentWindow?.postMessage(message, this.targetOrigin)
   }
 
   load (message) { this.send({ load: message }) }
