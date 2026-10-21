@@ -100,9 +100,6 @@ GEM
       activemodel (= 8.1.4)
       activesupport (= 8.1.4)
       timeout (>= 0.4.0)
-    activerecord-enhancedsqlite3-adapter (0.9.0)
-      activerecord (>= 7.1)
-      sqlite3 (>= 1.6)
     activerecord-nulldb-adapter (1.2.2)
       activerecord (>= 6.1, < 8.2)
     activestorage (8.1.4)
@@ -992,7 +989,6 @@ PLATFORMS
 DEPENDENCIES
   activejob-status (~> 1.0)
   activejob-unique (~> 0.5)
-  activerecord-enhancedsqlite3-adapter (~> 0.9)
   activerecord-nulldb-adapter (~> 1.2)
   acts-as-taggable-on (~> 13.0)
   acts_as_favoritor (~> 6.0)
@@ -1100,6 +1096,7 @@ DEPENDENCIES
   simplecov-cobertura
   spdx (~> 4.1)
   spring
+  sqlite3 (~> 2.9)
   sqlite3_ar_regexp (~> 3.0)
   standard (~> 1.57)
   stimulus-rails (~> 1.3.4)
@@ -1137,7 +1134,6 @@ CHECKSUMS
   activejob-unique (0.5.1) sha256=758271a050f0c9423fbc61c9b1fd4fedb71734b8ce254c9371c42219c15313e5
   activemodel (8.1.4) sha256=9a0906c127bd118aa5f06157db12b8f750da83dccee72db2f658547a0ae7a0e8
   activerecord (8.1.4) sha256=3b4957ea7f246c9231bd7faa909312eac03a9101aaf87977b6c52733ff00b04f
-  activerecord-enhancedsqlite3-adapter (0.9.0) sha256=68d3fbcfcda21cd2324172a7094f08c7cda8bfbd95f7e6344f0647dfaedae52f
   activerecord-nulldb-adapter (1.2.2) sha256=01e0b2e49af11ad56a92e274a3d8c9fb3c50a12a5460218c4c4b45355d9ef968
   activestorage (8.1.4) sha256=f4956f3ec9ee63e5e0b332b57c877cb627f82b56f4cc902279310d2aa285c7a8
   activesupport (8.1.4) sha256=891dd3fe43c4fc8391934b237b1189bb1f661c932a84a840043db9d46a4e80df

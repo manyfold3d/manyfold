@@ -31,7 +31,7 @@ gem "bootsnap", "~> 1.26", require: false
 # All are installed by default, but you can exclude ones you don't want with bundler.
 # e.g. `bundle install --without="postgres mysql"` or `bundle config set without "postgres mysql"`
 group :sqlite3 do
-  gem "activerecord-enhancedsqlite3-adapter", "~> 0.9"
+  gem "sqlite3", "~> 2.9"
   gem "sqlite3_ar_regexp", "~> 3.0"
 end
 group :mysql do
