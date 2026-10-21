@@ -3,11 +3,13 @@ import { Controller } from '@hotwired/stimulus'
 // Connects to data-controller="kiri-moto"
 export default class extends Controller {
   static values = {
-    url: String
+    url: String,
+    origin: String
   }
 
   declare urlValue: string
   declare targetOrigin: string
+  declare originValue: string
 
   contentWindow: Window | null = null
 
@@ -16,7 +18,8 @@ export default class extends Controller {
     this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
     console.log('Connecting to Kiri:Moto...')
-    this.send({ connect: 'https://floppy.ngrok.pizza' })
+    const origin = new URL(this.originValue)
+    this.send({ connect: `${origin.protocol}//${origin.hostname}` })
   }
 
   load () {

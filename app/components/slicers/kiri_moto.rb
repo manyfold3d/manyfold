@@ -17,6 +17,7 @@ class Components::Slicers::KiriMoto < Components::Base
       src: "https://grid.space/kiri",
       data: {
         controller: "kiri-moto",
+        kiri_moto_origin_value: root_url,
         kiri_moto_url_value: @url,
         action: "message@window->kiri-moto#onMessage"
       }
