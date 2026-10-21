@@ -19,11 +19,17 @@ export default class extends Controller {
     this.send({ connect: 'https://floppy.ngrok.pizza' })
   }
 
-  load() {
-    this.progress(0.01, 'preparing')
-    this.send({ clear: true })
-    this.progress(0.02, 'loading')
-    this.send({ load: this.urlValue })
+  load () {
+    this.send({
+      clear: 'true',
+      progress: 0.01,
+      message: 'initializing',
+    })
+    this.send({
+      load: this.urlValue,
+      progress: 0.02,
+      message: 'loading'
+    })
   }
 
   slice () {
