@@ -15,7 +15,8 @@ export default class extends Controller {
     const parsed = new URL(this.element.src)
     this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
-    this.load()
+    console.log('Connecting to Kiri:Moto...')
+    this.send({ connect: 'https://floppy.ngrok.pizza' })
   }
 
   load() {
@@ -38,6 +39,9 @@ export default class extends Controller {
       return
     }
     switch (event.data.event) {
+      case 'connected':
+        this.onConnected(event.data.data)
+        break
       case 'loaded':
         this.onLoaded()
         break
@@ -54,6 +58,11 @@ export default class extends Controller {
   }
 
   private
+
+  onConnected (data) {
+    console.log(`Kiri:Moto connected ${data}`)
+    this.load()
+  }
 
   onLoaded () {
     // Close progress box
