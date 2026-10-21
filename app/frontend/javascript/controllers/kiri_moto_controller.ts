@@ -23,6 +23,15 @@ export default class extends Controller {
       case 'loaded':
         this.onLoaded()
         break
+      case 'slice.done':
+        this.onSliceDone()
+        break
+      case 'prepare.done':
+        this.onPrepareDone()
+        break
+      case 'export.done':
+        this.onExportDone(event.data.data)
+        break
     }
   }
 
@@ -31,6 +40,19 @@ export default class extends Controller {
   onLoaded () {
     // Close progress box
     this.progress(0, '')
+    this.send({ function: 'slice', callback: true })
+  }
+
+  onSliceDone () {
+    this.send({ function: 'prepare', callback: true })
+  }
+
+  onPrepareDone () {
+    this.send({ function: 'export', callback: true })
+  }
+
+  onExportDone (data) {
+    console.log(data)
   }
 
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html
@@ -58,12 +80,6 @@ export default class extends Controller {
   // setFeatures (features) { this.send({ features }) }
 
   // setController (controller) { this.send({ controller }) }
-
-  // slice () { this.send({ function: "slice", callback: true }) }
-
-  // prepare () { this.send({ function: "prepare", callback: true }) }
-
-  // export (cb) { this.send({ function: "export", callback: (cb ? true : false) }) }
 
   progress (value, message) { this.send({ progress: value, message }) }
 
