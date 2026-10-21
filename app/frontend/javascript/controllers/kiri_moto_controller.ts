@@ -17,9 +17,7 @@ export default class extends Controller {
     const parsed = new URL(this.element.src)
     this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
-    console.log('Connecting to Kiri:Moto...')
-    const origin = new URL(this.originValue)
-    this.send({ connect: `${origin.protocol}//${origin.hostname}` })
+    console.log('Waiting for frame load...')
   }
 
   load () {
@@ -41,6 +39,12 @@ export default class extends Controller {
 
   export () {
     this.send({ function: 'export', callback: true })
+  }
+
+  onFrameLoaded (event) {
+    console.log('Connecting to Kiri:Moto...')
+    const origin = new URL(this.originValue)
+    this.send({ connect: `${origin.protocol}//${origin.hostname}` })
   }
 
   onMessage (event) {
