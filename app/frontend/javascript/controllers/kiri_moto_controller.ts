@@ -15,10 +15,22 @@ export default class extends Controller {
     const parsed = new URL(this.element.src)
     this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
     this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
+    this.load()
+  }
+
+  load() {
     this.progress(0.01, 'preparing')
-    this.clear()
+    this.send({ clear: true })
     this.progress(0.02, 'loading')
-    this.load(this.urlValue)
+    this.send({ load: this.urlValue })
+  }
+
+  slice () {
+    this.send({ function: 'slice', callback: true })
+  }
+
+  export () {
+    this.send({ function: 'export', callback: true })
   }
 
   onMessage (event) {
@@ -46,15 +58,11 @@ export default class extends Controller {
   onLoaded () {
     // Close progress box
     this.progress(0, '')
-    this.send({ function: 'slice', callback: true })
+    this.slice()
   }
 
   onSliceDone () {
-    this.send({ function: 'prepare', callback: true })
-  }
-
-  onPrepareDone () {
-    this.send({ function: 'export', callback: true })
+    this.export()
   }
 
   onExportDone (data) {
@@ -66,10 +74,6 @@ export default class extends Controller {
   send (message) {
     this.contentWindow?.postMessage(message, this.targetOrigin)
   }
-
-  load (message) { this.send({ load: message }) }
-
-  clear () { this.send({ clear: true }) }
 
   // parse (data, type) { this.send({ parse: data, type }) }
 
