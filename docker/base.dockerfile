@@ -11,6 +11,7 @@ RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'development test'
 
 RUN apk add --no-cache \
+  ca-certificates>=20261020-r0 \
   file=5.47-r2 \
   s6-overlay=3.2.3.0-r0 \
   gcompat=1.1.0-r4 \
