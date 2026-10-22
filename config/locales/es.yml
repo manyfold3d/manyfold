@@ -797,7 +797,7 @@ es:
       browser: Vista de archivos
       client: Abrir en...
       convert: Conversión de archivos
-      edit:
+      edit: Editar contenido
       preview_frame: Mostrar como vista previa
       thumbnail: Imágenes en miniatura
     handlers:
@@ -809,9 +809,9 @@ es:
       iframe_tag: HTML con marcos
       image_tag: Etiqueta HTML
       imagemagick: ImageMagick
-      kramdown:
-      plaintext:
-      plaintext_form:
+      kramdown: Markdown
+      plaintext: Texto sin formato
+      plaintext_form: Formulario sencillo
       rouge: Código fuente
       three: THREE.js
       video_tag: Reproductor de vídeo
