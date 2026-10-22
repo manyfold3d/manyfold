@@ -38,10 +38,6 @@ export default class extends Controller {
     })
   }
 
-  slice () {
-    this.send({ function: 'slice', callback: true })
-  }
-
   export () {
     this.send({ function: 'export', callback: true })
   }
@@ -63,12 +59,7 @@ export default class extends Controller {
       case 'loaded':
         this.onLoaded()
         break
-      case 'slice.done':
-        this.onSliceDone()
-        break
-      case 'prepare.done':
-        this.onPrepareDone()
-        break
+      case 'function.export':
       case 'export.done':
         this.onExportDone(event.data.data)
         break
@@ -88,11 +79,6 @@ export default class extends Controller {
   onLoaded () {
     // Close progress box
     this.progress(0, '')
-    this.slice()
-  }
-
-  onSliceDone () {
-    this.export()
   }
 
   onExportDone (data) {

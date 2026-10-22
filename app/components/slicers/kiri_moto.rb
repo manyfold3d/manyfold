@@ -28,6 +28,12 @@ class Components::Slicers::KiriMoto < Components::Base
           kiri_moto_target: "iframe"
         }
       )
+      button(
+        class: "btn btn-primary",
+        data: {
+          action: "click->kiri-moto#export:prevent"
+        }
+      ) { "Save sliced file" }
     end
   end
 end
