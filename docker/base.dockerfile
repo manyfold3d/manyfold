@@ -25,6 +25,8 @@ RUN apk add --no-cache \
   vtk=9.5.2-r2 \
   opencascade=7.9.3-r2
 
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing draco=1.5.7-r2
+
 # Scripts for cross-platform architecture detection
 COPY --from=tonistiigi/xx / /
 
