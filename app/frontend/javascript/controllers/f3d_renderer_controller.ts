@@ -33,8 +33,6 @@ export default class extends Controller {
     }
     await f3d(settings).then(async (F3D) => {
       F3D.Engine.autoloadPlugins()
-      // Uncomment this to get an updated list of formats in dev
-      // console.log(`F3D supported types: ${F3D.Engine.getReadersInfo().map((reader) => (`${reader["extensions"][0]}: ${reader["mimeTypes"][0]}`)).flat()}`);
       this.engine = F3D.Engine.create(`#${this.element.id}`)
       const options = this.engine.getOptions()
 
