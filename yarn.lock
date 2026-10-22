@@ -2914,10 +2914,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"f3d@npm:3.5.0-nightly.20261003":
-  version: 3.5.0-nightly.20261003
-  resolution: "f3d@npm:3.5.0-nightly.20261003"
-  checksum: d3f3419feb1585953e33d9c8b423cdc3fe25f4cd5b1acc3cfa39ede28f411bbd5aa928f2f481bca067a1f58eb0b48c0eaad26ed955244a4003970763209f1e6b
+"f3d@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "f3d@npm:4.0.0"
+  checksum: 0074d6344791740f3418f52db437faab598e9f9ddb66fac5450135d66bfff034c601f1e786c9d905bcdd434bbde222446bfa8c6ba8c934c6f589904fd43d8dee
   languageName: node
   linkType: hard
 
@@ -4123,7 +4123,7 @@ __metadata:
     comlink: ^4.4.2
     driver.js: ^1.10.2
     eslint: ^9.0.0
-    f3d: 3.5.0-nightly.20261003
+    f3d: ^4.0.0
     husky: ^9.1.7
     i18n-js: ^4.5.4
     masonry-layout: ^4.2.2
