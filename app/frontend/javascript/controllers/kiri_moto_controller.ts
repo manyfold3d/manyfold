@@ -7,16 +7,21 @@ export default class extends Controller {
     origin: String
   }
 
+  static targets = [
+    'iframe'
+  ]
+
   declare urlValue: string
   declare targetOrigin: string
   declare originValue: string
+  declare iframeTarget: HTMLIFrameElement
 
   contentWindow: Window | null = null
 
   connect () {
-    const parsed = new URL(this.element.src)
+    const parsed = new URL(this.iframeTarget.src)
     this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
-    this.contentWindow = (this.element as HTMLIFrameElement).contentWindow
+    this.contentWindow = this.iframeTarget.contentWindow
     console.log('Waiting for frame load...')
   }
 
