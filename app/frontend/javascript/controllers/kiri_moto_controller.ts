@@ -32,6 +32,7 @@ export default class extends Controller {
       message: 'initializing',
     })
     this.send({
+      event: 'function.export',
       load: this.urlValue,
       progress: 0.02,
       message: 'loading'
