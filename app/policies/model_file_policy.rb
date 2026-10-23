@@ -30,7 +30,7 @@ class ModelFilePolicy < ApplicationPolicy
   end
 
   def slice?
-    convert?
+    can_update_model?
   end
 
   def update?
