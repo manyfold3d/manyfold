@@ -29,6 +29,10 @@ class ModelFilePolicy < ApplicationPolicy
     can_update_model? && @record.convertable? && !@record.problems.exists?(category: :non_manifold)
   end
 
+  def slice?
+    convert?
+  end
+
   def update?
     can_update_model?
   end

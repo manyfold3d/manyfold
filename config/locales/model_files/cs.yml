@@ -57,6 +57,8 @@ cs:
       notes_heading: Poznámky
       print_card:
         heading:
+    slice:
+      title:
     update:
       failure: Došlo k chybě a údaje o souboru nelze uložit.
       success: Detaily souboru uloženy.

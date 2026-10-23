@@ -57,6 +57,8 @@ ru:
       notes_heading:
       print_card:
         heading:
+    slice:
+      title:
     update:
       failure:
       success:

@@ -57,6 +57,8 @@ zh-CN:
       notes_heading: 说明
       print_card:
         heading:
+    slice:
+      title:
     update:
       failure: 发生错误，无法保存文件详细信息。
       success: 保存成功。
