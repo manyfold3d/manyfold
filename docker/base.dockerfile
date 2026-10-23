@@ -25,10 +25,7 @@ RUN apk add --no-cache \
   vtk=9.5.2-r2 \
   opencascade=7.9.3-r2
 
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing draco=1.5.7-r2 f3d=4.0.0-r0
+
 # Scripts for cross-platform architecture detection
 COPY --from=tonistiigi/xx / /
-
-# Install custom f3d package
-RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.5.0-r0-1/f3d-3.5.0-r0.`xx-info alpine-arch`.apk" -O /tmp/f3d.apk
-RUN apk add --no-cache --allow-untrusted /tmp/f3d.apk
-RUN rm /tmp/f3d.apk
