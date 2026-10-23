@@ -8,6 +8,8 @@ Manyfold is an open source, self-hosted web application for managing a collectio
 
 Visit [manyfold.app](https://manyfold.app/) for more details, installation instructions, and user and administration guides! Or, to have a go straight away, try our demo at [try.manyfold.app](https://try.manyfold.app).
 
+[![Deploy to Railyard](https://app.railyard.run/deploy/badge)](https://app.railyard.run/deploy?repo=https://github.com/manyfold3d/manyfold)
+
 ## Help and Support
 
 There are a few routes to get help:
