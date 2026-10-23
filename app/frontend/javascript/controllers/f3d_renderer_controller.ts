@@ -42,7 +42,7 @@ export default class extends Controller {
       options.setAsString('render.effect.ambient_occlusion', 'true')
       options.setAsString('render.effect.antialiasing.mode', 'fxaa')
       options.setAsString('render.effect.blending.mode', 'ddp')
-      options.setAsString('render.background.color', backgroundColor)
+      options.setAsString('render.background.color', '#000000')
       options.setAsString('render.grid.enable', (this.element as HTMLCanvasElement).dataset?.showGrid || true)
       options.setAsString('render.grid.color', '#00ffff')
       options.setAsString('render.grid.subdivisions', '0')
