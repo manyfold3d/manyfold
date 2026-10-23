@@ -1136,6 +1136,7 @@ es:
     voxl: Dragonfruit
     vrml: VRML
     vtk: VTK Legacy
+    vtkhdf:
     vtp: VTK XML
     webm: WebM
     webp: WebP
