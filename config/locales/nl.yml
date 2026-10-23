@@ -551,6 +551,8 @@ nl:
       previous: Vorige
       select_slide: Kies weer te geven afbeelding
       slide_label: "%{name} (%{index} van %{count})"
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:
@@ -805,6 +807,7 @@ nl:
       iframe_tag:
       image_tag:
       imagemagick:
+      kiri_moto:
       kramdown:
       plaintext:
       plaintext_form:

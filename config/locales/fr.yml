@@ -553,6 +553,8 @@ fr:
       previous: Précédent
       select_slide: Choisir l'image à afficher
       slide_label: "%{name} (%{index} sur %{count})"
+    kiri_moto:
+      save:
     like_button:
       like: Aimer
       unlike: Ne plus aimer
@@ -807,6 +809,7 @@ fr:
       iframe_tag:
       image_tag:
       imagemagick:
+      kiri_moto:
       kramdown:
       plaintext:
       plaintext_form:

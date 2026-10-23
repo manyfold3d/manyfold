@@ -57,6 +57,8 @@ fr:
       notes_heading: Notes
       print_card:
         heading:
+    slice:
+      title:
     update:
       failure: Une erreur s'est produite et les détails du fichier n'ont pas pu être sauvegardés.
       success: Détails du fichier sauvegardé.
