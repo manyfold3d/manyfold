@@ -88,6 +88,7 @@
     <div class="float-end">
       <%= BurgerMenu do %>
         <%= DropdownItem icon: "file-zip-fill", label: t(".extract"), path: extract_model_model_file_path(@model, @file), method: :post if policy(@file).extract? %>
+        <%= DropdownItem icon: "layers", label: t("model_files.slice.title"), path: slice_model_model_file_path(@model, @file) if policy(@file).slice? && FileHandlers.handlers_for(environment: :slice, mime_type: @file.mime_type).any? %>
         <%= DropdownItem icon: "file-text-fill", label: t("model_files.edit_content.title"), path: edit_content_model_model_file_path(@model, @file) if policy(@file).edit_content? && FileHandlers.handlers_for(environment: :edit, mime_type: @file.mime_type).any? %>
         <%= DropdownDivider() %>
         <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>

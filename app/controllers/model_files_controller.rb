@@ -114,6 +114,11 @@ class ModelFilesController < ApplicationController
     raise ActionController::BadRequest unless @editor
   end
 
+  def slice
+    @slicer = FileHandlers.handlers_for(environment: :slice, mime_type: @file.mime_type).first
+    raise ActionController::BadRequest unless @slicer
+  end
+
   def extract
     ExtractArchiveJob.perform_later(@file.id)
     respond_to do |format|
