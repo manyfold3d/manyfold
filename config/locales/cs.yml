@@ -551,6 +551,8 @@ cs:
       previous: Předchozí
       select_slide: Vyberte obrázek ke zobrazení
       slide_label: "%{name} (%{index} z %{count})"
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:

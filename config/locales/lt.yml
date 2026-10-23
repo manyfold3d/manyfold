@@ -551,6 +551,8 @@ lt:
       previous:
       select_slide:
       slide_label:
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:
