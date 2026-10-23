@@ -12,7 +12,7 @@ class Thumbnailers::F3d
     "no-config" => "1",
     "output" => "-",
     "tone-mapping" => "1",
-    "translucency-support" => "1"
+    "blending" => "1"
   }.freeze
 
   CAMERA_OPTS = {
