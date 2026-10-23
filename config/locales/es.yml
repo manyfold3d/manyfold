@@ -809,6 +809,7 @@ es:
       iframe_tag: HTML con marcos
       image_tag: Etiqueta HTML
       imagemagick: ImageMagick
+      kiri_moto:
       kramdown: Markdown
       plaintext: Texto sin formato
       plaintext_form: Formulario sencillo
