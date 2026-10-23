@@ -72,6 +72,7 @@ MediaType.register "application/dicom", :dcm, category: :model # i18n-tasks-use 
 MediaType.register "application/gml+xml", :gml, category: :model # i18n-tasks-use t("media_types.gml")
 MediaType.register "application/vnd.pts", :pts, category: :model # i18n-tasks-use t("media_types.pts")
 MediaType.register "application/vnd.vtk", :vtk, category: :model # i18n-tasks-use t("media_types.vtk")
+MediaType.register "application/vnd.vtkhdf", :vtkhdf, additional_extensions: ["hdf"], category: :model # i18n-tasks-use t("media_types.vtkhdf")
 MediaType.register "application/vnd.vtp", :vtp, additional_types: ["application/vnd.vtu", "application/vnd.vti", "application/vnd.vtr", "application/vnd.vts", "application/vnd.vtm"], additional_extensions: ["vtu", "vti", "vtr", "vts", "vtm"], category: :model # i18n-tasks-use t("media_types.vtp")
 MediaType.register "application/vnd.off", :off, category: :model # i18n-tasks-use t("media_types.off")
 MediaType.register "application/vnd.x", :x, category: :model # i18n-tasks-use t("media_types.x")
