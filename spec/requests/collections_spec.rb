@@ -11,6 +11,7 @@ require "rails_helper"
 
 RSpec.describe "Collections", :after_first_run do
   it_behaves_like "Permittable", Collection
+  it_behaves_like "CSRF protected", Collection
 
   context "when signed out in multiuser mode", :multiuser do
     context "with public collection" do
