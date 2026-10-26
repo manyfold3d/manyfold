@@ -1,9 +1,13 @@
 import { Controller } from '@hotwired/stimulus'
+import * as tus from 'tus-js-client'
 
 // Connects to data-controller="kiri-moto"
 export default class extends Controller {
   static values = {
     url: String,
+    uploadUrl: String,
+    modelUrl: String,
+    outputFilename: String,
     origin: String
   }
 
@@ -12,10 +16,14 @@ export default class extends Controller {
   ]
 
   declare urlValue: string
+  declare uploadUrlValue: string
+  declare modelUrlValue: string
+  declare outputFilenameValue: string
   declare targetOrigin: string
   declare originValue: string
   declare iframeTarget: HTMLIFrameElement
   declare connected: boolean
+  declare uploader
 
   contentWindow: Window | null = null
 
@@ -90,7 +98,43 @@ export default class extends Controller {
   }
 
   onExportDone (data) {
-    console.log(data)
+    // Upload file to tus endpoint
+    const blob = new Blob([data.file])
+    const filename = `${this.outputFilenameValue}.${data.format}`
+
+    this.uploader = new tus.Upload(blob, {
+      endpoint: this.uploadUrlValue,
+      retryDelays: [0, 3000, 5000, 10000, 20000],
+      metadata: {
+        filename
+      },
+      onError: this.onUploadError.bind(this),
+      onProgress: this.onUploadProgress.bind(this),
+      onSuccess: this.onUploadComplete.bind(this),
+    })
+
+    // Check if there are any previous uploads to continue.
+    this.uploader.findPreviousUploads().then(function (previousUploads) {
+      // Found previous uploads so we select the first one.
+      if (previousUploads.length) {
+        this.uploader.resumeFromPreviousUpload(previousUploads[0])
+      }
+      // Start the upload
+      this.uploader.start()
+    }.bind(this))
+  }
+
+  onUploadError (error) {
+    console.log('Failed because: ' + error)
+  }
+
+  onUploadProgress (bytesUploaded, bytesTotal) {
+    const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2)
+    console.log(bytesUploaded, bytesTotal, percentage + '%')
+  }
+
+  onUploadComplete () {
+    console.log(this.uploader)
   }
 
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html

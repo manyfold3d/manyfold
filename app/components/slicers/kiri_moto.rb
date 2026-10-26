@@ -16,6 +16,9 @@ class Components::Slicers::KiriMoto < Components::Base
         controller: "kiri-moto",
         kiri_moto_origin_value: root_url,
         kiri_moto_url_value: @url,
+        kiri_moto_upload_url_value: upload_url,
+        kiri_moto_model_url_value: url_for(@file.model),
+        kiri_moto_output_filename_value: @file.basename,
         action: "message@window->kiri-moto#onMessage"
       }
     ) do
