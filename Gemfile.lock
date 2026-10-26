@@ -582,7 +582,7 @@ GEM
     pg (1.7.0-x86_64-linux-musl)
     pg_query (6.2.5)
       google-protobuf (>= 4.34.0)
-    pghero (4.0.1)
+    pghero (4.1.0)
       activerecord (>= 7.2)
     phlex (2.4.1)
       refract (~> 1.0)
@@ -1056,7 +1056,7 @@ DEPENDENCIES
   pagy (~> 43.8)
   pg (~> 1.7)
   pg_query (~> 6.2)
-  pghero (~> 4.0)
+  pghero (~> 4.1)
   phlex-rails (~> 2.4)
   public_suffix (~> 7.0)
   puma (~> 8.0)
@@ -1336,7 +1336,7 @@ CHECKSUMS
   pg (1.7.0-x86_64-linux) sha256=d0a24f448b3c874c8b2658d4efbbbefce7315c228ede84f6f6f42089d1d704b6
   pg (1.7.0-x86_64-linux-musl) sha256=0c9bc93b6e0aca2a5b07daef00b7ec4f9882bfe21ef3872b4371f8ecffe1f1e1
   pg_query (6.2.5) sha256=2117d4228c3c1359afca62fddba6ce5d8c56bf5e0eff148e2f2bf5292bcd676d
-  pghero (4.0.1) sha256=5fa794616065f030a9efc64b30ce34ee99f9cd7077e4d312322b7df3a9b7fa17
+  pghero (4.1.0) sha256=e8000515afa825171c27648a1deae267864e054348efe2720d9186c2d2dac3de
   phlex (2.4.1) sha256=e596717fbfe38b5271840266758779ebe75092e02629f0c170287e6290a70b12
   phlex-rails (2.4.0) sha256=2bcddbd488681acb25753bab1887d3ac150e644244ff8ba307f2171a4d0195f5
   polyglot (0.3.5) sha256=59d66ef5e3c166431c39cb8b7c1d02af419051352f27912f6a43981b3def16af
