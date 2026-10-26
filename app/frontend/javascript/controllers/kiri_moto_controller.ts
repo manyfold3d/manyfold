@@ -94,7 +94,7 @@ export default class extends Controller {
 
   onLoaded () {
     // Close progress box
-    this.progress(0, '')
+    this.send({ progress: 0 })
   }
 
   onExportDone (data) {
@@ -125,7 +125,7 @@ export default class extends Controller {
   }
 
   onUploadError (error) {
-    console.log('Failed because: ' + error)
+    console.log('Upload failed: ' + error)
   }
 
   onUploadProgress (bytesUploaded, bytesTotal) {
@@ -147,31 +147,7 @@ export default class extends Controller {
     })
   }
 
-  // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html
-
   send (message) {
     this.contentWindow?.postMessage(message, this.targetOrigin)
   }
-
-  // parse (data, type) { this.send({ parse: data, type }) }
-
-  // get (scope) { this.send({ get: scope }) }
-
-  // set (scope, data) { this.send({ set: scope, data }) }
-
-  setMode (mode) { this.send({ mode }) }
-
-  // setDevice (device) { this.send({ device }) }
-
-  // setProcess (process) { this.send({ process }) }
-
-  // setFeatures (features) { this.send({ features }) }
-
-  // setController (controller) { this.send({ controller }) }
-
-  progress (value, message) { this.send({ progress: value, message }) }
-
-  // alert (alertValue, time) { this.send({ alert: alertValue, time }) }
-
-  // emit (emitValue, message) { this.send({ emit: emitValue, message }) }
 }
