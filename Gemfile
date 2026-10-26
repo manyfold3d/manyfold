@@ -189,7 +189,7 @@ gem "to_regexp", "~> 0.2"
 
 gem "activejob-unique", "~> 0.5"
 
-gem "job-iteration", "~> 1.15"
+gem "job-iteration", "~> 1.16"
 gem "rswag", "~> 2.17"
 gem "warning", "~> 1.6"
 
