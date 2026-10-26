@@ -50,7 +50,7 @@
     "postcss-import": "^17.0.1",
     "postcss-preset-env": "^11.6.1",
     "rollup": "^4.65.0",
-    "sass-embedded": "^1.105.2",
+    "sass-embedded": "^1.106.1",
     "typescript": "~5.9.3",
     "vite": "^8.3.5",
     "vite-plugin-rails": "^0.6.0",
