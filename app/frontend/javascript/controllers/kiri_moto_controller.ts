@@ -55,7 +55,6 @@ export default class extends Controller {
       case 'loaded':
         this.onLoaded()
         break
-      case 'function.export':
       case 'export.done':
         this.onExportDone(event.data.data)
         break
@@ -81,8 +80,6 @@ export default class extends Controller {
   onConnected (data) {
     this.connected = true
     console.log(`Kiri:Moto connected ${data}`)
-    // Set up event subscriptions
-    this.send({ event: 'function.export' })
     // Start loading file
     this.load()
   }
