@@ -134,7 +134,17 @@ export default class extends Controller {
   }
 
   onUploadComplete () {
-    console.log(this.uploader)
+    const formData = new URLSearchParams()
+    formData.append('model[file][0][id]', this.uploader.url)
+    formData.append('model[file][0][name]', this.uploader.options.metadata.filename)
+
+    fetch(this.modelUrlValue + '/model_files', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString()
+    })
   }
 
   // Kiri:Moto frame connection code adapted to Typescript from https://grid.space/kiri/frame.html
