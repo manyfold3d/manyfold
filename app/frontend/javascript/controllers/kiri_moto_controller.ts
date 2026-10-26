@@ -32,7 +32,6 @@ export default class extends Controller {
       message: 'initializing',
     })
     this.send({
-      event: 'function.export',
       load: this.urlValue,
       progress: 0.02,
       message: 'loading'
@@ -74,6 +73,9 @@ export default class extends Controller {
 
   onConnected (data) {
     console.log(`Kiri:Moto connected ${data}`)
+    // Set up event subscriptions
+    this.send({ event: 'function.export' })
+    // Start loading file
     this.load()
   }
 
