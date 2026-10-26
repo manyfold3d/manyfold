@@ -15,6 +15,7 @@ export default class extends Controller {
   declare targetOrigin: string
   declare originValue: string
   declare iframeTarget: HTMLIFrameElement
+  declare connected: boolean
 
   contentWindow: Window | null = null
 
@@ -22,7 +23,8 @@ export default class extends Controller {
     const parsed = new URL(this.iframeTarget.src)
     this.targetOrigin = `${parsed.protocol}//${parsed.hostname}`
     this.contentWindow = this.iframeTarget.contentWindow
-    console.log('Waiting for frame load...')
+    this.connected = false
+    this.connectToKiriMoto()
   }
 
   load () {
@@ -40,12 +42,6 @@ export default class extends Controller {
 
   export () {
     this.send({ function: 'export', callback: true })
-  }
-
-  onFrameLoaded (event) {
-    console.log('Connecting to Kiri:Moto...')
-    const origin = new URL(this.originValue)
-    this.send({ connect: `${origin.protocol}//${origin.hostname}` })
   }
 
   onMessage (event) {
@@ -71,7 +67,19 @@ export default class extends Controller {
 
   private
 
+  connectToKiriMoto () {
+    if (!this.connected) {
+      console.log('Connecting to Kiri:Moto...')
+      const origin = new URL(this.originValue)
+      this.send({
+        connect: `${origin.protocol}//${origin.hostname}`
+      })
+      window.setTimeout(this.connectToKiriMoto.bind(this), 1000)
+    }
+  }
+
   onConnected (data) {
+    this.connected = true
     console.log(`Kiri:Moto connected ${data}`)
     // Set up event subscriptions
     this.send({ event: 'function.export' })
