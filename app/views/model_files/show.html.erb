@@ -12,7 +12,7 @@
 
 <div class="row row-cols-2">
 
-  <div class="col-9">
+  <div class="col-12 col-md-9">
     <% if @related&.any? %>
       <ul class="nav nav-tabs">
         <%- @related.each do |file| %>
@@ -37,7 +37,7 @@
     <% end %>
   </div>
 
-  <div class="col-3">
+  <div class="col-12 col-md-3">
     <%= card :secondary, t(".details_heading") do %>
       <% if @file.caption %>
         <p class='lead'><%= @file.caption %></p>
