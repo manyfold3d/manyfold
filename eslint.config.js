@@ -6,7 +6,8 @@ export default [
     ignores: [
       'public/vite*/*',
       'coverage/*',
-      'vendor/bundle/*'
+      'vendor/bundle/*',
+      'vendor/kiri_moto/*'
     ]
   }),
   {
