@@ -25,7 +25,7 @@ class Components::Slicers::KiriMoto < Components::Base
       iframe(
         id: "kiri-moto-frame",
         class: "slicer",
-        src: "https://grid.space/kiri",
+        src: "/applications/kiri",
         data: {
           kiri_moto_target: "iframe"
         }
