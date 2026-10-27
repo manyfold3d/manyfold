@@ -1,0 +1,172 @@
+#menubar {
+    position: relative;
+    z-index: 50;
+    background-color: var(--menubar-back);
+    color: var(--menubar-fore);
+    text-transform: capitalize;
+    align-items: center;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+#menubar.top{
+    border-top: 1px solid var(--border-gray);
+}
+
+.menubar-separator {
+    align-self: stretch;
+    align-items: center;
+    background: var(--menubar-vsep);
+    margin: 5px;
+    width: 1px;
+}
+
+.menubar-appname,
+.menubar-mode {
+    color: var(--appname-blue);
+    cursor: default;
+    align-self: stretch;
+    align-items: center;
+    margin: 4px 0 4px 0;
+    padding: 4px 12px 4px 12px;
+    border-radius: 0;
+    user-select: none;
+}
+
+.menubar-appname {
+    font-weight: bold;
+}
+
+#menubar .top-menu {
+    display: flex;
+    align-items: stretch;
+    white-space: nowrap;
+}
+
+#menubar .top-menu > span {
+    cursor: default;
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 2px;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    user-select: none;
+}
+
+#menubar .top-menu > span:hover {
+    border-color: var(--appname-blue);
+    background-color: var(--menu-hover-bg);
+}
+
+#menubar .top-menu > span:hover .top-menu-drop {
+    display: flex;
+}
+
+#menubar .top-menu > span > .pop {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 90;
+    margin-top: 3px;
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    background: var(--menubar-back);
+    color: var(--menubar-fore);
+    padding: 4px;
+}
+
+#menubar .top-menu > span > .pop::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: transparent;
+}
+
+#menubar .top-menu > span:hover > .pop {
+    display: flex;
+}
+
+#menubar #ft-rotate.pop,
+#menubar #ft-scale.pop {
+    display: none;
+}
+
+#menubar #tool-rotate:hover #ft-rotate.pop,
+#menubar #tool-scale:hover #ft-scale.pop {
+    display: grid;
+}
+
+#menubar .top-menu label,
+#menubar .top-menu svg {
+    color: inherit;
+}
+
+#menubar .top-menu hr {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-top: 0.5px solid var(--menubar-vsep);
+}
+
+#menubar .top-menu-drop {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 90;
+    font-family: sans-serif;
+    padding-top: 3px;
+}
+
+#menubar .top-menu-right {
+    left: auto;
+    right: 0;
+}
+
+#menubar .top-menu-drop .content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    background: var(--menubar-back);
+    color: var(--menubar-fore);
+    padding: 4px;
+}
+
+#menubar .top-menu-drop .content > div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+#menubar .top-menu-drop .content > div > label {
+    flex-grow: 1;
+    text-align: left;
+}
+
+#menubar .top-menu-drop .content > div > span {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 16px;
+}
+
+#menubar .top-menu-drop .content > div:hover {
+    border-color: var(--appname-blue);
+    background-color: var(--menu-hover-bg);
+}
+
+#menubar .top-menu-drop .content > div.selected,
+#menubar .top-menu > span.selected {
+    border-color: var(--appname-blue);
+    background-color: var(--menu-active-bg);
+}
