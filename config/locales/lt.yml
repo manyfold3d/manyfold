@@ -551,6 +551,8 @@ lt:
       previous:
       select_slide:
       slide_label:
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:
@@ -805,6 +807,7 @@ lt:
       iframe_tag:
       image_tag:
       imagemagick:
+      kiri_moto:
       kramdown:
       plaintext:
       plaintext_form:

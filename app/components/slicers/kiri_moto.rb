@@ -1,0 +1,43 @@
+# frozen_string_literal: true
+
+class Components::Slicers::KiriMoto < Components::Base
+  def initialize(file:)
+    @file = file
+  end
+
+  def before_template
+    signed_id = @file.signed_id expires_in: 1.hour, purpose: "download"
+    @url = Rails.application.routes.url_helpers.model_model_file_by_signed_filename_url(@file.model, @file.filename, sig: signed_id)
+  end
+
+  def view_template
+    div(
+      data: {
+        controller: "kiri-moto",
+        kiri_moto_origin_value: root_url,
+        kiri_moto_url_value: @url,
+        kiri_moto_upload_url_value: upload_url,
+        kiri_moto_model_url_value: url_for(@file.model),
+        kiri_moto_output_filename_value: @file.basename,
+        action: "message@window->kiri-moto#onMessage"
+      }
+    ) do
+      iframe(
+        id: "kiri-moto-frame",
+        class: "slicer",
+        src: "https://grid.space/kiri",
+        data: {
+          kiri_moto_target: "iframe"
+        }
+      )
+      div class: "form-save-button" do
+        button(
+          class: "btn btn-primary",
+          data: {
+            action: "click->kiri-moto#export:prevent"
+          }
+        ) { translate("components.kiri_moto.save") }
+      end
+    end
+  end
+end

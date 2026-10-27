@@ -57,6 +57,8 @@ es:
       notes_heading: Notas
       print_card:
         heading: Imprimir
+    slice:
+      title:
     update:
       failure: Se ha producido un error y no se ha podido guardar la información del fichero.
       success: Información del fichero guardada.
