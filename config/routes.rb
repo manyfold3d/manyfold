@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   draw(:print)
   draw(:api)
   draw(:plugins)
+  draw(:kirimoto)
 
   resources :libraries, except: [:index] do
     collection do
