@@ -1,7 +1,7 @@
 class FileHandlers::KiriMoto < FileHandlers::Base
   # i18n-tasks-use t("file_handlers.handlers.kiri_moto")
 
-  ENVIRONMENTS = [:slice].freeze
+  ENVIRONMENTS = (ENV["KIRI_MOTO_EXPERIMENTAL"] ? [:slice] : []).freeze
 
   INPUT_TYPES = [Mime[:stl]].freeze
 
