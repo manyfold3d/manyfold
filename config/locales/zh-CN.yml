@@ -551,6 +551,8 @@ zh-CN:
       previous:
       select_slide: 选择要显示的图像
       slide_label:
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:
@@ -805,6 +807,7 @@ zh-CN:
       iframe_tag:
       image_tag:
       imagemagick:
+      kiri_moto:
       kramdown:
       plaintext:
       plaintext_form:
@@ -1132,6 +1135,7 @@ zh-CN:
     voxl:
     vrml:
     vtk:
+    vtkhdf:
     vtp:
     webm:
     webp:

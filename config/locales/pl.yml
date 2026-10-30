@@ -551,6 +551,8 @@ pl:
       previous: Poprzednia
       select_slide: Wybierz obraz do wyświetlenia
       slide_label: "%{name} (%{index} z %{count})"
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:
@@ -805,6 +807,7 @@ pl:
       iframe_tag:
       image_tag:
       imagemagick:
+      kiri_moto:
       kramdown:
       plaintext:
       plaintext_form:
@@ -1132,6 +1135,7 @@ pl:
     voxl:
     vrml:
     vtk:
+    vtkhdf:
     vtp:
     webm:
     webp:

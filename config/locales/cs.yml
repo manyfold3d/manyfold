@@ -551,6 +551,8 @@ cs:
       previous: Předchozí
       select_slide: Vyberte obrázek ke zobrazení
       slide_label: "%{name} (%{index} z %{count})"
+    kiri_moto:
+      save:
     like_button:
       like:
       unlike:
@@ -805,6 +807,7 @@ cs:
       iframe_tag:
       image_tag:
       imagemagick:
+      kiri_moto:
       kramdown:
       plaintext:
       plaintext_form:
@@ -1132,6 +1135,7 @@ cs:
     voxl:
     vrml:
     vtk:
+    vtkhdf:
     vtp:
     webm:
     webp:

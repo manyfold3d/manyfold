@@ -1,0 +1,70 @@
+/* Shared theme rules.
+ * Phase 1 scope: Kiri fundamentals only.
+ */
+
+:root[data-app="kiri"] {
+    color: var(--ui-text);
+}
+
+:root[data-app="kiri"] hr {
+    border-color: var(--ui-hr);
+}
+
+:root[data-app="kiri"] input,
+:root[data-app="kiri"] select,
+:root[data-app="kiri"] option {
+    border-style: solid;
+    border-width: 0px;
+    border-color: var(--ui-border);
+    background-color: var(--ui-input-bg);
+    color: var(--ui-input-fg);
+    border-bottom-width: 1px;
+}
+
+:root[data-app="kiri"] select {
+    background-color: var(--ui-select-bg);
+}
+
+:root[data-app="kiri"] option:checked {
+    background-color: var(--ui-option-selected-bg);
+}
+
+:root[data-app="kiri"] input[disabled] {
+    border-color: var(--ui-border-strong);
+    background-color: var(--ui-input-disabled-bg);
+    color: var(--ui-input-disabled-fg);
+}
+
+:root[data-app="kiri"] textarea {
+    background-color: var(--ui-textarea-bg);
+    color: var(--ui-textarea-fg);
+}
+
+:root[data-app="kiri"] button {
+    color: var(--ui-button-fg);
+    background-color: var(--ui-button-bg);
+    border-color: var(--ui-button-border);
+}
+
+:root[data-app="kiri"] button:not([disabled]):hover {
+    background-color: var(--ui-button-hover-bg);
+    color: var(--ui-button-hover-fg);
+}
+
+:root[data-app="kiri"] button[disabled] {
+    color: var(--ui-button-disabled-fg);
+}
+
+:root[data-app="kiri"] #dialog {
+    background-color: var(--ui-dialog-bg);
+    color: var(--ui-dialog-fg);
+    border-top-color: var(--ui-dialog-border-top);
+    border-bottom-color: var(--ui-dialog-border-bottom);
+}
+
+:root[data-app="kiri"] #modal,
+:root[data-app="kiri"] #dialog,
+:root[data-app="kiri"] #modal select,
+:root[data-app="kiri"] #dialog select {
+    color: var(--ui-dialog-fg) !important;
+}

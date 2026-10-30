@@ -19,7 +19,7 @@
     "@uppy/form": "^6.0.0",
     "@uppy/locales": "^5.3.1",
     "@uppy/tus": "^6.0.0",
-    "altcha": "^3.4.1",
+    "altcha": "^3.5.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.2",
     "bootswatch": "^5.3.8",
@@ -37,7 +37,7 @@
     "@types/bootstrap": "^5.2.11",
     "@types/i18n-js": "^4.0.1",
     "@types/jquery": "^4.0.1",
-    "@types/lodash": "^4.17.26",
+    "@types/lodash": "^4.17.27",
     "@types/node": "~24.13",
     "@types/three": "^0.186.0",
     "@types/webpack-env": "^1.18.8",
@@ -49,10 +49,10 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^17.0.1",
     "postcss-preset-env": "^11.6.1",
-    "rollup": "^4.64.10",
-    "sass-embedded": "^1.105.2",
+    "rollup": "^4.65.1",
+    "sass-embedded": "^1.106.1",
     "typescript": "~5.9.3",
-    "vite": "^8.3.4",
+    "vite": "^8.3.5",
     "vite-plugin-rails": "^0.6.0",
     "vite-plugin-ruby": "^5.2.6",
     "vite-plugin-wasm": "^3.6.0"
@@ -62,6 +62,6 @@
     "defaults"
   ],
   "volta": {
-    "node": "24.18.1"
+    "node": "24.22.1"
   }
 }

@@ -551,6 +551,8 @@ es:
       previous: Anterior
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
+    kiri_moto:
+      save:
     like_button:
       like: Me gusta
       unlike: No me gusta
@@ -809,6 +811,7 @@ es:
       iframe_tag: HTML con marcos
       image_tag: Etiqueta HTML
       imagemagick: ImageMagick
+      kiri_moto:
       kramdown: Markdown
       plaintext: Texto sin formato
       plaintext_form: Formulario sencillo
@@ -1136,6 +1139,7 @@ es:
     voxl: Dragonfruit
     vrml: VRML
     vtk: VTK Legacy
+    vtkhdf:
     vtp: VTK XML
     webm: WebM
     webp: WebP

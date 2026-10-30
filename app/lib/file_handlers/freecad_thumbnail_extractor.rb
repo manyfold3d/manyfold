@@ -4,6 +4,10 @@ class FileHandlers::FreecadThumbnailExtractor < FileHandlers::Base
   ENVIRONMENTS = [:thumbnail].freeze
   INPUT_TYPES = [Mime[:fcstd]].freeze
 
+  def self.priority
+    30
+  end
+
   def self.thumbnailer
     Thumbnailers::Freecad
   end

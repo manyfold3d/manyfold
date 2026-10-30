@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   draw(:print)
   draw(:api)
   draw(:plugins)
+  draw(:kirimoto)
 
   resources :libraries, except: [:index] do
     collection do
@@ -67,6 +68,7 @@ Rails.application.routes.draw do
       member do
         post "extract"
         get "edit_content", as: :edit_content
+        get "slice", as: :slice
       end
       collection do
         get "bulk_edit"

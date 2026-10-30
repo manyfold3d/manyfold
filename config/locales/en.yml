@@ -551,6 +551,8 @@ en:
       previous: Previous
       select_slide: Choose image to display
       slide_label: "%{name} (%{index} of %{count})"
+    kiri_moto:
+      save: Save sliced file
     like_button:
       like: Like
       unlike: Unlike
@@ -763,6 +765,7 @@ en:
       iframe_tag: Framed HTML
       image_tag: HTML tag
       imagemagick: ImageMagick
+      kiri_moto: Kiri:Moto
       kramdown: Markdown
       plaintext: Plain text
       plaintext_form: Simple form
@@ -1090,6 +1093,7 @@ en:
     voxl: Dragonfruit
     vrml: VRML
     vtk: VTK Legacy
+    vtkhdf: VTK HDF5
     vtp: VTK XML
     webm: WebM
     webp: WebP

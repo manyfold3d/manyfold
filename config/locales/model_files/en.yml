@@ -57,6 +57,8 @@ en:
       notes_heading: Notes
       print_card:
         heading: Print
+    slice:
+      title: Slice file for printing
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.

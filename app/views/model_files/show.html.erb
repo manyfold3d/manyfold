@@ -12,7 +12,7 @@
 
 <div class="row row-cols-2">
 
-  <div class="col-9">
+  <div class="col-12 col-md-9">
     <% if @related&.any? %>
       <ul class="nav nav-tabs">
         <%- @related.each do |file| %>
@@ -37,7 +37,7 @@
     <% end %>
   </div>
 
-  <div class="col-3">
+  <div class="col-12 col-md-3">
     <%= card :secondary, t(".details_heading") do %>
       <% if @file.caption %>
         <p class='lead'><%= @file.caption %></p>
@@ -88,6 +88,7 @@
     <div class="float-end">
       <%= BurgerMenu do %>
         <%= DropdownItem icon: "file-zip-fill", label: t(".extract"), path: extract_model_model_file_path(@model, @file), method: :post if policy(@file).extract? %>
+        <%= DropdownItem icon: "layers", label: t("model_files.slice.title"), path: slice_model_model_file_path(@model, @file) if policy(@file).slice? && FileHandlers.handlers_for(environment: :slice, mime_type: @file.mime_type).any? %>
         <%= DropdownItem icon: "file-text-fill", label: t("model_files.edit_content.title"), path: edit_content_model_model_file_path(@model, @file) if policy(@file).edit_content? && FileHandlers.handlers_for(environment: :edit, mime_type: @file.mime_type).any? %>
         <%= DropdownDivider() %>
         <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
