@@ -856,13 +856,13 @@ GEM
     spdx (4.1.5)
       treetop (~> 1.6)
     spring (4.7.0)
-    sqlite3 (2.10.1-aarch64-linux-gnu)
-    sqlite3 (2.10.1-aarch64-linux-musl)
-    sqlite3 (2.10.1-arm64-darwin)
-    sqlite3 (2.10.1-x64-mingw-ucrt)
-    sqlite3 (2.10.1-x86_64-darwin)
-    sqlite3 (2.10.1-x86_64-linux-gnu)
-    sqlite3 (2.10.1-x86_64-linux-musl)
+    sqlite3 (2.10.2-aarch64-linux-gnu)
+    sqlite3 (2.10.2-aarch64-linux-musl)
+    sqlite3 (2.10.2-arm64-darwin)
+    sqlite3 (2.10.2-x64-mingw-ucrt)
+    sqlite3 (2.10.2-x86_64-darwin)
+    sqlite3 (2.10.2-x86_64-linux-gnu)
+    sqlite3 (2.10.2-x86_64-linux-musl)
     sqlite3_ar_regexp (3.0.0)
       activerecord (>= 6.0)
       sqlite3 (>= 1.4)
@@ -1430,13 +1430,13 @@ CHECKSUMS
   smart_properties (1.17.0) sha256=f9323f8122e932341756ddec8e0ac9ec6e238408a7661508be99439ca6d6384b
   spdx (4.1.5) sha256=e9e4cf58e8ccea488b5ad029dd7c0a4cdcdaf194ad14635a6b85e8bce513a83b
   spring (4.7.0) sha256=f81bf6d41f05518ed5d0128ce5c75fb6dd9c6153f158129c8b85c4461ca0b72c
-  sqlite3 (2.10.1-aarch64-linux-gnu) sha256=48390cc2b809acd1280f5c9daaf3c2013833adb8a5ece9b0634f708651080ccd
-  sqlite3 (2.10.1-aarch64-linux-musl) sha256=db1bcddf98e4eeea80ca896f56aa3f9468364fa1ee8e042ddc6b628b5092fabb
-  sqlite3 (2.10.1-arm64-darwin) sha256=45f74dad0a8ee57ae5fadfac39bf160d1f09fb0484a442223310d869cd957d92
-  sqlite3 (2.10.1-x64-mingw-ucrt) sha256=bf5c7d7e8ce0253456777432c826a6f8f2c06e891686f1157f44548a53416a87
-  sqlite3 (2.10.1-x86_64-darwin) sha256=00d1cd2e8ecff5ad9fffa0c97de59d4f85c5fc54eada2587d53ca0bd933b7a5d
-  sqlite3 (2.10.1-x86_64-linux-gnu) sha256=661ecede31e23a412059cd8c684ed84e332f64f167e4a90902cf99e8ea2c8718
-  sqlite3 (2.10.1-x86_64-linux-musl) sha256=67c7c5443a930157b4e148f0f4cb9ab998ee7ecfa8ce56879a6b56d1d742b2be
+  sqlite3 (2.10.2-aarch64-linux-gnu) sha256=e9aea2c2b3476fc875dd8a89313a9a2862818519c0186bfb5b56d6f57bb08d98
+  sqlite3 (2.10.2-aarch64-linux-musl) sha256=4986fc40cdf21342362b72a941df28e95cfe0e644f3ad2532d948b157c39dbee
+  sqlite3 (2.10.2-arm64-darwin) sha256=5b0d235ea037e6dcd1b8387a19d73be571917db9f93044d35741cf933a21a37d
+  sqlite3 (2.10.2-x64-mingw-ucrt) sha256=7fe1bf1adfca4fffeaec27371e0a20c1162d9d985681ec9560971a44fc41d198
+  sqlite3 (2.10.2-x86_64-darwin) sha256=fd2c67b49d313031af112e172c83ab321681a2b4996bf882eefac50be7bea08f
+  sqlite3 (2.10.2-x86_64-linux-gnu) sha256=ca92731ab464df9cae503fa1a439a549e2724f6953c8c05a7769b59366e38f15
+  sqlite3 (2.10.2-x86_64-linux-musl) sha256=b9f8fc62f3e0eb8966b41de251b492b4c8e9d1b23559beb6e150ad7f8d590941
   sqlite3_ar_regexp (3.0.0) sha256=90ce99f00b9256721104550853a227e31972c6488963f203aa50f053a8c7c005
   standard (1.57.0) sha256=4a65ea92421fbaf77fb54da91e16093cf79b335b8f62c35aaa3dd714c8592858
   standard-custom (1.0.2) sha256=424adc84179a074f1a2a309bb9cf7cd6bfdb2b6541f20c6bf9436c0ba22a652b
