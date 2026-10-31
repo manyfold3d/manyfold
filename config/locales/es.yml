@@ -552,7 +552,7 @@ es:
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
     kiri_moto:
-      save:
+      save: Guardar el archivo fragmentado
     like_button:
       like: Me gusta
       unlike: No me gusta
@@ -811,7 +811,7 @@ es:
       iframe_tag: HTML con marcos
       image_tag: Etiqueta HTML
       imagemagick: ImageMagick
-      kiri_moto:
+      kiri_moto: Kiri:Moto
       kramdown: Markdown
       plaintext: Texto sin formato
       plaintext_form: Formulario sencillo
@@ -1139,7 +1139,7 @@ es:
     voxl: Dragonfruit
     vrml: VRML
     vtk: VTK Legacy
-    vtkhdf:
+    vtkhdf: VTK HDF5
     vtp: VTK XML
     webm: WebM
     webp: WebP
