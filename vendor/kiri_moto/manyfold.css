@@ -1,3 +1,4 @@
-#act-export {
+#act-export,
+span:has(> label[lk=fe_menu]) {
   display: none !important;
 }
