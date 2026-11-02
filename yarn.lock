@@ -116,17 +116,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-function-display-p3-linear@npm:^2.0.15":
-  version: 2.0.15
-  resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.15"
+  version: 2.0.16
+  resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.16"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.6
+    "@csstools/css-color-parser": ^4.2.7
     "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/postcss-progressive-custom-properties": ^5.1.4
+    "@csstools/postcss-progressive-custom-properties": ^5.1.5
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 31a230f326ac135cb35261f0bce4b5e6ae430ebaa464d3a5247a0d89e7f392c0fb2e84d17ebe72db789d359abbb8798a62aacc95e2202bd38b13f114baa7024d
+  checksum: c0126768d5f43b5953410234c27a4a876938ebaa7119590d3146f0c70411f80b404c9cc71c1726ba6e4fb03739006e8bf92b56d69d15a8cd16c6cad8ff3649a9
   languageName: node
   linkType: hard
 
