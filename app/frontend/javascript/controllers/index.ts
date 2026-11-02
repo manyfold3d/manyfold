@@ -11,6 +11,8 @@ import CocoonedController from './cocooned_controller'
 import CollectionInputController from './collection_input_controller'
 import CopyTextController from './copy_text_controller'
 import EditableController from './editable_controller'
+import F3dRendererController from './f3d_renderer_controller'
+import I18nController from './i18n_controller'
 import KiriMotoController from './kiri_moto_controller'
 import ModelSelectController from './model_select_controller'
 import ObfuscatedTextController from './obfuscated_text_controller'
@@ -30,6 +32,8 @@ application.register('cocooned', CocoonedController)
 application.register('collection-input', CollectionInputController)
 application.register('copy-text', CopyTextController)
 application.register('editable', EditableController)
+application.register('f3d-renderer', F3dRendererController)
+application.register('i18n', I18nController)
 application.register('kiri-moto', KiriMotoController)
 application.register('model-select', ModelSelectController)
 application.register('obfuscated-text', ObfuscatedTextController)
