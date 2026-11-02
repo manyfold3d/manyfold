@@ -39,16 +39,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.6":
-  version: 4.2.6
-  resolution: "@csstools/css-color-parser@npm:4.2.6"
+"@csstools/css-color-parser@npm:^4.2.6, @csstools/css-color-parser@npm:^4.2.7":
+  version: 4.2.7
+  resolution: "@csstools/css-color-parser@npm:4.2.7"
   dependencies:
     "@csstools/color-helpers": ^6.1.2
     "@csstools/css-calc": ^3.4.3
   peerDependencies:
     "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-  checksum: 05e0b9e923505dca8705e3f5ed7ecd82ab34e5c7b444215c3e11b53855d54f04b72218c8ac1ea55d197717f0ffbba6dcb511c624a7f9fc33f28b2081c3c02137
+  checksum: c4fcf8b800349b4593c6504be73c89206531cc82eb0cf12b695291e260b473d3a64b507a5dce3fef0f5db6a9bc20fb238b0213fb324a1eb092f72899fe85c888
   languageName: node
   linkType: hard
 
@@ -116,17 +116,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-function-display-p3-linear@npm:^2.0.15":
-  version: 2.0.15
-  resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.15"
+  version: 2.0.16
+  resolution: "@csstools/postcss-color-function-display-p3-linear@npm:2.0.16"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.6
+    "@csstools/css-color-parser": ^4.2.7
     "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/postcss-progressive-custom-properties": ^5.1.4
+    "@csstools/postcss-progressive-custom-properties": ^5.1.5
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 31a230f326ac135cb35261f0bce4b5e6ae430ebaa464d3a5247a0d89e7f392c0fb2e84d17ebe72db789d359abbb8798a62aacc95e2202bd38b13f114baa7024d
+  checksum: c0126768d5f43b5953410234c27a4a876938ebaa7119590d3146f0c70411f80b404c9cc71c1726ba6e4fb03739006e8bf92b56d69d15a8cd16c6cad8ff3649a9
   languageName: node
   linkType: hard
 
@@ -530,14 +530,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-progressive-custom-properties@npm:^5.1.4":
-  version: 5.1.4
-  resolution: "@csstools/postcss-progressive-custom-properties@npm:5.1.4"
+"@csstools/postcss-progressive-custom-properties@npm:^5.1.4, @csstools/postcss-progressive-custom-properties@npm:^5.1.5":
+  version: 5.1.5
+  resolution: "@csstools/postcss-progressive-custom-properties@npm:5.1.5"
   dependencies:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: e3669de674ae288f0184f8216b3381361042a64ccc3fd10317d6741b3e5cfb273ac9940d1c19ab07b8246b675c4cedb3aea39e1fb01a5cc7ccad6d8a13e07567
+  checksum: 8981248e6cc73e8e4fa15ec9a6f3e0487bc323f51dd724e781f07ed534d3e58bd46fefdf97d18b42fbc724ff26a706019444e7b9034d54d9cfa0e8f9af091c44
   languageName: node
   linkType: hard
 
