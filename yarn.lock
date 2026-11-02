@@ -576,17 +576,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-relative-color-syntax@npm:^4.0.15":
-  version: 4.0.15
-  resolution: "@csstools/postcss-relative-color-syntax@npm:4.0.15"
+  version: 4.0.16
+  resolution: "@csstools/postcss-relative-color-syntax@npm:4.0.16"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.6
+    "@csstools/css-color-parser": ^4.2.7
     "@csstools/css-parser-algorithms": ^4.0.2
     "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/postcss-progressive-custom-properties": ^5.1.4
+    "@csstools/postcss-progressive-custom-properties": ^5.1.5
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 7ebdcf66db174f91380e892d27dff12b69a97dabb660a9e042a2e9a4038bf88952b1425c96a6458a55e09e05bfd8db5e94c5eca445c6ec7ae4adc9c23d994f59
+  checksum: 6417f4163a2a65875a926e03f1701bd4375ee4c3896c89b144de6c9f2b73a6121dc5663eae2eef82f51ff3e92141bd0e5ad7ac77381341910d9ec60eced60b70
   languageName: node
   linkType: hard
 
