@@ -319,15 +319,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-ic-unit@npm:^5.0.5":
-  version: 5.0.5
-  resolution: "@csstools/postcss-ic-unit@npm:5.0.5"
+  version: 5.0.6
+  resolution: "@csstools/postcss-ic-unit@npm:5.0.6"
   dependencies:
-    "@csstools/postcss-progressive-custom-properties": ^5.1.4
+    "@csstools/postcss-progressive-custom-properties": ^5.1.5
     "@csstools/utilities": ^3.0.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 3ba2087e539bd7228df7fa8bc892adde1b35551491f6fe047108b06a6bc051ec44801450447f464b942d7b10df75d470c7df22548c121ad7432ef4462984b976
+  checksum: d7165ff093eda3c92e21fca0d75d3f859cca8c1c00d37c6a115295b4a24c0240d9c4a70b662488fdcf005e53aa1222f9d219e365a60a507b23557595f747caf8
   languageName: node
   linkType: hard
 
