@@ -197,7 +197,7 @@ RSpec.describe "Model Files" do
         end
       end
 
-      context "when uploading a file" do
+      context "when uploading a single file" do
         let(:params) {
           {
             model: {
@@ -211,7 +211,32 @@ RSpec.describe "Model Files" do
           }
         }
 
-        it "queues post-upload job" do # rubocop:disable RSpec/ExampleLength
+        it "creates file immediately" do
+          allow(AddUploadedFileToModelJob).to receive(:perform_now)
+          post model_model_files_path(model, params: params)
+          expect(AddUploadedFileToModelJob).to have_received(:perform_now).with(model.id, hash_including(id: "upload_key", name: "test.stl")).once
+        end
+      end
+
+      context "when uploading multiple files" do
+        let(:params) {
+          {
+            model: {
+              file: {
+                "0" => {
+                  id: "upload_key",
+                  name: "test.stl"
+                },
+                "1" => {
+                  id: "upload_key_two",
+                  name: "test_two.stl"
+                }
+              }
+            }
+          }
+        }
+
+        it "queues post-upload jobs" do # rubocop:disable RSpec/ExampleLength
           expect { post model_model_files_path(model, params: params) }
             .to have_enqueued_job(AddUploadedFileToModelJob)
             .with(model.id, {

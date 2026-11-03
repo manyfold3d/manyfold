@@ -76,12 +76,11 @@ class ModelFilesController < ApplicationController
       file.convert_later params[:convert][:to]
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif !(p = upload_params).empty?
-      p.dig(:model, :file).each_pair do |_id, tus_upload|
-        AddUploadedFileToModelJob.perform_later(@model.id, tus_upload)
-      end
-      respond_to do |format|
-        format.html { redirect_to @model, notice: t(".success") }
-        format.manyfold_api_v0 { head :accepted }
+      files = p.dig(:model, :file)
+      if files&.keys&.count == 1
+        add_single_file(files[0] || files["0"])
+      else
+        add_multiple_files(files)
       end
     else
       head :unprocessable_content
@@ -175,6 +174,29 @@ class ModelFilesController < ApplicationController
   end
 
   private
+
+  def add_single_file(tus_upload)
+    # If only one file, do it synchronously so we can point to the created file
+    file = AddUploadedFileToModelJob.perform_now(@model.id, tus_upload)
+    respond_to do |format|
+      format.html do
+        # For images, go back to the model page for the carousel, otherwise show the detail page
+        target = file.is_image? ? model_path(@model) : model_model_file_path(@model, file)
+        redirect_to target, notice: t("model_files.create.success")
+      end
+      format.manyfold_api_v0 { head :created, location: model_model_file_path(@model, file) }
+    end
+  end
+
+  def add_multiple_files(files)
+    files.each_pair do |_id, tus_upload|
+      AddUploadedFileToModelJob.perform_later(@model.id, tus_upload)
+    end
+    respond_to do |format|
+      format.html { redirect_to @model, notice: t("model_files.create.success") }
+      format.manyfold_api_v0 { head :accepted }
+    end
+  end
 
   def bulk_update_params
     params.permit(

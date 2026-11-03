@@ -15,21 +15,53 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       let(:model) { create(:model, :with_collection, library: Library.default, creator: create(:creator)) }
       let(:model_id) { model.to_param }
 
-      response "202", "Accepted; the files will be added to the model after processing" do
+      response "201", "Created; single file uploaded and added to the model" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) {
           {
             files: [
-              id: "https://example.com/uploads/tus_id",
-              name: "test.stl"
+              {
+                id: "https://example.com/uploads/tus_id",
+                name: "test.stl"
+              }
             ]
           }
         }
 
-        run_test! do # rubocop:disable RSpec/ExampleLength
+        before do
+          allow(AddUploadedFileToModelJob).to receive(:perform_now).and_return(create(:model_file, model: model))
+        end
+
+        run_test! do
+          expect(model.reload.model_files.count).to eq 1
+        end
+      end
+
+      response "202", "Accepted; multiple files uploaded and will be added to the model after processing" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) {
+          {
+            files: [
+              {
+                id: "https://example.com/uploads/tus_id",
+                name: "test.stl"
+              },
+              {
+                id: "https://example.com/uploads/tus_id_two",
+                name: "test_two.stl"
+              }
+            ]
+          }
+        }
+
+        run_test! do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
           expect(AddUploadedFileToModelJob).to have_been_enqueued.with(model.id, {
             id: "https://example.com/uploads/tus_id",
             name: "test.stl"
+          }).once
+          expect(AddUploadedFileToModelJob).to have_been_enqueued.with(model.id, {
+            id: "https://example.com/uploads/tus_id_two",
+            name: "test_two.stl"
           }).once
         end
       end
