@@ -13,4 +13,9 @@ authenticate :user do
     Rails.application,
     Rails.root.join("vendor/kiri_moto/wasm").to_s
   ), at: "/lib/kiri/wasm"
+
+  mount ActionDispatch::Static.new(
+    Rails.application,
+    Rails.root.join("vendor/kiri_moto/run").to_s
+  ), at: "/lib/kiri/run"
 end
