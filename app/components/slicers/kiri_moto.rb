@@ -30,13 +30,19 @@ class Components::Slicers::KiriMoto < Components::Base
           kiri_moto_target: "iframe"
         }
       )
-      div class: "form-save-button" do
+      div class: "form-save-button input-group" do
         button(
-          class: "btn btn-primary",
           data: {
             action: "click->kiri-moto#export:prevent"
           }
         ) { translate("components.kiri_moto.save") }
+        input(type: "text", class: "border-primary form-control", value: @file.basename)
+        span(
+          class: "input-group-text border-primary",
+          data: {
+            kiri_moto_target: "extension"
+          }
+        )
       end
     end
   end

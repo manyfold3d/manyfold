@@ -12,7 +12,8 @@ export default class extends Controller {
   }
 
   static targets = [
-    'iframe'
+    'iframe',
+    'extension'
   ]
 
   declare urlValue: string
@@ -22,6 +23,7 @@ export default class extends Controller {
   declare targetOrigin: string
   declare originValue: string
   declare iframeTarget: HTMLIFrameElement
+  declare extensionTarget: HTMLSpanElement
   declare connected: boolean
   declare uploader
 
@@ -36,6 +38,7 @@ export default class extends Controller {
   }
 
   load () {
+    this.send({ event: 'device.selected' }) // Subscribe to device change events
     this.send({
       clear: 'true',
       progress: 0.01,
@@ -65,6 +68,9 @@ export default class extends Controller {
         break
       case 'export.done':
         this.onExportDone(event.data.data)
+        break
+      case 'device.selected':
+        this.onDeviceChanged(event.data.data)
         break
       default:
         console.log('Unhandled message:')
@@ -122,6 +128,10 @@ export default class extends Controller {
       // Start the upload
       this.uploader.start()
     }.bind(this))
+  }
+
+  onDeviceChanged (data) {
+    this.extensionTarget.textContent = `.${data.slaFileExt || data.gcodeFExt}`
   }
 
   onUploadError (error) {
