@@ -18,7 +18,6 @@ class Components::Slicers::KiriMoto < Components::Base
         kiri_moto_url_value: @url,
         kiri_moto_upload_url_value: upload_url,
         kiri_moto_model_url_value: url_for(@file.model),
-        kiri_moto_output_filename_value: @file.basename,
         action: "message@window->kiri-moto#onMessage"
       }
     ) do
@@ -36,12 +35,15 @@ class Components::Slicers::KiriMoto < Components::Base
             action: "click->kiri-moto#export:prevent"
           }
         ) { translate("components.kiri_moto.save") }
-        input(type: "text", class: "border-primary form-control", value: @file.basename)
+        input(
+          type: "text",
+          class: "border-primary form-control",
+          value: @file.basename,
+          data: { kiri_moto_target: "basename" }
+        )
         span(
           class: "input-group-text border-primary",
-          data: {
-            kiri_moto_target: "extension"
-          }
+          data: { kiri_moto_target: "extension" }
         )
       end
     end

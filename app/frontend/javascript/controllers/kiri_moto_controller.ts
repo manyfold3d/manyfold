@@ -7,22 +7,22 @@ export default class extends Controller {
     url: String,
     uploadUrl: String,
     modelUrl: String,
-    outputFilename: String,
     origin: String
   }
 
   static targets = [
     'iframe',
+    'basename',
     'extension'
   ]
 
   declare urlValue: string
   declare uploadUrlValue: string
   declare modelUrlValue: string
-  declare outputFilenameValue: string
   declare targetOrigin: string
   declare originValue: string
   declare iframeTarget: HTMLIFrameElement
+  declare basenameTarget: HTMLInputElement
   declare extensionTarget: HTMLSpanElement
   declare connected: boolean
   declare uploader
@@ -106,7 +106,7 @@ export default class extends Controller {
   onExportDone (data) {
     // Upload file to tus endpoint
     const blob = new Blob([data.file])
-    const filename = `${this.outputFilenameValue}.${data.format}`
+    const filename = `${this.basenameTarget.value}.${data.format}`
 
     this.uploader = new tus.Upload(blob, {
       endpoint: this.uploadUrlValue,
