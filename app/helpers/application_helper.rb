@@ -341,4 +341,12 @@ module ApplicationHelper
     # i18n-tasks-use t('pagy.previous')
     @pagy&.series_nav(:bootstrap)&.html_safe # rubocop:disable Rails/OutputSafety, Rails/HelperInstanceVariable
   end
+
+  def web_sub_tags(collection: false)
+    return unless SiteSettings.web_sub_hub
+    safe_join([
+      tag.link(rel: "hub", href: SiteSettings.web_sub_hub),
+      tag.link(rel: "self", href: request.url + (collection ? "/*" : ""))
+    ])
+  end
 end
