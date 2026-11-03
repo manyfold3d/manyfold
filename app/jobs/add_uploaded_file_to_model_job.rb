@@ -18,6 +18,7 @@ class AddUploadedFileToModelJob < ApplicationJob
     end
 
     model.check_for_problems_later
+    file
   end
 
   def add_single_file_to_model(model, tus_upload)
