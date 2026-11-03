@@ -3,7 +3,7 @@
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
-  <% if @file.is_3d_model? %>
+  <% if @file.is_3d_model? || @file.is_slicer_file? %>
     <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
     <hr>
     <h4><%= t("general.settings") %></h4>
