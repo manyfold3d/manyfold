@@ -154,6 +154,8 @@ export default class extends Controller {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: formData.toString()
+    }).then(response => {
+      window.location.href = response.url
     })
   }
 
