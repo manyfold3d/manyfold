@@ -182,7 +182,7 @@ class ModelFilesController < ApplicationController
       format.html do
         # For images, go back to the model page for the carousel, otherwise show the detail page
         target = file.is_image? ? model_path(@model) : model_model_file_path(@model, file)
-        redirect_to target, notice: t("model_files.create.success")
+        redirect_to target, notice: t("model_files.create.success"), status: :see_other
       end
       format.manyfold_api_v0 { head :created, location: model_model_file_path(@model, file) }
     end
@@ -193,7 +193,7 @@ class ModelFilesController < ApplicationController
       AddUploadedFileToModelJob.perform_later(@model.id, tus_upload)
     end
     respond_to do |format|
-      format.html { redirect_to @model, notice: t("model_files.create.success") }
+      format.html { redirect_to @model, notice: t("model_files.create.success"), status: :see_other }
       format.manyfold_api_v0 { head :accepted }
     end
   end
