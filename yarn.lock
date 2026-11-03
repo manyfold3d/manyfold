@@ -5800,11 +5800,11 @@ __metadata:
   linkType: hard
 
 "semver@npm:^6.3.1":
-  version: 6.3.1
-  resolution: "semver@npm:6.3.1"
+  version: 6.3.2
+  resolution: "semver@npm:6.3.2"
   bin:
     semver: bin/semver.js
-  checksum: ae47d06de28836adb9d3e25f22a92943477371292d9b665fb023fae278d345d508ca1958232af086d85e0155aee22e313e100971898bbb8d5d89b8b1d4054ca2
+  checksum: 75ae9d5d6a23220fd7e188bee5a15c2126ab0466bec53352a59c4debbb07cad7169af60eb8a2fca7998ae0e3c55951d086cc3dd3a05aaa278aa863f486ad9bb7
   languageName: node
   linkType: hard
 
