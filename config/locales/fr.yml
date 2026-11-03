@@ -1057,6 +1057,7 @@ fr:
       video:
     cheetah3d:
     chitubox:
+    cnc:
     collada:
     crealitybox:
     ctb:
@@ -1081,6 +1082,7 @@ fr:
     gzip:
     hfp:
     html:
+    hvs:
     iam:
     ifc:
     iges:
@@ -1107,6 +1109,9 @@ fr:
     mpeg:
     mtl:
     nanodlp:
+    nc:
+    ncd:
+    ngc:
     nrrd:
     obj:
     'off':
@@ -1117,6 +1122,9 @@ fr:
     prz:
     pts:
     rar:
+    rml:
+    rsla:
+    sbp:
     scad:
     sevenz:
     sketchup:
@@ -1136,6 +1144,7 @@ fr:
     tiff:
     voxl:
     vrml:
+    vsla:
     vtk:
     vtkhdf:
     vtp:
