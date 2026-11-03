@@ -11,7 +11,11 @@ class Scan::ModelFile::ParseMetadataJob < ApplicationJob
       image_metadata(file)
     elsif file.is_3d_model?
       model_metadata(file)
+    else
+      {}
     end
+    # Set orientation for file types where we know the correct axes
+    params[:y_up] = true if file.mime_type.to_sym.in? [:gcode]
     # Store updated data
     file.update!(params.compact) if params
     # Queue up deeper analysis job
