@@ -39,7 +39,15 @@ module SettingsHelper
 
   def side_menu_link(text, href, icon: nil)
     content_tag(:li, class: "nav-item") do
-      link_to text, href, class: "nav-link"
+      parts = if icon
+        [
+          Icon(icon: icon, label: text),
+          content_tag(:span, class: "d-none d-lg-inline") { text }
+        ]
+      else
+        [text]
+      end
+      link_to(href, class: "nav-link") { safe_join(parts, " ") }
     end
   end
 end
