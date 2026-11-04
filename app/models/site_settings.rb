@@ -11,7 +11,7 @@ class SiteSettings < RailsSettings::Base
     /^\.[^.]+/, # Hidden files starting with .
     /.*\/@eaDir\/.*/, # Synology temp files
     /__MACOSX/ # MACOS resource forks
-  ]
+  ], validates: {regex_array: {strict: true}}
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
@@ -65,8 +65,6 @@ class SiteSettings < RailsSettings::Base
   field :thingiverse_api_key, type: :string
   field :cults3d_api_key, type: :string
   field :cults3d_api_username, type: :string
-
-  validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
