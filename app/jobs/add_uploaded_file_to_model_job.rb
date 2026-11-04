@@ -27,10 +27,10 @@ class AddUploadedFileToModelJob < ApplicationJob
     case extension(tus_upload)
     when *MediaType.indexable_extensions
       if (existing_file = model.model_files.where(filename: filename).first)
-        existing_file.update(attachment: attachment(tus_upload))
+        existing_file.update(model_attributes(tus_upload).merge(attachment: attachment(tus_upload)))
         existing_file
       else
-        model.model_files.create(filename: filename, attachment: attachment(tus_upload))
+        model.model_files.create(model_attributes(tus_upload).merge(filename: filename, attachment: attachment(tus_upload)))
       end
     else
       Rails.logger.warn("Ignoring #{tus_upload.inspect}")
@@ -49,6 +49,12 @@ class AddUploadedFileToModelJob < ApplicationJob
         filename: sanitized_filename(tus_upload)
       }
     }
+  end
+
+  def model_attributes(tus_upload)
+    {
+      relationships_attributes: tus_upload[:relationships_attributes]
+    }.compact
   end
 
   def extension(tus_upload)
