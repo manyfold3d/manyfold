@@ -2252,12 +2252,12 @@ __metadata:
   linkType: hard
 
 "combine-errors@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "combine-errors@npm:3.0.3"
+  version: 3.0.4
+  resolution: "combine-errors@npm:3.0.4"
   dependencies:
     custom-error-instance: 2.1.1
     lodash.uniqby: 4.5.0
-  checksum: bd0b0d2a4020f9976b8fe8eb7d5aa855b43ecacdcb61ee1fc5664d73ff8c1d7d0bbe4dd948bea7ba1870518bfc5688b89941de7a4967659418b4664cdb02884f
+  checksum: b61987304d206b9cd24571c3ba3a3f906ced609c6d0a0aebf8948fd7e6bb2479543032eb54cbc3c36b88ce77292cbc50ea9109b1d8fd487a6933ed85782561f8
   languageName: node
   linkType: hard
 
