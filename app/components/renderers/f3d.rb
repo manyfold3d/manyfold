@@ -42,7 +42,7 @@ class Components::Renderers::F3d < Components::Renderers::Base
         div class: "progress-bar bg-info progress-bar-animated progress-bar-striped", role: "progressbar", style: "width: 0%; height: 100%",
           aria_label: "Loading progress", aria_valuenow: "0", aria_valuemin: "0", aria_valuemax: "100"
         span class: "progress-label position-absolute top-50 start-50 translate-middle", role: "button" do
-          Icon icon: "box"
+          Icon icon: "badge-3d-fill"
           whitespace
           span { t("renderer.load") }
           whitespace
