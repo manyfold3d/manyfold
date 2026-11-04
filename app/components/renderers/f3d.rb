@@ -15,10 +15,14 @@ class Components::Renderers::F3d < Components::Renderers::Base
   end
 
   def view_template
-    div class: "position-relative", data: {turbo_permanent: true} do
-      img src: model_model_file_path(@file.model, @file, format: @file.extension, derivative: :render), class: "card-img-top image-preview", alt: @file.name if @file.has_render?
+    url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: :render) if @file.has_render?
+    div class: "card border-0 preview-card", data: {turbo_permanent: true} do
+      if url
+        div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+        img src: url, class: "card-img-top image-preview", alt: @file.name
+      end
       canvas id: "file-#{@file.to_param}",
-        class: "object-preview position-relative",
+        class: "object-preview position-absolute",
         tabindex: "0",
         data: {
           controller: "f3d-renderer",
