@@ -165,6 +165,9 @@ export default class extends Controller {
       body: formData.toString()
     }).then(response => {
       window.location.href = response.url
+    }).catch(() => {
+      // Re-enable save button
+      this.saveButtonTarget.disabled = false
     })
   }
 
