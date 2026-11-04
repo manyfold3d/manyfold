@@ -9,7 +9,7 @@
     <%= t(".restart_required") %>
   </div>
 <% end %>
-<div class="row mt-2 flex-nowrap">
+<div class="row row-cols-2 mt-2 flex-nowrap">
   <div class="col col-auto border-end" id="sidebar">
     <ul class="nav flex-column">
       <% if policy(:settings).index? %>
@@ -59,7 +59,7 @@
       </ul>
     <% end %>
   </div>
-  <div class="col col-auto" id="content">
+  <div class="col" id="content">
     <%= yield %>
   </div>
 </div>
