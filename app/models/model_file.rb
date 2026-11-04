@@ -81,7 +81,7 @@ class ModelFile < ApplicationRecord
   end
 
   def has_render?
-    is_3d_model? && attachment_attacher.derivatives.key?(:render)
+    (is_3d_model? || is_slicer_file?) && attachment_attacher.derivatives.key?(:render)
   end
 
   def mime_type

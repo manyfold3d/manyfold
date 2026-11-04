@@ -45,26 +45,25 @@ class Components::PreviewFrame < Components::Base
 
   def render_local
     if @cover
-      url = cover_collection_path(@object)
-      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
-      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @object.name
+      image_with_blurred_background(cover_collection_path(@object), alt: @object.name)
     elsif @file.is_image?
-      url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview")
-      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
-      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
+      image_with_blurred_background(model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), alt: @file.name)
     elsif (handler = FileHandlers.handlers_for(environment: :preview_frame, mime_type: @file.mime_type)&.first)
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         render handler.component.new(file: @file, derivative: "preview")
       end
     elsif @file.has_render?
-      url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render")
-      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
-      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
+      image_with_blurred_background(model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), alt: @file.name)
     elsif @file
       file_icon
     else
       empty
     end
+  end
+
+  def image_with_blurred_background(url, alt: nil)
+    div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+    image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: alt
   end
 
   def render_remote
