@@ -16,7 +16,7 @@ class Components::Renderers::F3d < Components::Renderers::Base
 
   def view_template
     url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: :render) if @file.has_render?
-    div class: "card border-0 preview-card", data: {turbo_permanent: true} do
+    div class: "card border-0 square-area", data: {turbo_permanent: true} do
       if url
         div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
         img src: url, class: "card-img-top image-preview", alt: @file.name
