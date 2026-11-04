@@ -7,7 +7,8 @@ export default class extends Controller {
     url: String,
     uploadUrl: String,
     modelUrl: String,
-    origin: String
+    origin: String,
+    sourceFileId: String,
   }
 
   static targets = [
@@ -22,6 +23,7 @@ export default class extends Controller {
   declare modelUrlValue: string
   declare targetOrigin: string
   declare originValue: string
+  declare sourceFileIdValue: string
   declare iframeTarget: HTMLIFrameElement
   declare basenameTarget: HTMLInputElement
   declare extensionTarget: HTMLSpanElement
@@ -152,6 +154,8 @@ export default class extends Controller {
     const formData = new URLSearchParams()
     formData.append('model[file][0][id]', this.uploader.url)
     formData.append('model[file][0][name]', this.uploader.options.metadata.filename)
+    formData.append('model[file][0][relationships_attributes][0][objekt_id]', this.sourceFileIdValue)
+    formData.append('model[file][0][relationships_attributes][0][predicate]', 'alternative_format_of')
 
     fetch(this.modelUrlValue + '/model_files', {
       method: 'POST',
