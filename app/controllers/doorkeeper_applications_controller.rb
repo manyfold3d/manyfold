@@ -1,4 +1,5 @@
 class DoorkeeperApplicationsController < ApplicationController
+  layout "settings"
   before_action :get_application, except: [:index, :new, :create]
 
   def index

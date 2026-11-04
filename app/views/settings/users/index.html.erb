@@ -9,12 +9,12 @@
   <tr>
     <%= ColumnHeader label: User.human_attribute_name(:approved), sort_param: :order, sort_option: "pending", sort_default: true if SiteSettings.approve_signups %>
     <%= ColumnHeader label: User.human_attribute_name(:username), sort_param: :order, sort_option: "name" %>
-    <%= ColumnHeader label: User.human_attribute_name(:email) %>
-    <%= ColumnHeader label: User.human_attribute_name(:auth_uid) if SiteSettings.oidc_enabled? %>
-    <%= ColumnHeader label: t(".local") if SiteSettings.federation_enabled? %>
-    <%= ColumnHeader label: t(".fediverse_address") if SiteSettings.federation_enabled? %>
-    <%= ColumnHeader label: User.human_attribute_name(:created_at), sort_param: :order, sort_option: "recent" %>
-    <%= ColumnHeader label: Role.model_name.human(count: 100) %>
+    <%= ColumnHeader label: User.human_attribute_name(:email), hide_below: :lg %>
+    <%= ColumnHeader label: User.human_attribute_name(:auth_uid), hide_below: :md if SiteSettings.oidc_enabled? %>
+    <%= ColumnHeader label: t(".local"), hide_below: :md if SiteSettings.federation_enabled? %>
+    <%= ColumnHeader label: t(".fediverse_address"), hide_below: :lg if SiteSettings.federation_enabled? %>
+    <%= ColumnHeader label: User.human_attribute_name(:created_at), sort_param: :order, sort_option: "recent", hide_below: :sm %>
+    <%= ColumnHeader label: Role.model_name.human(count: 100), hide_below: :md %>
     <th></th>
   </tr>
   <% @users.each do |user| %>
@@ -26,12 +26,12 @@
       <td>
         <%= user.username %>
       </td>
-      <td><%= masked_email(user.email) %></td>
-      <%= content_tag :td, (user.auth_uid ? "✅" : "❌") if SiteSettings.oidc_enabled? %>
-      <%= content_tag :td, (user.local? ? "✅" : "❌") if SiteSettings.federation_enabled? %>
-      <%= content_tag :td, user.fedipub_actor&.at_address if SiteSettings.federation_enabled? %>
-      <%= content_tag :td, user.created_at %>
-      <td><%= user.roles&.map(&:name)&.join(", ") %></td>
+      <td class="d-none d-lg-table-cell"><%= masked_email(user.email) %></td>
+      <%= content_tag :td, (user.auth_uid ? "✅" : "❌"), class: "d-none d-md-table-cell" if SiteSettings.oidc_enabled? %>
+      <%= content_tag :td, (user.local? ? "✅" : "❌"), class: "d-none d-md-table-cell" if SiteSettings.federation_enabled? %>
+      <%= content_tag :td, user.fedipub_actor&.at_address, class: "d-none d-lg-table-cell" if SiteSettings.federation_enabled? %>
+      <%= content_tag :td, user.created_at, class: "d-none d-sm-table-cell" %>
+      <td class="d-none d-md-table-cell"><%= user.roles&.map(&:name)&.join(", ") %></td>
       <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user), class: "btn btn-secondary" %></td>
     </tr>
   <% end %>

@@ -1,12 +1,14 @@
 class Components::ColumnHeader < Components::Base
   include Phlex::Rails::Helpers::Request
+  include Phlex::Rails::Helpers::ClassNames
 
-  def initialize(label:, sort_param: nil, sort_option: nil, sort_default: false, sort_ascending: true)
+  def initialize(label:, sort_param: nil, sort_option: nil, sort_default: false, sort_ascending: true, hide_below: nil)
     @label = label
     @sort_param_name = sort_param&.to_s
     @sort_option = sort_option&.to_s
     @sort_default = sort_default
     @sort_ascending = sort_ascending
+    @hide_below = hide_below
   end
 
   def before_template
@@ -22,7 +24,10 @@ class Components::ColumnHeader < Components::Base
   end
 
   def view_template
-    th aria: @aria_options do
+    th class: class_names(
+      "d-none": @hide_below.present?,
+      "d-#{@hide_below}-table-cell": @hide_below.present?
+    ), aria: @aria_options do
       if @sort_option
         if @active_sort
           span { @label }

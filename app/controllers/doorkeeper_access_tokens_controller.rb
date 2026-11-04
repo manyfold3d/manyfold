@@ -1,6 +1,7 @@
 # Manyfold's own controller for manually managing and revoking access tokens
 
 class DoorkeeperAccessTokensController < ApplicationController
+  layout "settings"
   before_action :get_application
   before_action :get_token, except: [:new, :create]
 

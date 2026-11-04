@@ -36,4 +36,18 @@ module SettingsHelper
   def user_count
     policy_scope(User).count
   end
+
+  def side_menu_link(text, href, icon: nil)
+    content_tag(:li, class: "nav-item") do
+      parts = if icon
+        [
+          Icon(icon: icon, label: text),
+          content_tag(:span, class: "d-none d-lg-inline") { text }
+        ]
+      else
+        [text]
+      end
+      link_to(href, class: "nav-link") { safe_join(parts, " ") }
+    end
+  end
 end

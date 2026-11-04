@@ -9,97 +9,53 @@
     <%= t(".restart_required") %>
   </div>
 <% end %>
-<div class="row mt-2 flex-nowrap">
+<div class="row row-cols-2 mt-2 flex-nowrap">
   <div class="col col-auto border-end" id="sidebar">
     <ul class="nav flex-column">
       <% if policy(:settings).index? %>
-        <li class="nav-item">
-          <%= link_to t(".organization"), settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t(".libraries"), settings_libraries_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("settings.derivatives.heading"), derivatives_settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t(".appearance"), appearance_settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("settings.analysis.heading"), analysis_settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("settings.multiuser.heading"), multiuser_settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("views.plugins.index.title"), settings_plugins_path, class: "nav-link" %>
-        </li>
+        <%= side_menu_link t(".organization"), settings_path, icon: "folder-fill" %>
+        <%= side_menu_link t(".libraries"), settings_libraries_path, icon: "boxes" %>
+        <%= side_menu_link t("settings.derivatives.heading"), derivatives_settings_path, icon: "box-arrow-up-right" %>
+        <%= side_menu_link t(".appearance"), appearance_settings_path, icon: "palette-fill" %>
+        <%= side_menu_link t("settings.analysis.heading"), analysis_settings_path, icon: "flask-fill" %>
+        <%= side_menu_link t("settings.multiuser.heading"), multiuser_settings_path, icon: "people-fill" %>
+        <%= side_menu_link t("views.plugins.index.title"), settings_plugins_path, icon: "puzzle-fill" %>
       <% end %>
     </ul>
     <% if SiteSettings.multiuser_enabled? %>
       <hr>
-      <h5><%= t(".moderation_heading") %></h5>
+      <h5 class="d-none d-lg-inline"><%= t(".moderation_heading") %></h5>
       <ul class="nav flex-column">
-        <li class="nav-item">
-          <%= link_to t("settings.users.index.title"), settings_users_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("settings.reports.index.title"), settings_reports_path, class: "nav-link" %>
-        </li>
-        <% if SiteSettings.federation_enabled? %>
-          <li class="nav-item">
-            <%= link_to t("settings.domain_blocks.index.title"), settings_domain_blocks_path, class: "nav-link" %>
-          </li>
-        <% end %>
+        <%= side_menu_link t("settings.users.index.title"), settings_users_path, icon: "person-fill" %>
+        <%= side_menu_link t("settings.reports.index.title"), settings_reports_path, icon: "flag-fill" %>
+        <%= side_menu_link t("settings.domain_blocks.index.title"), settings_domain_blocks_path, icon: "sign-stop-fill" if SiteSettings.federation_enabled? %>
       </ul>
     <% end %>
     <% if policy(:settings).index? && current_user&.is_administrator? %>
       <hr>
-      <h5><%= t(".search_heading") %></h5>
+      <h5 class="d-none d-lg-inline"><%= t(".search_heading") %></h5>
       <ul class="nav flex-column">
-        <li class="nav-item">
-          <%= link_to t("settings.discovery.heading"), discovery_settings_path, class: "nav-link" %>
-        </li>
-        <% if SiteSettings.federation_enabled? %>
-          <li class="nav-item">
-            <%= link_to t("fasp_client.providers.index.heading"), fasp_client.providers_path, class: "nav-link" %>
-          </li>
-        <% end %>
+        <%= side_menu_link t("settings.discovery.heading"), discovery_settings_path, icon: "search" %>
+        <%= side_menu_link t("fasp_client.providers.index.heading"), fasp_client.providers_path, icon: "hdd-network-fill" if SiteSettings.federation_enabled? %>
       </ul>
     <% end %>
     <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>
       <hr>
-      <h5><%= t(".integrations_heading") %></h5>
+      <h5 class="d-none d-lg-inline"><%= t(".integrations_heading") %></h5>
       <ul class="nav flex-column">
-        <li class="nav-item">
-          <%= link_to t("views.print_hosts.index.title"), print_hosts_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("doorkeeper_applications.index.title"), doorkeeper_applications_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("settings.integrations.heading"), integrations_settings_path, class: "nav-link" %>
-        </li>
+        <%= side_menu_link t("views.print_hosts.index.title"), print_hosts_path, icon: "printer-fill" %>
+        <%= side_menu_link t("doorkeeper_applications.index.title"), doorkeeper_applications_path, icon: "key-fill" %>
+        <%= side_menu_link t("settings.integrations.heading"), integrations_settings_path, icon: "diagram-3-fill" %>
       </ul>
     <% end %>
     <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>
       <hr>
-      <h5><%= t(".tools_heading") %></h5>
+      <h5 class="d-none d-lg-inline"><%= t(".tools_heading") %></h5>
       <ul class="nav flex-column">
-        <li class="nav-item">
-          <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t(".performance"), rails_performance_path, class: "nav-link" unless Rails.env.test? %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t(".sidekiq"), sidekiq_web_path, class: "nav-link" %>
-        </li>
-        <% if DatabaseDetector.is_postgres? %>
-          <li class="nav-item">
-            <%= link_to t(".pghero"), pg_hero_path, class: "nav-link" %>
-          </li>
-        <% end %>
+        <%= side_menu_link t("settings.reporting.heading"), reporting_settings_path, icon: "diagram-3-fill" %>
+        <%= side_menu_link t(".performance"), rails_performance_path, icon: "cpu-fill" unless Rails.env.test? %>
+        <%= side_menu_link t(".sidekiq"), sidekiq_web_path, icon: "activity" %>
+        <%= side_menu_link t(".pghero"), pg_hero_path, icon: "database-fill" if DatabaseDetector.is_postgres? %>
       </ul>
     <% end %>
   </div>
