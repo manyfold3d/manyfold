@@ -218,9 +218,9 @@ class ModelFilesController < ApplicationController
   def upload_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      ManyfoldApi::V0::UploadedFileDeserializer.new(object: params[:json], user: current_user).deserialize
+      ManyfoldApi::V0::UploadedFileDeserializer.new(object: params[:json], user: current_user, record: @model).deserialize
     else
-      Form::UploadedFileDeserializer.new(params: params, user: current_user).deserialize
+      Form::UploadedFileDeserializer.new(params: params, user: current_user, record: @model).deserialize
     end
   end
 
