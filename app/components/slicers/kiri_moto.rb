@@ -47,8 +47,10 @@ class Components::Slicers::KiriMoto < Components::Base
         end
         div class: "col-auto" do
           button(
+            disabled: true,
             data: {
-              action: "click->kiri-moto#export:prevent"
+              action: "click->kiri-moto#export:prevent",
+              kiri_moto_target: "saveButton"
             }
           ) { translate("components.kiri_moto.save") }
         end

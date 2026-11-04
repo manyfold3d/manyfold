@@ -13,7 +13,8 @@ export default class extends Controller {
   static targets = [
     'iframe',
     'basename',
-    'extension'
+    'extension',
+    'saveButton'
   ]
 
   declare urlValue: string
@@ -24,6 +25,7 @@ export default class extends Controller {
   declare iframeTarget: HTMLIFrameElement
   declare basenameTarget: HTMLInputElement
   declare extensionTarget: HTMLSpanElement
+  declare saveButtonTarget: HTMLButtonElement
   declare connected: boolean
   declare uploader
 
@@ -52,6 +54,7 @@ export default class extends Controller {
   }
 
   export () {
+    this.saveButtonTarget.disabled = true
     this.send({ function: 'export', callback: true })
   }
 
@@ -101,6 +104,8 @@ export default class extends Controller {
   onLoaded () {
     // Close progress box
     this.send({ progress: 0 })
+    // Enable save button
+    this.saveButtonTarget.disabled = false
   }
 
   onExportDone (data) {
