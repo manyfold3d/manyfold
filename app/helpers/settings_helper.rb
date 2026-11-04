@@ -36,4 +36,10 @@ module SettingsHelper
   def user_count
     policy_scope(User).count
   end
+
+  def side_menu_link(text, href, icon: nil)
+    content_tag(:li, class: "nav-item") do
+      link_to text, href, class: "nav-link"
+    end
+  end
 end
