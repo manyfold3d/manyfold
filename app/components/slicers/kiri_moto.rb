@@ -29,22 +29,29 @@ class Components::Slicers::KiriMoto < Components::Base
           kiri_moto_target: "iframe"
         }
       )
-      div class: "form-save-button input-group" do
-        button(
-          data: {
-            action: "click->kiri-moto#export:prevent"
-          }
-        ) { translate("components.kiri_moto.save") }
-        input(
-          type: "text",
-          class: "border-primary form-control",
-          value: @file.basename,
-          data: { kiri_moto_target: "basename" }
-        )
-        span(
-          class: "input-group-text border-primary",
-          data: { kiri_moto_target: "extension" }
-        )
+      div class: "form-save-button row justify-content-end" do
+        label(class: "col-auto col-form-label") { translate("components.kiri_moto.filename") + ":" }
+        div class: "col-auto" do
+          div class: "input-group" do
+            input(
+              type: "text",
+              class: "border-primary form-control",
+              value: @file.basename,
+              data: {kiri_moto_target: "basename"}
+            )
+            span(
+              class: "input-group-text border-primary",
+              data: {kiri_moto_target: "extension"}
+            ) { ".gcode" }
+          end
+        end
+        div class: "col-auto" do
+          button(
+            data: {
+              action: "click->kiri-moto#export:prevent"
+            }
+          ) { translate("components.kiri_moto.save") }
+        end
       end
     end
   end
