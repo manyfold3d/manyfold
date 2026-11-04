@@ -28,6 +28,7 @@ export default class extends Controller {
   declare basenameTarget: HTMLInputElement
   declare extensionTarget: HTMLSpanElement
   declare saveButtonTarget: HTMLButtonElement
+  declare originalButtonText: string
   declare connected: boolean
   declare uploader
 
@@ -57,6 +58,8 @@ export default class extends Controller {
 
   export () {
     this.saveButtonTarget.disabled = true
+    this.originalButtonText = this.saveButtonTarget.textContent
+    this.saveButtonTarget.textContent = '...'
     this.send({ function: 'export', callback: true })
   }
 
@@ -114,7 +117,7 @@ export default class extends Controller {
     // Upload file to tus endpoint
     const blob = new Blob([data.file])
     const filename = `${this.basenameTarget.value}.${data.format}`
-
+    this.saveButtonTarget.textContent = '0%'
     this.uploader = new tus.Upload(blob, {
       endpoint: this.uploadUrlValue,
       retryDelays: [0, 3000, 5000, 10000, 20000],
@@ -147,7 +150,7 @@ export default class extends Controller {
 
   onUploadProgress (bytesUploaded, bytesTotal) {
     const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2)
-    console.log(bytesUploaded, bytesTotal, percentage + '%')
+    this.saveButtonTarget.textContent = `${percentage}%`
   }
 
   onUploadComplete () {
@@ -166,7 +169,8 @@ export default class extends Controller {
     }).then(response => {
       window.location.href = response.url
     }).catch(() => {
-      // Re-enable save button
+      // Re-enable save button and restore text
+      this.saveButtonTarget.textContent = this.originalButtonText
       this.saveButtonTarget.disabled = false
     })
   }
