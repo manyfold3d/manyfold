@@ -1341,8 +1341,11 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "Created; single file uploaded and added to the model"
+          },
           "202": {
-            "description": "Accepted; the files will be added to the model after processing"
+            "description": "Accepted; multiple files uploaded and will be added to the model after processing"
           },
           "401": {
             "description": "Unauthorized; the request did not provide valid authentication details"
