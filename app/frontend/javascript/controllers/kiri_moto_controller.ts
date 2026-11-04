@@ -7,21 +7,28 @@ export default class extends Controller {
     url: String,
     uploadUrl: String,
     modelUrl: String,
-    outputFilename: String,
-    origin: String
+    origin: String,
+    sourceFileId: String,
   }
 
   static targets = [
-    'iframe'
+    'iframe',
+    'basename',
+    'extension',
+    'saveButton'
   ]
 
   declare urlValue: string
   declare uploadUrlValue: string
   declare modelUrlValue: string
-  declare outputFilenameValue: string
   declare targetOrigin: string
   declare originValue: string
+  declare sourceFileIdValue: string
   declare iframeTarget: HTMLIFrameElement
+  declare basenameTarget: HTMLInputElement
+  declare extensionTarget: HTMLSpanElement
+  declare saveButtonTarget: HTMLButtonElement
+  declare originalButtonText: string
   declare connected: boolean
   declare uploader
 
@@ -36,6 +43,7 @@ export default class extends Controller {
   }
 
   load () {
+    this.send({ event: 'device.selected' }) // Subscribe to device change events
     this.send({
       clear: 'true',
       progress: 0.01,
@@ -49,6 +57,9 @@ export default class extends Controller {
   }
 
   export () {
+    this.saveButtonTarget.disabled = true
+    this.originalButtonText = this.saveButtonTarget.textContent
+    this.saveButtonTarget.textContent = '...'
     this.send({ function: 'export', callback: true })
   }
 
@@ -65,6 +76,9 @@ export default class extends Controller {
         break
       case 'export.done':
         this.onExportDone(event.data.data)
+        break
+      case 'device.selected':
+        this.onDeviceChanged(event.data.data)
         break
       default:
         console.log('Unhandled message:')
@@ -95,13 +109,15 @@ export default class extends Controller {
   onLoaded () {
     // Close progress box
     this.send({ progress: 0 })
+    // Enable save button
+    this.saveButtonTarget.disabled = false
   }
 
   onExportDone (data) {
     // Upload file to tus endpoint
     const blob = new Blob([data.file])
-    const filename = `${this.outputFilenameValue}.${data.format}`
-
+    const filename = `${this.basenameTarget.value}.${data.format}`
+    this.saveButtonTarget.textContent = '0%'
     this.uploader = new tus.Upload(blob, {
       endpoint: this.uploadUrlValue,
       retryDelays: [0, 3000, 5000, 10000, 20000],
@@ -124,19 +140,25 @@ export default class extends Controller {
     }.bind(this))
   }
 
+  onDeviceChanged (data) {
+    this.extensionTarget.textContent = `.${data.slaFileExt || data.gcodeFExt}`
+  }
+
   onUploadError (error) {
     console.log('Upload failed: ' + error)
   }
 
   onUploadProgress (bytesUploaded, bytesTotal) {
     const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2)
-    console.log(bytesUploaded, bytesTotal, percentage + '%')
+    this.saveButtonTarget.textContent = `${percentage}%`
   }
 
   onUploadComplete () {
     const formData = new URLSearchParams()
     formData.append('model[file][0][id]', this.uploader.url)
     formData.append('model[file][0][name]', this.uploader.options.metadata.filename)
+    formData.append('model[file][0][relationships_attributes][0][objekt_id]', this.sourceFileIdValue)
+    formData.append('model[file][0][relationships_attributes][0][predicate]', 'alternative_format_of')
 
     fetch(this.modelUrlValue + '/model_files', {
       method: 'POST',
@@ -144,6 +166,12 @@ export default class extends Controller {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: formData.toString()
+    }).then(response => {
+      window.location.href = response.url
+    }).catch(() => {
+      // Re-enable save button and restore text
+      this.saveButtonTarget.textContent = this.originalButtonText
+      this.saveButtonTarget.disabled = false
     })
   }
 

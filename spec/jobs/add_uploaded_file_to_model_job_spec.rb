@@ -37,6 +37,14 @@ RSpec.describe AddUploadedFileToModelJob do
       expect { job.perform(model.id, upload) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).once
     end
 
+    it "adds extra attributes to new file" do
+      file = create(:model_file, model: model, filename: "test.stl")
+      job.perform(model.id, upload.merge(
+        relationships_attributes: [{objekt: file, predicate: "supported_version_of"}]
+      ))
+      expect(model.model_files.last.relationships.count).to eq 1
+    end
+
     context "with path traversal in tus ID" do
       let(:upload) {
         {

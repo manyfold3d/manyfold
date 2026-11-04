@@ -554,6 +554,7 @@ fr:
       select_slide: Choisir l'image à afficher
       slide_label: "%{name} (%{index} sur %{count})"
     kiri_moto:
+      filename:
       save:
     like_button:
       like: Aimer

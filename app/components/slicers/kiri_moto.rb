@@ -18,7 +18,7 @@ class Components::Slicers::KiriMoto < Components::Base
         kiri_moto_url_value: @url,
         kiri_moto_upload_url_value: upload_url,
         kiri_moto_model_url_value: url_for(@file.model),
-        kiri_moto_output_filename_value: @file.basename,
+        kiri_moto_source_file_id_value: @file.public_id,
         action: "message@window->kiri-moto#onMessage"
       }
     ) do
@@ -30,13 +30,31 @@ class Components::Slicers::KiriMoto < Components::Base
           kiri_moto_target: "iframe"
         }
       )
-      div class: "form-save-button" do
-        button(
-          class: "btn btn-primary",
-          data: {
-            action: "click->kiri-moto#export:prevent"
-          }
-        ) { translate("components.kiri_moto.save") }
+      div class: "form-save-button row justify-content-end" do
+        label(class: "col-auto col-form-label") { translate("components.kiri_moto.filename") + ":" }
+        div class: "col-auto" do
+          div class: "input-group" do
+            input(
+              type: "text",
+              class: "border-primary form-control",
+              value: @file.basename,
+              data: {kiri_moto_target: "basename"}
+            )
+            span(
+              class: "input-group-text border-primary",
+              data: {kiri_moto_target: "extension"}
+            ) { ".gcode" }
+          end
+        end
+        div class: "col-auto" do
+          button(
+            disabled: true,
+            data: {
+              action: "click->kiri-moto#export:prevent",
+              kiri_moto_target: "saveButton"
+            }
+          ) { translate("components.kiri_moto.save") }
+        end
       end
     end
   end

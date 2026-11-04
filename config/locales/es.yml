@@ -552,6 +552,7 @@ es:
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
     kiri_moto:
+      filename:
       save:
     like_button:
       like: Me gusta

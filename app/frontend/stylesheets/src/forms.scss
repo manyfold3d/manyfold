@@ -51,11 +51,12 @@ span.form-delete-button {
 div.form-save-button {
 	@extend .sticky-bottom;
 	@extend .text-end;
+	@extend .mb-3;
 
-	input {
+	button,
+	input[type=submit] {
 		@extend .btn;
 		@extend .btn-lg;
 		@extend .btn-primary;
-		@extend .mb-3;
 	}
 }
