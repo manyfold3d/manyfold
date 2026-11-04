@@ -552,6 +552,7 @@ ja:
       select_slide:
       slide_label:
     kiri_moto:
+      filename:
       save:
     like_button:
       like:
