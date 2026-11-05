@@ -54,9 +54,9 @@ RSpec.describe ChangeDetection do
   context "with a case sensitive filesystem", :case_sensitive do
     around do |ex|
       MockDirectory.create([
-        "model/file.obj",
-        "model/file.OBJ",
-        "model/file.Obj"
+        "model1/file.obj",
+        "model2/file.OBJ",
+        "model3/file.Obj"
       ]) do |path|
         @library_path = path
         ex.run
@@ -69,15 +69,20 @@ RSpec.describe ChangeDetection do
     # rubocop:enable RSpec/InstanceVariable
 
     it "detects lowercase file extensions" do
-      expect(library.indexable_files).to include "model/file.obj"
+      expect(library.indexable_files).to include "model1/file.obj"
     end
 
     it "detects uppercase file extensions" do
-      expect(library.indexable_files).to include "model/file.OBJ"
+      expect(library.indexable_files).to include "model2/file.OBJ"
     end
 
     it "detects mixed case file extensions" do
-      expect(library.indexable_files).to include "model/file.Obj"
+      expect(library.indexable_files).to include "model3/file.Obj"
+    end
+
+    it "includes folders with any filename case" do
+      # Regression test for https://github.com/manyfold3d/manyfold/issues/7445
+      expect(library.folders_with_changes).to eq ["model1", "model2", "model3"]
     end
   end
 
