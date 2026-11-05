@@ -3,7 +3,7 @@
 class Components::FileFormatList < Components::Base
   def before_template
     @categories = {
-      model: [:preview_frame, :thumbnail, :convert, :browser, :client],
+      model: [:preview_frame, :thumbnail, :browser, :convert, :slice, :client],
       slicer: [:preview_frame, :thumbnail, :browser, :client],
       image: [:preview_frame, :thumbnail, :browser, :client],
       video: [:preview_frame, :thumbnail, :browser, :client],

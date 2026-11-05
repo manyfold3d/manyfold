@@ -756,6 +756,7 @@ en:
       convert: File conversion
       edit: Edit content
       preview_frame: Show as preview
+      slice: Slicing
       thumbnail: Thumbnail images
     handlers:
       assimp: Assimp

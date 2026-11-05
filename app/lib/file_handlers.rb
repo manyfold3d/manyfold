@@ -4,6 +4,7 @@ module FileHandlers
   # i18n-tasks-use t("file_handlers.environments.preview_frame")
   # i18n-tasks-use t("file_handlers.environments.edit")
   # i18n-tasks-use t("file_handlers.environments.convert")
+  # i18n-tasks-use t("file_handlers.environments.slice")
   # i18n-tasks-use t("file_handlers.environments.thumbnail")
 
   ALL_HANDLERS = []
