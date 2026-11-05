@@ -552,7 +552,7 @@ nl:
       select_slide: Kies weer te geven afbeelding
       slide_label: "%{name} (%{index} van %{count})"
     kiri_moto:
-      filename:
+      filename: Bestandsnaam
       save:
     like_button:
       like:
