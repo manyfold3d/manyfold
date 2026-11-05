@@ -552,7 +552,7 @@ ru:
       select_slide:
       slide_label:
     kiri_moto:
-      filename:
+      filename: Имя файла
       save:
     like_button:
       like:
