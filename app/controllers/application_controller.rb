@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :restore_failed_search
 
-  protect_from_forgery with: :null_session, if: :is_api_request?
+  protect_from_forgery with: :exception
 
   rescue_from ScopedSearch::QueryNotSupported, with: -> {
     flash[:alert] = t("application.search_error")
@@ -68,6 +68,14 @@ class ApplicationController < ActionController::Base
 
   def is_api_request?
     request.format.manyfold_api_v0?
+  end
+
+  def handle_unverified_request
+    if is_api_request?
+      ActionController::RequestForgeryProtection::ProtectionMethods::NullSession.new(self).handle_unverified_request
+    else
+      super
+    end
   end
 
   def has_signed_id?
