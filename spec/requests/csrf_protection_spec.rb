@@ -20,6 +20,16 @@ RSpec.describe "CSRF protection", :after_first_run do
       post "/collections", params: {collection: {name: "legitimate"}, authenticity_token: token}
       expect(response).to redirect_to("/collections")
     end
+
+    it "rejects a state-changing request with a bad authenticity token" do
+      post "/collections", params: {collection: {name: "legitimate"}, authenticity_token: "nope"}
+      expect(response).to have_http_status(:unprocessable_content)
+    end
+
+    it "rejects a state-changing request without an authenticity token" do
+      post "/collections", params: {collection: {name: "legitimate"}}
+      expect(response).to have_http_status(:unprocessable_content)
+    end
   end
 
   context "with an API request authenticated by access token" do
