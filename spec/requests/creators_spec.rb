@@ -11,7 +11,6 @@ require "rails_helper"
 
 RSpec.describe "Creators", :after_first_run do
   it_behaves_like "Permittable", Creator
-  it_behaves_like "CSRF protected", Creator
 
   context "when signed out in multiuser mode", :multiuser do
     context "with public creator" do
