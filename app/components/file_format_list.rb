@@ -45,7 +45,7 @@ class Components::FileFormatList < Components::Base
     tr do
       td { name }
       td(class: "d-none d-md-table-cell") do
-        extensions.map { "*.#{it}" }.join(", ")
+        extensions.join(", ")
       end
       @categories[category].map do |environment|
         handlers = FileHandlers.handlers_for(environment: environment, mime_type: media_type)
