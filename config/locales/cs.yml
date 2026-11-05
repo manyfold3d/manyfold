@@ -552,7 +552,7 @@ cs:
       select_slide: Vyberte obrázek ke zobrazení
       slide_label: "%{name} (%{index} z %{count})"
     kiri_moto:
-      filename:
+      filename: Název souboru
       save:
     like_button:
       like:
