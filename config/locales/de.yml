@@ -808,6 +808,7 @@ de:
       convert: Dateikonvertierung
       edit: Inhalt bearbeiten
       preview_frame: Als Vorschau anzeigen
+      slice:
       thumbnail: Miniaturbilder
     handlers:
       assimp: Assimp

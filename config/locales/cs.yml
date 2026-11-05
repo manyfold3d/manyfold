@@ -798,6 +798,7 @@ cs:
       convert:
       edit:
       preview_frame:
+      slice:
       thumbnail:
     handlers:
       assimp:

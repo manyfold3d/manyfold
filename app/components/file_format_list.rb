@@ -2,14 +2,20 @@
 
 class Components::FileFormatList < Components::Base
   def before_template
-    @categories = [:model, :slicer, :image, :video, :archive, :document]
-    @environments = [:preview_frame, :thumbnail, :convert, :browser, :client]
+    @categories = {
+      model: [:preview_frame, :thumbnail, :browser, :convert, :slice, :client],
+      slicer: [:preview_frame, :thumbnail, :browser, :client],
+      image: [:preview_frame, :thumbnail, :browser, :client],
+      video: [:preview_frame, :thumbnail, :browser, :client],
+      archive: [:preview_frame, :browser, :client],
+      document: [:thumbnail, :browser, :client]
+    }
   end
 
   def view_template
     h2 { t("components.file_format_list.title") }
     p { t("components.file_format_list.description") }
-    @categories.map { category_section(it) }
+    @categories.keys.map { category_section(it) }
   end
 
   def category_section(category)
@@ -20,28 +26,28 @@ class Components::FileFormatList < Components::Base
         tr do
           th { t("components.file_format_list.file_type") }
           th(class: "d-none d-md-table-cell") { t("components.file_format_list.extensions") }
-          @environments.each do |environment|
+          @categories[category].each do |environment|
             th { t("file_handlers.environments.%{environment}" % {environment: environment}) }
           end
         end
       end
       tbody do
         Naturally.sort_by(media_types) { it[:name].downcase }.map do
-          media_type_row(name: it[:name], media_type: it[:media_type])
+          media_type_row(name: it[:name], media_type: it[:media_type], category: category)
         end
       end
     end
   end
 
-  def media_type_row(name:, media_type:)
+  def media_type_row(name:, media_type:, category:)
     extensions = [media_type, MediaType::EXTENSIONS[media_type]].flatten.uniq.compact
     extensions.reject! { it.starts_with?("three") || it.starts_with?("seven") } # Ugh
     tr do
       td { name }
       td(class: "d-none d-md-table-cell") do
-        extensions.map { "*.#{it}" }.join(", ")
+        code { extensions.join(", ") }
       end
-      @environments.map do |environment|
+      @categories[category].map do |environment|
         handlers = FileHandlers.handlers_for(environment: environment, mime_type: media_type)
         td do
           if handlers.empty?
