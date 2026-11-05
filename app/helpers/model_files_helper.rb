@@ -5,6 +5,10 @@ module ModelFilesHelper
     policy(file).print? && print_hosts_for(file.mime_type).any?
   end
 
+  def can_slice?(file)
+    policy(file).slice? && FileHandlers.handlers_for(environment: :slice, mime_type: file.mime_type).any?
+  end
+
   def print_hosts_for(mime_type)
     policy_scope(PrintHost).all.select { mime_type.in? it.input_types }
   end

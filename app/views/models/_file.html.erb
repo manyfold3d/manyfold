@@ -38,8 +38,9 @@
                 <%= app_links(file.presupported_version) %>
                 <%= DropdownDivider() %>
               <% end %>
-              <% if can_print? file %>
-                <%= print_links(file) %>
+              <% if can_print?(file) || can_slice?(file) %>
+                <%= DropdownItem icon: "layers", label: t("model_files.slice.title"), path: slice_model_model_file_path(@model, file) if can_slice?(file) %>
+                <%= print_links(file) if can_print?(file) %>
                 <%= DropdownDivider() %>
               <% end %>
               <%= DropdownItem icon: "file-zip-fill", label: t("model_files.show.extract"), path: extract_model_model_file_path(@model, file), method: :post if policy(file).extract? %>
