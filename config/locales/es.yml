@@ -552,8 +552,8 @@ es:
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
     kiri_moto:
-      filename:
-      save:
+      filename: Archivo
+      save: Guardar el archivo fragmentado
     like_button:
       like: Me gusta
       unlike: No me gusta
@@ -813,7 +813,7 @@ es:
       iframe_tag: HTML con marcos
       image_tag: Etiqueta HTML
       imagemagick: ImageMagick
-      kiri_moto:
+      kiri_moto: Kiri:Moto
       kramdown: Markdown
       plaintext: Texto sin formato
       plaintext_form: Formulario sencillo
@@ -1061,7 +1061,7 @@ es:
       video: Vídeos
     cheetah3d: Cheetah3D
     chitubox: Chitubox
-    cnc:
+    cnc: CNC
     collada: Collada
     crealitybox: Creality Box
     ctb: Chitu
@@ -1086,7 +1086,7 @@ es:
     gzip: gzip
     hfp: HueForge
     html: HTML
-    hvs:
+    hvs: HyVision Cubicon
     iam: Autodesk Inventor assembly
     ifc: Industry Foundation Classes
     iges: IGES
@@ -1113,9 +1113,9 @@ es:
     mpeg: MPEG
     mtl: Wavefront MTL
     nanodlp: NanoDLP
-    nc:
-    ncd:
-    ngc:
+    nc: NC
+    ncd: Techno CNC
+    ngc: LinuxCNC
     nrrd: NRRD («datos ráster casi sin procesar»)
     obj: Wavefront OBJ
     'off': Formato de archivo objeto
@@ -1126,9 +1126,9 @@ es:
     prz: Phrozen
     pts: Nube de puntos
     rar: RAR
-    rml:
-    rsla:
-    sbp:
+    rml: Roland CNC
+    rsla: Raster SLA
+    sbp: ShopBot
     scad: OpenSCAD
     sevenz: 7-Zip
     sketchup: SketchUp
@@ -1148,9 +1148,9 @@ es:
     tiff: TIFF
     voxl: Dragonfruit
     vrml: VRML
-    vsla:
+    vsla: Vector SLA
     vtk: VTK Legacy
-    vtkhdf:
+    vtkhdf: VTK HDF5
     vtp: VTK XML
     webm: WebM
     webp: WebP

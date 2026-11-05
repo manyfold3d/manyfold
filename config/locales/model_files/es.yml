@@ -58,7 +58,7 @@ es:
       print_card:
         heading: Imprimir
     slice:
-      title:
+      title: Cortar el archivo para su impresión
     update:
       failure: Se ha producido un error y no se ha podido guardar la información del fichero.
       success: Información del fichero guardada.
