@@ -1,5 +1,5 @@
 class DoorkeeperApplicationsController < ApplicationController
-  layout "settings"
+  layout -> { current_user.is_moderator? ? "settings" : nil }
   before_action :get_application, except: [:index, :new, :create]
 
   def index

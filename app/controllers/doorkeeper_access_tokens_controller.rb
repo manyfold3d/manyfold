@@ -1,7 +1,7 @@
 # Manyfold's own controller for manually managing and revoking access tokens
 
 class DoorkeeperAccessTokensController < ApplicationController
-  layout "settings"
+  layout -> { current_user.is_moderator? ? "settings" : nil }
   before_action :get_application
   before_action :get_token, except: [:new, :create]
 
