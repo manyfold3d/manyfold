@@ -3,8 +3,7 @@
 FROM ruby:3.4.12-alpine3.24 AS base
 WORKDIR /usr/src/app
 
-RUN apk add --no-cache \
-  tzdata=2026e-r0
+RUN apk add --no-cache tzdata
 
 RUN gem install bundler -v 2.5.23
 RUN bundle config set --local deployment 'true'
