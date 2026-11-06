@@ -15,6 +15,7 @@ require "rails_helper"
 
 RSpec.describe "Models", :after_first_run do
   it_behaves_like "Permittable", Model
+  it_behaves_like "CSRF protected", Model
 
   context "when signed out in multiuser mode", :multiuser do
     context "with public model" do

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :restore_failed_search
 
-  protect_from_forgery with: :null_session, if: :is_api_request?
+  skip_forgery_protection if: :is_api_request?
 
   rescue_from ScopedSearch::QueryNotSupported, with: -> {
     flash[:alert] = t("application.search_error")
