@@ -4,15 +4,7 @@ require "rails_helper"
 # (spec/requests/csrf_protected_shared.rb). This file covers the app-wide
 # behaviour: valid tokens are accepted, and API requests using bearer tokens
 # don't need one.
-RSpec.describe "CSRF protection", :after_first_run do
-  around do |example|
-    original = ActionController::Base.allow_forgery_protection
-    ActionController::Base.allow_forgery_protection = true
-    example.run
-  ensure
-    ActionController::Base.allow_forgery_protection = original
-  end
-
+RSpec.describe "CSRF protection", :after_first_run, :with_csrf_protection do
   context "with a signed-in browser session", :as_contributor do
     it "accepts a state-changing request with the authenticity token from the form" do
       get "/collections/new"
