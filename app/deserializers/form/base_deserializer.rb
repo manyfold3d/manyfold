@@ -20,15 +20,11 @@ module Form
     end
 
     def resolve_creator(params, attribute = :creator)
-      scope = CreatorPolicy::UpdateScope.new(@user, Creator).resolve
-      if id = params.delete(attribute)
-        params[attribute] = scope.find_param(id)
-      elsif id = params.delete(:"#{attribute}_id")
-        params[attribute] = scope.find(id)
-      end
-      params
-    rescue ActiveRecord::RecordNotFound
-      params
+      resolve_object(
+        params,
+        CreatorPolicy::UpdateScope.new(@user, Creator).resolve,
+        attribute
+      )
     end
 
     def resolve_collections(params)
@@ -39,8 +35,23 @@ module Form
     end
 
     def resolve_collection(params, attribute = :collection)
-      scope = CollectionPolicy::UpdateScope.new(@user, Collection).resolve
-      if id = params.delete(attribute)
+      resolve_object(
+        params,
+        CollectionPolicy::UpdateScope.new(@user, Collection).resolve,
+        attribute
+      )
+    end
+
+    def resolve_library(params, attribute = :library)
+      resolve_object(
+        params,
+        LibraryPolicy::Scope.new(@user, Library).resolve,
+        attribute
+      )
+    end
+
+    def resolve_object(params, scope, attribute)
+      if (id = params.delete(attribute))
         params[attribute] = scope.find_param(id)
       elsif (id = params.delete(:"#{attribute}_id"))
         params[attribute] = scope.find(id)
