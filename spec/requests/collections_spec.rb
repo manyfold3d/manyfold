@@ -152,7 +152,7 @@ RSpec.describe "Collections", :after_first_run do
 
       it "saves preview model" do
         model = create(:model, collections: [collection])
-        patch "/collections/#{collection.to_param}", params: {collection: {preview_model_id: model.id}}
+        patch "/collections/#{collection.to_param}", params: {collection: {preview_model: model.to_param}}
         expect(collection.reload.preview_model).to eq model
       end
 

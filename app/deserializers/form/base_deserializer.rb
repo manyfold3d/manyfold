@@ -50,6 +50,14 @@ module Form
       )
     end
 
+    def resolve_model(params, attribute)
+      resolve_object(
+        params,
+        ModelPolicy::Scope.new(@user, Model).resolve,
+        attribute
+      )
+    end
+
     def resolve_file(params, attribute)
       resolve_object(
         params,
