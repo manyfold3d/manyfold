@@ -179,7 +179,7 @@ RSpec.describe "Models", :after_first_run do
           model = library.models.first
           file = create(:model_file, model: model, filename: "test.jpg")
           expect {
-            put "/models/#{model.to_param}", params: {model: {preview_file_id: file.id}}
+            put "/models/#{model.to_param}", params: {model: {preview_file: file.to_param}}
           }.to change { model.reload.preview_file }.from(nil).to(file)
         end
 
@@ -187,7 +187,7 @@ RSpec.describe "Models", :after_first_run do
           model = library.models.first
           file = create(:model_file, model: model, filename: "test.stl")
           expect {
-            put "/models/#{model.to_param}", params: {model: {entrypoint_id: file.id}}
+            put "/models/#{model.to_param}", params: {model: {entrypoint: file.to_param}}
           }.to change { model.reload.entrypoint }.from(nil).to(file)
         end
 
@@ -336,12 +336,12 @@ RSpec.describe "Models", :after_first_run do
           update[models[0].to_param] = 1
           update[models[1].to_param] = 1
 
-          patch update_models_path, params: {models: update, creator_id: creator.id}
+          patch update_models_path, params: {models: update, creator: creator.to_param}
 
           expect(response).to have_http_status(:redirect)
           models.each { |model| model.reload }
-          expect(models[0].creator_id).to eq creator.id
-          expect(models[1].creator_id).to eq creator.id
+          expect(models[0].creator).to eq creator
+          expect(models[1].creator).to eq creator
         end
 
         it "adds tags to models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
