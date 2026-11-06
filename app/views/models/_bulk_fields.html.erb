@@ -1,5 +1,5 @@
 <%= collection_select_input_row form,
-      :creator, @creators, :id, :name_with_domain,
+      :creator, @creators, :to_param, :name_with_domain,
       include_blank: t("general.no_change"),
       selected: @new_creator&.id || @default_creator&.id,
       button: (if policy(:creator).new?

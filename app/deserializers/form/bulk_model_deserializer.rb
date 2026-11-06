@@ -3,8 +3,8 @@ module Form
     def deserialize
       return nil unless @params
       allowed = @params.permit(
-        :creator_id,
-        :new_library_id,
+        :creator,
+        :library,
         :organize,
         :license,
         :sensitive,
@@ -16,6 +16,7 @@ module Form
       )
       allowed = resolve_collections(allowed)
       allowed = resolve_creator(allowed)
+      allowed = resolve_library(allowed, :library)
       allowed.compact_blank
     end
   end

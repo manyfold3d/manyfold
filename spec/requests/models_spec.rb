@@ -381,7 +381,7 @@ RSpec.describe "Models", :after_first_run do
           let(:params) do
             {
               update_all: I18n.t("models.bulk_edit.update_all"),
-              new_library_id: new_library.id,
+              library: new_library.to_param,
               tag: [tag.name]
             }
           end
