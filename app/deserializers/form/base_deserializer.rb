@@ -50,6 +50,14 @@ module Form
       )
     end
 
+    def resolve_file(params, attribute)
+      resolve_object(
+        params,
+        @record.model_files,
+        attribute
+      )
+    end
+
     def resolve_object(params, scope, attribute)
       if (id = params.delete(attribute))
         params[attribute] = scope.find_param(id)

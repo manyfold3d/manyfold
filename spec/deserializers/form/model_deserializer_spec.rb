@@ -9,11 +9,11 @@ RSpec.describe Form::ModelDeserializer do
       "authenticity_token" => "[FILTERED]",
       "model" => ActionController::Parameters.new({
         "name" => "Batarang",
-        "preview_file_id" => "12345",
-        "entrypoint_id" => "54321",
+        "preview_file" => "abc123",
+        "entrypoint" => "abc123",
         "entrypoint_fragment" => "fragment",
-        "creator_id" => "93",
-        "library_id" => "20",
+        "creator" => "abc123",
+        "library" => "abc123",
         "tag_list" => ["wonderful", "toys"],
         "links_attributes" => ActionController::Parameters.new({
           "0" => {"url" => "https://example.com", "_destroy" => "false"}
@@ -57,7 +57,7 @@ RSpec.describe Form::ModelDeserializer do
     let(:params) {
       ActionController::Parameters.new(
         "model" => ActionController::Parameters.new({
-          "creator_id" => creator.id
+          "creator" => creator.to_param
         })
       )
     }
@@ -68,10 +68,6 @@ RSpec.describe Form::ModelDeserializer do
       it "does not set creator" do
         expect(deserializer.deserialize[:creator]).to be_nil
       end
-
-      it "strips creator_id param" do
-        expect(deserializer.deserialize[:creator_id]).to be_nil
-      end
     end
 
     context "when the user does have update permission on the creator" do
@@ -79,10 +75,6 @@ RSpec.describe Form::ModelDeserializer do
 
       it "finds proper creator record" do
         expect(deserializer.deserialize[:creator]).to eq creator
-      end
-
-      it "strips creator_id param" do
-        expect(deserializer.deserialize[:creator_id]).to be_nil
       end
     end
   end
