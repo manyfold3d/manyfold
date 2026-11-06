@@ -4,7 +4,8 @@ class Upgrade::UpdateFedipubTypeFieldsJob < ApplicationJob
   def perform
     [
       [Fedipub::Activity, :entity_type],
-      [Comment, :commenter_type]
+      [Comment, :commenter_type],
+      [Fedipub::Moderation::Report, :object_type]
     ].each do |table, field|
       table.where(field => "Federails::Actor").update_all(field => "Fedipub::Actor") # rubocop:disable Rails/SkipsModelValidations
     end
