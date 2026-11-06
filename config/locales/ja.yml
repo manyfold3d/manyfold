@@ -5,9 +5,9 @@ ja:
       collection:
         ai_indexable:
         caption: キャプション
-        collection_id:
+        collection:
         cover:
-        creator_id:
+        creator:
           few: クリエイター
           many: クリエイター
           one: クリエイター
@@ -17,7 +17,7 @@ ja:
         indexable:
         name: 名称
         notes: ノート
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable:
         avatar:
@@ -103,11 +103,11 @@ ja:
       model:
         ai_indexable:
         caption: キャプション
-        creator_id: クリエイター
+        creator: クリエイター
         entrypoint:
         entrypoint_fragment:
         indexable:
-        library_id: ライブラリー
+        library: ライブラリー
         license: ライセンス
         name: 名前
         notes: 説明

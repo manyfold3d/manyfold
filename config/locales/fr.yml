@@ -5,9 +5,9 @@ fr:
       collection:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
-        collection_id:
+        collection:
         cover:
-        creator_id:
+        creator:
           few: Créateurs
           many: Créateurs
           one: Créateur
@@ -17,7 +17,7 @@ fr:
         indexable: Autoriser l'indexation de la recherche
         name: Nom
         notes: Notes
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable:
         avatar: Avatar
@@ -105,11 +105,11 @@ fr:
       model:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
-        creator_id: Créateur
+        creator: Créateur
         entrypoint:
         entrypoint_fragment:
         indexable:
-        library_id: Bibliothèque
+        library: Bibliothèque
         license: Licence
         name: Nom
         notes: Description

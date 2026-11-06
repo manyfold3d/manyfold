@@ -5,9 +5,9 @@ pl:
       collection:
         ai_indexable:
         caption: Napis
-        collection_id:
+        collection:
         cover:
-        creator_id:
+        creator:
           few: Twórcy
           many: Twórcy
           one: Twórca
@@ -17,7 +17,7 @@ pl:
         indexable:
         name: Nazwa
         notes: Opis
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable:
         avatar:
@@ -103,11 +103,11 @@ pl:
       model:
         ai_indexable:
         caption: Napis
-        creator_id: Twórca
+        creator: Twórca
         entrypoint:
         entrypoint_fragment:
         indexable:
-        library_id: Biblioteka
+        library: Biblioteka
         license: Licencja
         name: Nazwa
         notes: Opis

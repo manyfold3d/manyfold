@@ -5,9 +5,9 @@ pt:
       collection:
         ai_indexable:
         caption:
-        collection_id:
+        collection:
         cover:
-        creator_id:
+        creator:
           few:
           many:
           one:
@@ -17,7 +17,7 @@ pt:
         indexable:
         name:
         notes:
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable:
         avatar:
@@ -103,11 +103,11 @@ pt:
       model:
         ai_indexable:
         caption:
-        creator_id:
+        creator:
         entrypoint:
         entrypoint_fragment:
         indexable:
-        library_id:
+        library:
         license:
         name:
         notes:

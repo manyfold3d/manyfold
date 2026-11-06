@@ -4,7 +4,7 @@
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
   <%= collection_select_input_row form,
-        :creator, @creators, :id, :name_with_domain,
+        :creator, @creators, :to_param, :name_with_domain,
         include_blank: t("general.none"),
         selected: @default_creator&.id,
         button: (if policy(:creator).new?
@@ -52,11 +52,11 @@
   <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
     <%= unless @model.contains_other_models?
           collection_select_input_row form,
-            :library, policy_scope(Library).all, :id, :name
+            :library, policy_scope(Library).all, :to_param, :name
         end %>
   <% end %>
-  <%= collection_select_input_row form, :preview_file, Naturally.sort_by(@model.valid_preview_files, :name_and_filename), :id, :name_and_filename, help: t(".preview_file.help") %>
-  <%= collection_select_input_row form, :entrypoint, Naturally.sort_by(@model.three_d_files, :name_and_filename), :id, :name_and_filename, help: t(".entrypoint.help_html"), include_blank: true %>
+  <%= collection_select_input_row form, :preview_file, Naturally.sort_by(@model.valid_preview_files, :name_and_filename), :to_param, :name_and_filename, help: t(".preview_file.help") %>
+  <%= collection_select_input_row form, :entrypoint, Naturally.sort_by(@model.three_d_files, :name_and_filename), :to_param, :name_and_filename, help: t(".entrypoint.help_html"), include_blank: true %>
   <%= text_input_row form, :entrypoint_fragment, help: t(".entrypoint_fragment.help") %>
 
   <div class="form-save-button">

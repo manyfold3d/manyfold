@@ -5,9 +5,9 @@ de:
       collection:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        collection_id: Übergeordnete Kollektion
+        collection: Übergeordnete Kollektion
         cover: Titelbild
-        creator_id:
+        creator:
           few: Autoren
           many: Autoren
           one: Autor
@@ -17,7 +17,7 @@ de:
         indexable: Suchindizierung zulassen
         name: Name
         notes: Beschreibung
-        preview_model_id: Vorschau Modell
+        preview_model: Vorschau Modell
       creator:
         ai_indexable: Verwendung für KI-Training zulassen
         avatar: Avatar-Bild
@@ -103,11 +103,11 @@ de:
       model:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
-        creator_id: Autor
+        creator: Autor
         entrypoint: Einstiegspunkt
         entrypoint_fragment: Einstiegspunkt-Fragment
         indexable: Suchindizierung zulassen
-        library_id: Sammlung
+        library: Sammlung
         license: Lizenz
         name: Name
         notes: Beschreibung

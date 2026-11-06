@@ -6,7 +6,7 @@
     <%= text_input_row form, :name %>
 
     <%= collection_select_input_row form,
-          :creator, @creators, :id, :name_with_domain,
+          :creator, @creators, :to_param, :name_with_domain,
           include_blank: t("general.none"),
           selected: @default_creator&.id,
           button: (if policy(:creator).new?
@@ -18,13 +18,13 @@
     <%= text_input_row form, :caption %>
     <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
     <%= file_input_row form, :cover, help: "#{t(".cover.help")} #{@collection.cover ? t(".cover.current", filename: @collection.cover.metadata["filename"]) : t(".cover.none")}", remove: @collection.cover.present?, remove_label: t(".cover.remove") %>
-    <%= collection_select_input_row form, :preview_model, @collection.models.order(:name), :id, :name, help: t(".preview_model.help"), include_blank: true %>
+    <%= collection_select_input_row form, :preview_model, @collection.models.order(:name), :to_param, :name, help: t(".preview_model.help"), include_blank: true %>
 
     <hr>
     <h4><%= t("general.related_content") %></h4>
 
     <%= collection_select_input_row form,
-          :collection, @collections, :id, :name_with_domain,
+          :collection, @collections, :to_param, :name_with_domain,
           include_blank: t("general.none"),
           button: (if policy(:collection).new?
                      {

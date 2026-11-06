@@ -5,9 +5,9 @@ nl:
       collection:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
-        collection_id:
+        collection:
         cover:
-        creator_id:
+        creator:
           few: Makers
           many: Makers
           one: Maker
@@ -17,7 +17,7 @@ nl:
         indexable: Indexering voor zoekopdrachten toestaan
         name: Naam
         notes: Notities
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable: Gebruik voor AI-training toestaan
         avatar: Avatar afbeelding
@@ -103,11 +103,11 @@ nl:
       model:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
-        creator_id: Maker
+        creator: Maker
         entrypoint:
         entrypoint_fragment:
         indexable: Indexering voor zoekopdrachten toestaan
-        library_id: Bibliotheek
+        library: Bibliotheek
         license: Licentie
         name: Naam
         notes: Beschrijving
