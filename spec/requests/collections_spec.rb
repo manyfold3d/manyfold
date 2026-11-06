@@ -144,16 +144,28 @@ RSpec.describe "Collections", :after_first_run do
       end
     end
 
-    describe "PATCH /collections/:id" do
-      it "saves details", :as_moderator do
+    describe "PATCH /collections/:id", :as_moderator do
+      it "saves details" do
         patch "/collections/#{collection.to_param}", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
       end
 
-      it "saves preview model", :as_moderator do
+      it "saves preview model" do
         model = create(:model, collections: [collection])
         patch "/collections/#{collection.to_param}", params: {collection: {preview_model_id: model.id}}
         expect(collection.reload.preview_model).to eq model
+      end
+
+      it "saves parent collection" do
+        parent = create(:collection)
+        patch "/collections/#{collection.to_param}", params: {collection: {collection: parent.to_param}}
+        expect(collection.reload.collection).to eq parent
+      end
+
+      it "saves creator" do
+        creator = create(:creator)
+        patch "/collections/#{collection.to_param}", params: {collection: {creator: creator.to_param}}
+        expect(collection.reload.creator).to eq creator
       end
     end
 
