@@ -2495,12 +2495,12 @@ __metadata:
   linkType: hard
 
 "enhanced-resolve@npm:^5.17.1":
-  version: 5.26.0
-  resolution: "enhanced-resolve@npm:5.26.0"
+  version: 5.26.1
+  resolution: "enhanced-resolve@npm:5.26.1"
   dependencies:
     graceful-fs: ^4.2.4
     tapable: ^2.3.3
-  checksum: 8eac908768d228f0fa8e189cc3c604d1352ddb3cbdf87b5b2321dffea149278caf77c30de876dfe72d7103bf7345daaaa05f5741503daa05febefd1868e4723e
+  checksum: fc4fcebfcdb7f6784471aeb6a337fee2331c62cfb5e5c9a2f76f6fe261def3d10232cf41074436d379b60918b5d39cd8152b4a4d4f07d3b5587344c830ec279e
   languageName: node
   linkType: hard
 
