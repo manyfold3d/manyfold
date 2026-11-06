@@ -5,9 +5,9 @@ cs:
       collection:
         ai_indexable:
         caption: Titulek
-        collection_id:
+        collection:
         cover:
-        creator_id:
+        creator:
           few: Autoři
           many: Autoři
           one: Autor
@@ -17,7 +17,7 @@ cs:
         indexable:
         name: Název
         notes: Poznámky
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable:
         avatar:
@@ -103,11 +103,11 @@ cs:
       model:
         ai_indexable:
         caption: Titulek
-        creator_id: Autor
+        creator: Autor
         entrypoint:
         entrypoint_fragment:
         indexable:
-        library_id: Knihovna
+        library: Knihovna
         license: Licence
         name: Název
         notes: Popis

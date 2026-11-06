@@ -5,9 +5,9 @@ en:
       collection:
         ai_indexable: Allow use for AI training
         caption: Caption
-        collection_id: Parent Collection
+        collection: Parent Collection
         cover: Cover image
-        creator_id:
+        creator:
           few: Creators
           many: Creators
           one: Creator
@@ -17,7 +17,7 @@ en:
         indexable: Allow search indexing
         name: Name
         notes: Description
-        preview_model_id: Preview model
+        preview_model: Preview model
       creator:
         ai_indexable: Allow use for AI training
         avatar: Avatar image
@@ -103,11 +103,11 @@ en:
       model:
         ai_indexable: Allow use for AI training
         caption: Caption
-        creator_id: Creator
+        creator: Creator
         entrypoint: Entrypoint
         entrypoint_fragment: Entrypoint Fragment
         indexable: Allow search indexing
-        library_id: Library
+        library: Library
         license: License
         name: Name
         notes: Description

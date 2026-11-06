@@ -5,9 +5,9 @@ ru:
       collection:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        collection_id: Родительская коллекция
+        collection: Родительская коллекция
         cover:
-        creator_id:
+        creator:
           few: Авторы
           many: Авторы
           one: Автор
@@ -17,7 +17,7 @@ ru:
         indexable: Разрешить поисковую индексацию
         name: Имя
         notes: Примечания
-        preview_model_id:
+        preview_model:
       creator:
         ai_indexable: Разрешить использование данных для обучения ИИ
         avatar: Изображение аватара
@@ -103,11 +103,11 @@ ru:
       model:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        creator_id: Автор
+        creator: Автор
         entrypoint:
         entrypoint_fragment:
         indexable: Разрешить индексацию поисковыми системами
-        library_id: Библиотека
+        library: Библиотека
         license: Лицензия
         name: Имя
         notes: Примечания

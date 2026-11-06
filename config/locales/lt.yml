@@ -5,9 +5,9 @@ lt:
       collection:
         ai_indexable: Leisti naudoti dirbtinio intelekto mokymui
         caption: Antraštė
-        collection_id:
+        collection:
         cover: Viršelis
-        creator_id:
+        creator:
           few: Autoriai
           many: Autorių
           one: Autorius
@@ -17,7 +17,7 @@ lt:
         indexable: Leisti indeksavimą paieškos tikslais
         name: Pavadinimas
         notes: Aprašymas
-        preview_model_id: Modelio peržiūra
+        preview_model: Modelio peržiūra
       creator:
         ai_indexable: Leisti naudoti dirbtinio intelekto mokymui
         avatar:
@@ -103,11 +103,11 @@ lt:
       model:
         ai_indexable: Leisti naudoti dirbtinio intelekto mokymui
         caption: Antraštė
-        creator_id: Autorius
+        creator: Autorius
         entrypoint: Pradžios taškas
         entrypoint_fragment:
         indexable: Leisti indeksavimą paieškos tikslais
-        library_id: Biblioteka
+        library: Biblioteka
         license: Licencija
         name: Pavadinimas
         notes: Aprašymas
