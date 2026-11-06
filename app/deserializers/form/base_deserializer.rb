@@ -19,10 +19,13 @@ module Form
       )
     end
 
-    def resolve_creator(params)
-      return params unless params[:creator_id]
-
-      params[:creator] = CreatorPolicy::UpdateScope.new(@user, Creator).resolve.find_by(id: params.delete(:creator_id))
+    def resolve_creator(params, attribute = :creator)
+      scope = CreatorPolicy::UpdateScope.new(@user, Creator).resolve
+      if id = params.delete(attribute)
+        params[attribute] = scope.find_param(id)
+      elsif id = params.delete(:"#{attribute}_id")
+        params[attribute] = scope.find(id)
+      end
       params
     rescue ActiveRecord::RecordNotFound
       params
@@ -35,10 +38,13 @@ module Form
       params
     end
 
-    def resolve_collection(params)
-      return params unless params[:collection_id]
-
-      params[:collection] = CollectionPolicy::UpdateScope.new(@user, Collection).resolve.find_param(params.delete(:collection_id))
+    def resolve_collection(params, attribute = :collection)
+      scope = CollectionPolicy::UpdateScope.new(@user, Collection).resolve
+      if id = params.delete(attribute)
+        params[attribute] = scope.find_param(id)
+      elsif (id = params.delete(:"#{attribute}_id"))
+        params[attribute] = scope.find(id)
+      end
       params
     rescue ActiveRecord::RecordNotFound
       params
