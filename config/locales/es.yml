@@ -802,7 +802,7 @@ es:
       convert: Conversión de archivos
       edit: Editar contenido
       preview_frame: Mostrar como vista previa
-      slice:
+      slice: Laminar
       thumbnail: Imágenes en miniatura
     handlers:
       assimp: Assimp
