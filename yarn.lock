@@ -3492,12 +3492,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.16.2, is-core-module@npm:^2.17.0":
-  version: 2.17.0
-  resolution: "is-core-module@npm:2.17.0"
+"is-core-module@npm:^2.16.2, is-core-module@npm:^2.18.0":
+  version: 2.18.0
+  resolution: "is-core-module@npm:2.18.0"
   dependencies:
     hasown: ^2.0.4
-  checksum: ab8a122dd92fc05b54e4f46c9859d6f8a9d9f20676a1b029605a4c33b151f07d8cd280e31f7806a29f29f8bfd8e3e647ba7b1cde7f07d60387c14be77774d346
+  checksum: 88fc3ae0a896eaab0dfa0ed4f5433a6c51513d22df00c2975f66c00e7f4a7650837d1b6a525b9c782f94cad6eed7cfff9235c6792df41f6918eb333e4d3f4127
   languageName: node
   linkType: hard
 
@@ -5291,16 +5291,16 @@ __metadata:
   linkType: hard
 
 "resolve@npm:^1.1.7":
-  version: 1.22.13
-  resolution: "resolve@npm:1.22.13"
+  version: 1.22.14
+  resolution: "resolve@npm:1.22.14"
   dependencies:
     es-errors: ^1.3.0
-    is-core-module: ^2.17.0
+    is-core-module: ^2.18.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: a661b1755171f58a6c45c1d242db0e8555b9b7530b939318a041612511127f185012ef2769807c0c7cd3e249b0262a938fd100bb6f2596efaa8b921f5ce58c49
+  checksum: 27cc051ed91aae3bcdf1041b66739d1852a59c1f7374d4de5653d7f86b4f8e33858e78c3cffef18a2622fb08001f87036478b3c95c4bc67142cadf9087c693ae
   languageName: node
   linkType: hard
 
@@ -5321,16 +5321,16 @@ __metadata:
   linkType: hard
 
 "resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>":
-  version: 1.22.13
-  resolution: "resolve@patch:resolve@npm%3A1.22.13#~builtin<compat/resolve>::version=1.22.13&hash=c3c19d"
+  version: 1.22.14
+  resolution: "resolve@patch:resolve@npm%3A1.22.14#~builtin<compat/resolve>::version=1.22.14&hash=c3c19d"
   dependencies:
     es-errors: ^1.3.0
-    is-core-module: ^2.17.0
+    is-core-module: ^2.18.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: b7766481246c1ccac341e5971e06e628e1ec4118dc8c7e2a97b29316bce7440913af1f4c7cc3044ced74161c6af55301879e7cd6a67bbb55618277ae457d20f3
+  checksum: 3549f1d7c6763b10016e23095a9134f5bd0912ed3896f5172aedb340d72316da4cdccfb185fcee8f4795dd0d588ec0cf1356dc6320a8694a836b27c59824c696
   languageName: node
   linkType: hard
 
