@@ -16,7 +16,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="<%= "#{SiteSettings.validated_theme}-theme" %>" data-controller="tour">
+  <body class="<%= "#{SiteSettings.validated_theme}-theme" %>" data-controller="tour" data-tour-save-path-value="<%= user_registration_path(format: :json) %>">
     <%= skip_link "content", t(".skip_to_content") %>
     <%= render "application/navbar" %>
     <main class="container-fluid" id="content">

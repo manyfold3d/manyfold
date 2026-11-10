@@ -3,6 +3,12 @@ import { driver, Driver, DriveStep, Config, State } from 'driver.js'
 
 // Connects to data-controller="tour"
 export default class extends Controller {
+  static values = {
+    savePath: String
+  }
+
+  declare savePathValue: string
+
   driverObject: Driver | null = null
   completed: string[] = []
 
@@ -39,9 +45,10 @@ export default class extends Controller {
   onDestroyStarted (): void {
     // Store tour state back into current user
     const xhr = new XMLHttpRequest()
-    xhr.open('PATCH', '/users.json', true)
+    xhr.open('PATCH', this.savePathValue, true)
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({
+      authenticity_token: (document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? ''),
       user: {
         tour_state: {
           completed: {
