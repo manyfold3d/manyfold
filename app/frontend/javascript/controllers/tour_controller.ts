@@ -42,6 +42,7 @@ export default class extends Controller {
     xhr.open('PATCH', '/users.json', true)
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({
+      authenticity_token: (document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? ''),
       user: {
         tour_state: {
           completed: {
