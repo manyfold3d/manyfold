@@ -2,7 +2,7 @@ authenticate :user do
   mount ActionDispatch::Static.new(
     Rails.application,
     Rails.root.join("vendor/kiri_moto").to_s
-  ), at: "/applications/kiri"
+  ), at: "/applications/kiri", as: "kirimoto"
 
   mount ActionDispatch::Static.new(
     Rails.application,
