@@ -3369,9 +3369,9 @@ __metadata:
   linkType: hard
 
 "hash-wasm@npm:^4.12.0":
-  version: 4.12.0
-  resolution: "hash-wasm@npm:4.12.0"
-  checksum: f292c94a19a3d7c075e1e7de2764ba8a006ae5a9551b1a35c61f693035df7977e6cb41f3fc036deb4a724e1949711b7cba06f7ad174f5aeb295edb64649b4a32
+  version: 4.13.0
+  resolution: "hash-wasm@npm:4.13.0"
+  checksum: 869a498807a3309eb9cbbd473a27f75d58933695d52a71449200d58a87f51fbca7a1f4c4a996e19a080b6cca20bdb75bd68f9551bffab213f7e129f1dab2603e
   languageName: node
   linkType: hard
 
