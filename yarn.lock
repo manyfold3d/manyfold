@@ -4137,7 +4137,7 @@ __metadata:
     sass-embedded: ^1.108.1
     three: ^0.187.0
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=d65e59e7e3955912efcd96576382ee736a62a36f"
-    tom-select: ^2.6.2
+    tom-select: ^2.7.0
     typescript: ~5.9.3
     vite: ^8.3.6
     vite-plugin-rails: ^0.6.0
@@ -6204,13 +6204,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tom-select@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "tom-select@npm:2.6.2"
+"tom-select@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "tom-select@npm:2.7.0"
   dependencies:
     "@orchidjs/sifter": ^1.1.0
     "@orchidjs/unicode-variants": ^1.1.2
-  checksum: 700fae75c964f8c870e9c56f70c80e54404ae5bd4dd4e675e8d5b7c08e37e12e45294668476cf66d8e53e46eef4169242730d4615b794cbbb2c7dca69ee99fac
+  checksum: 14d42f7400aed35f9b6d792d744386c96fd79e6882ed9b13cc6ce68e736889d9aaaa3ccb25c50cdb2857b9775c2d692efc3c1379769f003f135b3433e2bd0ecd
   languageName: node
   linkType: hard
 
