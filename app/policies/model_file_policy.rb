@@ -14,6 +14,7 @@ class ModelFilePolicy < ApplicationPolicy
 
   def print?
     all_of(
+      show?,
       @user&.is_printer?,
       none_of(
         SiteSettings.demo_mode_enabled?
