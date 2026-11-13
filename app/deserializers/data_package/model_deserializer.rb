@@ -22,7 +22,7 @@ module DataPackage
 
     def parse_links
       links = (@object["links"] || []).map { LinkDeserializer.new(it).deserialize }
-      links << {url: @object["homepage"]} if @object["homepage"]
+      links << {url: UrlSafety.if_public(@object["homepage"])} if @object["homepage"]
       links
     end
   end
