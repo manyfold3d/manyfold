@@ -504,7 +504,7 @@ GEM
       rubyzip (~> 2.3)
     mittsu-mesh_analysis (0.1.0)
       mittsu (~> 0.4)
-    msgpack (1.8.6)
+    msgpack (1.8.7)
     multi_json (1.21.2)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
@@ -1298,7 +1298,7 @@ CHECKSUMS
   mittsu (0.5.0) sha256=03855f4aa4dc35c6bd33e3df28ecad7b51c254ab5e9d4b4d862fb66543eb8c5f
   mittsu-3mf (0.1.0) sha256=cdcfdef4172447ebae039f7b6bd95fd5cee20ad14bc6c9e7a4799a0b7ead6c48
   mittsu-mesh_analysis (0.1.0) sha256=13550c35e56bcd10cbe8284fe1b3cf3a43f7bb7133f47995e0c8a8b5d2a9cd50
-  msgpack (1.8.6) sha256=a148c24e7d9026a88baf78918f6b1c297569bb6cc0f87953f444f3069950d4e5
+  msgpack (1.8.7) sha256=dfefec761b5f9047e6e8d95d2c7f8af4b3725d984a01942adc533aa819a2df33
   multi_json (1.21.2) sha256=245531eaf54bdba57aba515ff08b4503505c5e09911daa89c5a561e2f85bea8e
   multipart-post (2.4.1) sha256=9872d03a8e552020ca096adadbf5e3cb1cd1cdd6acd3c161136b8a5737cdb4a8
   mutex_m (0.3.0) sha256=cfcb04ac16b69c4813777022fdceda24e9f798e48092a2b817eb4c0a782b0751
