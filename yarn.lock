@@ -4190,7 +4190,7 @@ __metadata:
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=d65e59e7e3955912efcd96576382ee736a62a36f"
     tom-select: ^2.7.0
     typescript: ~5.9.3
-    vite: ^8.3.6
+    vite: ^8.3.7
     vite-plugin-rails: ^0.6.0
     vite-plugin-ruby: ^5.2.6
     vite-plugin-wasm: ^3.6.0
@@ -5408,7 +5408,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rolldown@npm:~1.2.16":
+"rolldown@npm:~1.2.18":
   version: 1.2.19
   resolution: "rolldown@npm:1.2.19"
   dependencies:
@@ -6578,15 +6578,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^8.3.6":
-  version: 8.3.6
-  resolution: "vite@npm:8.3.6"
+"vite@npm:^8.3.7":
+  version: 8.3.7
+  resolution: "vite@npm:8.3.7"
   dependencies:
     fsevents: ~2.3.3
     lightningcss: ^1.33.0
     picomatch: ^4.0.7
     postcss: ^8.5.32
-    rolldown: ~1.2.16
+    rolldown: ~1.2.18
     tinyglobby: ^0.2.17
   peerDependencies:
     "@types/node": ^20.19.0 || >=22.12.0
@@ -6631,7 +6631,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 0a09bb1512cd567b852fe8069658f67ce413f39c237c80be31673c533e5a183a6543bc46183269f3337387f527ae3d5412cfc3c6271ae899ec784ea084c09d5e
+  checksum: 052816dc1bbb55b654fff6dfd9383c0850fc226dbc6fd6b5b5a9652a92cae01a0bc2d154cd8897e472caf43ae15c1f272136a57486bab6eeb95455ce05933bd0
   languageName: node
   linkType: hard
 
