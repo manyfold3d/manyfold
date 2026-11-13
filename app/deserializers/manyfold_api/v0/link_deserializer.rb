@@ -1,7 +1,7 @@
 module ManyfoldApi::V0
   class LinkDeserializer < BaseDeserializer
     def deserialize
-      return unless @object
+      return unless @object && UrlSafety.public?(@object["url"])
       {
         url: @object["url"],
         text: @object["text"]

@@ -9,7 +9,7 @@ module Linkable
 
     def link_not_valid?(attributes)
       return false unless attributes.has_key?(:url)
-      attributes[:url].blank? || links.where.not(id: attributes[:id]).map(&:url).include?(attributes[:url]) || [PublicUrl.hostname, "localhost"].include?(URI.parse(attributes[:url]).hostname)
+      attributes[:url].blank? || links.where.not(id: attributes[:id]).map(&:url).include?(attributes[:url]) || !UrlSafety.public?(attributes[:url])
     end
   end
 end
