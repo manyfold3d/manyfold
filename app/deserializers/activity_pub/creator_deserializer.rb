@@ -19,8 +19,8 @@ module ActivityPub
         caption: @object.extensions&.dig("summary"),
         notes: @object.extensions&.dig("content"),
         indexable: (@object.extensions&.dig("indexable") == true) ? "yes" : "no",
-        avatar_remote_url: (@object.extensions&.dig("icon", "type") == "Image") ? @object.extensions&.dig("icon", "url") : nil,
-        banner_remote_url: (@object.extensions&.dig("image", "type") == "Image") ? @object.extensions&.dig("image", "url") : nil
+        avatar_remote_url: (@object.extensions&.dig("icon", "type") == "Image") ? UrlSafety.if_public(@object.extensions&.dig("icon", "url")) : nil,
+        banner_remote_url: (@object.extensions&.dig("image", "type") == "Image") ? UrlSafety.if_public(@object.extensions&.dig("image", "url")) : nil
       }.compact
     end
   end
