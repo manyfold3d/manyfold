@@ -93,7 +93,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       name: matches[:title],
       notes: matches[:summary],
       links_attributes: [
-        {url: matches[:url]}
+        {url: UrlSafety.if_public(matches[:url])}
       ],
       creator: find_or_create_from_path_component(Creator, matches[:creator]),
       license: license_id_from_url(matches[:license_url])
@@ -106,7 +106,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     {
       name: matches[:title],
       links_attributes: [
-        {url: matches[:url]}
+        {url: UrlSafety.if_public(matches[:url])}
       ],
       creator: find_or_create_from_path_component(Creator, matches[:creator])
     }
