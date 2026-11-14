@@ -8,11 +8,11 @@ lt:
         collection:
         cover: Viršelis
         creator:
-          few: Autoriai
+          few: Autorių
           many: Autorių
           one: Autorius
-          other: Autoriai
-          two: Autoriai
+          other: Autorių
+          two: Autorių
           zero: Autorių
         indexable: Leisti indeksavimą paieškos tikslais
         name: Pavadinimas
