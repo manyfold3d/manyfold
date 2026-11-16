@@ -4190,7 +4190,7 @@ __metadata:
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=d65e59e7e3955912efcd96576382ee736a62a36f"
     tom-select: ^2.7.0
     typescript: ~5.9.3
-    vite: ^8.3.7
+    vite: ^8.3.8
     vite-plugin-rails: ^0.6.0
     vite-plugin-ruby: ^5.2.6
     vite-plugin-wasm: ^3.6.0
@@ -6578,9 +6578,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^8.3.7":
-  version: 8.3.7
-  resolution: "vite@npm:8.3.7"
+"vite@npm:^8.3.8":
+  version: 8.3.8
+  resolution: "vite@npm:8.3.8"
   dependencies:
     fsevents: ~2.3.3
     lightningcss: ^1.33.0
@@ -6631,7 +6631,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 052816dc1bbb55b654fff6dfd9383c0850fc226dbc6fd6b5b5a9652a92cae01a0bc2d154cd8897e472caf43ae15c1f272136a57486bab6eeb95455ce05933bd0
+  checksum: 6ab003a13a9118bb935a2cd1898d442544bdefc55a498e944b5fc99e862ed54965dfc9df950c9c7f966a7c5db20b07afbcc306fd1be439f7c1f3bdd21b0c9cbc
   languageName: node
   linkType: hard
 
