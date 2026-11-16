@@ -5171,11 +5171,11 @@ __metadata:
   linkType: hard
 
 "postcss-selector-parser@npm:^7.1.1":
-  version: 7.2.0
-  resolution: "postcss-selector-parser@npm:7.2.0"
+  version: 7.2.1
+  resolution: "postcss-selector-parser@npm:7.2.1"
   dependencies:
     util-deprecate: ^1.0.2
-  checksum: 5da6471dc0542bd95577f3457a985bacfd6b7f32287db4383bf1ca2e94c3a80f8e9ab1040ef0737a1ed1bde84d053134b3e3604aad8245b0c78c53f81928fe2d
+  checksum: 96c6bc63202a833f8ba1735faffacafab6e3535b3d5278b54b641b33342f38841d237c4c19ebb1ef38d857034611a056fe1910709c39761d9095036d9405e0d3
   languageName: node
   linkType: hard
 
