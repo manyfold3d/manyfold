@@ -228,6 +228,7 @@ class ModelFile < ApplicationRecord
   end
 
   def update_from_url!(url:)
+    return unless UrlSafety.public?(url)
     save! if attachment_attacher.assign_remote_url(
       url,
       downloader: {

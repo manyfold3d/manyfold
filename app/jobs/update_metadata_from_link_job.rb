@@ -5,6 +5,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
   def perform(link:, organize: false, apply_permissions_after_sync: nil)
     return unless (data = link.deserializer&.deserialize)
     linkable = link.linkable
+    return unless UrlSafety.public?(link.url)
     # Preserve existing tags
     data[:tag_list]&.concat(linkable.tag_list)&.uniq
     # Update object

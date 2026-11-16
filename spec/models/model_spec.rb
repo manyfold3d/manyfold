@@ -799,7 +799,7 @@ RSpec.describe Model do
     let(:model) { create(:model, links_attributes: [{url: url}]) }
 
     it "adds unique links" do
-      opts = {links_attributes: [{url: "https://new.url.com"}]}
+      opts = {links_attributes: [{url: "https://bbc.co.uk"}]}
       expect { model.update! opts }.to change { model.links.count }.from(1).to(2)
     end
 

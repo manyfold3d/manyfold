@@ -3,7 +3,7 @@ class CreateObjectFromUrlJob < ApplicationJob
   unique :until_executed
 
   def perform(url:, collection_id: nil, owner: nil)
-    return if Link.find_by(url: url)
+    return if !UrlSafety.public?(url) || Link.find_by(url: url)
     # Get deserializer
     deserializer = Link.deserializer_for(url: url)
     # Set up create options common to all

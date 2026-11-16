@@ -244,3 +244,5 @@ gem "naturally", "~> 2.3"
 gem "rouge", "~> 5.1"
 
 gem "faraday-multipart", "~> 1.2"
+
+gem "private_address_check", "~> 0.8.0"

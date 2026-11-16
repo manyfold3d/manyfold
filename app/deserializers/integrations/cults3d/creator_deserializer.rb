@@ -23,7 +23,7 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
       slug: data&.nick&.parameterize,
       notes: data&.bio,
       links_attributes: [{url: data&.url}],
-      avatar_remote_url: data&.image_url
+      avatar_remote_url: UrlSafety.if_public(data&.image_url)
     }
   end
 

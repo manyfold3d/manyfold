@@ -13,8 +13,8 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
       slug: data["name"],
       notes: data["bio"],
       links_attributes: [{url: data["public_url"]}],
-      avatar_remote_url: data["thumbnail"],
-      banner_remote_url: data["cover_image"]
+      avatar_remote_url: UrlSafety.if_public(data["thumbnail"]),
+      banner_remote_url: UrlSafety.if_public(data["cover_image"])
     }
   end
 
