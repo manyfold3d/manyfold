@@ -3305,9 +3305,9 @@ __metadata:
   linkType: hard
 
 "graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
-  version: 4.2.11
-  resolution: "graceful-fs@npm:4.2.11"
-  checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
+  version: 4.2.12
+  resolution: "graceful-fs@npm:4.2.12"
+  checksum: 67cc73b400cb557ec8851d2a15475604288fab6f811d0e2c3ca3f66837e0e86a71d1e60b56f9d7ac40957f40c35942dc24144d96f2254a891a790fc478626d53
   languageName: node
   linkType: hard
 
