@@ -114,7 +114,7 @@ class Components::ImageCarousel < Components::Base
     div class: "carousel-caption d-none d-md-block" do
       if image.model.preview_file != image && policy(image).edit?
         form_with model: image.model, class: "d-inline" do |form|
-          form.hidden_field :preview_file_id, value: image.id
+          form.hidden_field :preview_file, value: image.to_param
           form.button t("models.file.set_as_preview"), class: "btn btn-sm btn-outline-warning"
         end
       end
