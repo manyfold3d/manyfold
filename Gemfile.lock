@@ -1060,6 +1060,7 @@ DEPENDENCIES
   pg_query (~> 6.2)
   pghero (~> 4.1)
   phlex-rails (~> 2.4)
+  prism (~> 1.7)
   private_address_check (~> 0.8.0)
   public_suffix (~> 7.0)
   puma (~> 8.0)
