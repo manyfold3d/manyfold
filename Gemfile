@@ -246,3 +246,5 @@ gem "rouge", "~> 5.1"
 gem "faraday-multipart", "~> 1.2"
 
 gem "private_address_check", "~> 0.8.0"
+
+gem "prism", "~> 1.7" # Locked as 2.x broke compatibility with some gems. Will get updated by Dependabot eventually.
