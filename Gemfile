@@ -109,7 +109,7 @@ gem "rails-settings-cached", "~> 2.10"
 
 gem "pagy", "~> 43.8"
 
-gem "lograge", "~> 0.15"
+gem "lograge", "~> 0.16"
 
 gem "acts_as_favoritor", "~> 6.0"
 
