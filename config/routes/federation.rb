@@ -3,9 +3,6 @@ if SiteSettings.federation_enabled? || Rails.env.test?
   # Core federation capability
 
   mount Fedipub::Engine => "/"
-  scope Fedipub.configuration.server_routes_path, module: "fedipub/server", as: "fedipub_server", defaults: {format: :activitypub} do
-    resources :quote_authorizations, only: [:show]
-  end
 
   # Remote follow routes for unauthenticated users
   post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
