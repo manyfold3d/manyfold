@@ -615,7 +615,7 @@ GEM
       method_source (~> 1.0)
       reline (>= 0.6.0)
     public_suffix (7.0.5)
-    puma (8.0.3)
+    puma (8.1.1)
       nio4r (~> 2.0)
     pundit (2.5.2)
       activesupport (>= 3.0.0)
@@ -1074,7 +1074,7 @@ DEPENDENCIES
   prism (~> 1.7)
   private_address_check (~> 0.8.0)
   public_suffix (~> 7.0)
-  puma (~> 8.0)
+  puma (~> 8.1)
   pundit (~> 2.5)
   rack-contrib (~> 2.5)
   rack-cors (~> 3.0)
@@ -1367,7 +1367,7 @@ CHECKSUMS
   private_address_check (0.8.0) sha256=bca6c3e66286955576f69f3e0a12c66dbd1b030d09ef8ee386c4636af6e3b436
   pry (0.16.0) sha256=d76c69065698ed1f85e717bd33d7942c38a50868f6b0673c636192b3d1b6054e
   public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
-  puma (8.0.3) sha256=6383a60bbc3d9495b2e453d93e60cefa817f7e854a302a5013f31fd9f514a5f3
+  puma (8.1.1) sha256=24800758cf064ecc19d056301b6946f628d77ea14653d485fa17ff6a6331555c
   pundit (2.5.2) sha256=e374152baa24f90b630428293faf4b4c5468fc3cc010165f7d8fcb44ce108bbd
   raabro (1.4.0) sha256=d4fa9ff5172391edb92b242eed8be802d1934b1464061ae5e70d80962c5da882
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f

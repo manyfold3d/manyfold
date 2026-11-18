@@ -6,7 +6,7 @@ ruby file: ".ruby-version"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "8.1.4.1"
 # Use Puma as the app server
-gem "puma", "~> 8.0"
+gem "puma", "~> 8.1"
 # Bundle and deliver assets
 gem "vite_rails", "~> 3.11"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
