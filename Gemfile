@@ -62,7 +62,7 @@ group :development, :test do
   gem "rubocop-performance", "~> 1.26", require: false
   gem "rubocop-pundit", github: "manyfold3d/rubocop-pundit", require: false
   gem "rubyzip", "~> 2.4"
-  gem "i18n-tasks", "~> 1.1"
+  gem "i18n-tasks", "~> 1.2"
   gem "simplecov", "~> 1.3", require: false
   gem "simplecov-cobertura", require: false
   gem "with_model", "~> 2.5"
