@@ -1,13 +1,17 @@
+import { globalIgnores } from 'eslint/config'
 import neostandard from 'neostandard'
 
+const ignores = [
+  'public/vite*/*',
+  'coverage/*',
+  'vendor/bundle/*'
+]
+
 export default [
+  globalIgnores(ignores),
   ...neostandard({
     ts: true,
-    ignores: [
-      'public/vite*/*',
-      'coverage/*',
-      'vendor/bundle/*'
-    ]
+    ignores
   }),
   {
     rules: {
