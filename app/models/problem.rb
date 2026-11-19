@@ -38,10 +38,10 @@ class Problem < ApplicationRecord
   enum :category, CATEGORIES
 
   SEVERITIES = [
-    :silent,
-    :info,
-    :warning,
-    :danger
+    :silent, # i18n-tasks-use t("problems.severities.silent")
+    :info, # i18n-tasks-use t("problems.severities.info")
+    :warning, # i18n-tasks-use t("problems.severities.warning")
+    :danger # i18n-tasks-use t("problems.severities.danger")
   ]
 
   DEFAULT_SEVERITIES = ActiveSupport::HashWithIndifferentAccess.new(
