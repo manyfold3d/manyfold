@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
 
   include PublicIDable
   include Fedipub::DataEntity
+  include Fedipub::Concerns::HasInteractionPolicy
   include Reportable
 
   belongs_to :commenter, polymorphic: true, optional: true
@@ -12,6 +13,8 @@ class Comment < ApplicationRecord
 
   acts_as_fedipub_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?, route_path_segment: :comments
   on_fedipub_delete_requested :federated_delete
+
+  automatically_approve_quotes_from Fediverse::Collection::PUBLIC
 
   def to_activitypub_object
     ActivityPub::CommentSerializer.new(self).serialize
