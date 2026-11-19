@@ -62,6 +62,10 @@ RSpec.describe Comment do
         expect(ap_object["cc"]).to include commenter.fedipub_actor.followers_url
       end
 
+      it "includes AP miscellany @context" do
+        expect(ap_object["@context"]).to include "https://purl.archive.org/miscellany"
+      end
+
       context "with a system comment" do
         let!(:comment) { create(:comment, commenter: commenter, commentable: commentable, system: true) }
 

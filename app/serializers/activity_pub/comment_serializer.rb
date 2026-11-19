@@ -2,27 +2,14 @@ module ActivityPub
   class CommentSerializer < ApplicationSerializer
     def serialize
       {
-        "@context" => Fedipub::Utils::Context.generate(additional: [
+        "@context" => Fedipub::Utils::Context.new.merge!([
           "https://purl.archive.org/miscellany",
           {
             f3di: "http://purl.org/f3di/ns#",
-            gts: "https://gotosocial.org/ns#",
-            interactionPolicy: {
-              "@id": "gts:interactionPolicy",
-              "@type": "@id"
-            },
-            canQuote: {
-              "@id": "gts:canQuote",
-              "@type": "@id"
-            },
-            automaticApproval: {
-              "@id": "gts:automaticApproval",
-              "@type": "@id"
-            },
             Hashtag: "as:Hashtag",
             sensitive: "as:sensitive"
           }
-        ]),
+        ]).data,
         "id" => @object.federated_url,
         "type" => "Note",
         "attributedTo" => @object.fedipub_actor.federated_url,
@@ -36,12 +23,7 @@ module ActivityPub
         "f3di:compatibilityNote" => @object.system,
         "inReplyTo" => in_reply_to,
         "url" => url,
-        "likes" => likes,
-        "interactionPolicy" => @object.system ? {
-          "canQuote" => {
-            "automaticApproval" => Fediverse::Collection::PUBLIC
-          }
-        } : nil
+        "likes" => likes
       }.compact.merge(address_fields)
     end
 

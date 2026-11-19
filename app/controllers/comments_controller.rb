@@ -4,7 +4,11 @@ class CommentsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.activitypub
+      format.activitypub do
+        # Unsure if this is the right approach, we should perhaps be redirecting to the fedipub route
+        @publishable = @comment
+        render "fedipub/rails/server/published/show"
+      end
       format.html { redirect_to @commentable, status: :see_other }
     end
   end

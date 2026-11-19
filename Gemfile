@@ -164,8 +164,8 @@ gem "better_content_security_policy", "~> 0.1"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "fedipub", "~> 0.10"
-gem "fedipub-moderation", "~> 0.5"
+gem "fedipub", "~> 0.11"
+gem "fedipub-moderation", "~> 0.6"
 gem "caber", github: "manyfold3d/caber"
 gem "fasp_client", "~> 0.6"
 
