@@ -31,6 +31,16 @@ RSpec.describe "Comments" do
         it "includes extended JSON-LD context" do
           expect(response.parsed_body["@context"]).to include("https://purl.archive.org/miscellany")
         end
+
+        it "include gotosocial namespace in JSON-LD context, for quoting" do
+          expect(response.parsed_body["@context"].last).to include({"gts" => "https://gotosocial.org/ns#"})
+        end
+
+        it "automatically allows quoting" do
+          expect(response.parsed_body.dig("interactionPolicy", "canQuote")).to eq({
+            "automaticApproval" => ["https://www.w3.org/ns/activitystreams#Public"]
+          })
+        end
       end
 
       context "when requesting HTML" do

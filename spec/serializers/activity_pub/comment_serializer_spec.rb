@@ -75,16 +75,6 @@ RSpec.describe ActivityPub::CommentSerializer do
       })
     end
 
-    it "include gotosocial namespace in JSON-LD context, for quoting" do
-      expect(ap["@context"].last).to include({gts: "https://gotosocial.org/ns#"})
-    end
-
-    it "automatically allows quoting" do
-      expect(ap.dig("interactionPolicy", "canQuote")).to eq({
-        "automaticApproval" => "https://www.w3.org/ns/activitystreams#Public"
-      })
-    end
-
     it "adds structured tag list" do
       expect(ap["tag"]).to include({href: "http://localhost:3214/models?tag=tag", name: "#Tag", type: "Hashtag"})
     end
