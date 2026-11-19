@@ -3342,7 +3342,7 @@ __metadata:
     husky: ^9.1.7
     i18n-js: ^4.5.4
     masonry-layout: ^4.2.2
-    neostandard: ^0.14.0
+    neostandard: ^0.14.1
     postcss: ^8.5.29
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^17.0.0
@@ -3561,9 +3561,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"neostandard@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "neostandard@npm:0.14.0"
+"neostandard@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "neostandard@npm:0.14.1"
   dependencies:
     "@humanwhocodes/gitignore-to-minimatch": ^1.0.2
     "@stylistic/eslint-plugin": 5.10.0
@@ -3577,7 +3577,7 @@ __metadata:
     eslint: ^9.22.0 || ^10.0.0
   bin:
     neostandard: cli.js
-  checksum: fc351f6eb7028273e72bd3e2a7cac09c8793a1233e9893cf943c32dab54fd1935a5529867293acbcd0a470908f6f8b02c60994883e9bb0d9348134320af8ba83
+  checksum: 0f48e8318c1ec4322344b502cd2456739d92dda659627c05000724ce3de0dcb30b594ed58887ec87363b243ea4244a91278b06c883a9a2058db45c42d1d9b374
   languageName: node
   linkType: hard
 
