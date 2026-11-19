@@ -276,7 +276,7 @@ GEM
       ed25519 (~> 1.4)
       linzer (~> 0.7)
       rails (~> 8.0)
-    fedipub (0.11.0)
+    fedipub (0.11.1)
       faraday
       faraday-follow_redirects
       jbuilder (~> 2.7)
@@ -1035,7 +1035,7 @@ DEPENDENCIES
   faker (~> 3.8)
   faraday-multipart (~> 1.2)
   fasp_client (~> 0.6)
-  fedipub (~> 0.11)
+  fedipub (~> 0.11.1)
   fedipub-moderation (~> 0.6)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
@@ -1228,7 +1228,7 @@ CHECKSUMS
   faraday-multipart (1.2.0) sha256=7d89a949693714176f612323ca13746a2ded204031a6ba528adee788694ef757
   faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
   fasp_client (0.6.0) sha256=c1fba106ec3608bc9e9d83b9384645e5339ad637169b696d28a1823164352775
-  fedipub (0.11.0) sha256=69ae367b88b9827e93959a24f24241a2a134fef6b09c3fc84f394c85147e757d
+  fedipub (0.11.1) sha256=2100f441b6d577965f31462674f0ed11fbb186e2cbdbb6f1e9d858f3330e73fb
   fedipub-moderation (0.6.0) sha256=7c7890549b362c1c500fb3ba448a5367012d900e3fdf941aed8265e51eb4bcd0
   ffi (1.17.4) sha256=bcd1642e06f0d16fc9e09ac6d49c3a7298b9789bcb58127302f934e437d60acf
   ffi (1.17.4-aarch64-linux-gnu) sha256=b208f06f91ffd8f5e1193da3cae3d2ccfc27fc36fba577baf698d26d91c080df
