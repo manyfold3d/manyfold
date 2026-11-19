@@ -2,7 +2,7 @@ module ActivityPub
   class CommentSerializer < ApplicationSerializer
     def serialize
       {
-        "@context" => Fedipub::Utils::Context.generate(additional: [
+        "@context" => Fedipub::Utils::Context.new.merge!([
           "https://purl.archive.org/miscellany",
           {
             f3di: "http://purl.org/f3di/ns#",
@@ -22,7 +22,7 @@ module ActivityPub
             Hashtag: "as:Hashtag",
             sensitive: "as:sensitive"
           }
-        ]),
+        ]).data,
         "id" => @object.federated_url,
         "type" => "Note",
         "attributedTo" => @object.fedipub_actor.federated_url,
