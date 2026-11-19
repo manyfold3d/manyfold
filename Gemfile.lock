@@ -515,7 +515,7 @@ GEM
     mutex_m (0.3.0)
     mysql2 (0.5.6)
     nanoid (2.0.1)
-    naturally (2.3.0)
+    naturally (2.4.0)
     nenv (0.3.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -1062,7 +1062,7 @@ DEPENDENCIES
   mittsu-mesh_analysis
   mysql2 (~> 0.5)
   nanoid (~> 2.0)
-  naturally (~> 2.3)
+  naturally (~> 2.4)
   noticed (~> 3.1)
   omniauth (~> 2.4)
   omniauth_openid_connect (~> 0.8)
@@ -1321,7 +1321,7 @@ CHECKSUMS
   mutex_m (0.3.0) sha256=cfcb04ac16b69c4813777022fdceda24e9f798e48092a2b817eb4c0a782b0751
   mysql2 (0.5.6) sha256=70f447d45d6b3cc16b00f7dd30366f708a81b4093a35d026ff7135d778d8da33
   nanoid (2.0.1) sha256=7cef1d987da891b4ca3289c24799140fa519ce31f1663fad2fc7a91e814cb376
-  naturally (2.3.0) sha256=459923cf76c2e6613048301742363200c3c7e4904c324097d54a67401e179e01
+  naturally (2.4.0) sha256=1efb89b861a39dd8cf625c1ecfee739a201fdaf2b203bf7ce275205aa918924d
   nenv (0.3.0) sha256=d9de6d8fb7072228463bf61843159419c969edb34b3cef51832b516ae7972765
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   net-imap (0.6.8) sha256=eb30bb62227b64a3af6b518b04b2375113d69f68f15de59b0193b07d98acf6d9
