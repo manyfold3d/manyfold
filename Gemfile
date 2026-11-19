@@ -171,7 +171,7 @@ gem "fasp_client", "~> 0.6"
 
 gem "nanoid", "~> 2.0"
 
-gem "kramdown", "~> 2.5"
+gem "kramdown", "~> 2.6"
 
 gem "omniauth", "~> 2.4"
 gem "omniauth_openid_connect", "~> 0.8"
