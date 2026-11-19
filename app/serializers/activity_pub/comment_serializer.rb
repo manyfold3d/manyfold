@@ -6,19 +6,6 @@ module ActivityPub
           "https://purl.archive.org/miscellany",
           {
             f3di: "http://purl.org/f3di/ns#",
-            gts: "https://gotosocial.org/ns#",
-            interactionPolicy: {
-              "@id": "gts:interactionPolicy",
-              "@type": "@id"
-            },
-            canQuote: {
-              "@id": "gts:canQuote",
-              "@type": "@id"
-            },
-            automaticApproval: {
-              "@id": "gts:automaticApproval",
-              "@type": "@id"
-            },
             Hashtag: "as:Hashtag",
             sensitive: "as:sensitive"
           }
@@ -36,12 +23,7 @@ module ActivityPub
         "f3di:compatibilityNote" => @object.system,
         "inReplyTo" => in_reply_to,
         "url" => url,
-        "likes" => likes,
-        "interactionPolicy" => @object.system ? {
-          "canQuote" => {
-            "automaticApproval" => Fediverse::Collection::PUBLIC
-          }
-        } : nil
+        "likes" => likes
       }.compact.merge(address_fields)
     end
 
