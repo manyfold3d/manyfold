@@ -13,8 +13,8 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
     if SiteSettings.analyse_manifold
       status[:step] = "jobs.analysis.geometric_analysis.loading_mesh" # i18n-tasks-use t('jobs.analysis.geometric_analysis.loading_mesh')
       # Get mesh
-      scene = file.scene
-      if scene
+
+      if scene = load_scene(file)
         status[:step] = "jobs.analysis.geometric_analysis.manifold_check" # i18n-tasks-use t('jobs.analysis.geometric_analysis.manifold_check')
         # Check that all meshes are manifold
         manifold = scene.meshes.map { manifold?(it) }.all?
@@ -65,5 +65,15 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
   def update_edge_hash(v1, v2, edges)
     return if edges.delete [v2, v1].pack("QQ")
     edges[[v1, v2].pack("QQ")] = true
+  end
+
+  def load_scene(file)
+    Shrine.with_file(file.attachment.open) do
+      scene = Assimp.import_file(it.path)
+      scene.apply_post_processing(Assimp::PostProcessSteps[
+        :JoinIdenticalVertices,
+        :Triangulate
+      ])
+    end
   end
 end
