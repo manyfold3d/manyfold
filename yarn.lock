@@ -13,12 +13,12 @@ __metadata:
   linkType: hard
 
 "@csstools/cascade-layer-name-parser@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@csstools/cascade-layer-name-parser@npm:3.0.2"
+  version: 3.0.3
+  resolution: "@csstools/cascade-layer-name-parser@npm:3.0.3"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
-  checksum: 2cb6c5360361fa56bc3971a0490aaee60d295a05e218b28c33e99a482f33a2b05b4948dc0d572d7b2b9d1526acd98de35f1ff8608f4a7b7855b63f5bc7794bb2
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
+  checksum: 39db9a1af76b87c5f50c2559a77217877209f6c9ffbd555fd8cb16e27ab2ac52263d4ce512f434592075e792c1e97066f1ebee50822b18980ffc2873dc7debc1
   languageName: node
   linkType: hard
 
