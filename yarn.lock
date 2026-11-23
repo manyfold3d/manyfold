@@ -663,15 +663,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-trigonometric-functions@npm:^5.0.9":
-  version: 5.0.9
-  resolution: "@csstools/postcss-trigonometric-functions@npm:5.0.9"
+  version: 5.0.10
+  resolution: "@csstools/postcss-trigonometric-functions@npm:5.0.10"
   dependencies:
-    "@csstools/css-calc": ^3.4.3
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/css-calc": ^3.4.4
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
   peerDependencies:
     postcss: ^8.4
-  checksum: 82ea5733b36cdeb405d4035e1f7aa48eeefbb370580a750aea4b6e9795191d23f2fed37f71de9f00ef8139fe00dfdd1736b2c4fc2f01b814e93ef0a541f2dd2f
+  checksum: ae51ede0401c9a648844de76676222196a1ff5c4c743f3068d41a6f04fa7ba3b6a1082c92a0ff88588186428a76e10639684cfa4e157db63d3318cedb93e6b51
   languageName: node
   linkType: hard
 
