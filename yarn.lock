@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.7":
+"@csstools/css-color-parser@npm:^4.2.7, @csstools/css-color-parser@npm:^4.2.8":
   version: 4.2.8
   resolution: "@csstools/css-color-parser@npm:4.2.8"
   dependencies:
@@ -276,15 +276,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-gamut-mapping@npm:^3.0.16":
-  version: 3.0.16
-  resolution: "@csstools/postcss-gamut-mapping@npm:3.0.16"
+  version: 3.0.17
+  resolution: "@csstools/postcss-gamut-mapping@npm:3.0.17"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.7
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/css-color-parser": ^4.2.8
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
   peerDependencies:
     postcss: ^8.4
-  checksum: 937b5d66a1486d3a044842a6b101dcc552ec0152dcd30eccdf59c4acf69328dc62205ea26f8e8de36a73d27af4bc4a8059e902dff4842325a3ea34d407031403
+  checksum: 85c58fea6b124c54fd389bf420236252072019a7c5a3eb46643268e79294dc6b78f500e8aad91d916b63bda743990ef0797ef40cf198377af3397d25976b7773
   languageName: node
   linkType: hard
 
