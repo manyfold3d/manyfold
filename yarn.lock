@@ -639,14 +639,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-system-ui-font-family@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@csstools/postcss-system-ui-font-family@npm:2.0.3"
+  version: 2.0.4
+  resolution: "@csstools/postcss-system-ui-font-family@npm:2.0.4"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
   peerDependencies:
     postcss: ^8.4
-  checksum: 09d77344b229233d5e190bf11234899b41400075bae6125687f3d19c8dddd4acecbe72a4e05fb677fdf5c3d5d50c49cb666c10ee35fb3e9b3c5270adca6d09ee
+  checksum: a0f029065ab93c02561f0c34fedafb28086d9f109282571ac3b0e0c904365269ea4e5de7f6459ca7a52392e638dd99c13ca72892606df3ff9bf71a7f9af82ae5
   languageName: node
   linkType: hard
 
