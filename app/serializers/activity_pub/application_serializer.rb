@@ -1,7 +1,7 @@
 module ActivityPub
   class ApplicationSerializer < BaseSerializer
     def federate?
-      @object.public?
+      SiteSettings.federation_enabled? && @object.public?
     end
 
     def to

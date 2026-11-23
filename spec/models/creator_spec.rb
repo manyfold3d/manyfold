@@ -17,7 +17,7 @@ RSpec.describe Creator do
     expect(build(:creator, slug: SecureRandom.alphanumeric(226))).not_to be_valid
   end
 
-  context "when generating an ActivityStreams representation" do
+  context "when generating an ActivityStreams representation", :federated do
     subject(:creator) { create(:creator, :public) }
 
     let(:ap) { creator.to_activitypub_object }
