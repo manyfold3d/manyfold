@@ -9,7 +9,7 @@ module ActivityPub
     end
 
     def federate?
-      true
+      SiteSettings.federation_enabled?
     end
 
     def to

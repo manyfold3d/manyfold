@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Comment do
+RSpec.describe Comment, :federated do
   context "with public commenter and commentable" do
     let(:commenter) { create(:creator, :public) }
     let(:commentable) { create(:model, :public, creator: commenter, tag_list: "tag one, tag2") }
