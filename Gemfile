@@ -215,7 +215,7 @@ gem "reverse_markdown", "~> 3.1"
 
 gem "graphlient", "~> 0.9.0"
 
-gem "webmock", "~> 3.34", group: :test
+gem "webmock", "~> 3.35", group: :test
 
 gem "image_processing"
 gem "mini_magick"
