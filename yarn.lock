@@ -52,19 +52,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@csstools/css-parser-algorithms@npm:4.0.2"
+"@csstools/css-parser-algorithms@npm:^4.0.2, @csstools/css-parser-algorithms@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "@csstools/css-parser-algorithms@npm:4.0.3"
   peerDependencies:
-    "@csstools/css-tokenizer": ^4.0.2
-  checksum: 7ac83b764c7acb49a700508f7c6ade6a50075f27b0ed8a86ed7b3f632cd0a9f1dcb9df113aa0c74d2021ea7d7b4f80ec69e93866cd272cd078f88d23980ba732
+    "@csstools/css-tokenizer": ^4.0.3
+  checksum: c6f852d36547e32d9077e43710999c8df7e93f7cfd1fcc9a0592b7d96cb07df9b14764e799cc1acc451123e59035a0799a4d0aa436bf204bcaf0b77e6f17b2e3
   languageName: node
   linkType: hard
 
-"@csstools/css-tokenizer@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@csstools/css-tokenizer@npm:4.0.2"
-  checksum: dde9afeecb6072ed20ff78b7ef67ab34ad6645679b431aae024b1b96c8957027b734721987d97d9abb5ddc45141358fb804f2849c862f5d368418d32861c4315
+"@csstools/css-tokenizer@npm:^4.0.2, @csstools/css-tokenizer@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "@csstools/css-tokenizer@npm:4.0.3"
+  checksum: bbfd57cf00bd7a3e757a80660a638d00100f2d0f044e1d23bd137e46eae6f4766cd5393296ae8803ca65c42607eb032161114192b4e132a1b8ec76a0e77fa018
   languageName: node
   linkType: hard
 
@@ -639,14 +639,14 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-system-ui-font-family@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@csstools/postcss-system-ui-font-family@npm:2.0.3"
+  version: 2.0.4
+  resolution: "@csstools/postcss-system-ui-font-family@npm:2.0.4"
   dependencies:
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
   peerDependencies:
     postcss: ^8.4
-  checksum: 09d77344b229233d5e190bf11234899b41400075bae6125687f3d19c8dddd4acecbe72a4e05fb677fdf5c3d5d50c49cb666c10ee35fb3e9b3c5270adca6d09ee
+  checksum: a0f029065ab93c02561f0c34fedafb28086d9f109282571ac3b0e0c904365269ea4e5de7f6459ca7a52392e638dd99c13ca72892606df3ff9bf71a7f9af82ae5
   languageName: node
   linkType: hard
 
