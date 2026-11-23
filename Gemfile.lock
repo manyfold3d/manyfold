@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/fedipub/fedipub
-  revision: 0867c957c0102fc3acf658436b13ef79a98b40ce
+  revision: bca0f6ea5df4c9f3a330bb310f42224acadfc9a1
   branch: main
   specs:
     fedipub (0.11.1)
