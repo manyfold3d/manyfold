@@ -79,12 +79,12 @@ __metadata:
   linkType: hard
 
 "@csstools/media-query-list-parser@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@csstools/media-query-list-parser@npm:5.0.2"
+  version: 5.0.3
+  resolution: "@csstools/media-query-list-parser@npm:5.0.3"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
-  checksum: e5dc3d01174617efa7b5b490a90e4e008c93b4f42de9e91913c7763c434e135ebe1fe0f2f390ccc6786ee07bc0dc3e60c3c7dbd90aba094656a9b42305ddf68e
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
+  checksum: 8f49c0c0ce3f2db345b6fb3e9f994237ca654867583b2391aa3fa3d5a86ae889fdad81d0ce500b9b985bef166567826de38bed5b29194e568295af1b1af55a69
   languageName: node
   linkType: hard
 
