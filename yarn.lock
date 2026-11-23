@@ -432,16 +432,16 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-media-minmax@npm:^3.0.8":
-  version: 3.0.8
-  resolution: "@csstools/postcss-media-minmax@npm:3.0.8"
+  version: 3.0.9
+  resolution: "@csstools/postcss-media-minmax@npm:3.0.9"
   dependencies:
-    "@csstools/css-calc": ^3.4.3
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
-    "@csstools/media-query-list-parser": ^5.0.2
+    "@csstools/css-calc": ^3.4.4
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
+    "@csstools/media-query-list-parser": ^5.0.3
   peerDependencies:
     postcss: ^8.4
-  checksum: dccfd51dfa41f10afed3a379a770e4482b29006aa98a981302c51d3028276510bf4af37aa4a79af52534d5e38230edfd614decd34f250dc8728be39bfaf6d639
+  checksum: 6c9726114190cd824a2e6d53e1ad1c3c49cf8196e3bce75f84abcbb34940113495381f866b3f56e3cc30b36010b1578a7307c1ab0508390c2431baab9afcc67d
   languageName: node
   linkType: hard
 
