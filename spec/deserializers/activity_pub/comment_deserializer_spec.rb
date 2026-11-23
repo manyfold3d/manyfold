@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ActivityPub::CommentDeserializer do
+RSpec.describe ActivityPub::CommentDeserializer, :federated do
   context "when parsing an ActivityStreams representation" do
     subject(:deserializer) { described_class.new(object) }
 

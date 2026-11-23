@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ActivityPub::CollectionSerializer do
+RSpec.describe ActivityPub::CollectionSerializer, :federated do
   context "when generating an ActivityStreams representation" do
     subject(:serializer) { described_class.new(object) }
 
