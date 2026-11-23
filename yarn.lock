@@ -29,13 +29,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.4.3":
-  version: 3.4.3
-  resolution: "@csstools/css-calc@npm:3.4.3"
+"@csstools/css-calc@npm:^3.4.3, @csstools/css-calc@npm:^3.4.4":
+  version: 3.4.4
+  resolution: "@csstools/css-calc@npm:3.4.4"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
-  checksum: c28326b942ded0b28e6d4a6c8f18cd5481d71e72c5e8e5604fbde8c418a77723fb404786aa59a580a1ef37edb7dbe06043bc2421a79d2703dc5a6f7761242570
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
+  checksum: 0dcdbb7dbc88f29682c6e2bb0db693306fdef246a70047e570f9b2cff700da197a797ea71c75fc8ab448abcd85e218f969d4bbc1571d89e6ebc3c8975271016e
   languageName: node
   linkType: hard
 
@@ -52,19 +52,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@csstools/css-parser-algorithms@npm:4.0.2"
+"@csstools/css-parser-algorithms@npm:^4.0.2, @csstools/css-parser-algorithms@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "@csstools/css-parser-algorithms@npm:4.0.3"
   peerDependencies:
-    "@csstools/css-tokenizer": ^4.0.2
-  checksum: 7ac83b764c7acb49a700508f7c6ade6a50075f27b0ed8a86ed7b3f632cd0a9f1dcb9df113aa0c74d2021ea7d7b4f80ec69e93866cd272cd078f88d23980ba732
+    "@csstools/css-tokenizer": ^4.0.3
+  checksum: c6f852d36547e32d9077e43710999c8df7e93f7cfd1fcc9a0592b7d96cb07df9b14764e799cc1acc451123e59035a0799a4d0aa436bf204bcaf0b77e6f17b2e3
   languageName: node
   linkType: hard
 
-"@csstools/css-tokenizer@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@csstools/css-tokenizer@npm:4.0.2"
-  checksum: dde9afeecb6072ed20ff78b7ef67ab34ad6645679b431aae024b1b96c8957027b734721987d97d9abb5ddc45141358fb804f2849c862f5d368418d32861c4315
+"@csstools/css-tokenizer@npm:^4.0.2, @csstools/css-tokenizer@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "@csstools/css-tokenizer@npm:4.0.3"
+  checksum: bbfd57cf00bd7a3e757a80660a638d00100f2d0f044e1d23bd137e46eae6f4766cd5393296ae8803ca65c42607eb032161114192b4e132a1b8ec76a0e77fa018
   languageName: node
   linkType: hard
 
@@ -602,15 +602,15 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-sign-functions@npm:^2.0.9":
-  version: 2.0.9
-  resolution: "@csstools/postcss-sign-functions@npm:2.0.9"
+  version: 2.0.10
+  resolution: "@csstools/postcss-sign-functions@npm:2.0.10"
   dependencies:
-    "@csstools/css-calc": ^3.4.3
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/css-calc": ^3.4.4
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
   peerDependencies:
     postcss: ^8.4
-  checksum: e5047bfef6ca06f9288bb6e9f5f8a3e4b9ecae61d29c053dbda3ff54dfc953b7012e0dedeecfe30fff49d4e0744b6786d93ab616043e400e3a1b659683ba146f
+  checksum: 595d87adeab34ada1495c52522f2e9b4eeb3d061f50a7217705f3e08c5d8b971b92b91e9ca643576a8c18469310f1454595ebb052a7ba81fb1784bc81505372e
   languageName: node
   linkType: hard
 
