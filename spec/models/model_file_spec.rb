@@ -368,7 +368,7 @@ RSpec.describe ModelFile do
       expect { file.check_derivatives! }.not_to have_enqueued_job(Scan::Model::CheckForProblemsJob).once
     end
 
-    it "does not create federated activites for change to owning model", :federation do
+    it "does not create federated activites for change to owning model", :federated do
       expect { file.check_derivatives! }.not_to change(Fedipub::Activity, :count)
     end
   end
