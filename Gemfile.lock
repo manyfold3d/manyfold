@@ -36,24 +36,6 @@ GIT
     rubocop-pundit (0.1.0)
       rubocop
 
-GIT
-  remote: https://gitlab.com/fedipub/fedipub
-  revision: bca0f6ea5df4c9f3a330bb310f42224acadfc9a1
-  branch: main
-  specs:
-    fedipub (0.11.1)
-      faraday
-      faraday-follow_redirects
-      jbuilder (~> 2.7)
-      json (~> 2.0)
-      json-ld (>= 3.2.0)
-      json-ld-preloaded (>= 3.2.0)
-      kaminari (>= 1.2.0)
-      linzer (~> 0.8)
-      ostruct (>= 0.6.3)
-      pundit (>= 2.3.0)
-      rails (>= 7.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -294,11 +276,22 @@ GEM
       ed25519 (~> 1.4)
       linzer (~> 0.7)
       rails (~> 8.0)
+    fedipub (0.11.2)
+      faraday
+      faraday-follow_redirects
+      jbuilder (~> 2.7)
+      json (~> 2.0)
+      json-ld (>= 3.2.0)
+      json-ld-preloaded (>= 3.2.0)
+      kaminari (>= 1.2.0)
+      linzer (~> 0.8)
+      ostruct (>= 0.6.3)
+      pundit (>= 2.3.0)
+      rails (>= 7.2.0)
     fedipub-moderation (0.6.0)
       fedipub (~> 0.11)
       public_suffix (>= 6, < 8)
       rails (>= 7.2.2)
-    ffi (1.17.4)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
     ffi (1.17.4-arm64-darwin)
@@ -327,9 +320,6 @@ GEM
     glob (0.4.1)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    google-protobuf (4.36.2)
-      bigdecimal
-      rake (~> 13.3)
     google-protobuf (4.36.2-aarch64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
@@ -585,7 +575,6 @@ GEM
     parser (3.3.14.0)
       ast (~> 2.4.1)
       racc
-    pg (1.7.0)
     pg (1.7.0-aarch64-linux)
     pg (1.7.0-aarch64-linux-musl)
     pg (1.7.0-arm64-darwin)
@@ -1035,7 +1024,7 @@ DEPENDENCIES
   faker (~> 3.8)
   faraday-multipart (~> 1.2)
   fasp_client (~> 0.6)
-  fedipub!
+  fedipub (~> 0.11)
   fedipub-moderation (~> 0.6)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
@@ -1228,9 +1217,8 @@ CHECKSUMS
   faraday-multipart (1.2.0) sha256=7d89a949693714176f612323ca13746a2ded204031a6ba528adee788694ef757
   faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
   fasp_client (0.6.0) sha256=c1fba106ec3608bc9e9d83b9384645e5339ad637169b696d28a1823164352775
-  fedipub (0.11.1)
+  fedipub (0.11.2) sha256=57c7560f8cdc86b22cf31843a9d524f61b48d6b52817510cb66840d81237a9f2
   fedipub-moderation (0.6.0) sha256=7c7890549b362c1c500fb3ba448a5367012d900e3fdf941aed8265e51eb4bcd0
-  ffi (1.17.4) sha256=bcd1642e06f0d16fc9e09ac6d49c3a7298b9789bcb58127302f934e437d60acf
   ffi (1.17.4-aarch64-linux-gnu) sha256=b208f06f91ffd8f5e1193da3cae3d2ccfc27fc36fba577baf698d26d91c080df
   ffi (1.17.4-aarch64-linux-musl) sha256=9286b7a615f2676245283aef0a0a3b475ae3aae2bb5448baace630bb77b91f39
   ffi (1.17.4-arm64-darwin) sha256=19071aaf1419251b0a46852abf960e77330a3b334d13a4ab51d58b31a937001b
@@ -1248,7 +1236,6 @@ CHECKSUMS
   gitlab-sidekiq-fetcher (0.9.0)
   glob (0.4.1) sha256=e68e50419ffb7f896b39a483c1a37e7a1aa8f1a8c8ea13961f8cd1b50f40715d
   globalid (1.4.0) sha256=037f12fbf1d9d7a014d501c2d5c77356fd4ddd96d7a7991d6700bba96706f427
-  google-protobuf (4.36.2) sha256=2f8daff50ae14aad36ab0ccdcf284065fa71d726c444efe114e6db82ffe62494
   google-protobuf (4.36.2-aarch64-linux-gnu) sha256=c3279ec6eaa59f6ed6276eda2a33cffb4306471183ab79a332e698b8564f5169
   google-protobuf (4.36.2-aarch64-linux-musl) sha256=0772c9dde1e6dce9a6b44d1d35c28c29adee99d9bd6aff5e21840daeb22161ce
   google-protobuf (4.36.2-arm64-darwin) sha256=f70d810e6bbab9d8ad9c1d5fd685a21de4c10ad3ad32efb9455e17e5b1286917
@@ -1346,7 +1333,6 @@ CHECKSUMS
   pagy (43.8.5) sha256=ac428e2345af0456170c78a384be3208926f1bee2ebe667eaa3f15047eb94fe7
   parallel (2.3.0) sha256=f75a3e904101ce6a1ccb6b8dc800cbafd42166d83330192438dcf29395167a6f
   parser (3.3.14.0) sha256=62f8f76af7b919425ee2d811880e9dcb8011ab40bfd59970dfb583141697e58f
-  pg (1.7.0) sha256=f7b536501284e883d4c9ef86dbde0313063e4aaafc23575b0017b0d572a26afb
   pg (1.7.0-aarch64-linux) sha256=101dd3a261000eb64b03ff41a5890674b735b626dbdce88652969b59fb0b1157
   pg (1.7.0-aarch64-linux-musl) sha256=5ca4d4619a1a39fb22de47350130956ece69cf0512858ee68dca926e46f65e4a
   pg (1.7.0-arm64-darwin) sha256=9fa895bbe28bdd579b83ccc80464c01d1015ea7549a7919134c9f8f10c060e4b
