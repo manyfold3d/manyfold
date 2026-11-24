@@ -509,10 +509,6 @@ GEM
       prism (>= 1.5, < 3)
     mittsu (0.5.0)
       chunky_png
-    mittsu-3mf (0.1.0)
-      builder (~> 3.3)
-      mittsu (~> 0.4)
-      rubyzip (~> 2.3)
     mittsu-mesh_analysis (0.1.0)
       mittsu (~> 0.4)
     msgpack (1.8.7)
@@ -1059,7 +1055,6 @@ DEPENDENCIES
   memo_wise (~> 1.13)
   mini_magick
   mittsu (~> 0.5)
-  mittsu-3mf
   mittsu-mesh_analysis
   mysql2 (~> 0.5)
   nanoid (~> 2.0)
@@ -1313,7 +1308,6 @@ CHECKSUMS
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   minitest (6.1.0) sha256=ff373595aa8888631e8a5463986a76b3845346ae6d7fa46e139c1633d418076e
   mittsu (0.5.0) sha256=03855f4aa4dc35c6bd33e3df28ecad7b51c254ab5e9d4b4d862fb66543eb8c5f
-  mittsu-3mf (0.1.0) sha256=cdcfdef4172447ebae039f7b6bd95fd5cee20ad14bc6c9e7a4799a0b7ead6c48
   mittsu-mesh_analysis (0.1.0) sha256=13550c35e56bcd10cbe8284fe1b3cf3a43f7bb7133f47995e0c8a8b5d2a9cd50
   msgpack (1.8.7) sha256=dfefec761b5f9047e6e8d95d2c7f8af4b3725d984a01942adc533aa819a2df33
   multi_json (1.21.2) sha256=245531eaf54bdba57aba515ff08b4503505c5e09911daa89c5a561e2f85bea8e

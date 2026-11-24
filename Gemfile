@@ -115,7 +115,6 @@ gem "acts_as_favoritor", "~> 6.0"
 
 gem "mittsu", "~> 0.5"
 gem "mittsu-mesh_analysis"
-gem "mittsu-3mf"
 
 gem "rails-controller-testing", "~> 1.0", group: :test
 
