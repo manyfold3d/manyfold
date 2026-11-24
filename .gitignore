@@ -69,6 +69,7 @@ dump.rdb
 
 /.yarn/*
 !/.yarn/plugins
+!/.yarn/releases
 
 # Ignore schema file, it's database-dependent and Manyfold shouldn't be
 db/schema.rb
