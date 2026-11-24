@@ -1504,13 +1504,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transloadit/prettier-bytes@npm:^0.3.4":
-  version: 0.3.5
-  resolution: "@transloadit/prettier-bytes@npm:0.3.5"
-  checksum: 10/467162f0044c4f9e9c03e01d4f6e7a34ed27809c8e1a3af2b19091e7b50d2637c7c6c2666274f8ee4bd4776672f8e5134d0c666af92346b11bf9f2e2db81f3b5
-  languageName: node
-  linkType: hard
-
 "@transloadit/prettier-bytes@npm:^2.0.0":
   version: 2.0.0
   resolution: "@transloadit/prettier-bytes@npm:2.0.0"
@@ -1781,22 +1774,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:5.1.0":
-  version: 5.1.0
-  resolution: "@uppy/dashboard@npm:5.1.0"
+"@uppy/dashboard@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "@uppy/dashboard@npm:6.0.3"
   dependencies:
-    "@transloadit/prettier-bytes": "npm:^0.3.4"
-    "@uppy/provider-views": "npm:^5.2.0"
-    "@uppy/thumbnail-generator": "npm:^5.1.0"
-    "@uppy/utils": "npm:^7.1.4"
-    classnames: "npm:^2.2.6"
-    lodash: "npm:^4.17.21"
-    nanoid: "npm:^5.0.9"
-    preact: "npm:^10.5.13"
-    shallow-equal: "npm:^3.0.0"
+    "@transloadit/prettier-bytes": "npm:^2.0.0"
+    "@uppy/thumbnail-generator": "npm:^6.0.1"
+    classnames: "npm:^2.5.1"
+    lodash: "npm:^4.18.1"
+    nanoid: "npm:^6.0.1"
+    preact: "npm:^10.29.2"
+    shallow-equal: "npm:^3.1.0"
   peerDependencies:
-    "@uppy/core": ^5.2.0
-  checksum: 10/69f432ab224c20fe59fbc3efd75cb9de3606352049ee42940832c2df4d68211090bad206bc30105b5e20bb302ab912eac4e2d49c14ac1f7406dd815ee5df490f
+    "@uppy/core": ^6.3.1
+  checksum: 10/d86c33abca20a3b260f25feafea9ff9f3efe1908379c67db4e8ff0328825f675657a2248b0416a6d04c8d8e8059c208936e75a73b0b89c62b10d18b6c1dfd90c
   languageName: node
   linkType: hard
 
@@ -1820,31 +1811,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/provider-views@npm:^5.2.0":
-  version: 5.2.2
-  resolution: "@uppy/provider-views@npm:5.2.2"
+"@uppy/thumbnail-generator@npm:^6.0.1":
+  version: 6.0.2
+  resolution: "@uppy/thumbnail-generator@npm:6.0.2"
   dependencies:
-    "@uppy/utils": "npm:^7.1.5"
-    classnames: "npm:^2.2.6"
-    lodash: "npm:^4.17.21"
-    nanoid: "npm:^5.0.9"
-    p-queue: "npm:^8.0.0"
-    preact: "npm:^10.5.13"
+    exifr: "npm:^7.1.3"
   peerDependencies:
-    "@uppy/core": ^5.2.0
-  checksum: 10/2c5adc0d313a6baf54061491bf54748da8a2c444c9596123a1c7c71f2bff8f9bf7b9b9b14cd73efc7d6a86e0f71c5f08358e58a404b55ada310bd92ad5294afd
-  languageName: node
-  linkType: hard
-
-"@uppy/thumbnail-generator@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@uppy/thumbnail-generator@npm:5.1.0"
-  dependencies:
-    "@uppy/utils": "npm:^7.1.4"
-    exifr: "npm:^7.0.0"
-  peerDependencies:
-    "@uppy/core": ^5.2.0
-  checksum: 10/12283988dede31ada325134fcca8ed4cd14069de56cce16dea2fef115bf1a3367a9303ba3b4057217124ec8e436186fd355fd4ed6fba3ac5fa9be9840a5e49f9
+    "@uppy/core": ^6.3.2
+  checksum: 10/aaad04b616fb3abc74868c1b2251af6946a90708746edf0f20550724e1f8e9bf63e369c08a138a1d4232a6b4958f1a5a2dad24d84b45e6d400a6e83fc2022611
   languageName: node
   linkType: hard
 
@@ -1856,16 +1830,6 @@ __metadata:
   peerDependencies:
     "@uppy/core": ^6.3.1
   checksum: 10/0ee23114a7f23bec838d6efc9c05d6183d97428209b223552f09b63ea386f5e96afe691ba908f85471f05e7926d233e1c062eca43b56feee682dec2867c62cbd
-  languageName: node
-  linkType: hard
-
-"@uppy/utils@npm:^7.1.4, @uppy/utils@npm:^7.1.5":
-  version: 7.2.0
-  resolution: "@uppy/utils@npm:7.2.0"
-  dependencies:
-    lodash: "npm:^4.17.23"
-    preact: "npm:^10.26.10"
-  checksum: 10/85232e848d1260e2f63964064b01b0e01873797a88f8a2d99c357ec3599ad076649c114a9cd9ec06665ed19878471d4cf53c033c689d92a48792c0fe391e9875
   languageName: node
   linkType: hard
 
@@ -2303,7 +2267,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.6, classnames@npm:^2.5.1":
+"classnames@npm:^2.5.1":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 10/58eb394e8817021b153bb6e7d782cfb667e4ab390cb2e9dac2fc7c6b979d1cc2b2a733093955fc5c94aa79ef5c8c89f11ab77780894509be6afbb91dddd79d15
@@ -2980,14 +2944,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^5.0.1, eventemitter3@npm:^5.0.4":
+"eventemitter3@npm:^5.0.4":
   version: 5.0.4
   resolution: "eventemitter3@npm:5.0.4"
   checksum: 10/54f5c8c543650d65f92d03dbef1bb73a682a920490c44699ad8f863a6b19bbca42fb7409aa09ca09cb98a44149d9a7bc1dffd55ca88a740bd928c7be0ad666a0
   languageName: node
   linkType: hard
 
-"exifr@npm:^7.0.0":
+"exifr@npm:^7.1.3":
   version: 7.1.3
   resolution: "exifr@npm:7.1.3"
   checksum: 10/c2f35d7aa317e7957f1a6aec035fd95beb6880547850234528b972c3449d16abc905a837a89390c9b681355dd24ca825043b14a648e3c6ade13c2c7a29ffbbf4
@@ -4128,7 +4092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:*, lodash@npm:^4.17.21, lodash@npm:^4.17.23, lodash@npm:^4.18.1":
+"lodash@npm:*, lodash@npm:^4.18.1":
   version: 4.18.1
   resolution: "lodash@npm:4.18.1"
   checksum: 10/306fea53dfd39dad1f03d45ba654a2405aebd35797b673077f401edb7df2543623dc44b9effbb98f69b32152295fff725a4cec99c684098947430600c6af0c3f
@@ -4199,7 +4163,7 @@ __metadata:
     "@types/webpack-env": "npm:^1.18.8"
     "@types/webxr": "npm:^0.5.24"
     "@uppy/core": "npm:^6.3.2"
-    "@uppy/dashboard": "npm:5.1.0"
+    "@uppy/dashboard": "npm:^6.0.3"
     "@uppy/form": "npm:^6.0.0"
     "@uppy/locales": "npm:^5.3.2"
     "@uppy/tus": "npm:^6.0.1"
@@ -4406,15 +4370,6 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 10/b19641487fc25325189175226a4b9fcc8da39989c6a39fd35921802158d6b1725d59d8454a4e30643d2bb4837382cac11ee129417282678a67f8394b31c228d9
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^5.0.9":
-  version: 5.1.16
-  resolution: "nanoid@npm:5.1.16"
-  bin:
-    nanoid: bin/nanoid.js
-  checksum: 10/b1e702e2b7072e74ac2ae880907d0a291853a36617ec5c3d27d81ab04965ebc0d4d0f707cf9220928cf93d5370b1f561c930efee853dc9c1a3facaefdf1a42ee
   languageName: node
   linkType: hard
 
@@ -4681,16 +4636,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-queue@npm:^8.0.0":
-  version: 8.1.1
-  resolution: "p-queue@npm:8.1.1"
-  dependencies:
-    eventemitter3: "npm:^5.0.1"
-    p-timeout: "npm:^6.1.2"
-  checksum: 10/03fb14d3a7ff605f16338bfca8f0791a7d633ac023eda6f1cfc7daf3ab3db70afa70c3f907a38c2e49cb28ea1863f49f0f230b6cb2c1cc3170059a0652af8f60
-  languageName: node
-  linkType: hard
-
 "p-queue@npm:^9.3.3":
   version: 9.3.3
   resolution: "p-queue@npm:9.3.3"
@@ -4707,13 +4652,6 @@ __metadata:
   dependencies:
     is-network-error: "npm:^1.3.0"
   checksum: 10/2134597266a134d1bcdaec7e605e605c89fe8fb6a8fd913b1102838fea6b1112320fcab327cfb83a58354baaf483057f6561f48245748098bb3cf462276f8e83
-  languageName: node
-  linkType: hard
-
-"p-timeout@npm:^6.1.2":
-  version: 6.1.4
-  resolution: "p-timeout@npm:6.1.4"
-  checksum: 10/5ee0df408ba353cc2d7036af90d2eb1724c428fd1cf67cd9110c03f0035077c29f6506bff7198dfbef4910ec558c711f21f9741d89d043a6f2c2ff82064afcaf
   languageName: node
   linkType: hard
 
@@ -5233,7 +5171,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.26.10, preact@npm:^10.29.2, preact@npm:^10.5.13":
+"preact@npm:^10.29.2":
   version: 10.29.8
   resolution: "preact@npm:10.29.8"
   peerDependencies:
@@ -5934,7 +5872,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shallow-equal@npm:^3.0.0":
+"shallow-equal@npm:^3.1.0":
   version: 3.1.0
   resolution: "shallow-equal@npm:3.1.0"
   checksum: 10/2e0eda6ff74da859a3766fd1865522aacfbef945652d2b629fda0ca5cd9f1f6579e6b3da8bd21e6e8be3a8b49c24484cdd2b8a128f5793d48cff73a0edec15f9
