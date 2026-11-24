@@ -1177,13 +1177,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^7.1.600":
-  version: 7.1.600
-  resolution: "@rails/ujs@npm:7.1.600"
-  checksum: 10/7f25240b0da32e6fb3799e401598ae7c1ab8dd276b9f9d6a394bca5bf17b5cc1c521ae794b18038988252ad2a6de17308edb07a271b441886c4d3394bd01efbe
-  languageName: node
-  linkType: hard
-
 "@rolldown/binding-android-arm-eabi@npm:1.2.19":
   version: 1.2.19
   resolution: "@rolldown/binding-android-arm-eabi@npm:1.2.19"
@@ -4189,7 +4182,6 @@ __metadata:
     "@infinizhen/rpg-awesome-continued": "npm:^1.0.6"
     "@notus.sh/cocooned": "npm:^3.0.1"
     "@popperjs/core": "npm:^2.11.8"
-    "@rails/ujs": "npm:^7.1.600"
     "@types/bootstrap": "npm:^5.2.11"
     "@types/i18n-js": "npm:^4.0.1"
     "@types/jquery": "npm:^4.0.1"
