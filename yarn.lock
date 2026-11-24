@@ -1930,12 +1930,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"altcha@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "altcha@npm:3.6.0"
+"altcha@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "altcha@npm:3.7.0"
   dependencies:
     hash-wasm: ^4.12.0
-  checksum: 3cddee5623b35071024304dd820937a1d2d23b4d64e9c1f05c56b3a8b451b3a7bb5ae4fcb5dd5d9b2b84b915765e0d37c4712a8386e173ab19291ff01526b3c6
+  checksum: 4b153c86009affeaed643f21b2a0acadf8248ed6105137ac284fbcb364a74fb8ed6b61fa0a0343fad8e9bcf236f41e4b4a12d96ed8e2fb1bfffc2fab88f908ae
   languageName: node
   linkType: hard
 
@@ -4203,7 +4203,7 @@ __metadata:
     "@uppy/form": ^6.0.0
     "@uppy/locales": ^5.3.2
     "@uppy/tus": ^6.0.1
-    altcha: ^3.6.0
+    altcha: ^3.7.0
     bootstrap: ^5.3.9
     bootstrap-icons: ^1.13.2
     bootswatch: ^5.3.8
