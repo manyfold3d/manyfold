@@ -138,17 +138,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-function@npm:^5.0.16":
-  version: 5.0.16
-  resolution: "@csstools/postcss-color-function@npm:5.0.16"
+  version: 5.0.17
+  resolution: "@csstools/postcss-color-function@npm:5.0.17"
   dependencies:
-    "@csstools/css-color-parser": ^4.2.7
-    "@csstools/css-parser-algorithms": ^4.0.2
-    "@csstools/css-tokenizer": ^4.0.2
+    "@csstools/css-color-parser": ^4.2.8
+    "@csstools/css-parser-algorithms": ^4.0.3
+    "@csstools/css-tokenizer": ^4.0.3
     "@csstools/postcss-progressive-custom-properties": ^5.1.5
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: d11afc9881fcdb849e9818330facbceb71fea8ab1eb21bffe4200d17f604c75913ad22915185510f3ae9b25765f583177cf7ced0ef293722f9d2cbd03986ddcb
+  checksum: 94bcdf391aad0736fc14557e255651650597664ad64d8c3267ed165cc93af00a72f996f37be54c71a457eb8b7599c4adf85d88d15c0f8c3f0b159b1095984786
   languageName: node
   linkType: hard
 
