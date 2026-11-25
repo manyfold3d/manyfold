@@ -4656,9 +4656,9 @@ __metadata:
   linkType: hard
 
 "p-timeout@npm:^7.0.0":
-  version: 7.0.1
-  resolution: "p-timeout@npm:7.0.1"
-  checksum: 10/1d65827a07fd10eae5bc1fa493ef5c40522acda21cbbb04131cdb0f63f703c91e5fac2701431e28e308992284a86807d7138dbc2be694e2b8342bee20be652f6
+  version: 7.0.2
+  resolution: "p-timeout@npm:7.0.2"
+  checksum: 10/bff40b953f049addc1748cad5d3614a653a1f3b26b20fc7c6acb8d0d64594569769447d6942f52e139453c205739a7206c5efa66e5ec5d4377907aefda54b481
   languageName: node
   linkType: hard
 
