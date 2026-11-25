@@ -4637,12 +4637,12 @@ __metadata:
   linkType: hard
 
 "p-queue@npm:^9.3.3":
-  version: 9.3.3
-  resolution: "p-queue@npm:9.3.3"
+  version: 9.3.5
+  resolution: "p-queue@npm:9.3.5"
   dependencies:
     eventemitter3: "npm:^5.0.4"
     p-timeout: "npm:^7.0.0"
-  checksum: 10/2bab74e87ed806ae2dd7ec10f1e0d0423eb4c07419e35947dc66f8b6d3f2d89e978b76b3940d5a41e1b54fda82b716eb2c1bacb63bd95286f0852413628d43b3
+  checksum: 10/79e6b9b7735d3ca8d8020aa52f872da67ea58c0d982bcbf7323a44a50b075fe6568c9b11d2a8e63a53abd6ec320aa63864104cc6566ac2ebf3896918a4d290b5
   languageName: node
   linkType: hard
 
