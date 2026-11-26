@@ -39,7 +39,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.2.7, @csstools/css-color-parser@npm:^4.2.8":
+"@csstools/css-color-parser@npm:^4.2.8":
   version: 4.2.8
   resolution: "@csstools/css-color-parser@npm:4.2.8"
   dependencies:
@@ -52,7 +52,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^4.0.2, @csstools/css-parser-algorithms@npm:^4.0.3":
+"@csstools/css-parser-algorithms@npm:^4.0.3":
   version: 4.0.3
   resolution: "@csstools/css-parser-algorithms@npm:4.0.3"
   peerDependencies:
@@ -61,7 +61,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-tokenizer@npm:^4.0.2, @csstools/css-tokenizer@npm:^4.0.3":
+"@csstools/css-tokenizer@npm:^4.0.3":
   version: 4.0.3
   resolution: "@csstools/css-tokenizer@npm:4.0.3"
   checksum: 10/6bd8a3100cd7b71f356074cd1419fbf93ce5b397c76f8c4953888d2f3fb8a59186813f2e2638d530028ae7a05f17c22607c69b4e059cb09702eeac688f7ad5f0
@@ -96,17 +96,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-alpha-function@npm:^2.0.17":
-  version: 2.0.17
-  resolution: "@csstools/postcss-alpha-function@npm:2.0.17"
+  version: 2.0.18
+  resolution: "@csstools/postcss-alpha-function@npm:2.0.18"
   dependencies:
-    "@csstools/css-color-parser": "npm:^4.2.7"
-    "@csstools/css-parser-algorithms": "npm:^4.0.2"
-    "@csstools/css-tokenizer": "npm:^4.0.2"
+    "@csstools/css-color-parser": "npm:^4.2.8"
+    "@csstools/css-parser-algorithms": "npm:^4.0.3"
+    "@csstools/css-tokenizer": "npm:^4.0.3"
     "@csstools/postcss-progressive-custom-properties": "npm:^5.1.5"
     "@csstools/utilities": "npm:^3.0.0"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10/330fa11183562df893a0e21b9ad925c8947bd640f4ffc2a1eda7bb49ed79249156cbd4ddee8dca59c961a8148d3adaa57e334de0054fff11a5c796997d11bdbb
+  checksum: 10/f0b11514dff19c33ec5f327dd7ad404d3e335ebdb6cc1d39f8071a67514364366a1d4b4186582c2f918ecee51060b6018511ccc18bd9e16f770a8e4463e998ed
   languageName: node
   linkType: hard
 
