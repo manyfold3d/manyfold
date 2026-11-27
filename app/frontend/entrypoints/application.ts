@@ -2,7 +2,6 @@
 import '@hotwired/turbo-rails'
 import '~/javascript/controllers/index'
 
-import Rails from '@rails/ujs'
 import 'masonry-layout'
 
 import 'altcha'
@@ -14,8 +13,3 @@ import 'altcha/i18n/fr-fr'
 import 'altcha/i18n/ja'
 import 'altcha/i18n/nl'
 import 'altcha/i18n/pl'
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Legacy Rails UJS
-  Rails.start()
-})
